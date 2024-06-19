@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
-import 'package:pharma_clients_app/data/network/base_api_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../app_excaptions.dart';
+import '../app_exceptions/app_excaptions.dart';
 
 class NetworkApiServices extends BaseApiServices {
   Client client = Client();
