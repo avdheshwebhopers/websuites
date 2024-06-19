@@ -1,47 +1,39 @@
-class AppException implements Exception {
-  final dynamic _message;
-  final dynamic _prefix;
 
-  AppException([this._message, this._prefix]);
+class AppExceptions implements Exception {
 
-  @override
-  String toString() {
-    return "$_prefix$_message";
+  final _message;
+  final _prefix;
+
+  AppExceptions([this._message , this._prefix]);
+
+  String toString (){
+    return '$_prefix$_message';
   }
+
 }
 
-class FetchDataException extends AppException {
-  FetchDataException([String? message]) : super(message, "Error During Communication: ");
+
+class InternetExceptions extends AppExceptions {
+
+  InternetExceptions ([String? message]) : super(message, 'No internet') ;
 }
 
-class BadRequestException extends AppException {
-  BadRequestException([message]) : super(message, "Invalid Request: ");
+class RequestTimeOut extends AppExceptions {
+
+  RequestTimeOut ([String? message]) : super(message, 'Request Time out') ;
 }
 
-class ValidationException extends AppException {
-  ValidationException([message]) : super(message, "Validation error: ");
+class ServerException extends AppExceptions {
+
+  ServerException ([String? message]) : super(message,  'Internet Server Error') ;
 }
 
-class UnauthorisedException extends AppException {
-  UnauthorisedException([message]) : super(message, "Unauthorised: ");
+class InvalidUrlException extends AppExceptions {
+
+  InvalidUrlException ([String? message]) : super(message,  'Invalid Url') ;
 }
 
-class InvalidInputException extends AppException {
-  InvalidInputException([String? message]) : super(message, "Invalid Input: ");
-}
+class FetchDataException extends AppExceptions {
 
-class ForbiddenException extends AppException {
-  ForbiddenException([String? message]) : super(message, "Forbidden: ");
-}
-
-class NotFoundException extends AppException {
-  NotFoundException([String? message]) : super(message, "Not Found: ");
-}
-
-class ServerErrorException extends AppException {
-  ServerErrorException([String? message]) : super(message, "Server Error: ");
-}
-
-class UnProcessableException extends AppException {
-  UnProcessableException([String? message]) : super(message, "UnProcessable Exception: ");
+  FetchDataException ([String? message]) : super(message,  ' ') ;
 }
