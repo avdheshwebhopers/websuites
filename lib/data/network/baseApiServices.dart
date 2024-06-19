@@ -1,14 +1,16 @@
 
-abstract class BaseApiServices{
 
-  Future<dynamic> getApiResponse (String url);
+abstract class BaseApiServices {
+
+  Future<dynamic> getApi(String url);
 
   Future<dynamic> postApiResponse(String url, dynamic data);
 
-  Future<dynamic> postEmptyParmApiResponse(String url, dynamic bodyParms);
-
   Future<dynamic> deleteApiResponse(String url);
 
-  Future<dynamic> putApiResponse(String url, dynamic bodyParms);
+  Future<dynamic> patchApi(String url);
+
+
+
 
 }
