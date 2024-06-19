@@ -1,7 +1,7 @@
 
 class AppImages{
 
-  static const String BaseImageUrl = 'lib/assets/images/';
+  static const String BaseImageUrl = 'lib/resources/assets/images/';
 
   static const String Splash_WHLogo = '${BaseImageUrl}WHLogo.png';
 
