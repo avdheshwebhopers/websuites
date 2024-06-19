@@ -1,4 +1,4 @@
-import 'package:pharma_clients_app/data/response/status.dart';
+import 'package:websuites/data/response/status.dart';
 
 class ApiResponse<T> {
   Status? status;
