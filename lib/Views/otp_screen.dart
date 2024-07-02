@@ -5,11 +5,11 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
 import '../Resources/Assets/app_images.dart';
+import '../Resources/app_strings/app_strings.dart';
+import '../Resources/app_textstyles/App_TextStyle.dart';
 import '../Resources/components/app_colors.dart';
+import '../Resources/components/App_Buttons/generic_button.dart';
 import '../Utils/Routes/routes_name.dart';
-import '../resources/app_strings/app_strings.dart';
-import '../resources/app_textstyles/App_TextStyle.dart';
-import '../resources/components/generic_button.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
@@ -67,7 +67,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   child: GenericButton(
                     title: AppStrings.Login_Button,
                     onPress: () {
-                      Get.offNamed(RoutesName.Main_page);
+                      Get.offNamed(RoutesName.main_page_screen);
                     },
                   ),
                 ),

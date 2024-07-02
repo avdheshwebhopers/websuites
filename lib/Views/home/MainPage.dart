@@ -8,10 +8,10 @@ import '../Responsive/responsive_layout.dart';
 
 class MainPage extends StatefulWidget {
 
-  final dynamic name;
+  // final dynamic name;
 
   MainPage({Key? key}) :
-        name = Get.arguments,
+        // name = Get.arguments,
         super(key: key);
 
   @override
@@ -22,11 +22,11 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context){
-    print(widget.name);
+    // print(widget.name);
     return Scaffold(
       body: ResponsiveLayout(
         mobileBody: MyMobileBody(
-          name: widget.name,
+          // name: widget.name,
           ),
 
 

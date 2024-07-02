@@ -1,29 +1,45 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../Utils/Utils.dart';
-import '../../../data/repository/Repositories.dart';
+
+import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
+import 'package:websuites/Data/models/Response_model/Dashboard_Screen/Db_Transactions_ResponseModel.dart';
+
+import '../../../Data/repositories/repositories.dart';
+import '../../../Data/response/status.dart';
 
 
 class DbTransactionsViewmodel extends GetxController {
   final _api = Repositories();
-  RxBool loading = false.obs;
+  // RxBool loading = false.obs;
 
 
-  Future<void> Db_transactions(BuildContext context)async{
+  final transactionList = DB_LatestTransaction_ResponseModel().obs;
+  final rxStatus = Status.LOADING.obs;
+  RxString error = ''.obs;
 
-    loading.value = true;
+  void setRxStatus (Status _value) => rxStatus.value = _value;
+  void setTransactionList (DB_LatestTransaction_ResponseModel _value) => transactionList.value = _value;
+  void setError (String _value) =>  error.value = _value;
+
+
+  Future<void> Db_transactions(BuildContext, context) async {
+    // loading.value = true;
+
+
     _api.DB_TransactionApi().then((value){
-      if(value.items != null){
-        Utils.SnackbarSuccess('transactions fetched');
-
-      }else{
-        Utils.SnackbarFailed('transactions not fetched');
-      }
-      loading.value = false;
+      setRxStatus(Status.COMPLETED);
+      setTransactionList(value);
+      // if(value.items != null){
+      //   Utils.SnackbarSuccess('transactions fetched');
+      //
+      // }else{
+      //   Utils.SnackbarFailed('transactions not fetched');
+      // }
+      // // loading.value = false;
 
     }).onError((error, stackTrace) {
+      setError(error.toString());
+      setRxStatus(Status.ERROR);
       if (kDebugMode) {
         print(error.toString());
       }

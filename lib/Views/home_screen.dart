@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../Resources/Assets/app_fonts.dart';
 import '../Resources/Assets/app_images.dart';
+import '../Resources/components/Cards/DashboardScreen_Card/app_cards_1.dart';
+import '../Resources/components/Cards/DashboardScreen_Card/app_cards_2.dart';
+import '../Resources/components/Cards/DashboardScreen_Card/app_cards_3.dart';
+import '../Resources/components/Containers/app_row_container1.dart';
+import '../Resources/components/Containers/app_row_container2.dart';
+import '../Resources/components/List_TIles/custom_list_tile.dart';
 import '../Resources/components/app_colors.dart';
+import '../Resources/components/App_Buttons/generic_button.dart';
 import '../Utils/Routes/routes_name.dart';
 import '../Utils/Utils.dart';
 import '../View_model/controllers/save_token/save_token.dart';
-import '../resources/Assets/app_fonts.dart';
-import '../resources/components/Cards/app_cards_1.dart';
-import '../resources/components/Cards/app_cards_2.dart';
-import '../resources/components/Cards/app_cards_3.dart';
-import '../resources/components/Containers/app_row_container1.dart';
-import '../resources/components/Containers/app_row_container2.dart';
-import '../resources/components/List_TIles/custom_list_tile.dart';
-import '../resources/components/generic_button.dart';
 
 
 
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
    GlobalKey <ScaffoldState> _globalKey =  GlobalKey<ScaffoldState>();
    RxBool loading = false.obs;
    @override
-  void initState() {
+  void initState(){
 
     // TODO: implement initState
     super.initState();
@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: Get.width/4,
                         title: 'Logout',
                         onPress: (){
-                          SaveToken().removeToken();
+                          SaveUserData().removeUser();
                           Get.toNamed(RoutesName.login_screen);
                           Utils.SnackbarSuccess('Logout Successful');
                         }
@@ -774,7 +774,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       countColor: AppColors.grey,
                                       statusColor: AppColors.blackColor,
                                       icon: Icons.task,
-                                      iconColor: AppColors.skyBlue,
+                                      iconColor: AppColors.vividBlue,
                                       containerColor: AppColors.lightBlue),
                                   const SizedBox(width: 8,),
 
@@ -784,7 +784,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       countColor: AppColors.grey,
                                       statusColor: AppColors.blackColor,
                                       icon: Icons.account_balance_rounded,
-                                      iconColor: AppColors.grassGreen,
+                                      iconColor: AppColors.vividGreen,
                                       containerColor: AppColors.lightGreen),
                                   const SizedBox(width: 8,),
 
@@ -966,7 +966,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                                 const SizedBox(width: 10,),
 
-                                Icon(Icons.pie_chart, color: AppColors.skyBlue,size: 12,),
+                                Icon(Icons.pie_chart, color: AppColors.vividBlue,size: 12,),
 
                                 const SizedBox(width: 5,),
 
@@ -977,7 +977,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       fontSize: 12,
                                       fontFamily: AppFonts.nunitoRegular,
                                       fontWeight: FontWeight.w400,
-                                      color: AppColors.skyBlue,
+                                      color: AppColors.vividBlue,
                                     ),
                                   ),
                                 ),
@@ -1053,31 +1053,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
                           const SizedBox(height:20,),
 
-                          const AppCardsThree(
+                          const Transaction_list_Widget(
                               title: 'Premium 60 Packages Self Done...',
                               name: 'Prakash shah',
                               amount: '₹4000',
                               subtitle: '25 May, 2024 at 12:30 pm'),
 
-                          const AppCardsThree(
+                          const Transaction_list_Widget(
                               title: 'Premium 60 Packages Self Done...',
                               name: 'Prakash shah',
                               amount: '₹4000',
                               subtitle: '25 May, 2024 at 12:30 pm'),
 
-                          const AppCardsThree(
+                          const Transaction_list_Widget(
                               title: 'Premium 60 Packages Self Done...',
                               name: 'Prakash shah',
                               amount: '₹4000',
                               subtitle: '25 May, 2024 at 12:30 pm'),
 
-                          const AppCardsThree(
+                          const Transaction_list_Widget(
                               title: 'Premium 60 Packages Self Done...',
                               name: 'Prakash shah',
                               amount: '₹4000',
                               subtitle: '25 May, 2024 at 12:30 pm'),
 
-                          const AppCardsThree(
+                          const Transaction_list_Widget(
                               title: 'Premium 60 Packages Self Done...',
                               name: 'Prakash shah',
                               amount: '₹4000',

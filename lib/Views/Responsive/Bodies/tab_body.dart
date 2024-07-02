@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+import '../../../Data/models/Response_model/LoginResponseModel.dart';
+import '../../../Resources/Assets/app_fonts.dart';
 import '../../../Resources/Assets/app_images.dart';
+import '../../../Resources/app_strings/app_strings.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_1.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_2.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_3.dart';
+import '../../../Resources/components/Containers/app_row_container1.dart';
+import '../../../Resources/components/Containers/app_row_container2.dart';
+import '../../../Resources/components/List_TIles/custom_list_tile.dart';
 import '../../../Resources/components/app_colors.dart';
+import '../../../Resources/components/App_Buttons/generic_button.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/Utils.dart';
 import '../../../View_model/controllers/save_token/save_token.dart';
-import '../../../resources/Assets/app_fonts.dart';
-import '../../../resources/app_strings/app_strings.dart';
-import '../../../resources/components/Cards/app_cards_1.dart';
-import '../../../resources/components/Cards/app_cards_2.dart';
-import '../../../resources/components/Cards/app_cards_3.dart';
-import '../../../resources/components/Containers/app_row_container1.dart';
-import '../../../resources/components/Containers/app_row_container2.dart';
-import '../../../resources/components/List_TIles/custom_list_tile.dart';
-import '../../../resources/components/generic_button.dart';
 
 
 class MyTabBody extends StatefulWidget {
@@ -24,6 +26,37 @@ class MyTabBody extends StatefulWidget {
   State<MyTabBody> createState() => _MyTabBodyState();}
 
 class _MyTabBodyState extends State<MyTabBody> {
+
+  String userName = '';
+  String? userEmail = "";
+  SaveUserData userPreference = SaveUserData();
+
+  @override
+  void initState(){
+    super.initState();
+    fetchUserData();}
+
+  Future<void> fetchUserData() async {
+    try {
+      // Fetch token and email from SharedPreferences using SaveToken class
+      LoginResponseModel response = await userPreference.getUser();
+      String? first_name = response.user!.first_name;
+      String? email = response.user!.email;// Extract email from response
+
+      setState(() {
+        userName = first_name!;
+        userEmail = email!;
+        // Update userEmail state variable with fetched email
+      });
+    } catch (e) {
+      print('Error fetching userData: $e');
+      // Handle error if necessary
+    }
+  }
+
+
+
+
 
 
   @override
@@ -91,14 +124,14 @@ class _MyTabBodyState extends State<MyTabBody> {
                                         .start,
 
                                     children: [
-                                      const Text('Sunil Kumar',
+                                      Text('$userName',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 17,
                                           fontFamily: AppFonts.nunitoRegular,
 
                                         ),),
-                                      Text('+91-8810529887',
+                                      Text('$userEmail',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 13,
@@ -219,7 +252,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   width: Get.width/4,
                                   title: 'Logout',
                                   onPress: () {
-                                    SaveToken().removeToken();
+                                    SaveUserData().removeUser();
                                     Get.toNamed(RoutesName.login_screen);
                                     Utils.SnackbarSuccess('Logout Successful');
                                   }
@@ -724,7 +757,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               countColor: AppColors.grey,
                               statusColor: AppColors.blackColor,
                               icon: Icons.task,
-                              iconColor: AppColors.skyBlue,
+                              iconColor: AppColors.vividBlue,
                               containerColor: AppColors.lightBlue),
 
 
@@ -734,7 +767,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               countColor: AppColors.grey,
                               statusColor: AppColors.blackColor,
                               icon: Icons.account_balance_rounded,
-                              iconColor: AppColors.grassGreen,
+                              iconColor: AppColors.vividGreen,
                               containerColor: AppColors.lightGreen),
 
 
@@ -920,7 +953,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         const SizedBox(width: 10,),
 
                         Icon(
-                          Icons.pie_chart, color: AppColors.skyBlue, size: 20,),
+                          Icons.pie_chart, color: AppColors.vividBlue, size: 20,),
 
                         const SizedBox(width: 5,),
 
@@ -931,7 +964,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               fontSize: 12,
                               fontFamily: AppFonts.nunitoRegular,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.skyBlue,
+                              color: AppColors.vividBlue,
                             ),
                           ),
                         ),
@@ -1222,7 +1255,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   width: Get.width / 4,
                                   title: AppStrings.Drawer_ButtonLogout,
                                   onPress: () {
-                                    SaveToken().removeToken();
+                                    SaveUserData().removeUser();
                                     Get.toNamed(RoutesName.login_screen);
                                     Utils.SnackbarSuccess(AppStrings.Home_Snackbar);
                                   }
@@ -1749,7 +1782,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               countColor: AppColors.grey,
                               statusColor: AppColors.blackColor,
                               icon: Icons.task,
-                              iconColor: AppColors.skyBlue,
+                              iconColor: AppColors.vividBlue,
                               containerColor: AppColors.lightBlue),
 
 
@@ -1759,7 +1792,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               countColor: AppColors.grey,
                               statusColor: AppColors.blackColor,
                               icon: Icons.account_balance_rounded,
-                              iconColor: AppColors.grassGreen,
+                              iconColor: AppColors.vividGreen,
                               containerColor: AppColors.lightGreen),
 
 
@@ -1943,7 +1976,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         const SizedBox(width: 10,),
 
                         Icon(
-                          Icons.pie_chart, color: AppColors.skyBlue, size: 20,),
+                          Icons.pie_chart, color: AppColors.vividBlue, size: 20,),
 
                         const SizedBox(width: 5,),
 
@@ -1954,7 +1987,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               fontSize: 12,
                               fontFamily: AppFonts.nunitoRegular,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.skyBlue,
+                              color: AppColors.vividBlue,
                             ),
                           ),
                         ),
