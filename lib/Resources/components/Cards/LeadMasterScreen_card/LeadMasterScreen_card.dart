@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 
 import '../../../Assets/app_fonts.dart';
+import '../../../app_strings/app_strings.dart';
 import '../../app_colors.dart';
 
 class LeadMaster_screen_card extends StatelessWidget {
@@ -88,12 +90,7 @@ class LeadMaster_screen_card extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('SUB TYPES', style: TextStyle(
-                    color: AppColors.blackColor,
-                    fontSize: 12,
-                    fontFamily: AppFonts.nunitoRegular,
-                    fontWeight: FontWeight.w500
-                ),),
+                AppTextStyle.Leadmaster_subType(context, AppStrings.LeadMaster_Subtypes),
 
                 SizedBox(width: 5,),
 

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:websuites/Resources/Assets/app_Icons.dart';
 
+import '../../Assets/app_Icons.dart';
+import '../../Assets/app_Icons.dart';
 import '../../Assets/app_fonts.dart';
 import '../app_colors.dart';
 
 class CustomListTile extends StatelessWidget {
-  final IconData icon;
+  final String leadIconImage;
   final String title;
   final VoidCallback onTap;
 
   const CustomListTile({
     Key? key,
-    required this.icon,
+    required this.leadIconImage,
     required this.title,
     required this.onTap,
   }) : super(key: key);
@@ -21,7 +24,12 @@ class CustomListTile extends StatelessWidget {
       ListTile(
       dense: true,
       contentPadding: EdgeInsets.symmetric(horizontal: 15.0),
-      leading: Icon(icon, size: 16, color: AppColors.lightGrey,),
+      leading: Image.asset(leadIconImage),
+      // SizedBox(
+      //   height: 20,
+      //     width: 20,
+      //     child: Icon(icon, size : 20, color: AppColors.lightGrey,)),
+      // trailing: Icon(Icons.arrow_drop_down, size: 20, color: AppColors.lightGrey,),
       title: Text(title,
           style: TextStyle(
               fontSize: 14,

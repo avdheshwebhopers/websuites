@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
-import 'package:websuites/Resources/Assets/app_fonts.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
-import 'package:websuites/Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_20h.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
 import '../Resources/Assets/app_images.dart';
+import '../Resources/app_strings/app_strings.dart';
 import '../Resources/components/Cards/create_new_lead_screen_Card/create_new_lead_screen_Widget.dart';
 import '../Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_15h.dart';
 import '../Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_22h.dart';
@@ -53,19 +53,18 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
     return Scaffold(
         key: _globalKey,
         backgroundColor: AppColors.whiteColor,
-        drawer: Container(
-          height: Get.height / 1,
-          width: Get.width / 1.8,
-          color: AppColors.whiteColor,
-          child: AppDrawer(
-              userName: '$userName',
-              phoneNumber: '$userEmail',
-              version: '1.0.12'),
-        ),
-        body: Stack(
+
+        drawer:
+        AppDrawer(
+            userName: '$userName',
+            phoneNumber: '$userEmail',
+            version: '1.0.12'),
+
+        body:
+        Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 130),
+              padding: EdgeInsets.only(top: 130, left: 30, right: 20),
               child: Image.asset(
                 AppImages.World_Map,
                 scale: 1,
@@ -81,45 +80,19 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                     height: 140,
                   ),
                   Center(
-                    child: Text(
-                      'Find Active Small Business Leads',
-                      style: TextStyle(
-                          color: AppColors.vividPurple,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700),
-                    ),
+                    child:
+                  AppTextStyle.SearchGoogle_FindActive1(context, AppStrings.SearchGoogle_FindActive1),
                   ),
                   Center(
-                    child: Text(
-                      'And Places on Google Map',
-                      style: TextStyle(
-                          color: AppColors.vividPurple,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          fontFamily: AppFonts.nunitoRegular),
-                    ),
+                    child:
+                  AppTextStyle.SearchGoogle_FindActive2(context, AppStrings.SearchGoogle_FindActive2),
                   ),
                   SizedBox_22h(),
-                  Text(
-                    'Search Lead',
-                    style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontFamily: AppFonts.nunitoRegular,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  CreateNewLeadScreenWidget(hintText: 'Search'),
+                  AppTextStyle.SearchGoogle_SearchLead(context, AppStrings.SearchGoogle_SearchLead),
+                  CreateNewLeadScreenWidget(hintText: AppStrings.SearchGoogle_Search),
                   SizedBox_15h(),
-                  Text(
-                    'By Location',
-                    style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                        fontFamily: AppFonts.nunitoRegular),
-                  ),
-                  CreateNewLeadScreenWidget(hintText: 'Enter Location'),
+                  AppTextStyle.SearchGoogle_ByLocation(context, AppStrings.SearchGoogle_ByLocation),
+                  CreateNewLeadScreenWidget(hintText: AppStrings.SearchGoogle_EnterLocation),
                   SizedBox(
                     height: 30,
                   ),
@@ -134,14 +107,8 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Center(
-                          child: Text(
-                            'Search',
-                            style: TextStyle(
-                                color: AppColors.whiteColor,
-                                fontSize: 14,
-                                fontFamily: AppFonts.nunitoRegular,
-                                fontWeight: FontWeight.w500),
-                          ),
+                          child:
+                          AppTextStyle.SearchGoogle_Search2(context, AppStrings.SearchGoogle_Search2),
                         ),
                       ),
                     ],
@@ -151,7 +118,7 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
             ),
 
             //====================================================================
-            //AppBar
+            //CUSTOM APP BAR
 
             CustomAppBar(
               child: Row(
@@ -167,20 +134,14 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                       )),
                   Padding(
                     padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      'Search Google Leads',
-                      style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: AppFonts.nunitoRegular,
-                        fontSize: 16,
-                      ),
-                    ),
+                    child:
+                   AppTextStyle.SearchGoogle_searchGoogleLeads(context, AppStrings.SearchGoogle_searchGoogleLeads)
                   )
                 ],
               ),
-            )
+            ),
           ],
-        ));
+        )
+    );
   }
 }

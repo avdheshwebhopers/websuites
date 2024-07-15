@@ -24,11 +24,11 @@ class LoginViewModel extends GetxController {
 
   // final rxLoginStatus = Status.LOADING.obs;
   // final loginModel = LoginResponseModel().obs;
-  RxString error = ''.obs;
+  // RxString error = ''.obs;
   //
   // void setRxStatus (Status _value) =>  rxLoginStatus.value = _value;
   // void setLogin (LoginResponseModel _value) =>  loginModel.value = _value;
-  void setError (String _value) =>  error.value = _value;
+  // void setError (String _value) =>  error.value = _value;
 
   RxBool loading = false.obs;
   
@@ -70,17 +70,14 @@ class LoginViewModel extends GetxController {
 
         Utils.SnackbarSuccess('login Successful');
         // setRxStatus(Status.COMPLETED);
-
       } else {
         Utils.SnackbarFailed('Login failed');
       }
       loading.value = false;
       // setRxStatus(Status.ERROR);
     }).onError((error, stackTrace) {
-      setError(error.toString());
+
       // setRxStatus(Status.ERROR);
-
-
 
       if (kDebugMode) {
         print(error.toString());

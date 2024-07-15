@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../Resources/Assets/app_fonts.dart';
 import '../Resources/Assets/app_images.dart';
 import '../Resources/app_strings/app_strings.dart';

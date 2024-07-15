@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 
 import '../../../Assets/app_fonts.dart';
+import '../../../app_strings/app_strings.dart';
 import '../../app_colors.dart';
 
 class CustomerActvities_Card extends StatelessWidget {
@@ -118,12 +120,7 @@ class CustomerActvities_Card extends StatelessWidget {
               ),
 
               Row(children: [
-                Text('REMARK', style: TextStyle(
-                    color: AppColors.blackColor,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: AppFonts.nunitoRegular
-                ),),
+              AppTextStyle.CustomerActivities_Remark(context, AppStrings.CustomerActivities_Remark),
 
                 Icon(Icons.arrow_right_alt, size: 15, color: AppColors.lightGrey,),
 
@@ -139,12 +136,7 @@ class CustomerActvities_Card extends StatelessWidget {
 
               Row(
                 children: [
-                  Text('REMINDER ON', style: TextStyle(
-                      color: AppColors.blackColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: AppFonts.nunitoRegular
-                  ),),
+                 AppTextStyle.CustomerActivities_ReminderOn(context, AppStrings.CustomerActivities_ReminderOn),
 
 
                   Icon(Icons.arrow_right_alt, size: 15, color: AppColors.lightGrey,),

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Cards/LeadMasterScreen_card/LeadMasterScreen_card.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_FloatingActionButton/custom_floatingActionButton.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_navBar/custom_naBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
-
-import '../Resources/Assets/app_fonts.dart';
+import '../Resources/Assets/app_Icons.dart';
+import '../Resources/app_strings/app_strings.dart';
 import '../Resources/components/app_colors.dart';
 import '../View_model/controllers/save_token/save_token.dart';
 
@@ -26,7 +28,7 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
   String? userEmail = '';
 
   @override
-  void initState() {
+  void initState(){
     FetchUserData();
     super.initState();
   }
@@ -50,27 +52,18 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        shape: CircleBorder(),
-        onPressed: () {},
-        child: Icon(Icons.search, size: 27, color: AppColors.whiteColor,),
-        backgroundColor: AppColors.vividPurple,
-      ),
+      floatingActionButton: CustomFloatingButton(
+          onPressed: (){},
+          imageIcon: AppIcons.navSearch3,
+          backgroundColor: AppColors.mediumPurple),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
-
 
       key: _globalKey,
       backgroundColor: AppColors.whiteColor,
-      drawer: Container(
-        height: Get.height / 1,
-        width: Get.width / 1.8,
-        color: AppColors.whiteColor,
-        child: AppDrawer(
-            userName: '$userName',
-            phoneNumber: '$userEmail',
-            version: '1.0.12'),
-      ),
+      drawer: AppDrawer(
+          userName: '$userName',
+          phoneNumber: '$userEmail',
+          version: '1.0.12'),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -94,14 +87,8 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                             color: AppColors.mediumPurple,
                             borderRadius: BorderRadius.circular(15)),
                         child: Center(
-                          child: Text(
-                            'Types',
-                            style: TextStyle(
-                                color: AppColors.whiteColor,
-                                fontFamily: AppFonts.nunitoRegular,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14),
-                          ),
+                          child:
+                          AppTextStyle.LeadMaster_Types(context, AppStrings.LeadMaster_Types),
                         ),
                       ),
                       Container(
@@ -111,14 +98,8 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                             color: AppColors.textfield2,
                             borderRadius: BorderRadius.circular(15)),
                         child: Center(
-                          child: Text(
-                            'Source',
-                            style: TextStyle(
-                                color: AppColors.blackColor,
-                                fontFamily: AppFonts.nunitoRegular,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14),
-                          ),
+                          child: 
+                         AppTextStyle.LeadMaster_Source(context, AppStrings.LeadMaster_Source),
                         ),
                       ),
                       Container(
@@ -128,14 +109,9 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                             color: AppColors.textfield2,
                             borderRadius: BorderRadius.circular(15)),
                         child: Center(
-                          child: Text(
-                            'Status',
-                            style: TextStyle(
-                                color: AppColors.blackColor,
-                                fontFamily: AppFonts.nunitoRegular,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14),
-                          ),
+                          child:
+
+                            AppTextStyle.LeadMaster_Status(context, AppStrings.LeadMaster_Status),
                         ),
                       ),
                     ],
@@ -143,14 +119,7 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'Available Lead Status',
-                    style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: AppFonts.nunitoRegular),
-                  ),
+                  AppTextStyle.LeadMaster_AvailableLeadStatus(context, AppStrings.LeadMaster_AvailableLeadStatus),
                   SizedBox(
                     height: 15,
                   ),
@@ -161,16 +130,14 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                   LeadMaster_screen_card(title: 'Cold', activity: 'Active'),
                   LeadMaster_screen_card(
                       title: 'Cold', activity: 'In Progress'),
-                  SizedBox(
-                    height: 50,
-                  ),
+                  SizedBox(height: 50,),
                 ],
               ),
             ),
           ),
 
           //====================================================================
-          //AppBAr Below
+          //CUSTOM APP BAR
 
           CustomAppBar(
             child: Row(
@@ -186,14 +153,7 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                 SizedBox(
                   width: 12,
                 ),
-                Text(
-                  'Lead Master',
-                  style: TextStyle(
-                      color: AppColors.blackColor,
-                      fontFamily: AppFonts.nunitoRegular,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 17),
-                ),
+                AppTextStyle.LeadMaster_leadMaster(context, AppStrings.LeadMaster_LeadMaster),
                 Spacer(),
                 Icon(
                   Icons.search,
@@ -210,14 +170,8 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                       color: AppColors.mediumPurple,
                       borderRadius: BorderRadius.circular(5)),
                   child: Center(
-                    child: Text(
-                      'Add Lead Type',
-                      style: TextStyle(
-                          color: AppColors.whiteColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: AppFonts.nunitoRegular),
-                    ),
+                    child:
+                      AppTextStyle.LeadMaster_addLeadType(context, AppStrings.LeadMaster_AddLeadType),
                   ),
                 )
               ],

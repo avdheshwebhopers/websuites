@@ -4,11 +4,15 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:websuites/Resources/Assets/app_fonts.dart';
 import 'package:websuites/Resources/Assets/app_images.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Cards/Upcoming_screen_card/upcoming_screen_card.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_FloatingActionButton/custom_floatingActionButton.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_navBar/custom_naBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 
 import '../Data/models/Response_model/LoginResponseModel.dart';
+import '../Resources/Assets/app_Icons.dart';
+import '../Resources/app_strings/app_strings.dart';
 import '../Resources/components/app_colors.dart';
 import '../View_model/controllers/save_token/save_token.dart';
 
@@ -53,25 +57,20 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavBar(),
-      floatingActionButton: FloatingActionButton(
-        shape: CircleBorder(),
-        onPressed: () {},
-        child: Icon(Icons.search, size: 27, color: AppColors.whiteColor,),
-        backgroundColor: AppColors.vividPurple,
+      floatingActionButton: CustomFloatingButton(
+          onPressed: (){},
+          imageIcon: AppIcons.navSearch3,
+          backgroundColor: AppColors.mediumPurple
       ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       key: _globalKey,
       backgroundColor: AppColors.whiteColor,
 
-        drawer: Container(
-            color: AppColors.whiteColor,
-            width: Get.width/1.8,
-            height: Get.height*1,
-            child :AppDrawer(
-                userName: '$userName',
-                phoneNumber: '$userEmail',
-                version: '1.0.12')),
+        drawer: AppDrawer(
+            userName: '$userName',
+            phoneNumber: '$userEmail',
+            version: '1.0.12'),
 
         body:
         Stack(
@@ -113,12 +112,6 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
 
                       Spacer(),
 
-                      // CircleAvatar(
-                      //   radius: 20,
-                      //   backgroundColor: AppColors.lightPurple,
-                      //   backgroundImage: AssetImage(AppImages.Splash_WHLogo),
-                      // ),
-
                       Container(
                         height: Get.height/20,
                         width: Get.width/11,
@@ -129,7 +122,6 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         
                         child: Image.asset(AppImages.WelcomeCompanyLogo, scale: 20,),
                       )
-
                     ],
                   ),
 
@@ -146,13 +138,8 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                           color: AppColors.mediumPurple,
                         ),
                         child: Center(
-                          child: Text('Upcoming', style: TextStyle(
-                            color: AppColors.whiteColor,
-                            fontFamily: AppFonts.nunitoRegular,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400
-
-                          ),),
+                          child:
+                          AppTextStyle.Upcoming_upcoming(context, AppStrings.Upcoming_upcoming)
                         ),
                       ),
 
@@ -164,13 +151,8 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                           color: AppColors.textfield2,
                         ),
                         child: Center(
-                          child: Text('In Progress', style: TextStyle(
-                              color: AppColors.blackColor,
-                              fontFamily: AppFonts.nunitoRegular,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400
-
-                          ),),
+                          child:
+                       AppTextStyle.Upcoming_InProgress(context, AppStrings.Upcoming_InProgress),
                         ),
                       ),
 
@@ -182,13 +164,9 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                           color: AppColors.textfield2,
                         ),
                         child: Center(
-                          child: Text('Completed', style: TextStyle(
-                              color: AppColors.blackColor,
-                              fontFamily: AppFonts.nunitoRegular,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400
+                          child:
 
-                          ),),
+                            AppTextStyle.Upcoming_completed(context, AppStrings.Upcoming_completed),
                         ),
                       ),
                     ],
@@ -200,12 +178,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                     children: [
                       Icon(Icons.calendar_month_rounded, size: 20, color: AppColors.grey,),
                       SizedBox(width: 10,),
-                      Text('UPCOMING', style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                        fontFamily: AppFonts.nunitoRegular,
-                      ),),
+                     AppTextStyle.Upcoming_Upcoming2(context, AppStrings.Upcoming_upcoming2),
 
                       Spacer(),
 
@@ -213,21 +186,13 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         children: [
                           Icon(Icons.filter_list_outlined, color: AppColors.lightGrey, size: 16,),
                           SizedBox(width: 5,),
-                          Text('Filter', style: TextStyle(fontSize: 14,
-                              fontFamily: AppFonts.nunitoRegular,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.lightGrey),),
+                         AppTextStyle.Upcoming_filter(context, AppStrings.Upcoming_filter),
 
                           SizedBox(width: 10,),
 
-                          Text('Last Week', style: TextStyle(
-                              fontFamily: AppFonts.nunitoRegular,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.blackColor
-                          ),),
+                         AppTextStyle.Upcoming_Lastweek(context, AppStrings.Upcoming_Lastweek),
 
-                          Icon(Icons.arrow_drop_down, size: 30, )
+                          Icon(Icons.arrow_drop_down, size: 30,)
                         ],
                       )
                     ],
@@ -272,7 +237,6 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                     offset: const Offset(0, 0),
                   )
                 ],
-
               ),
             ),
 
@@ -291,8 +255,6 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                   child: Icon(Icons.add, size: 30, color: AppColors.whiteColor,),),
               ),
             ),
-
-
           ],
         )
 

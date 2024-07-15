@@ -25,12 +25,8 @@ class _MainPageState extends State<MainPage> {
     // print(widget.name);
     return Scaffold(
       body: ResponsiveLayout(
-        mobileBody: MyMobileBody(
-          // name: widget.name,
-          ),
-
-
-
+        mobileBody: MyMobileBody(// name: widget.name,
+        ),
         tabBody: MyTabBody(),
       ),
     );

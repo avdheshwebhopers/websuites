@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../app_colors.dart'; // Assuming you are using GetX for Get.height and Get.width
+import '../../app_colors.dart';
 
 class CustomAppBar extends StatelessWidget {
   final Widget child;
@@ -12,7 +12,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height / 7.7,
+      height: Get.height / 7.8,
       width: Get.width / 1,
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
@@ -27,7 +27,7 @@ class CustomAppBar extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.only(left: 15, right: 15, top: 60),
-        child: child, // This will hold any widget you pass to CustomAppBar
+        child: child,
       ),
     );
   }

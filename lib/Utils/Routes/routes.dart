@@ -1,16 +1,20 @@
 
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
+import 'package:websuites/Views/Lead_Master_2.dart';
 import 'package:websuites/Views/bottomNavBar_screen.dart';
 import 'package:websuites/Views/leadlist_screen.dart';
 import 'package:websuites/Views/trash_lead_screen.dart';
 import 'package:websuites/Views/upcoming_screen.dart';
 
+import '../../Views/AllCompanies_screen.dart';
 import '../../Views/CustomerList_screen.dart';
 import '../../Views/Customers_Activities_Screen.dart';
+import '../../Views/OrderProducts_screen.dart';
 import '../../Views/Search_Google_Leads.dart';
 import '../../Views/Team_Lead_Screen.dart';
 import '../../Views/activities_screen.dart';
+import '../../Views/allServices_screen.dart';
 import '../../Views/forgot_password_screen.dart';
 import '../../Views/home/MainPage.dart';
 import '../../Views/home_screen.dart';
@@ -96,6 +100,9 @@ class AppRoutes{
           // transition :Transition.leftToRightWithFade,
     ),
 
+
+        //======================================================================
+
     GetPage(
       name: RoutesName.lead_list_screen,
       page: () => LeadListScreen(),
@@ -159,6 +166,13 @@ class AppRoutes{
       // transition :Transition.leftToRightWithFade,
     ),
 
+        GetPage(
+          name: RoutesName.customerActivities_screen,
+          page: () => CustomersActivitiesScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
     GetPage(
       name: RoutesName.bottomNavBar_screen,
       page: () => BottomNavBarScreen(),
@@ -166,9 +180,44 @@ class AppRoutes{
       // transition :Transition.leftToRightWithFade,
     ),
 
+        GetPage(
+          name: RoutesName.LeadMaster2,
+          page: () => LeadMaster2(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+
+        GetPage(
+          name: RoutesName.AllCompanies_screen,
+          page: () => AllCompaniesScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+        GetPage(
+          name: RoutesName.AllServices_screen,
+          page: () => AllServicesScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+        GetPage(
+          name: RoutesName.OrderProducts_screen,
+          page: () => OrderProductsScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
 
 
 
 
-  ];
+
+
+
+
+
+
+
+      ];
 }

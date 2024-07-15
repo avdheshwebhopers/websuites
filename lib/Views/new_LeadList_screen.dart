@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Resources/Assets/app_fonts.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_FloatingActionButton/custom_floatingActionButton.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_navBar/custom_naBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
-
 import '../Data/models/Response_model/LoginResponseModel.dart';
+import '../Resources/Assets/app_Icons.dart';
+import '../Resources/app_strings/app_strings.dart';
 import '../Resources/components/Cards/create_new_lead_screen_Card/create_new_lead_screen_Widget.dart';
 import '../Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_15h.dart';
 import '../Resources/components/app_colors.dart';
@@ -26,8 +29,9 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
   String userName = '';
   String? userEmail = "";
 
+
   @override
-  void initState() {
+  void initState(){
     fetchUserData();
     super.initState();
   }
@@ -51,24 +55,26 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavBar(),
-        floatingActionButton: FloatingActionButton(
-          shape: CircleBorder(),
-          onPressed: () {},
-          child: Icon(Icons.search, size: 27, color: AppColors.whiteColor,),
-          backgroundColor: AppColors.vividPurple,
 
+
+        floatingActionButton: CustomFloatingButton(
+            onPressed: (){},
+            imageIcon: AppIcons.navSearch3,
+            backgroundColor: AppColors.mediumPurple
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+
         key: _globalKey,
         backgroundColor: AppColors.whiteColor,
-        drawer: Container(
-            color: AppColors.whiteColor,
-            width: Get.width / 1.8,
-            height: Get.height * 1,
-            child: AppDrawer(
-                userName: '$userName',
-                phoneNumber: '$userEmail',
-                version: '1.0.12')),
+        drawer: AppDrawer(
+            userName: '$userName',
+            phoneNumber: '$userEmail',
+            version: '1.0.12'
+        ),
+
+
+
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -80,48 +86,68 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                     const SizedBox(
                       height: 135,
                     ),
-                    Text(
-                      'Standard Fields',
-                      style: TextStyle(
-                        color: AppColors.vividPurple,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15,
-                        fontFamily: AppFonts.nunitoRegular,
-                      ),
-                    ),
+                   AppTextStyle.CreateNewLead_standardFields(context,
+                       AppStrings.CreateNewLead_standardFields),
                     const SizedBox(
                       height: 28,
                     ),
-                    Text(
-                      'First name',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
+                   AppTextStyle.CreateNewLead_firstName(context,
+                       AppStrings.CreateNewLead_firstName),
 
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_enterFirstName),
+                    SizedBox_15h(),
+                    AppTextStyle.CreateNewLead_lastName(context,
+                        AppStrings.CreateNewLead_lastName),
 
-                    const CreateNewLeadScreenWidget(hintText: 'Enter First Name'),
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_enterLastName),
                     SizedBox_15h(),
-                    Text(
-                      'Last name',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
+                  AppTextStyle.CreateNewLead_phoneNumber(context,
+                      AppStrings.CreateNewLead_PhoneNumber),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 5),
+                          height: Get.height / 19,
+                          width: Get.width / 1.56,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: AppColors.lightGrey, // Specify the outline color here
+                              width: 0.3
+                            ),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                contentPadding: const EdgeInsets.only(left: 10),
+                                hintText: AppStrings.CreateNewLead_enterPhoneNumber,
+                                hintStyle: TextStyle(
+                                  fontSize: 13,
+                                  fontFamily: AppFonts.nunitoRegular,
+                                  color: AppColors.lighterGrey,
+                                )),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 5),
+                          height: Get.height / 20,
+                          width: Get.width / 4.5,
+                          decoration: BoxDecoration(
+                            color: AppColors.vividPurple,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Center(
+                            child:
+                            AppTextStyle.CreateNewLead_add(context, AppStrings.CreateNewLead_add)
+                          ),
+                        ),
+                      ],
                     ),
-                    const CreateNewLeadScreenWidget(hintText: 'Enter Last Name'),
                     SizedBox_15h(),
-                    Text(
-                      'Phone Number',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
+                   AppTextStyle.CreateNewLead_email(context, AppStrings.CreateNewLead_email),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -139,12 +165,13 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.only(left: 10),
-                                hintText: 'Enter Phone Number',
+                                hintText: AppStrings.CreateNewLead_emailExample,
                                 hintStyle: TextStyle(
                                   fontSize: 13,
                                   fontFamily: AppFonts.nunitoRegular,
                                   color: AppColors.lighterGrey,
-                                )),
+                                )
+                            ),
                           ),
                         ),
                         Container(
@@ -156,140 +183,57 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Center(
-                            child: Text(
-                              '+   Add',
-                              style: TextStyle(
-                                  fontFamily: AppFonts.nunitoRegular,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.whiteColor),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox_15h(),
-                    Text(
-                      'Email',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 5),
-                          height: Get.height / 19,
-                          width: Get.width / 1.56,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: AppColors.lightGrey, // Specify the outline color here
-                              width: 0.3,),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.only(left: 10),
-                                hintText: 'example@gmail.com',
-                                hintStyle: TextStyle(
-                                  fontSize: 13,
-                                  fontFamily: AppFonts.nunitoRegular,
-                                  color: AppColors.lighterGrey,
-                                )),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 5),
-                          height: Get.height / 20,
-                          width: Get.width / 4.5,
-                          decoration: BoxDecoration(
-                            color: AppColors.vividPurple,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Center(
-                            child: Text(
-                              '+   Add',
-                              style: TextStyle(
-                                  fontFamily: AppFonts.nunitoRegular,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.whiteColor),
-                            ),
+                            child:
+                          AppTextStyle.CreateNewLead_add(context, AppStrings.CreateNewLead_add)
                           ),
                         ),
                       ],
                     ),
                     SizedBox_15h(),
 
-                    Text(
-                      'Address',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Enter Address'),
+                    AppTextStyle.CreateNewLead_address(context,
+                        AppStrings.CreateNewLead_Address),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_EnterAddress),
                     const SizedBox(
                       height: 20,
                     ),
-                    Text(
-                      'City / Pincode',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'City / Pincode'),
-                   SizedBox_15h(),
-                    Text(
-                      'State',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'State'),
+
+                    AppTextStyle.CreateNewLead_city_pincode(context,
+                        AppStrings.CreateNewLead_City_Pincode),
+
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_City_Pincode),
                     SizedBox_15h(),
 
-                    Text(
-                      'Country',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Country'),
+                   AppTextStyle.CreateNewLead_state(context,
+                       AppStrings.CreateNewLead_State),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_State),
                     SizedBox_15h(),
 
-                    Text(
-                      'Source',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Source'),
+                    AppTextStyle.CreateNewLead_Country(context,
+                        AppStrings.CreateNewLead_Country),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_Country),
                     SizedBox_15h(),
 
-                    Text(
-                      'Assigned-Lead to',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
+                    AppTextStyle.CreateNewLead_Source(context,
+                        AppStrings.CreateNewLead_Source),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_Source),
+                    SizedBox_15h(),
+
+                    AppTextStyle.CreateNewLead_Assigned_lead_to(context,
+                        AppStrings.CreateNewLead_Assigned_lead_to),
+
                     Container(
-                      margin: const EdgeInsets.only(top: 5),
+                      margin: EdgeInsets.only(top: 5),
                       height: Get.height / 19,
                       width: Get.width / 1,
                       decoration: BoxDecoration(
@@ -302,57 +246,40 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.only(left: 10),
-                            hintText: 'Select',
+                            hintText: AppStrings.CreateNewLead_select,
                             hintStyle: TextStyle(
                               fontSize: 13,
                               fontFamily: AppFonts.nunitoRegular,
                               color: AppColors.lighterGrey,
-                            )),
+                            )
+                        ),
                       ),
                     ),
                     SizedBox_15h(),
 
-                    Text(
-                      'Organisation',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Enter Name'),
+                    AppTextStyle.CreateNewLead_Organisation(context,
+                        AppStrings.CreateNewLead_organisation),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_Enter_Name),
                     SizedBox_15h(),
 
-                    Text(
-                      'Divisions',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
+                   AppTextStyle.CreateNewLead_Divisions(context,
+                       AppStrings.CreateNewLead_Divisions),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_select),
                     SizedBox_15h(),
 
-                    Text(
-                      'Product Categories',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
+                   AppTextStyle.CreateNewLead_ProductCategories(context,
+                       AppStrings.CreateNewLead_Product_Categories),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_select),
                     SizedBox_15h(),
 
-                    Text(
-                      'Requirement',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
+                    AppTextStyle.CreateNewLead_Requirement(context,
+                        AppStrings.CreateNewLead_Requirement),
                     Container(
                       margin: const EdgeInsets.only(top: 5),
                       height: Get.height / 6,
@@ -360,159 +287,108 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: AppColors.lightGrey, // Specify the outline color here
-                          width: 0.3,),
-
+                          width: 0.3,
+                        ),
                         borderRadius: BorderRadius.circular(30),
                       ),
+
                       child: TextFormField(
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.only(left: 10),
-                            hintText: 'Enter Description',
+                            hintText: AppStrings.CreateNewLead_Enter_Description,
                             hintStyle: TextStyle(
                               fontSize: 13,
                               fontFamily: AppFonts.nunitoRegular,
                               color: AppColors.lighterGrey,
-                            )),
+                            ),
+                        ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
+                    const SizedBox(height: 30),
+
+                    AppTextStyle.CreateNewLead_CustomFields(context,
+                        AppStrings.CreateNewLead_CustomFields),
+                    const SizedBox(height: 30),
+
+                    AppTextStyle.CreateNewLead_Pincode(context,
+                        AppStrings.CreateNewLead_pincode),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_EnterPincode
                     ),
-                    Text(
-                      'Custom Fields',
-                      style: TextStyle(
-                        color: AppColors.vividPurple,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15,
-                        fontFamily: AppFonts.nunitoRegular,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      'Pincode',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Enter Pincode'),
                     SizedBox_15h(),
 
-                    Text(
-                      'Designation',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
+                    AppTextStyle.CreateNewLead_Designation(context,
+                        AppStrings.CreateNewLead_Designation),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_select),
                     SizedBox_15h(),
 
-                    Text(
-                      'Website',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
+                    AppTextStyle.CreateNewLead_Website(context,
+                        AppStrings.CreateNewLead_Website),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_Website),
                     SizedBox_15h(),
 
-                    Text(
-                      'GST Number',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Enter GST Number'),
+                    AppTextStyle.CreateNewLead_GSTNumber(context,
+                        AppStrings.CreateNewLead_GSTNumber),
+
+                    const CreateNewLeadScreenWidget(hintText:
+                    AppStrings.CreateNewLead_GSTNumber),
                     SizedBox_15h(),
 
-                    Text(
-                      'Customer Division',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
+                    AppTextStyle.CreateNewLead_CustomerDivision(context,
+                        AppStrings.CreateNewLead_CustomerDivision),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_select),
                     SizedBox_15h(),
 
-                    Text(
-                      'Industry Type',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
+                    AppTextStyle.CreateNewLead_IndustryType(
+                        context, AppStrings.CreateNewLead_IndustryType),
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_select),
                     SizedBox_15h(),
 
-                    Text(
-                      'Lead Category',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
+                    AppTextStyle.CreateNewLead_leadCategory(context,
+                        AppStrings.CreateNewLead_LeadCategory),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_select),
                     SizedBox_15h(),
 
-                    Text(
-                      'Contact Person Name',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Enter Name'),
+                    AppTextStyle.CreateNewLead_ContactPersonName(context,
+                        AppStrings.CreateNewLead_ContactPersonName),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_EnterContactPersonName),
                     SizedBox_15h(),
 
-                    Text(
-                      'Contact Person Number',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
+                    AppTextStyle.CreateNewLead_ContactPersonNumber(context,
+                        AppStrings.CreateNewLead_ContactPersonNumber),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_EnterContactPersonNumber),
                     SizedBox_15h(),
 
-                    Text(
-                      'Complete Address',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    const CreateNewLeadScreenWidget(hintText: 'Enter Address'),
+                    AppTextStyle.CreateNewLead_CompleteAddress(context,
+                        AppStrings.CreateNewLead_CompleteAddress),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_EnterAddress),
                     SizedBox_15h(),
 
-                    Text(
-                      'Industry',
-                      style: TextStyle(
-                          color: AppColors.blackColor,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
+                    AppTextStyle.CreateNewLead_Industry(context,
+                        AppStrings.CreateNewLead_Industry),
+
+                    const CreateNewLeadScreenWidget(
+                        hintText: AppStrings.CreateNewLead_Select),
+                    const SizedBox(height: 30
                     ),
-                    const CreateNewLeadScreenWidget(hintText: 'Select'),
-                    const SizedBox(
-                      height: 30,
-                    ),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -524,14 +400,8 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Center(
-                            child: Text(
-                              'Create',
-                              style: TextStyle(
-                                  color: AppColors.whiteColor,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15,
-                                  fontFamily: AppFonts.nunitoRegular),
-                            ),
+                            child: AppTextStyle.CreateNewLead_Create(context,
+                                AppStrings.CreateNewLead_Create),
                           ),
                         ),
                         Container(
@@ -543,14 +413,8 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Center(
-                            child: Text(
-                              'Reset',
-                              style: TextStyle(
-                                  color: AppColors.whiteColor,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15,
-                                  fontFamily: AppFonts.nunitoRegular),
-                            ),
+                            child: AppTextStyle.CreateNewLead_Reset(context,
+                                AppStrings.CreateNewLead_Reset),
                           ),
                         ),
                       ],
@@ -562,7 +426,6 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                 ),
               ),
             ),
-
 
             //==================================================================
             //CUSTOM APP BAR
@@ -579,26 +442,20 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                           Icons.menu,
                           size: 25,
                           color: AppColors.blackColor,
-                        )),
-                    const SizedBox(
-                      width: 10,
+                        )
                     ),
-                    Text(
-                      'Create New Lead',
-                      style: TextStyle(
-                        fontFamily: AppFonts.nunitoRegular,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.blackColor
-                      ),
+                    const SizedBox(width: 10,
                     ),
+                   AppTextStyle.CreateNewLead_createNewLead(context,
+                       AppStrings.CreateNewLead_createNewLead),
                     const Spacer(),
                     Container(
                       height: Get.height / 28,
                       width: Get.width / 3.4,
                       decoration: BoxDecoration(
                           color: AppColors.mediumPurple,
-                          borderRadius: BorderRadius.circular(4)),
+                          borderRadius: BorderRadius.circular(4)
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -607,14 +464,7 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
                             size: 16,
                             color: AppColors.whiteColor,
                           ),
-                          Text(
-                            'Import Leads',
-                            style: TextStyle(
-                                color: AppColors.whiteColor,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                fontFamily: AppFonts.nunitoRegular),
-                          )
+                         AppTextStyle.CreateNewLead_ImportLeads(context, AppStrings.CreateNewLead_ImportLeads),
                         ],
                       ),
                     )
@@ -623,6 +473,7 @@ class _New_LeadList_screenState extends State<New_LeadList_screen> {
               ),
 
           ],
-        ));
+        )
+    );
   }
 }

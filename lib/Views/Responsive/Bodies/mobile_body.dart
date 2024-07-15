@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_FloatingActionButton/custom_floatingActionButton.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_navBar/custom_naBar.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 import '../../../Data/models/Response_model/LoginResponseModel.dart';
 import '../../../Data/response/status.dart';
+import '../../../Resources/Assets/app_Icons.dart';
 import '../../../Resources/Assets/app_fonts.dart';
 import '../../../Resources/Assets/app_images.dart';
 import '../../../Resources/app_strings/app_strings.dart';
 import '../../../Resources/app_textstyles/App_TextStyle.dart';
 import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_1.dart';
 import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_2.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_3.dart';
 import '../../../Resources/components/Containers/app_row_container1.dart';
 import '../../../Resources/components/Containers/app_row_container2.dart';
 import '../../../Resources/components/Drawer/AppDrawer.dart';
@@ -50,8 +54,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
   final DbLatestTaskViewModel _latestTaskController = Get.put(DbLatestTaskViewModel());
 
 
-
-
   String userName = '';
   String? userEmail = "";
   SaveUserData userPreference = SaveUserData();
@@ -79,19 +81,16 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
   Future<void> fetchUserData() async {
     try {
-      // Fetch token and email from SharedPreferences using SaveToken class
       LoginResponseModel response = await userPreference.getUser();
       String? first_name = response.user!.first_name;
-      String? email = response.user!.email;// Extract email from response
+      String? email = response.user!.email;
 
       setState(() {
         userName = first_name!;
         userEmail = email!;
-        // Update userEmail state variable with fetched email
       });
     } catch (e) {
       print('Error fetching userData: $e');
-      // Handle error if necessary
     }
   }
 
@@ -101,9 +100,18 @@ class _MyMobileBodyState extends State<MyMobileBody> {
     return Scaffold(
       key: _globalKey,
       backgroundColor: AppColors.whiteColor,
+      bottomNavigationBar: CustomBottomNavBar(),
+      floatingActionButton: CustomFloatingButton(
+          onPressed: (){},
+          imageIcon: AppIcons.navSearch3,
+          backgroundColor: AppColors.mediumPurple
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+
       drawer: Container(
           color: AppColors.whiteColor,
-          width: Get.width/1.8,
+          width: Get.width/1.5,
           height: Get.height*1,
           child:
           AppDrawer(
@@ -580,35 +588,34 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                     icon: Icons.timelapse,
                                     iconColor: AppColors.mediumPurple,
                                     containerColor: AppColors.lighterPurple),
-                                //
-                                // AppRowContainerTwo(
-                                //     count: '15 Leads',
-                                //     statusText: 'Pending',
-                                //     countColor: AppColors.grey,
-                                //     statusColor: AppColors.blackColor,
-                                //     icon: Icons.place,
-                                //     iconColor: AppColors.darkRed,
-                                //     containerColor: AppColors.lightRed),
-                                //
-                                // AppRowContainerTwo(
-                                //     count: '15 Leads',
-                                //     statusText: 'Pending',
-                                //     countColor: AppColors.grey,
-                                //     statusColor: AppColors.blackColor,
-                                //     icon: Icons.policy,
-                                //     iconColor: AppColors.darkYellow,
-                                //     containerColor: AppColors.lightYellow),
-                                //
-                                // AppRowContainerTwo(
-                                //     count: '15 Leads',
-                                //     statusText: 'Pending',
-                                //     countColor: AppColors.grey,
-                                //     statusColor: AppColors.blackColor,
-                                //     icon: Icons.title,
-                                //     iconColor: AppColors.darkGreen,
-                                //     containerColor: AppColors.lightGreen
-                                // ),
 
+                                AppRowContainerTwo(
+                                    count: '15 Leads',
+                                    statusText: 'Pending',
+                                    countColor: AppColors.grey,
+                                    statusColor: AppColors.blackColor,
+                                    icon: Icons.place,
+                                    iconColor: AppColors.darkRed,
+                                    containerColor: AppColors.lightRed),
+
+                                AppRowContainerTwo(
+                                    count: '15 Leads',
+                                    statusText: 'Pending',
+                                    countColor: AppColors.grey,
+                                    statusColor: AppColors.blackColor,
+                                    icon: Icons.policy,
+                                    iconColor: AppColors.darkYellow,
+                                    containerColor: AppColors.lightYellow),
+
+                                AppRowContainerTwo(
+                                    count: '15 Leads',
+                                    statusText: 'Pending',
+                                    countColor: AppColors.grey,
+                                    statusColor: AppColors.blackColor,
+                                    icon: Icons.title,
+                                    iconColor: AppColors.darkGreen,
+                                    containerColor: AppColors.lightGreen
+                                ),
                               ],
                             ),
                           ),
@@ -783,55 +790,50 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                         const SizedBox(height:20,),
 
-                        // Obx((){
-                        //   switch (_transactionsController.transactionList.value){
-                        //     case Status.LOADING :
-                        //       return CircularProgressIndicator();
-                        //     case Status.ERROR :
-                        //       return Text(_transactionsController.error.toString());
-                        //     case Status.COMPLETED :
-                        //       return Transaction_list_Widget(
-                        //   title: '_transactionsController.transactionList.value.meta!.itemCount.toString(),',
-                        //   name: _transactionsController.transactionList.value.meta!.itemsPerPage.toString(),
-                        //   amount: _transactionsController.transactionList.value.meta!.totalAmount.toString(),
-                        //   subtitle: _transactionsController.transactionList.value.meta!.totalPages.toString()
-                        //       );}
-                        //   return SizedBox();
-                        // }),
+                        Obx((){
+                          switch (_transactionsController.rxStatus.value){
+                            case Status.LOADING :
+                              return CircularProgressIndicator();
+                            case Status.ERROR :
+                              return Text(_transactionsController.error.toString());
+                            case Status.COMPLETED :
+                              return
+                                Transaction_list_Widget(
+                          title: _transactionsController.transactionList.value.meta!.itemCount.toString(),
+                          name: _transactionsController.transactionList.value.meta!.itemsPerPage.toString(),
+                          amount: _transactionsController.transactionList.value.meta!.totalAmount.toString(),
+                          subtitle: _transactionsController.transactionList.value.meta!.totalPages.toString()
+                              );
+                          }
+                        }
+                        ),
 
-                    // Transaction_list_Widget(
-                    //   title: _transactionsController.transactionList.value.meta!.itemCount.toString(),
-                    //   name: _transactionsController.transactionList.value.meta!.itemsPerPage.toString(),
-                    //   amount: _transactionsController.transactionList.value.meta!.totalAmount.toString(),
-                    //   subtitle: _transactionsController.transactionList.value.meta!.totalPages.toString()),
+                        const Transaction_list_Widget(
+                            title: 'Premium 60 Packages Self Done...',
+                            name: 'Prakash shah',
+                            amount: '₹4000',
+                            subtitle: '25 May, 2024 at 12:30 pm'),
 
 
-                        // const Transaction_list_Widget(
-                        //     title: 'Premium 60 Packages Self Done...',
-                        //     name: 'Prakash shah',
-                        //     amount: '₹4000',
-                        //     subtitle: '25 May, 2024 at 12:30 pm'),
-                        //
-                        //
-                        // const Transaction_list_Widget(
-                        //     title: 'Premium 60 Packages Self Done...',
-                        //     name: 'Prakash shah',
-                        //     amount: '₹4000',
-                        //     subtitle: '25 May, 2024 at 12:30 pm'),
-                        //
-                        //
-                        // const Transaction_list_Widget(
-                        //     title: 'Premium 60 Packages Self Done...',
-                        //     name: 'Prakash shah',
-                        //     amount: '₹4000',
-                        //     subtitle: '25 May, 2024 at 12:30 pm'),
-                        //
-                        //
-                        // const Transaction_list_Widget(
-                        //     title: 'Premium 60 Packages Self Done...',
-                        //     name: 'Prakash shah',
-                        //     amount: '₹4000',
-                        //     subtitle: '25 May, 2024 at 12:30 pm'),
+                        const Transaction_list_Widget(
+                            title: 'Premium 60 Packages Self Done...',
+                            name: 'Prakash shah',
+                            amount: '₹4000',
+                            subtitle: '25 May, 2024 at 12:30 pm'),
+
+
+                        const Transaction_list_Widget(
+                            title: 'Premium 60 Packages Self Done...',
+                            name: 'Prakash shah',
+                            amount: '₹4000',
+                            subtitle: '25 May, 2024 at 12:30 pm'),
+
+
+                        const Transaction_list_Widget(
+                            title: 'Premium 60 Packages Self Done...',
+                            name: 'Prakash shah',
+                            amount: '₹4000',
+                            subtitle: '25 May, 2024 at 12:30 pm'),
                       ],
                     ),
                   ),

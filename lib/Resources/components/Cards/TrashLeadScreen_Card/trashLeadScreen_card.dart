@@ -104,7 +104,9 @@ class TrashLeadScreen_Card extends StatelessWidget {
 
             Row(
               children: [
-                Text('REMARK',style: TextStyle(
+                Text(
+                  'REMARK',
+                  style: TextStyle(
                     color: AppColors.blackColor,
                     fontFamily: AppFonts.nunitoRegular,
                     fontWeight: FontWeight.w400,

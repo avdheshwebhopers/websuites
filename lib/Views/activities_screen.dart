@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
 import '../Resources/Assets/app_fonts.dart';
+import '../Resources/app_strings/app_strings.dart';
 import '../Resources/components/Cards/Activities_screen_card/activities_screen_card.dart';
 import '../Resources/components/app_colors.dart';
 
@@ -49,15 +51,12 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
     return Scaffold(
         key: _globalKey,
         backgroundColor: AppColors.whiteColor,
-        drawer: Container(
-          height: Get.height * 1,
-          width: Get.width / 1.8,
-          color: AppColors.whiteColor,
-          child: AppDrawer(
-              userName: '$userName',
-              phoneNumber: '$userEmail',
-              version: '1.0.12'),
-        ),
+        drawer:
+
+        AppDrawer(
+            userName: '$userName',
+            phoneNumber: '$userEmail',
+            version: '1.0.12'),
         body: Stack(
           children: [
             const SingleChildScrollView(
@@ -106,14 +105,7 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
                   const SizedBox(
                     width: 12,
                   ),
-                  Text(
-                    'Lead List',
-                    style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: AppFonts.nunitoRegular),
-                  ),
+                 AppTextStyle.LeadActivity_LeadList(context, AppStrings.LeadActivity_leadList),
                   Spacer(),
                   Row(
                     children: [
@@ -125,29 +117,15 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
                       const SizedBox(
                         width: 2,
                       ),
-                      Text(
-                        'Filter',
-                        style: TextStyle(
-                            color: AppColors.lightGrey,
-                            fontFamily: AppFonts.nunitoRegular,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 13),
-                      ),
+                      AppTextStyle.LeadActivity_Filter(context, AppStrings.LeadList_Filter),
                       const SizedBox(
                         width: 13,
                       ),
-                      Text(
-                        'Details',
-                        style: TextStyle(
-                            color: AppColors.blackColor,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: AppFonts.nunitoRegular),
-                      ),
-                      Icon(
+                     AppTextStyle.LeadActivity_Details(context, AppStrings.LeadActivity_details),
+                      const Icon(
                         Icons.keyboard_arrow_right,
                         size: 20,
-                      )
+                      ),
                     ],
                   )
                 ],

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Cards/CustomerListScreen_Card/customerListScreen_card.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
-import '../Resources/Assets/app_fonts.dart';
+import '../Resources/app_strings/app_strings.dart';
 import '../Resources/components/app_colors.dart';
 
 class CustomersListScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
   String? userEmail = '';
 
   @override
-  void initState() {
+  void initState(){
     FetchUserData();
     super.initState();
   }
@@ -50,15 +50,10 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
     return Scaffold(
         key: _globalKey,
         backgroundColor: AppColors.whiteColor,
-        drawer: Container(
-          height: Get.height * 1,
-          width: Get.width / 1.8,
-          color: AppColors.whiteColor,
-          child: AppDrawer(
-              userName: '$userName',
-              phoneNumber: '$userEmail',
-              version: '1.0.12'),
-        ),
+        drawer: AppDrawer(
+            userName: '$userName',
+            phoneNumber: '$userEmail',
+            version: '1.0.12'),
         body: Stack(
           children: [
             const SingleChildScrollView(
@@ -83,7 +78,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
             ),
 
             //====================================================================
-            //AppBar Below
+            //CUSTOM APP BAR
 
             CustomAppBar(
               child: Row(
@@ -95,19 +90,12 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                       child: const Icon(
                         Icons.menu_sharp,
                         size: 25,
-                      )),
+                      )
+                  ),
                   const SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    'Customers',
-                    style: TextStyle(
-                      color: AppColors.blackColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: AppFonts.nunitoRegular,
-                    ),
-                  ),
+                  AppTextStyle.CustomerList_customer(context, AppStrings.CustomerList_Customer),
                   const Spacer(),
                   Container(
                     height: Get.height / 30,
@@ -142,20 +130,13 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                         const SizedBox(
                           width: 4,
                         ),
-                        Text(
-                          'Customer',
-                          style: TextStyle(
-                              color: AppColors.whiteColor,
-                              fontFamily: AppFonts.nunitoRegular,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12),
-                        )
+                       AppTextStyle.CustomerList_customer2(context, AppStrings.CustomerList_customer2),
                       ],
                     ),
                   )
                 ],
               ),
-            )
+            ),
           ],
         ));
   }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Cards/TrashLeadScreen_Card/trashLeadScreen_card.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
-import '../Resources/Assets/app_fonts.dart';
+import '../Resources/app_strings/app_strings.dart';
 import '../Resources/components/app_colors.dart';
 
 class TrashLeadScreen extends StatefulWidget {
@@ -50,15 +50,10 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
     return Scaffold(
         key: _globalKey,
         backgroundColor: AppColors.whiteColor,
-        drawer: Container(
-          height: Get.height * 1,
-          width: Get.width / 1.8,
-          color: AppColors.whiteColor,
-          child: AppDrawer(
-              userName: '$userName',
-              phoneNumber: '$userEmail',
-              version: '1.0.10'),
-        ),
+        drawer: AppDrawer(
+            userName: '$userName',
+            phoneNumber: '$userEmail',
+            version: '1.0.10'),
         body: Stack(
           children: [
             const SingleChildScrollView(
@@ -67,7 +62,7 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 120,
+                      height: 130,
                     ),
                     TrashLeadScreen_Card(
                         title: 'The Yoga Quarter',
@@ -90,7 +85,7 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
             ),
 
             //====================================================================
-            //AppBar Below
+            //CUSTOM APP BAR
 
 
             CustomAppBar(
@@ -107,14 +102,8 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    'Trash Leads',
-                    style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: AppFonts.nunitoRegular,
-                        fontSize: 17),
-                  ),
+                  AppTextStyle.TrashLeads_TrashLeads(context, AppStrings.TrashLead_trashLeads),
+
                   Spacer(),
                   Icon(
                     Icons.filter_list_outlined,
@@ -124,19 +113,13 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
                   SizedBox(
                     width: 5,
                   ),
-                  Text(
-                    'Filter',
-                    style: TextStyle(
-                        color: AppColors.lightGrey,
-                        fontSize: 14,
-                        fontFamily: AppFonts.nunitoRegular,
-                        fontWeight: FontWeight.w400),
-                  )
+                AppTextStyle.TrashLeads_Filter(context, AppStrings.TrashLead_Filter),
                 ],
               ),
             ),
 
           ],
-        ));
+        )
+    );
   }
 }

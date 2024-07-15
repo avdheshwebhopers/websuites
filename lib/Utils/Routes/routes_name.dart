@@ -7,12 +7,12 @@ class RoutesName {
   static const String otp_screen = '/otp_screen';
   static const String forgot_password_screen = '/forgot_password_screen';
   static const String purchase_now_screen = '/purchase_now';
-  static const String main_page_screen = '/Main_Page';
+  static const String main_page_screen = '/main_page_screen';
 
 
   static const String lead_list_screen = '/lead_list_screen';
-  static const String upcoming_screen = '/';
-  static const String createNewLead_screen = '/new_LeadList_screen';
+  static const String upcoming_screen = '/upcoming_screen';
+  static const String createNewLead_screen = '/';
   static const String search_google_leads_screen = '/search_google_leads_screen';
   static const String LeadActivities_screen = '/LeadActivities_screen';
   static const String teamLead_screen = '/teamLead_screen';
@@ -21,13 +21,11 @@ class RoutesName {
   static const String customerList_screen = '/customerList_screen';
   static const String customerActivities_screen = '/customerActivities_screen';
   static const String bottomNavBar_screen = '/bottomNavBar_screen';
-
-
-
-
-
-
-
+  static const String LeadMaster2 = '/LeadMaster2';
+  static const String AllCompanies_screen = '/AllCompanies_screen';
+  static const String AllServices_screen = '/AllServices_screen';
+  static const String OrderProducts_screen = '/OrderProducts_screen';
+  static const String dropDown = '/dropDown';
 
 
 

@@ -74,7 +74,8 @@ class TeamLeadScreen_Card extends StatelessWidget {
                             color: AppColors.blackColor,
                             fontFamily: AppFonts.nunitoRegular,
                             fontWeight: FontWeight.w600,
-                            fontSize: 12),
+                            fontSize: 12
+                        ),
                       ),
                       SizedBox(
                         height: 10,
@@ -85,7 +86,8 @@ class TeamLeadScreen_Card extends StatelessWidget {
                             color: AppColors.lightGrey,
                             fontFamily: AppFonts.nunitoRegular,
                             fontWeight: FontWeight.w400,
-                            fontSize: 12),
+                            fontSize: 12
+                        ),
                       ),
                     ],
                   ),
@@ -97,7 +99,8 @@ class TeamLeadScreen_Card extends StatelessWidget {
                             color: AppColors.blackColor,
                             fontFamily: AppFonts.nunitoRegular,
                             fontWeight: FontWeight.w600,
-                            fontSize: 12),
+                            fontSize: 12
+                        ),
                       ),
                       SizedBox(height: 10,),
 
@@ -119,7 +122,8 @@ class TeamLeadScreen_Card extends StatelessWidget {
                             color: AppColors.blackColor,
                             fontFamily: AppFonts.nunitoRegular,
                             fontWeight: FontWeight.w600,
-                            fontSize: 12),
+                            fontSize: 12
+                        ),
                       ),
                       SizedBox(height: 10,),
                       Text(
@@ -140,7 +144,8 @@ class TeamLeadScreen_Card extends StatelessWidget {
                             color: AppColors.blackColor,
                             fontFamily: AppFonts.nunitoRegular,
                             fontWeight: FontWeight.w600,
-                            fontSize: 12),
+                            fontSize: 12
+                        ),
                       ),
                       SizedBox(height: 10,),
                       Text(
@@ -161,7 +166,8 @@ class TeamLeadScreen_Card extends StatelessWidget {
                             color: AppColors.blackColor,
                             fontFamily: AppFonts.nunitoRegular,
                             fontWeight: FontWeight.w600,
-                            fontSize: 12),
+                            fontSize: 12
+                        ),
                       ),
                       SizedBox(height: 10,),
                       Text(

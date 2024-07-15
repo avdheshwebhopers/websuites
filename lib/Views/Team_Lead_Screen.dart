@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Cards/TeamLeadScreen_Card/teamLeadScreen_card.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
-
-import '../Resources/Assets/app_fonts.dart';
+import '../Resources/app_strings/app_strings.dart';
 import '../Resources/components/app_colors.dart';
 
 class TeamLeadScreen extends StatefulWidget {
@@ -50,14 +48,11 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
     return Scaffold(
       key: _globalKey,
       backgroundColor: AppColors.whiteColor,
-      drawer: Container(
-          height: Get.height * 1,
-          width: Get.width / 1.8,
-          color: AppColors.whiteColor,
-          child: AppDrawer(
-              userName: '$userName',
-              phoneNumber: '$userEmail',
-              version: '1.0.12')),
+      drawer:
+      AppDrawer(
+          userName: '$userName',
+          phoneNumber: '$userEmail',
+          version: '1.0.12'),
       body: Stack(
         children: [
           const SingleChildScrollView(
@@ -66,23 +61,29 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 120,
+                    height: 130,
                   ),
                   TeamLeadScreen_Card(
-                      title: 'Shakshi Shakya', email: 'shakshi@gmail.com'),
+                      title: 'Shakshi Shakya',
+                      email: 'shakshi@gmail.com'),
                   TeamLeadScreen_Card(
-                      title: 'Rahul Mahajan', email: 'rahul@gmail.com'),
+                      title: 'Rahul Mahajan',
+                      email: 'rahul@gmail.com'),
                   TeamLeadScreen_Card(
                       title: 'Sherpal Singh',
                       email: 'sherpalbairagi@gmail.com'),
                   TeamLeadScreen_Card(
-                      title: 'Pushpek Kumar', email: 'pushpek@gmail.com'),
+                      title: 'Pushpek Kumar',
+                      email: 'pushpek@gmail.com'),
                   TeamLeadScreen_Card(
-                      title: 'Rohil Pathak', email: 'rohila99@gmail.com'),
+                      title: 'Rohil Pathak',
+                      email: 'rohila99@gmail.com'),
                   TeamLeadScreen_Card(
-                      title: 'Gucci mane', email: 'guccigagamane@gmail.com'),
+                      title: 'Gucci mane',
+                      email: 'guccigagamane@gmail.com'),
                   TeamLeadScreen_Card(
-                      title: 'Great Khali', email: 'khalibali999@gmail.com'),
+                      title: 'Great Khali',
+                      email: 'khalibali999@gmail.com'),
                 ],
               ),
             ),
@@ -105,14 +106,8 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
-                  child: Text(
-                    'My Team Lead',
-                    style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: AppFonts.nunitoRegular),
-                  ),
+                  child:
+                  AppTextStyle.TeamLead_MyTeamLead(context, AppStrings.TeamLead_myTeamLead),
                 ),
                 const Spacer(),
                 Icon(
@@ -123,14 +118,7 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
                 const SizedBox(
                   width: 5,
                 ),
-                Text(
-                  'Filter',
-                  style: TextStyle(
-                      color: AppColors.lightGrey,
-                      fontFamily: AppFonts.nunitoRegular,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14),
-                )
+                AppTextStyle.TeamLead_Filter(context, AppStrings.TeamLead_filter),
               ],
             ),
           )

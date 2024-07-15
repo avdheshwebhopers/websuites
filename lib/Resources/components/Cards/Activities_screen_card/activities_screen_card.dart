@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 
 import '../../../Assets/app_fonts.dart';
+import '../../../app_strings/app_strings.dart';
 import '../../app_colors.dart';
 
 class LeadActivities_screen_card extends StatelessWidget {
@@ -124,12 +126,7 @@ class LeadActivities_screen_card extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Text('REMARK' , style: TextStyle(
-                            color: AppColors.blackColor,
-                            fontSize: 12,
-                            fontFamily: AppFonts.nunitoRegular,
-                            fontWeight: FontWeight.w500
-                        ),),
+                       AppTextStyle.LeadActivity_REMARK(context, AppStrings.LeadActivity_remark),
 
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 3),
@@ -148,12 +145,7 @@ class LeadActivities_screen_card extends StatelessWidget {
 
                     Row(
                       children: [
-                        Text('REMINDER ON' , style: TextStyle(
-                            color: AppColors.blackColor,
-                            fontSize: 12,
-                            fontFamily: AppFonts.nunitoRegular,
-                            fontWeight: FontWeight.w500
-                        ),),
+                        AppTextStyle.LeadActivity_REMINDER_0N(context, AppStrings.LeadActivity_reminder),
 
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 3),
@@ -165,8 +157,8 @@ class LeadActivities_screen_card extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             fontFamily: AppFonts.nunitoRegular,
                             fontSize: 12
-                        ),)
-
+                        ),
+                        )
                       ],
                     )
                   ],
