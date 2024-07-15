@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../Resources/Assets/app_fonts.dart';
 import '../Resources/Assets/app_images.dart';
+import '../Resources/app_strings/app_strings.dart';
+import '../Resources/app_textstyles/App_TextStyle.dart';
 import '../Resources/components/app_colors.dart';
+import '../Resources/components/App_Buttons/generic_button.dart';
 import '../Utils/Routes/routes_name.dart';
 import '../Utils/Utils.dart';
 import '../View_model/controllers/Forgot_Password_view_Model/forgot_password_viewModel.dart';
-import '../resources/Assets/app_fonts.dart';
-import '../resources/app_strings/app_strings.dart';
-import '../resources/app_textstyles/App_TextStyle.dart';
-import '../resources/components/generic_button.dart';
+
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});

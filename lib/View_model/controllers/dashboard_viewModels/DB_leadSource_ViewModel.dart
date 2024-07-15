@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+
+import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/Utils.dart';
-import '../../../data/repository/Repositories.dart';
 
 class Dashboard_LeadSource_ViewModel extends GetxController {
    final _api = Repositories();
@@ -11,9 +12,9 @@ class Dashboard_LeadSource_ViewModel extends GetxController {
    Future <void> LeadSource(BuildContext, context) async {
       loading.value = true;
 
-      _api.DB_LeadsSourceApi().then((response) {
+      _api.DB_LeadsSourceApi().then((response){
 
-         if(response.id != null) {
+         if(response.id != null){
 
             Utils.SnackbarSuccess('lead Source Yes');
             loading.value = false;

@@ -9,8 +9,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../Resources/components/app_colors.dart';
 
-
 class Utils {
+
   static void FieldFocusChange(BuildContext context,
       FocusNode current, FocusNode nextFocus) {
     current.unfocus();

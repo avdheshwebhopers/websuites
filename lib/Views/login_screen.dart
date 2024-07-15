@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import '../Resources/Assets/app_fonts.dart';
 import '../Resources/Assets/app_images.dart';
+import '../Resources/app_strings/app_strings.dart';
+import '../Resources/app_textstyles/App_TextStyle.dart';
 import '../Resources/components/app_colors.dart';
+import '../Resources/components/App_Buttons/generic_button.dart';
 import '../Utils/Routes/routes_name.dart';
 import '../Utils/Utils.dart';
 import '../View_model/controllers/Login_view_model/login_view_model.dart';
-import '../resources/Assets/app_fonts.dart';
-import '../resources/app_strings/app_strings.dart';
-import '../resources/app_textstyles/App_TextStyle.dart';
-import '../resources/components/generic_button.dart';
 
 
 
@@ -43,18 +43,18 @@ class _Login_ScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return
       Scaffold(
-          backgroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.whiteColor,
           body:
           SingleChildScrollView(scrollDirection: Axis.vertical,
             child: Center(
               child: Container(
-                // color: Colors.blue,
+                 // color: Colors.blue,
                 margin: const EdgeInsets.only(left: 35, right: 35,),
                 height: Get.height/1,
                 width: Get.width/1.2,
                 child:
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                 mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
 
                   children: [
@@ -87,50 +87,50 @@ class _Login_ScreenState extends State<LoginScreen> {
                             children: [
                               Container(
                                 padding: EdgeInsets.only(left: 5),
-                                // width: Get.width/1,
-                                // height: Get.height/19,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  color: AppColors.textfield2,
-                                ),
-
-                                child:
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Obx(() => TextFormField(
-                                      // textAlign: TextAlign.start,
-                                      cursorColor: Colors.black45,
-                                      controller: loginController.emailController.value,
-                                      focusNode: loginController.emailFocusNode.value,
-                                      validator: (value){
-                                        if(value!.isEmpty){
-                                          // return 'Please enter email';
-                                          Utils.flushBarErrorMessage(AppStrings.Login_Flush_Email, context);
-                                        }
-                                        return null;
-
-                                      },
-                                      decoration: const InputDecoration(
-                                          border: InputBorder.none,
-                                          hintText: AppStrings.Login_Hint_Email,
-                                          // contentPadding: EdgeInsets.symmetric(vertical: 14),
-                                          hintStyle:
-                                          TextStyle(
-                                            fontFamily: AppFonts.nunitoRegular,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 13,)
-                                      ),
-                                      onFieldSubmitted: (value){
-                                        Utils.FieldFocusChange(context,
-                                            loginController.emailFocusNode.value,
-                                            loginController.passwordFocusNode.value);
-                                      },
+                                    // width: Get.width/1,
+                                    // height: Get.height/19,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      color: AppColors.textfield2,
                                     ),
+
+                                    child:
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Obx(() => TextFormField(
+                                            // textAlign: TextAlign.start,
+                                            cursorColor: Colors.black45,
+                                            controller: loginController.emailController.value,
+                                            focusNode: loginController.emailFocusNode.value,
+                                            validator: (value){
+                                              if(value!.isEmpty){
+                                                // return 'Please enter email';
+                                                Utils.flushBarErrorMessage(AppStrings.Login_Flush_Email, context);
+                                              }
+                                              return null;
+
+                                            },
+                                            decoration: const InputDecoration(
+                                              border: InputBorder.none,
+                                              hintText: AppStrings.Login_Hint_Email,
+                                              // contentPadding: EdgeInsets.symmetric(vertical: 14),
+                                              hintStyle:
+                                              TextStyle(
+                                                fontFamily: AppFonts.nunitoRegular,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 13,)
+                                            ),
+                                            onFieldSubmitted: (value){
+                                              Utils.FieldFocusChange(context,
+                                                  loginController.emailFocusNode.value,
+                                                  loginController.passwordFocusNode.value);
+                                              },
+                                            ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
                                 ),
-                              ),
                               const SizedBox(height: 20,),
 
                               AppTextStyle.loginPassword(context, AppStrings.Login_Password),
@@ -178,10 +178,10 @@ class _Login_ScreenState extends State<LoginScreen> {
                                                 AppStrings.Login_Flush_Pass, context);
                                           }
                                           return null;
-                                        },
+                                          },
                                         obscureText: obscurePassword.value,
                                       );
-                                    }, // child: null,
+                                      }, // child: null,
                                     ),
                                   ],
                                 ),
@@ -197,19 +197,18 @@ class _Login_ScreenState extends State<LoginScreen> {
                             SizedBox(
                               height: 24.0,
                               width: 24.0,
-                              child: Obx(
-                                    ()=> Checkbox(
+                              child: Obx(()=> Checkbox(
                                   checkColor: Colors.black45,
                                   activeColor: Colors.blue,
                                   value: rememberMe.value,
-                                  onChanged: (value) {
+                                  onChanged: (value){
                                     rememberMe.value = value!;
                                   },
                                 ),
                               ),
                             ),
 
-                            AppTextStyle.loginRememberMe(context, AppStrings.Login_RememberMe),
+                        AppTextStyle.loginRememberMe(context, AppStrings.Login_RememberMe),
                             Spacer(),
 
                             InkWell(
@@ -222,20 +221,19 @@ class _Login_ScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 23,),
                         Obx(() =>
-                            GenericButton(
-                              width: Get.width*1,
-                              // height: Get.height/20,
-                              title: AppStrings.Login_Button,
-                              // loading: loginController.loading.value,
+                          GenericButton(
+                            width: Get.width*1,
+                            // height: Get.height/20,
+                            title: AppStrings.Login_Button,
+                            loading: loginController.loading.value,
 
-                              onPress: (){
+                            onPress: (){
+                              if(formkey.currentState != null && formkey.currentState!.validate()){
+                                 loginController.login(context);
 
-                                if(formkey.currentState != null && formkey.currentState!.validate()){
-                                  loginController.login(context);
-                                  // dashboardController.DashboardApi(context);
-                                }
+                              }
                               },
-                            ),
+                          ),
                         ),
 
                         const SizedBox(height: 14,),
@@ -243,13 +241,13 @@ class _Login_ScreenState extends State<LoginScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            AppTextStyle.loginNewOn(context, AppStrings.Login_New_On),
+                           AppTextStyle.loginNewOn(context, AppStrings.Login_New_On),
                             InkWell(
-                              onTap: (){
-                                Get.toNamed(RoutesName.purchase_now_screen);
-                              },
-                              child:
-                              AppTextStyle.loginPurchaseNow(context, AppStrings.Login_PurchaseNow),
+                                onTap: (){
+                                  Get.toNamed(RoutesName.purchase_now_screen);
+                                },
+                                child:
+                                AppTextStyle.loginPurchaseNow(context, AppStrings.Login_PurchaseNow),
                             ),
                           ],
                         ),

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../../../Resources/Assets/app_fonts.dart';
 import '../../../Resources/Assets/app_images.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_1.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_2.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_3.dart';
+import '../../../Resources/components/Containers/app_row_container1.dart';
+import '../../../Resources/components/Containers/app_row_container2.dart';
+import '../../../Resources/components/List_TIles/custom_list_tile.dart';
 import '../../../Resources/components/app_colors.dart';
-import '../../../resources/Assets/app_fonts.dart';
-import '../../../resources/components/Cards/app_cards_1.dart';
-import '../../../resources/components/Cards/app_cards_2.dart';
-import '../../../resources/components/Cards/app_cards_3.dart';
-import '../../../resources/components/Containers/app_row_container1.dart';
-import '../../../resources/components/Containers/app_row_container2.dart';
-import '../../../resources/components/List_TIles/custom_list_tile.dart';
-import '../../../resources/components/generic_button.dart';
+import '../../../Resources/components/App_Buttons/generic_button.dart';
 
 class MyDesktopBody extends StatelessWidget {
   const MyDesktopBody({Key? key}) : super(key: key);
@@ -252,85 +252,85 @@ class MyDesktopBody extends StatelessWidget {
                                 ],),
                             ),
 
-                            Column(
-                              children: [
-                                CustomListTile(
-                                    icon: Icons.dashboard,
-                                    title: 'Dashboard',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.leaderboard,
-                                    title: 'Lead',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.person,
-                                    title: 'Customer',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.shopping_bag,
-                                    title: 'Orders',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.group,
-                                    title: 'HRM',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.analytics,
-                                    title: 'Analytics',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.dashboard,
-                                    title: 'Campaign',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.bar_chart,
-                                    title: 'Sales',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.person_2,
-                                    title: 'Roles',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.verified_user,
-                                    title: 'Users',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.add_task,
-                                    title: 'Tasks',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.data_object,
-                                    title: 'Projects',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.location_city_sharp,
-                                    title: 'Service Area',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.shopping_bag,
-                                    title: 'Products',
-                                    onTap: (){}
-                                ),
-                                CustomListTile(
-                                    icon: Icons.grade,
-                                    title: 'Master',
-                                    onTap: (){}
-                                ),
-                              ],
-                            ),
+                            // Column(
+                            //   children: [
+                            //     CustomListTile(
+                            //         leading_image: Icons.dashboard,
+                            //         title: 'Dashboard',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.leaderboard,
+                            //         title: 'Lead',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.person,
+                            //         title: 'Customer',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.shopping_bag,
+                            //         title: 'Orders',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.group,
+                            //         title: 'HRM',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.analytics,
+                            //         title: 'Analytics',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.dashboard,
+                            //         title: 'Campaign',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.bar_chart,
+                            //         title: 'Sales',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.person_2,
+                            //         title: 'Roles',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.verified_user,
+                            //         title: 'Users',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.add_task,
+                            //         title: 'Tasks',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.data_object,
+                            //         title: 'Projects',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.location_city_sharp,
+                            //         title: 'Service Area',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.shopping_bag,
+                            //         title: 'Products',
+                            //         onTap: (){}
+                            //     ),
+                            //     CustomListTile(
+                            //         leading_image: Icons.grade,
+                            //         title: 'Master',
+                            //         onTap: (){}
+                            //     ),
+                            //   ],
+                            // ),
 
                             const SizedBox(height: 100,),
 
@@ -916,7 +916,7 @@ class MyDesktopBody extends StatelessWidget {
                                 countColor: AppColors.grey,
                                 statusColor: AppColors.blackColor,
                                 icon: Icons.task,
-                                iconColor: AppColors.skyBlue,
+                                iconColor: AppColors.vividBlue,
                                 containerColor: AppColors.lightBlue),
                             const SizedBox(width: 10,),
 
@@ -926,7 +926,7 @@ class MyDesktopBody extends StatelessWidget {
                                 countColor: AppColors.grey,
                                 statusColor: AppColors.blackColor,
                                 icon: Icons.account_balance_rounded,
-                                iconColor: AppColors.grassGreen,
+                                iconColor: AppColors.vividGreen,
                                 containerColor: AppColors.lightGreen),
                             const SizedBox(width: 10,),
 
@@ -1113,7 +1113,7 @@ class MyDesktopBody extends StatelessWidget {
 
                           const SizedBox(width: 10,),
 
-                          Icon(Icons.pie_chart, color: AppColors.skyBlue,size: 15,),
+                          Icon(Icons.pie_chart, color: AppColors.vividBlue,size: 15,),
 
                           const SizedBox(width: 5,),
 
@@ -1124,7 +1124,7 @@ class MyDesktopBody extends StatelessWidget {
                                 fontSize: 16,
                                 fontFamily: AppFonts.nunitoRegular,
                                 fontWeight: FontWeight.w400,
-                                color: AppColors.skyBlue,
+                                color: AppColors.vividBlue,
                               ),
                             ),
                           ),
@@ -1200,31 +1200,31 @@ class MyDesktopBody extends StatelessWidget {
 
                     const SizedBox(height:20,),
 
-                    const AppCardsThree(
+                    const Transaction_list_Widget(
                         title: 'Premium 60 Packages Self Done...',
                         name: 'Prakash shah',
                         amount: '₹4000',
                         subtitle: '25 May, 2024 at 12:30 pm'),
 
-                    const AppCardsThree(
+                    const Transaction_list_Widget(
                         title: 'Premium 60 Packages Self Done...',
                         name: 'Prakash shah',
                         amount: '₹4000',
                         subtitle: '25 May, 2024 at 12:30 pm'),
 
-                    const AppCardsThree(
+                    const Transaction_list_Widget(
                         title: 'Premium 60 Packages Self Done...',
                         name: 'Prakash shah',
                         amount: '₹4000',
                         subtitle: '25 May, 2024 at 12:30 pm'),
 
-                    const AppCardsThree(
+                    const Transaction_list_Widget(
                         title: 'Premium 60 Packages Self Done...',
                         name: 'Prakash shah',
                         amount: '₹4000',
                         subtitle: '25 May, 2024 at 12:30 pm'),
 
-                    const AppCardsThree(
+                    const Transaction_list_Widget(
                         title: 'Premium 60 Packages Self Done...',
                         name: 'Prakash shah',
                         amount: '₹4000',

@@ -10,7 +10,6 @@ class CodeCheck extends StatefulWidget {
 class _CodeCheckState extends State<CodeCheck> {
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold();
+    return const Scaffold();
   }
 }

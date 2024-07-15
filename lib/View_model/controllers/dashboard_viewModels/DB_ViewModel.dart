@@ -1,9 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/Utils.dart';
-import '../../../data/repository/Repositories.dart';
 
 class DashboardViewModel extends GetxController {
   final _api = Repositories();

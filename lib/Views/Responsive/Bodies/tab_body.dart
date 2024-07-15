@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
+
+import '../../../Data/models/Response_model/LoginResponseModel.dart';
+import '../../../Resources/Assets/app_fonts.dart';
 import '../../../Resources/Assets/app_images.dart';
+import '../../../Resources/app_strings/app_strings.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_1.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_2.dart';
+import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_3.dart';
+import '../../../Resources/components/Containers/app_row_container1.dart';
+import '../../../Resources/components/Containers/app_row_container2.dart';
+import '../../../Resources/components/List_TIles/custom_list_tile.dart';
 import '../../../Resources/components/app_colors.dart';
+import '../../../Resources/components/App_Buttons/generic_button.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/Utils.dart';
 import '../../../View_model/controllers/save_token/save_token.dart';
-import '../../../resources/Assets/app_fonts.dart';
-import '../../../resources/app_strings/app_strings.dart';
-import '../../../resources/components/Cards/app_cards_1.dart';
-import '../../../resources/components/Cards/app_cards_2.dart';
-import '../../../resources/components/Cards/app_cards_3.dart';
-import '../../../resources/components/Containers/app_row_container1.dart';
-import '../../../resources/components/Containers/app_row_container2.dart';
-import '../../../resources/components/List_TIles/custom_list_tile.dart';
-import '../../../resources/components/generic_button.dart';
 
 
 class MyTabBody extends StatefulWidget {
@@ -24,6 +27,37 @@ class MyTabBody extends StatefulWidget {
   State<MyTabBody> createState() => _MyTabBodyState();}
 
 class _MyTabBodyState extends State<MyTabBody> {
+
+  String userName = '';
+  String? userEmail = "";
+  SaveUserData userPreference = SaveUserData();
+
+  @override
+  void initState(){
+    super.initState();
+    fetchUserData();}
+
+  Future<void> fetchUserData() async {
+    try {
+      // Fetch token and email from SharedPreferences using SaveToken class
+      LoginResponseModel response = await userPreference.getUser();
+      String? first_name = response.user!.first_name;
+      String? email = response.user!.email;// Extract email from response
+
+      setState(() {
+        userName = first_name!;
+        userEmail = email!;
+        // Update userEmail state variable with fetched email
+      });
+    } catch (e) {
+      print('Error fetching userData: $e');
+      // Handle error if necessary
+    }
+  }
+
+
+
+
 
 
   @override
@@ -60,175 +94,178 @@ class _MyTabBodyState extends State<MyTabBody> {
                       color: AppColors.whiteColor,
                       width: Get.width / 2,
                       height: Get.height * 1,
-                      child:
-                      Drawer(
-                        backgroundColor: AppColors.whiteColor,
-                        child:
-                        ListView(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(left: 13),
-                              height: Get.height / 9,
-                              child: Row(
-
-                                children: [
-                                  Container(
-                                    height: Get.height / 14,
-                                    width: Get.width / 14,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AppColors.whiteColor,
-                                    ),
-                                    child: Center(
-                                        child: Image.asset(
-                                            AppImages.Splash_WHLogo)),
-                                  ),
-                                  SizedBox(width: Get.width / 40,),
-
-                                   Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .start,
-
-                                    children: [
-                                      const Text('Sunil Kumar',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 17,
-                                          fontFamily: AppFonts.nunitoRegular,
-
-                                        ),),
-                                      Text('+91-8810529887',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 13,
-                                            fontFamily: AppFonts.nunitoRegular,
-                                            color: AppColors.grey,
-                                        ),),
-                                    ],
-                                  )
-                                ],),
-                            ),
-
-                            Column(
-                              children: [
-                                CustomListTileTab(
-                                    icon: Icons.dashboard,
-                                    title: AppStrings.Drawer_Dashboard,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.leaderboard,
-                                    title: AppStrings.Drawer_Lead,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.person,
-                                    title: AppStrings.Drawer_Customer,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.shopping_bag,
-                                    title: AppStrings.Drawer_Orders,
-                                    onTap: (){}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.group,
-                                    title: AppStrings.Drawer_HRM,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.analytics,
-                                    title: AppStrings.Drawer_Analytics,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.dashboard,
-                                    title: AppStrings.Drawer_Campaign,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.bar_chart,
-                                    title: AppStrings.Drawer_Sales,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.person_2,
-                                    title: AppStrings.Drawer_Roles,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.verified_user,
-                                    title: AppStrings.Drawer_Users,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.add_task,
-                                    title: AppStrings.Drawer_Tasks,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.data_object,
-                                    title: AppStrings.Drawer_Projects,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.location_city_sharp,
-                                    title: AppStrings.Drawer_ServiceArea,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.shopping_bag,
-                                    title: AppStrings.Drawer_Products,
-                                    onTap: () {}
-                                ),
-                                CustomListTileTab(
-                                    icon: Icons.grade,
-                                    title: AppStrings.Drawer_Master,
-                                    onTap: () {}
-                                ),
-                              ],
-                            ),
-
-                            SizedBox(height: 30,),
-
-                            const Divider(
-                              thickness: 1,
-                              indent: 20,
-                              endIndent: 20,
-                            ),
-
-                            Container(
-                                height: Get.height/20,
-                                width: Get.width/2,
-                                padding: EdgeInsets.only(left: 20),
-
-                                child: Text(AppStrings.Drawer_Versions,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      fontFamily: AppFonts.nunitoRegular,
-                                      fontSize: 10,
-                                      color: AppColors.grey
-                                  ),)
-                            ),
-
-                            Container(
-                              margin: EdgeInsets.only(left: 20, right: 20),
-                              child: GenericButton(
-                                  height: Get.height/30,
-                                  width: Get.width/4,
-                                  title: 'Logout',
-                                  onPress: () {
-                                    SaveToken().removeToken();
-                                    Get.toNamed(RoutesName.login_screen);
-                                    Utils.SnackbarSuccess('Logout Successful');
-                                  }
-                              ),
-                            ),
-                            SizedBox(height: 10,),
-                          ],
-                        ),
-                      )
+                      child: AppTabDrawer(
+                          userName: '$userName',
+                          phoneNumber: '$userEmail',
+                          version: '1.0.12')
+                      // Drawer(
+                      //   backgroundColor: AppColors.whiteColor,
+                      //   child:
+                      //   ListView(
+                      //     children: [
+                      //       Container(
+                      //         padding: EdgeInsets.only(left: 13),
+                      //         height: Get.height / 9,
+                      //         child: Row(
+                      //
+                      //           children: [
+                      //             Container(
+                      //               height: Get.height / 14,
+                      //               width: Get.width / 14,
+                      //               decoration: BoxDecoration(
+                      //                 shape: BoxShape.circle,
+                      //                 color: AppColors.whiteColor,
+                      //               ),
+                      //               child: Center(
+                      //                   child: Image.asset(
+                      //                       AppImages.Splash_WHLogo)),
+                      //             ),
+                      //             SizedBox(width: Get.width / 40,),
+                      //
+                      //              Column(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               crossAxisAlignment: CrossAxisAlignment
+                      //                   .start,
+                      //
+                      //               children: [
+                      //                 Text('$userName',
+                      //                   style: TextStyle(
+                      //                     fontWeight: FontWeight.w500,
+                      //                     fontSize: 17,
+                      //                     fontFamily: AppFonts.nunitoRegular,
+                      //
+                      //                   ),),
+                      //                 Text('$userEmail',
+                      //                   style: TextStyle(
+                      //                       fontWeight: FontWeight.w400,
+                      //                       fontSize: 13,
+                      //                       fontFamily: AppFonts.nunitoRegular,
+                      //                       color: AppColors.grey,
+                      //                   ),),
+                      //               ],
+                      //             )
+                      //           ],),
+                      //       ),
+                      //
+                      //       Column(
+                      //         children: [
+                      //           CustomListTileTab(
+                      //               icon: Icons.dashboard,
+                      //               title: AppStrings.Drawer_Dashboard,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.leaderboard,
+                      //               title: AppStrings.Drawer_Lead,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.person,
+                      //               title: AppStrings.Drawer_Customer,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.shopping_bag,
+                      //               title: AppStrings.Drawer_Orders,
+                      //               onTap: (){}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.group,
+                      //               title: AppStrings.Drawer_HRM,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.analytics,
+                      //               title: AppStrings.Drawer_Analytics,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.dashboard,
+                      //               title: AppStrings.Drawer_Campaign,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.bar_chart,
+                      //               title: AppStrings.Drawer_Sales,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.person_2,
+                      //               title: AppStrings.Drawer_Roles,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.verified_user,
+                      //               title: AppStrings.Drawer_Users,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.add_task,
+                      //               title: AppStrings.Drawer_Tasks,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.data_object,
+                      //               title: AppStrings.Drawer_Projects,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.location_city_sharp,
+                      //               title: AppStrings.Drawer_ServiceArea,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.shopping_bag,
+                      //               title: AppStrings.Drawer_Products,
+                      //               onTap: () {}
+                      //           ),
+                      //           CustomListTileTab(
+                      //               icon: Icons.grade,
+                      //               title: AppStrings.Drawer_Master,
+                      //               onTap: () {}
+                      //           ),
+                      //         ],
+                      //       ),
+                      //
+                      //       SizedBox(height: 30,),
+                      //
+                      //       const Divider(
+                      //         thickness: 1,
+                      //         indent: 20,
+                      //         endIndent: 20,
+                      //       ),
+                      //
+                      //       Container(
+                      //           height: Get.height/20,
+                      //           width: Get.width/2,
+                      //           padding: EdgeInsets.only(left: 20),
+                      //
+                      //           child: Text(AppStrings.Drawer_Versions,
+                      //             style: TextStyle(
+                      //                 fontWeight: FontWeight.w300,
+                      //                 fontFamily: AppFonts.nunitoRegular,
+                      //                 fontSize: 10,
+                      //                 color: AppColors.grey
+                      //             ),)
+                      //       ),
+                      //
+                      //       Container(
+                      //         margin: EdgeInsets.only(left: 20, right: 20),
+                      //         child: GenericButton(
+                      //             height: Get.height/30,
+                      //             width: Get.width/4,
+                      //             title: 'Logout',
+                      //             onPress: () {
+                      //               SaveUserData().removeUser();
+                      //               Get.toNamed(RoutesName.login_screen);
+                      //               Utils.SnackbarSuccess('Logout Successful');
+                      //             }
+                      //         ),
+                      //       ),
+                      //       SizedBox(height: 10,),
+                      //     ],
+                      //   ),
+                      // )
                   ),
                 ],
               ),
@@ -724,7 +761,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               countColor: AppColors.grey,
                               statusColor: AppColors.blackColor,
                               icon: Icons.task,
-                              iconColor: AppColors.skyBlue,
+                              iconColor: AppColors.vividBlue,
                               containerColor: AppColors.lightBlue),
 
 
@@ -734,7 +771,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               countColor: AppColors.grey,
                               statusColor: AppColors.blackColor,
                               icon: Icons.account_balance_rounded,
-                              iconColor: AppColors.grassGreen,
+                              iconColor: AppColors.vividGreen,
                               containerColor: AppColors.lightGreen),
 
 
@@ -920,7 +957,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         const SizedBox(width: 10,),
 
                         Icon(
-                          Icons.pie_chart, color: AppColors.skyBlue, size: 20,),
+                          Icons.pie_chart, color: AppColors.vividBlue, size: 20,),
 
                         const SizedBox(width: 5,),
 
@@ -931,7 +968,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               fontSize: 12,
                               fontFamily: AppFonts.nunitoRegular,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.skyBlue,
+                              color: AppColors.vividBlue,
                             ),
                           ),
                         ),
@@ -1222,7 +1259,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   width: Get.width / 4,
                                   title: AppStrings.Drawer_ButtonLogout,
                                   onPress: () {
-                                    SaveToken().removeToken();
+                                    SaveUserData().removeUser();
                                     Get.toNamed(RoutesName.login_screen);
                                     Utils.SnackbarSuccess(AppStrings.Home_Snackbar);
                                   }
@@ -1749,7 +1786,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               countColor: AppColors.grey,
                               statusColor: AppColors.blackColor,
                               icon: Icons.task,
-                              iconColor: AppColors.skyBlue,
+                              iconColor: AppColors.vividBlue,
                               containerColor: AppColors.lightBlue),
 
 
@@ -1759,7 +1796,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               countColor: AppColors.grey,
                               statusColor: AppColors.blackColor,
                               icon: Icons.account_balance_rounded,
-                              iconColor: AppColors.grassGreen,
+                              iconColor: AppColors.vividGreen,
                               containerColor: AppColors.lightGreen),
 
 
@@ -1943,7 +1980,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         const SizedBox(width: 10,),
 
                         Icon(
-                          Icons.pie_chart, color: AppColors.skyBlue, size: 20,),
+                          Icons.pie_chart, color: AppColors.vividBlue, size: 20,),
 
                         const SizedBox(width: 5,),
 
@@ -1954,7 +1991,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               fontSize: 12,
                               fontFamily: AppFonts.nunitoRegular,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.skyBlue,
+                              color: AppColors.vividBlue,
                             ),
                           ),
                         ),

@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../Resources/Assets/app_images.dart';
+import '../Resources/app_strings/app_strings.dart';
+import '../Resources/app_textstyles/App_TextStyle.dart';
+import '../Resources/components/App_Buttons/app_buttons.dart';
 import '../Resources/components/app_colors.dart';
-import '../resources/app_strings/app_strings.dart';
-import '../resources/app_textstyles/App_TextStyle.dart';
-import '../resources/components/app_buttons.dart';
 
 
 class WelcomeToCompany extends StatefulWidget {
