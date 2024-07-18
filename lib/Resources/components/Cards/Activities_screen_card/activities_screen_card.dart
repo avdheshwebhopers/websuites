@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_5w.dart';
 
 import '../../../Assets/app_fonts.dart';
 import '../../../app_strings/app_strings.dart';
+import '../../../app_textstyles/app_textstyle2.dart';
 import '../../app_colors.dart';
 
 class LeadActivities_screen_card extends StatelessWidget {
@@ -71,23 +73,18 @@ class LeadActivities_screen_card extends StatelessWidget {
 
             Row(
               children: [
-                Container(
-                  margin: EdgeInsets.only(right: 10),
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                  height: Get.height/40,
-                  decoration: BoxDecoration(
-                    color: AppColors.lighterOrange,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Text('Call', style: TextStyle(
-                        color: AppColors.vividOrange,
-                        fontFamily: AppFonts.nunitoRegular,
-                        fontSize: 12
-                    ),),
-                  ),
-                ),
+                Text('Call', style: TextStyle(
+                    color: AppColors.blackColor,
+                    fontFamily: AppFonts.nunitoRegular,
+                    fontSize: 14,
+                  fontWeight: FontWeight.w500
+                ),),
 
+                SizedBox_5w(),
+
+                Icon(Icons.arrow_right_alt, size: 15,),
+
+                SizedBox_5w(),
                 Text('Number Busy', style: TextStyle(
                   color: AppColors.lightGrey,
                   fontSize: 12,
@@ -126,7 +123,7 @@ class LeadActivities_screen_card extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                       AppTextStyle.LeadActivity_REMARK(context, AppStrings.LeadActivity_remark),
+                       AppTextStyle2.w500_12(color: AppColors.blackColor, context, AppStrings.LeadActivity_remark),
 
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 3),
@@ -145,7 +142,7 @@ class LeadActivities_screen_card extends StatelessWidget {
 
                     Row(
                       children: [
-                        AppTextStyle.LeadActivity_REMINDER_0N(context, AppStrings.LeadActivity_reminder),
+                        AppTextStyle2.w500_12(color: AppColors.blackColor, context, AppStrings.LeadActivity_reminder),
 
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 3),

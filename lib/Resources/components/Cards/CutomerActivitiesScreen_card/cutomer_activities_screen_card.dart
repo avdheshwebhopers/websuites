@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_5w.dart';
 
 import '../../../Assets/app_fonts.dart';
 import '../../../app_strings/app_strings.dart';
+import '../../../app_textstyles/app_textstyle2.dart';
 import '../../app_colors.dart';
 
 class CustomerActvities_Card extends StatelessWidget {
@@ -31,7 +33,7 @@ class CustomerActvities_Card extends StatelessWidget {
                   color: AppColors.blackColor.withOpacity(0.06),
                   spreadRadius: 2,
                   blurRadius: 4
-              )
+              ),
             ]
         ),
         child: Padding(
@@ -51,42 +53,37 @@ class CustomerActvities_Card extends StatelessWidget {
                 color: AppColors.welcomeColor,
                 fontFamily: AppFonts.nunitoRegular,
                 fontWeight: FontWeight.w700,
-                fontSize: 17,
+                fontSize: 18,
               ),),
 
               Row(
                 children: [
-                  Icon(Icons.calendar_month_outlined, size: 15, color: AppColors.mediumPurple,),
+                  Icon(Icons.calendar_month_outlined, size: 17, color: AppColors.mediumPurple,),
                   SizedBox(width: 10,),
                   Text('Wed, Jun 26, 2024 at 11:39 AM', style: TextStyle(
                     color: AppColors.mediumPurple,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFonts.nunitoRegular,
-                  ),),
+                  ),
+                  ),
                 ],
               ),
 
               Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    height: Get.height/40,
-                    decoration: BoxDecoration(
-                      color: AppColors.lighterOrange,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: Text('Call', style: TextStyle(
-                          color: AppColors.vividOrange,
-                          fontFamily: AppFonts.nunitoRegular,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12
-                      ),),
-                    ),
-                  ),
+                  Text('Call', style: TextStyle(
+                      color: AppColors.blackColor,
+                      fontFamily: AppFonts.nunitoRegular,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13
+                  ),),
 
-                  SizedBox(width: 10,),
+                  SizedBox_5w(),
+
+                  Icon(Icons.arrow_right_alt, size: 20,),
+
+                  SizedBox_5w(),
 
                   Text('Number Busy', style: TextStyle(
                     color: AppColors.grey,
@@ -120,15 +117,17 @@ class CustomerActvities_Card extends StatelessWidget {
               ),
 
               Row(children: [
-              AppTextStyle.CustomerActivities_Remark(context, AppStrings.CustomerActivities_Remark),
-
+              AppTextStyle2.w500_universal(fontSize: 13, color: AppColors.blackColor, context, AppStrings.CustomerActivities_Remark),
+                SizedBox_5w(),
                 Icon(Icons.arrow_right_alt, size: 15, color: AppColors.lightGrey,),
+
+                SizedBox_5w(),
 
                 Text('Not Answered', style: TextStyle(
                     color: AppColors.lightGrey,
                     fontFamily: AppFonts.nunitoRegular,
                     fontWeight: FontWeight.w400,
-                    fontSize: 12
+                    fontSize: 13
                 ),),
 
 
@@ -136,17 +135,17 @@ class CustomerActvities_Card extends StatelessWidget {
 
               Row(
                 children: [
-                 AppTextStyle.CustomerActivities_ReminderOn(context, AppStrings.CustomerActivities_ReminderOn),
-
-
+                 AppTextStyle2.w500_universal(fontSize: 13,color: AppColors.blackColor, context, AppStrings.CustomerActivities_ReminderTo),
+                  SizedBox_5w(),
                   Icon(Icons.arrow_right_alt, size: 15, color: AppColors.lightGrey,),
+                  SizedBox_5w(),
 
-                  Text('25/06/2024 at 11:39 AM', style: TextStyle(
-                      color: AppColors.lightGrey,
+                  Text('Anil Kumar', style: TextStyle(
+                      color: AppColors.darkBlue,
                       fontFamily: AppFonts.nunitoRegular,
                       fontWeight: FontWeight.w400,
-                      fontSize: 11
-                  ),),
+                      fontSize: 13),
+                  ),
                   Spacer(),
 
                   Container(
@@ -162,7 +161,8 @@ class CustomerActvities_Card extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFonts.nunitoRegular
-                      ),),
+                      ),
+                      ),
                     ),
                   )
                 ],

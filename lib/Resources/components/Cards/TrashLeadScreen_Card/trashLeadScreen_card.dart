@@ -50,7 +50,7 @@ class TrashLeadScreen_Card extends StatelessWidget {
                 color: AppColors.welcomeColor,
                 fontFamily: AppFonts.nunitoRegular,
                 fontWeight: FontWeight.w700,
-                fontSize: 18
+                fontSize: 19
             ),),
 
             Row(
@@ -109,8 +109,8 @@ class TrashLeadScreen_Card extends StatelessWidget {
                   style: TextStyle(
                     color: AppColors.blackColor,
                     fontFamily: AppFonts.nunitoRegular,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13
                 ),),
 
                 Icon(Icons.arrow_right_alt, size: 25, color: AppColors.lightGrey,),
@@ -141,11 +141,8 @@ class TrashLeadScreen_Card extends StatelessWidget {
                   ),
                 )
 
-
-
               ],
             )
-
 
           ],
         ),

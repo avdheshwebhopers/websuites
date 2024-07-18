@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
-import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
+import 'package:websuites/Resources/Assets/app_Icons.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_FloatingActionButton/custom_floatingActionButton.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_navBar/custom_naBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
-import '../Resources/Assets/app_fonts.dart';
 import '../Resources/app_strings/app_strings.dart';
+import '../Resources/app_textstyles/app_textstyle2.dart';
 import '../Resources/components/Cards/Activities_screen_card/activities_screen_card.dart';
 import '../Resources/components/app_colors.dart';
 
@@ -51,8 +52,14 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
     return Scaffold(
         key: _globalKey,
         backgroundColor: AppColors.whiteColor,
-        drawer:
+        bottomNavigationBar: CustomBottomNavBar(),
+        floatingActionButton: CustomFloatingButton(
+            onPressed: (){},
+            imageIcon: AppIcons.navSearch3,
+            backgroundColor: AppColors.mediumPurple),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
+        drawer:
         AppDrawer(
             userName: '$userName',
             phoneNumber: '$userEmail',
@@ -65,7 +72,7 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 110,
+                      height: 120,
                     ),
                     LeadActivities_screen_card(
                         title: 'Dr. Nitasha Gupta',
@@ -105,7 +112,7 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
                   const SizedBox(
                     width: 12,
                   ),
-                 AppTextStyle.LeadActivity_LeadList(context, AppStrings.LeadActivity_leadList),
+                 AppTextStyle2.w600_universal(fontSize: 18, color: AppColors.blackColor, context, AppStrings.LeadActivity_leadList),
                   Spacer(),
                   Row(
                     children: [
@@ -117,11 +124,11 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
                       const SizedBox(
                         width: 2,
                       ),
-                      AppTextStyle.LeadActivity_Filter(context, AppStrings.LeadList_Filter),
+                      AppTextStyle2.w400_13(color: AppColors.lightGrey, context, AppStrings.LeadList_Filter),
                       const SizedBox(
                         width: 13,
                       ),
-                     AppTextStyle.LeadActivity_Details(context, AppStrings.LeadActivity_details),
+                     AppTextStyle2.w400_13(color: AppColors.blackColor, context, AppStrings.LeadActivity_details),
                       const Icon(
                         Icons.keyboard_arrow_right,
                         size: 20,

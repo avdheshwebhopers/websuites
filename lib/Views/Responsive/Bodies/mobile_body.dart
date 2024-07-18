@@ -10,7 +10,7 @@ import '../../../Resources/Assets/app_Icons.dart';
 import '../../../Resources/Assets/app_fonts.dart';
 import '../../../Resources/Assets/app_images.dart';
 import '../../../Resources/app_strings/app_strings.dart';
-import '../../../Resources/app_textstyles/App_TextStyle.dart';
+import '../../../Resources/app_textstyles/app_textstyle2.dart';
 import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_1.dart';
 import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_2.dart';
 import '../../../Resources/components/Cards/DashboardScreen_Card/app_cards_3.dart';
@@ -195,7 +195,11 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                           width: Get.width/11,
                                           child: Center(
                                               child:
-                                              Image.asset(AppImages.WelcomeCompanyLogo, scale: 5.5,)
+                                              InkWell(
+                                                onTap: (){
+
+                                                },
+                                                  child: Image.asset(AppImages.WelcomeCompanyLogo, scale: 5.5,))
                                           ),
                                         ),
                                       ],
@@ -288,11 +292,11 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 8,),
 
-                              AppTextStyle.HomeTaskPerformance(context, AppStrings.Home_TaskPerformance),
+                              AppTextStyle2.w500_14(color: AppColors.blackColor, context, AppStrings.Home_TaskPerformance),
 
                               const Spacer(),
 
-                              AppTextStyle.HomeTaskDate(context, AppStrings.Home_TaskPerformanceDate),
+                              AppTextStyle2.w300_12(color: AppColors.blackColor, context, AppStrings.Home_TaskPerformanceDate),
 
                               const Icon(Icons.arrow_drop_down, size: 30,)
 
@@ -368,7 +372,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        AppTextStyle.HomeCompleted(context, AppStrings.Home_Completed),
+                                        AppTextStyle2.w600_universal(fontSize: 10,context, AppStrings.Home_Completed),
 
                                         // SizedBox(height: 5,),
 
@@ -391,7 +395,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  AppTextStyle.HomeTaskProgress(context, AppStrings.Home_TaskProgress),
+                                  AppTextStyle2.w600_15(context, AppStrings.Home_TaskProgress),
 
                                   SizedBox(height: 5,),
                                   Row(
@@ -434,13 +438,14 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 6,),
 
-                              AppTextStyle.HomeLatestTask(context, AppStrings.Home_LatestTask),
+                              AppTextStyle2.w500_14(color: AppColors.blackColor, context, AppStrings.Home_LatestTask),
 
                               const Spacer(),
 
                               InkWell(
                                 onTap: (){},
-                                child: AppTextStyle.HomeSeeAll(context, AppStrings.Home_LatestTaskSeeAll),
+                                child:
+                                AppTextStyle2.w300_12(color: AppColors.vividPurple, context, AppStrings.Home_LatestTaskSeeAll),
                               ),
 
                               const SizedBox(width: 4,),
@@ -517,21 +522,17 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 8,),
 
-                              AppTextStyle.HomeLeadTypeCount(context, AppStrings.Home_LeadTypeCount),
+                              AppTextStyle2.w500_14(color: AppColors.blackColor, context, AppStrings.Home_LeadTypeCount),
 
                               const Spacer(),
 
-                              AppTextStyle.HomeLeadTypeDate(context, AppStrings.Home_LeadTypeDate),
+                              AppTextStyle2.w300_12(color: AppColors.blackColor, context, AppStrings.Home_LeadTypeDate),
 
                               const Icon(Icons.arrow_drop_down, size: 30,)
                             ],
                           ),
                         ),
-
-
-
                         const SizedBox(height: 5,),
-
 
 
                         Container(
@@ -632,13 +633,14 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 6,),
 
-                              AppTextStyle.HomeLatestCustomer(context, AppStrings.Home_LatestCustomer),
+                              AppTextStyle2.w500_14(color: AppColors.blackColor, context, AppStrings.Home_LatestCustomer),
 
                               const Spacer(),
 
                               InkWell(
                                 onTap: (){},
-                                child: AppTextStyle.HomeLatestCustomerSeeAll(context, AppStrings.Home_LatestCustomerSeeAll),
+                                child:
+                                AppTextStyle2.w300_12(color: AppColors.vividPurple, context, AppStrings.Home_LatestCustomerSeeAll),
                               ),
 
                               const SizedBox(width: 4,),
@@ -708,7 +710,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 8,),
 
-                              AppTextStyle.HomeLeadSource(context, AppStrings.Home_LeadSource),
+                              AppTextStyle2.w500_14(color: AppColors.blackColor, context, AppStrings.Home_LeadSource),
 
                               const Spacer(),
 
@@ -716,7 +718,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 10,),
 
-                              AppTextStyle.HomeLeadSourceList(context, AppStrings.Home_LeadSourceList),
+                              AppTextStyle2.w300_12(color: AppColors.grey, context, AppStrings.Home_LeadSourceList),
 
                               const SizedBox(width: 10,),
 
@@ -726,7 +728,8 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               InkWell(
                                 onTap: (){},
-                                child: AppTextStyle.HomeLeadSourceChart(context, AppStrings.Home_LeadSourceChart),
+                                child:
+                                AppTextStyle2.w400_12(color: AppColors.vividBlue, context, AppStrings.Home_LeadSourceChart),
                               ),
                             ],
                           ),
@@ -771,14 +774,14 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 8,),
 
-                              AppTextStyle.HomeTransactions(context, AppStrings.Home_Transactions),
+                              AppTextStyle2.w500_14_Black(context, AppStrings.Home_Transactions),
 
                               const Spacer(),
 
                               InkWell(
                                 onTap: (){},
                                 child:
-                                AppTextStyle.HomeTransactionsSeeAll(context, AppStrings.Home_TransactionsSeeAll),
+                                AppTextStyle2.w300_12(color: AppColors.vividPurple, context, AppStrings.Home_TransactionsSeeAll),
                               ),
 
                               const SizedBox(width: 4,),

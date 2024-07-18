@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:websuites/Views/leadMaster_Screen.dart';
-import 'package:websuites/Views/leadlist_screen.dart';
-import 'package:websuites/Views/new_LeadList_screen.dart';
+import 'package:websuites/Views/Lead_screen/leadMaster_Screen.dart';
+import 'package:websuites/Views/Lead_screen/leadlist_screen.dart';
+import 'package:websuites/Views/Lead_screen/Create_LeadList_screen.dart';
 import 'package:websuites/Views/upcoming_screen.dart';
 import '../../../Assets/app_Icons.dart';
 import '../../app_colors.dart';
@@ -22,7 +22,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     UpcomingScreen(),
     LeadListScreen(),
     LeadMasterScreen(),
-    New_LeadList_screen(),
+    Create_LeadList_screen(),
   ];
 
   void _onItemTapped(int index){

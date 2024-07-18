@@ -8,10 +8,11 @@ import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Cust
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_FloatingActionButton/custom_floatingActionButton.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_navBar/custom_naBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
-import '../Resources/Assets/app_Icons.dart';
-import '../Resources/app_strings/app_strings.dart';
-import '../Resources/components/app_colors.dart';
-import '../View_model/controllers/save_token/save_token.dart';
+import '../../Resources/Assets/app_Icons.dart';
+import '../../Resources/app_strings/app_strings.dart';
+import '../../Resources/app_textstyles/app_textstyle2.dart';
+import '../../Resources/components/app_colors.dart';
+import '../../View_model/controllers/save_token/save_token.dart';
 
 class LeadMasterScreen extends StatefulWidget {
   const LeadMasterScreen({super.key});
@@ -75,7 +76,7 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 130,
+                    height: 140,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +89,7 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                             borderRadius: BorderRadius.circular(15)),
                         child: Center(
                           child:
-                          AppTextStyle.LeadMaster_Types(context, AppStrings.LeadMaster_Types),
+                          AppTextStyle2.w400_15(color: AppColors.whiteColor, context, AppStrings.LeadMaster_Types),
                         ),
                       ),
                       Container(
@@ -99,7 +100,7 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                             borderRadius: BorderRadius.circular(15)),
                         child: Center(
                           child: 
-                         AppTextStyle.LeadMaster_Source(context, AppStrings.LeadMaster_Source),
+                         AppTextStyle2.w400_15(color: AppColors.blackColor, context, AppStrings.LeadMaster_Source),
                         ),
                       ),
                       Container(
@@ -111,17 +112,17 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                         child: Center(
                           child:
 
-                            AppTextStyle.LeadMaster_Status(context, AppStrings.LeadMaster_Status),
+                          AppTextStyle2.w400_15(color: AppColors.blackColor, context, AppStrings.LeadMaster_Status),
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
-                  AppTextStyle.LeadMaster_AvailableLeadStatus(context, AppStrings.LeadMaster_AvailableLeadStatus),
+                  AppTextStyle2.w500_14_Black(context, AppStrings.LeadMaster_AvailableLeadStatus),
                   SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   LeadMaster_screen_card(title: 'Cold', activity: 'Active'),
                   LeadMaster_screen_card(title: 'Hot', activity: 'In Progress'),
@@ -153,7 +154,7 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                 SizedBox(
                   width: 12,
                 ),
-                AppTextStyle.LeadMaster_leadMaster(context, AppStrings.LeadMaster_LeadMaster),
+                AppTextStyle2.w700_17(color: AppColors.blackColor, context, AppStrings.LeadMaster_LeadMaster),
                 Spacer(),
                 Icon(
                   Icons.search,
@@ -171,7 +172,7 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                       borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child:
-                      AppTextStyle.LeadMaster_addLeadType(context, AppStrings.LeadMaster_AddLeadType),
+                      AppTextStyle2.w500_12(color: AppColors.whiteColor, context, AppStrings.LeadMaster_AddLeadType),
                   ),
                 )
               ],

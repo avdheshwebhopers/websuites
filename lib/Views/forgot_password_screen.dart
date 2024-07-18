@@ -4,6 +4,7 @@ import '../Resources/Assets/app_fonts.dart';
 import '../Resources/Assets/app_images.dart';
 import '../Resources/app_strings/app_strings.dart';
 import '../Resources/app_textstyles/App_TextStyle.dart';
+import '../Resources/app_textstyles/app_textstyle2.dart';
 import '../Resources/components/app_colors.dart';
 import '../Resources/components/App_Buttons/generic_button.dart';
 import '../Utils/Routes/routes_name.dart';
@@ -42,13 +43,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                 SizedBox(height: 30,),
 
-                AppTextStyle.ForgotForgotPassword(context, AppStrings.Forgot_ForgotPassword),
+                AppTextStyle2.w600_universal(fontSize: 20, color: AppColors.welcomeColor, context, AppStrings.Forgot_ForgotPassword),
 
                 SizedBox(height: 5,),
 
                 Center(
                   child:
-                  AppTextStyle.ForgotEnterYour(context, AppStrings.Forgot_EnterYour),
+                  AppTextStyle2.w400_13(color: AppColors.lightGrey,context, AppStrings.Forgot_EnterYour),
                 ),
                 SizedBox(height: 20,),
                 Obx(() =>
@@ -114,7 +115,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     children: [
                       Icon(Icons.arrow_back_ios, size: 10,color: AppColors.grey,),
 
-                      AppTextStyle.ForgotBacktoLogin(context, AppStrings.Forgot_BackToLogin),
+                      AppTextStyle2.w300_10(color: AppColors.grey, context, AppStrings.Forgot_BackToLogin),
                     ],
                   ),
                 ),

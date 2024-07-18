@@ -9,10 +9,11 @@ import 'package:websuites/Resources/components/Custom_Widgets/Custom_navBar/cust
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/Resources/components/app_colors.dart';
 
-import '../Data/models/Response_model/LoginResponseModel.dart';
-import '../Resources/Assets/app_Icons.dart';
-import '../Resources/components/Cards/LeadList_screen_card/leadlist_screen_card.dart';
-import '../View_model/controllers/save_token/save_token.dart';
+import '../../Data/models/Response_model/LoginResponseModel.dart';
+import '../../Resources/Assets/app_Icons.dart';
+import '../../Resources/app_textstyles/app_textstyle2.dart';
+import '../../Resources/components/Cards/LeadList_screen_card/leadlist_screen_card.dart';
+import '../../View_model/controllers/save_token/save_token.dart';
 
 class LeadListScreen extends StatefulWidget {
   const LeadListScreen({super.key});
@@ -116,7 +117,7 @@ class _LeadListScreenState extends State<LeadListScreen> {
                   SizedBox(
                     width: 10,
                   ),
-                  AppTextStyle.LeadList_leadList(
+                  AppTextStyle2.w700_17(color: AppColors.blackColor,
                       context, AppStrings.LeadList_LeadList),
                   Spacer(),
                   Row(
@@ -126,12 +127,12 @@ class _LeadListScreenState extends State<LeadListScreen> {
                       SizedBox(
                         width: 5,
                       ),
-                      AppTextStyle.LeadList_filter(
+                      AppTextStyle2.w400_14(color: AppColors.blackColor,
                           context, AppStrings.LeadList_Filter),
                       SizedBox(
                         width: 10,
                       ),
-                      AppTextStyle.LeadList_Lastweek(
+                      AppTextStyle2.w400_13(color: AppColors.blackColor,
                           context, AppStrings.LeadList_Lastweek),
                       Icon(
                         Icons.arrow_drop_down,

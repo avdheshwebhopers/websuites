@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
-import 'package:websuites/Resources/app_textstyles/App_TextStyle.dart';
 import 'package:websuites/Resources/components/Cards/TeamLeadScreen_Card/teamLeadScreen_card.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
-import '../Resources/app_strings/app_strings.dart';
-import '../Resources/components/app_colors.dart';
+import '../../Resources/app_strings/app_strings.dart';
+import '../../Resources/app_textstyles/app_textstyle2.dart';
+import '../../Resources/components/app_colors.dart';
 
 class TeamLeadScreen extends StatefulWidget {
   const TeamLeadScreen({super.key});
@@ -107,7 +107,7 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child:
-                  AppTextStyle.TeamLead_MyTeamLead(context, AppStrings.TeamLead_myTeamLead),
+                  AppTextStyle2.w700_17(color: AppColors.blackColor, context, AppStrings.TeamLead_myTeamLead),
                 ),
                 const Spacer(),
                 Icon(
@@ -118,7 +118,7 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
                 const SizedBox(
                   width: 5,
                 ),
-                AppTextStyle.TeamLead_Filter(context, AppStrings.TeamLead_filter),
+                AppTextStyle2.w400_14(color: AppColors.lightGrey, context, AppStrings.TeamLead_filter),
               ],
             ),
           )

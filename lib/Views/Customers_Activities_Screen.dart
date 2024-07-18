@@ -7,6 +7,7 @@ import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Cust
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 import '../Resources/app_strings/app_strings.dart';
+import '../Resources/app_textstyles/app_textstyle2.dart';
 import '../Resources/components/app_colors.dart';
 
 class CustomersActivitiesScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 120,
+                      height: 130,
                     ),
                     CustomerActvities_Card(
                         title: 'Ms. Komal Sharma',
@@ -98,7 +99,7 @@ class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
                   const SizedBox(
                     width: 12,
                   ),
-                 AppTextStyle.CustomerActvities_leadList(context, AppStrings.CustomerActivities_customerActivity),
+                 AppTextStyle2.w700_17(color: AppColors.blackColor, context, AppStrings.CustomerActivities_customerActivity),
                   const Spacer(),
                   Icon(
                     Icons.filter_list_outlined,
@@ -108,11 +109,11 @@ class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
                   const SizedBox(
                     width: 4,
                   ),
-                  AppTextStyle.CustomerActivities_filter(context, AppStrings.CustomerActivities_filter),
+                  AppTextStyle2.w400_14(color: AppColors.lightGrey, context, AppStrings.CustomerActivities_filter),
                   const SizedBox(
                     width: 10,
                   ),
-                  AppTextStyle.CustomerActivities_Details(context, AppStrings.CustomerActivities_details),
+                  AppTextStyle2.w400_14(color: AppColors.blackColor, context, AppStrings.CustomerActivities_details),
                   const Icon(
                     Icons.keyboard_arrow_right,
                     size: 20,
