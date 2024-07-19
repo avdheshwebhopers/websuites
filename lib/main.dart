@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: HomePage(),
-      getPages: AppRoutes.appRoutes(),
+      getPages: AllRoutes.appRoutes(),
     );
   }
 }
