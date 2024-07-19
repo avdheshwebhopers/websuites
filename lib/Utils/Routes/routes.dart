@@ -1,26 +1,29 @@
 
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
-import 'package:websuites/Views/Lead_Master_2.dart';
+import 'package:websuites/Views/Customer_screen/CustomerActivationList_screen.dart';
 import 'package:websuites/Views/bottomNavBar_screen.dart';
-import 'package:websuites/Views/leadlist_screen.dart';
-import 'package:websuites/Views/trash_lead_screen.dart';
+import 'package:websuites/Views/Lead_screen/trash_lead_screen.dart';
+import 'package:websuites/Views/payment_reminder.dart';
 import 'package:websuites/Views/upcoming_screen.dart';
 
 import '../../Views/AllCompanies_screen.dart';
 import '../../Views/CustomerList_screen.dart';
+import '../../Views/Customer_screen/CustomerMyTeam_Screen.dart';
 import '../../Views/Customers_Activities_Screen.dart';
+import '../../Views/Lead_screen/Lead_Master_2.dart';
+import '../../Views/Lead_screen/Search_Google_Leads.dart';
+import '../../Views/Lead_screen/leadMaster_Screen.dart';
+import '../../Views/Lead_screen/leadlist_screen.dart';
 import '../../Views/OrderProducts_screen.dart';
-import '../../Views/Search_Google_Leads.dart';
-import '../../Views/Team_Lead_Screen.dart';
+import '../../Views/Lead_screen/Team_Lead_Screen.dart';
 import '../../Views/activities_screen.dart';
-import '../../Views/allServices_screen.dart';
+import '../../Views/CustomerServices_screen.dart';
 import '../../Views/forgot_password_screen.dart';
 import '../../Views/home/MainPage.dart';
 import '../../Views/home_screen.dart';
-import '../../Views/leadMaster_Screen.dart';
 import '../../Views/login_screen.dart';
-import '../../Views/new_LeadList_screen.dart';
+import '../../Views/Lead_screen/Create_LeadList_screen.dart';
 import '../../Views/otp_screen.dart';
 import '../../Views/purchase_now_screen.dart';
 import '../../Views/splash_screen.dart';
@@ -119,7 +122,7 @@ class AppRoutes{
 
     GetPage(
       name: RoutesName.createNewLead_screen,
-      page: () => New_LeadList_screen(),
+      page: () => Create_LeadList_screen(),
       transitionDuration : Duration(milliseconds: 450),
       // transition :Transition.leftToRightWithFade,
     ),
@@ -158,6 +161,9 @@ class AppRoutes{
       transitionDuration : Duration(milliseconds: 450),
       // transition :Transition.leftToRightWithFade,
     ),
+
+        //======================================================================
+        //
 
     GetPage(
       name: RoutesName.customerList_screen,
@@ -208,6 +214,37 @@ class AppRoutes{
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
+
+        GetPage(
+          name: RoutesName.payment_reminder,
+          page: () => CustomerPaymentReminders(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+        GetPage(
+          name: RoutesName.customerMyTeam,
+          page: () => CustomerMyTeamScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+        GetPage(
+          name: RoutesName.customerMyTeam,
+          page: () => CustomerMyTeamScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+        GetPage(
+          name: RoutesName.customerActivationList,
+          page: () => CustomerActivationListScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+
+
 
 
 

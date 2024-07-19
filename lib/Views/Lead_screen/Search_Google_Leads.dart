@@ -6,12 +6,13 @@ import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Cust
 import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
-import '../Resources/Assets/app_images.dart';
-import '../Resources/app_strings/app_strings.dart';
-import '../Resources/components/Cards/create_new_lead_screen_Card/create_new_lead_screen_Widget.dart';
-import '../Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_15h.dart';
-import '../Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_22h.dart';
-import '../Resources/components/app_colors.dart';
+import '../../Resources/Assets/app_images.dart';
+import '../../Resources/app_strings/app_strings.dart';
+import '../../Resources/app_textstyles/app_textstyle2.dart';
+import '../../Resources/components/Cards/create_new_lead_screen_Card/create_new_lead_screen_Widget.dart';
+import '../../Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_15h.dart';
+import '../../Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_22h.dart';
+import '../../Resources/components/app_colors.dart';
 
 class SearchGoogleLeads extends StatefulWidget {
   const SearchGoogleLeads({super.key});
@@ -81,17 +82,20 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                   ),
                   Center(
                     child:
-                  AppTextStyle.SearchGoogle_FindActive1(context, AppStrings.SearchGoogle_FindActive1),
+                  AppTextStyle2.w700_16(color: AppColors.vividPurple, context, AppStrings.SearchGoogle_FindActive1),
                   ),
                   Center(
                     child:
-                  AppTextStyle.SearchGoogle_FindActive2(context, AppStrings.SearchGoogle_FindActive2),
+                  AppTextStyle2.w700_16(color: AppColors.vividPurple, context, AppStrings.SearchGoogle_FindActive2),
                   ),
                   SizedBox_22h(),
-                  AppTextStyle.SearchGoogle_SearchLead(context, AppStrings.SearchGoogle_SearchLead),
+                  AppTextStyle2.w500_14_Black(context, AppStrings.SearchGoogle_SearchLead),
+
                   CreateNewLeadScreenWidget(hintText: AppStrings.SearchGoogle_Search),
                   SizedBox_15h(),
-                  AppTextStyle.SearchGoogle_ByLocation(context, AppStrings.SearchGoogle_ByLocation),
+
+                  AppTextStyle2.w500_14_Black(context, AppStrings.SearchGoogle_ByLocation),
+
                   CreateNewLeadScreenWidget(hintText: AppStrings.SearchGoogle_EnterLocation),
                   SizedBox(
                     height: 30,
@@ -108,7 +112,7 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                         ),
                         child: Center(
                           child:
-                          AppTextStyle.SearchGoogle_Search2(context, AppStrings.SearchGoogle_Search2),
+                          AppTextStyle2.w500_14_White(context, AppStrings.SearchGoogle_Search2),
                         ),
                       ),
                     ],
@@ -131,11 +135,12 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                         Icons.menu_sharp,
                         size: 25,
                         color: AppColors.blackColor,
-                      )),
+                      )
+                  ),
                   Padding(
                     padding: EdgeInsets.only(left: 10),
                     child:
-                   AppTextStyle.SearchGoogle_searchGoogleLeads(context, AppStrings.SearchGoogle_searchGoogleLeads)
+                   AppTextStyle2.w700_16(color: AppColors.blackColor, context, AppStrings.SearchGoogle_searchGoogleLeads)
                   )
                 ],
               ),

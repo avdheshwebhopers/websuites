@@ -7,6 +7,7 @@ import '../../Assets/app_Icons.dart';
 import '../../Assets/app_fonts.dart';
 import '../../Assets/app_images.dart';
 import '../List_TIles/custom_list_tile.dart';
+import '../List_TIles/expandedListTile2.dart';
 import '../app_colors.dart';
 import '../App_Buttons/generic_button.dart';
 
@@ -25,7 +26,6 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-
       Container(
         color: AppColors.whiteColor,
         width: Get.width/1.5,
@@ -145,10 +145,10 @@ class AppDrawer extends StatelessWidget {
                     ),
                     ListTile(
                       onTap: () {
-                        Get.toNamed(RoutesName.leadMaster_screen);
+                        Get.toNamed(RoutesName.trashLead_screen);
                       },
                       title: Text(
-                        '• (Lead) Master',
+                        '• Trash',
                         style: TextStyle(
                             color: AppColors.welcomeColor,
                             fontFamily: AppFonts.nunitoRegular,
@@ -156,6 +156,60 @@ class AppDrawer extends StatelessWidget {
                             fontSize: 14),
                       ),
                     ),
+
+                    ListTile(
+                      onTap: () {
+                      },
+                      title: Text(
+                        '• Settings',
+                        style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14),
+                      ),
+                    ),
+
+                    ListTile(
+                      onTap: () {
+                      },
+                      title: Text(
+                        '• Customize Fields',
+                        style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14),
+                      ),
+                    ),
+
+                    ListTile(
+                      onTap: () {
+                        Get.toNamed(RoutesName.leadMaster_screen);
+                      },
+                      title: Text(
+                        '• Lead (Master)',
+                        style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14),
+                      ),
+                    ),
+
+                    ListTile(
+                      onTap: () {
+                      },
+                      title: Text(
+                        '• Global Search',
+                        style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14),
+                      ),
+                    ),
+
                   ],
                 ),
 
@@ -185,13 +239,175 @@ class AppDrawer extends StatelessWidget {
                           fontWeight: FontWeight.w300,
                           fontSize: 14
                         ),),
-                      )
-                    ]),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Activities', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• Payment Reminders', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• Services', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• Order Products', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• Orderless Services', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• My Team', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• Trash', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• Activation List', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• Customer (Master)', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title:
+                        Text('• Settings', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14
+                        ),),
+                      ),
+                    ]
+                ),
+
 
                 CustomExpandedListTile(
                     title: 'Order',
                     leadingIconImage: AppIcons.orders,
                     children: [
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• List', style: TextStyle(
+                          color: AppColors.welcomeColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: AppFonts.nunitoRegular,
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Activity', style: TextStyle(
+                          color: AppColors.welcomeColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: AppFonts.nunitoRegular,
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Proforma List', style: TextStyle(
+                          color: AppColors.welcomeColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: AppFonts.nunitoRegular,
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Payments', style: TextStyle(
+                          color: AppColors.welcomeColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: AppFonts.nunitoRegular,
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Projection', style: TextStyle(
+                          color: AppColors.welcomeColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: AppFonts.nunitoRegular,
+                        ),),
+                      ),
+
                       ListTile(
                         onTap: (){},
                         title: Text('• (Order) Master', style: TextStyle(
@@ -200,7 +416,11 @@ class AppDrawer extends StatelessWidget {
                           fontWeight: FontWeight.w300,
                           fontFamily: AppFonts.nunitoRegular,
                         ),),
-                      )
+                      ),
+
+
+
+
                     ]),
 
                 CustomExpandedListTile(
@@ -233,10 +453,42 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {
                   },
                 ),
-                CustomListTile(
-                  leadIconImage: AppIcons.campaign,
-                  title: 'Campaign',
-                  onTap: () {},
+
+                CustomExpandedListTile(
+                    title: 'Campaign',
+                    leadingIconImage: AppIcons.campaign,
+                    children: [
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• List',
+                          style: TextStyle(
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                          ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Mail Logs',
+                          style: TextStyle(
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                          ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• WhatsApp Logs',
+                          style: TextStyle(
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ],
                 ),
                 CustomListTile(
                     leadIconImage: AppIcons.customer,
@@ -377,10 +629,61 @@ class AppDrawer extends StatelessWidget {
                   title: 'Service Area',
                   onTap: () {},
                 ),
-                CustomListTile(
-                  leadIconImage: AppIcons.products,
-                  title: 'Products',
-                  onTap: () {},
+                CustomExpandedListTile(
+                    title: 'Products',
+                    leadingIconImage: AppIcons.products,
+                    children: [
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• List', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                            fontFamily: AppFonts.nunitoRegular
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Category', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                            fontFamily: AppFonts.nunitoRegular
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Brands', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                            fontFamily: AppFonts.nunitoRegular
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• GST List', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                            fontFamily: AppFonts.nunitoRegular
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Master', style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                            fontFamily: AppFonts.nunitoRegular
+                        ),),
+                      ),
+
+                    ]
                 ),
 
                 CustomExpandedListTile(
@@ -412,8 +715,76 @@ class AppDrawer extends StatelessWidget {
                           fontSize: 14,
                           fontWeight: FontWeight.w300
                         ),),
-                      )
-                    ])
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Departments',style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300
+                        ),),
+                      ),
+
+                      ListTile(
+                        onTap: (){},
+                        title: Text('• Proposals',style: TextStyle(
+                            color: AppColors.welcomeColor,
+                            fontFamily: AppFonts.nunitoRegular,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300
+                        ),),
+                      ),
+
+                      CustomExpandedListTile2(
+                          title: 'City, State & Country',
+                          children: [
+                            ListTile(
+                              onTap: (){},
+                              title: Text('• Cities',style: TextStyle(
+                                  color: AppColors.welcomeColor,
+                                  fontFamily: AppFonts.nunitoRegular,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300
+                              ),),
+                            ),
+
+                            ListTile(
+                              onTap: (){},
+                              title: Text('• States',style: TextStyle(
+                                  color: AppColors.welcomeColor,
+                                  fontFamily: AppFonts.nunitoRegular,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300
+                              ),),
+                            ),
+
+                            ListTile(
+                              onTap: (){},
+                              title: Text('• Countries',style: TextStyle(
+                                  color: AppColors.welcomeColor,
+                                  fontFamily: AppFonts.nunitoRegular,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300
+                              ),),
+                            ),
+
+                          ]),
+                      CustomExpandedListTile2(
+                          title: 'Customize Labels',
+                          children: [
+                            ListTile(
+                              onTap: (){},
+                              title: Text('• Customize',style: TextStyle(
+                                  color: AppColors.welcomeColor,
+                                  fontFamily: AppFonts.nunitoRegular,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300
+                              ),),
+                            ),
+                          ]),
+                    ]),
               ],
             ),
             const SizedBox(height: 30),

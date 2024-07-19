@@ -13,6 +13,7 @@ import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import '../Data/models/Response_model/LoginResponseModel.dart';
 import '../Resources/Assets/app_Icons.dart';
 import '../Resources/app_strings/app_strings.dart';
+import '../Resources/app_textstyles/app_textstyle2.dart';
 import '../Resources/components/app_colors.dart';
 import '../View_model/controllers/save_token/save_token.dart';
 
@@ -139,7 +140,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         ),
                         child: Center(
                           child:
-                          AppTextStyle.Upcoming_upcoming(context, AppStrings.Upcoming_upcoming)
+                          AppTextStyle2.w400_14(color: AppColors.whiteColor, context, AppStrings.Upcoming_upcoming)
                         ),
                       ),
 
@@ -152,7 +153,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         ),
                         child: Center(
                           child:
-                       AppTextStyle.Upcoming_InProgress(context, AppStrings.Upcoming_InProgress),
+                       AppTextStyle2.w400_14(color: AppColors.blackColor, context, AppStrings.Upcoming_InProgress),
                         ),
                       ),
 
@@ -166,7 +167,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         child: Center(
                           child:
 
-                            AppTextStyle.Upcoming_completed(context, AppStrings.Upcoming_completed),
+                            AppTextStyle2.w400_14(color: AppColors.blackColor, context, AppStrings.Upcoming_completed),
                         ),
                       ),
                     ],
@@ -178,7 +179,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                     children: [
                       Icon(Icons.calendar_month_rounded, size: 20, color: AppColors.grey,),
                       SizedBox(width: 10,),
-                     AppTextStyle.Upcoming_Upcoming2(context, AppStrings.Upcoming_upcoming2),
+                     AppTextStyle2.w500_14_Black(context, AppStrings.Upcoming_upcoming2),
 
                       Spacer(),
 
@@ -186,11 +187,11 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         children: [
                           Icon(Icons.filter_list_outlined, color: AppColors.lightGrey, size: 16,),
                           SizedBox(width: 5,),
-                         AppTextStyle.Upcoming_filter(context, AppStrings.Upcoming_filter),
+                         AppTextStyle2.w400_14(color: AppColors.lightGrey, context, AppStrings.Upcoming_filter),
 
                           SizedBox(width: 10,),
 
-                         AppTextStyle.Upcoming_Lastweek(context, AppStrings.Upcoming_Lastweek),
+                         AppTextStyle2.w400_13(color: AppColors.blackColor, context, AppStrings.Upcoming_Lastweek),
 
                           Icon(Icons.arrow_drop_down, size: 30,)
                         ],

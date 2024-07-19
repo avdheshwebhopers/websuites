@@ -99,8 +99,8 @@ class AllServicesScreenCard extends StatelessWidget {
                   Spacer(),
 
                   Text('ORDER NO', style: TextStyle(
-                      color: AppColors.lightGrey,
-                      fontWeight: FontWeight.w400,
+                      color: AppColors.blackColor,
+                      fontWeight: FontWeight.w500,
                       fontFamily: AppFonts.nunitoRegular,
                       fontSize: 12
                   ),),
@@ -123,8 +123,8 @@ class AllServicesScreenCard extends StatelessWidget {
                   Spacer(),
 
                   Text('#003246', style: TextStyle(
-                    color: AppColors.blackColor,
-                    fontWeight: FontWeight.w500,
+                    color: AppColors.lightGrey,
+                    fontWeight: FontWeight.w400,
                     fontFamily: AppFonts.nunitoRegular,
                     fontSize: 12,
 

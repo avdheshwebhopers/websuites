@@ -8,6 +8,7 @@ import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
 import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
 import '../Resources/app_strings/app_strings.dart';
+import '../Resources/app_textstyles/app_textstyle2.dart';
 import '../Resources/components/app_colors.dart';
 
 class CustomersListScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 120,
+                      height: 130,
                     ),
                     CustomerList_Card(title: 'Harish Sharma'),
                     CustomerList_Card(title: 'Harish Sharma'),
@@ -95,7 +96,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                   const SizedBox(
                     width: 10,
                   ),
-                  AppTextStyle.CustomerList_customer(context, AppStrings.CustomerList_Customer),
+                  AppTextStyle2.w700_16(color: AppColors.blackColor, context, AppStrings.CustomerList_Customer),
                   const Spacer(),
                   Container(
                     height: Get.height / 30,
@@ -130,7 +131,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                         const SizedBox(
                           width: 4,
                         ),
-                       AppTextStyle.CustomerList_customer2(context, AppStrings.CustomerList_customer2),
+                       AppTextStyle2.w400_12(color: AppColors.whiteColor, context, AppStrings.CustomerList_customer2),
                       ],
                     ),
                   )

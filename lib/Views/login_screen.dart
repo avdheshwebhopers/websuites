@@ -6,7 +6,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import '../Resources/Assets/app_fonts.dart';
 import '../Resources/Assets/app_images.dart';
 import '../Resources/app_strings/app_strings.dart';
-import '../Resources/app_textstyles/App_TextStyle.dart';
+import '../Resources/app_textstyles/app_textstyle2.dart';
 import '../Resources/components/app_colors.dart';
 import '../Resources/components/App_Buttons/generic_button.dart';
 import '../Utils/Routes/routes_name.dart';
@@ -65,11 +65,13 @@ class _Login_ScreenState extends State<LoginScreen> {
                     SizedBox(height: Get.height/28),
 
 
-                    AppTextStyle.login(context, AppStrings.Login_Login),
+                    AppTextStyle2.w500_universal(fontSize: 25, context, AppStrings.Login_Login, color: AppColors.welcomeColor),
 
                     SizedBox(height: Get.height/100),
 
-                    AppTextStyle.loginScreen(context, AppStrings.Login_PleaseSignIn),
+                    // AppTextStyle2.w400_13(context, AppStrings.Login_PleaseSignIn),
+                    AppTextStyle2.w400_13( color: AppColors.lightGrey, context, AppStrings.Login_PleaseSignIn),
+
 
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -77,7 +79,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                       children: [
 
 
-                        AppTextStyle.loginEmail(context, AppStrings.Login_Email),
+                        AppTextStyle2.w400_15(context, AppStrings.Login_Email),
 
                         Form(
                           key: formkey,
@@ -133,7 +135,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                                 ),
                               const SizedBox(height: 20,),
 
-                              AppTextStyle.loginPassword(context, AppStrings.Login_Password),
+                              AppTextStyle2.w400_15(context, AppStrings.Login_Password),
 
                               Container(
                                 padding: EdgeInsets.only(left: 5),
@@ -208,14 +210,16 @@ class _Login_ScreenState extends State<LoginScreen> {
                               ),
                             ),
 
-                        AppTextStyle.loginRememberMe(context, AppStrings.Login_RememberMe),
+                        AppTextStyle2.w400_12(context, AppStrings.Login_RememberMe, color: AppColors.grey),
                             Spacer(),
 
                             InkWell(
                               onTap: (){
                                 Get.offNamed(RoutesName.forgot_password_screen);
                               },
-                              child: AppTextStyle.loginForgotPassword(context, AppStrings.Login_ForgotPassword),
+                              child:
+
+                              AppTextStyle2.w400_12(context, AppStrings.Login_ForgotPassword, color: AppColors.buttonColor),
                             ),
                           ],
                         ),
@@ -241,13 +245,13 @@ class _Login_ScreenState extends State<LoginScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                           AppTextStyle.loginNewOn(context, AppStrings.Login_New_On),
+                           AppTextStyle2.w400_12(context, AppStrings.Login_New_On),
                             InkWell(
                                 onTap: (){
                                   Get.toNamed(RoutesName.purchase_now_screen);
                                 },
                                 child:
-                                AppTextStyle.loginPurchaseNow(context, AppStrings.Login_PurchaseNow),
+                                AppTextStyle2.w400_12(context, AppStrings.Login_PurchaseNow, color: AppColors.buttonColor),
                             ),
                           ],
                         ),

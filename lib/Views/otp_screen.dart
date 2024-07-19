@@ -7,6 +7,7 @@ import 'package:pinput/pinput.dart';
 import '../Resources/Assets/app_images.dart';
 import '../Resources/app_strings/app_strings.dart';
 import '../Resources/app_textstyles/App_TextStyle.dart';
+import '../Resources/app_textstyles/app_textstyle2.dart';
 import '../Resources/components/app_colors.dart';
 import '../Resources/components/App_Buttons/generic_button.dart';
 import '../Utils/Routes/routes_name.dart';
@@ -34,19 +35,19 @@ class _OtpScreenState extends State<OtpScreen> {
                 Image.asset(AppImages.WelcomeCompanyLogo, scale: 5.5,),
                 SizedBox(height: 30),
 
-                AppTextStyle.OtpWelcomeTo(context, AppStrings.Otp_WelcomeTo),
+                AppTextStyle2.w600_universal(fontSize: 20, color: AppColors.welcomeColor, context, AppStrings.Otp_WelcomeTo),
 
                 SizedBox(height: 10),
 
-                AppTextStyle.OtpWeTextedYou(context, AppStrings.Otp_WeTextedYou),
+                AppTextStyle2.w400_12(color: AppColors.grey,context, AppStrings.Otp_WeTextedYou),
 
                 Center(
                   child:
-                    AppTextStyle.OtpTheCodeTo(context, AppStrings.Otp_TheCodeToSignIn),
+                  AppTextStyle2.w400_12(color: AppColors.grey,context, AppStrings.Otp_TheCodeToSignIn),
                 ),
                 SizedBox(height: 10),
 
-                AppTextStyle.OtpEnterCode(context, AppStrings.Otp_EnterCode),
+                AppTextStyle2.w600_universal(color: AppColors.blackColor, fontSize: 14,context, AppStrings.Otp_EnterCode),
                 const SizedBox(
                   height: 25,
                 ),
@@ -84,7 +85,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        AppTextStyle.OtpResendOtp(context, AppStrings.Otp_ResendOtp)
+                        AppTextStyle2.w300_10(context, AppStrings.Otp_ResendOtp)
                       ],
                     ),
                   ),

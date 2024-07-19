@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Resources/components/Cards/OrderProducts_ScreenCard/OrderProduct_ScreenCard.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
+import 'package:websuites/Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_5w.dart';
+import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
+import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
 import '../Resources/Assets/app_fonts.dart';
+import '../Resources/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_10w.dart';
 import '../Resources/components/app_colors.dart';
 
 class OrderProductsScreen extends StatefulWidget {
@@ -13,156 +20,100 @@ class OrderProductsScreen extends StatefulWidget {
 }
 
 class _OrderProductsScreenState extends State<OrderProductsScreen> {
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  SaveUserData userPreferences = SaveUserData();
+
+  String userName = '';
+  String userEmail = '';
+
+  @override
+  void initState() {
+    FetchUserData();
+    super.initState();
+  }
+
+
+  Future<void> FetchUserData () async {
+    try{
+      LoginResponseModel response = await userPreferences.getUser();
+      String? first_name = response.user!.first_name;
+      String? email = response.user!.email;
+
+      setState(() {
+        userName = first_name!;
+        userEmail = email!;
+      });
+
+
+
+    }catch (e){
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _globalKey,
       backgroundColor: AppColors.whiteColor,
+
+      drawer: AppDrawer(
+          userName: '$userName',
+          phoneNumber: '$userEmail',
+          version: '1.10.12'),
 
       body:
           Stack(
             children: [
-              SafeArea(
+              SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.only(left: 15,right: 15),
                   child: Column(
                     children: [
-                      Container(
-                        height: Get.height/5.6,
-                        width: Get.width/1,
-                        decoration: BoxDecoration(
-                            color: AppColors.whiteColor,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: AppColors.blackColor.withOpacity(0.06),
-                                  spreadRadius: 2,
-                                  blurRadius: 4
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-
-                        child: Padding(
-                          padding: EdgeInsets.all(15),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text('Premium350 (1Y)', style: TextStyle(
-                                      color: AppColors.mediumGrey,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: AppFonts.nunitoRegular
-                                  ),),
-
-                                  Spacer(),
-
-                                  Container(
-                                    height: Get.height/40,
-                                    padding: EdgeInsets.symmetric(horizontal: 10),
-                                    decoration: BoxDecoration(
-                                      color: AppColors.lighterOrange,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Center(
-                                      child: Text('Services', style: TextStyle(
-                                          color: AppColors.vividOrange
-                                      ),),
-                                    ),
-                                  )
-                                ],
-                              ),
-
-                              Text('Lifecare Neuro', style: TextStyle(
-                                color: AppColors.welcomeColor,
-                                fontFamily: AppFonts.nunitoRegular,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16,
-                              )
-                              ),
-
-                              Row(
-                                children: [
-                                  Icon(Icons.calendar_month_outlined, size: 18, color: AppColors.mediumPurple,),
-                                  SizedBox(width: 10,),
-                                  Text('Mon, 03 June 2024 at 12:29 pm', style: TextStyle(
-                                      color: AppColors.mediumPurple,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: AppFonts.nunitoRegular
-                                  ),),
-                                ],
-                              ),
-
-                              Row(
-                                children: [
-                                  Container(
-                                    height: Get.height/40,
-                                    padding: EdgeInsets.symmetric(horizontal: 12),
-                                    decoration: BoxDecoration(
-                                      color: AppColors.lightBlue,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Center(
-                                      child: Text('Pharmahopers', style: TextStyle(
-                                          color: AppColors.darkBlue,
-                                          fontFamily: AppFonts.nunitoRegular,
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12
-                                      ),),
-                                    ),
-                                  ),
-
-
-                                  Spacer(),
-
-                                  Container(
-                                    height: Get.height/40,
-                                    padding: EdgeInsets.symmetric(horizontal: 12),
-                                    decoration: BoxDecoration(
-                                      color: AppColors.lighterPurple,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Center(
-                                      child: Text('Nitin Sharma', style: TextStyle(
-                                          color: AppColors.mediumPurple,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: AppFonts.nunitoRegular
-                                      ),),
-                                    ),
-                                  )
-
-
-                                ],
-                              )
-
-
-                            ],
-                          ),
-                        ),
-                      )
+                      SizedBox(height: 130,),
+                
+                      OrderProduct_ScreenCard(title: 'LifeCare Neuro'),
+                      OrderProduct_ScreenCard(title: 'LifeCare Neuro'),
+                      OrderProduct_ScreenCard(title: 'LifeCare Neuro'),
+                      OrderProduct_ScreenCard(title: 'LifeCare Neuro'),
+                      OrderProduct_ScreenCard(title: 'LifeCare Neuro'),
+                      OrderProduct_ScreenCard(title: 'LifeCare Neuro'),
+                      OrderProduct_ScreenCard(title: 'LifeCare Neuro'),
                     ],
                   ),
                 ),
               ),
 
-              Container(
-                height: Get.height/8,
-                width: Get.width/1,
-                decoration: BoxDecoration(
-                  color: AppColors.lighterPurple,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.blackColor.withOpacity(0.06),
-                      spreadRadius: 2,
-                      blurRadius: 4,
-                      offset: Offset(0, 4),
-                    )
-                  ]
-                ),
-              )
+              //================================================================
+              //CUSTOM APP BAR
+              
+              CustomAppBar(child:
+              Row(
+                children: [
+                  
+                  InkWell(
+                      onTap:(){
+                        _globalKey.currentState?.openDrawer();
+
+                      },
+                      child: Icon(Icons.menu, size: 25,)),
+                  SizedBox_10w(),
+                  Text('Order Products', style: TextStyle(
+                      color: AppColors.blackColor,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: AppFonts.nunitoRegular)),
+
+                  Spacer(),
+
+                  Icon(Icons.filter_list_outlined, size: 15, color: AppColors.lightGrey,),
+                  SizedBox_5w(),
+                  Text('Filter', style: TextStyle(color: AppColors.lightGrey,
+                  fontFamily: AppFonts.nunitoRegular,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 15),)
+                ],
+              )),
 
             ],
           )

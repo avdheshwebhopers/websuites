@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
 import 'package:websuites/Resources/components/Custom_Widgets/Custom_AppBar/Custom_AppBar.dart';
+import 'package:websuites/Resources/components/Drawer/AppDrawer.dart';
+import 'package:websuites/View_model/controllers/save_token/save_token.dart';
 
-import '../Resources/Assets/app_fonts.dart';
-import '../Resources/components/app_colors.dart';
+import '../../Resources/Assets/app_fonts.dart';
+import '../../Resources/components/app_colors.dart';
+
 
 class LeadMaster2 extends StatefulWidget {
   const LeadMaster2({super.key});
@@ -14,13 +18,47 @@ class LeadMaster2 extends StatefulWidget {
 
 class _LeadMaster2State extends State<LeadMaster2> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  SaveUserData userPreference = SaveUserData();
+
+  String? userName = '';
+  String? userEmail = '';
+
+  @override
+  void initState() {
+    FetchUserData();
+    super.initState();
+  }
+
+  Future<void> FetchUserData() async {
+    try {
+      LoginResponseModel response = await userPreference.getUser();
+      String? first_name = response.user!.first_name;
+      String? email = response.user!.email;
+
+      setState(() {
+        userName = first_name;
+        userEmail = email;
+      });
+    } catch (e) {
+      print('Error fetching userData: $e');
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _globalKey,
       backgroundColor: AppColors.whiteColor,
-      body: Stack(
+
+      drawer: AppDrawer(
+          userName: '$userName',
+          phoneNumber: '$userEmail',
+          version: '1.0.12'),
+
+      body:
+
+      Stack(
         children: [
           SingleChildScrollView(
             child: Padding(
@@ -1376,9 +1414,14 @@ class _LeadMaster2State extends State<LeadMaster2> {
           CustomAppBar(
             child: Row(
               children: [
-                Icon(
-                  Icons.menu,
-                  size: 25,
+                InkWell(
+                  onTap: (){
+                    _globalKey.currentState?.openDrawer();
+                  },
+                  child: Icon(
+                    Icons.menu,
+                    size: 25,
+                  ),
                 ),
                 SizedBox(
                   width: 10,

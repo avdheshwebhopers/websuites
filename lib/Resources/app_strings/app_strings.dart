@@ -238,6 +238,8 @@ static const String CustomerActivities_filter = 'Filter';
 static const String CustomerActivities_details = 'Details';
 static const String CustomerActivities_Remark = 'REMARK';
 static const String CustomerActivities_ReminderOn = 'REMINDER ON';
+static const String CustomerActivities_ReminderTo = 'REMINDER TO';
+
 
 
 
