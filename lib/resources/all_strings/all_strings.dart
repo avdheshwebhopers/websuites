@@ -181,7 +181,7 @@ static const String Drawer_ButtonLogout = 'Logout';
 
 //Lead Activity List
 
-static const String LeadActivity_leadList = 'Lead List';
+static const String LeadActivity_leadList = 'Lead Activities';
 static const String LeadActivity_filter = 'Filter';
 static const String LeadActivity_details = 'Details';
 static const String LeadActivity_remark = 'REMARK';

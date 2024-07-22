@@ -11,8 +11,8 @@ import '../utils/components/app_colors.dart';
 import '../utils/components/cards/upcoming_screen_card/upcoming_screen_card.dart';
 import '../utils/components/custom_widgets/custom_drawer/custom_drawer.dart';
 import '../utils/components/custom_widgets/custom_navBar/custom_navBar.dart';
-import '../utils/components/custom_widgets/floating_action_button/floating_action_button.dart';
-import '../view_models/controllers/save_token/save_token.dart';
+import '../utils/components/custom_widgets/custom_navBar/floating_action_button/floating_action_button.dart';
+import '../view_models/save_token/save_token.dart';
 
 class UpcomingScreen extends StatefulWidget {
   const UpcomingScreen({super.key});
@@ -24,8 +24,6 @@ class UpcomingScreen extends StatefulWidget {
 class _UpcomingScreenState extends State<UpcomingScreen> {
   final GlobalKey <ScaffoldState> _globalKey =  GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
-
-
 
   String userName = '';
   String? userEmail = "";
@@ -237,7 +235,6 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                 ],
               ),
             ),
-
 
             Positioned(
               bottom: 30,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
-import 'package:websuites/utils/components/cards/create_new_lead_screen_card/create_new_lead_screen_card.dart';
+import 'package:websuites/views/lead_screen/widgets/create_new_lead_screen_card/create_new_lead_screen_card.dart';
 
 import '../../Resources/all_images/all_images.dart';
 import '../../Resources/all_strings/all_strings.dart';
@@ -12,7 +12,7 @@ import '../../utils/components/custom_widgets/custom_appBar/custom_appBar.dart';
 import '../../utils/components/custom_widgets/custom_drawer/custom_drawer.dart';
 import '../../utils/components/custom_widgets/custom_sizedBoxes/sizedBox_15h.dart';
 import '../../utils/components/custom_widgets/custom_sizedBoxes/sizedBox_22h.dart';
-import '../../view_models/controllers/save_token/save_token.dart';
+import '../../view_models/save_token/save_token.dart';
 
 class SearchGoogleLeads extends StatefulWidget {
   const SearchGoogleLeads({super.key});

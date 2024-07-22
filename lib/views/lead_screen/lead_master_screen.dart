@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:websuites/views/lead_screen/widgets/leadMaster_screen_card/leadMaster_screen_card.dart';
 
 import '../../Data/models/Response_model/LoginResponseModel.dart';
 import '../../Resources/all_icons/all_Icons.dart';
@@ -8,12 +9,11 @@ import '../../Resources/all_strings/all_strings.dart';
 import '../../Resources/all_textStyles/all_textStyles.dart';
 
 import '../../utils/components/app_colors.dart';
-import '../../utils/components/cards/leadMaster_screen_card/leadMaster_screen_card.dart';
 import '../../utils/components/custom_widgets/custom_appBar/custom_appBar.dart';
 import '../../utils/components/custom_widgets/custom_drawer/custom_drawer.dart';
 import '../../utils/components/custom_widgets/custom_navBar/custom_navBar.dart';
-import '../../utils/components/custom_widgets/floating_action_button/floating_action_button.dart';
-import '../../view_models/controllers/save_token/save_token.dart';
+import '../../utils/components/custom_widgets/custom_navBar/floating_action_button/floating_action_button.dart';
+import '../../view_models/save_token/save_token.dart';
 
 class LeadMasterScreen extends StatefulWidget {
   const LeadMasterScreen({super.key});

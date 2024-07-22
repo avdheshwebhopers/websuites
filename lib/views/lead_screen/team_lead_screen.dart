@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/views/lead_screen/widgets/team_lead_screen_card/team_lead_screen_card.dart';
 
 import '../../Resources/all_strings/all_strings.dart';
 import '../../Resources/all_textStyles/all_textStyles.dart';
 
 import '../../utils/components/app_colors.dart';
-import '../../utils/components/cards/team_lead_screen_card/team_lead_screen_card.dart';
 import '../../utils/components/custom_widgets/custom_appBar/custom_appBar.dart';
 import '../../utils/components/custom_widgets/custom_drawer/custom_drawer.dart';
-import '../../view_models/controllers/save_token/save_token.dart';
+import '../../view_models/save_token/save_token.dart';
 
 class TeamLeadScreen extends StatefulWidget {
   const TeamLeadScreen({super.key});

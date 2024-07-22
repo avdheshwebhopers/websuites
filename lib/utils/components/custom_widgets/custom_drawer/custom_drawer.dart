@@ -5,14 +5,12 @@ import 'package:websuites/Utils/Routes/routes_name.dart';
 import '../../../../Resources/all_fonts/all_fonts.dart';
 import '../../../../Resources/all_icons/all_Icons.dart';
 import '../../../../Resources/all_images/all_images.dart';
-import '../../../../view_models/controllers/save_token/save_token.dart';
-
+import '../../../../view_models/save_token/save_token.dart';
 import '../../All_Buttons/common_button.dart';
-import '../../List_TIles/custom_list_tile.dart';
 import '../../app_colors.dart';
-import '../../list_tiles/expandedListTile.dart';
-import '../../list_tiles/expandedListTile2.dart';
-
+import 'drawer_list_tiles/custom_list_tile.dart';
+import 'drawer_list_tiles/expandedListTile.dart';
+import 'drawer_list_tiles/expandedListTile2.dart';
 class CustomDrawer extends StatelessWidget {
   final String userName;
   final String phoneNumber;
@@ -33,11 +31,13 @@ class CustomDrawer extends StatelessWidget {
       height: Get.height * 1,
       child: Drawer(
         backgroundColor: AllColors.whiteColor,
-        child: ListView(
+        child:
+        ListView(
           children: [
             Container(
+              color: AllColors.whiteColor,
               padding: EdgeInsets.only(left: 13),
-              height: Get.height / 9,
+              height: Get.height/9,
               child: Row(
                 children: [
                   Container(
@@ -57,9 +57,10 @@ class CustomDrawer extends StatelessWidget {
                       Text(
                         userName,
                         style: TextStyle(
-                          fontWeight: FontWeight.w600,
+                          color: AllColors.blackColor,
+                          fontWeight: FontWeight.w500,
                           fontSize: 16,
-                          fontFamily: 'NunitoRegular',
+                          fontFamily: AllFonts.nunitoRegular,
                         ),
                       ),
                       Text(
@@ -67,7 +68,7 @@ class CustomDrawer extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 12,
-                          fontFamily: 'NunitoRegular',
+                          fontFamily: AllFonts.nunitoRegular,
                           color: AllColors.grey,
                         ),
                       ),
@@ -130,7 +131,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     ListTile(
                       onTap: () {
-                        Get.toNamed(RoutesName.teamLead_screen);
+                        Get.toNamed(RoutesName.my_teamLead_screen);
                       },
                       title: Text(
                         '• Team Leads',
@@ -208,7 +209,7 @@ class CustomDrawer extends StatelessWidget {
                     children: [
                       ListTile(
                         onTap: () {
-                          Get.toNamed(RoutesName.customerList_screen);
+                          Get.toNamed(RoutesName.customer_list_screen);
                         },
                         title: Text(
                           '• List',
@@ -221,7 +222,7 @@ class CustomDrawer extends StatelessWidget {
                       ),
                       ListTile(
                         onTap: () {
-                          Get.toNamed(RoutesName.AllCompanies_screen);
+                          Get.toNamed(RoutesName.customer_companies_screen);
                         },
                         title: Text(
                           '• Companies',
@@ -820,7 +821,7 @@ class CustomDrawer extends StatelessWidget {
                 version,
                 style: TextStyle(
                   fontWeight: FontWeight.w300,
-                  fontFamily: 'NunitoRegular',
+                  fontFamily: AllFonts.nunitoRegular,
                   fontSize: 10,
                   color: AllColors.grey,
                 ),
@@ -962,7 +963,7 @@ class AppTabDrawer extends StatelessWidget {
                   ),
                   ListTile(
                     onTap: () {
-                      Get.toNamed(RoutesName.teamLead_screen);
+                      Get.toNamed(RoutesName.my_teamLead_screen);
                     },
                     title: Text(
                       '• Team Leads',
@@ -994,7 +995,7 @@ class AppTabDrawer extends StatelessWidget {
                   children: [
                     ListTile(
                       onTap: () {
-                        Get.toNamed(RoutesName.customerList_screen);
+                        Get.toNamed(RoutesName.customer_list_screen);
                       },
                       title: Text(
                         '• List',
@@ -1007,7 +1008,7 @@ class AppTabDrawer extends StatelessWidget {
                     ),
                     ListTile(
                       onTap: () {
-                        Get.toNamed(RoutesName.AllCompanies_screen);
+                        Get.toNamed(RoutesName.customer_companies_screen);
                       },
                       title: Text(
                         '• Companies',

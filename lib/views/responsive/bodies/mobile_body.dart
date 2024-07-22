@@ -9,25 +9,24 @@ import '../../../Resources/all_images/all_images.dart';
 import '../../../Resources/all_strings/all_strings.dart';
 import '../../../Resources/all_textStyles/all_textStyles.dart';
 import '../../../utils/components/app_colors.dart';
-import '../../../utils/components/cards/dashboard_screen_card/latest_customers_card.dart';
-import '../../../utils/components/cards/dashboard_screen_card/latest_task_card.dart';
-import '../../../utils/components/cards/dashboard_screen_card/transaction_list_card.dart';
 import '../../../utils/components/custom_widgets/custom_drawer/custom_drawer.dart';
 import '../../../utils/components/custom_widgets/custom_navBar/custom_navBar.dart';
-import '../../../utils/components/custom_widgets/floating_action_button/floating_action_button.dart';
-import '../../../utils/components/dashboard_screen_rows/db_screen_leads_row.dart';
-import '../../../utils/components/dashboard_screen_rows/db_screen_revenue_row.dart';
-import '../../../view_models/controllers/dashboard_viewModels/DB_latest_task_viewModel.dart';
-import '../../../view_models/controllers/dashboard_viewModels/DB_leadSource_viewModel.dart';
-import '../../../view_models/controllers/dashboard_viewModels/DB_leads_by_typeCount_viewModel.dart';
-import '../../../view_models/controllers/dashboard_viewModels/DB_transactions_viewModel.dart';
-import '../../../view_models/controllers/save_token/save_token.dart';
+import '../../../utils/components/custom_widgets/custom_navBar/floating_action_button/floating_action_button.dart';
+import '../../../view_models/dashboard_viewModels/DB_latest_task_viewModel.dart';
+import '../../../view_models/dashboard_viewModels/DB_leadSource_viewModel.dart';
+import '../../../view_models/dashboard_viewModels/DB_leads_by_typeCount_viewModel.dart';
+import '../../../view_models/dashboard_viewModels/DB_transactions_viewModel.dart';
+import '../../../view_models/save_token/save_token.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/latest_customers_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/latest_task_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/transaction_list_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_rows/home_screen_leads_row.dart';
+import '../../home_screen/home_screen_widgets/home_screen_rows/home_screen_revenue_row.dart';
 
 
 
 class MyMobileBody extends StatefulWidget {
   // final dynamic name;
-
 
   MyMobileBody({
     // required this.name,
@@ -109,15 +108,11 @@ class _MyMobileBodyState extends State<MyMobileBody> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
 
-      drawer: Container(
-          color: AllColors.whiteColor,
-          width: Get.width/1.5,
-          height: Get.height*1,
-          child:
-          CustomDrawer(
-              userName: '$userName',
-              phoneNumber: '$userEmail',
-              version: 'version 1.0.12')),
+      drawer:
+      CustomDrawer(
+          userName: '$userName',
+          phoneNumber: '$userEmail',
+          version: 'version 1.0.12'),
       body: Column(
               children: [
                 Expanded(
@@ -214,14 +209,18 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       Row(                                                    //SCROLLER ROW WITH CONTAINERS
                                         children: [
                                           DBRevenueRow(
-                                            // height: Get.height/9,
-                                            // width: Get.width/3,
                                             backgroundColor: AllColors.whiteColor,
                                             icon: Icons.currency_rupee, size: 15, color:AllColors.mediumPurple,
                                             amount: '₹20000',
                                             title: 'Total revenue',
                                             subtitle: '4% (30 days)',),
 
+                                          DBRevenueRow(
+                                              backgroundColor: AllColors.whiteColor,
+                                              icon: Icons.currency_rupee, size: 15, color:AllColors.mediumPurple,
+                                              amount: '₹20000',
+                                              title: 'Total revenue',
+                                              subtitle: '4% (30 days)'),
 
                                           DBRevenueRow(
                                               backgroundColor: AllColors.whiteColor,
@@ -230,6 +229,12 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                               title: 'Total revenue',
                                               subtitle: '4% (30 days)'),
 
+                                          DBRevenueRow(
+                                              backgroundColor: AllColors.whiteColor,
+                                              icon: Icons.currency_rupee, size: 15, color:AllColors.mediumPurple,
+                                              amount: '₹20000',
+                                              title: 'Total revenue',
+                                              subtitle: '4% (30 days)'),
 
                                           DBRevenueRow(
                                               backgroundColor: AllColors.whiteColor,
@@ -238,30 +243,12 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                               title: 'Total revenue',
                                               subtitle: '4% (30 days)'),
 
-
                                           DBRevenueRow(
                                               backgroundColor: AllColors.whiteColor,
                                               icon: Icons.currency_rupee, size: 15, color:AllColors.mediumPurple,
                                               amount: '₹20000',
                                               title: 'Total revenue',
                                               subtitle: '4% (30 days)'),
-
-
-                                          DBRevenueRow(
-                                              backgroundColor: AllColors.whiteColor,
-                                              icon: Icons.currency_rupee, size: 15, color:AllColors.mediumPurple,
-                                              amount: '₹20000',
-                                              title: 'Total revenue',
-                                              subtitle: '4% (30 days)'),
-
-
-                                          DBRevenueRow(
-                                              backgroundColor: AllColors.whiteColor,
-                                              icon: Icons.currency_rupee, size: 15, color:AllColors.mediumPurple,
-                                              amount: '₹20000',
-                                              title: 'Total revenue',
-                                              subtitle: '4% (30 days)'),
-
 
                                           DBRevenueRow(
                                               backgroundColor: AllColors.whiteColor,
@@ -309,8 +296,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                         Container(
                           padding: EdgeInsets.only(top: 20, bottom: 20),
                           margin: const EdgeInsets.only(right: 6, left: 6),
-                          // height: Get.height/4,
-                          // width: Get.width/1.05,
                           decoration: BoxDecoration(
                             color: AllColors.whiteColor,
                             borderRadius: BorderRadius.circular(10),
@@ -334,7 +319,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       color: AllColors.vividPurple.withOpacity(0.10),
                                       spreadRadius: 10,
                                       blurRadius: 10,
-                                      offset: const Offset(0, 0),
                                     ),
                                   ],
                                 ),
@@ -830,7 +814,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                             name: 'Prakash shah',
                             amount: '₹4000',
                             subtitle: '25 May, 2024 at 12:30 pm'),
-
 
                         const TransactionListCard(
                             title: 'Premium 60 Packages Self Done...',

@@ -24,7 +24,6 @@ import 'dimensions.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   final Widget mobileBody;
-
   final Widget tabBody;
 
   ResponsiveLayout({required this.mobileBody, required this.tabBody});

@@ -6,17 +6,18 @@ import '../../../Resources/all_fonts/all_fonts.dart';
 import '../../../Resources/all_images/all_images.dart';
 import '../../../Resources/all_strings/all_strings.dart';
 import '../../../Utils/Routes/routes_name.dart';
-import '../../../Utils/Utils.dart';
+import '../../../Utils/utils.dart';
 import '../../../utils/components/All_Buttons/common_button.dart';
-import '../../../utils/components/List_TIles/custom_list_tile.dart';
 import '../../../utils/components/app_colors.dart';
-import '../../../utils/components/cards/dashboard_screen_card/latest_customers_card.dart';
-import '../../../utils/components/cards/dashboard_screen_card/latest_task_card.dart';
-import '../../../utils/components/cards/dashboard_screen_card/transaction_list_card.dart';
 import '../../../utils/components/custom_widgets/custom_drawer/custom_drawer.dart';
-import '../../../utils/components/dashboard_screen_rows/db_screen_leads_row.dart';
-import '../../../utils/components/dashboard_screen_rows/db_screen_revenue_row.dart';
-import '../../../view_models/controllers/save_token/save_token.dart';
+import '../../../utils/components/custom_widgets/custom_drawer/drawer_list_tiles/custom_list_tile.dart';
+import '../../../view_models/save_token/save_token.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/latest_customers_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/latest_task_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/transaction_list_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_rows/home_screen_leads_row.dart';
+import '../../home_screen/home_screen_widgets/home_screen_rows/home_screen_revenue_row.dart';
+
 
 
 class MyTabBody extends StatefulWidget {
@@ -38,26 +39,17 @@ class _MyTabBodyState extends State<MyTabBody> {
 
   Future<void> fetchUserData() async {
     try {
-      // Fetch token and email from SharedPreferences using SaveToken class
       LoginResponseModel response = await userPreference.getUser();
       String? first_name = response.user!.first_name;
-      String? email = response.user!.email;// Extract email from response
-
+      String? email = response.user!.email;
       setState(() {
         userName = first_name!;
         userEmail = email!;
-        // Update userEmail state variable with fetched email
       });
     } catch (e) {
       print('Error fetching userData: $e');
-      // Handle error if necessary
     }
   }
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -1069,7 +1061,6 @@ class _MyTabBodyState extends State<MyTabBody> {
                       name: 'Prakash shah',
                       amount: '₹4000',
                       subtitle: '25 May, 2024 at 12:30 pm'),
-
 
                   SizedBox(height: 30,),
                 ],

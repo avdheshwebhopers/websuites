@@ -1,15 +1,12 @@
 
 
 import 'package:flutter/material.dart';
-
-
 import '../../../Resources/all_fonts/all_fonts.dart';
 import '../app_colors.dart';
 
 class CommonButton extends StatelessWidget {
   const CommonButton({
     Key? key,
-    // this.buttonColor = App_Colors.buttoncolor,
     required this.title,
     required this.onPress,
     this.width = 60,
@@ -22,8 +19,6 @@ class CommonButton extends StatelessWidget {
   final String title;
   final double height, width;
   final VoidCallback onPress;
-  // final Color buttonColor;
-
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +28,6 @@ class CommonButton extends StatelessWidget {
         height: height,
         width: width,
         decoration: BoxDecoration(
-          // color: AppColors.buttonColor,
           color: AllColors.mediumPurple,
           borderRadius: BorderRadius.circular(5),
         ),

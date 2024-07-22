@@ -11,7 +11,7 @@ import '../../utils/components/app_colors.dart';
 import '../../utils/components/custom_widgets/custom_appBar/custom_appBar.dart';
 import '../../utils/components/custom_widgets/custom_drawer/custom_drawer.dart';
 import '../../utils/components/custom_widgets/custom_sizedBoxes/sizedBox_10w.dart';
-import '../../view_models/controllers/save_token/save_token.dart';
+import '../../view_models/save_token/save_token.dart';
 
 class CustomerMyTeamScreen extends StatefulWidget {
   const CustomerMyTeamScreen({super.key});

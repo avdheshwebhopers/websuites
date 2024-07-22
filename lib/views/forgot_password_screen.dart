@@ -5,10 +5,10 @@ import '../Resources/all_images/all_images.dart';
 import '../Resources/all_strings/all_strings.dart';
 import '../Resources/all_textStyles/all_textStyles.dart';
 import '../Utils/Routes/routes_name.dart';
-import '../Utils/Utils.dart';
+import '../Utils/utils.dart';
 import '../utils/components/All_Buttons/common_button.dart';
 import '../utils/components/app_colors.dart';
-import '../view_models/controllers/forgot_password_viewModel/forgot_password_viewModel.dart';
+import '../view_models/forgot_password_viewModel/forgot_password_viewModel.dart';
 
 
 class ForgotPasswordScreen extends StatefulWidget {

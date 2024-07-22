@@ -3,7 +3,7 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import '../../Utils/Routes/routes_name.dart';
-import '../controllers/save_token/save_token.dart';
+import '../save_token/save_token.dart';
 
 
 class SplashServices {

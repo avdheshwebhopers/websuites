@@ -3,38 +3,37 @@ import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
 import 'package:websuites/Views/Customer_screen/customer_activationList_screen.dart';
 import 'package:websuites/Views/Order_screen/proforma_list.dart';
-import 'package:websuites/Views/bottom_NavBar_screen.dart';
+import 'package:websuites/Views/bottom_navBar_screen.dart';
 import 'package:websuites/Views/Lead_screen/trash_lead_screen.dart';
-import 'package:websuites/Views/payment_reminder.dart';
 import 'package:websuites/Views/upcoming_screen.dart';
+import 'package:websuites/views/customer_screen/customer_order_products_screen.dart';
+import 'package:websuites/views/customer_screen/customer_services_screen.dart';
+import 'package:websuites/views/lead_screen/create_newLead_screen.dart';
+import 'package:websuites/views/order_screen/order_payments_screen.dart';
 
-import '../../Views/all_companies_screen.dart';
-import '../../Views/customer_list_screen.dart';
 import '../../Views/Customer_screen/customer_myTeam_Screen.dart';
-import '../../Views/customers_activities_screen.dart';
 import '../../Views/Lead_screen/search_google_leads.dart';
 import '../../Views/Lead_screen/lead_master_screen.dart';
 import '../../Views/Lead_screen/leadlist_screen.dart';
-import '../../Views/order_products_screen.dart';
 import '../../Views/Lead_screen/team_lead_screen.dart';
 import '../../Views/Order_screen/order_activity_screen.dart';
 import '../../Views/Order_screen/orderList_screen.dart';
-import '../../Views/activities_screen.dart';
-import '../../Views/customer_services_screen.dart';
 import '../../Views/forgot_password_screen.dart';
-import '../../Views/home_screen.dart';
 import '../../Views/login_screen.dart';
-import '../../Views/Lead_screen/create_LeadList_screen.dart';
 import '../../Views/otp_screen.dart';
 import '../../Views/purchase_now_screen.dart';
 import '../../Views/splash_screen.dart';
 import '../../Views/welcome_to_company.dart';
-import '../../views/main_page/MainPage.dart';
+import '../../views/customer_screen/customer_all_companies_screen.dart';
+import '../../views/customer_screen/customer_all_companies_screen.dart';
+import '../../views/customer_screen/customer_list_screen.dart';
+import '../../views/customer_screen/customer_payment_reminder.dart';
+import '../../views/customer_screen/customers_activities_screen.dart';
+import '../../views/home_screen/home_screen.dart';
+import '../../views/lead_screen/lead_activities_screen.dart';
 
 class AllRoutes{
-
   static appRoutes () =>
-
       [
         GetPage(
         name: RoutesName.splash_screen,
@@ -76,16 +75,16 @@ class AllRoutes{
       // transition :Transition.leftToRightWithFade,
     ),
 
-        GetPage(
-      name: RoutesName.home_screen,
-      page: () => HomeScreen(),
-      transitionDuration : Duration(milliseconds: 450),
-      // transition :Transition.leftToRightWithFade,
-    ),
+    //     GetPage(
+    //   name: RoutesName.home_screen,
+    //   page: () => HomeScreen(),
+    //   transitionDuration : Duration(milliseconds: 450),
+    //   // transition :Transition.leftToRightWithFade,
+    // ),
 
     GetPage(
       name: RoutesName.main_page_screen,
-      page: () => MainPage(),
+      page: () => HomeScreen(),
       transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
       ),
@@ -97,8 +96,17 @@ class AllRoutes{
           // transition :Transition.leftToRightWithFade,
     ),
 
+        GetPage(
+          name: RoutesName.bottomNavBar_screen,
+          page: () => BottomNavBarScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+
 
         //======================================================================
+        // Lead Screen
 
     GetPage(
       name: RoutesName.lead_list_screen,
@@ -116,7 +124,7 @@ class AllRoutes{
 
     GetPage(
       name: RoutesName.createNewLead_screen,
-      page: () => Create_LeadList_screen(),
+      page: () => CreateNewLeadScreen(),
       transitionDuration : Duration(milliseconds: 450),
       // transition :Transition.leftToRightWithFade,
     ),
@@ -136,7 +144,7 @@ class AllRoutes{
     ),
 
     GetPage(
-      name: RoutesName.teamLead_screen,
+      name: RoutesName.my_teamLead_screen,
       page: () => TeamLeadScreen(),
       transitionDuration : Duration(milliseconds: 450),
       // transition :Transition.leftToRightWithFade,
@@ -157,74 +165,60 @@ class AllRoutes{
     ),
 
         //======================================================================
-        //
+        // Customer Screen
 
     GetPage(
-      name: RoutesName.customerList_screen,
+      name: RoutesName.customer_list_screen,
       page: () => CustomersListScreen(),
       transitionDuration : Duration(milliseconds: 450),
       // transition :Transition.leftToRightWithFade,
     ),
 
         GetPage(
-          name: RoutesName.customerActivities_screen,
+          name: RoutesName.customer_activities_screen,
           page: () => CustomersActivitiesScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
 
-    GetPage(
-      name: RoutesName.bottomNavBar_screen,
-      page: () => BottomNavBarScreen(),
-      transitionDuration : Duration(milliseconds: 450),
-      // transition :Transition.leftToRightWithFade,
-    ),
-
 
         GetPage(
-          name: RoutesName.AllCompanies_screen,
-          page: () => AllCompaniesScreen(),
+          name: RoutesName.customer_companies_screen,
+          page: () => CustomerCompaniesScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
 
         GetPage(
-          name: RoutesName.AllServices_screen,
-          page: () => AllServicesScreen(),
+          name: RoutesName.customer_services_screen,
+          page: () => CustomerServicesScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
 
         GetPage(
-          name: RoutesName.OrderProducts_screen,
-          page: () => OrderProductsScreen(),
+          name: RoutesName.customer_orderProducts_screen,
+          page: () => CustomerOrderProductsScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
 
         GetPage(
-          name: RoutesName.payment_reminder,
+          name: RoutesName.customer_payment_reminder,
           page: () => CustomerPaymentReminders(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
 
         GetPage(
-          name: RoutesName.customerMyTeam,
+          name: RoutesName.customer_myTeam_screen,
           page: () => CustomerMyTeamScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
 
         GetPage(
-          name: RoutesName.customerMyTeam,
-          page: () => CustomerMyTeamScreen(),
-          transitionDuration : Duration(milliseconds: 450),
-          // transition :Transition.leftToRightWithFade,
-        ),
-
-        GetPage(
-          name: RoutesName.customerActivationList,
+          name: RoutesName.customer_activation_list,
           page: () => CustomerActivationListScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
@@ -234,22 +228,29 @@ class AllRoutes{
         // Order Screens
 
         GetPage(
-          name: RoutesName.orderListScreen,
+          name: RoutesName.order_list_screen,
           page: () => OrderListScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
 
         GetPage(
-          name: RoutesName.orderActivityScreen,
+          name: RoutesName.order_activity_screen,
           page: () => OrderActivityScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
 
         GetPage(
-          name: RoutesName.orderProformaList,
+          name: RoutesName.order_proformaList_screen,
           page: () => OrderProformaList(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+        GetPage(
+          name: RoutesName.order_payments_screen,
+          page: () => OrderPaymentsScreen(),
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),

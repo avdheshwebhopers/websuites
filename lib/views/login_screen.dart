@@ -8,11 +8,10 @@ import '../Resources/all_images/all_images.dart';
 import '../Resources/all_strings/all_strings.dart';
 import '../Resources/all_textStyles/all_textStyles.dart';
 import '../Utils/Routes/routes_name.dart';
-import '../Utils/Utils.dart';
+import '../Utils/utils.dart';
 import '../utils/components/All_Buttons/common_button.dart';
 import '../utils/components/app_colors.dart';
-import '../view_models/controllers/login_viewModel/login_view_model.dart';
-
+import '../view_models/login_viewModel/login_view_model.dart';
 
 
 
@@ -28,7 +27,6 @@ class _Login_ScreenState extends State<LoginScreen> {
 
   final LoginViewModel loginController= Get.put(LoginViewModel());
   //final DashboardViewModel dashboardController = Get.put(DashboardViewModel());
-
 
   final RxBool rememberMe = false.obs;
   final RxBool obscurePassword = true.obs;
@@ -60,7 +58,6 @@ class _Login_ScreenState extends State<LoginScreen> {
                   children: [
                     SizedBox(height: Get.height/5),
 
-                    // Image.asset('lib/assets/images/WHLogo.png', scale: 7),
                     Image.asset(AllImages.Splash_WHLogo, scale: 7,),
                     SizedBox(height: Get.height/28),
 

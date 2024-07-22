@@ -5,11 +5,12 @@ import '../../../Resources/all_fonts/all_fonts.dart';
 import '../../../Resources/all_images/all_images.dart';
 import '../../../utils/components/All_Buttons/common_button.dart';
 import '../../../utils/components/app_colors.dart';
-import '../../../utils/components/cards/dashboard_screen_card/latest_customers_card.dart';
-import '../../../utils/components/cards/dashboard_screen_card/latest_task_card.dart';
-import '../../../utils/components/cards/dashboard_screen_card/transaction_list_card.dart';
-import '../../../utils/components/dashboard_screen_rows/db_screen_leads_row.dart';
-import '../../../utils/components/dashboard_screen_rows/db_screen_revenue_row.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/latest_customers_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/latest_task_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_card/transaction_list_card.dart';
+import '../../home_screen/home_screen_widgets/home_screen_rows/home_screen_leads_row.dart';
+import '../../home_screen/home_screen_widgets/home_screen_rows/home_screen_revenue_row.dart';
+
 
 
 
