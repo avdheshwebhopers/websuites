@@ -10,6 +10,7 @@ import 'package:websuites/views/customer_screen/customer_order_products_screen.d
 import 'package:websuites/views/customer_screen/customer_services_screen.dart';
 import 'package:websuites/views/lead_screen/create_newLead_screen.dart';
 import 'package:websuites/views/order_screen/order_payments_screen.dart';
+import 'package:websuites/views/roles_screen/roles_screen.dart';
 
 import '../../Views/Customer_screen/customer_myTeam_Screen.dart';
 import '../../Views/Lead_screen/search_google_leads.dart';
@@ -25,12 +26,12 @@ import '../../Views/purchase_now_screen.dart';
 import '../../Views/splash_screen.dart';
 import '../../Views/welcome_to_company.dart';
 import '../../views/customer_screen/customer_all_companies_screen.dart';
-import '../../views/customer_screen/customer_all_companies_screen.dart';
 import '../../views/customer_screen/customer_list_screen.dart';
 import '../../views/customer_screen/customer_payment_reminder.dart';
 import '../../views/customer_screen/customers_activities_screen.dart';
 import '../../views/home_screen/home_screen.dart';
 import '../../views/lead_screen/lead_activities_screen.dart';
+import '../../views/sales_target_screen.dart';
 
 class AllRoutes{
   static appRoutes () =>
@@ -254,6 +255,27 @@ class AllRoutes{
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
+
+        //======================================================================
+        //SALES TARGET
+
+        GetPage(
+          name: RoutesName.sales_target_screen,
+          page: () => SalesTargetScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+        //======================================================================
+        //ROLES SCREEN
+
+        GetPage(
+          name: RoutesName.roles_screen,
+          page: () => RolesScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
 
 
 

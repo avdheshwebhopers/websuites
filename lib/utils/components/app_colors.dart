@@ -44,10 +44,14 @@ class AllColors {
   static Color mediumGreen = const Color(0xffbcf8b8);
   static Color lightGreen = const Color(0xffedffeb);
 
+  static Color greenJungle = const Color(0xff24a959);
+  static Color greenJungleLight = const Color(0xffdeffe7);
+
+
   static Color darkRed = const Color(0xffbd1111);
-  static Color vividRed = const Color(0xffff1b1b);
+  static Color vividRed = const Color(0xffff0000);
   static Color mediumRed = const Color(0xffff7878);
-  static Color lightRed = const Color(0xffffe8e8);
+  static Color lightRed = const Color(0xffffe2e2);
 
   static Color darkYellow = const Color(0xffeba801);
   static Color vividYellow = const Color(0xfffdd71b);

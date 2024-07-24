@@ -240,6 +240,11 @@ static const String CustomerActivities_Remark = 'REMARK';
 static const String CustomerActivities_ReminderOn = 'REMINDER ON';
 static const String CustomerActivities_ReminderTo = 'REMINDER TO';
 
+//==============================================================================
+//Order Payment Screen
+
+static const String order_payment_total = 'Total: 27,87,000';
+
 
 
 

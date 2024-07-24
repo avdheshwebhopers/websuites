@@ -40,7 +40,17 @@ class RoutesName {
   static const String order_list_screen = '/order_list_screen';
   static const String order_activity_screen = '/order_activity_screen';
   static const String order_proformaList_screen = '/order_proformaList_screen';
-  static const String order_payments_screen = '/';
+  static const String order_payments_screen = '/order_payments_screen';
+
+
+  //============================================================================
+// SALES TARGET
+
+  static const String sales_target_screen = '/sales_target_screen';
+  static const String roles_screen = '/';
+
+
+
 
 
 
