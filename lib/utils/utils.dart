@@ -7,7 +7,9 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import 'components/app_colors.dart';
+import 'app_colors/app_colors.dart';
+
+
 
 
 class Utils {

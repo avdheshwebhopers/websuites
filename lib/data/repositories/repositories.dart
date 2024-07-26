@@ -1,4 +1,4 @@
-import '../../Resources/all_urls/all_urls.dart';
+import '../../resources/app_urls/app_urls.dart';
 import '../models/Response_model/Dashboard_Screen/DB_Count_ResponseModel.dart';
 import '../models/Response_model/Dashboard_Screen/DB_LatestCustomer_ResponseModel.dart';
 import '../models/Response_model/Dashboard_Screen/DB_latestTask_ResponseModel.dart';
@@ -17,7 +17,7 @@ class Repositories{
 
   Future<LoginResponseModel> loginApi(dynamic data) async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.LoginApi, data);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.LoginApi, data);
       return response = LoginResponseModel.fromJson(response);
     } catch(e){
       rethrow;
@@ -26,7 +26,7 @@ class Repositories{
 
   Future<ForgotPasswordResponseModel> ForgotApi(dynamic data) async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.ForgotApi, data);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.ForgotApi, data);
       return response = ForgotPasswordResponseModel.fromJson(response);
     } catch(e){
       rethrow;
@@ -35,7 +35,7 @@ class Repositories{
 
   Future<Dashboard_Count_Response_Model> dashboardCountApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.getDashboardCountApi,null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.getDashboardCountApi,null);
       return response = Dashboard_Count_Response_Model.fromJson(response);
     } catch(e) {
       rethrow;
@@ -44,7 +44,7 @@ class Repositories{
 
   Future<Dashboard_Response_Model> dashboardApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.dashboard, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dashboard, null);
       return response = Dashboard_Response_Model.fromJson(response);
     } catch(e){
       rethrow;
@@ -53,7 +53,7 @@ class Repositories{
 
   Future<UserList_Response_Model> UserlistApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.userListApi, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.userListApi, null);
       return response = UserList_Response_Model.fromJson(response);
     } catch(e){
       rethrow;
@@ -62,7 +62,7 @@ class Repositories{
 
   Future<Dashboard_Leads_By_Type_Count_Response_Model> DB_LeadsTypeCountApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.dash_Leads_By_TypeCount, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_Leads_By_TypeCount, null);
       return response = Dashboard_Leads_By_Type_Count_Response_Model.fromJson(response);
     } catch(e){
       rethrow;
@@ -71,7 +71,7 @@ class Repositories{
 
   Future<DashboardLeadSourceResponseModel> DB_LeadsSourceApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.dash_LeadSource, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_LeadSource, null);
       return response = DashboardLeadSourceResponseModel.fromJson(response);
     } catch(e){
       rethrow;
@@ -89,7 +89,7 @@ class Repositories{
 
   Future<DB_LatestCustomers_ResponseModel> DB_LatestCustomersApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.dash_LatestCustomers, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_LatestCustomers, null);
       return response = DB_LatestCustomers_ResponseModel.fromJson(response);
     } catch(e){
       rethrow;
@@ -98,7 +98,7 @@ class Repositories{
 
   Future<DbLatestTaskResponseModel> DB_LatestTaskApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.dash_LatestTask, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_LatestTask, null);
       return response = DbLatestTaskResponseModel.fromJson(response);
     } catch(e){
       rethrow;
@@ -107,7 +107,7 @@ class Repositories{
 
   Future<DB_LatestTransaction_ResponseModel> DB_TransactionApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AllUrls.dash_Transactions, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_Transactions, null);
       return response = DB_LatestTransaction_ResponseModel.fromJson(response);
     } catch(e){
       rethrow;

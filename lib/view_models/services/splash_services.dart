@@ -1,10 +1,7 @@
-
-
 import 'dart:async';
 import 'package:get/get.dart';
 import '../../Utils/Routes/routes_name.dart';
 import '../save_token/save_token.dart';
-
 
 class SplashServices {
 
@@ -24,7 +21,7 @@ class SplashServices {
         Timer(
           const Duration(seconds: 1),
               () => Get.offNamed(
-            RoutesName.main_page_screen,
+            RoutesName.home_screen,
             arguments: {
               'accessToken': value.accessToken,
               'email' : value.user!.email,
