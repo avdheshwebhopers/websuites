@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../Resources/all_fonts/all_fonts.dart';
+import '../../../../Utils/app_colors/app_colors.dart';
 import '../../../../resources/image_strings/image_strings.dart';
-import '../../../utils/app_colors/app_colors.dart';
 
 class UpcomingScreenCard extends StatelessWidget {
   final String title;

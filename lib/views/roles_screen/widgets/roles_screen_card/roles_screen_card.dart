@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../Resources/all_fonts/all_fonts.dart';
-import '../../../utils/app_colors/app_colors.dart';
+import '../../../../Utils/app_colors/app_colors.dart';
 
 class RolesScreenCard extends StatelessWidget {
   final String title;

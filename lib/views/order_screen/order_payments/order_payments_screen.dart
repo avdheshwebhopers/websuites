@@ -5,10 +5,10 @@ import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
-import '../../Resources/all_fonts/all_fonts.dart';
-import '../../utils/app_colors/app_colors.dart';
-import '../../utils/components/widgets/app_bar/custom_appBar.dart';
-import '../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../../Resources/all_fonts/all_fonts.dart';
+import '../../../utils/app_colors/app_colors.dart';
+import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
+import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 
 
 class OrderPaymentsScreen extends StatefulWidget {

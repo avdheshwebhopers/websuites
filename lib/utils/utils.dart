@@ -1,15 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
 import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
-
-import 'app_colors/app_colors.dart';
-
-
 
 
 class Utils {
@@ -20,19 +13,19 @@ class Utils {
     FocusScope.of(context).requestFocus(nextFocus);
   }
 
-  static ToastMessage(String message) {
-    Fluttertoast.showToast(msg: message,
-      backgroundColor: AllColors.blackColor,
-      gravity: ToastGravity.BOTTOM, // toast will show from the bottom
-    );
-  }
-
-  static ToastMessageCenter(String message) {
-    Fluttertoast.showToast(msg: message,
-      backgroundColor: AllColors.blackColor,
-      gravity: ToastGravity.CENTER, // toast will show from the bottom
-    );
-  }
+  // static ToastMessage(String message) {
+  //   Fluttertoast.showToast(msg: message,
+  //     backgroundColor: AllColors.blackColor,
+  //     gravity: ToastGravity.BOTTOM, // toast will show from the bottom
+  //   );
+  // }
+  //
+  // static ToastMessageCenter(String message) {
+  //   Fluttertoast.showToast(msg: message,
+  //     backgroundColor: AllColors.blackColor,
+  //     gravity: ToastGravity.CENTER, // toast will show from the bottom
+  //   );
+  // }
 
   static SnackbarFailed(String message) {
     Get.snackbar('failed' , message,
@@ -92,21 +85,20 @@ class Utils {
     );
   }
 
-  static void textError(BuildContext context, String message) {
-    Flushbar(
-      messageText: Text(message,style: TextStyle(fontWeight: FontWeight.w500 , fontSize: 16.sp,color: Colors.white),  ),
-      icon: Icon(Icons.error, color: Colors.white, size: 3.h),
-      duration: Duration(seconds: 3),
-      backgroundColor: Colors.red.shade700,
-      borderRadius: BorderRadius.circular(10.h),
-      margin: EdgeInsets.fromLTRB(2.h, 0.5.h , 2.h , 2.h),
-      padding: EdgeInsets.all(2.h),
-      dismissDirection: FlushbarDismissDirection.HORIZONTAL,
-    ).show(context);
+  // static void textError(BuildContext context, String message) {
+  //   Flushbar(
+  //     messageText: Text(message,style: TextStyle(fontWeight: FontWeight.w500 , fontSize: 16.sp,color: Colors.white),  ),
+  //     icon: Icon(Icons.error, color: Colors.white, size: 3.h),
+  //     duration: Duration(seconds: 3),
+  //     backgroundColor: Colors.red.shade700,
+  //     borderRadius: BorderRadius.circular(10.h),
+  //     margin: EdgeInsets.fromLTRB(2.h, 0.5.h , 2.h , 2.h),
+  //     padding: EdgeInsets.all(2.h),
+  //     dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+  //   ).show(context);
 
   }
-  static void errorAlertDialogue(String? message, BuildContext context) {
-
+  void errorAlertDialogue(String? message, BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -117,14 +109,14 @@ class Utils {
           ),
           content: Padding(
             padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-            child: Text(message!, textAlign: TextAlign.center, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),),
+            child: Text(message!, textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
           ),
         );
         },
     );
   }
 
-  static void successDialogue(String? message, BuildContext context) {
+  void successDialogue(String? message, BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -135,21 +127,21 @@ class Utils {
           ),
           content: Padding(
             padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-            child: Text(message!, textAlign: TextAlign.center, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),),
+            child: Text(message!, textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
           ),
         );
         },
     );
   }
 
-  static void confirmationDialogue(String? message , String? title ,onPress, BuildContext context){
+  void confirmationDialogue(String? message , String? title ,onPress, BuildContext context){
 
     showDialog(context: context, builder: (BuildContext context){
       return CupertinoAlertDialog(
         title: Text(title ?? ""),
         content: Padding(
           padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
-          child: Text(message!,textAlign: TextAlign.center,style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w500),),
+          child: Text(message!,textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
         ),
         actions: <Widget> [
           CupertinoDialogAction(child:Text("Cancel"),
@@ -158,12 +150,10 @@ class Utils {
             },),
           CupertinoDialogAction(child: Text('OK'),
               onPressed: onPress),
-
         ],
       );
     });
   }
 
-}
 
 
