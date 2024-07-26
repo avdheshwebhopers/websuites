@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../Resources/all_fonts/all_fonts.dart';
-import '../../../../Utils/components/app_colors.dart';
+import '../../../utils/app_colors/app_colors.dart';
+
 
 class SalesTargetScreenCard extends StatelessWidget {
   final String title;
@@ -28,7 +29,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                   blurRadius: 4)
             ]),
         child: Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(13),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,9 +39,9 @@ class SalesTargetScreenCard extends StatelessWidget {
                   Text(
                     'START DATE - ',
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 12,
                       fontFamily: AllFonts.nunitoRegular,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       color: AllColors.blackColor,
                     ),
                   ),
@@ -50,16 +51,16 @@ class SalesTargetScreenCard extends StatelessWidget {
                         color: AllColors.grey,
                         fontWeight: FontWeight.w400,
                         fontFamily: AllFonts.nunitoRegular,
-                        fontSize: 13),
+                        fontSize: 12),
                   ),
                   const Spacer(),
                   Text(
                     '₹11,55,000',
                     style: TextStyle(
                         color: AllColors.blackColor,
-                        fontSize: 13,
+                        fontSize: 12,
                         fontFamily: AllFonts.nunitoRegular,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
@@ -85,7 +86,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     'Dec 14, 2023, 11:38 AM',
                     style: TextStyle(
                       color: AllColors.mediumPurple,
-                      fontSize: 13,
+                      fontSize: 12,
                       fontFamily: AllFonts.nunitoRegular,
                       fontWeight: FontWeight.w400,
                     ),
@@ -94,17 +95,19 @@ class SalesTargetScreenCard extends StatelessWidget {
                   Text(
                     'DEADLINE - ',
                     style: TextStyle(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         fontFamily: AllFonts.nunitoRegular,
-                        fontSize: 13,
+                        fontSize: 12,
                         color: AllColors.blackColor),
                   ),
                   Text(
                     'Oct 31, 2023',
                     style: TextStyle(
-                        color: AllColors.grey,
-                        fontSize: 13,
-                        fontFamily: AllFonts.nunitoRegular),
+                      fontWeight: FontWeight.w400,
+                      color: AllColors.grey,
+                      fontSize: 12,
+                      fontFamily: AllFonts.nunitoRegular,
+                    ),
                   ),
                 ],
               ),
@@ -118,21 +121,21 @@ class SalesTargetScreenCard extends StatelessWidget {
                     style: TextStyle(
                         color: AllColors.blackColor,
                         fontFamily: AllFonts.nunitoRegular,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                   ),
                   Text(
                     '07',
                     style: TextStyle(
                         color: AllColors.grey,
                         fontWeight: FontWeight.w400,
-                        fontSize: 13,
+                        fontSize: 12,
                         fontFamily: AllFonts.nunitoRegular),
                   ),
                   const Spacer(),
                   Icon(
                     Icons.report,
-                    size: 20,
+                    size: 18,
                     color: AllColors.mediumPurple,
                   ),
                   const SizedBox(
@@ -143,7 +146,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     style: TextStyle(
                         color: AllColors.blackColor,
                         fontFamily: AllFonts.nunitoRegular,
-                        fontSize: 13,
+                        fontSize: 12,
                         fontWeight: FontWeight.w500),
                   )
                 ],

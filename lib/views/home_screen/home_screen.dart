@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../utils/responsive/bodies/mobile_body.dart';
+import '../../utils/responsive/bodies/tab_body.dart';
+import '../../utils/responsive/responsive_layout.dart';
 
-import '../Responsive/Bodies/mobile_body.dart';
-import '../Responsive/Bodies/tab_body.dart';
-import '../Responsive/responsive_layout.dart';
 
 
 class HomeScreen extends StatefulWidget {

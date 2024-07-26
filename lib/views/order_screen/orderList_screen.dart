@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
-
-
 import '../../Resources/all_fonts/all_fonts.dart';
-
-import '../../utils/components/Custom_Widgets/Custom_SizedBoxes/sizedBox_5w.dart';
-import '../../utils/components/app_colors.dart';
-import '../../utils/components/custom_widgets/custom_appBar/custom_appBar.dart';
-import '../../utils/components/custom_widgets/custom_drawer/custom_drawer.dart';
-import '../../utils/components/custom_widgets/custom_sizedBoxes/sizedBox_10w.dart';
-import '../../utils/components/custom_widgets/custom_sizedBoxes/sizedBox_5h.dart';
+import '../../utils/app_colors/app_colors.dart';
+import '../../utils/components/widgets/app_bar/custom_appBar.dart';
+import '../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../utils/components/widgets/sized_boxes/sizedBox_10w.dart';
+import '../../utils/components/widgets/sized_boxes/sizedBox_5h.dart';
+import '../../utils/components/widgets/sized_boxes/sizedBox_5w.dart';
 import '../../view_models/save_token/save_token.dart';
 
 class OrderListScreen extends StatefulWidget {
@@ -66,10 +63,10 @@ class _OrderListScreenState extends State<OrderListScreen> {
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: [
-                  SizedBox(height: 130),
+                  SizedBox(height: 120),
                   Container(
                     margin: EdgeInsets.only(bottom: 10),
-                    height: Get.height / 3.6,
+                    height: Get.height / 3,
                     width: Get.width / 1,
                     decoration: BoxDecoration(
                   color: AllColors.whiteColor,
@@ -93,7 +90,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 'Vinay Gupta',
                                 style: TextStyle(
                             color: AllColors.lightGrey,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   fontFamily: AllFonts.nunitoRegular,
                                   fontSize: 12,
                                 ),
@@ -136,7 +133,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                   style: TextStyle(
                                 color: AllColors.blackColor,
                                       fontFamily: AllFonts.nunitoRegular,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w700,
                                       fontSize: 18),
                                 ),
                                 Icon(
@@ -145,14 +142,14 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 )
                               ]),
                           Text(
-                            'Services:Pro(Yearly)',
+                            'Services : Pro(Yearly)',
                             style: TextStyle(
                           color: AllColors.lightGrey,
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AllFonts.nunitoRegular),
                           ),
-                          Divider(
+                          const Divider(
                             thickness: 0.4,
                           ),
                           Row(
@@ -163,7 +160,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 style: TextStyle(
                               color: AllColors.blackColor,
                                     fontFamily: AllFonts.nunitoRegular,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w600,
                                     fontSize: 13),
                               ),
                               Text(
@@ -171,7 +168,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 style: TextStyle(
                               color: AllColors.blackColor,
                                     fontSize: 13,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w600,
                                     fontFamily: AllFonts.nunitoRegular),
                               ),
                             ],
@@ -201,7 +198,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 '₹82560.00',
                                 style: TextStyle(
                               color: AllColors.vividRed,
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w500,
                                     fontFamily: AllFonts.nunitoRegular),
                               )
@@ -216,16 +213,16 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 style: TextStyle(
                             color: AllColors.blackColor,
                                   fontFamily: AllFonts.nunitoRegular,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 13
                                 ),
                               ),
                               Text(
                                 'PAID AMOUNT',
                                 style: TextStyle(
                               color: AllColors.blackColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
                                     fontFamily: AllFonts.nunitoRegular),
                               )
                             ],
@@ -234,11 +231,11 @@ class _OrderListScreenState extends State<OrderListScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '# 003869',
+                                '#003869',
                                 style: TextStyle(
                               color: AllColors.grey,
                                     fontFamily: AllFonts.nunitoRegular,
-                                    fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 12),
                               ),
                               Text(
@@ -246,7 +243,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 style: TextStyle(
                               color: AllColors.darkGreen,
                                     fontSize: 12,
-                                    fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w500,
                                     fontFamily: AllFonts.nunitoRegular),
                               )
                             ],
@@ -260,15 +257,15 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 style: TextStyle(
                             color: AllColors.blackColor,
                                   fontFamily: AllFonts.nunitoRegular,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 13,
                                 ),
                               ),
                               Text(
                                 'ORDERED DATE',
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
                                     fontFamily: AllFonts.nunitoRegular,
                               color: AllColors.blackColor),
                               ),
@@ -278,8 +275,8 @@ class _OrderListScreenState extends State<OrderListScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                height: Get.height / 40,
-                                width: Get.width / 6.5,
+                                height: Get.height/40,
+                                width: Get.width/6.5,
                                 decoration: BoxDecoration(
                             color: AllColors.lightBlue,
                                   borderRadius: BorderRadius.circular(20),
@@ -293,7 +290,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                     children: [
                                       Icon(
                                         Icons.sync,
-                                        size: 15,
+                                        size: 13,
                                   color: AllColors.darkBlue,
                                       ),
                                       Text(
@@ -314,7 +311,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 style: TextStyle(
                               color: AllColors.lightGrey,
                                     fontSize: 12,
-                                    fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w500,
                                     fontFamily: AllFonts.nunitoRegular),
                               )
                             ],
@@ -323,9 +320,8 @@ class _OrderListScreenState extends State<OrderListScreen> {
                       ),
                     ),
                   ),
-
                   Container(
-                    height: Get.height/6,
+                    height: Get.height/5.5,
                     width: Get.width/1,
                     decoration: BoxDecoration(
                 color: AllColors.whiteColor,

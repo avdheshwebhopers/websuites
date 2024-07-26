@@ -3,11 +3,11 @@ class RoutesName {
 
   static const String splash_screen = '/splash_screen';
   static const String login_screen = '/login_screen';
-  static const String welcome_company_screen = '/Welcome_to_company';
+  static const String welcome_company_screen = '/welcome_company_screen';
   static const String otp_screen = '/otp_screen';
   static const String forgot_password_screen = '/forgot_password_screen';
-  static const String purchase_now_screen = '/purchase_now';
-  static const String main_page_screen = '/main_page_screen';
+  static const String purchase_now_screen = '/purchase_now_screen';
+  static const String home_screen = '/home_screen';
   static const String upcoming_screen = '/upcoming_screen';
   static const String bottomNavBar_screen = '/bottomNavBar_screen';
   static const String dropDown = '/dropDown';
@@ -39,15 +39,21 @@ class RoutesName {
 
   static const String order_list_screen = '/order_list_screen';
   static const String order_activity_screen = '/order_activity_screen';
-  static const String order_proformaList_screen = '/order_proformaList_screen';
+  static const String order_proformaList_screen = '/';
   static const String order_payments_screen = '/order_payments_screen';
 
-
   //============================================================================
-// SALES TARGET
+// SALES TARGET SCREEN
 
   static const String sales_target_screen = '/sales_target_screen';
-  static const String roles_screen = '/';
+
+  //============================================================================
+  // ROLES SCREEN
+  static const String roles_screen = '/roles_screen';
+
+  //============================================================================
+// USERS
+ static const String users_screen = '/users_screen';
 
 
 

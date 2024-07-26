@@ -1,14 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-
 import '../../../Data/models/Request_models/login_request_model.dart';
-import '../../../Data/models/Response_model/LoginResponseModel.dart';
 import '../../../Data/repositories/repositories.dart';
-import '../../../Data/response/status.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
 import '../save_token/save_token.dart';
@@ -65,7 +60,7 @@ class LoginViewModel extends GetxController {
         print(value.user?.first_name);
         print(value.user?.email);
 
-        Get.offNamed(RoutesName.main_page_screen,
+        Get.offNamed(RoutesName.home_screen,
         );
 
         Utils.SnackbarSuccess('login Successful');
