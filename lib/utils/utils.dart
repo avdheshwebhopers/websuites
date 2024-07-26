@@ -1,12 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
-
-import '../Utils/app_colors/app_colors.dart';
-
 
 
 class Utils {
@@ -17,19 +13,19 @@ class Utils {
     FocusScope.of(context).requestFocus(nextFocus);
   }
 
-  static ToastMessage(String message) {
-    Fluttertoast.showToast(msg: message,
-      backgroundColor: AllColors.blackColor,
-      gravity: ToastGravity.BOTTOM, // toast will show from the bottom
-    );
-  }
-
-  static ToastMessageCenter(String message) {
-    Fluttertoast.showToast(msg: message,
-      backgroundColor: AllColors.blackColor,
-      gravity: ToastGravity.CENTER, // toast will show from the bottom
-    );
-  }
+  // static ToastMessage(String message) {
+  //   Fluttertoast.showToast(msg: message,
+  //     backgroundColor: AllColors.blackColor,
+  //     gravity: ToastGravity.BOTTOM, // toast will show from the bottom
+  //   );
+  // }
+  //
+  // static ToastMessageCenter(String message) {
+  //   Fluttertoast.showToast(msg: message,
+  //     backgroundColor: AllColors.blackColor,
+  //     gravity: ToastGravity.CENTER, // toast will show from the bottom
+  //   );
+  // }
 
   static SnackbarFailed(String message) {
     Get.snackbar('failed' , message,
