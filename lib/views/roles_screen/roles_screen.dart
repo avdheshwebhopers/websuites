@@ -7,7 +7,7 @@ import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
-import 'package:websuites/views/roles_screen/roles_screen_card/roles_screen_card.dart';
+import 'package:websuites/views/roles_screen/widgets/roles_screen_card/roles_screen_card.dart';
 import '../../Resources/all_fonts/all_fonts.dart';
 import '../../utils/app_colors/app_colors.dart';
 

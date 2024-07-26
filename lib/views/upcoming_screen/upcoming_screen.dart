@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:websuites/views/upcoming_screen/upcoming_screen_card/upcoming_screen_card.dart';
+import 'package:websuites/views/upcoming_screen/widgets/upcoming_screen_card/upcoming_screen_card.dart';
 import '../../Data/models/Response_model/LoginResponseModel.dart';
 import '../../Resources/all_fonts/all_fonts.dart';
 import '../../resources/icon_strings/icon_strings.dart';
