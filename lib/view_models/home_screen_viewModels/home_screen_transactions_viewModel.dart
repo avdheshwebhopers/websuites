@@ -10,8 +10,6 @@ import '../../../Data/response/status.dart';
 
 class HomeScreenTransactionsViewmodel extends GetxController {
   final _api = Repositories();
-  // RxBool loading = false.obs;
-
 
   final transactionList = DB_LatestTransaction_ResponseModel().obs;
   final rxStatus = Status.LOADING.obs;
@@ -23,10 +21,8 @@ class HomeScreenTransactionsViewmodel extends GetxController {
 
 
   Future<void> Db_transactions(BuildContext, context) async {
-    // loading.value = true;
 
-
-    _api.DB_TransactionApi().then((value){
+    _api.dbTransactionApi().then((value){
       setRxStatus(Status.COMPLETED);
       setTransactionList(value);
       // if(value.items != null){

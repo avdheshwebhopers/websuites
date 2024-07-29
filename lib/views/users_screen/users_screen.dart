@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/app_bar/custom_appBar.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
@@ -7,7 +7,7 @@ import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
 import 'package:websuites/views/users_screen/widgets/users_card.dart';
-import '../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../Utils/app_colors/app_colors.dart';
 
 class UsersScreen extends StatefulWidget {
@@ -50,7 +50,8 @@ class _UsersScreenState extends State<UsersScreen> {
     return Scaffold(
         key: _globalKey,
         bottomNavigationBar: CustomBottomNavBar(),
-        floatingActionButton: CustomFloatingButton(onPressed: (){},
+        floatingActionButton: CustomFloatingButton(
+            onPressed: (){},
             imageIcon: IconStrings.navSearch3, backgroundColor: AllColors.mediumPurple),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
@@ -105,7 +106,7 @@ class _UsersScreenState extends State<UsersScreen> {
                     'Users',
                     style: TextStyle(
                         color: AllColors.blackColor,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontSize: 17,
                         fontWeight: FontWeight.w700),
                   ),
@@ -124,7 +125,7 @@ class _UsersScreenState extends State<UsersScreen> {
                         color: AllColors.grey,
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
-                        fontFamily: AllFonts.nunitoRegular
+                          
                     ),
                   ),
                 ],

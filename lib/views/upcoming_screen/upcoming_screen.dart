@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:websuites/views/upcoming_screen/widgets/upcoming_screen_card/upcoming_screen_card.dart';
-import '../../Data/models/Response_model/LoginResponseModel.dart';
-import '../../Resources/all_fonts/all_fonts.dart';
+import '../../Data/models/Response_model/login.dart';
+  
 import '../../resources/icon_strings/icon_strings.dart';
 import '../../resources/image_strings/image_strings.dart';
 import '../../resources/strings/strings.dart';
@@ -93,14 +93,14 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                           Text('Hello, Sunil !', style: TextStyle(
                             color: AllColors.blackColor,
                             fontWeight: FontWeight.w600,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 16,
                           ),),
 
                           Text('May 14, 2024, 12:45 PM', style: TextStyle(
                             color: AllColors.blackColor,
                             fontWeight: FontWeight.w400,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 12,
                           ),),
                         ],
@@ -116,7 +116,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                           shape: BoxShape.circle,
                         ),
                         
-                        child: Image.asset(ImageStrings.WelcomeCompanyLogo, scale: 20,),
+                        child: Image.asset(ImageStrings. welcomeCompanyLogo, scale: 20,),
                       )
                     ],
                   ),
@@ -144,7 +144,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         width: Get.width / 3.6,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: AllColors.textfield2,
+                          color: AllColors.textField2,
                         ),
                         child: Center(
                           child:
@@ -157,7 +157,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         width: Get.width / 3.6,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: AllColors.textfield2,
+                          color: AllColors.textField2,
                         ),
                         child: Center(
                           child:

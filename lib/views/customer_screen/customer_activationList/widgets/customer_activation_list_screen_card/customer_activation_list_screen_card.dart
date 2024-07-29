@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 import '../../../../../utils/components/widgets/sized_boxes/sizedBox_5w.dart';
 
@@ -44,7 +44,7 @@ class CustomerActivationListCard extends StatelessWidget {
                       color: AllColors.lightGrey,
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),),
                   Spacer(),
 
@@ -67,7 +67,7 @@ class CustomerActivationListCard extends StatelessWidget {
 
               Text(title, style: TextStyle(
                   color: AllColors.welcomeColor,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontWeight: FontWeight.w700,
                   fontSize: 18
               ),),
@@ -79,7 +79,7 @@ class CustomerActivationListCard extends StatelessWidget {
                     color: AllColors.mediumPurple,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
-                    fontFamily: AllFonts.nunitoRegular
+                      
                 ),)
               ],),
 
@@ -89,7 +89,7 @@ class CustomerActivationListCard extends StatelessWidget {
                   SizedBox5w(),
                   Text('Invalid Date', style: TextStyle(
                       color: AllColors.vividBlue,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400,
                       fontSize: 13
                   ),),
@@ -109,7 +109,7 @@ class CustomerActivationListCard extends StatelessWidget {
                           color: AllColors.darkBlue,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          fontFamily: AllFonts.nunitoRegular
+                            
                       ),),
                     ),
                   )

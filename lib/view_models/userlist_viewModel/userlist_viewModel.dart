@@ -3,16 +3,15 @@ import 'package:get/get.dart';
 import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/utils.dart';
 
-class UserlistViewModel extends GetxController{
+class UserListViewModel extends GetxController{
 
   final _api = Repositories();
   RxBool loading = false.obs;
 
-
-  Future<void>UserList(BuildContext, context)async{
+  Future<void> userList(context)async{
     loading.value = true;
 
-    _api.UserlistApi().then((value){
+    _api.userListApi().then((value){
 
       if(value.id != null){
       Utils.SnackbarSuccess('Id fetched');

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 import '../../../../../utils/components/widgets/sized_boxes/sizedBox_5w.dart';
 
@@ -41,7 +41,7 @@ class OrderActivityScreenCard extends StatelessWidget {
                 children: [
                   Text('Serviceable', style: TextStyle(
                     color: AllColors.grey,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                   ),
@@ -51,7 +51,7 @@ class OrderActivityScreenCard extends StatelessWidget {
                       color: AllColors.blackColor,
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),
                   ),
                 ],
@@ -59,7 +59,7 @@ class OrderActivityScreenCard extends StatelessWidget {
 
               Text(title, style: TextStyle(
                   color: AllColors.blackColor,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontWeight: FontWeight.w700,
                   fontSize: 18
               ),),
@@ -76,7 +76,7 @@ class OrderActivityScreenCard extends StatelessWidget {
                       color: AllColors.mediumPurple,
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),),
                   const Spacer(),
 
@@ -90,7 +90,7 @@ class OrderActivityScreenCard extends StatelessWidget {
                     child: Center(
                       child: Text('Count-02', style: TextStyle(
                           color: AllColors.mediumPurple,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 12
                       ),),
                     ),

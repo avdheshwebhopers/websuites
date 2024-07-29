@@ -15,7 +15,7 @@ class HomeScreenLatestCustomersViewModel{
   Future<void> DB_LatestCustomers(BuildContext context)async{
 
     loading.value = true;
-    _api.DB_LatestCustomersApi().then((value){
+    _api.dbLatestCustomersApi().then((value){
       if(value.items != null){
         Utils.SnackbarSuccess('leads list fetched');
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
 import '../../../../Utils/app_colors/app_colors.dart';
 import '../../../../resources/image_strings/image_strings.dart';
 
@@ -9,10 +8,10 @@ class UpcomingScreenCard extends StatelessWidget {
   final String companyName;
 
   const UpcomingScreenCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.companyName,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class UpcomingScreenCard extends StatelessWidget {
         children: [
 
           Text(title, style: TextStyle(
-              fontFamily: AllFonts.nunitoRegular,
+                
               color: AllColors.grey,
               fontSize: 12,
               fontWeight: FontWeight.w400
@@ -48,7 +47,7 @@ class UpcomingScreenCard extends StatelessWidget {
           Text(companyName, style: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 18,
-              fontFamily: AllFonts.nunitoRegular,
+                
               color: AllColors.welcomeColor
           ),),
 
@@ -59,7 +58,7 @@ class UpcomingScreenCard extends StatelessWidget {
               SizedBox(width: 10,),
 
               Text('Mon, 03 June 2024 at 12:29 pm', style: TextStyle(
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                   color: AllColors.mediumPurple
@@ -77,7 +76,7 @@ class UpcomingScreenCard extends StatelessWidget {
                 color: AllColors.blackColor,
                 fontWeight: FontWeight.w400,
                 fontSize: 12,
-                fontFamily: AllFonts.nunitoRegular,
+                  
               ),),
 
               SizedBox(width: 25),
@@ -87,7 +86,7 @@ class UpcomingScreenCard extends StatelessWidget {
 
               Text('55 minutes', style: TextStyle(
                   color: AllColors.blackColor,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontSize: 12,
                   fontWeight: FontWeight.w400
               ),),
@@ -103,7 +102,7 @@ class UpcomingScreenCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 backgroundColor: AllColors.lightPurple,
-                backgroundImage: AssetImage(ImageStrings.Splash_WHLogo,),
+                backgroundImage: const AssetImage(ImageStrings.splashWHLogo),
                 radius: 14,
               ),
 
@@ -120,7 +119,7 @@ class UpcomingScreenCard extends StatelessWidget {
                   child: Text('Prakash Sethi', style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 11,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       color: AllColors.vividPurple
                   ),),
                 ),

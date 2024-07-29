@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/app_bar/custom_appBar.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
@@ -8,7 +8,7 @@ import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
 import 'package:websuites/views/roles_screen/widgets/roles_screen_card/roles_screen_card.dart';
-import '../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../utils/app_colors/app_colors.dart';
 
 class RolesScreen extends StatefulWidget {
@@ -102,7 +102,7 @@ class _RolesScreenState extends State<RolesScreen> {
                         color: AllColors.blackColor,
                         fontWeight: FontWeight.w700,
                         fontSize: 17,
-                        fontFamily: AllFonts.nunitoRegular
+                          
                       ),),
                       Spacer(),
                       Container(
@@ -121,7 +121,7 @@ class _RolesScreenState extends State<RolesScreen> {
                               color: AllColors.whiteColor,
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
-                              fontFamily: AllFonts.nunitoRegular
+                                
                             ),)
                           ],
                         )

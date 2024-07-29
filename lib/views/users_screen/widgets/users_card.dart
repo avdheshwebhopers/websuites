@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 
 
@@ -52,7 +52,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
                 children: [
                   Text('dineshkumar.webhopers@gmail.com', style: TextStyle(
                       color: AllColors.grey,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 11,
                       fontWeight: FontWeight.w400
                   ),),
@@ -69,7 +69,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
                           color: AllColors.vividOrange,
                           fontWeight: FontWeight.w400,
                           fontSize: 10,
-                          fontFamily: AllFonts.nunitoRegular
+                            
                       ),),
                     ),
                   ),
@@ -78,7 +78,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
 
               Text(widget.title, style: TextStyle(
                   color: AllColors.blackColor,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontSize: 19,
                   fontWeight: FontWeight.w700
               ),),
@@ -91,14 +91,14 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
                       color: AllColors.mediumPurple,
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),),
 
                   Spacer(),
 
                   Text('REPORT TO - ', style: TextStyle(
                     color: AllColors.blackColor,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                   ),),
@@ -107,7 +107,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
                       color: AllColors.mediumPurple,
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),),
                 ],
               ),
@@ -118,7 +118,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
                   SizedBox(width: 5,),
                   Text('+91-8171957605', style: TextStyle(
                     color: AllColors.lightGrey,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 12,
                   ),),
 
@@ -127,7 +127,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
                   Text('ACTIONS - ', style: TextStyle(
                     color: AllColors.blackColor,
                     fontSize: 12,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w600,
                   ),),
 
@@ -145,7 +145,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
                 children: [
                   Text('DEPARTMENT', style: TextStyle(
                     color: AllColors.blackColor,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                   ),),
@@ -159,7 +159,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
                       color: AllColors.grey,
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),),
 
                   Spacer(),

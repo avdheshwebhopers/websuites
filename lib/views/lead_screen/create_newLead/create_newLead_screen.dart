@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
 import 'package:websuites/views/lead_screen/create_newLead/widgets/create_new_lead_screen_card/create_new_lead_screen_card.dart';
-import '../../../Data/models/Response_model/LoginResponseModel.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+import '../../../Data/models/Response_model/login.dart';
+  
 import '../../../resources/icon_strings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
@@ -119,7 +119,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                                 hintText: Strings.CreateNewLead_enterPhoneNumber,
                                 hintStyle: TextStyle(
                                   fontSize: 13,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   color: AllColors.lighterGrey,
                                 )),
                           ),
@@ -161,7 +161,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                                 hintText: Strings.CreateNewLead_emailExample,
                                 hintStyle: TextStyle(
                                   fontSize: 13,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   color: AllColors.lighterGrey,
                                 )
                             ),
@@ -263,7 +263,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                             hintText: Strings.CreateNewLead_Enter_Description,
                             hintStyle: TextStyle(
                               fontSize: 13,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               color: AllColors.lighterGrey,
                             ),
                         ),

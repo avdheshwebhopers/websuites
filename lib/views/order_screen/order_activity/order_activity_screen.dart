@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/order_screen/order_activity/widgets/order_activity_screen_card/order_activity_screen_card.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -108,7 +108,7 @@ class _OrderActivityScreenState extends State<OrderActivityScreen> {
                       Text('Activity', style: TextStyle(
                         color: AllColors.blackColor,
                         fontSize: 17,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w700
                       ),),
 
@@ -119,7 +119,7 @@ class _OrderActivityScreenState extends State<OrderActivityScreen> {
                       Text('Filter', style: TextStyle(
                         color: AllColors.lightGrey,
                         fontWeight: FontWeight.w400,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                       ),)
                     ],
                   )

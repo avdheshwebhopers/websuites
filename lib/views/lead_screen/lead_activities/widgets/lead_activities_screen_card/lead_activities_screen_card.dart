@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../resources/strings/strings.dart';
 import '../../../../../resources/text_styles/text_styles.dart';
 import '../../../../../utils/app_colors/app_colors.dart';
@@ -44,14 +44,14 @@ class LeadActivitiesScreenCard extends StatelessWidget {
             Text(title,style: TextStyle(
                 color: AllColors.grey,
                 fontSize: 12,
-                fontFamily: AllFonts.nunitoRegular,
+                  
                 fontWeight: FontWeight.w400
             ),),
 
             Text(companyName, style: TextStyle(
                 color: AllColors.welcomeColor,
                 fontWeight: FontWeight.w700,
-                fontFamily: AllFonts.nunitoRegular,
+                  
                 fontSize: 18
             ),),
 
@@ -64,7 +64,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                 Text('Wed, June 26, 2024 at 11:08 AM', style: TextStyle(
                     color: AllColors.mediumPurple,
                     fontSize: 12,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w400
                 ),)
               ],
@@ -74,7 +74,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
               children: [
                 Text('CALL', style: TextStyle(
                     color: AllColors.blackColor,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 12,
                   fontWeight: FontWeight.w500
                 ),),
@@ -87,7 +87,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                 Text('Number Busy', style: TextStyle(
                   color: AllColors.lightGrey,
                   fontSize: 12,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                 ),),
                 Spacer(),
 
@@ -101,7 +101,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                   child: Center(
                     child: Text('Manish Jindal',style: TextStyle(
                         color: AllColors.mediumPurple,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontSize: 12
                     ),),
                   ),
@@ -131,7 +131,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
 
                         Text('Not Answered', style: TextStyle(
                             color: AllColors.lightGrey,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 12
                         ),)
                       ],
@@ -151,7 +151,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                         Text('28/06/2024 11:59 am', style: TextStyle(
                             color: AllColors.vividBlue,
                             fontWeight: FontWeight.w500,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 12
                         ),
                         )
@@ -173,7 +173,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                       child: Center(
                         child: Text('View', style: TextStyle(
                             color: AllColors.vividBlue,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w400,
                             fontSize: 12
                         ),),

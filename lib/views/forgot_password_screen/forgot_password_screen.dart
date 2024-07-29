@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Resources/all_fonts/all_fonts.dart';
 import '../../Utils/Routes/routes_name.dart';
 import '../../Utils/utils.dart';
 import '../../resources/image_strings/image_strings.dart';
@@ -38,17 +37,17 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(ImageStrings.WelcomeCompanyLogo, scale: 7,),
+                Image.asset(ImageStrings.welcomeCompanyLogo, scale: 7,),
 
                 SizedBox(height: 30,),
 
-                TextStyles.w600_universal(fontSize: 20, color: AllColors.welcomeColor, context, Strings.Forgot_ForgotPassword),
+                TextStyles.w600_universal(fontSize: 20, color: AllColors.welcomeColor, context, Strings.forgotPassword),
 
                 SizedBox(height: 5,),
 
                 Center(
                   child:
-                  TextStyles.w400_13(color: AllColors.lightGrey,context, Strings.Forgot_EnterYour),
+                  TextStyles.w400_13(color: AllColors.lightGrey,context, Strings.enterYour),
                 ),
                 SizedBox(height: 20,),
                 Obx(() =>
@@ -57,7 +56,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       // height: Get.height/19,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.0),
-                        color: AllColors.textfield2,
+                        color: AllColors.textField2,
                       ),
 
                       child:
@@ -69,7 +68,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         validator: (value){
                           if(value!.isEmpty){
                                     // return 'Please enter email';
-
                             Utils.flushBarErrorMessage(Strings.Forgot_Flush_Email, context);
                           }
                           return null;
@@ -79,7 +77,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           hintText: Strings.Forgot_Hint_Email,
                           // contentPadding: EdgeInsets.symmetric(vertical: 17.0),
                           hintStyle: TextStyle(
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w400,
                             fontSize: 12,
                           ),
@@ -113,7 +111,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Icon(Icons.arrow_back_ios, size: 10,color: AllColors.grey,),
-
                       TextStyles.w300_10(color: AllColors.grey, context, Strings.Forgot_BackToLogin),
                     ],
                   ),

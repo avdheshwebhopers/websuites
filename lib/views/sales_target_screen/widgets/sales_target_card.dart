@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 
 
@@ -40,7 +40,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     'START DATE - ',
                     style: TextStyle(
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w600,
                       color: AllColors.blackColor,
                     ),
@@ -50,7 +50,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     style: TextStyle(
                         color: AllColors.grey,
                         fontWeight: FontWeight.w400,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontSize: 12),
                   ),
                   const Spacer(),
@@ -59,7 +59,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     style: TextStyle(
                         color: AllColors.blackColor,
                         fontSize: 12,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w600),
                   ),
                 ],
@@ -69,7 +69,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                 style: TextStyle(
                     color: AllColors.blackColor,
                     fontWeight: FontWeight.w700,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 18),
               ),
               Row(
@@ -87,7 +87,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     style: TextStyle(
                       color: AllColors.mediumPurple,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -96,7 +96,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     'DEADLINE - ',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontSize: 12,
                         color: AllColors.blackColor),
                   ),
@@ -106,7 +106,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       color: AllColors.grey,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                     ),
                   ),
                 ],
@@ -120,7 +120,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     'MEMBERS - ',
                     style: TextStyle(
                         color: AllColors.blackColor,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontSize: 12,
                         fontWeight: FontWeight.w600),
                   ),
@@ -130,7 +130,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                         color: AllColors.grey,
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
-                        fontFamily: AllFonts.nunitoRegular),
+                          ),
                   ),
                   const Spacer(),
                   Icon(
@@ -145,7 +145,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     'REPORT',
                     style: TextStyle(
                         color: AllColors.blackColor,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontSize: 12,
                         fontWeight: FontWeight.w500),
                   )

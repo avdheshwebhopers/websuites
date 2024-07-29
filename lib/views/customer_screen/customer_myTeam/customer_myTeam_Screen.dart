@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../Data/models/Response_model/LoginResponseModel.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+import '../../../Data/models/Response_model/login.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -70,7 +70,7 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                       children: [
                         Text('User', style: TextStyle(
                             color: AllColors.blackColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w600,
                             fontSize: 14
                         ),
@@ -80,7 +80,7 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                           color: AllColors.blackColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                         ),)
                       ],
                     ),
@@ -94,12 +94,12 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                             color: AllColors.grey,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            fontFamily: AllFonts.nunitoRegular
+                              
                         ),),
 
                         Text('234', style: TextStyle(
                             color: AllColors.grey,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w400,
                             fontSize: 14
                         ),)
@@ -119,12 +119,12 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                             color: AllColors.grey,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            fontFamily: AllFonts.nunitoRegular
+                              
                         ),),
 
                         Text('345', style: TextStyle(
                             color: AllColors.grey,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w400,
                             fontSize: 14
                         ),)
@@ -144,12 +144,12 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                             color: AllColors.grey,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            fontFamily: AllFonts.nunitoRegular
+                              
                         ),),
 
                         Text('265', style: TextStyle(
                             color: AllColors.grey,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w400,
                             fontSize: 14
                         ),)
@@ -169,12 +169,12 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                             color: AllColors.grey,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            fontFamily: AllFonts.nunitoRegular
+                              
                         ),),
 
                         Text('143', style: TextStyle(
                             color: AllColors.grey,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w400,
                             fontSize: 14
                         ),)
@@ -202,7 +202,7 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                     color: AllColors.blackColor,
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                   ),),
 
                   Spacer(),
@@ -211,7 +211,7 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                   SizedBox5w(),
                   Text('Filter', style: TextStyle(
                     color: AllColors.lightGrey,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w400,
                     fontSize: 15
                   ),),

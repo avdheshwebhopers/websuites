@@ -1,6 +1,6 @@
-import '../Response_model/UserList_Response_Model.dart';
+import '../../Response_model/user_list.dart';
 
-class UserlistRequestModel {
+class UserListRequestModel {
   String? id;
   String? firstName;
   String? lastName;
@@ -20,7 +20,7 @@ class UserlistRequestModel {
   Parent? parent;
   List<RoleList>? roleList;
 
-  UserlistRequestModel({
+  UserListRequestModel({
     this.id,
     this.firstName,
     this.lastName,

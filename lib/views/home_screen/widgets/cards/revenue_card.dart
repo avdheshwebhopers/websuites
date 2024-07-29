@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../utils/app_colors/app_colors.dart';
 
 
@@ -164,7 +164,7 @@ class RevenueCard extends StatelessWidget {
                 amount,
                 style: TextStyle(
                   fontSize: amountFontSize,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
                 ),
@@ -173,7 +173,7 @@ class RevenueCard extends StatelessWidget {
                 title,
                 style: TextStyle(
                   fontSize: titleFontSize,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontWeight: FontWeight.w400,
                   color: Colors.black,
                 ),
@@ -187,7 +187,7 @@ class RevenueCard extends StatelessWidget {
                     subtitle,
                     style: TextStyle(
                       fontSize: subtitleFontSize,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400,
                       color: Colors.black,
                     ),
@@ -393,7 +393,7 @@ class AppRowContainerOneTab extends StatelessWidget {
                   amount,
                   style: const TextStyle(
                     fontSize: 22,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w600,
                     color: Colors.black,
                   ),
@@ -402,7 +402,7 @@ class AppRowContainerOneTab extends StatelessWidget {
                   title,
                   style: TextStyle(
                     fontSize: 17,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w400,
                     color: Colors.black,
                   ),
@@ -416,7 +416,7 @@ class AppRowContainerOneTab extends StatelessWidget {
                       subtitle,
                       style: TextStyle(
                         fontSize: 14,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w300,
                         color: Colors.black,
                       ),

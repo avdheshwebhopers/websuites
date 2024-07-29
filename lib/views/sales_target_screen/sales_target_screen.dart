@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
 import 'package:websuites/views/sales_target_screen/widgets/sales_target_card.dart';
-import '../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../utils/app_colors/app_colors.dart';
 import '../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -101,7 +101,7 @@ class _SalesTargetScreenState extends State<SalesTargetScreen> {
                     color: AllColors.blackColor,
                     fontWeight: FontWeight.w700,
                     fontSize: 18,
-                    fontFamily: AllFonts.nunitoRegular
+                      
                   ),),
 
                   Spacer(),
@@ -119,7 +119,7 @@ class _SalesTargetScreenState extends State<SalesTargetScreen> {
                         Icon(Icons.add, size: 20, color: AllColors.whiteColor,),
                         Text('Add Target', style: TextStyle(
                           color: AllColors.whiteColor,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 12,
                           fontWeight: FontWeight.w400
                         ),)

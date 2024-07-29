@@ -1,4 +1,4 @@
-import '../../Response_model/LoginResponseModel.dart';
+import '../../Response_model/login.dart';
 
 class DbLatestCustomerRequestModel{
   List<Items>? items;

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Data/models/Request_models/forgot_password_request_model.dart';
+import '../../../Data/models/Request_models/forgot_password.dart';
 import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
@@ -31,7 +31,7 @@ class ForgotPasswordViewModel extends GetxController {
     user.email = emailController.value.text;
 
 
-    _api.ForgotApi(user).then((value) {
+    _api.forgotApi(user).then((value) {
       print(value.message);
 
 

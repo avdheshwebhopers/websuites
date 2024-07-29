@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 
 class TrashLeadScreenCard extends StatelessWidget {
@@ -41,13 +41,13 @@ class TrashLeadScreenCard extends StatelessWidget {
                 color: AllColors.grey,
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
-                fontFamily: AllFonts.nunitoRegular
+                  
             ),),
 
 
             Text(title, style: TextStyle(
                 color: AllColors.welcomeColor,
-                fontFamily: AllFonts.nunitoRegular,
+                  
                 fontWeight: FontWeight.w700,
                 fontSize: 19
             ),),
@@ -60,7 +60,7 @@ class TrashLeadScreenCard extends StatelessWidget {
                     color: AllColors.vividPurple,
                     fontSize: 13,
                     fontWeight: FontWeight.w400,
-                    fontFamily: AllFonts.nunitoRegular
+                      
                 ),)
               ],
             ),
@@ -71,7 +71,7 @@ class TrashLeadScreenCard extends StatelessWidget {
                 SizedBox(width: 5,),
                 Text('+91-9999333456', style: TextStyle(
                     color: AllColors.lightGrey,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w400,
                     fontSize: 13
                 ),),
@@ -90,7 +90,7 @@ class TrashLeadScreenCard extends StatelessWidget {
                         color: AllColors.vividPurple,
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        fontFamily: AllFonts.nunitoRegular
+                          
                     ),),
                   ),
                 ),
@@ -107,7 +107,7 @@ class TrashLeadScreenCard extends StatelessWidget {
                   'REMARK',
                   style: TextStyle(
                     color: AllColors.blackColor,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w500,
                     fontSize: 14
                 ),),
@@ -117,7 +117,7 @@ class TrashLeadScreenCard extends StatelessWidget {
                 Text('No Use',style: TextStyle(
                     color: AllColors.lightGrey,
                     fontWeight: FontWeight.w400,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 13
                 ),),
 
@@ -134,7 +134,7 @@ class TrashLeadScreenCard extends StatelessWidget {
                     child: Text('Hot', style: TextStyle(
                         color: AllColors.darkBlue,
                         fontSize: 13,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w400
                     ),),
                   ),

@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
 import '../../../../app_colors/app_colors.dart';
 
 class CustomExpandedListTile2 extends StatefulWidget {
@@ -39,7 +38,6 @@ class _CustomExpandedListTile2State extends State<CustomExpandedListTile2> {
             widget.title,
             style: TextStyle(
               color: AllColors.welcomeColor,
-              fontFamily: AllFonts.nunitoRegular,
               fontWeight: FontWeight.w300,
               fontSize: 14,
             ),

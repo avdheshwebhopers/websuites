@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/lead_screen/team_lead/widgets/team_lead_screen_card/team_lead_screen_card.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';

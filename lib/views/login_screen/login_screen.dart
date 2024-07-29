@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import '../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../Utils/Routes/routes_name.dart';
 import '../../Utils/utils.dart';
 import '../../resources/image_strings/image_strings.dart';
@@ -116,7 +116,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                                               // contentPadding: EdgeInsets.symmetric(vertical: 14),
                                               hintStyle:
                                               TextStyle(
-                                                fontFamily: AllFonts.nunitoRegular,
+                                                  
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 13,)
                                             ),
@@ -164,7 +164,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                                           ),
                                           //contentPadding: EdgeInsets.symmetric(vertical: 14),
                                           hintStyle: const TextStyle(
-                                            fontFamily: AllFonts.nunitoRegular,
+                                              
                                             fontWeight: FontWeight.w400,
                                             fontSize: 13,
                                           ),

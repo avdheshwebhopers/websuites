@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Data/models/Request_models/login_request_model.dart';
+import '../../../Data/models/Request_models/login.dart';
 import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
@@ -52,7 +52,6 @@ class LoginViewModel extends GetxController {
     loading.value = true;
     // setRxStatus(Status.LOADING);
     _api.loginApi(data).then((value) {
-
 
       if (value.accessToken!= null) {
         _saveToken.saveUser(value.accessToken.toString(), value.user?.first_name ?? '', value.user?.email ?? '' );

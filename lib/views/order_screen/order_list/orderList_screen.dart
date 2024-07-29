@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -91,7 +90,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 style: TextStyle(
                             color: AllColors.lightGrey,
                                   fontWeight: FontWeight.w500,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontSize: 12,
                                 ),
                               ),
@@ -107,7 +106,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                     'Pending',
                                     style: TextStyle(
                                   color: AllColors.darkYellow,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12),
                                   ),
@@ -120,7 +119,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                               color: AllColors.blackColor,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                             ],
                           ),
@@ -132,7 +131,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                   'RealNova Healthcare',
                                   style: TextStyle(
                                 color: AllColors.blackColor,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontWeight: FontWeight.w700,
                                       fontSize: 18),
                                 ),
@@ -147,7 +146,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                           color: AllColors.lightGrey,
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400,
-                                fontFamily: AllFonts.nunitoRegular),
+                                  ),
                           ),
                           const Divider(
                             thickness: 0.4,
@@ -159,7 +158,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 'CREATED BY',
                                 style: TextStyle(
                               color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w600,
                                     fontSize: 13),
                               ),
@@ -169,7 +168,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                               color: AllColors.blackColor,
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                             ],
                           ),
@@ -188,7 +187,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                     'Nitin Sharma',
                                     style: TextStyle(
                                   color: AllColors.mediumPurple,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12),
                                   ),
@@ -200,7 +199,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                               color: AllColors.vividRed,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               )
                             ],
                           ),
@@ -212,7 +211,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 'ORDER ID',
                                 style: TextStyle(
                             color: AllColors.blackColor,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontWeight: FontWeight.w600,
                                   fontSize: 13
                                 ),
@@ -223,7 +222,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                               color: AllColors.blackColor,
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               )
                             ],
                           ),
@@ -234,7 +233,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 '#003869',
                                 style: TextStyle(
                               color: AllColors.grey,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12),
                               ),
@@ -244,7 +243,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                               color: AllColors.darkGreen,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               )
                             ],
                           ),
@@ -256,7 +255,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 'SYNC WITH ZOHO',
                                 style: TextStyle(
                             color: AllColors.blackColor,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontWeight: FontWeight.w600,
                                   fontSize: 13,
                                 ),
@@ -266,7 +265,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                               color: AllColors.blackColor),
                               ),
                             ],
@@ -297,8 +296,6 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                         'Sync',
                                         style: TextStyle(
                                       color: AllColors.darkBlue,
-                                            fontFamily:
-                                                AllFonts.nunitoRegular,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12),
                                       ),
@@ -312,7 +309,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                               color: AllColors.lightGrey,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               )
                             ],
                           )
@@ -344,7 +341,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                             children: [
                               Text('Mr. Arindam Gupta', style: TextStyle(
                           color: AllColors.lightGrey,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontWeight: FontWeight.w400,
                                 fontSize: 12
                               ),),
@@ -363,7 +360,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                               color: AllColors.darkYellow,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                   ),),
                                 ),
                               ),
@@ -371,7 +368,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                               Spacer(),
                               Text('₹54,000', style: TextStyle(
                           color: AllColors.blackColor,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14
                               ),),
@@ -385,7 +382,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                             color: AllColors.blackColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,
-                                  fontFamily: AllFonts.nunitoRegular
+                                    
                               ),),
                               
                               Icon(Icons.arrow_drop_down_sharp, size: 30,)
@@ -413,7 +410,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                 child: Center(
                                   child: Text('Ashish Mohan', style: TextStyle(
                               color: AllColors.mediumPurple,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w400,
                                     fontSize: 12
                                   ),),
@@ -424,7 +421,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                           color: AllColors.grey,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
-                                fontFamily: AllFonts.nunitoRegular
+                                  
 
                               ),)
                             ],
@@ -458,7 +455,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                   'Orders',
                   style: TextStyle(
                 color: AllColors.blackColor,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w700,
                       fontSize: 17),
                 ),
@@ -475,7 +472,7 @@ class _OrderListScreenState extends State<OrderListScreen> {
                 color: AllColors.lightGrey,
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular),
+                        ),
                 ),
                 SizedBox10w(),
                 Container(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
 import '../../../resources/image_strings/image_strings.dart';
 import '../../../views/home_screen/widgets/cards/latest_customers_card.dart';
 import '../../../views/home_screen/widgets/cards/latest_task_card.dart';
@@ -11,9 +10,6 @@ import '../../../views/home_screen/widgets/cards/lead_type_count_card.dart';
 import '../../app_colors/app_colors.dart';
 import '../../components/buttons/common_button.dart';
 
-
-
-
 class MyDesktopBody extends StatelessWidget {
   const MyDesktopBody({Key? key}) : super(key: key);
 
@@ -21,182 +17,9 @@ class MyDesktopBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       Scaffold(
-        // appBar:
-        // AppBar(
-        //   backgroundColor: App_Colors.whiteColor,
-        // ),
         backgroundColor: Colors.white,
-        //   drawer: Container(
-        //   color: App_Colors.whiteColor,
-        //     width: Get.width/2,
-        //     height: Get.height*1,
-        //     child: Drawer(
-        //       backgroundColor: App_Colors.whiteColor,
-        //       child:
-        //       ListView(
-        //         children: [
-        //           Container(
-        //             padding: EdgeInsets.only(left: 13),
-        //             height: Get.height/9,
-        //             child: Row(
-        //
-        //               children: [
-        //                 Container(
-        //                   height: Get.height/10,
-        //                   width: Get.width/10,
-        //                   decoration: BoxDecoration(
-        //                     shape: BoxShape.circle,
-        //                     color: App_Colors.whiteColor,
-        //                   ),
-        //                   child: Center(
-        //                       child: Image.asset(AppImages.Splash_WHLogo )),
-        //                 ),
-        //                 SizedBox(width:Get.width/40,),
-        //
-        //                 const Column(
-        //                   mainAxisAlignment: MainAxisAlignment.center,
-        //                   crossAxisAlignment: CrossAxisAlignment.start,
-        //
-        //                   children: [
-        //                     Text('Sunil Kumar',
-        //                       style: TextStyle(
-        //                         fontWeight: FontWeight.w500,
-        //                         fontSize: 16,
-        //                         fontFamily: Fonts.nunitoRegular,
-        //
-        //                       ),),
-        //                     Text('+91-8810529887',
-        //                       style: TextStyle(
-        //                         fontWeight: FontWeight.w400,
-        //                         fontSize: 10,
-        //                         fontFamily: Fonts.nunitoRegular,
-        //                         color: Colors.grey
-        //                       ),),
-        //                   ],
-        //                 )
-        //               ],),
-        //           ),
-        //
-        //           Column(
-        //             children: [
-        //               CustomListTile(
-        //                   icon: Icons.dashboard,
-        //                   title: 'Dashboard',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.leaderboard,
-        //                   title: 'Lead',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.person,
-        //                   title: 'Customer',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.shopping_bag,
-        //                   title: 'Orders',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.group,
-        //                   title: 'HRM',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.analytics,
-        //                   title: 'Analytics',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.dashboard,
-        //                   title: 'Campaign',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.bar_chart,
-        //                   title: 'Sales',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.person_2,
-        //                   title: 'Roles',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.verified_user,
-        //                   title: 'Users',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.add_task,
-        //                   title: 'Tasks',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.data_object,
-        //                   title: 'Projects',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.location_city_sharp,
-        //                   title: 'Service Area',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.shopping_bag,
-        //                   title: 'Products',
-        //                   onTap: (){}
-        //               ),
-        //               CustomListTile(
-        //                   icon: Icons.grade,
-        //                   title: 'Master',
-        //                   onTap: (){}
-        //               ),
-        //             ],
-        //           ),
-        //
-        //           SizedBox(height: 100,),
-        //
-        //           Divider(
-        //             thickness: 1,
-        //             indent: 20,
-        //             endIndent: 20,
-        //
-        //           ),
-        //
-        //           Container(
-        //             height: Get.height/20,
-        //             width: Get.width/2,
-        //             padding: EdgeInsets.only(left: 20),
-        //
-        //             child: Text('version 1.0.12',
-        //             style: TextStyle(
-        //               fontWeight: FontWeight.w300,
-        //               fontFamily: Fonts.nunitoRegular,
-        //               fontSize: 10,
-        //               color: App_Colors.grey
-        //             ),)
-        //           ),
-        //
-        //           Container(
-        //             margin: EdgeInsets.only(left: 20, right: 20),
-        //             child: GenericButton(
-        //               height: Get.height/30,
-        //                 width: Get.width/4,
-        //                 title: 'Logout',
-        //                 onPress: (){}
-        //             ),
-        //           )
-        //
-        //         ],
-        //       ),
-        //     )
-        // ),
         body:
         Row(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               flex: 1,
@@ -225,7 +48,7 @@ class MyDesktopBody extends StatelessWidget {
                                       color: AllColors.whiteColor,
                                     ),
                                     child: Center(
-                                        child: Image.asset(ImageStrings.Splash_WHLogo )),
+                                        child: Image.asset(ImageStrings.splashWHLogo)),
                                   ),
                                   SizedBox(width:Get.width/40,),
 
@@ -238,100 +61,20 @@ class MyDesktopBody extends StatelessWidget {
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 16,
-                                          fontFamily: AllFonts.nunitoRegular,
+                                            
 
                                         ),),
                                       Text('+91-8810529887',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 10,
-                                            fontFamily: AllFonts.nunitoRegular,
+                                              
                                             color: Colors.grey
                                         ),),
                                     ],
                                   )
                                 ],),
                             ),
-
-                            // Column(
-                            //   children: [
-                            //     CustomListTile(
-                            //         leading_image: Icons.dashboard,
-                            //         title: 'Dashboard',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.leaderboard,
-                            //         title: 'Lead',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.person,
-                            //         title: 'Customer',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.shopping_bag,
-                            //         title: 'Orders',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.group,
-                            //         title: 'HRM',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.analytics,
-                            //         title: 'Analytics',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.dashboard,
-                            //         title: 'Campaign',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.bar_chart,
-                            //         title: 'Sales',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.person_2,
-                            //         title: 'Roles',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.verified_user,
-                            //         title: 'Users',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.add_task,
-                            //         title: 'Tasks',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.data_object,
-                            //         title: 'Projects',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.location_city_sharp,
-                            //         title: 'Service Area',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.shopping_bag,
-                            //         title: 'Products',
-                            //         onTap: (){}
-                            //     ),
-                            //     CustomListTile(
-                            //         leading_image: Icons.grade,
-                            //         title: 'Master',
-                            //         onTap: (){}
-                            //     ),
-                            //   ],
-                            // ),
 
                             const SizedBox(height: 100,),
 
@@ -350,7 +93,7 @@ class MyDesktopBody extends StatelessWidget {
                                 child: Text('version 1.0.12',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w300,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontSize: 10,
                                       color: AllColors.grey
                                   ),)
@@ -433,29 +176,6 @@ class MyDesktopBody extends StatelessWidget {
                                       children: [
                                         const SizedBox(width: 6),
 
-                                        // Column(
-                                        //   mainAxisAlignment: MainAxisAlignment.start,
-                                        //   crossAxisAlignment: CrossAxisAlignment.start,
-                                        //   children: [
-                                        //     Text('Hello, Sunil!', style: TextStyle(
-                                        //       fontWeight: FontWeight.w600,
-                                        //       fontSize: 18,
-                                        //       fontFamily: Fonts.nunitoRegular,
-                                        //       color: App_Colors.whiteColor,
-                                        //     ),),
-                                        //
-                                        //     Text('24 May, 2024',
-                                        //       style: TextStyle(
-                                        //         fontWeight: FontWeight.w400,
-                                        //         fontSize: 10,
-                                        //         fontFamily: Fonts.nunitoRegular,
-                                        //         color: App_Colors.whiteColor,
-                                        //       ),),
-                                        //
-                                        //
-                                        //   ],
-                                        // ),
-
                                         const Spacer(),
 
                                         Container(
@@ -467,14 +187,9 @@ class MyDesktopBody extends StatelessWidget {
                                           width: Get.width/13,
                                           child: Center(
                                               child:
-                                              Image.asset(ImageStrings.WelcomeCompanyLogo, scale: 7,)
+                                              Image.asset(ImageStrings. welcomeCompanyLogo, scale: 7,)
                                           ),
                                         ),
-                                        // IconButton(onPressed: (){},
-                                        //     icon: Icon(Icons.circle,
-                                        //       color: Colors.white,
-                                        //       size: 45,)
-                                        // )
                                       ],
                                     ),
                                   ),
@@ -488,9 +203,6 @@ class MyDesktopBody extends StatelessWidget {
                                     Row(                                                    //SCROLLER ROW WITH CONTAINERS
                                       children: [
                                         RevenueCard(
-                                            // height: Get.height/11,
-                                            // width: Get.width/4,
-
                                             backgroundColor: AllColors.whiteColor,
                                             icon: Icons.currency_rupee, size: 15, color:AllColors.mediumPurple,
                                             amount: '₹20000',
@@ -587,7 +299,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text('TASK PERFORMANCE',
                             style: TextStyle(
                               fontSize: 16,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w500,
                               color: AllColors.blackColor,
                             ),
@@ -598,7 +310,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text('24 May, 2024',
                             style: TextStyle(
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               color: AllColors.blackColor,
                             ),
@@ -689,7 +401,7 @@ class MyDesktopBody extends StatelessWidget {
                                           Text('COMPLETED',
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
-                                              fontFamily: AllFonts.nunitoRegular,
+                                                
                                               fontSize: 15,
                                             ),),
 
@@ -698,7 +410,7 @@ class MyDesktopBody extends StatelessWidget {
                                           Text('65%',
                                             style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              fontFamily: AllFonts.nunitoRegular,
+                                                
                                               fontSize: 20,
                                             ),),
                                         ],
@@ -718,7 +430,7 @@ class MyDesktopBody extends StatelessWidget {
                                 Text('TASK PROGRESS',
                                   style: TextStyle(
                                     fontSize: 18,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w600,
                                   ),),
 
@@ -727,7 +439,7 @@ class MyDesktopBody extends StatelessWidget {
                                     Text('06:06:15/',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontWeight: FontWeight.w600,
                                       ),),
 
@@ -736,7 +448,7 @@ class MyDesktopBody extends StatelessWidget {
                                     Text('4hrs',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontWeight: FontWeight.w600,
                                         color: Color(0xff5131ff),
                                       ),),
@@ -768,7 +480,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text(' LATEST TASK ',
                             style: TextStyle(
                               fontSize: 16,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w500,
                               color: AllColors.blackColor,
                             ),
@@ -781,7 +493,7 @@ class MyDesktopBody extends StatelessWidget {
                             child: Text('See all',
                               style: TextStyle(
                                 fontSize: 14,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontWeight: FontWeight.w400,
                                 color: AllColors.vividPurple,
                               ),
@@ -868,7 +580,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text('LEAD TYPE COUNT',
                             style: TextStyle(
                               fontSize: 16,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w500,
                               color: AllColors.blackColor,
                             ),
@@ -879,7 +591,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text('21 May',
                             style: TextStyle(
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               color: AllColors.blackColor,
                             ),
@@ -994,7 +706,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text(' LATEST CUSTOMER ',
                             style: TextStyle(
                               fontSize: 16,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w500,
                               color: AllColors.blackColor,
                             ),
@@ -1007,7 +719,7 @@ class MyDesktopBody extends StatelessWidget {
                             child: Text('See all',
                               style: TextStyle(
                                 fontSize: 14,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontWeight: FontWeight.w400,
                                 color: AllColors.vividPurple,
                               ),
@@ -1091,7 +803,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text(' LEAD SOURCE ',
                             style: TextStyle(
                               fontSize: 16,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w500,
                               color: AllColors.blackColor,
                             ),
@@ -1106,7 +818,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text('List',
                             style: TextStyle(
                               fontSize: 16,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               color: AllColors.grey,
                             ),
@@ -1123,7 +835,7 @@ class MyDesktopBody extends StatelessWidget {
                             child: Text('Chart',
                               style: TextStyle(
                                 fontSize: 16,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontWeight: FontWeight.w400,
                                 color: AllColors.vividBlue,
                               ),
@@ -1172,7 +884,7 @@ class MyDesktopBody extends StatelessWidget {
                           Text('TRANSACTIONS ',
                             style: TextStyle(
                               fontSize: 16,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w500,
                               color: AllColors.blackColor,
                             ),
@@ -1185,7 +897,7 @@ class MyDesktopBody extends StatelessWidget {
                             child: Text('See all',
                               style: TextStyle(
                                 fontSize: 16,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontWeight: FontWeight.w400,
                                 color: AllColors.vividPurple,
                               ),

@@ -17,4 +17,5 @@ class ApiResponse<T> {
   String toString(){
     return "Status : $status \n Message : $message\n Data $data";
   }
+
 }

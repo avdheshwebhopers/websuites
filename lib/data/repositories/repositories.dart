@@ -6,27 +6,28 @@ import '../models/Response_model/Dashboard_Screen/DB_lead_by_type_Count_Response
 import '../models/Response_model/Dashboard_Screen/DB_leadSource_ResponseModel.dart';
 import '../models/Response_model/Dashboard_Screen/DB_ResponseModel.dart';
 import '../models/Response_model/Dashboard_Screen/Db_Transactions_ResponseModel.dart';
-import '../models/Response_model/LoginResponseModel.dart';
-import '../models/Response_model/UserList_Response_Model.dart';
-import '../models/Response_model/forgot_password_response_model.dart';
+import '../models/Response_model/login.dart';
+import '../models/Response_model/forgot_password.dart';
+import '../models/Response_model/user_list.dart';
 import '../network/network_api_services.dart';
 
 
 class Repositories{
+
   final _apiService = NetworkApiServices();
 
   Future<LoginResponseModel> loginApi(dynamic data) async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AppUrls.LoginApi, data);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.loginApi, data);
       return response = LoginResponseModel.fromJson(response);
     } catch(e){
       rethrow;
     }
   }
 
-  Future<ForgotPasswordResponseModel> ForgotApi(dynamic data) async {
+  Future<ForgotPasswordResponseModel> forgotApi(dynamic data) async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AppUrls.ForgotApi, data);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.forgotApi, data);
       return response = ForgotPasswordResponseModel.fromJson(response);
     } catch(e){
       rethrow;
@@ -51,75 +52,59 @@ class Repositories{
     }
   }
 
-  Future<UserList_Response_Model> UserlistApi() async {
+  Future<UserListResponseModel> userListApi() async {
     try {
       dynamic response =  await _apiService.postApiResponse(AppUrls.userListApi, null);
-      return response = UserList_Response_Model.fromJson(response);
+      return response = UserListResponseModel.fromJson(response);
     } catch(e){
       rethrow;
     }
   }
 
-  Future<Dashboard_Leads_By_Type_Count_Response_Model> DB_LeadsTypeCountApi() async {
+  Future<Dashboard_Leads_By_Type_Count_Response_Model> dbLeadsTypeCountApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_Leads_By_TypeCount, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dashLeadsByTypeCount, null);
       return response = Dashboard_Leads_By_Type_Count_Response_Model.fromJson(response);
     } catch(e){
       rethrow;
     }
   }
 
-  Future<DashboardLeadSourceResponseModel> DB_LeadsSourceApi() async {
+  Future<DashboardLeadSourceResponseModel> dbLeadsSourceApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_LeadSource, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dashLeadSource, null);
       return response = DashboardLeadSourceResponseModel.fromJson(response);
     } catch(e){
       rethrow;
     }
   }
 
-  // Future<DashboardLeadsListResponseModelCheck> DB_LeadsListApi() async {
-  //   try {
-  //     dynamic response =  await _apiService.postApiResponse(Urls.dash_LeadsList, null);
-  //     return response = DashboardLeadsListResponseModelCheck.fromJson(response);
-  //   } catch(e){
-  //     rethrow;
-  //   }
-  // }
-
-  Future<DB_LatestCustomers_ResponseModel> DB_LatestCustomersApi() async {
+  Future<DB_LatestCustomers_ResponseModel> dbLatestCustomersApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_LatestCustomers, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dashLatestCustomers, null);
       return response = DB_LatestCustomers_ResponseModel.fromJson(response);
     } catch(e){
       rethrow;
     }
   }
 
-  Future<DbLatestTaskResponseModel> DB_LatestTaskApi() async {
+  Future<DbLatestTaskResponseModel> dbLatestTaskApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_LatestTask, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dashLatestTask, null);
       return response = DbLatestTaskResponseModel.fromJson(response);
     } catch(e){
       rethrow;
     }
   }
 
-  Future<DB_LatestTransaction_ResponseModel> DB_TransactionApi() async {
+  Future<DB_LatestTransaction_ResponseModel> dbTransactionApi() async {
     try {
-      dynamic response =  await _apiService.postApiResponse(AppUrls.dash_Transactions, null);
+      dynamic response =  await _apiService.postApiResponse(AppUrls.dashTransactions, null);
       return response = DB_LatestTransaction_ResponseModel.fromJson(response);
     } catch(e){
       rethrow;
     }
   }
-
-
-
-
-
-
-
 
 }
 

@@ -12,7 +12,7 @@ class HomeScreenLeadSourceViewModel extends GetxController {
    Future <void> LeadSource(BuildContext, context) async {
       loading.value = true;
 
-      _api.DB_LeadsSourceApi().then((response){
+      _api.dbLeadsSourceApi().then((response){
 
          if(response.id != null){
 

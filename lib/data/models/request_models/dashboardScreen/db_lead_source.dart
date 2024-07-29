@@ -2,8 +2,8 @@ class DashboardLeadSourceRequestModel{
 String? id;
 String? name;
 String? status;
-String? created_at;
-String? update_at;
+String? createdAt;
+String? updateAt;
 String? leads;
 int? leadCount;
 
@@ -11,8 +11,8 @@ DashboardLeadSourceRequestModel({
   this.id,
   this.name,
   this.status,
-  this.created_at,
-  this.update_at,
+  this.createdAt,
+  this.updateAt,
   this.leads,
   this.leadCount,
 });
@@ -21,8 +21,8 @@ Map toJson() => {
   'id': id,
   'name': name,
   'status': status,
-  'created_at': created_at,
-  'updated_at': update_at,
+  'created_at': createdAt,
+  'updated_at': updateAt,
   'leads': leads,
   'leadCount': leadCount,
 };}

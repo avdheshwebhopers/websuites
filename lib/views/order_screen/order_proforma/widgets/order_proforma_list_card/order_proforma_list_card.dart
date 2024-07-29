@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 import '../../../../../utils/components/widgets/sized_boxes/sizedBox_10w.dart';
 import '../../../../../utils/components/widgets/sized_boxes/sizedBox_5w.dart';
@@ -42,7 +42,7 @@ class OrderProformaListCard extends StatelessWidget {
                 children: [
                   Text('gayatri@bpis.health', style: TextStyle(
                       color: AllColors.grey,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400,
                       fontSize: 12
                   ),),
@@ -60,7 +60,7 @@ class OrderProformaListCard extends StatelessWidget {
                       child: Text('Customer', style: TextStyle(
                           color: AllColors.vividOrange,
                           fontWeight: FontWeight.w400,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 12
                       ),),
                     ),
@@ -70,7 +70,7 @@ class OrderProformaListCard extends StatelessWidget {
                   Text('#254', style: TextStyle(
                     color: AllColors.grey,
                     fontSize: 12,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w400,
                   ),),
                 ],
@@ -79,7 +79,7 @@ class OrderProformaListCard extends StatelessWidget {
               Text(title, style: TextStyle(
                   color: AllColors.blackColor,
                   fontWeight: FontWeight.w700,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontSize: 18
               ),),
 
@@ -90,7 +90,7 @@ class OrderProformaListCard extends StatelessWidget {
                   SizedBox5w(),
                   Text('Jun 26, 2024', style: TextStyle(
                       fontSize: 13,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400,
                       color: AllColors.mediumPurple
                   ),),
@@ -107,7 +107,7 @@ class OrderProformaListCard extends StatelessWidget {
                       child: Text('Ashish Mohan', style: TextStyle(
                           color: AllColors.mediumPurple,
                           fontWeight: FontWeight.w400,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 12
                       ),),
                     ),
@@ -130,7 +130,7 @@ class OrderProformaListCard extends StatelessWidget {
                   child: Text('View Proforma', style: TextStyle(
                       color: AllColors.darkBlue,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 12
                   ),),
                 ),

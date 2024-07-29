@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../resources/strings/strings.dart';
 import '../../../../../resources/text_styles/text_styles.dart';
 import '../../../../../utils/app_colors/app_colors.dart';
@@ -44,12 +44,12 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                 color: AllColors.grey,
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
-                fontFamily: AllFonts.nunitoRegular,
+                  
               ),),
 
               Text(subtitle, style: TextStyle(
                 color: AllColors.welcomeColor,
-                fontFamily: AllFonts.nunitoRegular,
+                  
                 fontWeight: FontWeight.w700,
                 fontSize: 18,
               ),),
@@ -62,7 +62,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                     color: AllColors.mediumPurple,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                   ),
                   ),
                 ],
@@ -72,7 +72,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                 children: [
                   Text('Call', style: TextStyle(
                       color: AllColors.blackColor,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w500,
                       fontSize: 13
                   ),),
@@ -87,7 +87,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                     color: AllColors.grey,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                   ),),
 
                   Spacer(),
@@ -102,7 +102,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                     child: Center(
                       child: Text('Roshan Jha', style: TextStyle(
                           color: AllColors.mediumPurple,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w400,
                           fontSize: 13
                       ),),
@@ -123,7 +123,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
 
                 Text('Not Answered', style: TextStyle(
                     color: AllColors.lightGrey,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w400,
                     fontSize: 13
                 ),),
@@ -140,7 +140,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
 
                   Text('Anil Kumar', style: TextStyle(
                       color: AllColors.darkBlue,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400,
                       fontSize: 13),
                   ),
@@ -158,7 +158,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                           color: AllColors.vividBlue,
                           fontSize: 13,
                           fontWeight: FontWeight.w400,
-                          fontFamily: AllFonts.nunitoRegular
+                            
                       ),
                       ),
                     ),

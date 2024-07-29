@@ -28,7 +28,7 @@ class _WelcomeToCompanyState extends State<WelcomeToCompany> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(ImageStrings.WelcomeCompanyLogo,scale: 5.5,),
+              Image.asset(ImageStrings. welcomeCompanyLogo,scale: 5.5,),
 
               const SizedBox(height: 10,),
 

@@ -30,7 +30,7 @@ class _OtpScreenState extends State<OtpScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(ImageStrings.WelcomeCompanyLogo, scale: 5.5,),
+                Image.asset(ImageStrings. welcomeCompanyLogo, scale: 5.5,),
                 SizedBox(height: 30),
 
                 TextStyles.w600_universal(fontSize: 20, color: AllColors.welcomeColor, context, Strings.Otp_WelcomeTo),

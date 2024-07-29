@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 
 class CreateNewLeadScreenCard extends StatelessWidget {
@@ -36,7 +36,7 @@ class CreateNewLeadScreenCard extends StatelessWidget {
               hintText: hintText,
               hintStyle: TextStyle(
                 fontSize: 14,
-                fontFamily: AllFonts.nunitoRegular,
+                  
                 color: AllColors.lighterGrey,
               )
           ),

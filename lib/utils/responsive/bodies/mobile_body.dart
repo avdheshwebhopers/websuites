@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import '../../../Data/models/Response_model/LoginResponseModel.dart';
+import '../../../Data/models/Response_model/login.dart';
 import '../../../Data/response/status.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
 import '../../../resources/icon_strings/icon_strings.dart';
 import '../../../resources/image_strings/image_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
-
 import '../../../view_models/home_screen_viewModels/home_screen_latest_task_viewModel.dart';
 import '../../../view_models/home_screen_viewModels/home_screen_leadSource_viewModel.dart';
 import '../../../view_models/home_screen_viewModels/home_screen_leads_by_typeCount_viewModel.dart';
@@ -108,8 +106,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
 
-      drawer:
-      CustomDrawer(
+      drawer: CustomDrawer(
           userName: '$userName',
           phoneNumber: '$userEmail',
           version: 'version 1.0.12'),
@@ -164,7 +161,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                           style: TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 17,
-                                                fontFamily: AllFonts.nunitoRegular,
+                                                  
                                                 color: AllColors.whiteColor,
                                               ),),
 
@@ -172,7 +169,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 11,
-                                                fontFamily: AllFonts.nunitoRegular,
+                                                  
                                                 color: AllColors.whiteColor,
                                               ),),
                                           ],
@@ -194,7 +191,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                 onTap: (){
 
                                                 },
-                                                  child: Image.asset(ImageStrings.WelcomeCompanyLogo, scale: 5.5,))
+                                                  child: Image.asset(ImageStrings. welcomeCompanyLogo, scale: 5.5,))
                                           ),
                                         ),
                                       ],
@@ -363,7 +360,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                         const Text('40%',
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
-                                            fontFamily: AllFonts.nunitoRegular,
+                                              
                                             fontSize: 14,
                                           ),
                                         ),
@@ -387,7 +384,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       const Text('06:06:15 /',
                                         style: TextStyle(
                                           fontSize: 11,
-                                          fontFamily: AllFonts.nunitoRegular,
+                                            
                                           fontWeight: FontWeight.w600,
                                         ),),
 
@@ -396,7 +393,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       Text('4hrs',
                                         style: TextStyle(
                                           fontSize: 10,
-                                          fontFamily: AllFonts.nunitoRegular,
+                                            
                                           fontWeight: FontWeight.w600,
                                           color: AllColors.vividPurple,
                                         ),

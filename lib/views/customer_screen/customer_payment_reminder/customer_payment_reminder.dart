@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/sized_boxes/sizedBox_10h.dart';
 import '../../../utils/components/widgets/sized_boxes/sizedBox_10w.dart';
-import '../../../utils/components/widgets/sized_boxes/sizedBox_20h.dart';
 import '../../../view_models/save_token/save_token.dart';
 
 class CustomerPaymentReminders extends StatefulWidget {
@@ -85,7 +83,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                               color: AllColors.whiteColor,
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                             ),
                           ),
                         ),
@@ -94,7 +92,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                         height: Get.height / 30,
                         width: Get.width / 3.5,
                         decoration: BoxDecoration(
-                          color: AllColors.textfield2,
+                          color: AllColors.textField2,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Center(
@@ -102,7 +100,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                             'By Status',
                             style: TextStyle(
                                 color: AllColors.blackColor,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -112,7 +110,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                         height: Get.height / 30,
                         width: Get.width / 3.5,
                         decoration: BoxDecoration(
-                          color: AllColors.textfield2,
+                          color: AllColors.textField2,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Center(
@@ -122,7 +120,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                 color: AllColors.blackColor,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
-                                fontFamily: AllFonts.nunitoRegular),
+                                  ),
                           ),
                         ),
                       )
@@ -156,7 +154,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                 'Mr. Saurav Dhiman',
                                 style: TextStyle(
                                   color: AllColors.blackColor,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontSize: 13,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -175,7 +173,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 13,
-                                          fontFamily: AllFonts.nunitoRegular,
+                                            
                                           color: AllColors.vividOrange),
                                     ),
                                   )),
@@ -184,7 +182,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                 '₹31,998',
                                 style: TextStyle(
                                     color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 17,
                                     fontWeight: FontWeight.w600),
                               )
@@ -198,7 +196,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     color: AllColors.welcomeColor,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                               const Spacer(),
                               const Icon(
@@ -211,7 +209,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                             'Product Super 50(Quaterly)',
                             style: TextStyle(
                                 color: AllColors.grey,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400),
                           ),
@@ -226,14 +224,14 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     color: AllColors.lightGrey,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                               const Spacer(),
                               Text(
                                 'REMINDER TO',
                                 style: TextStyle(
                                     color: AllColors.lightGrey,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13,
                                     fontWeight: FontWeight.w400),
                               )
@@ -247,14 +245,14 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                               const Spacer(),
                               Text(
                                 'Shubham Saini',
                                 style: TextStyle(
                                     color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -269,14 +267,14 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     color: AllColors.lightGrey,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                               const Spacer(),
                               Text(
                                 'CREATED AT',
                                 style: TextStyle(
                                     color: AllColors.lightGrey,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13,
                                     fontWeight: FontWeight.w400),
                               ),
@@ -297,7 +295,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                         color: AllColors.vividPurple,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12,
-                                        fontFamily: AllFonts.nunitoRegular),
+                                          ),
                                   ),
                                 ),
                               ),
@@ -306,7 +304,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                 'May 31, 2024, 10:47 AM',
                                 style: TextStyle(
                                     color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -322,13 +320,13 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     color: AllColors.lightGrey,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                               Text(
                                 'CHEQUE/REMINDER',
                                 style: TextStyle(
                                     color: AllColors.lightGrey,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13,
                                     fontWeight: FontWeight.w400),
                               ),
@@ -343,13 +341,13 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                               Text(
                                 'May 31, 2024, 10:47AM',
                                 style: TextStyle(
                                     color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500),
                               )
@@ -385,7 +383,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               ),
                               SizedBox10w(),
                               Container(
@@ -400,7 +398,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     'Pending',
                                     style: TextStyle(
                                         color: AllColors.vividOrange,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontSize: 13,
                                         fontWeight: FontWeight.w400),
                                   ),
@@ -413,7 +411,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 17,
-                                    fontFamily: AllFonts.nunitoRegular),
+                                      ),
                               )
                             ],
                           ),
@@ -424,7 +422,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                 'Ritelife Healthcare',
                                 style: TextStyle(
                                     color: AllColors.welcomeColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 19,
                                     fontWeight: FontWeight.w600),
                               ),
@@ -440,7 +438,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                               color: AllColors.lightGrey,
                               fontWeight: FontWeight.w400,
                               fontSize: 12,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                             ),
                           ),
                           const Divider(
@@ -457,7 +455,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                 '+91-9876512345',
                                 style: TextStyle(
                                     color: AllColors.lightGrey,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400),
                               ),
@@ -475,7 +473,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                                         color: AllColors.darkGreen,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12,
-                                        fontFamily: AllFonts.nunitoRegular),
+                                          ),
                                   ),
                                 ),
                               )
@@ -509,7 +507,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
                   'Payment Reminder',
                   style: TextStyle(
                       color: AllColors.blackColor,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 17,
                       fontWeight: FontWeight.w700),
                 ),

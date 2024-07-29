@@ -12,7 +12,7 @@ class IconStrings {
   static const String users = 'assets/icons/User.png';
   static const String tasks = 'assets/icons/Tasks.png';
   static const String projects = 'assets/icons/Projects.png';
-  static const String service_area = 'assets/icons/Service_area.png';
+  static const String serviceArea = 'assets/icons/Service_area.png';
   static const String products = 'assets/icons/Products.png';
   static const String master = 'assets/icons/Master.png';
   static const String whatsapp = 'assets/icons/Whatsapp.png';
@@ -27,11 +27,5 @@ class IconStrings {
   static const String navAccount3 = 'assets/icons/NavAccount3.png';
   static const String navSearch2 = 'assets/icons/NavSearch2.png';
   static const String navSearch3 = 'assets/icons/NavSearch3.png';
-
-
-
-
-
-
 
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../utils/app_colors/app_colors.dart';
 
 
@@ -58,7 +58,7 @@ class LeadTypeCountCard extends StatelessWidget {
                    style: TextStyle(
                      color: countColor,
                      fontSize: 10,
-                     fontFamily: AllFonts.nunitoRegular,
+                       
                    ),
                  ),
                  Text(
@@ -66,7 +66,7 @@ class LeadTypeCountCard extends StatelessWidget {
                    style: TextStyle(
                      color: statusColor,
                      fontSize: 13,
-                     fontFamily: AllFonts.nunitoRegular,
+                       
                      fontWeight: FontWeight.w400,
                    ),
                  )
@@ -222,7 +222,7 @@ class AppRowContainerTwoTab extends StatelessWidget {
                     style: TextStyle(
                       color: countColor,
                       fontSize: 15,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                     ),
                   ),
                   Text(
@@ -230,7 +230,7 @@ class AppRowContainerTwoTab extends StatelessWidget {
                     style: TextStyle(
                       color: statusColor,
                       fontSize: 17,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400,
                     ),
                   )

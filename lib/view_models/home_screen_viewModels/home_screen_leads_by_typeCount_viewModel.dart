@@ -23,7 +23,7 @@ class HomeScreenLeadsByTypeCountViewModel extends GetxController{
     // Loading.value = true;
     setRxStatus(Status.LOADING);
 
-    _api.DB_LeadsTypeCountApi().then((value) {
+    _api.dbLeadsTypeCountApi().then((value) {
       setLeadTypeCount(value);
       // if(value.id!= null){
       //   Utils.SnackbarSuccess('Id leadByCount');

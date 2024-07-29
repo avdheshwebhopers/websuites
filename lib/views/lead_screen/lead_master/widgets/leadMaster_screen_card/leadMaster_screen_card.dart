@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../resources/strings/strings.dart';
 import '../../../../../resources/text_styles/text_styles.dart';
 import '../../../../../utils/app_colors/app_colors.dart';
@@ -43,7 +43,7 @@ class LeadMasterScreenCard extends StatelessWidget {
               children: [
                 Text(title, style: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 13,
                     color: AllColors.blackColor
                 ),),
@@ -60,7 +60,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                     child: Text(activity, style: TextStyle(
                         color: AllColors.vividPurple,
                         fontSize: 12,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w500
                     ),),
                   ),
@@ -76,7 +76,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                 Text('June 26, 2024 at 11:29 AM', style: TextStyle(
                   color: AllColors.grey,
                   fontWeight: FontWeight.w400,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontSize: 12,
                 ),),
               ],
@@ -116,7 +116,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                               Text('Not Interested', style: TextStyle(
                                   color: AllColors.darkGrey,
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontSize: 12
                               ),),
 
@@ -143,7 +143,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                               Text('Price Issue', style: TextStyle(
                                   color: AllColors.darkGrey,
                                   fontSize: 12,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontWeight: FontWeight.w400
                               ),),
 
@@ -173,7 +173,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                             children: [
                               Text('Interested', style: TextStyle(
                                   color: AllColors.darkGrey,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12
                               ),),
@@ -201,7 +201,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                                 color: AllColors.darkGrey,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                               ),),
                               SizedBox(width: 5,),
 

@@ -20,7 +20,7 @@ class AllColors {
   static Color mediumGrey = const Color(0xff5e5d5d);
   static Color lightGrey = const Color(0xff7c7c7c);
   static Color lighterGrey = const Color(0xffc9c9c9);
-  static Color textfield2 = const Color(0xffeaeaea);
+  static Color textField2 = const Color(0xffeaeaea);
   static Color whiteColor = const Color(0xffffffff);
 
   static Color vividPurple = const Color(0xff7367f0);
@@ -58,15 +58,11 @@ class AllColors {
   static Color mediumYellow = const Color(0xffffd078);
   static Color lightYellow = const Color(0xfffff3d6);
 
-  static Color DarkOrange = const Color(0xffdd7800);
+  static Color darkOrange = const Color(0xffdd7800);
   static Color vividOrange = const Color(0xffff6900);
   static Color mediumOrange = const Color(0xffff8a33);
   static Color lightOrange = const Color(0xffffbe87);
   static Color lighterOrange = const Color(0xfffddec8);
-
-
-
-
 
 
 }

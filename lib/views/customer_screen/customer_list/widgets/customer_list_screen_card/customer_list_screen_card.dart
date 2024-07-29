@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 
 class CustomerListScreenCard extends StatelessWidget {
@@ -43,20 +43,20 @@ class CustomerListScreenCard extends StatelessWidget {
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                     color: AllColors.grey,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                   ),),
                   Text('harishsharma@gmail.com', style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w300,
                       color: AllColors.grey,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),)
                 ],
               ),
 
               Text('Eskos Pharma / Eskos Vedic', style: TextStyle(
                   color: AllColors.welcomeColor,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontWeight: FontWeight.w700,
                   fontSize: 18
               ),),
@@ -75,7 +75,7 @@ class CustomerListScreenCard extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        fontFamily: AllFonts.nunitoRegular,color: AllColors.grey
+                          color: AllColors.grey
                     ),),
 
                   Spacer(),
@@ -91,7 +91,7 @@ class CustomerListScreenCard extends StatelessWidget {
                       child: Center(
                         child: Text('PritPal Singh', style: TextStyle(
                             color: AllColors.mediumPurple,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w400,
                             fontSize: 12
                         ),),

@@ -1,4 +1,4 @@
-class UserList_Response_Model {
+class UserListResponseModel {
   String? id;
   String? firstName;
   String? lastName;
@@ -11,7 +11,7 @@ class UserList_Response_Model {
   bool? status;
   String? rememberToken;
   String? rememberTokenTime;
-  bool? isdefault;
+  bool? isDefault;
   String? createdAt;
   String? updatedAt;
   String? deviceId;
@@ -23,7 +23,7 @@ class UserList_Response_Model {
   Parent? parent;
   List<RoleList>? roleList;
 
-  UserList_Response_Model
+  UserListResponseModel
 
   ({this.id,
     this.firstName,
@@ -37,7 +37,7 @@ class UserList_Response_Model {
     this.status,
     this.rememberToken,
     this.rememberTokenTime,
-    this.isdefault,
+    this.isDefault,
     this.createdAt,
     this.updatedAt,
     this.deviceId,
@@ -50,7 +50,7 @@ class UserList_Response_Model {
     this.roleList
   }
   );
-  UserList_Response_Model.fromJson(
+  UserListResponseModel.fromJson(
       Map<String, dynamic> json) {
     id = json['id'];
     firstName = json['first_name'];
@@ -64,7 +64,7 @@ class UserList_Response_Model {
     status = json['status'];
     rememberToken = json['remember_token'];
     rememberTokenTime = json['remember_token_time'];
-    isdefault = json['default'];
+    isDefault = json['default'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     deviceId = json['device_id'];
@@ -94,7 +94,7 @@ class UserList_Response_Model {
     data['status'] = status;
     data['remember_token'] = rememberToken;
     data['remember_token_time'] = rememberTokenTime;
-    data['default'] = isdefault;
+    data['default'] = isDefault;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     data['device_id'] = deviceId;
@@ -113,21 +113,22 @@ class UserList_Response_Model {
     return data;
   }
 }
+
 class Department {
   String? id;
   String? name;
   String? description;
-  bool? isdefault;
+  bool? isDefault;
   String? createdAt;
   String? updatedAt;
 
-  Department({this.id, this.name, this.description, this.isdefault, this.createdAt, this.updatedAt});
+  Department({this.id, this.name, this.description, this.isDefault, this.createdAt, this.updatedAt});
 
   Department.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];
-    isdefault = json['default'];
+    isDefault = json['default'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -137,7 +138,7 @@ class Department {
     data['id'] = id;
     data['name'] = name;
     data['description'] = description;
-    data['default'] = isdefault;
+    data['default'] = isDefault;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     return data;
@@ -157,7 +158,7 @@ class Parent {
   bool? status;
   Null rememberToken;
   Null rememberTokenTime;
-  bool? isdefault;
+  bool? isDefault;
   String? createdAt;
   String? updatedAt;
   Null deviceId;
@@ -178,7 +179,7 @@ class Parent {
     this.status,
     this.rememberToken,
     this.rememberTokenTime,
-    this.isdefault,
+    this.isDefault,
     this.createdAt,
     this.updatedAt,
     this.deviceId,
@@ -200,7 +201,7 @@ class Parent {
     status = json['status'];
     rememberToken = json['remember_token'];
     rememberTokenTime = json['remember_token_time'];
-    isdefault = json['default'];
+    isDefault = json['default'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     deviceId = json['device_id'];
@@ -223,7 +224,7 @@ class Parent {
     data['status'] = status;
     data['remember_token'] = rememberToken;
     data['remember_token_time'] = rememberTokenTime;
-    data['default'] = isdefault;
+    data['default'] = isDefault;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     data['device_id'] = deviceId;
@@ -234,19 +235,20 @@ class Parent {
     return data;
   }
 }
+
 class RoleList {
   String? id;
   String? name;
   String? description;
-  bool? isdefault;
+  bool? isDefault;
 
-  RoleList({this.id, this.name, this.description, this.isdefault});
+  RoleList({this.id, this.name, this.description, this.isDefault});
 
   RoleList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];
-    isdefault = json['default'];
+    isDefault = json['default'];
   }
 
   Map<String, dynamic> toJson() {
@@ -254,7 +256,7 @@ class RoleList {
     data['id'] = id;
     data['name'] = name;
     data['description'] = description;
-    data['default'] = isdefault;
+    data['default'] = isDefault;
     return data;
   }
 }

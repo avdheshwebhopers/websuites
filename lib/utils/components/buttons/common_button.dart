@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/material.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
 import '../../app_colors/app_colors.dart';
 
 class CommonButton extends StatelessWidget {
@@ -43,7 +40,6 @@ class CommonButton extends StatelessWidget {
                 color: Colors.white,
                 fontWeight: FontWeight.w400,
                 fontSize: 13,
-                fontFamily: AllFonts.nunitoRegular
             ),
           ),
         ),

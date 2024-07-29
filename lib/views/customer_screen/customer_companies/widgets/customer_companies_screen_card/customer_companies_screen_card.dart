@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 
 
@@ -43,7 +43,7 @@ class CustomerCompaniesScreenCard extends StatelessWidget {
                   Text('Pulkit Surana', style: TextStyle(
                       color: AllColors.mediumGrey,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400
                   ),),
 
@@ -52,7 +52,7 @@ class CustomerCompaniesScreenCard extends StatelessWidget {
                   Text('eraasinternational@gmail.com', style: TextStyle(
                       color: AllColors.mediumGrey,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 12
                   ),),
                 ],
@@ -61,7 +61,7 @@ class CustomerCompaniesScreenCard extends StatelessWidget {
               Text(title, style: TextStyle(
                   color: AllColors.welcomeColor,
                   fontSize: 17,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontWeight: FontWeight.w700
               ),),
 
@@ -77,7 +77,7 @@ class CustomerCompaniesScreenCard extends StatelessWidget {
                   Text('+91-9818402350', style: TextStyle(
                       color: AllColors.lightGrey,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 12
                   ),),
 
@@ -98,7 +98,7 @@ class CustomerCompaniesScreenCard extends StatelessWidget {
                   Text('https://www.eraasinternational.com', style: TextStyle(
                       color: AllColors.lightGrey,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 12
                   ),),
                   Spacer(),
@@ -114,7 +114,7 @@ class CustomerCompaniesScreenCard extends StatelessWidget {
                       child: Text('N/A', style: TextStyle(
                         color: AllColors.mediumPurple,
                         fontSize: 12,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w400,
                       ),),
                     ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
 import '../../../../app_colors/app_colors.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -29,7 +28,7 @@ class CustomListTile extends StatelessWidget {
       title: Text(title,
           style: TextStyle(
               fontSize: 14,
-              fontFamily: AllFonts.nunitoRegular,
+                
               fontWeight: FontWeight.w300,
               color: AllColors.welcomeColor)),
       onTap: onTap,
@@ -59,7 +58,7 @@ class CustomListTileTab extends StatelessWidget {
         title: Text(title,
             style: TextStyle(
                 fontSize: 16,
-                fontFamily: AllFonts.nunitoRegular,
+                  
                 fontWeight: FontWeight.w300,
                 color: AllColors.blackColor)),
         onTap: onTap,

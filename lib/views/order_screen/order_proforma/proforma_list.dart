@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
 import 'package:websuites/views/order_screen/order_proforma/widgets/order_proforma_list_card/order_proforma_list_card.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -92,7 +92,7 @@ class _OrderProformaListState extends State<OrderProformaList> {
                   Text('Proforma List', style: TextStyle(
                     color: AllColors.blackColor,
                     fontSize: 17,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontWeight: FontWeight.w700,
                   ),)
                 ],

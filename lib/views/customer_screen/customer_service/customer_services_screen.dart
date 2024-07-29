@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/customer_screen/customer_service/widgets/customer_services_screen_card/customer_services_screen_card.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -101,7 +101,7 @@ class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
                     style: TextStyle(
                         color: AllColors.blackColor,
                         fontWeight: FontWeight.w700,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontSize: 17),
                   ),
 
@@ -119,7 +119,7 @@ class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
                     style: TextStyle(
                         color: AllColors.lightGrey,
                         fontSize: 15,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w400),
                   ),
                 ],

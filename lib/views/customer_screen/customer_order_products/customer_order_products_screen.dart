@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -94,14 +94,14 @@ class _CustomerOrderProductsScreenState extends State<CustomerOrderProductsScree
                       color: AllColors.blackColor,
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
-                  fontFamily: AllFonts.nunitoRegular)),
+                    )),
 
                   const Spacer(),
 
                   Icon(Icons.filter_list_outlined, size: 15, color: AllColors.lightGrey,),
                   SizedBox5w(),
                   Text('Filter', style: TextStyle(color: AllColors.lightGrey,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontWeight: FontWeight.w400,
                   fontSize: 15),)
                 ],

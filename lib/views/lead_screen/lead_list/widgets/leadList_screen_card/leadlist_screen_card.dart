@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 
 
@@ -42,7 +42,7 @@ class LeadListScreenCard extends StatelessWidget {
 
               Text(title, style: TextStyle(
                   color: AllColors.grey,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontSize: 12,
                   fontWeight: FontWeight.w400
               ),),
@@ -50,7 +50,7 @@ class LeadListScreenCard extends StatelessWidget {
               Text(companyName, style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 18,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   color: AllColors.welcomeColor
               ),),
 
@@ -61,7 +61,7 @@ class LeadListScreenCard extends StatelessWidget {
                   SizedBox(width: 8,),
                   Text('Wed 26, June 2024 at 12:09 pm', style: TextStyle(
                     color: AllColors.vividPurple,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 12,
                   ), ),
                   Spacer(),
@@ -75,7 +75,7 @@ class LeadListScreenCard extends StatelessWidget {
                       Text('Google', style: TextStyle(
                           color: AllColors.grey,
                           fontSize: 12,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w400
                       ),)
                     ],
@@ -91,7 +91,7 @@ class LeadListScreenCard extends StatelessWidget {
 
                   Text('+91-88105399221', style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 12,
                       color: AllColors.grey
                   ),),
@@ -107,7 +107,7 @@ class LeadListScreenCard extends StatelessWidget {
                       child: Center(
                         child: Text('Manish Jindal', style: TextStyle(
                             fontSize: 12,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w400,
                             color: AllColors.vividPurple
                         ),),
@@ -129,7 +129,7 @@ class LeadListScreenCard extends StatelessWidget {
                   child: Center(
                     child: Text('PharmaHopers', style: TextStyle(
                         fontSize: 12,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w400,
                         color: AllColors.darkBlue
                     ),

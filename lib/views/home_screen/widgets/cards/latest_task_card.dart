@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../utils/app_colors/app_colors.dart';
 
 
@@ -431,7 +431,7 @@ Widget build(BuildContext context) {
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                     color: Color(0xff4d4d4d),
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                   ),
                 ),
                 const SizedBox(height: 3),
@@ -441,7 +441,7 @@ Widget build(BuildContext context) {
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                     color: Colors.black,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                   ),
                 ),
                 const SizedBox(height: 3),
@@ -455,7 +455,7 @@ Widget build(BuildContext context) {
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
                         color: Color(0xff5131ff),
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                       ),
                     ),
                   ],
@@ -506,7 +506,7 @@ Widget build(BuildContext context) {
                         child: Text(
                           statusText,
                           style: TextStyle(
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 10,
                             color: IconColor,
                           ),
@@ -580,7 +580,7 @@ class AppCardOneTab extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: 17,
                       color: Color(0xff4d4d4d),
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -590,7 +590,7 @@ class AppCardOneTab extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 19,
                       color: Colors.black,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -604,7 +604,7 @@ class AppCardOneTab extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           fontSize: 15,
                           color: Color(0xff5131ff),
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                         ),
                       ),
                     ],
@@ -656,7 +656,7 @@ class AppCardOneTab extends StatelessWidget {
                           child: Text(
                             statusText,
                             style: TextStyle(
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 14,
                               color: IconColor,
                             ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../Utils/app_colors/app_colors.dart';
 
 class RolesScreenCard extends StatelessWidget {
@@ -41,7 +41,7 @@ class RolesScreenCard extends StatelessWidget {
                 children: [
                   Text(title, style: TextStyle(
                       color: AllColors.blackColor,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 18,
                       fontWeight: FontWeight.w700
                   ),),
@@ -56,12 +56,12 @@ class RolesScreenCard extends StatelessWidget {
                     color: AllColors.blackColor,
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                   ),),
 
                   Text('Graphic Designer', style: TextStyle(
                       color: AllColors.grey,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 12,
                       fontWeight: FontWeight.w400
                   ),),
@@ -77,13 +77,13 @@ class RolesScreenCard extends StatelessWidget {
                   Text('MEMBERS - ', style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 12,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     color: AllColors.blackColor,
                   ),),
 
                   Text('12',style: TextStyle(
                       color: AllColors.grey,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 12,
                       fontWeight: FontWeight.w400
                   ),),
@@ -176,7 +176,7 @@ class RolesScreenCard extends StatelessWidget {
                       color: AllColors.grey,
                       fontWeight: FontWeight.w400,
                       fontSize: 13,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),)
 
                 ],

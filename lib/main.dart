@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'Resources/getx_localization/languages.dart';
 import 'Utils/Routes/routes.dart';
 
@@ -21,15 +20,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'WHCrm',
       translations: Languages(),
-      locale: Locale('en_US'),
-      fallbackLocale: Locale('en_US'),
+      locale: const Locale('en_US'),
+      fallbackLocale: const Locale('en_US'),
       theme: ThemeData(
         fontFamily: 'Nunito',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      // home: HomePage(),
       getPages: AllRoutes.appRoutes(),
     );
   }

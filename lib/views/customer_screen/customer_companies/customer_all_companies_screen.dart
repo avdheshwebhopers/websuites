@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:websuites/views/customer_screen/customer_companies/widgets/customer_companies_screen_card/customer_companies_screen_card.dart';
-import '../../../Data/models/Response_model/LoginResponseModel.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+import '../../../Data/models/Response_model/login.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -94,7 +94,7 @@ class _CustomerCompaniesScreenState extends State<CustomerCompaniesScreen> {
                     style: TextStyle(
                         color: AllColors.blackColor,
                         fontSize: 16,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w700),
                   ),
                   Spacer(),
@@ -111,7 +111,7 @@ class _CustomerCompaniesScreenState extends State<CustomerCompaniesScreen> {
                     style: TextStyle(
                         color: AllColors.lightGrey,
                         fontWeight: FontWeight.w400,
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontSize: 14),
                   )
                 ],

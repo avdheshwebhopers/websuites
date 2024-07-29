@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 
 class WelcomeScreenButton extends StatelessWidget {
@@ -36,7 +36,7 @@ class WelcomeScreenButton extends StatelessWidget {
             color: AllColors.whiteColor,
             fontWeight: FontWeight.w400,
             fontSize: 14,
-            fontFamily: AllFonts.nunitoRegular,
+              
           ),
           ),
         ),

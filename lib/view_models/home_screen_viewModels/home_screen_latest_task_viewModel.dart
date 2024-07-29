@@ -23,7 +23,7 @@ class HomeScreenLatestTaskViewModel extends GetxController {
     loading.value = true;
 
 
-    _api.DB_LatestTaskApi().then((value) {
+    _api.dbLatestTaskApi().then((value) {
       // setRxStatus(Status.COMPLETED);
       setLatestTask(value);
       loading.value = false;

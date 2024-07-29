@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../../utils/app_colors/app_colors.dart';
 
 class AllServicesScreenCard extends StatelessWidget {
@@ -41,7 +41,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text('Super 50(Quarterly)', style: TextStyle(
                       color: AllColors.mediumGrey,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400
                   ),),
 
@@ -58,7 +58,7 @@ class AllServicesScreenCard extends StatelessWidget {
                       child: Text('Cheque', style: TextStyle(
                           color: AllColors.darkBlue,
                           fontWeight: FontWeight.w500,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 10
                       ),
                       ),
@@ -69,7 +69,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text('₹ 55,000', style: TextStyle(
                       color: AllColors.mediumGrey,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w500
                   ),),
 
@@ -79,7 +79,7 @@ class AllServicesScreenCard extends StatelessWidget {
               Text('Events Pharmaceuticals Pvt Ltd', style: TextStyle(
                 color: AllColors.welcomeColor,
                 fontWeight: FontWeight.w700,
-                fontFamily: AllFonts.nunitoRegular,
+                  
                 fontSize: 17,
               ),),
 
@@ -92,7 +92,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text('eventpharma@gmail.com', style: TextStyle(
                       color: AllColors.mediumGrey,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400
                   ),),
 
@@ -101,7 +101,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text('ORDER NO', style: TextStyle(
                       color: AllColors.blackColor,
                       fontWeight: FontWeight.w500,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 12
                   ),),
                 ],
@@ -117,7 +117,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text('Oct 3, 2023 To Oct 3, 2028', style: TextStyle(
                       color: AllColors.mediumPurple,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w400
                   ),),
                   Spacer(),
@@ -125,7 +125,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text('#003246', style: TextStyle(
                     color: AllColors.lightGrey,
                     fontWeight: FontWeight.w400,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                     fontSize: 12,
 
                   ),)
@@ -147,7 +147,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   child: Text('Currently Running', style: TextStyle(
                       color: AllColors.mediumPurple,
                       fontSize: 12,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontWeight: FontWeight.w500
                   ),),
                 ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import '../../../Data/models/Response_model/LoginResponseModel.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+import '../../../Data/models/Response_model/login.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
 import '../../../resources/image_strings/image_strings.dart';
@@ -17,8 +16,6 @@ import '../../app_colors/app_colors.dart';
 import '../../components/buttons/common_button.dart';
 import '../../components/widgets/drawer/custom_drawer.dart';
 import '../../components/widgets/drawer/drawer_list_tiles/custom_list_tile.dart';
-
-
 
 class MyTabBody extends StatefulWidget {
   const MyTabBody({super.key});
@@ -50,10 +47,10 @@ class _MyTabBodyState extends State<MyTabBody> {
       print('Error fetching userData: $e');
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         body: OrientationBuilder(
           builder: (context, orientation) {
@@ -86,174 +83,6 @@ class _MyTabBodyState extends State<MyTabBody> {
                           userName: '$userName',
                           phoneNumber: '$userEmail',
                           version: '1.0.12'),
-                      // Drawer(
-                      //   backgroundColor: AppColors.whiteColor,
-                      //   child:
-                      //   ListView(
-                      //     children: [
-                      //       Container(
-                      //         padding: EdgeInsets.only(left: 13),
-                      //         height: Get.height / 9,
-                      //         child: Row(
-                      //
-                      //           children: [
-                      //             Container(
-                      //               height: Get.height / 14,
-                      //               width: Get.width / 14,
-                      //               decoration: BoxDecoration(
-                      //                 shape: BoxShape.circle,
-                      //                 color: AppColors.whiteColor,
-                      //               ),
-                      //               child: Center(
-                      //                   child: Image.asset(
-                      //                       AppImages.Splash_WHLogo)),
-                      //             ),
-                      //             SizedBox(width: Get.width / 40,),
-                      //
-                      //              Column(
-                      //               mainAxisAlignment: MainAxisAlignment.center,
-                      //               crossAxisAlignment: CrossAxisAlignment
-                      //                   .start,
-                      //
-                      //               children: [
-                      //                 Text('$userName',
-                      //                   style: TextStyle(
-                      //                     fontWeight: FontWeight.w500,
-                      //                     fontSize: 17,
-                      //                     fontFamily: Fonts.nunitoRegular,
-                      //
-                      //                   ),),
-                      //                 Text('$userEmail',
-                      //                   style: TextStyle(
-                      //                       fontWeight: FontWeight.w400,
-                      //                       fontSize: 13,
-                      //                       fontFamily: Fonts.nunitoRegular,
-                      //                       color: AppColors.grey,
-                      //                   ),),
-                      //               ],
-                      //             )
-                      //           ],),
-                      //       ),
-                      //
-                      //       Column(
-                      //         children: [
-                      //           CustomListTileTab(
-                      //               icon: Icons.dashboard,
-                      //               title: AppStrings.Drawer_Dashboard,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.leaderboard,
-                      //               title: AppStrings.Drawer_Lead,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.person,
-                      //               title: AppStrings.Drawer_Customer,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.shopping_bag,
-                      //               title: AppStrings.Drawer_Orders,
-                      //               onTap: (){}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.group,
-                      //               title: AppStrings.Drawer_HRM,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.analytics,
-                      //               title: AppStrings.Drawer_Analytics,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.dashboard,
-                      //               title: AppStrings.Drawer_Campaign,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.bar_chart,
-                      //               title: AppStrings.Drawer_Sales,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.person_2,
-                      //               title: AppStrings.Drawer_Roles,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.verified_user,
-                      //               title: AppStrings.Drawer_Users,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.add_task,
-                      //               title: AppStrings.Drawer_Tasks,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.data_object,
-                      //               title: AppStrings.Drawer_Projects,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.location_city_sharp,
-                      //               title: AppStrings.Drawer_ServiceArea,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.shopping_bag,
-                      //               title: AppStrings.Drawer_Products,
-                      //               onTap: () {}
-                      //           ),
-                      //           CustomListTileTab(
-                      //               icon: Icons.grade,
-                      //               title: AppStrings.Drawer_Master,
-                      //               onTap: () {}
-                      //           ),
-                      //         ],
-                      //       ),
-                      //
-                      //       SizedBox(height: 30,),
-                      //
-                      //       const Divider(
-                      //         thickness: 1,
-                      //         indent: 20,
-                      //         endIndent: 20,
-                      //       ),
-                      //
-                      //       Container(
-                      //           height: Get.height/20,
-                      //           width: Get.width/2,
-                      //           padding: EdgeInsets.only(left: 20),
-                      //
-                      //           child: Text(AppStrings.Drawer_Versions,
-                      //             style: TextStyle(
-                      //                 fontWeight: FontWeight.w300,
-                      //                 fontFamily: Fonts.nunitoRegular,
-                      //                 fontSize: 10,
-                      //                 color: AppColors.grey
-                      //             ),)
-                      //       ),
-                      //
-                      //       Container(
-                      //         margin: EdgeInsets.only(left: 20, right: 20),
-                      //         child: GenericButton(
-                      //             height: Get.height/30,
-                      //             width: Get.width/4,
-                      //             title: 'Logout',
-                      //             onPress: () {
-                      //               SaveUserData().removeUser();
-                      //               Get.toNamed(RoutesName.login_screen);
-                      //               Utils.SnackbarSuccess('Logout Successful');
-                      //             }
-                      //         ),
-                      //       ),
-                      //       SizedBox(height: 10,),
-                      //     ],
-                      //   ),
-                      // )
                   ),
                 ],
               ),
@@ -313,7 +142,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                     child: Center(
                                         child:
                                         Image.asset(
-                                          ImageStrings.WelcomeCompanyLogo,
+                                          ImageStrings. welcomeCompanyLogo,
                                           scale:10,)
                                     ),
                                   ),
@@ -423,7 +252,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_TaskPerformance,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -434,7 +263,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_TaskPerformanceDate,
                           style: TextStyle(
                             fontSize: 15,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             color: AllColors.blackColor,
                           ),
@@ -520,7 +349,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   Text(Strings.Home_Completed,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontSize: 15,
                                     ),
                                   ),
@@ -530,7 +359,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   Text('40%',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontSize: 20,
                                     ),
                                   ),
@@ -551,7 +380,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               const Text(Strings.Home_TaskProgress,
                                 style: TextStyle(
                                   fontSize: 20,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontWeight: FontWeight.w600,
                                 ),),
                               SizedBox(height: 5,),
@@ -561,7 +390,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   const Text('06:06:15 /',
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontWeight: FontWeight.w600,
                                     ),),
 
@@ -570,7 +399,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   Text('4hrs',
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontWeight: FontWeight.w600,
                                       color: AllColors.vividPurple,
                                     ),
@@ -602,7 +431,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LatestTask,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -615,7 +444,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                           child: Text(Strings.Home_LatestTaskSeeAll,
                             style: TextStyle(
                               fontSize: 15,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w400,
                               color: AllColors.vividPurple,
                             ),
@@ -698,7 +527,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LeadTypeCount,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -709,7 +538,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LeadTypeDate,
                           style: TextStyle(
                             fontSize: 15,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             color: AllColors.blackColor,
                           ),
@@ -823,7 +652,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LatestCustomer,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -836,7 +665,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                           child: Text(Strings.Home_LatestCustomerSeeAll,
                             style: TextStyle(
                               fontSize: 15,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w400,
                               color: AllColors.vividPurple,
                             ),
@@ -919,7 +748,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LeadSource,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -934,7 +763,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LeadSourceList,
                           style: TextStyle(
                             fontSize: 15,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             color: AllColors.grey,
                           ),
@@ -952,7 +781,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                           child: Text(Strings.Home_LeadSourceChart,
                             style: TextStyle(
                               fontSize: 12,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w400,
                               color: AllColors.vividBlue,
                             ),
@@ -997,7 +826,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_Transactions,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -1010,7 +839,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                           child: Text(Strings.Home_TransactionsSeeAll,
                             style: TextStyle(
                               fontSize: 15,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w400,
                               color: AllColors.vividPurple,
                             ),
@@ -1067,7 +896,6 @@ class _MyTabBodyState extends State<MyTabBody> {
       );
   }
 
-
   Widget landscapeMode() {
     return
       Row(
@@ -1105,7 +933,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                     ),
                                     child: Center(
                                         child: Image.asset(
-                                            ImageStrings.Splash_WHLogo)),
+                                            ImageStrings.splashWHLogo)),
                                   ),
                                   SizedBox(width: Get.width / 40,),
 
@@ -1119,14 +947,14 @@ class _MyTabBodyState extends State<MyTabBody> {
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 17,
-                                          fontFamily: AllFonts.nunitoRegular,
+                                            
 
                                         ),),
                                       Text('+91-8810529887',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 13,
-                                            fontFamily: AllFonts.nunitoRegular,
+                                              
                                             color: Colors.grey
                                         ),),
                                     ],
@@ -1231,7 +1059,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                 child: Text(Strings.Drawer_Versions,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w300,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontSize: 10,
                                       color: AllColors.grey
                                   ),)
@@ -1315,7 +1143,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                     child: Center(
                                         child:
                                         Image.asset(
-                                          ImageStrings.WelcomeCompanyLogo,
+                                          ImageStrings. welcomeCompanyLogo,
                                           scale: 10,)
                                     ),
                                   ),
@@ -1447,7 +1275,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_TaskPerformance,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -1458,7 +1286,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_TaskPerformanceDate,
                           style: TextStyle(
                             fontSize: 15,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             color: AllColors.blackColor,
                           ),
@@ -1544,7 +1372,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   Text(Strings.Home_Completed,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontSize: 15,
                                     ),
                                   ),
@@ -1554,7 +1382,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   Text('40%',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontSize: 20,
                                     ),
                                   ),
@@ -1575,7 +1403,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                               const Text(Strings.Home_TaskProgress,
                                 style: TextStyle(
                                   fontSize: 20,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontWeight: FontWeight.w600,
                                 ),),
                               SizedBox(height: 5,),
@@ -1585,7 +1413,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   const Text('06:06:15 /',
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontWeight: FontWeight.w600,
                                     ),),
 
@@ -1594,7 +1422,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   Text('4hrs',
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontFamily: AllFonts.nunitoRegular,
+                                        
                                       fontWeight: FontWeight.w600,
                                       color: AllColors.vividPurple,
                                     ),
@@ -1626,7 +1454,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LatestTask,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -1639,7 +1467,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                           child: Text(Strings.Home_LatestTaskSeeAll,
                             style: TextStyle(
                               fontSize: 15,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w400,
                               color: AllColors.vividPurple,
                             ),
@@ -1722,7 +1550,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LeadTypeCount,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -1733,7 +1561,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LeadTypeDate,
                           style: TextStyle(
                             fontSize: 15,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             color: AllColors.blackColor,
                           ),
@@ -1845,7 +1673,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LatestCustomer,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -1858,7 +1686,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                           child: Text(Strings.Home_LatestTaskSeeAll,
                             style: TextStyle(
                               fontSize: 15,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w400,
                               color: AllColors.vividPurple,
                             ),
@@ -1941,7 +1769,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LeadSource,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -1956,7 +1784,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_LeadSourceList,
                           style: TextStyle(
                             fontSize: 15,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             color: AllColors.grey,
                           ),
@@ -1974,7 +1802,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                           child: Text(Strings.Home_LeadSourceChart,
                             style: TextStyle(
                               fontSize: 12,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w400,
                               color: AllColors.vividBlue,
                             ),
@@ -2019,7 +1847,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                         Text(Strings.Home_Transactions,
                           style: TextStyle(
                             fontSize: 17,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w500,
                             color: AllColors.blackColor,
                           ),
@@ -2032,7 +1860,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                           child: Text(Strings.Home_TransactionsSeeAll,
                             style: TextStyle(
                               fontSize: 15,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w400,
                               color: AllColors.vividPurple,
                             ),

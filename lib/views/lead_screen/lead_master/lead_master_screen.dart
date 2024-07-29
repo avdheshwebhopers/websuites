@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:websuites/views/lead_screen/lead_master/widgets/leadMaster_screen_card/leadMaster_screen_card.dart';
-import '../../../Data/models/Response_model/LoginResponseModel.dart';
+import '../../../Data/models/Response_model/login.dart';
 import '../../../resources/icon_strings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';

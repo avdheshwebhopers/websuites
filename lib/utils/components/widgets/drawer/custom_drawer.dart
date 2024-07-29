@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
 import '../../../../resources/icon_strings/icon_strings.dart';
 import '../../../../resources/image_strings/image_strings.dart';
 import '../../../../view_models/save_token/save_token.dart';
@@ -48,7 +47,7 @@ class CustomDrawer extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: AllColors.whiteColor,
                     ),
-                    child: Center(child: Image.asset(ImageStrings.Splash_WHLogo)),
+                    child: Center(child: Image.asset(ImageStrings.splashWHLogo)),
                   ),
                   SizedBox(width: Get.width / 30),
                   Column(
@@ -61,7 +60,7 @@ class CustomDrawer extends StatelessWidget {
                           color: AllColors.blackColor,
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                         ),
                       ),
                       Text(
@@ -69,7 +68,7 @@ class CustomDrawer extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 12,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           color: AllColors.grey,
                         ),
                       ),
@@ -99,7 +98,7 @@ class CustomDrawer extends StatelessWidget {
                         '• Create',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -112,7 +111,7 @@ class CustomDrawer extends StatelessWidget {
                         '• List',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -125,7 +124,7 @@ class CustomDrawer extends StatelessWidget {
                         '• Activities',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -138,7 +137,7 @@ class CustomDrawer extends StatelessWidget {
                         '• Team Leads',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -151,7 +150,7 @@ class CustomDrawer extends StatelessWidget {
                         '• Trash',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -162,7 +161,7 @@ class CustomDrawer extends StatelessWidget {
                         '• Settings',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -173,7 +172,7 @@ class CustomDrawer extends StatelessWidget {
                         '• Customize Fields',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -186,7 +185,7 @@ class CustomDrawer extends StatelessWidget {
                         '• Lead (Master)',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -197,7 +196,7 @@ class CustomDrawer extends StatelessWidget {
                         '• Global Search',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -218,7 +217,8 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w300,
-                              fontFamily: AllFonts.nunitoRegular),
+                                
+                          ),
                         ),
                       ),
                       ListTile(
@@ -229,7 +229,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Companies',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -240,7 +240,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Activities',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -251,7 +251,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Payment Reminders',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -262,7 +262,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Services',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -273,7 +273,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Order Products',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -284,7 +284,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Orderless Services',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -295,7 +295,7 @@ class CustomDrawer extends StatelessWidget {
                           '• My Team',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -306,7 +306,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Trash',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -317,7 +317,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Activation List',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -328,7 +328,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Customer (Master)',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -339,7 +339,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Settings',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w300,
                               fontSize: 14),
                         ),
@@ -357,7 +357,7 @@ class CustomDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                           ),
                         ),
                       ),
@@ -369,7 +369,7 @@ class CustomDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                           ),
                         ),
                       ),
@@ -381,7 +381,7 @@ class CustomDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                           ),
                         ),
                       ),
@@ -393,7 +393,7 @@ class CustomDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                           ),
                         ),
                       ),
@@ -405,7 +405,7 @@ class CustomDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                           ),
                         ),
                       ),
@@ -417,7 +417,7 @@ class CustomDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                           ),
                         ),
                       ),
@@ -431,7 +431,7 @@ class CustomDrawer extends StatelessWidget {
                         title: Text(
                           '• Leave',
                           style: TextStyle(
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
                           ),
@@ -442,7 +442,7 @@ class CustomDrawer extends StatelessWidget {
                         title: Text(
                           '• Attendence',
                           style: TextStyle(
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
                           ),
@@ -463,7 +463,7 @@ class CustomDrawer extends StatelessWidget {
                       title: Text(
                         '• List',
                         style: TextStyle(
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14,
                         ),
@@ -474,7 +474,7 @@ class CustomDrawer extends StatelessWidget {
                       title: Text(
                         '• Mail Logs',
                         style: TextStyle(
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14,
                         ),
@@ -485,7 +485,7 @@ class CustomDrawer extends StatelessWidget {
                       title: Text(
                         '• WhatsApp Logs',
                         style: TextStyle(
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14,
                         ),
@@ -524,7 +524,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w300,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                       ListTile(
@@ -533,7 +533,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Report',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 14,
                               fontWeight: FontWeight.w300),
                         ),
@@ -546,7 +546,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       )
                     ]),
@@ -562,7 +562,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                       ListTile(
@@ -570,7 +570,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Master',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 14,
                               fontWeight: FontWeight.w300),
                         ),
@@ -588,7 +588,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                       ListTile(
@@ -596,7 +596,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Request',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 14,
                               fontWeight: FontWeight.w300),
                         ),
@@ -609,7 +609,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                       ListTile(
@@ -618,7 +618,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Vendor',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 14,
                               fontWeight: FontWeight.w300),
                         ),
@@ -631,12 +631,12 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       )
                     ]),
                 CustomListTile(
-                  leadIconImage: IconStrings.service_area,
+                  leadIconImage: IconStrings.serviceArea,
                   title: 'Service Area',
                   onTap: () {},
                 ),
@@ -652,7 +652,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                       ListTile(
@@ -663,7 +663,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                       ListTile(
@@ -674,7 +674,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                       ListTile(
@@ -685,7 +685,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                       ListTile(
@@ -696,7 +696,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       ),
                     ]),
@@ -712,7 +712,7 @@ class CustomDrawer extends StatelessWidget {
                               color: AllColors.welcomeColor,
                               fontWeight: FontWeight.w300,
                               fontSize: 14,
-                              fontFamily: AllFonts.nunitoRegular),
+                                ),
                         ),
                       )
                     ]),
@@ -726,7 +726,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Divisions',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 14,
                               fontWeight: FontWeight.w300),
                         ),
@@ -737,7 +737,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Departments',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 14,
                               fontWeight: FontWeight.w300),
                         ),
@@ -748,7 +748,7 @@ class CustomDrawer extends StatelessWidget {
                           '• Proposals',
                           style: TextStyle(
                               color: AllColors.welcomeColor,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 14,
                               fontWeight: FontWeight.w300),
                         ),
@@ -762,7 +762,7 @@ class CustomDrawer extends StatelessWidget {
                                 '• Cities',
                                 style: TextStyle(
                                     color: AllColors.welcomeColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 14,
                                     fontWeight: FontWeight.w300),
                               ),
@@ -773,7 +773,7 @@ class CustomDrawer extends StatelessWidget {
                                 '• States',
                                 style: TextStyle(
                                     color: AllColors.welcomeColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 14,
                                     fontWeight: FontWeight.w300),
                               ),
@@ -784,7 +784,7 @@ class CustomDrawer extends StatelessWidget {
                                 '• Countries',
                                 style: TextStyle(
                                     color: AllColors.welcomeColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 14,
                                     fontWeight: FontWeight.w300),
                               ),
@@ -799,7 +799,7 @@ class CustomDrawer extends StatelessWidget {
                                 '• Customize',
                                 style: TextStyle(
                                     color: AllColors.welcomeColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 14,
                                     fontWeight: FontWeight.w300),
                               ),
@@ -822,7 +822,7 @@ class CustomDrawer extends StatelessWidget {
                 version,
                 style: TextStyle(
                   fontWeight: FontWeight.w300,
-                  fontFamily: AllFonts.nunitoRegular,
+                    
                   fontSize: 10,
                   color: AllColors.grey,
                 ),
@@ -880,7 +880,7 @@ class AppTabDrawer extends StatelessWidget {
                     color: AllColors.whiteColor,
                   ),
                   child: Center(
-                    child: Image.asset(ImageStrings.Splash_WHLogo),
+                    child: Image.asset(ImageStrings.splashWHLogo),
                   ),
                 ),
                 SizedBox(width: Get.width / 40),
@@ -931,7 +931,7 @@ class AppTabDrawer extends StatelessWidget {
                       '• Create',
                       style: TextStyle(
                           color: AllColors.welcomeColor,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14),
                     ),
@@ -944,7 +944,7 @@ class AppTabDrawer extends StatelessWidget {
                       '• List',
                       style: TextStyle(
                           color: AllColors.welcomeColor,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14),
                     ),
@@ -957,7 +957,7 @@ class AppTabDrawer extends StatelessWidget {
                       '• Activities',
                       style: TextStyle(
                           color: AllColors.welcomeColor,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14),
                     ),
@@ -970,7 +970,7 @@ class AppTabDrawer extends StatelessWidget {
                       '• Team Leads',
                       style: TextStyle(
                           color: AllColors.welcomeColor,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14),
                     ),
@@ -983,7 +983,7 @@ class AppTabDrawer extends StatelessWidget {
                       '• (Lead) Master',
                       style: TextStyle(
                           color: AllColors.welcomeColor,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14),
                     ),
@@ -1004,7 +1004,7 @@ class AppTabDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            fontFamily: AllFonts.nunitoRegular),
+                              ),
                       ),
                     ),
                     ListTile(
@@ -1015,7 +1015,7 @@ class AppTabDrawer extends StatelessWidget {
                         '• Companies',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontWeight: FontWeight.w300,
                             fontSize: 14),
                       ),
@@ -1033,7 +1033,7 @@ class AppTabDrawer extends StatelessWidget {
                           color: AllColors.welcomeColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                         ),
                       ),
                     )
@@ -1047,7 +1047,7 @@ class AppTabDrawer extends StatelessWidget {
                       title: const Text(
                         '• Leave',
                         style: TextStyle(
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14,
                         ),
@@ -1058,7 +1058,7 @@ class AppTabDrawer extends StatelessWidget {
                       title: const Text(
                         '• Attendence',
                         style: TextStyle(
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w300,
                           fontSize: 14,
                         ),
@@ -1106,7 +1106,7 @@ class AppTabDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            fontFamily: AllFonts.nunitoRegular),
+                              ),
                       ),
                     ),
                     ListTile(
@@ -1115,7 +1115,7 @@ class AppTabDrawer extends StatelessWidget {
                         '• Report',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 14,
                             fontWeight: FontWeight.w300),
                       ),
@@ -1127,7 +1127,7 @@ class AppTabDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
-                            fontFamily: AllFonts.nunitoRegular),
+                              ),
                       ),
                     )
                   ]),
@@ -1143,7 +1143,7 @@ class AppTabDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
-                            fontFamily: AllFonts.nunitoRegular),
+                              ),
                       ),
                     ),
                     ListTile(
@@ -1152,7 +1152,7 @@ class AppTabDrawer extends StatelessWidget {
                         '• Master',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 14,
                             fontWeight: FontWeight.w300),
                       ),
@@ -1170,7 +1170,7 @@ class AppTabDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
-                            fontFamily: AllFonts.nunitoRegular),
+                              ),
                       ),
                     ),
                     ListTile(
@@ -1179,7 +1179,7 @@ class AppTabDrawer extends StatelessWidget {
                         '• Request',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 14,
                             fontWeight: FontWeight.w300),
                       ),
@@ -1192,7 +1192,7 @@ class AppTabDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
-                            fontFamily: AllFonts.nunitoRegular),
+                              ),
                       ),
                     ),
                     ListTile(
@@ -1201,7 +1201,7 @@ class AppTabDrawer extends StatelessWidget {
                         '• Vendor',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 14,
                             fontWeight: FontWeight.w300),
                       ),
@@ -1214,12 +1214,12 @@ class AppTabDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
-                            fontFamily: AllFonts.nunitoRegular),
+                              ),
                       ),
                     )
                   ]),
               CustomListTile(
-                leadIconImage: IconStrings.service_area,
+                leadIconImage: IconStrings.serviceArea,
                 title: 'Service Area',
                 onTap: () {},
               ),
@@ -1240,7 +1240,7 @@ class AppTabDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
-                            fontFamily: AllFonts.nunitoRegular),
+                              ),
                       ),
                     )
                   ]),
@@ -1253,7 +1253,7 @@ class AppTabDrawer extends StatelessWidget {
                         '• Divisions',
                         style: TextStyle(
                             color: AllColors.welcomeColor,
-                            fontFamily: AllFonts.nunitoRegular,
+                              
                             fontSize: 14,
                             fontWeight: FontWeight.w300),
                       ),

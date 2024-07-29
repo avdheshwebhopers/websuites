@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -89,7 +89,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                             child: Text('Total: 27,87,000', style: TextStyle(
                                 color: AllColors.whiteColor,
                                 fontSize: 12,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontWeight: FontWeight.w500
                             ),),
                           ),
@@ -106,7 +106,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                             child: Text('verified: 0', style: TextStyle(
                               color: AllColors.blackColor,
                               fontWeight: FontWeight.w500,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 12,
                             ),),
                           ),
@@ -123,7 +123,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                             child: Text('Cancelled: 0', style: TextStyle(
                                 color: AllColors.blackColor,
                                 fontSize: 12,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontWeight: FontWeight.w500
                             ),),
                           ),
@@ -159,7 +159,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('Mr.Ahemad', style: TextStyle(
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 12
                                 ),),
               
@@ -176,7 +176,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Paid', style: TextStyle(
                                         color: AllColors.greenJungle,
                                         fontSize: 12,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontWeight: FontWeight.w500
                                     ),),
                                   ),
@@ -187,7 +187,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('₹71,890', style: TextStyle(
                                   color: AllColors.blackColor,
                                   fontWeight: FontWeight.w600,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontSize: 19,
                                 ),),
                               ],
@@ -199,7 +199,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('B&B Life Science LLP', style: TextStyle(
                                     color: AllColors.blackColor,
                                     fontSize: 19,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w700
                                 ),),
               
@@ -212,14 +212,14 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('PRODUCT :', style: TextStyle(
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13
                                 ),),
               
                                 Text(' Premium 60(Quarterly)', style: TextStyle(
                                     color: AllColors.grey,
                                     fontSize: 12,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w400
                                 ),),
               
@@ -236,7 +236,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Cheque', style: TextStyle(
                                         color: AllColors.vividRed,
                                         fontWeight: FontWeight.w500,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontSize: 12
                                     ),),
                                   ),
@@ -251,7 +251,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                             Text('DIVISION', style: TextStyle(
                               color: AllColors.blackColor,
                               fontSize: 13,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontWeight: FontWeight.w600,
                             ),),
               
@@ -269,7 +269,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Pharmahopers', style: TextStyle(
                                         color: AllColors.greenJungle,
                                         fontWeight: FontWeight.w500,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontSize: 12
                                     ),),
                                   ),
@@ -288,7 +288,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Webhopers.Pvt.Ltd.', style: TextStyle(
                                         color: AllColors.greenJungle,
                                         fontSize: 12,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontWeight: FontWeight.w500
                                     ),),
                                   ),
@@ -303,7 +303,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('CREATED BY', style: TextStyle(
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13
                                 ),),
               
@@ -312,7 +312,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('REMARK', style: TextStyle(
                                     color: AllColors.blackColor,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w600
                                 ),)
                               ],
@@ -331,7 +331,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Nitin Sharma', style: TextStyle(
                                         color: AllColors.mediumPurple,
                                         fontWeight: FontWeight.w500,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                         fontSize: 12
                                     ),),
                                   ),
@@ -342,7 +342,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('Premium 60(Quarterly) renewal', style: TextStyle(
                                     color: AllColors.grey,
                                     fontSize: 12,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w400
                                 ),)
                               ],
@@ -354,14 +354,14 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('ORDER ID -', style: TextStyle(
                                   color: AllColors.blackColor,
                                   fontWeight: FontWeight.w600,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontSize: 13,
                                 ),),
               
                                 Text('#003870', style: TextStyle(
                                     color: AllColors.grey,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w400
                                 ),),
               
@@ -370,14 +370,14 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('PAYMENT -', style: TextStyle(
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13
                                 ),),
               
                                 Text(' Fresh', style: TextStyle(
                                     color: AllColors.grey,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w400
                                 ),)
                               ],
@@ -390,14 +390,14 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('TXNID/CHEQUE NO', style: TextStyle(
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w600,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13
                                 ),),
               
                                 Text('PAID ON', style: TextStyle(
                                     color: AllColors.blackColor,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w600
                                 ),),
                               ],
@@ -409,7 +409,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('DOC', style: TextStyle(
                                   color: AllColors.grey,
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontSize: 12,
                                 ),),
 
@@ -420,7 +420,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('June 25, 2024, 10:47 AM', style: TextStyle(
                                     color: AllColors.grey,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontWeight: FontWeight.w400
                                 ),),
                               ],
@@ -458,7 +458,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('Mr.Arindam Gupta', style: TextStyle(
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 13
                                 ),),
                                 SizedBox(width: 10,),
@@ -474,7 +474,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Pending', style: TextStyle(
                                         color: AllColors.darkYellow,
                                         fontSize: 13,
-                                        fontFamily: AllFonts.nunitoRegular,
+                                          
                                       fontWeight: FontWeight.w400
                                     ),),
                                   ),
@@ -483,7 +483,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
               
                                 Text('₹54,168', style: TextStyle(
                                     color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 19,
                                     fontWeight: FontWeight.w600
                                 ),),
@@ -497,7 +497,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w700,
                                     fontSize: 19,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),),
               
                                 Icon(Icons.arrow_drop_down_sharp, size: 25,),
@@ -506,7 +506,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
               
                             Text('Product : Starter(Yearly)', style: TextStyle(
                                 color: AllColors.grey,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400
                             ),),
@@ -530,7 +530,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                         color: AllColors.mediumPurple,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 13,
-                                        fontFamily: AllFonts.nunitoRegular
+                                          
                                     ),),
                                   ),
                                 ),
@@ -539,7 +539,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),)
               
               
@@ -578,7 +578,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('Mr.Arindam Gupta', style: TextStyle(
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 14
                                 ),),
                                 SizedBox(width: 10,),
@@ -594,7 +594,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Pending', style: TextStyle(
                                         color: AllColors.darkYellow,
                                         fontSize: 13,
-                                        fontFamily: AllFonts.nunitoRegular
+                                          
                                     ),),
                                   ),
                                 ),
@@ -602,7 +602,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
 
                                 Text('₹54,168', style: TextStyle(
                                     color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600
                                 ),),
@@ -616,7 +616,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w700,
                                     fontSize: 19,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),),
 
                                 Icon(Icons.arrow_drop_down_sharp, size: 25,),
@@ -625,7 +625,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
 
                             Text('Product : Starter(Yearly)', style: TextStyle(
                                 color: AllColors.grey,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400
                             ),),
@@ -649,7 +649,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                         color: AllColors.mediumPurple,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 13,
-                                        fontFamily: AllFonts.nunitoRegular
+                                          
                                     ),),
                                   ),
                                 ),
@@ -658,7 +658,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),)
 
 
@@ -697,7 +697,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('Mr.Arindam Gupta', style: TextStyle(
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 14
                                 ),),
                                 SizedBox(width: 10,),
@@ -713,7 +713,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Pending', style: TextStyle(
                                         color: AllColors.darkYellow,
                                         fontSize: 13,
-                                        fontFamily: AllFonts.nunitoRegular
+                                          
                                     ),),
                                   ),
                                 ),
@@ -721,7 +721,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
 
                                 Text('₹54,168', style: TextStyle(
                                     color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600
                                 ),),
@@ -735,7 +735,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w700,
                                     fontSize: 19,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),),
 
                                 Icon(Icons.arrow_drop_down_sharp, size: 25,),
@@ -744,7 +744,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
 
                             Text('Product : Starter(Yearly)', style: TextStyle(
                                 color: AllColors.grey,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400
                             ),),
@@ -768,7 +768,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                         color: AllColors.mediumPurple,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 13,
-                                        fontFamily: AllFonts.nunitoRegular
+                                          
                                     ),),
                                   ),
                                 ),
@@ -777,7 +777,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),)
 
 
@@ -816,7 +816,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 Text('Mr.Arindam Gupta', style: TextStyle(
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 14
                                 ),),
                                 SizedBox(width: 10,),
@@ -832,7 +832,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     child: Text('Pending', style: TextStyle(
                                         color: AllColors.darkYellow,
                                         fontSize: 13,
-                                        fontFamily: AllFonts.nunitoRegular
+                                          
                                     ),),
                                   ),
                                 ),
@@ -840,7 +840,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
 
                                 Text('₹54,168', style: TextStyle(
                                     color: AllColors.blackColor,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600
                                 ),),
@@ -854,7 +854,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     color: AllColors.blackColor,
                                     fontWeight: FontWeight.w700,
                                     fontSize: 19,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),),
 
                                 Icon(Icons.arrow_drop_down_sharp, size: 25,),
@@ -863,7 +863,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
 
                             Text('Product : Starter(Yearly)', style: TextStyle(
                                 color: AllColors.grey,
-                                fontFamily: AllFonts.nunitoRegular,
+                                  
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400
                             ),),
@@ -887,7 +887,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                         color: AllColors.mediumPurple,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 13,
-                                        fontFamily: AllFonts.nunitoRegular
+                                          
                                     ),),
                                   ),
                                 ),
@@ -896,7 +896,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     color: AllColors.grey,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),)
 
 
@@ -930,7 +930,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
 
                   Text('Payments', style: TextStyle(
                       color: AllColors.blackColor,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 18,
                       fontWeight: FontWeight.w700
                   ),),
@@ -944,7 +944,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                     fontWeight: FontWeight.w400,
                     fontSize: 15,
                     color: AllColors.grey,
-                    fontFamily: AllFonts.nunitoRegular,
+                      
                   ),),
 
                   SizedBox(width: 15,),

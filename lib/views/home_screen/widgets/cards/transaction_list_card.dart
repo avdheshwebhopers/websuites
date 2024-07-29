@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../utils/app_colors/app_colors.dart';
 
 class TransactionListCard extends StatelessWidget {
@@ -70,7 +70,7 @@ class TransactionListCard extends StatelessWidget {
                         title,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 13,
                           color: AllColors.blackColor,
                         ),
@@ -88,7 +88,7 @@ class TransactionListCard extends StatelessWidget {
                             subtitle,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
-                              fontFamily: AllFonts.nunitoRegular,
+                                
                               fontSize: 12,
                               color: AllColors.mediumPurple,
                             ),
@@ -113,7 +113,7 @@ class TransactionListCard extends StatelessWidget {
                         amount,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 15,
                           color: AllColors.blackColor,
                         ),
@@ -123,7 +123,7 @@ class TransactionListCard extends StatelessWidget {
                         name,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 10,
                           color: AllColors.grey,
                         ),
@@ -208,7 +208,7 @@ class AppCardsThreeTab extends StatelessWidget {
                     title,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 18,
                       color: AllColors.blackColor,
                     ),
@@ -226,7 +226,7 @@ class AppCardsThreeTab extends StatelessWidget {
                         subtitle,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontSize: 16,
                           color: AllColors.mediumPurple,
                         ),
@@ -251,7 +251,7 @@ class AppCardsThreeTab extends StatelessWidget {
                     amount,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 19,
                       color: AllColors.blackColor,
                     ),
@@ -261,7 +261,7 @@ class AppCardsThreeTab extends StatelessWidget {
                     name,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular,
+                        
                       fontSize: 15,
                       color: AllColors.grey,
                     ),

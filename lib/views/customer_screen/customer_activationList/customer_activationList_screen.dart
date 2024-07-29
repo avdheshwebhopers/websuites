@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/LoginResponseModel.dart';
+import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/customer_screen/customer_activationList/widgets/customer_activation_list_screen_card/customer_activation_list_screen_card.dart';
-import '../../../Resources/all_fonts/all_fonts.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -96,7 +95,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                                       color: AllColors.lightGrey,
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
-                                      fontFamily: AllFonts.nunitoRegular
+                                        
                                   ),),
                                   Spacer(),
                 
@@ -119,7 +118,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                 
                               Text('RealNova Healthcare', style: TextStyle(
                                   color: AllColors.welcomeColor,
-                                  fontFamily: AllFonts.nunitoRegular,
+                                    
                                   fontWeight: FontWeight.w700,
                                   fontSize: 18
                               ),),
@@ -131,7 +130,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                                     color: AllColors.mediumPurple,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: AllFonts.nunitoRegular
+                                      
                                 ),
                                 ),
                               ],
@@ -149,7 +148,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                                       child: Text('Approval Date', style: TextStyle(
                                           color: AllColors.vividOrange,
                                           fontSize: 12,
-                                          fontFamily: AllFonts.nunitoRegular,
+                                            
                                           fontWeight: FontWeight.w400
                                       ),),
                                     ),
@@ -159,7 +158,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                                   Text('Invalid Date', style: TextStyle(
                                     color: AllColors.lightGrey,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: AllFonts.nunitoRegular,
+                                      
                                     fontSize: 12,
                                   ),),
 
@@ -176,7 +175,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                                       child: Text('Roshan jha', style: TextStyle(
                                           color: AllColors.mediumPurple,
                                           fontSize: 12,
-                                          fontFamily: AllFonts.nunitoRegular,
+                                            
                                           fontWeight: FontWeight.w400
                                       ),
                                       ),
@@ -208,7 +207,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                           child: Icon(Icons.menu_sharp, size: 25,)),
                       SizedBox10w(),
                       Text('Activation List', style: TextStyle(
-                        fontFamily: AllFonts.nunitoRegular,
+                          
                         fontWeight: FontWeight.w600,
                         fontSize: 17,
                         color: AllColors.blackColor,
@@ -223,7 +222,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                         color: AllColors.lightGrey,
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
-                        fontFamily: AllFonts.nunitoRegular
+                          
                       ),),
                     ],
                   ))

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Resources/all_fonts/all_fonts.dart';
+  
 import '../../../../utils/app_colors/app_colors.dart';
 
 class CustomerOrderProductScreenCard extends StatelessWidget {
@@ -42,7 +42,7 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                       color: AllColors.mediumGrey,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),),
 
                   Spacer(),
@@ -59,7 +59,7 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                           color: AllColors.vividOrange,
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                        fontFamily: AllFonts.nunitoRegular
+                          
                       ),),
                     ),
                   )
@@ -68,7 +68,7 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
 
               Text(title, style: TextStyle(
                 color: AllColors.welcomeColor,
-                fontFamily: AllFonts.nunitoRegular,
+                  
                 fontWeight: FontWeight.w700,
                 fontSize: 16,
               )
@@ -82,7 +82,7 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                       color: AllColors.mediumPurple,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      fontFamily: AllFonts.nunitoRegular
+                        
                   ),),
                 ],
               ),
@@ -99,7 +99,7 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                     child: Center(
                       child: Text('Pharmahopers', style: TextStyle(
                           color: AllColors.darkBlue,
-                          fontFamily: AllFonts.nunitoRegular,
+                            
                           fontWeight: FontWeight.w400,
                           fontSize: 12
                       ),),
@@ -120,7 +120,7 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                           color: AllColors.mediumPurple,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          fontFamily: AllFonts.nunitoRegular
+                            
                       ),),
                     ),
                   )

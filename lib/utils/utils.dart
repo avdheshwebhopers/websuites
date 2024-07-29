@@ -28,7 +28,7 @@ class Utils {
   // }
 
   static SnackbarFailed(String message) {
-    Get.snackbar('failed' , message,
+    Get.snackbar('failed', message,
       snackStyle: SnackStyle.FLOATING,
       backgroundColor: Colors.red, // Background color of the snackbar
       colorText: Colors.white,
@@ -36,7 +36,7 @@ class Utils {
   }
 
   static SnackbarSuccess(String message) {
-    Get.snackbar('Successful' , message,
+    Get.snackbar('Successful', message,
       snackStyle: SnackStyle.FLOATING,
       backgroundColor: Colors.green, // Background color of the snackbar
       colorText: Colors.white,
@@ -64,7 +64,6 @@ class Utils {
     );
   }
 
-
   static void flushBarErrorMessage(String message, BuildContext context) {
     showFlushbar(context: context,
       flushbar: Flushbar(
@@ -85,19 +84,6 @@ class Utils {
     );
   }
 
-  // static void textError(BuildContext context, String message) {
-  //   Flushbar(
-  //     messageText: Text(message,style: TextStyle(fontWeight: FontWeight.w500 , fontSize: 16.sp,color: Colors.white),  ),
-  //     icon: Icon(Icons.error, color: Colors.white, size: 3.h),
-  //     duration: Duration(seconds: 3),
-  //     backgroundColor: Colors.red.shade700,
-  //     borderRadius: BorderRadius.circular(10.h),
-  //     margin: EdgeInsets.fromLTRB(2.h, 0.5.h , 2.h , 2.h),
-  //     padding: EdgeInsets.all(2.h),
-  //     dismissDirection: FlushbarDismissDirection.HORIZONTAL,
-  //   ).show(context);
-
-  }
   void errorAlertDialogue(String? message, BuildContext context) {
     showDialog(
       context: context,
@@ -105,14 +91,17 @@ class Utils {
         return CupertinoAlertDialog(
           title: Padding(
             padding: EdgeInsets.all(20),
-            child: Icon(Icons.error_outline, textDirection: TextDirection.ltr, color: Colors.red, size: 50,),
+            child: Icon(Icons.error_outline, textDirection: TextDirection.ltr,
+              color: Colors.red,
+              size: 50,),
           ),
           content: Padding(
             padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-            child: Text(message!, textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
+            child: Text(message!, textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
           ),
         );
-        },
+      },
     );
   }
 
@@ -123,30 +112,35 @@ class Utils {
         return CupertinoAlertDialog(
           title: Padding(
             padding: EdgeInsets.all(20),
-            child: Icon(Icons.check_circle_outlined, textDirection: TextDirection.ltr, color: Colors.green, size: 50,),
+            child: Icon(
+              Icons.check_circle_outlined, textDirection: TextDirection.ltr,
+              color: Colors.green,
+              size: 50,),
           ),
           content: Padding(
             padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-            child: Text(message!, textAlign: TextAlign.center, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
+            child: Text(message!, textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
           ),
         );
-        },
+      },
     );
   }
 
-  void confirmationDialogue(String? message , String? title ,onPress, BuildContext context){
-
-    showDialog(context: context, builder: (BuildContext context){
+  void confirmationDialogue(String? message, String? title, onPress,
+      BuildContext context) {
+    showDialog(context: context, builder: (BuildContext context) {
       return CupertinoAlertDialog(
         title: Text(title ?? ""),
         content: Padding(
-          padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
-          child: Text(message!,textAlign: TextAlign.center,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+          padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          child: Text(message!, textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
         ),
-        actions: <Widget> [
-          CupertinoDialogAction(child:Text("Cancel"),
-            onPressed: (){
-            Navigator.of(context).pop();
+        actions: <Widget>[
+          CupertinoDialogAction(child: Text("Cancel"),
+            onPressed: () {
+              Navigator.of(context).pop();
             },),
           CupertinoDialogAction(child: Text('OK'),
               onPressed: onPress),
@@ -154,6 +148,6 @@ class Utils {
       );
     });
   }
-
+}
 
 
