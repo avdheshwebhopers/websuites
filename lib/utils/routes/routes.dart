@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
 import 'package:websuites/views/orderScreen/orderListScreen/orderList_screen.dart';
-
 import '../../views/bottomNavBarScreen/bottom_navBar_screen.dart';
 import '../../views/customerScreens/activationListScreen/customer_activationList_screen.dart';
 import '../../views/customerScreens/activitiesScreen/customers_activities_screen.dart';
@@ -15,11 +14,11 @@ import '../../views/forgotPasswordScreen/forgot_password_screen.dart';
 import '../../views/homeScreen/home_screen.dart';
 import '../../views/leadScreens/createNewLead/create_newLead_screen.dart';
 import '../../views/leadScreens/leadActivities/lead_activities_screen.dart';
-import '../../views/leadScreens/lead_list/leadlist_screen.dart';
-import '../../views/leadScreens/lead_master/lead_master_screen.dart';
-import '../../views/leadScreens/search_google_leads/search_google_leads.dart';
-import '../../views/leadScreens/team_lead/team_lead_screen.dart';
-import '../../views/leadScreens/trash_lead/trash_lead_screen.dart';
+import '../../views/leadScreens/leadList/leadlist_screen.dart';
+import '../../views/leadScreens/leadMaster/lead_master_screen.dart';
+import '../../views/leadScreens/searchGoogleLeads/search_google_leads.dart';
+import '../../views/leadScreens/teamLead/team_lead_screen.dart';
+import '../../views/leadScreens/trashLead/trash_lead_screen.dart';
 import '../../views/loginScreen/login_screen.dart';
 import '../../views/orderScreen/orderActivityScreen/order_activity_screen.dart';
 import '../../views/orderScreen/orderPaymentsScreen/order_payments_screen.dart';
@@ -32,6 +31,7 @@ import '../../views/splashScreen/splash_screen.dart';
 import '../../views/upcomingScreen/upcoming_screen.dart';
 import '../../views/usersScreen/users_screen.dart';
 import '../../views/welcomeToCompanyScreen/welcome_to_company_screen.dart';
+
 
 class AllRoutes{
   static appRoutes () =>

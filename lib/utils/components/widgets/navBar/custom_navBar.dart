@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../resources/iconStrings/icon_strings.dart';
 import '../../../../views/leadScreens/createNewLead/create_newLead_screen.dart';
-import '../../../../views/leadScreens/lead_list/leadlist_screen.dart';
-import '../../../../views/leadScreens/lead_master/lead_master_screen.dart';
+import '../../../../views/leadScreens/leadList/leadlist_screen.dart';
+import '../../../../views/leadScreens/leadMaster/lead_master_screen.dart';
 import '../../../../views/upcomingScreen/upcoming_screen.dart';
 import '../../../appColors/app_colors.dart';
 
