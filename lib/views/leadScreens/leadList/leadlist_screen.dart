@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/views/leadScreens/leadList/widgets/leadList_screen_card/leadlist_screen_card.dart';
+import 'package:websuites/views/leadScreens/leadList/widgets/leadListCard/lead_list_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';

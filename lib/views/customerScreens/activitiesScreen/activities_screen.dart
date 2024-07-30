@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/views/customerScreens/customerServices/widgets/customerServicesScreenCard/customer_services_screen_card.dart';
+import 'package:websuites/views/customerScreens/activitiesScreen/widgets/ActivitiesScreenCard/activities_screen_card.dart';
 import '../../../data/models/responseModels/login.dart';
+import '../../../resources/strings/strings.dart';
+import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../viewModels/saveToken/save_token.dart';
 
-class CustomerServicesScreen extends StatefulWidget {
-  const CustomerServicesScreen({super.key});
+
+
+class CustomersActivitiesScreen extends StatefulWidget {
+  const CustomersActivitiesScreen({super.key});
 
   @override
-  State<CustomerServicesScreen> createState() => _CustomerServicesScreenState();
+  State<CustomersActivitiesScreen> createState() =>
+      _CustomersActivitiesScreenState();
 }
 
-class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
+class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -44,16 +49,12 @@ class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _globalKey,
-
         backgroundColor: AllColors.whiteColor,
-
+        key: _globalKey,
         drawer: CustomDrawer(
             userName: '$userName',
             phoneNumber: '$userEmail',
-            version: '1.0.12'
-        ),
-
+            version: '1.0.12'),
         body: Stack(
           children: [
             const SingleChildScrollView(
@@ -62,25 +63,27 @@ class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 130,
+                      height: 135,
                     ),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
+                    CustomerActivitiesScreenCard(
+                        title: 'Ms. Komal Sharma',
+                        subtitle: 'Medisys biotech Private Limited'),
+                    CustomerActivitiesScreenCard(
+                        title: 'Ms. Komal Sharma',
+                        subtitle: 'Medisys biotech Private Limited'),
+                    CustomerActivitiesScreenCard(
+                        title: 'Ms. Komal Sharma',
+                        subtitle: 'Medisys biotech Private Limited'),
+                    CustomerActivitiesScreenCard(
+                        title: 'Ms. Komal Sharma',
+                        subtitle: 'Medisys biotech Private Limited'),
                   ],
                 ),
               ),
             ),
 
-            //============================================================
-            // CUSTOM APP BAR
+            //====================================================================
+            //CUSTOM APP BAR
 
             CustomAppBar(
               child: Row(
@@ -94,40 +97,32 @@ class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
                         size: 25,
                       )),
                   const SizedBox(
-                    width: 10,
+                    width: 12,
                   ),
-                  Text(
-                    'All Services',
-                    style: TextStyle(
-                        color: AllColors.blackColor,
-                        fontWeight: FontWeight.w700,
-                          
-                        fontSize: 17),
-                  ),
-
+                 TextStyles.w700_17(color: AllColors.blackColor, context, Strings.customerActivity),
                   const Spacer(),
                   Icon(
                     Icons.filter_list_outlined,
-                    size: 15,
-                    color: AllColors.lightGrey,
+                    size: 17,
+                    color: AllColors.grey,
                   ),
                   const SizedBox(
-                    width: 5,
+                    width: 4,
                   ),
-                  Text(
-                    'Filter',
-                    style: TextStyle(
-                        color: AllColors.lightGrey,
-                        fontSize: 15,
-                          
-                        fontWeight: FontWeight.w400),
+                  TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.filter),
+                  const SizedBox(
+                    width: 10,
                   ),
+                  TextStyles.w400_14(color: AllColors.blackColor, context, Strings.details),
+                  const Icon(
+                    Icons.keyboard_arrow_right,
+                    size: 20,
+                  )
                 ],
               ),
             ),
           ],
         )
-
     );
   }
 }

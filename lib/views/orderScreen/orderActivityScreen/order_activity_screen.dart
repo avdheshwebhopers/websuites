@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/views/orderScreen/orderActivityScreen/widgets/orderActivityScreenCard/order_activity_screen_card.dart';
+import 'package:websuites/views/orderScreen/orderActivityScreen/widgets/orderActivityCard/order_activity_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';

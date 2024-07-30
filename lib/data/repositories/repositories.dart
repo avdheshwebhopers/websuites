@@ -1,11 +1,10 @@
-
 import '../../resources/appUrls/app_urls.dart';
-import '../models/responseModels/dashboard_screen/db_count_response_model.dart';
-import '../models/responseModels/dashboard_screen/db_latest_customer_response_model.dart';
-import '../models/responseModels/dashboard_screen/db_lead_by_type_count_response_model.dart';
-import '../models/responseModels/dashboard_screen/db_lead_source_response_model.dart';
-import '../models/responseModels/dashboard_screen/db_response_model.dart';
-import '../models/responseModels/dashboard_screen/db_transactions_response_model.dart';
+import '../models/responseModels/dashboardScreen/db_count_response_model.dart';
+import '../models/responseModels/dashboardScreen/db_latest_customer_response_model.dart';
+import '../models/responseModels/dashboardScreen/db_lead_by_type_count_response_model.dart';
+import '../models/responseModels/dashboardScreen/db_lead_source_response_model.dart';
+import '../models/responseModels/dashboardScreen/db_response_model.dart';
+import '../models/responseModels/dashboardScreen/db_transactions_response_model.dart';
 import '../models/responseModels/forgot_password.dart';
 import '../models/responseModels/login.dart';
 import '../models/responseModels/user_list.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/views/leadScreens/trashLead/widgets/trashLeadScreenCard/trash_lead_screen_card.dart';
+import 'package:websuites/views/leadScreens/trashLead/widgets/trashLeadCard/trash_lead_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';

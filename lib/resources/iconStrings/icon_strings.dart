@@ -1,5 +1,6 @@
 class IconStrings {
 
+
   static const String dashboard = 'assets/icons/Dashboard.png';
   static const String lead = 'assets/icons/Leads.png';
   static const String customer = 'assets/icons/Customer.png';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
-import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadScreenCard/create_new_lead_screen_card.dart';
+import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
