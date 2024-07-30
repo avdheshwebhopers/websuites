@@ -45,7 +45,8 @@ class OrderProformaListCard extends StatelessWidget {
                         
                       fontWeight: FontWeight.w400,
                       fontSize: 12
-                  ),),
+                  ),
+                  ),
 
                   SizedBox10w(),
 

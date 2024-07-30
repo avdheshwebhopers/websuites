@@ -15,7 +15,7 @@ import '../../../views/homeScreen/widgets/cards/transaction_list_card.dart';
 import '../../appColors/app_colors.dart';
 import '../../components/buttons/common_button.dart';
 import '../../components/widgets/drawer/custom_drawer.dart';
-import '../../components/widgets/drawer/drawer_list_tiles/custom_list_tile.dart';
+import '../../components/widgets/drawer/drawerListTiles/custom_list_tile.dart';
 
 
 class MyTabBody extends StatefulWidget {

@@ -31,7 +31,7 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
         ),
 
         child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,14 +42,13 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                       color: AllColors.mediumGrey,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                        
-                  ),),
-
-                  Spacer(),
+                  ),
+                  ),
+                  const Spacer(),
 
                   Container(
                     height: Get.height/40,
-                    padding: EdgeInsets.symmetric(horizontal: 12,),
+                    padding: const EdgeInsets.symmetric(horizontal: 12,),
                     decoration: BoxDecoration(
                       color: AllColors.lighterOrange,
                       borderRadius: BorderRadius.circular(20),
@@ -59,8 +58,8 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                           color: AllColors.vividOrange,
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
-                          
-                      ),),
+                      ),
+                      ),
                     ),
                   )
                 ],
@@ -68,7 +67,6 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
 
               Text(title, style: TextStyle(
                 color: AllColors.welcomeColor,
-                  
                 fontWeight: FontWeight.w700,
                 fontSize: 16,
               )
@@ -106,11 +104,11 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                     ),
                   ),
 
-                  Spacer(),
+                  const Spacer(),
 
                   Container(
                     height: Get.height/40,
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     decoration: BoxDecoration(
                       color: AllColors.lighterPurple,
                       borderRadius: BorderRadius.circular(20),
@@ -120,16 +118,12 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                           color: AllColors.mediumPurple,
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                            
-                      ),),
+                      ),
+                      ),
                     ),
                   )
-
-
                 ],
               )
-
-
             ],
           ),
         ),

@@ -16,6 +16,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
     required this.subtitle,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return
@@ -62,7 +63,6 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                     color: AllColors.mediumPurple,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
-                      
                   ),
                   ),
                 ],
@@ -72,7 +72,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                 children: [
                   Text('Call', style: TextStyle(
                       color: AllColors.blackColor,
-                        
+
                       fontWeight: FontWeight.w500,
                       fontSize: 13
                   ),),
@@ -87,8 +87,8 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                     color: AllColors.grey,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
-                      
-                  ),),
+                  ),
+                  ),
 
                   Spacer(),
 
@@ -102,7 +102,6 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
                     child: Center(
                       child: Text('Roshan Jha', style: TextStyle(
                           color: AllColors.mediumPurple,
-                            
                           fontWeight: FontWeight.w400,
                           fontSize: 13
                       ),),

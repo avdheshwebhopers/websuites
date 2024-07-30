@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/views/customerScreens/customerList/widgets/customerListScreenCard/customer_list_screen_card.dart';
+import 'package:websuites/views/customerScreens/customerList/widgets/customerListCard/list_screen_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';

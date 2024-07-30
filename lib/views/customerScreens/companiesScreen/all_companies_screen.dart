@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/views/customerScreens/companiesScreen/widgets/customerCompaniesScreenCard/customer_companies_screen_card.dart';
+import 'package:websuites/views/customerScreens/companiesScreen/widgets/companiesCard/companies_screen_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';

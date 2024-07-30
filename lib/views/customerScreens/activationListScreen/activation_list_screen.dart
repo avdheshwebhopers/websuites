@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/views/customerScreens/activationListScreen/widgets/customerActivationListScreenCard/customer_activation_list_screen_card.dart';
+import 'package:websuites/views/customerScreens/activationListScreen/widgets/ActivationListCard/list_screen_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
@@ -89,7 +89,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                
+
                             children: [
                               Row(
                                 children: [

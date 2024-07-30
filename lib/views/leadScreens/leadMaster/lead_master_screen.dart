@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:websuites/views/leadScreens/leadMaster/widgets/leadMaster_screen_card/leadMaster_screen_card.dart';
+import 'package:websuites/views/leadScreens/leadMaster/widgets/leadMasterCard/lead_master_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';

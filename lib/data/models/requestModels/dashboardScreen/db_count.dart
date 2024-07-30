@@ -1,8 +1,4 @@
-
-
-
-
-import '../../responseModels/dashboard_screen/db_count_response_model.dart';
+import '../../responseModels/dashboardScreen/db_count_response_model.dart';
 
 class DashboardCountRequestedModel {
   int? customers;
@@ -21,7 +17,6 @@ class DashboardCountRequestedModel {
     this.repeatedLeads
   });
 
-  // Factory constructor to create a User from a JSON map
   factory DashboardCountRequestedModel.fromJson(Map<String, dynamic> json) {
     return DashboardCountRequestedModel(
       customers: json['customers'],
@@ -33,7 +28,6 @@ class DashboardCountRequestedModel {
     );
   }
 
-  // Method to convert a User instance to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'customers': customers,

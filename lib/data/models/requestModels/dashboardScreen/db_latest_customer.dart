@@ -1,4 +1,5 @@
-import '../../responseModels/dashboard_screen/db_latest_customer_response_model.dart';
+
+import '../../responseModels/dashboardScreen/db_latest_customer_response_model.dart';
 
 class DbLatestCustomerRequestModel{
   List<Items>? items;

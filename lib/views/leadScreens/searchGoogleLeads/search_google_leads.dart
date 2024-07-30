@@ -10,7 +10,7 @@ import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_15h.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_22h.dart';
 import '../../../viewModels/saveToken/save_token.dart';
-import '../createNewLead/widgets/createNewLeadScreenCard/create_new_lead_screen_card.dart';
+import '../createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 
 
 class SearchGoogleLeads extends StatefulWidget {
