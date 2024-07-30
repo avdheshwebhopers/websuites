@@ -81,7 +81,6 @@ class AllRoutes{
     //   // transition :Transition.leftToRightWithFade,
     // ),
 
-
     GetPage(
       name: RoutesName.home_screen,
       page: () => HomeScreen(),
@@ -102,8 +101,6 @@ class AllRoutes{
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
-
-
 
         //======================================================================
         // Lead Screen
@@ -180,7 +177,6 @@ class AllRoutes{
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
-
 
         GetPage(
           name: RoutesName.customer_companies_screen,
@@ -261,7 +257,8 @@ class AllRoutes{
         GetPage(
           name: RoutesName.sales_target_screen,
           page: () => SalesTargetScreen(),
-          transitionDuration : Duration(milliseconds: 450),
+          transitionDuration : Duration(milliseconds: 450
+          ),
           // transition :Transition.leftToRightWithFade,
         ),
 
@@ -284,19 +281,6 @@ class AllRoutes{
           transitionDuration : Duration(milliseconds: 450),
           // transition :Transition.leftToRightWithFade,
         ),
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

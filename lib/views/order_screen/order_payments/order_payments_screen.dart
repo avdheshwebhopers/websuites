@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
-  
+import '../../../data/models/responseModels/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -74,7 +73,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                 padding: EdgeInsets.only(left: 15, right: 15),
                 child: Column(
                   children: [
-                    SizedBox(height: 70,),
+                    SizedBox(height: 80),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -99,7 +98,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                           height: Get.height/30,
                           width: Get.width/3.5,
                           decoration: BoxDecoration(
-                              color: AllColors.textfield2,
+                              color: AllColors.textField2,
                               borderRadius: BorderRadius.circular(20)
                           ),
                           child: Center(
@@ -116,7 +115,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                           height: Get.height/30,
                           width: Get.width/3.5,
                           decoration: BoxDecoration(
-                            color: AllColors.textfield2,
+                            color: AllColors.textField2,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Center(
@@ -540,13 +539,10 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
                                       
-                                ),)
-              
-              
+                                ),
+                                )
                               ],
                             )
-              
-              
                           ],
                         ),
                       ),
@@ -630,7 +626,7 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                 fontWeight: FontWeight.w400
                             ),),
 
-                            Divider(
+                            const Divider(
                               thickness: 0.4,
                             ),
 
@@ -659,13 +655,10 @@ class _OrderPaymentsScreenState extends State<OrderPaymentsScreen> {
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
                                       
-                                ),)
-
-
+                                ),
+                                )
                               ],
                             )
-
-
                           ],
                         ),
                       ),

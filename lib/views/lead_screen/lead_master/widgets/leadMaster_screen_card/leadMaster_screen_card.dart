@@ -88,7 +88,7 @@ class LeadMasterScreenCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextStyles.w500_universal(fontSize: 13,color: AllColors.blackColor, context, Strings.LeadMaster_Subtypes),
+                TextStyles.w500_universal(fontSize: 13,color: AllColors.blackColor, context, Strings.subtypes),
 
                 SizedBox(width: 5,),
 
@@ -108,7 +108,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                           height: Get.height/40,
                           // width: Get.width/3.5,
                           decoration: BoxDecoration(
-                              color: AllColors.textfield2,
+                              color: AllColors.textField2,
                               borderRadius: BorderRadius.circular(4)
                           ),
                           child: Row(
@@ -135,7 +135,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 8),
                           height: Get.height/40,
                           decoration: BoxDecoration(
-                            color: AllColors.textfield2,
+                            color: AllColors.textField2,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Row(
@@ -165,7 +165,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           height: Get.height/40,
                           decoration: BoxDecoration(
-                            color: AllColors.textfield2,
+                            color: AllColors.textField2,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Row(
@@ -192,7 +192,7 @@ class LeadMasterScreenCard extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           height: Get.height/40,
                           decoration: BoxDecoration(
-                            color: AllColors.textfield2,
+                            color: AllColors.textField2,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Row(

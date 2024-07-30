@@ -33,19 +33,19 @@ class _OtpScreenState extends State<OtpScreen> {
                 Image.asset(ImageStrings. welcomeCompanyLogo, scale: 5.5,),
                 SizedBox(height: 30),
 
-                TextStyles.w600_universal(fontSize: 20, color: AllColors.welcomeColor, context, Strings.Otp_WelcomeTo),
+                TextStyles.w600_universal(fontSize: 20, color: AllColors.welcomeColor, context, Strings.welcomeTo),
 
                 SizedBox(height: 10),
 
-                TextStyles.w400_12(color: AllColors.grey,context, Strings.Otp_WeTextedYou),
+                TextStyles.w400_12(color: AllColors.grey,context, Strings.weTextedYou),
 
                 Center(
                   child:
-                  TextStyles.w400_12(color: AllColors.grey,context, Strings.Otp_TheCodeToSignIn),
+                  TextStyles.w400_12(color: AllColors.grey,context, Strings.theCodeToSignIn),
                 ),
                 SizedBox(height: 10),
 
-                TextStyles.w600_universal(color: AllColors.blackColor, fontSize: 14,context, Strings.Otp_EnterCode),
+                TextStyles.w600_universal(color: AllColors.blackColor, fontSize: 14,context, Strings.enterCode),
                 const SizedBox(
                   height: 25,
                 ),
@@ -61,10 +61,9 @@ class _OtpScreenState extends State<OtpScreen> {
 
                 const SizedBox(height: 20),
                 SizedBox(
-                  // height: Get.height/17,
                   width: 380,
                   child: CommonButton(
-                    title: Strings.Login_Button,
+                    title: Strings.button,
                     onPress: () {
                       Get.offNamed(RoutesName.home_screen);
                     },
@@ -82,7 +81,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        TextStyles.w300_10(context, Strings.Otp_ResendOtp)
+                        TextStyles.w300_10(context, Strings.resendOtp)
                       ],
                     ),
                   ),

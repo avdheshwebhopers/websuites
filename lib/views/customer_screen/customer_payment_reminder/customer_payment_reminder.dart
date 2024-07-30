@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -64,7 +64,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
               child: Column(
                 children: [
                   const SizedBox(
-                    height: 120,
+                    height: 140,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

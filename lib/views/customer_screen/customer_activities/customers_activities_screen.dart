@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/customer_screen/customer_activities/widgets/customer_activities_screen_card/cutomer_activities_screen_card.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
 import '../../../utils/app_colors/app_colors.dart';
@@ -61,7 +61,7 @@ class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 120,
+                      height: 135,
                     ),
                     CustomerActivitiesScreenCard(
                         title: 'Ms. Komal Sharma',
@@ -97,7 +97,7 @@ class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
                   const SizedBox(
                     width: 12,
                   ),
-                 TextStyles.w700_17(color: AllColors.blackColor, context, Strings.CustomerActivities_customerActivity),
+                 TextStyles.w700_17(color: AllColors.blackColor, context, Strings.customerActivity),
                   const Spacer(),
                   Icon(
                     Icons.filter_list_outlined,
@@ -107,11 +107,11 @@ class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
                   const SizedBox(
                     width: 4,
                   ),
-                  TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.CustomerActivities_filter),
+                  TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.filter),
                   const SizedBox(
                     width: 10,
                   ),
-                  TextStyles.w400_14(color: AllColors.blackColor, context, Strings.CustomerActivities_details),
+                  TextStyles.w400_14(color: AllColors.blackColor, context, Strings.details),
                   const Icon(
                     Icons.keyboard_arrow_right,
                     size: 20,

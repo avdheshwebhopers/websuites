@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/app_bar/custom_appBar.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
@@ -8,7 +7,7 @@ import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
 import 'package:websuites/views/roles_screen/widgets/roles_screen_card/roles_screen_card.dart';
-  
+import '../../data/models/responseModels/login.dart';
 import '../../utils/app_colors/app_colors.dart';
 
 class RolesScreen extends StatefulWidget {
@@ -39,8 +38,8 @@ class _RolesScreenState extends State<RolesScreen> {
       setState(() {
         userName = first_name!;
         userEmail = email!;
-      });
-
+      }
+      );
     }catch (e){
       print('Error fetching userData: $e');
     }
@@ -62,7 +61,8 @@ class _RolesScreenState extends State<RolesScreen> {
       drawer: CustomDrawer(
           userName: userName,
           phoneNumber: userEmail,
-          version: '1.0.12'),
+          version: '1.0.12'
+      ),
 
       body:
           Stack(
@@ -73,7 +73,7 @@ class _RolesScreenState extends State<RolesScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
                       children: [
-                        SizedBox(height: 60),
+                        SizedBox(height: 70),
                         RolesScreenCard(title: 'Graphic Designer'),
                         RolesScreenCard(title: 'Graphic Designer'),
                         RolesScreenCard(title: 'Graphic Designer'),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:websuites/views/customer_screen/customer_companies/widgets/customer_companies_screen_card/customer_companies_screen_card.dart';
-import '../../../Data/models/Response_model/login.dart';
-  
+import '../../../data/models/responseModels/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -59,7 +58,7 @@ class _CustomerCompaniesScreenState extends State<CustomerCompaniesScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   children: [
-                    SizedBox(height: 120),
+                    SizedBox(height: 135),
                     CustomerCompaniesScreenCard(title: 'Eras International'),
                     CustomerCompaniesScreenCard(title: 'Eras International'),
                     CustomerCompaniesScreenCard(title: 'Eras International'),

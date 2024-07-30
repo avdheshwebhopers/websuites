@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:websuites/views/lead_screen/lead_list/widgets/leadList_screen_card/leadlist_screen_card.dart';
-import '../../../Data/models/Response_model/login.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/icon_strings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
@@ -55,11 +55,11 @@ class _LeadListScreenState extends State<LeadListScreen> {
         floatingActionButton: CustomFloatingButton(
             onPressed: () {},
             imageIcon: IconStrings.navSearch3,
-            backgroundColor: AllColors.mediumPurple),
+            backgroundColor: AllColors.mediumPurple
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         key: _globalKey,
         backgroundColor: AllColors.whiteColor,
-
 
         drawer: CustomDrawer(
             userName: '$userName',
@@ -74,21 +74,13 @@ class _LeadListScreenState extends State<LeadListScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 109,
+                      height: 125,
                     ),
-                    LeadListScreenCard(
-                        title: 'Sanjay Kumar',
-                        companyName: 'Prelims Pharma Private Limited'),
-                    LeadListScreenCard(
-                        title: 'Lokesh Kumar', companyName: 'Biophar Pharma'),
-                    LeadListScreenCard(
-                        title: 'Rahul Choudhary', companyName: 'Tata Pharma'),
-                    LeadListScreenCard(
-                        title: 'Sanjay Kumar',
-                        companyName: 'Prelims Pharma Private Limited'),
-                    LeadListScreenCard(
-                        title: 'Mukesh',
-                        companyName: 'Prelims Pharma Private Limited'),
+                    LeadListScreenCard(title: 'Sanjay Kumar', companyName: 'Prelims Pharma Private Limited'),
+                    LeadListScreenCard(title: 'Lokesh Kumar', companyName: 'Biophar Pharma'),
+                    LeadListScreenCard(title: 'Rahul Choudhary', companyName: 'Tata Pharma'),
+                    LeadListScreenCard(title: 'Sanjay Kumar', companyName: 'Prelims Pharma Private Limited'),
+                    LeadListScreenCard(title: 'Mukesh', companyName: 'Prelims Pharma Private Limited'),
                   ],
                 ),
               ),
@@ -105,32 +97,32 @@ class _LeadListScreenState extends State<LeadListScreen> {
                         _globalKey.currentState?.openDrawer();
                       },
                       child:
-                      Icon(
+                      const Icon(
                         Icons.menu_sharp,
                         size: 25,
                       )
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   TextStyles.w700_17(color: AllColors.blackColor,
-                      context, Strings.LeadList_LeadList),
-                  Spacer(),
+                      context, Strings.leadList),
+                  const Spacer(),
                   Row(
                     children: [
                       Icon(Icons.filter_list_outlined,
                           color: AllColors.lightGrey, size: 17),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       TextStyles.w400_14(color: AllColors.blackColor,
-                          context, Strings.LeadList_Filter),
-                      SizedBox(
+                          context, Strings.filter),
+                      const SizedBox(
                         width: 10,
                       ),
                       TextStyles.w400_13(color: AllColors.blackColor,
-                          context, Strings.LeadList_Lastweek),
-                      Icon(
+                          context, Strings.lastWeek),
+                      const Icon(
                         Icons.arrow_drop_down,
                         size: 34,
                       ),

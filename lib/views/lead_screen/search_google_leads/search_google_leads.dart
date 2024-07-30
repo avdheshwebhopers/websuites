@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/image_strings/image_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
@@ -63,41 +63,40 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
         Stack(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 130, left: 30, right: 20),
+              padding: const EdgeInsets.only(top: 130, left: 30, right: 20),
               child: Image.asset(
-                ImageStrings.World_Map,
+                ImageStrings.worldMap,
                 scale: 1,
               ),
             ),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 140,
                   ),
                   Center(
                     child:
-                  TextStyles.w700_16(color: AllColors.vividPurple, context, Strings.SearchGoogle_FindActive1),
+                  TextStyles.w700_16(color: AllColors.vividPurple, context, Strings.findActiveSmall),
                   ),
                   Center(
                     child:
-                  TextStyles.w700_16(color: AllColors.vividPurple, context, Strings.SearchGoogle_FindActive2),
+                  TextStyles.w700_16(color: AllColors.vividPurple, context, Strings.andPlacesOnGoogleMap),
                   ),
                   SizedBox22h(),
-                  TextStyles.w500_14_Black(context, Strings.SearchGoogle_SearchLead),
+                  TextStyles.w500_14_Black(context, Strings.searchLead),
 
-                  CreateNewLeadScreenCard(hintText: Strings.SearchGoogle_Search),
+                  const CreateNewLeadScreenCard(hintText: Strings.search),
                   SizedBox15h(),
 
-                  TextStyles.w500_14_Black(context, Strings.SearchGoogle_ByLocation),
+                  TextStyles.w500_14_Black(context, Strings.byLocation),
 
-                  CreateNewLeadScreenCard(hintText: Strings.SearchGoogle_EnterLocation),
-                  SizedBox(
-                    height: 30,
-                  ),
+                  const CreateNewLeadScreenCard(hintText: Strings.enterLocation),
+                  const SizedBox(
+                    height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -106,11 +105,11 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                         width: Get.width / 4,
                         decoration: BoxDecoration(
                           color: AllColors.mediumPurple,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(30),
                         ),
                         child: Center(
                           child:
-                          TextStyles.w500_14_White(context, Strings.SearchGoogle_Search2),
+                          TextStyles.w500_14_White(context, Strings.search),
                         ),
                       ),
                     ],
@@ -136,9 +135,9 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                       )
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child:
-                   TextStyles.w700_16(color: AllColors.blackColor, context, Strings.SearchGoogle_searchGoogleLeads)
+                   TextStyles.w700_16(color: AllColors.blackColor, context, Strings.searchGoogleLeads)
                   )
                 ],
               ),

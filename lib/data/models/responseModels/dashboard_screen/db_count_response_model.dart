@@ -1,4 +1,4 @@
-class Dashboard_Count_Response_Model{
+class DashboardCountResponseModel{
   int? customers;
   int? leads;
   int? orders;
@@ -6,7 +6,7 @@ class Dashboard_Count_Response_Model{
   int? unassignedLeads;
   int? repeatedLeads;
 
-  Dashboard_Count_Response_Model({
+  DashboardCountResponseModel({
     this.customers,
     this.leads,
     this.orders,
@@ -15,7 +15,7 @@ class Dashboard_Count_Response_Model{
     this.unassignedLeads}
       );
 
-  Dashboard_Count_Response_Model.fromJson(Map<String, dynamic> json) {
+  DashboardCountResponseModel.fromJson(Map<String, dynamic> json) {
     customers = json['customers'];
     leads = json['leads'];
     orders = json['orders'];

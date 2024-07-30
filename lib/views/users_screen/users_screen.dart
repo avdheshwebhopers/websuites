@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/app_bar/custom_appBar.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
@@ -7,8 +6,8 @@ import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
 import 'package:websuites/views/users_screen/widgets/users_card.dart';
-  
 import '../../Utils/app_colors/app_colors.dart';
+import '../../data/models/responseModels/login.dart';
 
 class UsersScreen extends StatefulWidget {
   const UsersScreen({super.key});

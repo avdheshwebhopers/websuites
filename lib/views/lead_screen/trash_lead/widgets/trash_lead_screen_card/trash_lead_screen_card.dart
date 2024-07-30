@@ -97,7 +97,7 @@ class TrashLeadScreenCard extends StatelessWidget {
               ],
             ),
 
-            Divider(
+            const Divider(
               thickness: 0.2,
             ),
 
@@ -142,14 +142,9 @@ class TrashLeadScreenCard extends StatelessWidget {
 
               ],
             )
-
           ],
         ),
       ),
-
-
-
     );
-
   }
 }

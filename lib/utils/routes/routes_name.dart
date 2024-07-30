@@ -14,6 +14,7 @@ class RoutesName {
 
   //============================================================================
   //Lead Screen
+
   static const String lead_list_screen = '/lead_list_screen';
   static const String createNewLead_screen = '/createNewLead_screen';
   static const String search_google_leads_screen = '/search_google_leads_screen';
@@ -39,65 +40,23 @@ class RoutesName {
 
   static const String order_list_screen = '/order_list_screen';
   static const String order_activity_screen = '/order_activity_screen';
-  static const String order_proformaList_screen = '/';
+  static const String order_proformaList_screen = '/order_proformaList_screen';
   static const String order_payments_screen = '/order_payments_screen';
 
   //============================================================================
-// SALES TARGET SCREEN
+  // SALES TARGET SCREEN
 
   static const String sales_target_screen = '/sales_target_screen';
 
   //============================================================================
   // ROLES SCREEN
+
   static const String roles_screen = '/roles_screen';
 
   //============================================================================
-// USERS
- static const String users_screen = '/users_screen';
+  // USERS
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  static const String users_screen = '/users_screen';
+  static const String users_screen_responsive = '/users_screen_responsive';
 
 }

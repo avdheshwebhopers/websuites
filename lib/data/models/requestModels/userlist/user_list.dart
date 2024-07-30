@@ -1,4 +1,5 @@
-import '../../Response_model/user_list.dart';
+
+import '../../responseModels/user_list.dart';
 
 class UserListRequestModel {
   String? id;

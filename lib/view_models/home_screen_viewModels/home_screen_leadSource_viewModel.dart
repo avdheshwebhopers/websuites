@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
-import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/utils.dart';
+import '../../data/repositories/repositories.dart';
 
 class HomeScreenLeadSourceViewModel extends GetxController {
    final _api = Repositories();

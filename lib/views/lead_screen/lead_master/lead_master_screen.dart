@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:websuites/views/lead_screen/lead_master/widgets/leadMaster_screen_card/leadMaster_screen_card.dart';
-import '../../../Data/models/Response_model/login.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/icon_strings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
@@ -55,7 +55,8 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
       floatingActionButton: CustomFloatingButton(
           onPressed: (){},
           imageIcon: IconStrings.navSearch3,
-          backgroundColor: AllColors.mediumPurple),
+          backgroundColor: AllColors.mediumPurple
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       key: _globalKey,
@@ -63,19 +64,20 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
       drawer: CustomDrawer(
           userName: '$userName',
           phoneNumber: '$userEmail',
-          version: '1.0.12'),
+          version: '1.0.12'
+      ),
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 15,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 140,
+                  const SizedBox(
+                    height: 150,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,52 +87,55 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                         width: Get.width / 3.5,
                         decoration: BoxDecoration(
                             color: AllColors.mediumPurple,
-                            borderRadius: BorderRadius.circular(15)),
+                            borderRadius: BorderRadius.circular(20),
+                        ),
                         child: Center(
                           child:
-                          TextStyles.w400_15(color: AllColors.whiteColor, context, Strings.LeadMaster_Types),
+                          TextStyles.w400_15(color: AllColors.whiteColor, context, Strings.types),
                         ),
                       ),
                       Container(
                         height: Get.height / 30,
                         width: Get.width / 3.5,
                         decoration: BoxDecoration(
-                            color: AllColors.textfield2,
-                            borderRadius: BorderRadius.circular(15)),
+                            color: AllColors.textField2,
+                            borderRadius: BorderRadius.circular(20),
+                        ),
                         child: Center(
                           child: 
-                         TextStyles.w400_15(color: AllColors.blackColor, context, Strings.LeadMaster_Source),
+                         TextStyles.w400_15(color: AllColors.blackColor, context, Strings.source),
                         ),
                       ),
                       Container(
                         height: Get.height / 30,
                         width: Get.width / 3.5,
                         decoration: BoxDecoration(
-                            color: AllColors.textfield2,
-                            borderRadius: BorderRadius.circular(15)),
+                            color: AllColors.textField2,
+                            borderRadius: BorderRadius.circular(20),
+                        ),
                         child: Center(
                           child:
 
-                          TextStyles.w400_15(color: AllColors.blackColor, context, Strings.LeadMaster_Status),
+                          TextStyles.w400_15(color: AllColors.blackColor, context, Strings.status),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  TextStyles.w500_14_Black(context, Strings.LeadMaster_AvailableLeadStatus),
-                  SizedBox(
+                  TextStyles.w500_14_Black(context, Strings.availableLeadStatus),
+                  const SizedBox(
                     height: 20,
                   ),
-                  LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-                  LeadMasterScreenCard(title: 'Hot', activity: 'In Progress'),
-                  LeadMasterScreenCard(title: 'Hot', activity: 'Completed'),
-                  LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-                  LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-                  LeadMasterScreenCard(
-                      title: 'Cold', activity: 'In Progress'),
-                  SizedBox(height: 50,),
+                  const LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
+                  const LeadMasterScreenCard(title: 'Hot', activity: 'In Progress'),
+                  const LeadMasterScreenCard(title: 'Hot', activity: 'Completed'),
+                  const LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
+                  const LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
+                  const LeadMasterScreenCard(title: 'Cold', activity: 'In Progress'),
+                  const SizedBox(height: 50
+                  ),
                 ],
               ),
             ),
@@ -146,32 +151,32 @@ class _LeadMasterScreenState extends State<LeadMasterScreen> {
                     onTap: () {
                       _globalKey.currentState?.openDrawer();
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.menu_sharp,
                       size: 25,
                     )),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                 ),
-                TextStyles.w700_17(color: AllColors.blackColor, context, Strings.LeadMaster_LeadMaster),
-                Spacer(),
+                TextStyles.w700_17(color: AllColors.blackColor, context, Strings.leadMaster),
+                const Spacer(),
                 Icon(
                   Icons.search,
                   size: 20,
                   color: AllColors.lightGrey,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
                   height: Get.height / 30,
                   decoration: BoxDecoration(
                       color: AllColors.mediumPurple,
                       borderRadius: BorderRadius.circular(5)),
                   child: Center(
                     child:
-                      TextStyles.w500_12(color: AllColors.whiteColor, context, Strings.LeadMaster_AddLeadType),
+                      TextStyles.w500_12(color: AllColors.whiteColor, context, Strings.addLeadType),
                   ),
                 )
               ],

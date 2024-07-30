@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
 import 'package:websuites/views/lead_screen/create_newLead/widgets/create_new_lead_screen_card/create_new_lead_screen_card.dart';
-import '../../../Data/models/Response_model/login.dart';
-  
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/icon_strings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
@@ -63,7 +62,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
         key: _globalKey,
         backgroundColor: AllColors.whiteColor,
         drawer: CustomDrawer(
-            userName: '$userName',
+            userName: userName,
             phoneNumber: '$userEmail',
             version: '1.0.12'
         ),
@@ -80,34 +79,34 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                       height: 140,
                     ),
                     TextStyles.w600_15(color: AllColors.vividPurple, context,
-                       Strings.CreateNewLead_standardFields),
+                       Strings.standardFields),
                     const SizedBox(
                       height: 28,
                     ),
                     TextStyles.w500_14_Black(context,
-                       Strings.CreateNewLead_firstName),
+                       Strings.firstName),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_enterFirstName),
+                        hintText: Strings.enterFirstName),
                     SizedBox15h(),
                     TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_lastName),
+                        Strings.lastName),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_enterLastName),
+                        hintText: Strings.enterLastName),
                     SizedBox15h(),
                     TextStyles.w500_14_Black(context,
-                      Strings.CreateNewLead_PhoneNumber),
+                      Strings.phoneNumber),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           margin: const EdgeInsets.only(top: 5),
-                          height: Get.height / 21,
-                          width: Get.width / 1.56,
+                          height: Get.height/21,
+                          width: Get.width/1.56,
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: AllColors.lightGrey, // Specify the outline color here
+                              color: AllColors.lightGrey,
                               width: 0.3
                             ),
                             borderRadius: BorderRadius.circular(30),
@@ -116,7 +115,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.only(left: 10),
-                                hintText: Strings.CreateNewLead_enterPhoneNumber,
+                                hintText: Strings.enterPhoneNumber,
                                 hintStyle: TextStyle(
                                   fontSize: 13,
                                     
@@ -126,21 +125,21 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 5),
-                          height: Get.height / 21,
-                          width: Get.width / 4.5,
+                          height: Get.height/21,
+                          width: Get.width/4.5,
                           decoration: BoxDecoration(
                             color: AllColors.vividPurple,
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Center(
                             child:
-                            TextStyles.w500_16(color: AllColors.whiteColor, context, Strings.CreateNewLead_add)
+                            TextStyles.w500_16(color: AllColors.whiteColor, context, Strings.add)
                           ),
                         ),
                       ],
                     ),
                     SizedBox15h(),
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_email),
+                    TextStyles.w500_14_Black(context, Strings.createNewLeadEmail),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -158,7 +157,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.only(left: 10),
-                                hintText: Strings.CreateNewLead_emailExample,
+                                hintText: Strings.emailExample,
                                 hintStyle: TextStyle(
                                   fontSize: 13,
                                     
@@ -177,73 +176,72 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                           ),
                           child: Center(
                             child:
-                          TextStyles.w500_16(color: AllColors.whiteColor, context, Strings.CreateNewLead_add)
+                          TextStyles.w500_16(color: AllColors.whiteColor, context, Strings.add)
                           ),
                         ),
                       ],
                     ),
                     SizedBox15h(),
 
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_Address),
+                    TextStyles.w500_14_Black(context, Strings.address),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_EnterAddress),
+                        hintText: Strings.enterAddress),
                     const SizedBox(
                       height: 20,
                     ),
+                    TextStyles.w500_14_Black(context,
+                        Strings.cityPincode),
+
+
+                    const CreateNewLeadScreenCard(
+                        hintText: Strings.cityPincode),
+                    SizedBox15h(),
+
+                    TextStyles.w500_14_Black(context, Strings.state),
+
+                    const CreateNewLeadScreenCard(
+                        hintText: Strings.state),
+                    SizedBox15h(),
+
+                    TextStyles.w500_14_Black(context, Strings.country),
+
+                    const CreateNewLeadScreenCard(
+                        hintText: Strings.country),
+                    SizedBox15h(),
+
+                    TextStyles.w500_14_Black(context, Strings.source),
+
+                    const CreateNewLeadScreenCard(
+                        hintText: Strings.source),
+                    SizedBox15h(),
+
+                    TextStyles.w500_14_Black(context, Strings.assignedLeadTo),
+
+                    CreateNewLeadScreenCard(hintText: Strings.assignedLeadTo),
+
+                    SizedBox15h(),
+
+                    TextStyles.w500_14_Black(context, Strings.organisation),
+
+                    const CreateNewLeadScreenCard(
+                        hintText: Strings.enterName),
+                    SizedBox15h(),
+
+                   TextStyles.w500_14_Black(context, Strings.divisions),
+
+                    const CreateNewLeadScreenCard(
+                        hintText: Strings.select),
+                    SizedBox15h(),
+
+                   TextStyles.w500_14_Black(context, Strings.categories),
+
+                    const CreateNewLeadScreenCard(
+                        hintText: Strings.select),
+                    SizedBox15h(),
 
                     TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_City_Pincode),
-
-
-                    const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_City_Pincode),
-                    SizedBox15h(),
-
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_State),
-
-                    const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_State),
-                    SizedBox15h(),
-
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_Country),
-
-                    const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_Country),
-                    SizedBox15h(),
-
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_Source),
-
-                    const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_Source),
-                    SizedBox15h(),
-
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_Assigned_lead_to),
-
-                    CreateNewLeadScreenCard(hintText: Strings.CreateNewLead_Assigned_lead_to),
-
-                    SizedBox15h(),
-
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_organisation),
-
-                    const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_Enter_Name),
-                    SizedBox15h(),
-
-                   TextStyles.w500_14_Black(context, Strings.CreateNewLead_Divisions),
-
-                    const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_select),
-                    SizedBox15h(),
-
-                   TextStyles.w500_14_Black(context, Strings.CreateNewLead_Product_Categories),
-
-                    const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_select),
-                    SizedBox15h(),
-
-                    TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_Requirement),
+                        Strings.requirement),
                     Container(
                       margin: const EdgeInsets.only(top: 5),
                       height: Get.height / 6,
@@ -260,7 +258,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.only(left: 10),
-                            hintText: Strings.CreateNewLead_Enter_Description,
+                            hintText: Strings.enterDescription,
                             hintStyle: TextStyle(
                               fontSize: 13,
                                 
@@ -272,80 +270,80 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                     const SizedBox(height: 30),
 
                     TextStyles.w600_universal(fontSize: 15, color: AllColors.vividPurple, context,
-                        Strings.CreateNewLead_CustomFields),
+                        Strings.customFields),
                     const SizedBox(height: 30),
 
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_pincode),
+                    TextStyles.w500_14_Black(context, Strings.pincode),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_EnterPincode
+                        hintText: Strings.enterPincode
                     ),
                     SizedBox15h(),
 
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_Designation),
+                    TextStyles.w500_14_Black(context, Strings.designation),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_select),
+                        hintText: Strings.select),
                     SizedBox15h(),
 
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_Website),
+                    TextStyles.w500_14_Black(context, Strings.website),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_Website),
+                        hintText: Strings.website),
                     SizedBox15h(),
 
-                    TextStyles.w500_14_Black(context, Strings.CreateNewLead_GSTNumber),
+                    TextStyles.w500_14_Black(context, Strings.gstNumber),
 
                     const CreateNewLeadScreenCard(hintText:
-                    Strings.CreateNewLead_GSTNumber),
+                    Strings.gstNumber),
                     SizedBox15h(),
 
                     TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_CustomerDivision),
+                        Strings.customerDivision),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_select),
+                        hintText: Strings.select),
                     SizedBox15h(),
 
                     TextStyles.w500_14_Black(
-                        context, Strings.CreateNewLead_IndustryType),
+                        context, Strings.industryType),
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_select),
+                        hintText: Strings.select),
                     SizedBox15h(),
 
                     TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_LeadCategory),
+                        Strings.leadCategory),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_select),
+                        hintText: Strings.select),
                     SizedBox15h(),
 
                     TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_ContactPersonName),
+                        Strings.contactPersonName),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_EnterContactPersonName),
+                        hintText: Strings.enterContactPersonName),
                     SizedBox15h(),
 
                     TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_ContactPersonNumber),
+                        Strings.contactPersonNumber),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_EnterContactPersonNumber),
+                        hintText: Strings.enterContactPersonNumber),
                     SizedBox15h(),
 
                     TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_CompleteAddress),
+                        Strings.completeAddress),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_EnterAddress),
+                        hintText: Strings.enterAddress),
                     SizedBox15h(),
 
                     TextStyles.w500_14_Black(context,
-                        Strings.CreateNewLead_Industry),
+                        Strings.industry),
 
                     const CreateNewLeadScreenCard(
-                        hintText: Strings.CreateNewLead_Select),
+                        hintText: Strings.createNewLeadSelect),
                     const SizedBox(height: 30
                     ),
 
@@ -361,7 +359,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                           ),
                           child: Center(
                             child: TextStyles.w500_universal(fontSize: 15, color: AllColors.whiteColor, context,
-                                Strings.CreateNewLead_Create),
+                                Strings.create),
                           ),
                         ),
                         Container(
@@ -374,7 +372,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                           ),
                           child: Center(
                             child: TextStyles.w500_universal(fontSize: 15, color: AllColors.whiteColor, context,
-                                Strings.CreateNewLead_Reset),
+                                Strings.reset),
                           ),
                         ),
                       ],
@@ -405,7 +403,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                     ),
                     const SizedBox(width: 10,
                     ),
-                   TextStyles.w700_16(color: AllColors.blackColor, context, Strings.CreateNewLead_createNewLead),
+                   TextStyles.w700_16(color: AllColors.blackColor, context, Strings.createNewLead),
                     const Spacer(),
                     Container(
                       height: Get.height / 28,
@@ -422,7 +420,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                             size: 15,
                             color: AllColors.whiteColor,
                           ),
-                         TextStyles.w400_14(color: AllColors.whiteColor, context, Strings.CreateNewLead_ImportLeads),
+                         TextStyles.w400_14(color: AllColors.whiteColor, context, Strings.importLeads),
                         ],
                       ),
                     )

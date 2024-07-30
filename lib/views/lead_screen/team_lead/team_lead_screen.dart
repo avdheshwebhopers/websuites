@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/lead_screen/team_lead/widgets/team_lead_screen_card/team_lead_screen_card.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
 import '../../../utils/app_colors/app_colors.dart';
@@ -52,7 +52,8 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
       CustomDrawer(
           userName: '$userName',
           phoneNumber: '$userEmail',
-          version: '1.0.12'),
+          version: '1.0.12'
+      ),
       body: Stack(
         children: [
           const SingleChildScrollView(
@@ -61,7 +62,7 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 120,
+                    height: 135,
                   ),
                   TeamLeadScreenCard(
                       title: 'Shakshi Shakya',
@@ -107,7 +108,7 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child:
-                  TextStyles.w700_17(color: AllColors.blackColor, context, Strings.TeamLead_myTeamLead),
+                  TextStyles.w700_17(color: AllColors.blackColor, context, Strings.myTeamLead),
                 ),
                 const Spacer(),
                 Icon(
@@ -118,7 +119,7 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
                 const SizedBox(
                   width: 5,
                 ),
-                TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.TeamLead_filter),
+                TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.filter),
               ],
             ),
           )

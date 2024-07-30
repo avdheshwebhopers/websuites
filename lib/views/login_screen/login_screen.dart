@@ -15,7 +15,6 @@ import '../../view_models/login_viewModel/login_view_model.dart';
 
 
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -58,16 +57,16 @@ class _Login_ScreenState extends State<LoginScreen> {
                   children: [
                     SizedBox(height: Get.height/5),
 
-                    Image.asset(ImageStrings.Splash_WHLogo, scale: 7,),
+                    Image.asset(ImageStrings.splashWHLogo, scale: 7),
                     SizedBox(height: Get.height/28),
 
 
-                    TextStyles.w500_universal(fontSize: 25, context, Strings.Login_Login, color: AllColors.welcomeColor),
+                    TextStyles.w500_universal(fontSize: 25, context, Strings.login, color: AllColors.welcomeColor),
 
                     SizedBox(height: Get.height/100),
+                    TextStyles.w400_13( color: AllColors.lightGrey, context, Strings.pleaseSignIn),
+                    TextStyles.w400_13( color: AllColors.lightGrey, context, Strings.theAdventure),
 
-                    // AppTextStyle2.w400_13(context, AppStrings.Login_PleaseSignIn),
-                    TextStyles.w400_13( color: AllColors.lightGrey, context, Strings.Login_PleaseSignIn),
 
 
                     Column(
@@ -76,7 +75,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                       children: [
 
 
-                        TextStyles.w400_15(context, Strings.Login_Email),
+                        TextStyles.w400_15(context, Strings.email),
 
                         Form(
                           key: formkey,
@@ -86,11 +85,10 @@ class _Login_ScreenState extends State<LoginScreen> {
                             children: [
                               Container(
                                 padding: EdgeInsets.only(left: 5),
-                                    // width: Get.width/1,
-                                    // height: Get.height/19,
+
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5.0),
-                                      color: AllColors.textfield2,
+                                      color: AllColors.textField2,
                                     ),
 
                                     child:
@@ -98,22 +96,20 @@ class _Login_ScreenState extends State<LoginScreen> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Obx(() => TextFormField(
-                                            // textAlign: TextAlign.start,
                                             cursorColor: Colors.black45,
                                             controller: loginController.emailController.value,
                                             focusNode: loginController.emailFocusNode.value,
                                             validator: (value){
                                               if(value!.isEmpty){
-                                                // return 'Please enter email';
-                                                Utils.flushBarErrorMessage(Strings.Login_Flush_Email, context);
+                                                Utils.flushBarErrorMessage(Strings.flushEmail, context);
                                               }
                                               return null;
 
                                             },
                                             decoration: const InputDecoration(
                                               border: InputBorder.none,
-                                              hintText: Strings.Login_Hint_Email,
-                                              // contentPadding: EdgeInsets.symmetric(vertical: 14),
+                                              hintText: Strings.hintEmail,
+
                                               hintStyle:
                                               TextStyle(
                                                   
@@ -132,15 +128,13 @@ class _Login_ScreenState extends State<LoginScreen> {
                                 ),
                               const SizedBox(height: 20,),
 
-                              TextStyles.w400_15(context, Strings.Login_Password),
+                              TextStyles.w400_15(context, Strings.password),
 
                               Container(
                                 padding: EdgeInsets.only(left: 5),
-                                // width: Get.width/1,
-                                // height: Get.height/19,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5.0),
-                                  color: AllColors.textfield2,
+                                  color: AllColors.textField2,
                                 ),
 
                                 child: Column(
@@ -148,12 +142,11 @@ class _Login_ScreenState extends State<LoginScreen> {
                                   children: [
                                     Obx((){
                                       return TextFormField(
-                                        // textAlign: TextAlign.start,
                                         cursorColor: Colors.black45,
                                         controller: loginController.passwordController.value,
                                         focusNode: loginController.passwordFocusNode.value,
                                         decoration: InputDecoration(
-                                          hintText: Strings.Login_Hint_Password,
+                                          hintText: Strings.hintPassword,
                                           suffixIcon: InkWell(
                                               onTap:(){
                                                 obscurePassword.value = ! obscurePassword.value;
@@ -162,7 +155,6 @@ class _Login_ScreenState extends State<LoginScreen> {
                                               Icons.visibility_off_outlined:
                                               Icons.visibility)
                                           ),
-                                          //contentPadding: EdgeInsets.symmetric(vertical: 14),
                                           hintStyle: const TextStyle(
                                               
                                             fontWeight: FontWeight.w400,
@@ -172,9 +164,9 @@ class _Login_ScreenState extends State<LoginScreen> {
                                         ),
                                         validator: (value) {
                                           if(value!.isEmpty) {
-                                            // return 'Please enter password';
+
                                             Utils.flushBarErrorMessage(
-                                                Strings.Login_Flush_Pass, context);
+                                                Strings.flushPass, context);
                                           }
                                           return null;
                                           },
@@ -207,7 +199,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                               ),
                             ),
 
-                        TextStyles.w400_12(context, Strings.Login_RememberMe, color: AllColors.grey),
+                        TextStyles.w400_12(context, Strings.rememberMe, color: AllColors.grey),
                             Spacer(),
 
                             InkWell(
@@ -216,7 +208,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                               },
                               child:
 
-                              TextStyles.w400_12(context, Strings.Login_ForgotPassword, color: AllColors.buttonColor),
+                              TextStyles.w400_12(context, Strings.forgotPassword, color: AllColors.buttonColor),
                             ),
                           ],
                         ),
@@ -225,7 +217,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                           CommonButton(
                             width: Get.width*1,
                             // height: Get.height/20,
-                            title: Strings.Login_Button,
+                            title: Strings.button,
                             loading: loginController.loading.value,
 
                             onPress: (){
@@ -242,13 +234,13 @@ class _Login_ScreenState extends State<LoginScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                           TextStyles.w400_12(context, Strings.Login_New_On),
+                           TextStyles.w400_12(context, Strings.newOn),
                             InkWell(
                                 onTap: (){
                                   Get.toNamed(RoutesName.purchase_now_screen);
                                 },
                                 child:
-                                TextStyles.w400_12(context, Strings.Login_PurchaseNow, color: AllColors.buttonColor),
+                                TextStyles.w400_12(context, Strings.purchaseNow, color: AllColors.buttonColor),
                             ),
                           ],
                         ),
@@ -258,7 +250,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),
                       child: Image.asset(
-                          ImageStrings.Splash_BottomLogo,
+                          ImageStrings.splashBottomLogo,
                           scale: 4),
                     ),
                   ],

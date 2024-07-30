@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/resources/icon_strings/icon_strings.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/custom_navBar.dart';
 import 'package:websuites/utils/components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
 import 'package:websuites/views/sales_target_screen/widgets/sales_target_card.dart';
-  
+import '../../data/models/responseModels/login.dart';
 import '../../utils/app_colors/app_colors.dart';
 import '../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -60,7 +59,6 @@ class _SalesTargetScreenState extends State<SalesTargetScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-
       drawer: CustomDrawer(
           userName: userName,
           phoneNumber: userEmail,
@@ -74,7 +72,7 @@ class _SalesTargetScreenState extends State<SalesTargetScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
                       children: [
-                        SizedBox(height: 60),
+                        SizedBox(height: 70),
                         SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
                         SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
                         SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),

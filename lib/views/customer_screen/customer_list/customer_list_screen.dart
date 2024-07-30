@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/customer_screen/customer_list/widgets/customer_list_screen_card/customer_list_screen_card.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
 import '../../../utils/app_colors/app_colors.dart';
@@ -61,7 +61,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 120,
+                      height: 135,
                     ),
                     CustomerListScreenCard(title: 'Harish Sharma'),
                     CustomerListScreenCard(title: 'Harish Sharma'),
@@ -94,7 +94,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                   const SizedBox(
                     width: 10,
                   ),
-                  TextStyles.w700_16(color: AllColors.blackColor, context, Strings.CustomerList_Customer),
+                  TextStyles.w700_16(color: AllColors.blackColor, context, Strings.customers),
                   const Spacer(),
                   Container(
                     height: Get.height / 30,
@@ -129,7 +129,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                         const SizedBox(
                           width: 4,
                         ),
-                        TextStyles.w400_12(color: AllColors.whiteColor, context, Strings.CustomerList_customer2),
+                        TextStyles.w400_12(color: AllColors.whiteColor, context, Strings.customer),
                       ],
                     ),
                   )

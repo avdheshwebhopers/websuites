@@ -4,7 +4,8 @@ class Strings {
   // LOGIN SCREEN
 
   static const String login = 'Login';
-  static const String pleaseSignIn = 'Please sign-in to your account and start\nthe adventure';
+  static const String pleaseSignIn = 'Please sign-in to your account and start';
+  static const String theAdventure = 'the adventure';
   static const String email = 'Email';
   static const String hint = ' Enter your mail Id';
   static const String password = 'Password';
@@ -23,218 +24,202 @@ class Strings {
 
   static const String enterYour = 'Enter your email and we will send you a link to\nreset password';
   static const String buttonSubmit = 'Submit';
-  static const String Hint_Email = 'Enter your email';
-  static const String BackToLogin = 'Back to Login';
-  static const String Flush_Email = 'Enter your email';
+  static const String hintEmail = 'Enter your email';
+  static const String backToLogin = 'Back to Login';
 
   //============================================================================
 
   // OTP SCREEN
 
-  static const String Otp_WelcomeTo = 'Welcome to Company Name';
-  static const String Otp_WeTextedYou =
-      'We texted your phone xxxxxxxx82. Please enter ';
-  static const String Otp_TheCodeToSignIn = 'the code to sign in';
-  static const String Otp_EnterCode = 'EnterCode';
-  static const String Otp_ResendOtp = 'Resend Otp...';
+  static const String welcomeTo = 'Welcome to Company Name';
+  static const String weTextedYou = 'We texted your phone xxxxxxxx82. Please enter ';
+  static const String theCodeToSignIn = 'the code to sign in';
+  static const String enterCode = 'EnterCode';
+  static const String resendOtp = 'Resend Otp...';
 
   //============================================================================
 
   // HOME SCREEN
 
-  static const String Home_TaskPerformance = 'TASK PERFORMANCE';
-  static const String Home_TaskPerformanceDate = '24 May, 2024';
-  static const String Home_Completed = 'COMPLETED';
-  static const String Home_TaskProgress = 'TASK PROGRESS';
-  static const String Home_LatestTask = 'LATEST TASK';
-  static const String Home_LatestTaskSeeAll = 'See all';
-  static const String Home_LeadTypeCount = 'LEAD TYPE COUNT';
-  static const String Home_LeadTypeDate = '21 May';
-  static const String Home_LatestCustomer = 'LATEST CUSTOMER';
-  static const String Home_LatestCustomerSeeAll = 'See all';
-  static const String Home_LeadSource = 'LEAD SOURCE';
-  static const String Home_LeadSourceList = 'List';
-  static const String Home_LeadSourceChart = 'Chart';
-  static const String Home_Transactions = 'TRANSACTIONS';
-  static const String Home_TransactionsSeeAll = 'See all';
-  static const String Home_Snackbar = 'Logout Successful';
+  static const String taskPerformance = 'TASK PERFORMANCE';
+  static const String taskPerformanceDate = '24 May, 2024';
+  static const String completed = 'COMPLETED';
+  static const String taskProgress = 'TASK PROGRESS';
+  static const String latestTask = 'LATEST TASK';
+  static const String latestTaskSeeAll = 'See all';
+  static const String leadTypeCount = 'LEAD TYPE COUNT';
+  static const String leadTypeDate = '21 May';
+  static const String latestCustomer = 'LATEST CUSTOMER';
+  static const String latestCustomerSeeAll = 'See all';
+  static const String leadSource = 'LEAD SOURCE';
+  static const String leadSourceList = 'List';
+  static const String leadSourceChart = 'Chart';
+  static const String transactions = 'TRANSACTIONS';
+  static const String transactionsSeeAll = 'See all';
+  static const String snackbar = 'Logout Successful';
 
 //==============================================================================
 
 // WELCOME COMPANY
 
-  static const String Welcome_Title = 'Welcome to Company Name';
-  static const String Welcome_VerifyYourIdentity = 'Verify Your Identity';
-  static const String Welcome_Email = 'sunil@webhopers.com';
-  static const String Welcome_Button1 = 'Send code to Mobile Number';
-  static const String Welcome_Button2 = 'Send code to Email Address';
+  static const String welcomeTitle = 'Welcome to Company Name';
+  static const String verifyYourIdentity = 'Verify Your Identity';
+  static const String welcomeEmail = 'sunil@webhopers.com';
+  static const String mobileNumberCode = 'Send code to Mobile Number';
+  static const String emailAddressCode = 'Send code to Email Address';
 
 //==============================================================================
 
 // Drawer
 
-  static const String Drawer_Dashboard = 'Dashboard';
-  static const String Drawer_Lead = 'Lead';
-  static const String Drawer_Customer = 'Customer';
-  static const String Drawer_Orders = 'Orders';
-  static const String Drawer_HRM = 'HRM';
-  static const String Drawer_Analytics = 'Analytics';
-  static const String Drawer_Campaign = 'Campaign';
-  static const String Drawer_Sales = 'Sales';
-  static const String Drawer_Roles = 'Roles';
-  static const String Drawer_Users = 'Users';
-  static const String Drawer_Tasks = 'Tasks';
-  static const String Drawer_Projects = 'Projects';
-  static const String Drawer_ServiceArea = 'Service Area';
-  static const String Drawer_Products = 'Products';
-  static const String Drawer_Master = 'Master';
-  static const String Drawer_Versions = 'version 1.0.12';
-  static const String Drawer_ButtonLogout = 'Logout';
+  static const String dashboard = 'Dashboard';
+  static const String lead = 'Lead';
+  static const String customer = 'Customer';
+  static const String orders = 'Orders';
+  static const String hrm = 'HRM';
+  static const String analytics = 'Analytics';
+  static const String campaign = 'Campaign';
+  static const String sales = 'Sales';
+  static const String roles = 'Roles';
+  static const String users = 'Users';
+  static const String tasks = 'Tasks';
+  static const String projects = 'Projects';
+  static const String serviceArea = 'Service Area';
+  static const String products = 'Products';
+  static const String master = 'Master';
+  static const String versions = 'version 1.0.12';
+  static const String buttonLogout = 'Logout';
 
 //==============================================================================
 
 //LeadList Screen
 
-  static const String LeadList_LeadList = 'Lead list';
-  static const String LeadList_Filter = 'Filter';
-  static const String LeadList_Lastweek = 'Last Week';
+  static const String leadList = 'Lead list';
+  static const String filter = 'Filter';
+  static const String lastWeek = 'Last Week';
 
 //==============================================================================
 
 //Upcoming Screen
 
-  static const String Upcoming_upcoming = 'Upcoming';
-  static const String Upcoming_InProgress = 'In Progress';
-  static const String Upcoming_completed = 'Completed';
-  static const String Upcoming_upcoming2 = 'UPCOMING';
-  static const String Upcoming_filter = 'Filter';
-  static const String Upcoming_Lastweek = 'Last Week';
+  static const String upcoming = 'Upcoming';
+  static const String inProgress = 'In Progress';
+  static const String upcomingCompleted = 'Completed';
+  static const String upcomingInCapital = 'UPCOMING';
 
 //==============================================================================
 
 //Create New Lead Screen
 
-  static const String CreateNewLead_createNewLead = 'Create New Lead';
-  static const String CreateNewLead_ImportLeads = 'Import Leads';
-  static const String CreateNewLead_standardFields = 'Standard Fields';
-  static const String CreateNewLead_firstName = 'First name';
-  static const String CreateNewLead_enterFirstName = 'Enter First name';
-  static const String CreateNewLead_lastName = 'Last name';
-  static const String CreateNewLead_enterLastName = 'Enter Last Name';
-  static const String CreateNewLead_PhoneNumber = 'Phone Number';
-  static const String CreateNewLead_enterPhoneNumber = 'Enter Phone Number';
-  static const String CreateNewLead_add = '+  Add';
-  static const String CreateNewLead_email = 'Email';
-  static const String CreateNewLead_emailExample = 'example@gmail.com';
-  static const String CreateNewLead_Address = 'Address';
-  static const String CreateNewLead_EnterAddress = 'Enter Address';
-  static const String CreateNewLead_City_Pincode = 'City / Pincode';
-  static const String CreateNewLead_State = 'State';
-  static const String CreateNewLead_Country = 'Country';
-  static const String CreateNewLead_Source = 'Source';
-  static const String CreateNewLead_Assigned_lead_to = 'Assigned-Lead to';
-  static const String CreateNewLead_select = 'Select';
-  static const String CreateNewLead_organisation = 'Organisation';
-  static const String CreateNewLead_Enter_Name = 'Enter Name';
-  static const String CreateNewLead_Divisions = 'Divisions';
-  static const String CreateNewLead_Select = 'Select';
-  static const String CreateNewLead_Product_Categories = 'Product Categories';
-  static const String CreateNewLead_Requirement = 'Requirement';
-  static const String CreateNewLead_Enter_Description = 'Enter Description';
-  static const String CreateNewLead_CustomFields = 'Custom Fields';
-  static const String CreateNewLead_pincode = 'Pincode';
-  static const String CreateNewLead_EnterPincode = 'Enter Pincode';
-  static const String CreateNewLead_Designation = 'Designation';
-  static const String CreateNewLead_Website = 'Website';
-  static const String CreateNewLead_GSTNumber = 'GST Number';
-  static const String CreateNewLead_EnterGSTNumber = 'Enter GST Number';
-  static const String CreateNewLead_CustomerDivision = 'Customer Division';
-  static const String CreateNewLead_IndustryType = 'Industry Type';
-  static const String CreateNewLead_LeadCategory = 'Lead Category';
-  static const String CreateNewLead_ContactPersonName = 'Contact Person Name';
-  static const String CreateNewLead_EnterContactPersonName = 'Enter Name';
-  static const String CreateNewLead_ContactPersonNumber =
-      'Contact Person Number';
-  static const String CreateNewLead_EnterContactPersonNumber = 'Enter Number';
-  static const String CreateNewLead_CompleteAddress = 'Complete Address';
-  static const String CreateNewLead_EnterCompleteAddress = 'Enter Address';
-  static const String CreateNewLead_Industry = 'Industry';
-  static const String CreateNewLead_Create = 'Create';
-  static const String CreateNewLead_Reset = 'Reset';
+  static const String createNewLead = 'Create New Lead';
+  static const String importLeads = 'Import Leads';
+  static const String standardFields = 'Standard Fields';
+  static const String firstName = 'First name';
+  static const String enterFirstName = 'Enter First name';
+  static const String lastName = 'Last name';
+  static const String enterLastName = 'Enter Last Name';
+  static const String phoneNumber = 'Phone Number';
+  static const String enterPhoneNumber = 'Enter Phone Number';
+  static const String add = '+  Add';
+  static const String createNewLeadEmail = 'Email';
+  static const String emailExample = 'example@gmail.com';
+  static const String address = 'Address';
+  static const String enterAddress = 'Enter Address';
+  static const String cityPincode = 'City / Pincode';
+  static const String state = 'State';
+  static const String country = 'Country';
+  static const String source = 'Source';
+  static const String assignedLeadTo = 'Assigned-Lead to';
+  static const String select = 'Select';
+  static const String organisation = 'Organisation';
+  static const String enterName = 'Enter Name';
+  static const String divisions = 'Divisions';
+  static const String createNewLeadSelect = 'Select';
+  static const String categories = 'Product Categories';
+  static const String requirement = 'Requirement';
+  static const String enterDescription = 'Enter Description';
+  static const String customFields = 'Custom Fields';
+  static const String pincode = 'Pincode';
+  static const String enterPincode = 'Enter Pincode';
+  static const String designation = 'Designation';
+  static const String website = 'Website';
+  static const String gstNumber = 'GST Number';
+  static const String enterGSTNumber = 'Enter GST Number';
+  static const String customerDivision = 'Customer Division';
+  static const String industryType = 'Industry Type';
+  static const String leadCategory = 'Lead Category';
+  static const String contactPersonName = 'Contact Person Name';
+  static const String enterContactPersonName = 'Enter Name';
+  static const String contactPersonNumber = 'Contact Person Number';
+  static const String enterContactPersonNumber = 'Enter Number';
+  static const String completeAddress = 'Complete Address';
+  static const String enterCompleteAddress = 'Enter Address';
+  static const String industry = 'Industry';
+  static const String create = 'Create';
+  static const String reset = 'Reset';
 
 //==============================================================================
 
 //Search Google Leads
 
-  static const String SearchGoogle_searchGoogleLeads = 'Search Google Leads';
-  static const String SearchGoogle_FindActive1 =
-      'Find Active Small Business Leads';
-  static const String SearchGoogle_FindActive2 = 'And Places on Google Map';
-  static const String SearchGoogle_SearchLead = 'Search Lead';
-  static const String SearchGoogle_Search = 'Search';
-  static const String SearchGoogle_ByLocation = 'By Location';
-  static const String SearchGoogle_EnterLocation = 'Enter Location';
-  static const String SearchGoogle_Search2 = 'Search';
+  static const String searchGoogleLeads = 'Search Google Leads';
+  static const String findActiveSmall = 'Find Active Small Business Leads';
+  static const String andPlacesOnGoogleMap = 'And Places on Google Map';
+  static const String searchLead = 'Search Lead';
+  static const String search = 'Search';
+  static const String byLocation = 'By Location';
+  static const String enterLocation = 'Enter Location';
 
 //==============================================================================
 
 //Lead Activity List
 
-  static const String LeadActivity_leadList = 'Lead Activities';
-  static const String LeadActivity_filter = 'Filter';
-  static const String LeadActivity_details = 'Details';
-  static const String LeadActivity_remark = 'REMARK';
-  static const String LeadActivity_reminder = 'REMINDER ON';
+  static const String leadActivities = 'Lead Activities';
+  static const String details = 'Details';
+  static const String remark = 'REMARK';
+  static const String reminder = 'REMINDER ON';
 
   //==============================================================================
 
   //My Team Lead
 
-  static const String TeamLead_myTeamLead = 'My Team Lead';
-  static const String TeamLead_filter = 'Filter';
-  static const String TeamLead_T_Leads = 'T.Leads';
-  static const String TeamLead_cold = 'Cold';
-  static const String TeamLead_Hot = 'Hot';
-  static const String TeamLead_FollowUp = 'Follow Up';
-  static const String TeamLead_dead = 'Dead';
+  static const String myTeamLead = 'My Team Lead';
+  static const String tLeads = 'T.Leads';
+  static const String cold = 'Cold';
+  static const String hot = 'Hot';
+  static const String followUp = 'Follow Up';
+  static const String dead = 'Dead';
 
   //==============================================================================
 
   //Trash Leads
 
-  static const String TrashLead_trashLeads = 'Trash Leads';
-  static const String TrashLead_Filter = 'Filter';
-  static const String TrashLead_Remark = 'REMARK';
+  static const String trashLeads = 'Trash Leads';
 
   //==============================================================================
 
   //Lead Master
 
-  static const String LeadMaster_LeadMaster = 'Lead Master';
-  static const String LeadMaster_AddLeadType = 'Add Lead Type';
-  static const String LeadMaster_Types = 'Types';
-  static const String LeadMaster_Source = 'Source';
-  static const String LeadMaster_Status = 'Status';
-  static const String LeadMaster_AvailableLeadStatus = 'Available Lead Status';
-  static const String LeadMaster_Subtypes = 'SUB TYPES';
+  static const String leadMaster = 'Lead Master';
+  static const String addLeadType = 'Add Lead Type';
+  static const String types = 'Types';
+  static const String status = 'Status';
+  static const String availableLeadStatus = 'Available Lead Status';
+  static const String subtypes = 'SUB TYPES';
 
   //==============================================================================
 
   // Customer List
 
-  static const String CustomerList_Customer = 'Customers';
-  static const String CustomerList_customer2 = 'Customer';
+  static const String customers = 'Customers';
 
   //==============================================================================
 
   // Customer Activities List
 
-  static const String CustomerActivities_customerActivity = 'Customer Activity';
-  static const String CustomerActivities_filter = 'Filter';
-  static const String CustomerActivities_details = 'Details';
-  static const String CustomerActivities_Remark = 'REMARK';
-  static const String CustomerActivities_ReminderOn = 'REMINDER ON';
-  static const String CustomerActivities_ReminderTo = 'REMINDER TO';
+  static const String customerActivity = 'Customer Activity';
+  static const String reminderOn = 'REMINDER ON';
+  static const String reminderTo = 'REMINDER TO';
 
   //==============================================================================
   //Order Payment Screen

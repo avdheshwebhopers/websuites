@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/order_screen/order_activity/widgets/order_activity_screen_card/order_activity_screen_card.dart';
-  
+import '../../../data/models/responseModels/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -15,6 +14,7 @@ class OrderActivityScreen extends StatefulWidget {
   @override
   State<OrderActivityScreen> createState() => _OrderActivityScreenState();
 }
+
 
 class _OrderActivityScreenState extends State<OrderActivityScreen> {
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
@@ -53,7 +53,8 @@ class _OrderActivityScreenState extends State<OrderActivityScreen> {
       drawer: CustomDrawer(
           userName: '$userName',
           phoneNumber: '$userEmail',
-          version: '1.0.12'),
+          version: '1.0.12'
+      ),
 
       body:
           Stack(
@@ -64,7 +65,7 @@ class _OrderActivityScreenState extends State<OrderActivityScreen> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 120,
+                        height: 130,
                       ),
                       OrderActivityScreenCard(title: 'Lucky 7(Yearly)'),
 
@@ -124,12 +125,8 @@ class _OrderActivityScreenState extends State<OrderActivityScreen> {
                     ],
                   )
               )
-
             ],
           )
-
-
-
     );
   }
 }

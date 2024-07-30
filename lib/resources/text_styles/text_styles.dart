@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../utils/app_colors/app_colors.dart';
 
@@ -198,17 +197,5 @@ class TextStyles{
     ),
     );
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

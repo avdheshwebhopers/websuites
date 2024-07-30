@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../Data/models/Response_model/login.dart';
-  
+import '../../../data/models/responseModels/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -106,7 +105,7 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
                       ],
                     ),
 
-                    Divider(
+                    const Divider(
                       thickness: 0.7,
                     ),
 

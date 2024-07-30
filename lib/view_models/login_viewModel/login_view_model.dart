@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Data/models/Request_models/login.dart';
-import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
+import '../../data/models/requestModels/login/login.dart';
+import '../../data/repositories/repositories.dart';
 import '../save_token/save_token.dart';
 
 class LoginViewModel extends GetxController {
@@ -16,15 +16,6 @@ class LoginViewModel extends GetxController {
   final passwordController = TextEditingController().obs;
   final emailFocusNode = FocusNode().obs;
   final passwordFocusNode = FocusNode().obs;
-
-  // final rxLoginStatus = Status.LOADING.obs;
-  // final loginModel = LoginResponseModel().obs;
-  // RxString error = ''.obs;
-  //
-  // void setRxStatus (Status _value) =>  rxLoginStatus.value = _value;
-  // void setLogin (LoginResponseModel _value) =>  loginModel.value = _value;
-  // void setError (String _value) =>  error.value = _value;
-
   RxBool loading = false.obs;
   
   @override

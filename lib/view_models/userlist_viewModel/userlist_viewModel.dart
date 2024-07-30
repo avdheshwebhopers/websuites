@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/utils.dart';
+import '../../data/repositories/repositories.dart';
 
 class UserListViewModel extends GetxController{
 
@@ -14,6 +14,7 @@ class UserListViewModel extends GetxController{
     _api.userListApi().then((value){
 
       if(value.id != null){
+        print(value.id);
       Utils.SnackbarSuccess('Id fetched');
       loading.value = false;
 

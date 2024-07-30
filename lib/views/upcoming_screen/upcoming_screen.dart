@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:websuites/views/upcoming_screen/widgets/upcoming_screen_card/upcoming_screen_card.dart';
-import '../../Data/models/Response_model/login.dart';
-  
+import '../../data/models/responseModels/login.dart';
 import '../../resources/icon_strings/icon_strings.dart';
 import '../../resources/image_strings/image_strings.dart';
 import '../../resources/strings/strings.dart';
@@ -85,7 +84,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                       },
                           child: Icon(Icons.menu_sharp, size: 25,)),
 
-                      SizedBox(width: 20,),
+                      const SizedBox(width: 20,),
 
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +134,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         ),
                         child: Center(
                           child:
-                          TextStyles.w400_14(color: AllColors.whiteColor, context, Strings.Upcoming_upcoming)
+                          TextStyles.w400_14(color: AllColors.whiteColor, context, Strings.upcoming)
                         ),
                       ),
 
@@ -148,7 +147,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         ),
                         child: Center(
                           child:
-                       TextStyles.w400_14(color: AllColors.blackColor, context, Strings.Upcoming_InProgress),
+                       TextStyles.w400_14(color: AllColors.blackColor, context, Strings.inProgress),
                         ),
                       ),
 
@@ -162,7 +161,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         child: Center(
                           child:
 
-                            TextStyles.w400_14(color: AllColors.blackColor, context, Strings.Upcoming_completed),
+                            TextStyles.w400_14(color: AllColors.blackColor, context, Strings.upcomingCompleted),
                         ),
                       ),
                     ],
@@ -174,7 +173,7 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                     children: [
                       Icon(Icons.calendar_month_rounded, size: 20, color: AllColors.grey,),
                       SizedBox(width: 10,),
-                     TextStyles.w500_14_Black(context, Strings.Upcoming_upcoming2),
+                     TextStyles.w500_14_Black(context, Strings.upcomingInCapital),
 
                       Spacer(),
 
@@ -182,11 +181,11 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                         children: [
                           Icon(Icons.filter_list_outlined, color: AllColors.lightGrey, size: 16,),
                           SizedBox(width: 5,),
-                         TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.Upcoming_filter),
+                         TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.filter),
 
                           SizedBox(width: 10,),
 
-                         TextStyles.w400_13(color: AllColors.blackColor, context, Strings.Upcoming_Lastweek),
+                         TextStyles.w400_13(color: AllColors.blackColor, context, Strings.lastWeek),
 
                           Icon(Icons.arrow_drop_down, size: 30,)
                         ],
@@ -252,14 +251,6 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
             ),
           ],
         )
-
-
-
-
-
-
-
-
     );
   }
 }

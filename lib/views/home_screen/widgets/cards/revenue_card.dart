@@ -10,6 +10,7 @@ class RevenueCard extends StatelessWidget {
   final String title;
   final String subtitle;
 
+
   const RevenueCard({
     Key? key,
 
@@ -123,8 +124,8 @@ class RevenueCard extends StatelessWidget {
 
 
     return Container(
-      margin: EdgeInsets.only(top: 5, bottom: 5, right: 4, left: 4),
-      padding: EdgeInsets.only(top: 20, bottom: 20,right: 20, left: 20),
+      margin: const EdgeInsets.only(top: 5, bottom: 5, right: 4, left: 4),
+      padding: const EdgeInsets.only(top: 20, bottom: 20,right: 20, left: 20),
       // width: containerWidth,
       // height: containerHeight,
       decoration: BoxDecoration(

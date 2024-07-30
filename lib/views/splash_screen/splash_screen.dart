@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Container(
                   margin: EdgeInsets.only(top: 100),
                   child: Image.asset(
-                      ImageStrings.Splash_WHLogo, scale: 4.7),
+                      ImageStrings.splashWHLogo, scale: 4.7),
                 ),
               )
           ),
@@ -49,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
             height: Get.height/8,
 
             child: Image.asset(
-                ImageStrings.Splash_BottomLogo, scale: 3.9),
+                ImageStrings.splashBottomLogo, scale: 3.9),
           ),
         ],
       ),

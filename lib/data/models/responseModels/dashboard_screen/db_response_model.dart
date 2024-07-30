@@ -1,12 +1,12 @@
-class Dashboard_Response_Model {
+class DashboardResponseModel {
   String? name;
   bool? isDefault;
   List<Roles>? roles;
   String? id;
 
-  Dashboard_Response_Model({this.name, this.isDefault, this.roles, this.id});
+  DashboardResponseModel({this.name, this.isDefault, this.roles, this.id});
 
-  Dashboard_Response_Model.fromJson(Map<String, dynamic> json) {
+  DashboardResponseModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     isDefault = json['isDefault'];
     if (json['roles'] != null) {

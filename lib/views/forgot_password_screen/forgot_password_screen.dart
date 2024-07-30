@@ -68,13 +68,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         validator: (value){
                           if(value!.isEmpty){
                                     // return 'Please enter email';
-                            Utils.flushBarErrorMessage(Strings.Forgot_Flush_Email, context);
+                            Utils.flushBarErrorMessage(Strings.flushEmail, context);
                           }
                           return null;
                           },
                         decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: Strings.Forgot_Hint_Email,
+                          hintText: Strings.hintEmail,
                           // contentPadding: EdgeInsets.symmetric(vertical: 17.0),
                           hintStyle: TextStyle(
                               
@@ -91,7 +91,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                 Obx(() =>
                     CommonButton(
-                      title: Strings.Forgot_ButtonSubmit,
+                      title: Strings.buttonSubmit,
                       width: Get.width*1,
                       // height: Get.height/17,
                       loading: forgotPasswordController.loading.value,
@@ -110,8 +110,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Icon(Icons.arrow_back_ios, size: 10,color: AllColors.grey,),
-                      TextStyles.w300_10(color: AllColors.grey, context, Strings.Forgot_BackToLogin),
+                      Icon(Icons.arrow_back_ios, size: 10,color: AllColors.grey,
+                      ),
+                      TextStyles.w300_10(color: AllColors.grey, context, Strings.backToLogin),
                     ],
                   ),
                 ),

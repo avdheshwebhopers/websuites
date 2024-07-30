@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/view_models/save_token/save_token.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/icon_strings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
@@ -55,7 +55,8 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
         floatingActionButton: CustomFloatingButton(
             onPressed: (){},
             imageIcon: IconStrings.navSearch3,
-            backgroundColor: AllColors.mediumPurple),
+            backgroundColor: AllColors.mediumPurple
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
         drawer:
@@ -70,9 +71,7 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 110,
-                    ),
+                    SizedBox(height: 125),
                     LeadActivitiesScreenCard(
                         title: 'Dr. Nitasha Gupta',
                         companyName: 'Nitasha Gupta (Infertility Specialist)'),
@@ -111,7 +110,7 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
                   const SizedBox(
                     width: 12,
                   ),
-                 TextStyles.w600_universal(fontSize: 18, color: AllColors.blackColor, context, Strings.LeadActivity_leadList),
+                 TextStyles.w600_universal(fontSize: 18, color: AllColors.blackColor, context, Strings.leadActivities),
                   Spacer(),
                   Row(
                     children: [
@@ -123,11 +122,11 @@ class _LeadActivities_ScreenState extends State<LeadActivities_Screen> {
                       const SizedBox(
                         width: 2,
                       ),
-                      TextStyles.w400_13(color: AllColors.lightGrey, context, Strings.LeadList_Filter),
+                      TextStyles.w400_13(color: AllColors.lightGrey, context, Strings.filter),
                       const SizedBox(
                         width: 13,
                       ),
-                     TextStyles.w400_13(color: AllColors.blackColor, context, Strings.LeadActivity_details),
+                     TextStyles.w400_13(color: AllColors.blackColor, context, Strings.details),
                       const Icon(
                         Icons.keyboard_arrow_right,
                         size: 20,

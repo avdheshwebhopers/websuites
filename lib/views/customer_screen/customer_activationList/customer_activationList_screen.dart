@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/customer_screen/customer_activationList/widgets/customer_activation_list_screen_card/customer_activation_list_screen_card.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -62,10 +62,11 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
                     children: [
-                      SizedBox(height: 130,),
+                      SizedBox(height: 135),
                       CustomerActivationListCard(title: 'RealNova Healthcare'),
                       CustomerActivationListCard(title: 'RealNova Healthcare'),
                       CustomerActivationListCard(title: 'RealNova Healthcare'),
+
 
                       Container(
                         margin: EdgeInsets.only(bottom: 10),

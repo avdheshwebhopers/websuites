@@ -122,7 +122,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                       TextStyles.w500_12(color: AllColors.blackColor, context, Strings.LeadActivity_remark),
+                       TextStyles.w500_12(color: AllColors.blackColor, context, Strings.remark),
 
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 3),
@@ -141,7 +141,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
 
                     Row(
                       children: [
-                        TextStyles.w500_12(color: AllColors.blackColor, context, Strings.LeadActivity_reminder),
+                        TextStyles.w500_12(color: AllColors.blackColor, context, Strings.reminder),
 
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 3),

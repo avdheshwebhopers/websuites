@@ -1,5 +1,8 @@
 
-import '../../Response_model/Dashboard_Screen/DB_Count_ResponseModel.dart';
+
+
+
+import '../../responseModels/dashboard_screen/db_count_response_model.dart';
 
 class DashboardCountRequestedModel {
   int? customers;

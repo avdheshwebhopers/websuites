@@ -115,7 +115,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
               ),
 
               Row(children: [
-              TextStyles.w500_universal(fontSize: 13, color: AllColors.blackColor, context, Strings.CustomerActivities_Remark),
+              TextStyles.w500_universal(fontSize: 13, color: AllColors.blackColor, context, Strings.remark),
                 SizedBox5w(),
                 Icon(Icons.arrow_right_alt, size: 15, color: AllColors.lightGrey,),
 
@@ -133,7 +133,7 @@ class CustomerActivitiesScreenCard extends StatelessWidget {
 
               Row(
                 children: [
-                 TextStyles.w500_universal(fontSize: 13,color: AllColors.blackColor, context, Strings.CustomerActivities_ReminderTo),
+                 TextStyles.w500_universal(fontSize: 13,color: AllColors.blackColor, context, Strings.reminderTo),
                   SizedBox5w(),
                   Icon(Icons.arrow_right_alt, size: 15, color: AllColors.lightGrey,),
                   SizedBox5w(),

@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Data/models/Request_models/forgot_password.dart';
-import '../../../Data/repositories/repositories.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
+import '../../data/models/requestModels/forgotPassword/forgot_password.dart';
+import '../../data/repositories/repositories.dart';
 
 class ForgotPasswordViewModel extends GetxController {
   final emailController = TextEditingController().obs;

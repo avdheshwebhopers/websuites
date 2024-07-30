@@ -32,15 +32,15 @@ class _WelcomeToCompanyState extends State<WelcomeToCompany> {
 
               const SizedBox(height: 10,),
 
-              TextStyles.w600_universal(fontSize: 20, color: AllColors.welcomeColor, context, Strings.Welcome_Title),
+              TextStyles.w600_universal(fontSize: 20, color: AllColors.welcomeColor, context, Strings.welcomeTitle),
 
               const SizedBox(height: 7,),
 
-              TextStyles.w400_13(color: AllColors.grey, context, Strings.Welcome_VerifyYourIdentity),
+              TextStyles.w400_13(color: AllColors.grey, context, Strings.verifyYourIdentity),
 
               const SizedBox(height: 35,),
 
-              TextStyles.w500_16(color: AllColors.blackColor, context, Strings.Welcome_Email),
+              TextStyles.w500_16(color: AllColors.blackColor, context, Strings.welcomeEmail),
 
               const SizedBox(height: 20,),
 
@@ -51,7 +51,7 @@ class _WelcomeToCompanyState extends State<WelcomeToCompany> {
               CommonButton(
                 height: Get.height/20,
                 width: Get.width/1,
-                title: Strings.Welcome_Button1, onPress: (){},),
+                title: Strings.mobileNumberCode, onPress: (){},),
 
               const SizedBox(height: 15),
 
@@ -62,7 +62,7 @@ class _WelcomeToCompanyState extends State<WelcomeToCompany> {
               CommonButton(
                 height: Get.height/20,
                 width: Get.width/1,
-                title: Strings.Welcome_Button2, onPress: (){},),
+                title: Strings.emailAddressCode, onPress: (){},),
             ],
           ),
         ),

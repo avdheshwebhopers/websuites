@@ -7,9 +7,7 @@ import '../../utils/responsive/responsive_layout.dart';
 
 class HomeScreen extends StatefulWidget {
 
-  // final dynamic name;
   HomeScreen({Key? key}) :
-        // name = Get.arguments,
         super(key: key);
 
   @override
@@ -18,16 +16,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+
   @override
   Widget build(BuildContext context){
-    // print(widget.name);
     return Scaffold(
       body: ResponsiveLayout(
-        mobileBody: MyMobileBody(// name: widget.name,
-        ),
+        mobileBody: MyMobileBody(),
         tabBody: MyTabBody(),
       ),
     );
   }
-
 }

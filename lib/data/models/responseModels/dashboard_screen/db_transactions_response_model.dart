@@ -1,11 +1,11 @@
-class DB_LatestTransaction_ResponseModel {
+class DBLatestTransactionResponseModel {
   List<Items>? items;
   Meta? meta;
   String? userKey;
 
-  DB_LatestTransaction_ResponseModel({this.items, this.meta, this.userKey});
+  DBLatestTransactionResponseModel({this.items, this.meta, this.userKey});
 
-  DB_LatestTransaction_ResponseModel.fromJson(Map<String, dynamic> json) {
+  DBLatestTransactionResponseModel.fromJson(Map<String, dynamic> json) {
     if (json['items'] != null) {
       items = <Items>[];
       json['items'].forEach((v) {

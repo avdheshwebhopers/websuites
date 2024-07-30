@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/customer_screen/customer_service/widgets/customer_services_screen_card/customer_services_screen_card.dart';
-  
+import '../../../data/models/responseModels/login.dart';
 import '../../../utils/app_colors/app_colors.dart';
 import '../../../utils/components/widgets/app_bar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -52,7 +51,8 @@ class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
         drawer: CustomDrawer(
             userName: '$userName',
             phoneNumber: '$userEmail',
-            version: '1.0.12'),
+            version: '1.0.12'
+        ),
 
         body: Stack(
           children: [
@@ -62,7 +62,7 @@ class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 120,
+                      height: 130,
                     ),
                     AllServicesScreenCard(
                         title: 'Events Pharmaceuticals Pvt ltd'),

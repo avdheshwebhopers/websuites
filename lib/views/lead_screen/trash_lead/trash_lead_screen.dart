@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/Data/models/Response_model/login.dart';
 import 'package:websuites/views/lead_screen/trash_lead/widgets/trash_lead_screen_card/trash_lead_screen_card.dart';
+import '../../../data/models/responseModels/login.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/text_styles/text_styles.dart';
 import '../../../utils/app_colors/app_colors.dart';
@@ -60,7 +60,7 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 120,
+                      height: 135,
                     ),
                     TrashLeadScreenCard(
                         title: 'The Yoga Quarter',
@@ -93,25 +93,25 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
                       onTap: () {
                         _globalKey.currentState?.openDrawer();
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.menu_sharp,
                         size: 25,
                       )),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  TextStyles.w700_17(color: AllColors.blackColor, context, Strings.TrashLead_trashLeads),
+                  TextStyles.w700_17(color: AllColors.blackColor, context, Strings.trashLeads),
 
-                  Spacer(),
+                  const Spacer(),
                   Icon(
                     Icons.filter_list_outlined,
                     size: 14,
                     color: AllColors.lightGrey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
-                TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.TrashLead_Filter),
+                TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.filter),
                 ],
               ),
             ),

@@ -1,11 +1,11 @@
-class DB_LatestCustomers_ResponseModel {
+class DBLatestCustomersResponseModel {
   List<Items>? items;
   Meta? meta;
   Null userKey;
 
-  DB_LatestCustomers_ResponseModel({this.items, this.meta, this.userKey});
+  DBLatestCustomersResponseModel({this.items, this.meta, this.userKey});
 
-  DB_LatestCustomers_ResponseModel.fromJson(Map<String, dynamic> json) {
+  DBLatestCustomersResponseModel.fromJson(Map<String, dynamic> json) {
     if (json['items'] != null) {
       items = <Items>[];
       json['items'].forEach((v) {
