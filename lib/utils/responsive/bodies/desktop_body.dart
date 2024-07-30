@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import '../../../resources/image_strings/image_strings.dart';
-import '../../../views/home_screen/widgets/cards/latest_customers_card.dart';
-import '../../../views/home_screen/widgets/cards/latest_task_card.dart';
-import '../../../views/home_screen/widgets/cards/revenue_card.dart';
-import '../../../views/home_screen/widgets/cards/transaction_list_card.dart';
-import '../../../views/home_screen/widgets/cards/lead_type_count_card.dart';
-import '../../app_colors/app_colors.dart';
+import '../../../resources/imageStrings/image_strings.dart';
+import '../../../views/homeScreen/widgets/cards/latest_customers_card.dart';
+import '../../../views/homeScreen/widgets/cards/latest_task_card.dart';
+import '../../../views/homeScreen/widgets/cards/lead_type_count_card.dart';
+import '../../../views/homeScreen/widgets/cards/revenue_card.dart';
+import '../../../views/homeScreen/widgets/cards/transaction_list_card.dart';
+import '../../appColors/app_colors.dart';
 import '../../components/buttons/common_button.dart';
 
 class MyDesktopBody extends StatelessWidget {

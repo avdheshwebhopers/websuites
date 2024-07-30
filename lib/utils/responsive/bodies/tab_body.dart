@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import '../../../Data/models/Response_model/login.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
-import '../../../resources/image_strings/image_strings.dart';
+import '../../../data/models/responseModels/login.dart';
+import '../../../resources/imageStrings/image_strings.dart';
 import '../../../resources/strings/strings.dart';
-import '../../../view_models/save_token/save_token.dart';
-import '../../../views/home_screen/widgets/cards/latest_customers_card.dart';
-import '../../../views/home_screen/widgets/cards/latest_task_card.dart';
-import '../../../views/home_screen/widgets/cards/revenue_card.dart';
-import '../../../views/home_screen/widgets/cards/transaction_list_card.dart';
-import '../../../views/home_screen/widgets/cards/lead_type_count_card.dart';
-import '../../app_colors/app_colors.dart';
+import '../../../viewModels/saveToken/save_token.dart';
+import '../../../views/homeScreen/widgets/cards/latest_customers_card.dart';
+import '../../../views/homeScreen/widgets/cards/latest_task_card.dart';
+import '../../../views/homeScreen/widgets/cards/lead_type_count_card.dart';
+import '../../../views/homeScreen/widgets/cards/revenue_card.dart';
+import '../../../views/homeScreen/widgets/cards/transaction_list_card.dart';
+import '../../appColors/app_colors.dart';
 import '../../components/buttons/common_button.dart';
 import '../../components/widgets/drawer/custom_drawer.dart';
 import '../../components/widgets/drawer/drawer_list_tiles/custom_list_tile.dart';
+
 
 class MyTabBody extends StatefulWidget {
   const MyTabBody({super.key});
@@ -31,8 +32,9 @@ class _MyTabBodyState extends State<MyTabBody> {
 
   @override
   void initState(){
+    fetchUserData();
     super.initState();
-    fetchUserData();}
+    }
 
   Future<void> fetchUserData() async {
     try {
@@ -43,7 +45,7 @@ class _MyTabBodyState extends State<MyTabBody> {
         userName = first_name!;
         userEmail = email!;
       });
-    } catch (e) {
+    } catch(e){
       print('Error fetching userData: $e');
     }
   }
@@ -64,7 +66,8 @@ class _MyTabBodyState extends State<MyTabBody> {
       );
   }
 
-  Widget portraitMode() {
+  Widget
+  portraitMode() {
     return
       Row(
         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -249,7 +252,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_TaskPerformance,
+                        Text(Strings.taskPerformance,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -260,7 +263,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const Spacer(),
 
-                        Text(Strings.Home_TaskPerformanceDate,
+                        Text(Strings.taskPerformanceDate,
                           style: TextStyle(
                             fontSize: 15,
                               
@@ -346,7 +349,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(Strings.Home_Completed,
+                                  Text(Strings.completed,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                         
@@ -377,7 +380,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Text(Strings.Home_TaskProgress,
+                              const Text(Strings.taskProgress,
                                 style: TextStyle(
                                   fontSize: 20,
                                     
@@ -428,7 +431,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_LatestTask,
+                        Text(Strings.latestTask,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -441,7 +444,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         InkWell(
                           onTap: () {},
-                          child: Text(Strings.Home_LatestTaskSeeAll,
+                          child: Text(Strings.latestTaskSeeAll,
                             style: TextStyle(
                               fontSize: 15,
                                 
@@ -524,7 +527,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_LeadTypeCount,
+                        Text(Strings.leadTypeCount,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -535,7 +538,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const Spacer(),
 
-                        Text(Strings.Home_LeadTypeDate,
+                        Text(Strings.leadTypeDate,
                           style: TextStyle(
                             fontSize: 15,
                               
@@ -649,7 +652,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_LatestCustomer,
+                        Text(Strings.latestCustomer,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -662,7 +665,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         InkWell(
                           onTap: () {},
-                          child: Text(Strings.Home_LatestCustomerSeeAll,
+                          child: Text(Strings.latestCustomerSeeAll,
                             style: TextStyle(
                               fontSize: 15,
                                 
@@ -745,7 +748,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_LeadSource,
+                        Text(Strings.leadSource,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -760,7 +763,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 10,),
 
-                        Text(Strings.Home_LeadSourceList,
+                        Text(Strings.leadSourceList,
                           style: TextStyle(
                             fontSize: 15,
                               
@@ -778,7 +781,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         InkWell(
                           onTap: () {},
-                          child: Text(Strings.Home_LeadSourceChart,
+                          child: Text(Strings.leadSourceChart,
                             style: TextStyle(
                               fontSize: 12,
                                 
@@ -823,7 +826,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_Transactions,
+                        Text(Strings.transactions,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -836,7 +839,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         InkWell(
                           onTap: () {},
-                          child: Text(Strings.Home_TransactionsSeeAll,
+                          child: Text(Strings.transactionsSeeAll,
                             style: TextStyle(
                               fontSize: 15,
                                 
@@ -896,10 +899,11 @@ class _MyTabBodyState extends State<MyTabBody> {
       );
   }
 
-  Widget landscapeMode() {
+  Widget
+  landscapeMode(){
     return
       Row(
-        // crossAxisAlignment: CrossAxisAlignment.start,
+        //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             flex: 1,
@@ -956,87 +960,89 @@ class _MyTabBodyState extends State<MyTabBody> {
                                             fontSize: 13,
                                               
                                             color: Colors.grey
-                                        ),),
+                                        ),
+                                      ),
                                     ],
                                   )
-                                ],),
+                                ],
+                              ),
                             ),
 
                             Column(
                               children: [
                                 CustomListTileTab(
                                     icon: Icons.dashboard,
-                                    title: Strings.Drawer_Dashboard,
+                                    title: Strings.dashboard,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.leaderboard,
-                                    title: Strings.Drawer_Lead,
+                                    title: Strings.lead,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.person,
-                                    title: Strings.Drawer_Customer,
+                                    title: Strings.customer,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.shopping_bag,
-                                    title: Strings.Drawer_Orders,
+                                    title: Strings.orders,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.group,
-                                    title: Strings.Drawer_HRM,
+                                    title: Strings.hrm,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.analytics,
-                                    title: Strings.Drawer_Analytics,
+                                    title: Strings.analytics,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.dashboard,
-                                    title: Strings.Drawer_Campaign,
+                                    title: Strings.campaign,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.bar_chart,
-                                    title: Strings.Drawer_Sales,
+                                    title: Strings.sales,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.person_2,
-                                    title: Strings.Drawer_Roles,
+                                    title: Strings.roles,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.verified_user,
-                                    title: Strings.Drawer_Users,
+                                    title: Strings.users,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.add_task,
-                                    title: Strings.Drawer_Tasks,
+                                    title: Strings.tasks,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.data_object,
-                                    title: Strings.Drawer_Projects,
+                                    title: Strings.projects,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.location_city_sharp,
-                                    title: Strings.Drawer_ServiceArea,
+                                    title: Strings.serviceArea,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.shopping_bag,
-                                    title: Strings.Drawer_Products,
+                                    title: Strings.products,
                                     onTap: () {}
                                 ),
                                 CustomListTileTab(
                                     icon: Icons.grade,
-                                    title: Strings.Drawer_Master,
+                                    title: Strings.master,
                                     onTap: () {}
                                 ),
                               ],
@@ -1056,7 +1062,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                 width: Get.width / 2,
                                 padding: EdgeInsets.only(left: 20),
 
-                                child: Text(Strings.Drawer_Versions,
+                                child: Text(Strings.versions,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w300,
                                         
@@ -1070,11 +1076,11 @@ class _MyTabBodyState extends State<MyTabBody> {
                               child: CommonButton(
                                   height: Get.height / 22,
                                   width: Get.width / 4,
-                                  title: Strings.Drawer_ButtonLogout,
+                                  title: Strings.buttonLogout,
                                   onPress: () {
                                     SaveUserData().removeUser();
                                     Get.toNamed(RoutesName.login_screen);
-                                    Utils.SnackbarSuccess(Strings.Home_Snackbar);
+                                    Utils.SnackbarSuccess(Strings.snackbar);
                                   }
                                   ),
                             ),
@@ -1088,7 +1094,6 @@ class _MyTabBodyState extends State<MyTabBody> {
             ),
           ),
 
-
           Container(
             height: Get.height * 1,
             width: 0.08,
@@ -1096,7 +1101,8 @@ class _MyTabBodyState extends State<MyTabBody> {
             color: AllColors.grey,
           ),
 
-          const SizedBox(width: 10,),
+          const SizedBox(width: 10,
+          ),
 
           Expanded(
             flex: 3,
@@ -1144,26 +1150,23 @@ class _MyTabBodyState extends State<MyTabBody> {
                                         child:
                                         Image.asset(
                                           ImageStrings. welcomeCompanyLogo,
-                                          scale: 10,)
+                                          scale: 10,
+                                        )
                                     ),
                                   ),
                                 ],
                               ),
                             ),
 
-
                             Container(
                               // color: Colors.blue,
-                              padding: EdgeInsets.only(left: 8, right: 8,),
+                              padding: const EdgeInsets.only(left: 8, right: 8,),
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child:
                                 Row( //SCROLLER ROW WITH CONTAINERS
                                   children: [
                                     AppRowContainerOneTab(
-                                      // height: Get.height/8,
-                                      // width: Get.width/3,
-
                                         backgroundColor: AllColors.whiteColor,
                                         icon: Icons.currency_rupee,
                                         size: 5,
@@ -1174,9 +1177,6 @@ class _MyTabBodyState extends State<MyTabBody> {
 
 
                                     AppRowContainerOneTab(
-                                      // height: Get.height/8,
-                                      // width: Get.width/3,
-
                                         backgroundColor: AllColors.whiteColor,
                                         icon: Icons.currency_rupee,
                                         size: 15,
@@ -1187,9 +1187,26 @@ class _MyTabBodyState extends State<MyTabBody> {
 
 
                                     AppRowContainerOneTab(
-                                      // height: Get.height/8,
-                                      // width: Get.width/3,
+                                        backgroundColor: AllColors.whiteColor,
+                                        icon: Icons.currency_rupee,
+                                        size: 15,
+                                        color: AllColors.mediumPurple,
+                                        amount: '₹20000',
+                                        title: 'Total revenue',
+                                        subtitle: '4% (30 days)'
+                                    ),
 
+                                    AppRowContainerOneTab(
+                                        backgroundColor: AllColors.whiteColor,
+                                        icon: Icons.currency_rupee,
+                                        size: 15,
+                                        color: AllColors.mediumPurple,
+                                        amount: '₹20000',
+                                        title: 'Total revenue',
+                                        subtitle: '4% (30 days)'
+                                    ),
+
+                                    AppRowContainerOneTab(
                                         backgroundColor: AllColors.whiteColor,
                                         icon: Icons.currency_rupee,
                                         size: 15,
@@ -1198,11 +1215,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                         title: 'Total revenue',
                                         subtitle: '4% (30 days)'),
 
-
                                     AppRowContainerOneTab(
-                                      // height: Get.height/8,
-                                      // width: Get.width/3,
-
                                         backgroundColor: AllColors.whiteColor,
                                         icon: Icons.currency_rupee,
                                         size: 15,
@@ -1211,37 +1224,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                         title: 'Total revenue',
                                         subtitle: '4% (30 days)'),
 
-
                                     AppRowContainerOneTab(
-                                      // height: Get.height/8,
-                                      // width: Get.width/3,
-
-                                        backgroundColor: AllColors.whiteColor,
-                                        icon: Icons.currency_rupee,
-                                        size: 15,
-                                        color: AllColors.mediumPurple,
-                                        amount: '₹20000',
-                                        title: 'Total revenue',
-                                        subtitle: '4% (30 days)'),
-
-
-                                    AppRowContainerOneTab(
-                                      // height: Get.height/8,
-                                      // width: Get.width/3,
-
-                                        backgroundColor: AllColors.whiteColor,
-                                        icon: Icons.currency_rupee,
-                                        size: 15,
-                                        color: AllColors.mediumPurple,
-                                        amount: '₹20000',
-                                        title: 'Total revenue',
-                                        subtitle: '4% (30 days)'),
-
-
-                                    AppRowContainerOneTab(
-                                      // height: Get.height/8,
-                                      // width: Get.width/3,
-
                                         backgroundColor: AllColors.whiteColor,
                                         icon: Icons.currency_rupee,
                                         size: 15,
@@ -1272,7 +1255,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_TaskPerformance,
+                        Text(Strings.taskPerformance,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -1283,7 +1266,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const Spacer(),
 
-                        Text(Strings.Home_TaskPerformanceDate,
+                        Text(Strings.taskPerformanceDate,
                           style: TextStyle(
                             fontSize: 15,
                               
@@ -1369,7 +1352,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(Strings.Home_Completed,
+                                  Text(Strings.completed,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                         
@@ -1400,7 +1383,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Text(Strings.Home_TaskProgress,
+                              const Text(Strings.taskProgress,
                                 style: TextStyle(
                                   fontSize: 20,
                                     
@@ -1451,7 +1434,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_LatestTask,
+                        Text(Strings.latestTask,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -1464,7 +1447,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         InkWell(
                           onTap: () {},
-                          child: Text(Strings.Home_LatestTaskSeeAll,
+                          child: Text(Strings.latestTaskSeeAll,
                             style: TextStyle(
                               fontSize: 15,
                                 
@@ -1547,7 +1530,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_LeadTypeCount,
+                        Text(Strings.leadTypeCount,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -1558,7 +1541,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const Spacer(),
 
-                        Text(Strings.Home_LeadTypeDate,
+                        Text(Strings.leadTypeDate,
                           style: TextStyle(
                             fontSize: 15,
                               
@@ -1670,7 +1653,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_LatestCustomer,
+                        Text(Strings.latestCustomer,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -1683,7 +1666,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         InkWell(
                           onTap: () {},
-                          child: Text(Strings.Home_LatestTaskSeeAll,
+                          child: Text(Strings.latestTaskSeeAll,
                             style: TextStyle(
                               fontSize: 15,
                                 
@@ -1766,7 +1749,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_LeadSource,
+                        Text(Strings.leadSource,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -1781,7 +1764,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 10,),
 
-                        Text(Strings.Home_LeadSourceList,
+                        Text(Strings.leadSourceList,
                           style: TextStyle(
                             fontSize: 15,
                               
@@ -1799,7 +1782,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         InkWell(
                           onTap: () {},
-                          child: Text(Strings.Home_LeadSourceChart,
+                          child: Text(Strings.leadSourceChart,
                             style: TextStyle(
                               fontSize: 12,
                                 
@@ -1844,7 +1827,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         const SizedBox(width: 8,),
 
-                        Text(Strings.Home_Transactions,
+                        Text(Strings.transactions,
                           style: TextStyle(
                             fontSize: 17,
                               
@@ -1857,7 +1840,7 @@ class _MyTabBodyState extends State<MyTabBody> {
 
                         InkWell(
                           onTap: () {},
-                          child: Text(Strings.Home_TransactionsSeeAll,
+                          child: Text(Strings.transactionsSeeAll,
                             style: TextStyle(
                               fontSize: 15,
                                 

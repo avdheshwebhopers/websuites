@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import '../../../Data/models/Response_model/login.dart';
-import '../../../Data/response/status.dart';
-import '../../../resources/icon_strings/icon_strings.dart';
-import '../../../resources/image_strings/image_strings.dart';
+import '../../../data/models/responseModels/login.dart';
+import '../../../resources/iconStrings/icon_strings.dart';
+import '../../../resources/imageStrings/image_strings.dart';
 import '../../../resources/strings/strings.dart';
-import '../../../resources/text_styles/text_styles.dart';
-import '../../../view_models/home_screen_viewModels/home_screen_latest_task_viewModel.dart';
-import '../../../view_models/home_screen_viewModels/home_screen_leadSource_viewModel.dart';
-import '../../../view_models/home_screen_viewModels/home_screen_leads_by_typeCount_viewModel.dart';
-import '../../../view_models/home_screen_viewModels/home_screen_transactions_viewModel.dart';
-import '../../../view_models/save_token/save_token.dart';
-import '../../../views/home_screen/widgets/cards/latest_customers_card.dart';
-import '../../../views/home_screen/widgets/cards/latest_task_card.dart';
-import '../../../views/home_screen/widgets/cards/revenue_card.dart';
-import '../../../views/home_screen/widgets/cards/transaction_list_card.dart';
-import '../../../views/home_screen/widgets/cards/lead_type_count_card.dart';
-import '../../app_colors/app_colors.dart';
+import '../../../resources/textStyles/text_styles.dart';
+import '../../../viewModels/homeViewModels/home_screen_leadSource_viewModel.dart';
+import '../../../viewModels/homeViewModels/home_screen_leads_by_typeCount_viewModel.dart';
+import '../../../viewModels/homeViewModels/home_screen_transactions_viewModel.dart';
+import '../../../viewModels/saveToken/save_token.dart';
+import '../../../views/homeScreen/widgets/cards/latest_customers_card.dart';
+import '../../../views/homeScreen/widgets/cards/latest_task_card.dart';
+import '../../../views/homeScreen/widgets/cards/lead_type_count_card.dart';
+import '../../../views/homeScreen/widgets/cards/revenue_card.dart';
+import '../../../views/homeScreen/widgets/cards/transaction_list_card.dart';
+import '../../appColors/app_colors.dart';
 import '../../components/widgets/drawer/custom_drawer.dart';
-import '../../components/widgets/nav_bar/custom_navBar.dart';
-import '../../components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
+import '../../components/widgets/navBar/custom_navBar.dart';
+import '../../components/widgets/navBar/floatingActionButton/floating_action_button.dart';
+
 
 
 
@@ -48,7 +47,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
   // final DB_LatestCustomers_ViewModel _latestCustomersController = Get.put(DB_LatestCustomers_ViewModel());
   final HomeScreenLeadSourceViewModel _leadSourceController = Get.put(HomeScreenLeadSourceViewModel());
   final HomeScreenTransactionsViewmodel _transactionsController = Get.put(HomeScreenTransactionsViewmodel());
-  final HomeScreenLatestTaskViewModel _latestTaskController = Get.put(HomeScreenLatestTaskViewModel());
+  // final HomeScreenLatestTaskViewModel _latestTaskController = Get.put(HomeScreenLatestTaskViewModel());
 
 
   String userName = '';
@@ -71,7 +70,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
     _leadSourceController.LeadSource(BuildContext, context);
     // _latestCustomersController.DB_LatestCustomers(context);
     _transactionsController.Db_transactions(BuildContext, context);
-    _latestTaskController.Db_LatestTask(BuildContext, context);
+    // _latestTaskController.Db_LatestTask(BuildContext, context);
 
     print('MobileBodyInitState');
   }
@@ -276,11 +275,11 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 8,),
 
-                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.Home_TaskPerformance),
+                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.taskPerformance),
 
                               const Spacer(),
 
-                              TextStyles.w300_12(color: AllColors.blackColor, context, Strings.Home_TaskPerformanceDate),
+                              TextStyles.w300_12(color: AllColors.blackColor, context, Strings.taskPerformanceDate),
 
                               const Icon(Icons.arrow_drop_down, size: 30,)
 
@@ -353,7 +352,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        TextStyles.w600_universal(fontSize: 10,context, Strings.Home_Completed),
+                                        TextStyles.w600_universal(fontSize: 10,context, Strings.completed),
 
                                         // SizedBox(height: 5,),
 
@@ -376,7 +375,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  TextStyles.w600_15(context, Strings.Home_TaskProgress),
+                                  TextStyles.w600_15(context, Strings.taskProgress),
 
                                   SizedBox(height: 5,),
                                   Row(
@@ -419,14 +418,14 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 6,),
 
-                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.Home_LatestTask),
+                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.latestTask),
 
                               const Spacer(),
 
                               InkWell(
                                 onTap: (){},
                                 child:
-                                TextStyles.w300_12(color: AllColors.vividPurple, context, Strings.Home_LatestTaskSeeAll),
+                                TextStyles.w300_12(color: AllColors.vividPurple, context, Strings.latestTaskSeeAll),
                               ),
 
                               const SizedBox(width: 4,),
@@ -503,11 +502,11 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 8,),
 
-                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.Home_LeadTypeCount),
+                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.leadTypeCount),
 
                               const Spacer(),
 
-                              TextStyles.w300_12(color: AllColors.blackColor, context, Strings.Home_LeadTypeDate),
+                              TextStyles.w300_12(color: AllColors.blackColor, context, Strings.leadTypeDate),
 
                               const Icon(Icons.arrow_drop_down, size: 30,)
                             ],
@@ -614,14 +613,14 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 6,),
 
-                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.Home_LatestCustomer),
+                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.latestCustomer),
 
                               const Spacer(),
 
                               InkWell(
                                 onTap: (){},
                                 child:
-                                TextStyles.w300_12(color: AllColors.vividPurple, context, Strings.Home_LatestCustomerSeeAll),
+                                TextStyles.w300_12(color: AllColors.vividPurple, context, Strings.latestCustomerSeeAll),
                               ),
 
                               const SizedBox(width: 4,),
@@ -691,7 +690,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 8,),
 
-                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.Home_LeadSource),
+                              TextStyles.w500_14(color: AllColors.blackColor, context, Strings.leadSource),
 
                               const Spacer(),
 
@@ -699,7 +698,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 10,),
 
-                              TextStyles.w300_12(color: AllColors.grey, context, Strings.Home_LeadSourceList),
+                              TextStyles.w300_12(color: AllColors.grey, context, Strings.leadSourceList),
 
                               const SizedBox(width: 10,),
 
@@ -710,7 +709,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                               InkWell(
                                 onTap: (){},
                                 child:
-                                TextStyles.w400_12(color: AllColors.vividBlue, context, Strings.Home_LeadSourceChart),
+                                TextStyles.w400_12(color: AllColors.vividBlue, context, Strings.leadSourceChart),
                               ),
                             ],
                           ),
@@ -755,14 +754,14 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                               const SizedBox(width: 8,),
 
-                              TextStyles.w500_14_Black(context, Strings.Home_Transactions),
+                              TextStyles.w500_14_Black(context, Strings.transactions),
 
                               const Spacer(),
 
                               InkWell(
                                 onTap: (){},
                                 child:
-                                TextStyles.w300_12(color: AllColors.vividPurple, context, Strings.Home_TransactionsSeeAll),
+                                TextStyles.w300_12(color: AllColors.vividPurple, context, Strings.transactionsSeeAll),
                               ),
 
                               const SizedBox(width: 4,),
@@ -774,23 +773,23 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                         const SizedBox(height:20,),
 
-                        Obx((){
-                          switch (_transactionsController.rxStatus.value){
-                            case Status.LOADING :
-                              return CircularProgressIndicator();
-                            case Status.ERROR :
-                              return Text(_transactionsController.error.toString());
-                            case Status.COMPLETED :
-                              return
-                                TransactionListCard(
-                          title: _transactionsController.transactionList.value.meta!.itemCount.toString(),
-                          name: _transactionsController.transactionList.value.meta!.itemsPerPage.toString(),
-                          amount: _transactionsController.transactionList.value.meta!.totalAmount.toString(),
-                          subtitle: _transactionsController.transactionList.value.meta!.totalPages.toString()
-                              );
-                          }
-                        }
-                        ),
+                        // Obx((){
+                        //   switch (_transactionsController.rxStatus.value){
+                        //     case Status.loading :
+                        //       return CircularProgressIndicator();
+                        //     case Status.error :
+                        //       return Text(_transactionsController.error.toString());
+                        //     case Status.completed :
+                        //       return
+                        //         TransactionListCard(
+                        //   title: _transactionsController.transactionList.value.meta!.itemCount.toString(),
+                        //   name: _transactionsController.transactionList.value.meta!.itemsPerPage.toString(),
+                        //   amount: _transactionsController.transactionList.value.meta!.totalAmount.toString(),
+                        //   subtitle: _transactionsController.transactionList.value.meta!.totalPages.toString()
+                        //       );
+                        //   }
+                        // }
+                        // ),
 
                         const TransactionListCard(
                             title: 'Premium 60 Packages Self Done...',

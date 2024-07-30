@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
-import '../../../../resources/icon_strings/icon_strings.dart';
-import '../../../../resources/image_strings/image_strings.dart';
-import '../../../../view_models/save_token/save_token.dart';
-import '../../../app_colors/app_colors.dart';
+import '../../../../resources/iconStrings/icon_strings.dart';
+import '../../../../resources/imageStrings/image_strings.dart';
+import '../../../../viewModels/saveToken/save_token.dart';
+import '../../../appColors/app_colors.dart';
 import '../../buttons/common_button.dart';
 import 'drawer_list_tiles/custom_list_tile.dart';
 import 'drawer_list_tiles/expandedListTile.dart';
@@ -25,7 +25,8 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return
+      Container(
       color: AllColors.whiteColor,
       width: Get.width / 1.5,
       height: Get.height * 1,
@@ -36,20 +37,20 @@ class CustomDrawer extends StatelessWidget {
           children: [
             Container(
               color: AllColors.whiteColor,
-              padding: EdgeInsets.only(left: 13),
+              padding: const EdgeInsets.only(left: 13),
               height: Get.height/9,
               child: Row(
                 children: [
                   Container(
-                    height: Get.height / 10,
-                    width: Get.width / 10,
+                    height: Get.height / 12,
+                    width: Get.width / 12,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: AllColors.whiteColor,
                     ),
                     child: Center(child: Image.asset(ImageStrings.splashWHLogo)),
                   ),
-                  SizedBox(width: Get.width / 30),
+                  SizedBox(width: Get.width / 55),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,7 +153,8 @@ class CustomDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                               
                             fontWeight: FontWeight.w300,
-                            fontSize: 14),
+                            fontSize: 14
+                        ),
                       ),
                     ),
                     ListTile(
@@ -163,7 +165,8 @@ class CustomDrawer extends StatelessWidget {
                             color: AllColors.welcomeColor,
                               
                             fontWeight: FontWeight.w300,
-                            fontSize: 14),
+                            fontSize: 14
+                        ),
                       ),
                     ),
                     ListTile(
@@ -428,7 +431,7 @@ class CustomDrawer extends StatelessWidget {
                     children: [
                       ListTile(
                         onTap: () {},
-                        title: Text(
+                        title: const Text(
                           '• Leave',
                           style: TextStyle(
                               
@@ -439,7 +442,7 @@ class CustomDrawer extends StatelessWidget {
                       ),
                       ListTile(
                         onTap: () {},
-                        title: Text(
+                        title: const Text(
                           '• Attendence',
                           style: TextStyle(
                               
@@ -460,7 +463,7 @@ class CustomDrawer extends StatelessWidget {
                   children: [
                     ListTile(
                       onTap: () {},
-                      title: Text(
+                      title: const Text(
                         '• List',
                         style: TextStyle(
                             
@@ -471,7 +474,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     ListTile(
                       onTap: () {},
-                      title: Text(
+                      title: const Text(
                         '• Mail Logs',
                         style: TextStyle(
                             
@@ -482,7 +485,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     ListTile(
                       onTap: () {},
-                      title: Text(
+                      title: const Text(
                         '• WhatsApp Logs',
                         style: TextStyle(
                             
@@ -817,7 +820,7 @@ class CustomDrawer extends StatelessWidget {
             Container(
               height: Get.height / 20,
               width: Get.width / 2,
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: Text(
                 version,
                 style: TextStyle(
@@ -829,7 +832,7 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 20, right: 20),
+              margin: const EdgeInsets.only(left: 20, right: 20),
               child: CommonButton(
                 height: Get.height / 30,
                 width: Get.width / 4,
@@ -841,11 +844,11 @@ class CustomDrawer extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 150),
           ],
         ),
       ),
-    );
+      );
   }
 }
 
@@ -868,7 +871,7 @@ class AppTabDrawer extends StatelessWidget {
       child: ListView(
         children: [
           Container(
-            padding: EdgeInsets.only(left: 13),
+            padding: const EdgeInsets.only(left: 13),
             height: Get.height / 9,
             child: Row(
               children: [
@@ -1270,7 +1273,7 @@ class AppTabDrawer extends StatelessWidget {
           Container(
             height: Get.height / 20,
             width: Get.width / 2,
-            padding: EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.only(left: 20),
             child: Text(
               version,
               style: TextStyle(
@@ -1282,7 +1285,7 @@ class AppTabDrawer extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 20, right: 20),
+            margin: const EdgeInsets.only(left: 20, right: 20),
             child: CommonButton(
               height: Get.height / 30,
               width: Get.width / 4,
@@ -1294,7 +1297,7 @@ class AppTabDrawer extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 150),
         ],
       ),
     );
