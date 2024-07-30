@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import '../../../data/models/responseModels/login.dart';
-import '../../../resources/icon_strings/icon_strings.dart';
-import '../../../resources/image_strings/image_strings.dart';
+import '../../../resources/iconStrings/icon_strings.dart';
+import '../../../resources/imageStrings/image_strings.dart';
 import '../../../resources/strings/strings.dart';
-import '../../../resources/text_styles/text_styles.dart';
-import '../../../view_models/home_screen_viewModels/home_screen_leadSource_viewModel.dart';
-import '../../../view_models/home_screen_viewModels/home_screen_leads_by_typeCount_viewModel.dart';
-import '../../../view_models/home_screen_viewModels/home_screen_transactions_viewModel.dart';
-import '../../../view_models/save_token/save_token.dart';
-import '../../../views/home_screen/widgets/cards/latest_customers_card.dart';
-import '../../../views/home_screen/widgets/cards/latest_task_card.dart';
-import '../../../views/home_screen/widgets/cards/revenue_card.dart';
-import '../../../views/home_screen/widgets/cards/transaction_list_card.dart';
-import '../../../views/home_screen/widgets/cards/lead_type_count_card.dart';
-import '../../app_colors/app_colors.dart';
+import '../../../resources/textStyles/text_styles.dart';
+import '../../../viewModels/homeViewModels/home_screen_leadSource_viewModel.dart';
+import '../../../viewModels/homeViewModels/home_screen_leads_by_typeCount_viewModel.dart';
+import '../../../viewModels/homeViewModels/home_screen_transactions_viewModel.dart';
+import '../../../viewModels/saveToken/save_token.dart';
+import '../../../views/homeScreen/widgets/cards/latest_customers_card.dart';
+import '../../../views/homeScreen/widgets/cards/latest_task_card.dart';
+import '../../../views/homeScreen/widgets/cards/lead_type_count_card.dart';
+import '../../../views/homeScreen/widgets/cards/revenue_card.dart';
+import '../../../views/homeScreen/widgets/cards/transaction_list_card.dart';
+import '../../appColors/app_colors.dart';
 import '../../components/widgets/drawer/custom_drawer.dart';
-import '../../components/widgets/nav_bar/custom_navBar.dart';
-import '../../components/widgets/nav_bar/floating_action_button/floating_action_button.dart';
+import '../../components/widgets/navBar/custom_navBar.dart';
+import '../../components/widgets/navBar/floatingActionButton/floating_action_button.dart';
+
 
 
 

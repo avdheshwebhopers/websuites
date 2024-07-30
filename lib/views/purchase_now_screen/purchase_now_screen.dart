@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/app_colors/app_colors.dart';
+import '../../utils/appColors/app_colors.dart';
 
 class PurchaseNowScreen extends StatefulWidget {
   const PurchaseNowScreen({super.key});
@@ -14,8 +14,8 @@ class _PurchaseNowScreenState extends State<PurchaseNowScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AllColors.textField,// just for highlight the appbar
-        title: Text('Purchase Now'),
+        backgroundColor: AllColors.textField,
+        title: const Text('Purchase Now'),
       ),
       body: Column(
         children: [

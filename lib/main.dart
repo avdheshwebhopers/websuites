@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'Resources/getx_localization/languages.dart';
+import 'package:websuites/resources/getxLocalization/languages.dart';
 import 'Utils/Routes/routes.dart';
 
 

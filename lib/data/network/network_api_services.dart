@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../../Utils/Routes/routes_name.dart';
-import '../../view_models/save_token/save_token.dart';
+import '../../viewModels/saveToken/save_token.dart';
 import '../app_exceptions.dart';
 import 'base_api_services.dart';
 
@@ -156,14 +156,12 @@ class NetworkApiServices extends BaseApiServices {
         print("Json response : ${responseJson.toString()}");
       }
 
-      // Try to extract the token from the response headers
       final responseToken = response.headers['authorization'] ??
           json.decode(responseBody)['authorization'];
 
       // Close the client
       client.close();
 
-      // Access the response token here (responseToken)
       print("Response Token: $responseToken");
 
       return responseJson;
@@ -233,7 +231,6 @@ class NetworkApiServices extends BaseApiServices {
   }
 
   void _handleUnauthorized() async {
-    // Show an alert dialog indicating session expired
     await Get.defaultDialog(
       barrierDismissible: false,
       title: "Session Expired",
@@ -245,7 +242,6 @@ class NetworkApiServices extends BaseApiServices {
     );
   }
 
-// Logout the user and navigate to the sign-in screen
   Future<void> _logoutAndNavigateToSignIn() async {
     SaveUserData userViewModel = SaveUserData();
     userViewModel.removeUser();

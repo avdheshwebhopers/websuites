@@ -1,36 +1,37 @@
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
-import 'package:websuites/views/customer_screen/customer_service/customer_services_screen.dart';
-import 'package:websuites/views/order_screen/order_payments/order_payments_screen.dart';
-import 'package:websuites/views/roles_screen/roles_screen.dart';
-import 'package:websuites/views/users_screen/users_screen.dart';
-import '../../views/bottom_navBar_screen/bottom_navBar_screen.dart';
-import '../../views/customer_screen/customer_activationList/customer_activationList_screen.dart';
-import '../../views/customer_screen/customer_companies/customer_all_companies_screen.dart';
-import '../../views/customer_screen/customer_list/customer_list_screen.dart';
-import '../../views/customer_screen/customer_myTeam/customer_myTeam_Screen.dart';
-import '../../views/customer_screen/customer_order_products/customer_order_products_screen.dart';
-import '../../views/customer_screen/customer_payment_reminder/customer_payment_reminder.dart';
-import '../../views/customer_screen/customer_activities/customers_activities_screen.dart';
-import '../../views/forgot_password_screen/forgot_password_screen.dart';
-import '../../views/home_screen/home_screen.dart';
-import '../../views/lead_screen/create_newLead/create_newLead_screen.dart';
-import '../../views/lead_screen/lead_activities/lead_activities_screen.dart';
-import '../../views/lead_screen/lead_list/leadlist_screen.dart';
-import '../../views/lead_screen/lead_master/lead_master_screen.dart';
-import '../../views/lead_screen/search_google_leads/search_google_leads.dart';
-import '../../views/lead_screen/team_lead/team_lead_screen.dart';
-import '../../views/lead_screen/trash_lead/trash_lead_screen.dart';
-import '../../views/login_screen/login_screen.dart';
-import '../../views/order_screen/order_activity/order_activity_screen.dart';
-import '../../views/order_screen/order_list/orderList_screen.dart';
-import '../../views/order_screen/order_proforma/proforma_list.dart';
-import '../../views/otp_screen/otp_screen.dart';
+import 'package:websuites/views/orderScreen/orderListScreen/orderList_screen.dart';
+
+import '../../views/bottomNavBarScreen/bottom_navBar_screen.dart';
+import '../../views/customerScreens/activationListScreen/customer_activationList_screen.dart';
+import '../../views/customerScreens/activitiesScreen/customers_activities_screen.dart';
+import '../../views/customerScreens/companiesScreen/customer_all_companies_screen.dart';
+import '../../views/customerScreens/customerList/customer_list_screen.dart';
+import '../../views/customerScreens/customerPaymentReminder/customer_payment_reminder.dart';
+import '../../views/customerScreens/customerServices/customer_services_screen.dart';
+import '../../views/customerScreens/myTeam/customer_myTeam_Screen.dart';
+import '../../views/customerScreens/orderProducts/customer_order_products_screen.dart';
+import '../../views/forgotPasswordScreen/forgot_password_screen.dart';
+import '../../views/homeScreen/home_screen.dart';
+import '../../views/leadScreens/createNewLead/create_newLead_screen.dart';
+import '../../views/leadScreens/leadActivities/lead_activities_screen.dart';
+import '../../views/leadScreens/lead_list/leadlist_screen.dart';
+import '../../views/leadScreens/lead_master/lead_master_screen.dart';
+import '../../views/leadScreens/search_google_leads/search_google_leads.dart';
+import '../../views/leadScreens/team_lead/team_lead_screen.dart';
+import '../../views/leadScreens/trash_lead/trash_lead_screen.dart';
+import '../../views/loginScreen/login_screen.dart';
+import '../../views/orderScreen/orderActivityScreen/order_activity_screen.dart';
+import '../../views/orderScreen/orderPaymentsScreen/order_payments_screen.dart';
+import '../../views/orderScreen/orderProformaScreen/proforma_list.dart';
+import '../../views/otpScreen/otp_screen.dart';
 import '../../views/purchase_now_screen/purchase_now_screen.dart';
-import '../../views/sales_target_screen/sales_target_screen.dart';
-import '../../views/splash_screen/splash_screen.dart';
-import '../../views/upcoming_screen/upcoming_screen.dart';
-import '../../views/welcome_to_company_screen/welcome_to_company_screen.dart';
+import '../../views/rolesScreen/roles_screen.dart';
+import '../../views/salesTargetScreen/sales_target_screen.dart';
+import '../../views/splashScreen/splash_screen.dart';
+import '../../views/upcomingScreen/upcoming_screen.dart';
+import '../../views/usersScreen/users_screen.dart';
+import '../../views/welcomeToCompanyScreen/welcome_to_company_screen.dart';
 
 class AllRoutes{
   static appRoutes () =>
@@ -135,7 +136,7 @@ class AllRoutes{
 
     GetPage(
       name: RoutesName.LeadActivities_screen,
-      page: () => LeadActivities_Screen(),
+      page: () => LeadActivitiesScreen(),
       transitionDuration : Duration(milliseconds: 450),
       // transition :Transition.leftToRightWithFade,
     ),

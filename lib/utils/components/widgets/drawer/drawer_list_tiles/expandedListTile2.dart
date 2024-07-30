@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
-import '../../../../app_colors/app_colors.dart';
+
+import '../../../../appColors/app_colors.dart';
+
 
 class CustomExpandedListTile2 extends StatefulWidget {
   final String title;
@@ -42,9 +44,9 @@ class _CustomExpandedListTile2State extends State<CustomExpandedListTile2> {
               fontSize: 14,
             ),
           ),
-          children: widget.children,
           initiallyExpanded: widget.initiallyExpanded,
           onExpansionChanged: widget.onExpansionChanged,
+          children: widget.children,
         ),
       );
   }

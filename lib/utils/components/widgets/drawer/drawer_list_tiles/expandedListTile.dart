@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
-import '../../../../app_colors/app_colors.dart';
+
+import '../../../../appColors/app_colors.dart';
+
 
 class CustomExpandedListTile extends StatefulWidget {
   final String title;
@@ -34,7 +36,7 @@ class _CustomExpandedListTileState extends State<CustomExpandedListTile> {
         ),
         child: ExpansionTile(
           minTileHeight: 45,
-          trailing: Icon(Icons.arrow_forward_ios_sharp, size: 10),
+          trailing: const Icon(Icons.arrow_forward_ios_sharp, size: 10),
           childrenPadding: EdgeInsets.symmetric(horizontal: 20,),
           title: Text(
             widget.title,
@@ -46,9 +48,9 @@ class _CustomExpandedListTileState extends State<CustomExpandedListTile> {
             ),
           ),
           leading: Image.asset(widget.leadingIconImage),
-          children: widget.children,
           initiallyExpanded: widget.initiallyExpanded,
           onExpansionChanged: widget.onExpansionChanged,
+          children: widget.children,
         ),
       );
   }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
-import '../../../../resources/icon_strings/icon_strings.dart';
-import '../../../../resources/image_strings/image_strings.dart';
-import '../../../../view_models/save_token/save_token.dart';
-import '../../../app_colors/app_colors.dart';
+import '../../../../resources/iconStrings/icon_strings.dart';
+import '../../../../resources/imageStrings/image_strings.dart';
+import '../../../../viewModels/saveToken/save_token.dart';
+import '../../../appColors/app_colors.dart';
 import '../../buttons/common_button.dart';
 import 'drawer_list_tiles/custom_list_tile.dart';
 import 'drawer_list_tiles/expandedListTile.dart';

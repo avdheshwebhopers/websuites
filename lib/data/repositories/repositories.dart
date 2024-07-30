@@ -1,5 +1,5 @@
 
-import '../../resources/app_urls/app_urls.dart';
+import '../../resources/appUrls/app_urls.dart';
 import '../models/responseModels/dashboard_screen/db_count_response_model.dart';
 import '../models/responseModels/dashboard_screen/db_latest_customer_response_model.dart';
 import '../models/responseModels/dashboard_screen/db_lead_by_type_count_response_model.dart';
