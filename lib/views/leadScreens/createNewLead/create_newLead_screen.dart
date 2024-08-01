@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
+import 'package:websuites/viewModels/leadScreens/createNewLead/assignedLeadTo/assigned_lead_to_viewModel.dart';
+import 'package:websuites/viewModels/leadScreens/createNewLead/customFields/custom_fields_viewModels.dart';
+import 'package:websuites/viewModels/leadScreens/createNewLead/divisions/divisions_view_model.dart';
+import 'package:websuites/viewModels/leadScreens/createNewLead/source/source_view_model.dart';
 import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
@@ -24,17 +28,32 @@ class CreateNewLeadScreen extends StatefulWidget {
 
 class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final AssignedLeadToViewModel _assignedLeadToController = Get.put(AssignedLeadToViewModel());
+  final SourceViewModel _sourceController = Get.put(SourceViewModel());
+  final DivisionsViewModel _divisionsController = Get.put(DivisionsViewModel());
+  final CustomFieldsViewModel _customFieldsController = Get.put(CustomFieldsViewModel());
+
+
+
   SaveUserData userPreference = SaveUserData();
   DateTime dateTime = DateTime.now();
 
   String userName = '';
   String? userEmail = "";
 
+
   @override
   void initState() {
     fetchUserData();
     super.initState();
+
+    _assignedLeadToController.assignedLead(context);
+    _sourceController.createNewLeadSource(context);
+    _divisionsController.createNewLeadDivisions(context);
+    _customFieldsController.createNewLeadCustomFields(context);
   }
+
+
   Future<void> fetchUserData() async {
     try {
       LoginResponseModel response = await userPreference.getUser();

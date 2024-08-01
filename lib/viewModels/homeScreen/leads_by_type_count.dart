@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../../Data/response/status.dart';
-import '../../data/models/responseModels/dashboardScreen/db_lead_by_type_count_response_model.dart';
+import '../../data/models/responseModels/dashboard/db_lead_by_type_count_response_model.dart';
 import '../../data/repositories/repositories.dart';
 
 class HomeScreenLeadsByTypeCountViewModel extends GetxController{
