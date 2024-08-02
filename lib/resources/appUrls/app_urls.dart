@@ -52,6 +52,40 @@ class AppUrls{
 
   static const String leadType = '${baseurl}v1/api/lead-types';
 
+  //============================================================================
+  // LEAD MASTER
+
+  // TYPES
+  static const String leadMastersTypes = '${baseurl}v1/api/lead-types';
+  // SOURCE
+  static const String leadMastersSource = '${baseurl}v1/api/lead-sources?q=';
+  // STATUS
+  static const String leadMastersStatus = '${baseurl}v1/api/lead-status?q=';
+
+  //============================================================================
+// CUSTOMER
+
+//LIST
+  static const String customersList = '${baseurl}v1/api/customers/customer-list';
+
+  //ACTIVITIES
+  static const String customersActivities = '${baseurl}v1/api/customer-activities/history';
+
+  // PAYMENT REMINDER
+  static const String customersPaymentReminder = '${baseurl}v1/api/customer-payment-reminders/list';
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

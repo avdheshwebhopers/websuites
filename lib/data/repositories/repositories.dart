@@ -1,3 +1,6 @@
+import 'package:websuites/data/models/responseModels/customers/list/customers_list_response_model.dart';
+import 'package:websuites/data/models/responseModels/customers/payment_reminder/customer_payment_reminder_response_model.dart';
+import 'package:websuites/data/models/responseModels/leads/leadMasters/status/lead_masters_status_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/trashLeads/deleteList/delete_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/trashLeads/leadTypes/lead_types_response_model.dart';
 
@@ -13,6 +16,8 @@ import '../models/responseModels/leads/createNewLead/assignedLeadTo/assigned_lea
 import '../models/responseModels/leads/createNewLead/divisions/divisions_response_model.dart';
 import '../models/responseModels/leads/createNewLead/leadCustomFields/lead_custom_fields.dart';
 import '../models/responseModels/leads/createNewLead/source/source_response_model.dart';
+import '../models/responseModels/leads/leadMasters/source/source_response_model.dart';
+import '../models/responseModels/leads/leadMasters/types/types_response_model.dart';
 import '../models/responseModels/login.dart';
 import '../models/responseModels/user_list.dart';
 import '../network/network_api_services.dart';
@@ -194,6 +199,74 @@ class Repositories {
       rethrow;
     }
   }
+
+  Future<LeadMasterTypesResponseModel> leadMastersTypesApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.leadMastersTypes);
+      return response = LeadMasterTypesResponseModel.fromJson(response);
+    } catch (e){
+      rethrow;
+    }
+  }
+
+  // Future<LeadMasterSourceResponseModel> leadMastersSourceApi() async {
+  //   try {
+  //     dynamic response = await _apiService.getApi(AppUrls.leadMastersSource);
+  //     return response = LeadMasterSourceResponseModel.fromJson(response);
+  //   } catch (e){
+  //     rethrow;
+  //   }
+  // }
+
+  Future<LeadMastersStatusResponseModel> leadMastersStatusApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.leadMastersStatus);
+      return response = LeadMastersStatusResponseModel.fromJson(response);
+    } catch (e){
+      rethrow;
+    }
+  }
+
+  //============================================================================
+// CUSTOMERS
+// LIST
+  Future<CustomersListResponseModel> customersListApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersList, null);
+      return response = CustomersListResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  //ACTIVITIES
+
+  Future<CustomersListResponseModel> customersActivitiesApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersActivities, null);
+      return response = CustomersListResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // PAYMENT REMINDER
+
+  Future<CustomersPaymentReminderResponseModel> customersPaymentReminderApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersPaymentReminder, null);
+      return response = CustomersPaymentReminderResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+
+
+
+
 
 
 
