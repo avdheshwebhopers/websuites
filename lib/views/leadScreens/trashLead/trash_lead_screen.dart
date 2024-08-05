@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:websuites/views/leadScreens/trashLead/widgets/trashLeadCard/trash_lead_card.dart';
 import '../../../data/models/responseModels/login.dart';
 import '../../../resources/strings/strings.dart';
@@ -6,6 +7,8 @@ import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../../viewModels/leadScreens/trashLeads/deleteList/delete_list_viewModel.dart';
+import '../../../viewModels/leadScreens/trashLeads/leadTypes/lead_type_viewModel.dart';
 import '../../../viewModels/saveToken/save_token.dart';
 
 class TrashLeadScreen extends StatefulWidget {
@@ -17,6 +20,12 @@ class TrashLeadScreen extends StatefulWidget {
 
 class _TrashLeadScreenState extends State<TrashLeadScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final DeleteListViewModel _customFieldsController = Get.put(DeleteListViewModel());
+  final LeadTypeViewModel _leadTypeController = Get.put(LeadTypeViewModel());
+
+
+
+
   SaveUserData userPreference = SaveUserData();
 
   String? userName = '';
@@ -26,6 +35,11 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
   void initState() {
     FetchUserData();
     super.initState();
+
+
+    _customFieldsController.deleteList(context);
+    _leadTypeController.leadTypes(context);
+
   }
 
   Future<void> FetchUserData() async {

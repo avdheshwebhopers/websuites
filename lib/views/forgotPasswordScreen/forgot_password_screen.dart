@@ -7,7 +7,7 @@ import '../../resources/strings/strings.dart';
 import '../../resources/textStyles/text_styles.dart';
 import '../../utils/appColors/app_colors.dart';
 import '../../utils/components/buttons/common_button.dart';
-import '../../viewModels/forgotPassword/forgot_password.dart';
+import '../../viewModels/forgotPasswordScreen/forgot_password.dart';
 
 
 class ForgotPasswordScreen extends StatefulWidget {

@@ -21,7 +21,7 @@ class RoutesName {
   static const String LeadActivities_screen = '/LeadActivities_screen';
   static const String my_teamLead_screen = '/my_teamLead_screen';
   static const String trashLead_screen = '/trashLead_screen';
-  static const String leadMaster_screen = '/leadMaster_screen';
+  static const String leadMaster_screen = '/';
 
   //============================================================================
   //Customer Screen
