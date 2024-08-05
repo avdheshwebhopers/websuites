@@ -5,21 +5,29 @@ import 'package:websuites/data/models/responseModels/leads/trashLeads/deleteList
 import 'package:websuites/data/models/responseModels/leads/trashLeads/leadTypes/lead_types_response_model.dart';
 
 import '../../resources/appUrls/app_urls.dart';
+import '../models/responseModels/customers/activationList/customer_activation_list_response_model.dart';
+import '../models/responseModels/customers/master/activation/customer_activation_response_model.dart';
+import '../models/responseModels/customers/master/activity_purpose/activity_purpose_response_model.dart';
+import '../models/responseModels/customers/master/companyCredentials/customer_company_credential_response_model.dart';
+import '../models/responseModels/customers/master/types/customer_master_type_response_model.dart';
+import '../models/responseModels/customers/orderProducts/customer_order_products_response_model.dart';
+import '../models/responseModels/customers/services/customer_services_response_model.dart';
+import '../models/responseModels/customers/trash/customer_trash_response_model.dart';
 import '../models/responseModels/dashboard/db_count_response_model.dart';
 import '../models/responseModels/dashboard/db_latest_customer_response_model.dart';
 import '../models/responseModels/dashboard/db_lead_by_type_count_response_model.dart';
 import '../models/responseModels/dashboard/db_lead_source_response_model.dart';
 import '../models/responseModels/dashboard/db_response_model.dart';
 import '../models/responseModels/dashboard/db_transactions_response_model.dart';
-import '../models/responseModels/forgot_password.dart';
+import '../models/responseModels/forgotPassword/forgot_password_response_model.dart';
 import '../models/responseModels/leads/createNewLead/assignedLeadTo/assigned_lead_to_response_model.dart';
 import '../models/responseModels/leads/createNewLead/divisions/divisions_response_model.dart';
 import '../models/responseModels/leads/createNewLead/leadCustomFields/lead_custom_fields.dart';
 import '../models/responseModels/leads/createNewLead/source/source_response_model.dart';
 import '../models/responseModels/leads/leadMasters/source/source_response_model.dart';
 import '../models/responseModels/leads/leadMasters/types/types_response_model.dart';
-import '../models/responseModels/login.dart';
-import '../models/responseModels/user_list.dart';
+import '../models/responseModels/login/login_response_model.dart';
+import '../models/responseModels/userList/user_list_response_model.dart';
 import '../network/network_api_services.dart';
 
 
@@ -260,6 +268,136 @@ class Repositories {
       rethrow;
     }
   }
+
+  // COMPANIES
+
+  Future<CustomersPaymentReminderResponseModel> customersCompaniesApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersPaymentReminder, null);
+      return response = CustomersPaymentReminderResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // SERVICES
+
+  Future<CustomerServicesResponseModel> customersServicesApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersServices, null);
+      return response = CustomerServicesResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // ORDER PRODUCTS
+
+  Future<CustomerOrderProductsResponseModel> customersOrderProductsApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersOrderProducts, null);
+      return response = CustomerOrderProductsResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // CUSTOMER TRASH
+
+  Future<CustomerTrashResponseModel> customersTrashApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersTrashLead, null);
+      return response = CustomerTrashResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // ACTIVATION LIST
+
+  Future<CustomerActivationListResponseModel> customersActivationListApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersActivationList, null);
+      return response = CustomerActivationListResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // CUSTOMER (MASTER)
+
+// COMPANY CREDENTIAL
+  Future<CustomerCompanyCredentialResponseModel> companyCredentialsApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersCompanyCredential, null);
+      return response = CustomerCompanyCredentialResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // TYPES
+  Future<CustomerMasterTypeResponseModel> customerMasterTypeApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.customersMasterTypes);
+      return response = CustomerMasterTypeResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // ACTIVITY PURPOSE
+  Future<ActivityPurposeResponseModel> customerActivityPurposeApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.customerActivityPurpose);
+      return response = ActivityPurposeResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // ACTIVATION
+
+  Future<CustomerActivationResponseModel> customerActivationApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.customerActivation);
+      return response = CustomerActivationResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

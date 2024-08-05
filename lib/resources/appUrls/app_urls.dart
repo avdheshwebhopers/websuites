@@ -74,6 +74,58 @@ class AppUrls{
   // PAYMENT REMINDER
   static const String customersPaymentReminder = '${baseurl}v1/api/customer-payment-reminders/list';
 
+  // COMPANIES
+  static const String customersCompanies = '${baseurl}v1/api/companies/list-all';
+
+  // SERVICES
+  static const String customersServices = '${baseurl}v1/api/customer-services/list';
+
+  // ORDER PRODUCTS
+  static const String customersOrderProducts = '${baseurl}v1/api/order-products/list';
+
+  // TRASH
+  static const String customersTrashLead = '${baseurl}v1/api/customers/trash';
+
+  // ACTIVATION LIST
+  static const String customersActivationList = '${baseurl}v1/api/sent-project-activation/list';
+
+  // CUSTOMER (MASTER)
+  // COMPANY CREDENTIAL
+  static const String customersCompanyCredential = '${baseurl}v1/api/companies/credential-type';
+
+  // TYPES
+  static const String customersMasterTypes = '${baseurl}v1/api/companies/credential-type';
+
+  // ACTIVITY PURPOSE
+  static const String customerActivityPurpose = '${baseurl}v1/api/customer-activity-purposes';
+
+  // ACTIVATION
+  static const String customerActivation = '${baseurl}v1/api/product-categories/list';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

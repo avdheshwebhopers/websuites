@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/views/usersScreen/widgets/users_card.dart';
-import '../../data/models/responseModels/login.dart';
+import '../../data/models/responseModels/login/login_response_model.dart';
 import '../../resources/iconStrings/icon_strings.dart';
 import '../../utils/appColors/app_colors.dart';
 import '../../utils/components/widgets/drawer/custom_drawer.dart';

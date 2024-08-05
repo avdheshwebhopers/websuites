@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../utils/utils.dart';
 
-class CustomerListViewModel extends GetxController {
+class CustomerPaymentReminderViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
 

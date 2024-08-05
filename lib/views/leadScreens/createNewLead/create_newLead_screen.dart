@@ -6,7 +6,7 @@ import 'package:websuites/viewModels/leadScreens/createNewLead/customFields/cust
 import 'package:websuites/viewModels/leadScreens/createNewLead/divisions/divisions_view_model.dart';
 import 'package:websuites/viewModels/leadScreens/createNewLead/source/source_view_model.dart';
 import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
-import '../../../data/models/responseModels/login.dart';
+import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:websuites/views/leadScreens/teamLead/widgets/teamLeadCard/team_lead_screen_card.dart';
-import '../../../data/models/responseModels/login.dart';
+import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
