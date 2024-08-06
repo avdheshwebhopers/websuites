@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/views/leadScreens/trashLead/widgets/trashLeadCard/trash_lead_card.dart';
-import '../../../data/models/responseModels/login.dart';
+import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';

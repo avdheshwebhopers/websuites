@@ -50,6 +50,7 @@ class UserListResponseModel {
     this.roleList
   }
   );
+
   UserListResponseModel.fromJson(
       Map<String, dynamic> json) {
     id = json['id'];
@@ -72,7 +73,7 @@ class UserListResponseModel {
     crmCategory = json['crm_category'];
     mobileApp = json['mobile_app'];
     superSettings = json['superSettings'];
-    department = json['department'] != null ? Department.fromJson(json['department']) : null;
+    department = json['department']!= null ? Department.fromJson(json['department']) : null;
     parent = json['parent'] != null ? Parent.fromJson(json['parent']) : null;
     if (json['role_list'] != null) {
       roleList = <RoleList>[];

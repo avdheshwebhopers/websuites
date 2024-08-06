@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/responseModels/login.dart';
+import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';

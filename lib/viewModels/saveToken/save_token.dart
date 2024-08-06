@@ -1,7 +1,7 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/models/responseModels/login.dart';
+import '../../data/models/responseModels/login/login_response_model.dart';
 
 
 
