@@ -15,11 +15,11 @@ class CustomerPaymentReminderViewModel extends GetxController {
     _api.customersPaymentReminderApi().then((value) {
 
       if(value.items!= null){
-        Utils.SnackbarSuccess('customer Payment fetched');
+        Utils.snackbarSuccess('customer Payment fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('customer Payment not fetched');
+        Utils.snackbarFailed('customer Payment not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {

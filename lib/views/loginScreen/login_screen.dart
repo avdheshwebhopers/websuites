@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import '../../Utils/Routes/routes_name.dart';
 import '../../Utils/utils.dart';
 import '../../resources/imageStrings/image_strings.dart';
@@ -114,7 +111,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                                                 fontSize: 13,)
                                             ),
                                             onFieldSubmitted: (value){
-                                              Utils.FieldFocusChange(context,
+                                              Utils.fieldFocusChange(context,
                                                   loginController.emailFocusNode.value,
                                                   loginController.passwordFocusNode.value);
                                               },
@@ -197,7 +194,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                             ),
 
                         TextStyles.w400_12(context, Strings.rememberMe, color: AllColors.grey),
-                            Spacer(),
+                            const Spacer(),
 
                             InkWell(
                               onTap: (){
@@ -213,14 +210,12 @@ class _Login_ScreenState extends State<LoginScreen> {
                         Obx(() =>
                           CommonButton(
                             width: Get.width*1,
-                            // height: Get.height/20,
                             title: Strings.button,
                             loading: loginController.loading.value,
 
                             onPress: (){
                               if(formkey.currentState != null && formkey.currentState!.validate()){
                                  loginController.login(context);
-
                               }
                               },
                           ),
@@ -243,7 +238,7 @@ class _Login_ScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),
                       child: Image.asset(

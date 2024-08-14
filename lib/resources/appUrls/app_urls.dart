@@ -3,7 +3,7 @@ class AppUrls{
   static const String baseurl = 'https://webhopers.whsuites.com:3006/';
 
   //============================================================================
-// LOGIN SCREEN API
+  // LOGIN SCREEN API
 
   static const String loginApi = '${baseurl}v1/api/auth/signin';
 
@@ -13,7 +13,7 @@ class AppUrls{
   static const String forgotApi = '${baseurl}v1/api/auth/forgot-password';
 
   //============================================================================
-  //HOME SCREEN API
+  // HOME SCREEN API
 
   static const String getDashboardCountApi = '${baseurl}v1/api/dashboard/dashboard-count';
 
@@ -54,18 +54,17 @@ class AppUrls{
 
   //============================================================================
   // LEAD MASTER
-
   // TYPES
   static const String leadMastersTypes = '${baseurl}v1/api/lead-types';
+
   // SOURCE
   static const String leadMastersSource = '${baseurl}v1/api/lead-sources?q=';
   // STATUS
   static const String leadMastersStatus = '${baseurl}v1/api/lead-status?q=';
 
   //============================================================================
-// CUSTOMER
-
-//LIST
+  // CUSTOMER
+  //LIST
   static const String customersList = '${baseurl}v1/api/customers/customer-list';
 
   //ACTIVITIES
@@ -91,6 +90,7 @@ class AppUrls{
 
   // CUSTOMER (MASTER)
   // COMPANY CREDENTIAL
+  //============================================================================
   static const String customersCompanyCredential = '${baseurl}v1/api/companies/credential-type';
 
   // TYPES
@@ -102,45 +102,132 @@ class AppUrls{
   // ACTIVATION
   static const String customerActivation = '${baseurl}v1/api/product-categories/list';
 
+  // FIELD
+  static const String customerField = '${baseurl}v1/api/project-activation-fields/list';
 
+  // SETTINGS
+  static const String customerSettings = '${baseurl}v1/api/customer-field-management';
 
+  //============================================================================
+  // ORDER
+  static const String orderList = '${baseurl}v1/api/orders/order-list';
 
+  // PROFORMA
+  static const String orderProforma = '${baseurl}v1/api/performa';
 
+  // PAYMENTS
+  static const String orderPayments = '${baseurl}v1/api/customer-payments/payment-list';
 
+  // ORDER MASTER
+  static const String orderMaster = '${baseurl}v1/api/order-status';
 
+  //============================================================================
 
+  // HRM
+  // ATTENDANCE
+  static const String hrmAttendance = '${baseurl}v1/api/holidays/list';
 
+  // LEAVE
+  static const String hrmLeave = '${baseurl}v1/api/hrm/leave-type';
 
+  // CAMPAIGN
+  // LIST
 
+  static const String campaignList = '${baseurl}v1/api/marketing-campaign/list';
 
+  // MAIL LOGS
+  static const String campaignMailLogs = '${baseurl}v1/api/mail-logs/list';
 
+  // WHATSAPP
+  static const String whatsappApi = '${baseurl}v1/api/whatsapp/chats';
 
+  // SALES
+  static const String salesApi = '${baseurl}v1/api/target-incentives/list';
 
+  // ROLES
+  static const String rolesApi = '${baseurl}v1/api/roles';
 
+  // USERS
+  static const String usersApi = '${baseurl}v1/api/auth/user-list';
 
+  //============================================================================
 
+  // TASKS
+  // LIST
+  static const String taskListApi = '${baseurl}v1/api/tasks/list';
 
+  // REPORT
+  static const String taskReport = '${baseurl}v1/api/tasks/team-task-report';
 
+  // MASTER
+  static const String taskMaster = '${baseurl}v1/api/task-type';
 
+  //============================================================================
+  // PROJECT
+  // LIST
+  static const String projectList = '${baseurl}v1/api/projects/list';
 
+  // MASTER
+  static const String projectMaster = '${baseurl}v1/api/project-tags';
 
+  //============================================================================
+  // PRODUCT
+  // LIST
 
+  static const String productList = '${baseurl}v1/api/product-categories?search=';
 
+  // CATEGORY
+  static const String productCategory = '${baseurl}v1/api/product-categories?search=';
 
+  // BRAND
+  static const String productBrand = '${baseurl}v1/api/product-brand';
 
+  // GST LIST
+  static const String productGstList = '${baseurl}v1/api/gsts?searchTerm=';
 
+  // MASTER
+  static const String productMaster = '${baseurl}v1/api/incentive-products/list';
 
+  //============================================================================
+  // INVENTORY
+  // STOCK
+  static const String inventoryStock = '${baseurl}v1/api/inventories';
 
+  // REQUEST
+  static const String inventoryRequest = '${baseurl}v1/api/inventory-requests';
 
+  // TRANSACTIONS
+  static const String inventoryTransactions = '${baseurl}v1/api/inventory-transactions';
 
+  // VENDORS
+  static const String inventoryVendors = '${baseurl}v1/api/manufacturers?page=1&limit=15';
 
+  // REFILL STOCKS
+  static const String inventoryRefillStocks = '${baseurl}v1/api/inventory-replenishments?page=1&limit=15';
 
+  //============================================================================
+  // MASTER
+  // DEPARTMENTS
+  static const String masterDepartments = '${baseurl}v1/api/departments/search?q=';
 
+  // DIVISIONS
+  static const String masterDivisions = '${baseurl}v1/api/divisions?q=';
 
+  //PROPOSALS
+  static const String masterProposals = '${baseurl}v1/api/proposals';
 
+  //============================================================================
+  // CITIES< STATES AND COUNTRY
+  // CITIES
+  static const String masterCities = '${baseurl}v1/api/cities/list';
 
+  // COUNTRY
+  static const String masterCountry = '${baseurl}v1/api/countries/list';
 
-
+  //============================================================================
+  // CUSTOMIZE LABELS
+  // CUSTOMIZE
+  static const String masterCustomize = '${baseurl}v1/api/module-dictionaries';
 
 
 

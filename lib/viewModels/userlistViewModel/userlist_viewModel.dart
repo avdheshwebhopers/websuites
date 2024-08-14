@@ -15,11 +15,11 @@ class UserListViewModel extends GetxController{
 
       if(value.id != null){
         print(value.id);
-      Utils.SnackbarSuccess('Id fetched');
+      Utils.snackbarSuccess('Id fetched');
       loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('ID not fetched');
+        Utils.snackbarFailed('ID not fetched');
       }
 
     }).onError((error, stackTrace) {

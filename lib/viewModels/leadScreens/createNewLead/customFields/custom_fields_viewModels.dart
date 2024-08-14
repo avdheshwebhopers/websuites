@@ -14,11 +14,11 @@ class CustomFieldsViewModel extends GetxController {
     _api.createNewLeadCustomFieldsApi().then((value) {
 
       if(value.id!= null) {
-        Utils.SnackbarSuccess('lead Id fetched');
+        Utils.snackbarSuccess('lead Id fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('lead Id not fetched');
+        Utils.snackbarFailed('lead Id not fetched');
       }
     }).onError((error, stackTrace){
       if (kDebugMode){

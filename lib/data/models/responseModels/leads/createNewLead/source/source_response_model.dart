@@ -20,10 +20,10 @@ class SourceResponseModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
+    data['id'] = id;
+    data['name'] = name;
+    data['status'] = status;
+    data['created_at'] = createdAt;
     return data;
   }
 }

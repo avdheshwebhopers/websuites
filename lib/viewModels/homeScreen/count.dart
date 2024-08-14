@@ -15,11 +15,11 @@ class HomeScreenCountViewModel extends GetxController {
     _api.dashboardCountApi().then((value) {
 
       if(value.customers!= null){
-        Utils.SnackbarSuccess('Id fetched');
+        Utils.snackbarSuccess('Id fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('ID not fetched');
+        Utils.snackbarFailed('ID not fetched');
 
       }
     }).onError((error, stackTrace) {

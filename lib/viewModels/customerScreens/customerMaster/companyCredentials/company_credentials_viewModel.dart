@@ -15,11 +15,11 @@ class CompanyCredentialsViewModels extends GetxController {
     _api.companyCredentialsApi().then((value) {
 
       if(value.id!= null){
-        Utils.SnackbarSuccess('company credentials fetched');
+        Utils.snackbarSuccess('company credentials fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('company credentials id not fetched');
+        Utils.snackbarFailed('company credentials id not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {

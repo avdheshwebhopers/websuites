@@ -15,11 +15,11 @@ class CustomerListViewModel extends GetxController {
     _api.customersListApi().then((value) {
 
       if(value.items!= null){
-        Utils.SnackbarSuccess('customer list Id fetched');
+        Utils.snackbarSuccess('customer list Id fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('customer list Id not fetched');
+        Utils.snackbarFailed('customer list Id not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {

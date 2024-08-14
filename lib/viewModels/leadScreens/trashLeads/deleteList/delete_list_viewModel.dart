@@ -14,11 +14,11 @@ class DeleteListViewModel extends GetxController {
     _api.deleteListApi().then((value) {
 
       if(value.items!= null){
-        Utils.SnackbarSuccess('source Id fetched');
+        Utils.snackbarSuccess('source Id fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('source Id not fetched');
+        Utils.snackbarFailed('source Id not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {

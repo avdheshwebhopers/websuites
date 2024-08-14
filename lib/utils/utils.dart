@@ -7,7 +7,7 @@ import 'package:another_flushbar/flushbar_route.dart';
 
 class Utils {
 
-  static void FieldFocusChange(BuildContext context,
+  static void fieldFocusChange(BuildContext context,
       FocusNode current, FocusNode nextFocus) {
     current.unfocus();
     FocusScope.of(context).requestFocus(nextFocus);
@@ -27,7 +27,7 @@ class Utils {
   //   );
   // }
 
-  static SnackbarFailed(String message) {
+  static snackbarFailed(String message) {
     Get.snackbar('failed', message,
       snackStyle: SnackStyle.FLOATING,
       backgroundColor: Colors.red, // Background color of the snackbar
@@ -35,7 +35,7 @@ class Utils {
     ); // Text color of the message);
   }
 
-  static SnackbarSuccess(String message) {
+  static snackbarSuccess(String message) {
     Get.snackbar('Successful', message,
       snackStyle: SnackStyle.FLOATING,
       backgroundColor: Colors.green, // Background color of the snackbar
@@ -89,7 +89,7 @@ class Utils {
       context: context,
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Padding(
+          title: const Padding(
             padding: EdgeInsets.all(20),
             child: Icon(Icons.error_outline, textDirection: TextDirection.ltr,
               color: Colors.red,
@@ -110,7 +110,7 @@ class Utils {
       context: context,
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Padding(
+          title: const Padding(
             padding: EdgeInsets.all(20),
             child: Icon(
               Icons.check_circle_outlined, textDirection: TextDirection.ltr,

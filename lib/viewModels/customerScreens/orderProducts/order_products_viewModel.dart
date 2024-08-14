@@ -15,11 +15,11 @@ class CustomerOrderProductsViewModel extends GetxController {
     _api.customersOrderProductsApi().then((value) {
 
       if(value.items!= null){
-        Utils.SnackbarSuccess('order Products fetched');
+        Utils.snackbarSuccess('order Products fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('order Products not fetched');
+        Utils.snackbarFailed('order Products not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {

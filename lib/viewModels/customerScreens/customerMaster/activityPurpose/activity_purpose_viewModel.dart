@@ -15,11 +15,11 @@ class CustomerActivityPurposeViewModel extends GetxController {
     _api.customerActivityPurposeApi().then((value) {
 
       if(value.id!= null){
-        Utils.SnackbarSuccess('activity Purpose Id fetched');
+        Utils.snackbarSuccess('activity Purpose Id fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('activity Purpose Id not fetched');
+        Utils.snackbarFailed('activity Purpose Id not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {
