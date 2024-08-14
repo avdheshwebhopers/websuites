@@ -15,11 +15,11 @@ class CustomerTrashViewModel extends GetxController {
     _api.customersTrashApi().then((value) {
 
       if(value.items!= null){
-        Utils.SnackbarSuccess('customer trash fetched');
+        Utils.snackbarSuccess('customer trash fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('customer trash not fetched');
+        Utils.snackbarFailed('customer trash not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {

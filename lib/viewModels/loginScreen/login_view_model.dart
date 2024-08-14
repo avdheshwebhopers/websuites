@@ -32,7 +32,7 @@ class LoginViewModel extends GetxController {
 
   Future<void> login (BuildContext context) async {
     if (emailController.value.text.isEmpty || passwordController.value.text.isEmpty) {
-      await Utils.SnackbarFailed('Please enter email and password');
+      await Utils.snackbarFailed('Please enter email and password');
       return;
     }
     LoginRequestedModel data = LoginRequestedModel();
@@ -53,10 +53,10 @@ class LoginViewModel extends GetxController {
         Get.offNamed(RoutesName.home_screen,
         );
 
-        Utils.SnackbarSuccess('login Successful');
+        Utils.snackbarSuccess('login Successful');
         // setRxStatus(Status.COMPLETED);
       } else {
-        Utils.SnackbarFailed('Login failed');
+        Utils.snackbarFailed('Login failed');
       }
       loading.value = false;
       // setRxStatus(Status.ERROR);

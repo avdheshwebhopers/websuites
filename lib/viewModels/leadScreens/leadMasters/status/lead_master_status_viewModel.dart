@@ -14,11 +14,11 @@ class LeadMasterStatusViewModel extends GetxController {
     _api.leadMastersStatusApi().then((value) {
 
       if(value.id!= null){
-        Utils.SnackbarSuccess('type Id fetched');
+        Utils.snackbarSuccess('type Id fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('type Id not fetched');
+        Utils.snackbarFailed('type Id not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode){

@@ -16,11 +16,11 @@ class HomeScreenLeadSourceViewModel extends GetxController {
 
          if(response.id != null){
 
-            Utils.SnackbarSuccess('lead Source Yes');
+            Utils.snackbarSuccess('lead Source Yes');
             loading.value = false;
 
          }else{
-            Utils.SnackbarFailed('lead Source No');
+            Utils.snackbarFailed('lead Source No');
 
          }
       }).onError((error, stackTrace) {

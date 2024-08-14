@@ -17,10 +17,10 @@ class HomeScreenLatestCustomersViewModel{
     loading.value = true;
     _api.dbLatestCustomersApi().then((value){
       if(value.items != null){
-        Utils.SnackbarSuccess('leads list fetched');
+        Utils.snackbarSuccess('leads list fetched');
 
       }else{
-        Utils.SnackbarFailed('leads list not fetched');
+        Utils.snackbarFailed('leads list not fetched');
       }
       loading.value = false;
 

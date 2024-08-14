@@ -38,11 +38,11 @@ class ForgotPasswordViewModel extends GetxController {
       if(value.message != null){
 
         Get.toNamed(RoutesName.otp_screen);
-        Utils.SnackbarSuccess('Password Updated Successfully');
+        Utils.snackbarSuccess('Password Updated Successfully');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('Please check your Password');
+        Utils.snackbarFailed('Please check your Password');
 
       }
     }).onError((error, stackTrace) {

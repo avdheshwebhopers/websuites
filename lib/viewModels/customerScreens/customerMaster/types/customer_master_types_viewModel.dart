@@ -15,11 +15,11 @@ class CustomerMasterTypesViewModels extends GetxController {
     _api.customerMasterTypeApi().then((value) {
 
       if(value.id!= null){
-        Utils.SnackbarSuccess('customerMasterTypes fetched');
+        Utils.snackbarSuccess('customerMasterTypes fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('customerMasterTypes not fetched');
+        Utils.snackbarFailed('customerMasterTypes not fetched');
       }
     }).onError((error, stackTrace) {
       if (kDebugMode) {

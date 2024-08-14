@@ -1080,7 +1080,7 @@ class _MyTabBodyState extends State<MyTabBody> {
                                   onPress: () {
                                     SaveUserData().removeUser();
                                     Get.toNamed(RoutesName.login_screen);
-                                    Utils.SnackbarSuccess(Strings.snackbar);
+                                    Utils.snackbarSuccess(Strings.snackbar);
                                   }
                                   ),
                             ),
@@ -1097,12 +1097,11 @@ class _MyTabBodyState extends State<MyTabBody> {
           Container(
             height: Get.height * 1,
             width: 0.08,
-            margin: EdgeInsets.only(top: 30, bottom: 30),
+            margin: const EdgeInsets.only(top: 30, bottom: 30),
             color: AllColors.grey,
           ),
 
-          const SizedBox(width: 10,
-          ),
+          const SizedBox(width: 10),
 
           Expanded(
             flex: 3,

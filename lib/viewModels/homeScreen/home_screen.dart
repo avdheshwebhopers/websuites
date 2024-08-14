@@ -14,10 +14,10 @@ class HomeScreenViewModel extends GetxController {
     loading.value = true;
     _api.dashboardApi().then((value){
       if(value.id != null){
-        Utils.SnackbarSuccess('charts fetched');
+        Utils.snackbarSuccess('charts fetched');
 
       }else{
-        Utils.SnackbarFailed('charts not fetched');
+        Utils.snackbarFailed('charts not fetched');
       }
       loading.value = false;
 

@@ -15,11 +15,11 @@ class CustomerActivationViewModels extends GetxController {
     _api.customerActivationApi().then((value) {
 
       if(value.id!= null){
-        Utils.SnackbarSuccess('customer activities Id fetched');
+        Utils.snackbarSuccess('customer activities Id fetched');
         loading.value = false;
 
       }else{
-        Utils.SnackbarFailed('customer activities Id not fetched');
+        Utils.snackbarFailed('customer activities Id not fetched');
       }
     }).onError((error, stackTrace){
       if (kDebugMode){
