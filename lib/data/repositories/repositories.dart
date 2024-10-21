@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:websuites/data/models/responseModels/customers/list/customers_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/customers/payment_reminder/customer_payment_reminder_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/leadMasters/status/lead_masters_status_response_model.dart';
@@ -31,8 +32,11 @@ import '../models/responseModels/inventory/stock/inventory_stock_response_model.
 import '../models/responseModels/inventory/transactions/inventory_transactions_response_model.dart';
 import '../models/responseModels/inventory/vendors/inventory_vendors_response_model.dart';
 import '../models/responseModels/leads/createNewLead/assignedLeadTo/assigned_lead_to_response_model.dart';
+import '../models/responseModels/leads/createNewLead/createNewModelPost/CreateNewModelbutton.dart';
 import '../models/responseModels/leads/createNewLead/divisions/divisions_response_model.dart';
 import '../models/responseModels/leads/createNewLead/leadCustomFields/lead_custom_fields.dart';
+import '../models/responseModels/leads/createNewLead/pincode/pincode.dart';
+import '../models/responseModels/leads/createNewLead/productCategoryList.dart';
 import '../models/responseModels/leads/createNewLead/source/source_response_model.dart';
 import '../models/responseModels/leads/leadMasters/source/source_response_model.dart';
 import '../models/responseModels/leads/leadMasters/types/types_response_model.dart';
@@ -40,6 +44,8 @@ import '../models/responseModels/login/login_response_model.dart';
 import '../models/responseModels/master/cityStateAndCountry/cities/master_cities_response_model.dart';
 import '../models/responseModels/master/cityStateAndCountry/country/master_country_response_model.dart';
 import '../models/responseModels/master/customizeLabel/customize/customize_response_model.dart';
+import '../models/responseModels/master/customizeLabel/customize_lead_source/customize_lead_source.dart';
+import '../models/responseModels/master/customizeLabel/customize_type/customize_type.dart';
 import '../models/responseModels/master/departments/master_departments_response_model.dart';
 import '../models/responseModels/master/divisions/master_divisions_response_model.dart';
 import '../models/responseModels/master/proposals/master_proposals_resposne_model.dart';
@@ -70,7 +76,6 @@ class Repositories {
 
   //============================================================================
   // LOGIN SCREEN API
-
   Future<LoginResponseModel> loginApi(dynamic data) async {
     try {
       dynamic response = await _apiService.postApiResponse(
@@ -182,11 +187,72 @@ class Repositories {
   // LEAD SCREEN API
   // CREATE NEW LEAD API
 
-  Future<AssignedLeadToResponseModel> assignedLeadApi() async {
+
+
+
+  // Future<List<dynamic>> fetchLeadSources() async {
+  //   const String url = 'https://webhopers.whsuites.com:3006/v1/api/lead-sources';
+  //   try {
+  //
+  //     final dynamic response = await NetworkApiServices().getApi(url);
+  //
+  //     if (response is List) {
+  //       // If response is a List, return it directly
+  //       return response;
+  //     } else if (response is Map && response.containsKey('data') && response['data'] is List) {
+  //       // If response is a Map containing 'data', return the data list
+  //       return response['data'];
+  //     } else {
+  //       throw Exception('Unexpected response format');
+  //     }
+  //   } catch (e) {
+  //     if (kDebugMode) {
+  //       print('Error fetching lead sources: $e');
+  //     }
+  //     rethrow; // Propagate the error up the chain
+  //   }
+  // }
+
+
+  Future<List<LeadProductCategoryList>> createLeadProductCategory() async {
     try {
-      dynamic response = await _apiService.postApiResponse(
-          AppUrls.assignedLeadTo, null);
-      return response = AssignedLeadToResponseModel.fromJson(response);
+      dynamic response =
+      await _apiService.getApi(AppUrls.createNewLeadProductCategory);
+      print("Create Lead product category ${response}");
+      // Decode the response body as a List of dynamic
+      List<LeadProductCategoryList> createLeadCategoryList = (response as List)
+          .map((leadSourceJson) =>
+          LeadProductCategoryList.fromJson(leadSourceJson))
+          .toList();
+      print("CreateLead data ${createLeadCategoryList[0].id}");
+      var data = createLeadCategoryList;
+      // print("Data ${data[0].id}");
+      // Convert the list of dynamic to a list of LeadSource objects
+      print("CreateLead ${createLeadCategoryList}");
+      return createLeadCategoryList;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+
+  Future<List<AssignedLeadToResponseModel>> assignedLeadApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.assignedLeadTo, null);
+
+      if (response is List) {
+        List<AssignedLeadToResponseModel> leadList = [];
+        for (var item in response) {
+          if (item is Map<String, dynamic>) {
+            leadList.add(AssignedLeadToResponseModel.fromJson(item));
+          }
+        }
+        return leadList;
+      } else {
+        throw Exception('Unexpected response type');
+      }
     } catch (e) {
       rethrow;
     }
@@ -202,23 +268,87 @@ class Repositories {
     }
   }
 
-  Future<DivisionsResponseModel> createNewLeadDivisionsApi() async {
+
+  Future<List<DivisionsResponseModel>> createNewLeadDivisionsApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.createNewLeadDivisions);
-      return response = DivisionsResponseModel.fromJson(response);
+      List<DivisionsResponseModel> divisionsList = (response as List)
+          .map((division) => DivisionsResponseModel.fromJson(division))
+          .toList();
+      return divisionsList;
+    } catch (e) {
+      rethrow;
+    }
+
+  }
+
+
+  Future<List<LeadCustomFieldsResponseModel>> createNewLeadCustomFieldsApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.createNewLeadCustomFields);
+      print("API Response: $response"); // Add this line
+      if (response is List) {
+        return response.map((item) => LeadCustomFieldsResponseModel.fromJson(item)).toList();
+      } else {
+        print("Unexpected response type: ${response.runtimeType}");
+        return [];
+      }
     } catch (e){
+      print("API Error: $e"); // Add this line
       rethrow;
     }
   }
 
-  Future<LeadCustomFieldsResponseModel> createNewLeadCustomFieldsApi() async {
+  Future<List<PinCodeModelResponseModel>> createLeadPinCode(String query) async {
     try {
-      dynamic response = await _apiService.getApi(AppUrls.createNewLeadCustomFields);
-      return response = LeadCustomFieldsResponseModel.fromJson(response);
-    } catch (e){
+      String url = '${AppUrls.createLeadPincode}${Uri.encodeComponent(query)}';
+      dynamic response = await _apiService.getApi(url);
+      print("Pincode Response $response");
+      // Parse the JSON into a list of PinCodeModelResponseModel objects
+      List<PinCodeModelResponseModel> pinCodeList = (response as List).map((json) => PinCodeModelResponseModel.fromJson(json)).toList();
+      return pinCodeList;
+    } catch (e) {
+      print("Error fetching pincode data: $e");
       rethrow;
     }
   }
+
+  // Future<dynamic> createNewLeadApi(Map<String, dynamic> data) async {
+  //   try {
+  //     dynamic response = await _apiService.postApiResponse(AppUrls.createNewLead, data);
+  //     print("API Response: $response");
+  //
+  //     if (response is List) {
+  //       return response.map((item) => CreateNewModel.fromJson(item)).toList();
+  //     } else if (response is Map<String, dynamic>) {
+  //       return CreateNewModel.fromJson(response);
+  //     } else {
+  //       throw Exception("Unexpected response type: ${response.runtimeType}");
+  //     }
+  //   } catch (e) {
+  //     print("API Error: $e");
+  //     rethrow;
+  //   }
+  // }
+
+
+  Future<dynamic> createNewLeadApi(Map<String, dynamic> data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse('https://webhopers.whsuites.com/v1/api/leads', data);
+      print("API Response: $response");
+
+      // ...
+
+    } catch (e) {
+      print("API Error: $e");
+      rethrow;
+    }
+  }
+
+
+
+
+
 
   //============================================================================
   // TRASH LEADS
@@ -232,14 +362,17 @@ class Repositories {
     }
   }
 
-  Future<LeadTypesResponseModel> leadTypeApi() async {
+// Lead type (Hot cold)
+
+  Future<List<LeadTypesResponseModel>> leadTypeApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.leadType);
-      return response = LeadTypesResponseModel.fromJson(response);
-    } catch (e){
+      return LeadTypesResponseModel.fromJsonList(response);
+    } catch (e) {
       rethrow;
     }
   }
+
 
   Future<LeadMasterTypesResponseModel> leadMastersTypesApi() async {
     try {
@@ -390,15 +523,37 @@ class Repositories {
   }
 
   // ACTIVATION
+  //
+  // Future<CustomerActivationResponseModel> customerActivationApi() async {
+  //   try {
+  //     dynamic response = await _apiService.getApi(AppUrls.customerActivation);
+  //     return response = CustomerActivationResponseModel.fromJson(response);
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
-  Future<CustomerActivationResponseModel> customerActivationApi() async {
-    try {
-      dynamic response = await _apiService.getApi(AppUrls.customerActivation);
-      return response = CustomerActivationResponseModel.fromJson(response);
-    } catch (e) {
-      rethrow;
-    }
-  }
+// Future<List<String>> fetchProductCategories() async {
+//   try {
+//     // Assuming _apiService.postApiResponse returns a Map<String, dynamic>
+//     dynamic response = await _apiService.postApiResponse(AppUrls.customerActivation, null);
+//
+//     // Check if the response is a map and contains the 'data' field
+//     if (response is Map<String, dynamic> && response.containsKey('data')) {
+//       // Extract the 'data' field, which should be a List
+//       List<dynamic> data = response['data'];
+//
+//       // Convert the list to List<String>
+//       return List<String>.from(data.map((category) => category.toString()));
+//     } else {
+//       throw Exception('Expected a Map with a "data" field but got ${response.runtimeType}');
+//     }
+//   } catch (e) {
+//     print('Error in fetchProductCategories: $e');
+//     rethrow; // Rethrow the error for further handling if needed
+//   }
+// }
+
 
   // FIELD
 
@@ -410,6 +565,9 @@ class Repositories {
       rethrow;
     }
   }
+
+
+
 
   // SETTINGS
 
@@ -715,37 +873,65 @@ class Repositories {
   }
 
   //============================================================================
-// MASTER
-// DEPARTMENTS
-  Future<MasterDepartmentsResponseModel> masterDepartmentsApi() async {
-    try {
-      dynamic response = await _apiService.getApi(AppUrls.masterDepartments);
-      return response = MasterDepartmentsResponseModel.fromJson(response);
-    } catch (e) {
-      rethrow;
-    }
-  }
 
-  // DIVISIONS
-  Future<MasterDivisionsResponseModel> masterDivisionsApi() async {
+
+//Master
+  //division
+  Future<List<MasterDivisionsResponseModel>> masterDivision() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.masterDivisions);
-      return response = MasterDivisionsResponseModel.fromJson(response);
+      print("Response Master Api: $response");
+
+      if (response is List) {
+        return MasterDivisionsResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
     } catch (e) {
+      print("Error in masterDivision: $e");
       rethrow;
     }
   }
 
-  //PROPOSALS
-
-  Future<MasterProposalsResponseModel> masterProposalsApi() async {
+  //Departments
+  Future<List<MasterDepartmentsResponseModel>> masterDepartment() async {
     try {
-      dynamic response = await _apiService.getApi(AppUrls.masterProposals);
-      return response = MasterProposalsResponseModel.fromJson(response);
+      dynamic response = await _apiService.getApi(AppUrls.masterDepartments);
+      print("Response Master Department$response");
+      if (response is List) {
+        return MasterDepartmentsResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
     } catch (e) {
       rethrow;
     }
   }
+
+
+
+
+
+
+//Proposal
+  Future<List<MasterProposalsResponseModel>>masterProposal()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.masterProposals);
+      print("Response master Proposals$response");
+      if(response is List){
+        return MasterProposalsResponseModel.fromJsonList(response);
+      }
+      else{
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+
+
 
   //============================================================================
   // CITIES, STATES AND COUNTRY
@@ -770,16 +956,67 @@ class Repositories {
     }
   }
 
-  // CUSTOMIZE LABELS
-  //CUSTOMIZE
-  Future<MasterCustomizeResponseModel> masterCustomizeApi() async {
-    try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.masterCustomize, null);
-      return response = MasterCustomizeResponseModel.fromJson(response);
-    } catch (e) {
+
+
+
+
+  //CUSTOMIZE LIST
+
+  Future<List<MasterCustomizeResponseModel>>masterCustomizeList(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.masterCustomizeList,data);
+      print("Response master Proposals$response");
+      if(response is List){
+        return MasterCustomizeResponseModel.fromJsonList(response);
+      }
+      else{
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
       rethrow;
     }
   }
+
+
+
+//CUSTOMIZE TYPE
+  Future<List<MasterCustomizeTypeResponseModel>>masterCustomizeType()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.masterCustomizeType);
+      print("Response CustomizeType$response");
+      if(response is List){
+        return MasterCustomizeTypeResponseModel.fromJsonList(response);
+      }
+      else{
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+//CUSTOMIZE LEAD SOURCE
+  Future<List<CustomizeLeadSourceResponseModel>>masterCustomizeLeadSource(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.masterCustomizeLeadSource,data);
+      print("Response master Customize Lead Source$response");
+      if(response is List){
+        return CustomizeLeadSourceResponseModel.fromJsonList(response);
+      }
+      else{
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+
+
+
 
 
 

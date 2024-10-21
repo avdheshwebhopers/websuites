@@ -6,17 +6,17 @@ class MasterProposalsResponseModel {
   bool? status;
   String? createdAt;
   String? updatedAt;
-  String? deletedAt;
+  Null deletedAt;
 
   MasterProposalsResponseModel(
       {this.id,
-        this.subject,
-        this.body,
-        this.attachment,
-        this.status,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.subject,
+      this.body,
+      this.attachment,
+      this.status,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   MasterProposalsResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -41,4 +41,8 @@ class MasterProposalsResponseModel {
     data['deleted_at'] = deletedAt;
     return data;
   }
+  static List<MasterProposalsResponseModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) =>MasterProposalsResponseModel.fromJson(json)).toList();
+  }
+
 }

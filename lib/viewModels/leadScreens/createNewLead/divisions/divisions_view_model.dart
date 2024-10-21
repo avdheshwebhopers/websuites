@@ -1,31 +1,29 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../../data/models/responseModels/leads/createNewLead/divisions/divisions_response_model.dart';
 import '../../../../data/repositories/repositories.dart';
-import '../../../../utils/utils.dart';
 
 class DivisionsViewModel extends GetxController {
   final _api = Repositories();
-  RxBool loading = false.obs;
+  RxBool isLoading = false.obs;
+  RxString errorMessage = ''.obs;
+  RxList<DivisionsResponseModel> divisionsList = RxList<DivisionsResponseModel>();
+  RxList<String> selectedDivisions = <String>[].obs;
 
-  Future<void> createNewLeadDivisions (BuildContext context) async {
-    loading.value = true;
+  Future<void> createNewLeadDivisions(BuildContext context) async {
+    isLoading.value = true;
 
-    _api.createNewLeadDivisionsApi().then((value) {
-
-      if(value.id!= null){
-        Utils.snackbarSuccess('lead Id fetched');
-        loading.value = false;
-
-      }else{
-        Utils.snackbarFailed('lead Id not fetched');
-      }
-    }).onError((error, stackTrace) {
-      if (kDebugMode) {
-        print(error.toString());
-      }
+    try {
+      final response = await _api.createNewLeadDivisionsApi();
+      divisionsList.value = response;
+      isLoading.value = false;
+    } catch (e) {
+      errorMessage.value = 'Error fetching divisions: $e';
+      isLoading.value = false;
     }
-    );
+  }
+
+  void updateSelectedDivisions(List<String> divisions) {
+    selectedDivisions.value = divisions;
   }
 }

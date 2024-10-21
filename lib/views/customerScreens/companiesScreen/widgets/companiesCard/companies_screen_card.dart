@@ -43,7 +43,6 @@ class CustomerCompaniesScreenCard extends StatelessWidget {
                   Text('Pulkit Surana', style: TextStyle(
                       color: AllColors.mediumGrey,
                       fontSize: 12,
-                        
                       fontWeight: FontWeight.w400
                   ),),
 

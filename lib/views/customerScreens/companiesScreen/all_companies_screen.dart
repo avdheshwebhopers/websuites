@@ -96,12 +96,15 @@ class _CustomerCompaniesScreenState extends State<CustomerCompaniesScreen> {
                           
                         fontWeight: FontWeight.w700),
                   ),
+
                   Spacer(),
+
                   Icon(
                     Icons.filter_list_outlined,
                     size: 15,
                     color: AllColors.lightGrey,
                   ),
+
                   const SizedBox(
                     width: 5,
                   ),

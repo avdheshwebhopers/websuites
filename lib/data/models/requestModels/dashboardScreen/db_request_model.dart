@@ -1,4 +1,3 @@
-
 class DashboardRequestModel {
   String? name;
   bool? isDefault;

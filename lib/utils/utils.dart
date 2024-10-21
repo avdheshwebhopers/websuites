@@ -26,7 +26,7 @@ class Utils {
   //     gravity: ToastGravity.CENTER, // toast will show from the bottom
   //   );
   // }
-
+//
   static snackbarFailed(String message) {
     Get.snackbar('failed', message,
       snackStyle: SnackStyle.FLOATING,
@@ -64,25 +64,48 @@ class Utils {
     );
   }
 
+  // static void flushBarErrorMessage(String message, BuildContext context) {
+  //   showFlushbar(context: context,
+  //     flushbar: Flushbar(
+  //       forwardAnimationCurve: Curves.decelerate,
+  //       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+  //       padding: EdgeInsets.all(20),
+  //       messageText: Text(
+  //         message, style: TextStyle(fontSize: 16, color: Colors.white),),
+  //       duration: Duration(seconds: 3),
+  //       borderRadius: BorderRadius.circular(10),
+  //       flushbarPosition: FlushbarPosition.BOTTOM,
+  //       backgroundColor: Color(0xFFFA2521),
+  //       reverseAnimationCurve: Curves.easeOut,
+  //       positionOffset: 20,
+  //       icon: Icon(Icons.error, size: 3, color: Colors.white),
+  //     )
+  //       ..show(context),
+  //   );
+  // }
+
   static void flushBarErrorMessage(String message, BuildContext context) {
-    showFlushbar(context: context,
+    showFlushbar(
+      context: context,
       flushbar: Flushbar(
         forwardAnimationCurve: Curves.decelerate,
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         padding: EdgeInsets.all(20),
         messageText: Text(
-          message, style: TextStyle(fontSize: 16, color: Colors.white),),
+          message,
+          style: TextStyle(fontSize: 16, color: Colors.white),
+        ),
         duration: Duration(seconds: 3),
         borderRadius: BorderRadius.circular(10),
-        flushbarPosition: FlushbarPosition.BOTTOM,
+        flushbarPosition: FlushbarPosition.TOP,  // Set to top
         backgroundColor: Color(0xFFFA2521),
         reverseAnimationCurve: Curves.easeOut,
         positionOffset: 20,
-        icon: Icon(Icons.error, size: 3, color: Colors.white),
-      )
-        ..show(context),
+        icon: Icon(Icons.error, size: 28, color: Colors.white), // Adjust icon size
+      )..show(context),
     );
   }
+
 
   void errorAlertDialogue(String? message, BuildContext context) {
     showDialog(

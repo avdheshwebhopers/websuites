@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/leadScreens/leadList/widgets/leadListCard/lead_list_card.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
@@ -20,6 +21,7 @@ class LeadListScreen extends StatefulWidget {
 
 class _LeadListScreenState extends State<LeadListScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
   String? userName = '';
@@ -50,7 +52,10 @@ class _LeadListScreenState extends State<LeadListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ResponsiveScaffold(
+
+        scaffoldKey: _scaffoldKey,
+        key: _globalKey,
         bottomNavigationBar: CustomBottomNavBar(),
         floatingActionButton: CustomFloatingButton(
             onPressed: () {},
@@ -58,7 +63,7 @@ class _LeadListScreenState extends State<LeadListScreen> {
             backgroundColor: AllColors.mediumPurple
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        key: _globalKey,
+        // key: _globalKey,
         backgroundColor: AllColors.whiteColor,
 
         drawer: CustomDrawer(
@@ -71,11 +76,13 @@ class _LeadListScreenState extends State<LeadListScreen> {
             const SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
+                child:
+                Column(
                   children: [
                     SizedBox(
                       height: 125,
                     ),
+
                     LeadListScreenCard(title: 'Sanjay Kumar', companyName: 'Prelims Pharma Private Limited'),
                     LeadListScreenCard(title: 'Lokesh Kumar', companyName: 'Biophar Pharma'),
                     LeadListScreenCard(title: 'Rahul Choudhary', companyName: 'Tata Pharma'),

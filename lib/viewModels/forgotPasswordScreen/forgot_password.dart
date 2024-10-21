@@ -18,6 +18,7 @@ class ForgotPasswordViewModel extends GetxController {
     super.dispose();
 
     emailController();
+
   }
 
   Future<void> forgot(BuildContext context)async{

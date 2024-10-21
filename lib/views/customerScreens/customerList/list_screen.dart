@@ -24,7 +24,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
   String? userEmail = '';
 
   @override
-  void initState(){
+  void initState() {
     FetchUserData();
     super.initState();
   }
@@ -89,12 +89,12 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                       child: const Icon(
                         Icons.menu_sharp,
                         size: 25,
-                      )
-                  ),
+                      )),
                   const SizedBox(
                     width: 10,
                   ),
-                  TextStyles.w700_16(color: AllColors.blackColor, context, Strings.customers),
+                  TextStyles.w700_16(
+                      color: AllColors.blackColor, context, Strings.customers),
                   const Spacer(),
                   Container(
                     height: Get.height / 30,
@@ -129,7 +129,10 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
                         const SizedBox(
                           width: 4,
                         ),
-                        TextStyles.w400_12(color: AllColors.whiteColor, context, Strings.customer),
+                        TextStyles.w400_12(
+                            color: AllColors.whiteColor,
+                            context,
+                            Strings.customer),
                       ],
                     ),
                   )

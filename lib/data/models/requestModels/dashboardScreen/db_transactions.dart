@@ -26,8 +26,7 @@ class DBTransactionsRequestModel {
 }
 
 
-
-  class Items {
+ class Items {
   String? id;
   int? amount;
   int? gstAndFees;
