@@ -62,6 +62,7 @@ class _WelcomeToCompanyState extends State<WelcomeToCompany> {
 
               CommonButton(
                 height: Get.height/20,
+
                 width: Get.width/1,
                 title: Strings.emailAddressCode, onPress: (){},),
             ],

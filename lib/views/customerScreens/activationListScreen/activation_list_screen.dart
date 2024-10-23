@@ -55,7 +55,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
           phoneNumber: '$userEmail',
           version: '1.0.12'),
 
-      body:
+        body:
           Stack(
             children: [
               SingleChildScrollView(

@@ -3,9 +3,6 @@ import 'package:get/get.dart';
 import 'package:websuites/resources/getxLocalization/languages.dart';
 import 'Utils/Routes/routes.dart';
 
-
-
-
 void main(){
   runApp(const MyApp());
 }
@@ -30,3 +27,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+

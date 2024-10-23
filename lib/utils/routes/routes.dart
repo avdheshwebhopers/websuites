@@ -1,6 +1,11 @@
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
+import 'package:websuites/views/Master/Departments.dart';
 import 'package:websuites/views/orderScreen/orderListScreen/orderList_screen.dart';
+import '../../views/Master/CustomizedLabelScreen.dart';
+import '../../views/Master/Division.dart';
+import '../../views/Master/ProposalScreen.dart';
+import '../../views/Master/SettingScreen.dart';
 import '../../views/bottomNavBarScreen/bottom_navBar_screen.dart';
 import '../../views/customerScreens/activationListScreen/activation_list_screen.dart';
 import '../../views/customerScreens/activitiesScreen/activities_screen.dart';
@@ -120,6 +125,9 @@ class AllRoutes{
       // transition :Transition.leftToRightWithFade,
     ),
 
+
+
+
     GetPage(
       name: RoutesName.createNewLead_screen,
       page: () => CreateNewLeadScreen(),
@@ -155,7 +163,15 @@ class AllRoutes{
       // transition :Transition.leftToRightWithFade,
     ),
 
-    GetPage(
+        GetPage(
+          name: RoutesName.setting_screen,
+          page: () => SettingScreen(),
+          transitionDuration : Duration(milliseconds: 450),
+          // transition :Transition.leftToRightWithFade,
+        ),
+
+
+        GetPage(
       name: RoutesName.leadMaster_screen,
       page: () => LeadMasterScreen(),
       transitionDuration : Duration(milliseconds: 450),
@@ -283,7 +299,32 @@ class AllRoutes{
           // transition :Transition.leftToRightWithFade,
         ),
 
+        GetPage(
+          name: RoutesName.master_department, // Use the correct route name
+          page: () => MasterDepartmentScreen(),
+          transitionDuration: const Duration(milliseconds: 450), // Use milliseconds for proper duration
+        ),
 
+        GetPage(
+          name: RoutesName.master_division, // Use the correct route name
+          page: () => MasterDivisionScreen(),
+          transitionDuration: const Duration(milliseconds: 450), // Use milliseconds for proper duration
+        ),
+
+        GetPage(
+          name: RoutesName.master_proposal, // Use the correct route name
+          page: () => MasterProposalScreen(),
+          transitionDuration: const Duration(milliseconds: 450), // Use milliseconds for proper duration
+        ),
+
+
+
+
+        GetPage(
+          name: RoutesName.master_customize_label, // Use the correct route name
+          page: () => CustomizedLabelScreen(),
+          transitionDuration: const Duration(milliseconds: 450), // Use milliseconds for proper duration
+        ),
 
 
       ];

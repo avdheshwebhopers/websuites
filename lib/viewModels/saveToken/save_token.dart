@@ -15,6 +15,7 @@ class SaveUserData {
     return LoginResponseModel();
   }
 
+
   Future<LoginResponseModel> getUser() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();
     String? token = sp.getString('accessToken').toString();

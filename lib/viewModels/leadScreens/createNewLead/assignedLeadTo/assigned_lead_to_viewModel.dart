@@ -2,30 +2,35 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/models/responseModels/leads/createNewLead/assignedLeadTo/assigned_lead_to_response_model.dart';
 import '../../../../data/repositories/repositories.dart';
-import '../../../../utils/utils.dart';
 
 class AssignedLeadToViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
+  RxList<String> categoriesRxList = RxList<String>();
+  RxString selectedLeadName = ''.obs;
 
-  Future<void> assignedLead (BuildContext context) async {
+  Future<void> assignedLead(BuildContext context) async {
     loading.value = true;
 
-    _api.assignedLeadApi().then((value) {
-
-      if(value.id!= null){
-        Utils.snackbarSuccess('lead Id fetched');
+    try {
+      List<AssignedLeadToResponseModel> response = await _api.assignedLeadApi();
+      if (response.isNotEmpty) {
+        print("lead id fetched");
+        categoriesRxList.clear();
+        for (var item in response) {
+          categoriesRxList.add(
+              '${item.first_name ?? ''} ${item.last_name ?? ''}\n${item.email ?? ''}');
+        }
         loading.value = false;
-
-      }else{
-        Utils.snackbarFailed('lead Id not fetched');
+      } else {
+        print("lead Id not fetched");
       }
-    }).onError((error, stackTrace) {
+    } catch (e) {
       if (kDebugMode) {
-        print(error.toString());
+        print(e.toString());
       }
     }
-    );
   }
 }

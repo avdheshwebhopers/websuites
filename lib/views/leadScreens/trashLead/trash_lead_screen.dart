@@ -38,7 +38,7 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
 
 
     _customFieldsController.deleteList(context);
-    _leadTypeController.leadTypes(context);
+    // _leadTypeController.leadTypes(context);
 
   }
 
@@ -47,7 +47,6 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
       LoginResponseModel response = await userPreference.getUser();
       String? first_name = response.user!.first_name;
       String? email = response.user!.email;
-
       setState(() {
         userName = first_name;
         userEmail = email;

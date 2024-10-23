@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/resources/textStyles/text_styles.dart';
 import '../../../../../utils/appColors/app_colors.dart';
 import '../../../../../utils/components/widgets/sizedBoxes/sizedBox_10w.dart';
 import '../../../../../utils/components/widgets/sizedBoxes/sizedBox_5w.dart';
@@ -52,7 +53,7 @@ class OrderProformaListCard extends StatelessWidget {
 
                   Container(
                     height: Get.height/45,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: TextStyles.defaultPadding(context),
                     decoration: BoxDecoration(
                         color: AllColors.lighterOrange,
                         borderRadius: BorderRadius.circular(20)

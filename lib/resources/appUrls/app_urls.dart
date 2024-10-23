@@ -10,7 +10,7 @@ class AppUrls{
   //============================================================================
   // FORGOT PASSWORD API
 
-  static const String forgotApi = '${baseurl}v1/api/auth/forgot-password';
+  static const String forgotApi = '${baseurl}v1/api/authx/forgot-password';
 
   //============================================================================
   // HOME SCREEN API
@@ -39,11 +39,15 @@ class AppUrls{
 
   static const String assignedLeadTo = '${baseurl}v1/api/auth/get-descendants';
 
-  static const String createNewLeadSource = '${baseurl}v1/api/lead-sources?q=';
+  static const String createNewLeadSource = '${baseurl}v1/api/lead-sources';
+
+  static const String createNewLeadProductCategory='${baseurl}v1/api/product-categories/list';
 
   static const String createNewLeadDivisions = '${baseurl}v1/api/divisions?q=';
 
   static const String createNewLeadCustomFields = '${baseurl}v1/api/lead-custom-fields';
+  static const String createLeadPincode='${baseurl}v1/api/city-pincodes/search?search=';
+  static const String createNewLead = '${baseurl}https://webhopers.whsuites.com:3006/v1/api/leads';
 
   //============================================================================
   // TRASH LEADS
@@ -228,6 +232,12 @@ class AppUrls{
   // CUSTOMIZE LABELS
   // CUSTOMIZE
   static const String masterCustomize = '${baseurl}v1/api/module-dictionaries';
+  static const String masterCustomizeList='https://webhopers.whsuites.com/api/module-dictionaries';
+  static const String masterCustomizeType='https://webhopers.whsuites.com/api/modules/list';
+  static const String masterCustomizeLeadSource='https://webhopers.whsuites.com/api/module-dictionaries';
+  static const String masterCustomizeOrder='https://webhopers.whsuites.com/api/module-dictionaries';
+
+
 
 
 

@@ -58,6 +58,7 @@ class _CustomerPaymentRemindersState extends State<CustomerPaymentReminders> {
             userName: '$userName',
             phoneNumber: '$userEmail',
             version: '1.0.12'),
+
         body: Stack(
           children: [
             Padding(

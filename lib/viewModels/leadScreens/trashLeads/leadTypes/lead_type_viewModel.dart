@@ -1,30 +1,44 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../data/models/responseModels/leads/trashLeads/leadTypes/lead_types_response_model.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../utils/utils.dart';
 
 class LeadTypeViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
+  RxList<LeadTypesResponseModel> leadTypesList = <LeadTypesResponseModel>[].obs;
 
-  Future<void> leadTypes (BuildContext context) async {
+  @override
+  void onInit() {
+    super.onInit();
+    fetchLeadTypes();
+  }
+
+  Future<void> fetchLeadTypes() async {
     loading.value = true;
-
-    _api.leadTypeApi().then((value) {
-
-      if(value.id!= null){
-        Utils.snackbarSuccess('source Id fetched');
-        loading.value = false;
-
-      }else{
-        Utils.snackbarFailed('source Id not fetched');
+    try {
+      final response = await _api.leadTypeApi();
+      leadTypesList.assignAll(response);
+      // Utils.snackbarSuccess('Lead types fetched successfully');
+      print("Lead types fetched successfully");
+    } catch (error) {
+      if (kDebugMode) {
+        print('Error fetching lead types: $error');
       }
-    }).onError((error, stackTrace) {
-      if (kDebugMode){
-        print(error.toString());
-      }
+      // Utils.snackbarFailed('Error fetching lead types');
+      print("Error fetching lead types");
+    } finally {
+      loading.value = false;
     }
-    );
+  }
+
+  List<String> getLeadTypeNames() {
+    return leadTypesList
+        .expand((leadType) => [
+      if (leadType.name != null && leadType.name!.isNotEmpty) leadType.name!,
+      ...?leadType.children?.map((child) => child.name ?? '').where((name) => name.isNotEmpty),
+    ])
+        .toList();
   }
 }

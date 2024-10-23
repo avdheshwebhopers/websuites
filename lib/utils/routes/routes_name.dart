@@ -20,8 +20,10 @@ class RoutesName {
   static const String search_google_leads_screen = '/search_google_leads_screen';
   static const String LeadActivities_screen = '/LeadActivities_screen';
   static const String my_teamLead_screen = '/my_teamLead_screen';
+  static const String setting_screen = '/setting_screen';
   static const String trashLead_screen = '/trashLead_screen';
   static const String leadMaster_screen = '/';
+
 
   //============================================================================
   //Customer Screen
@@ -59,4 +61,10 @@ class RoutesName {
   static const String users_screen = '/users_screen';
   static const String users_screen_responsive = '/users_screen_responsive';
 
+  //Master
+
+  static const String master_department = '/master_department_screen';
+  static const String master_division = '/master_division_screen';
+  static const String master_proposal = '/master_proposal_screen';
+  static const String master_customize_label = '/master_customize_label';
 }

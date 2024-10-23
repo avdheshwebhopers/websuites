@@ -7,8 +7,8 @@ class CommonButton extends StatelessWidget {
     Key? key,
     required this.title,
     required this.onPress,
-    this.width = 60,
-    this.height = 50,
+    this.width = 130,
+    this.height = 40,
     this.loading = false
 
   }) : super(key: key);
@@ -48,3 +48,4 @@ class CommonButton extends StatelessWidget {
     );
   }
 }
+

@@ -33,4 +33,9 @@ class MasterDepartmentsResponseModel {
     data['updated_at'] = updatedAt;
     return data;
   }
+
+  static List<MasterDepartmentsResponseModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) =>MasterDepartmentsResponseModel.fromJson(json)).toList();
+  }
+
 }

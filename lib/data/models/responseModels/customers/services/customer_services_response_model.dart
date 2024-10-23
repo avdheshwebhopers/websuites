@@ -313,11 +313,11 @@ class ProductCategoryList {
 
   ProductCategoryList(
       {this.id,
-      this.name,
-      this.description,
-      this.image,
-      this.created_at,
-      this.updated_at});
+        this.name,
+        this.description,
+        this.image,
+        this.created_at,
+        this.updated_at});
 
   ProductCategoryList.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -42,7 +42,7 @@ class _CustomExpandedListTileState extends State<CustomExpandedListTile> {
             widget.title,
             style: TextStyle(
               color: AllColors.welcomeColor,
-                
+
               fontWeight: FontWeight.w300,
               fontSize: 14,
             ),
