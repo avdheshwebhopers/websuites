@@ -5,7 +5,7 @@ import 'package:websuites/views/orderScreen/orderListScreen/orderList_screen.dar
 import '../../views/Master/CustomizedLabelScreen.dart';
 import '../../views/Master/Division.dart';
 import '../../views/Master/ProposalScreen.dart';
-import '../../views/Master/SettingScreen.dart';
+import '../../views/leadScreens/Setting/SettingScreen.dart';
 import '../../views/bottomNavBarScreen/bottom_navBar_screen.dart';
 import '../../views/customerScreens/activationListScreen/activation_list_screen.dart';
 import '../../views/customerScreens/activitiesScreen/activities_screen.dart';

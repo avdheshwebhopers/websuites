@@ -40,6 +40,9 @@ import '../models/responseModels/leads/createNewLead/productCategoryList.dart';
 import '../models/responseModels/leads/createNewLead/source/source_response_model.dart';
 import '../models/responseModels/leads/leadMasters/source/source_response_model.dart';
 import '../models/responseModels/leads/leadMasters/types/types_response_model.dart';
+import '../models/responseModels/leads/setting/custom_field/custom_fields.dart';
+import '../models/responseModels/leads/setting/field_setting/field_setting.dart';
+import '../models/responseModels/leads/setting/setting.dart';
 import '../models/responseModels/login/login_response_model.dart';
 import '../models/responseModels/master/cityStateAndCountry/cities/master_cities_response_model.dart';
 import '../models/responseModels/master/cityStateAndCountry/country/master_country_response_model.dart';
@@ -373,24 +376,41 @@ class Repositories {
     }
   }
 
-
-  Future<LeadMasterTypesResponseModel> leadMastersTypesApi() async {
-    try {
-      dynamic response = await _apiService.getApi(AppUrls.leadMastersTypes);
-      return response = LeadMasterTypesResponseModel.fromJson(response);
-    } catch (e){
+//SOURCE
+  Future<List<LeadMasterSourceResponseModel>> leadMasterSource()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.leadMastersSource);
+      print("Lead Master Source Response$response");
+      if (response is List) {
+        return LeadMasterSourceResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
       rethrow;
     }
   }
 
-  // Future<LeadMasterSourceResponseModel> leadMastersSourceApi() async {
-  //   try {
-  //     dynamic response = await _apiService.getApi(AppUrls.leadMastersSource);
-  //     return response = LeadMasterSourceResponseModel.fromJson(response);
-  //   } catch (e){
-  //     rethrow;
-  //   }
-  // }
+  //TYPE
+  Future<List<LeadMasterTypeResponseModel>> leadMasterType()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.leadMastersTypes);
+      print("Lead Master Type Response$response");
+      if (response is List) {
+        print("Response is  List Type");
+        return LeadMasterTypeResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+
+
 
   Future<LeadMastersStatusResponseModel> leadMastersStatusApi() async {
     try {
@@ -1021,12 +1041,62 @@ class Repositories {
 
 
 
+  //LEAD SETTING
+
+  Future<List<LeadSettingResponseModel>> leadSettingList()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.leadSetting);
+      print("Lead SettingList Response$response");
+      if (response is List) {
+        return LeadSettingResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+
+
+  //Field Setting
+  Future<List<FieldSettingResponseModel>> fieldSetting()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.fieldSetting);
+      print("Field SettingList Response$response");
+      if (response is List) {
+        return FieldSettingResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
 
 
 
 
 
 
+
+  //Setting Custom Field
+  Future<List<SettingCustomFieldsResponseModel>> settingCustomFields()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.settingCustomFields);
+      print("Setting Custom Field Response$response");
+      if (response is List) {
+        return SettingCustomFieldsResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
 
 
 

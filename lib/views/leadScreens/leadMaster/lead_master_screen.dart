@@ -1,45 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/views/leadScreens/leadMaster/widgets/leadMasterCard/lead_master_card.dart';
-import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
+import '../../../utils/responsive/bodies/responsive scaffold.dart';
+
+import '../../../viewModels/leadScreens/leadMasters/controller.dart';
+
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
-import '../../../utils/responsive/bodies/responsive scaffold.dart';
-import '../../../viewModels/saveToken/save_token.dart';
-
-class LeadMasterController extends GetxController {
-  final SaveUserData userPreference = SaveUserData();
-  var userName = ''.obs;
-  var userEmail = ''.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    fetchUserData();
-  }
-
-  Future<void> fetchUserData() async {
-    try {
-      LoginResponseModel response = await userPreference.getUser();
-      userName.value = response.user?.first_name ?? '';
-      userEmail.value = response.user?.email ?? '';
-    } catch (e) {
-      print('Error fetching userData: $e');
-    }
-  }
-}
+import 'SourceScreen/LeadMasterSourceScreen.dart';
+import 'StatusScreen/LeadMasterStatusScreen.dart';
+import 'TypeScreen/LeadMasterTypeScreen.dart';
 
 class LeadMasterScreen extends StatelessWidget {
   LeadMasterScreen({Key? key}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final LeadMasterController controller = Get.put(LeadMasterController());
+
+  Widget _buildTabButton(BuildContext context, String title, String tabName) {
+    return Obx(() {
+      final isSelected = controller.selectedTab.value == tabName;
+      return Expanded(
+        child: GestureDetector(
+          onTap: () => controller.updateSelectedTab(tabName),
+          child: Container(
+            height: Get.height / 30,
+            decoration: BoxDecoration(
+              color: isSelected ? AllColors.mediumPurple : AllColors.textField2,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Center(
+              child: TextStyles.w400_15(
+                color: isSelected ? AllColors.whiteColor : AllColors.blackColor,
+                context,
+                title,
+              ),
+            ),
+          ),
+        ),
+      );
+    });
+  }
+
+  Widget _buildContentSection(BuildContext context, double screenHeight) {
+    return Obx(() {
+      switch (controller.selectedTab.value) {
+        case 'types':
+          return const TypesTab(); // Use the TypesTab widget
+        case 'source':
+          return const SourceTab(); // Use the SourceTab widget
+        case 'status':
+          return const StatusTab(); // Use the StatusTab widget
+        default:
+          return SizedBox.shrink();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +76,6 @@ class LeadMasterScreen extends StatelessWidget {
         imageIcon: IconStrings.navSearch3,
         backgroundColor: AllColors.mediumPurple,
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // backgroundColor: AllColors.whiteColor,
       drawer: Obx(
             () => CustomDrawer(
           userName: controller.userName.value,
@@ -64,116 +83,60 @@ class LeadMasterScreen extends StatelessWidget {
           version: '1.0.12',
         ),
       ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            floating: false,
+            backgroundColor: AllColors.whiteColor,
+
+            title: TextStyles.w700_17(color: AllColors.blackColor, context, Strings.leadMaster),
+            actions: [
+              Icon(Icons.search, size: 20, color: AllColors.lightGrey),
+              const SizedBox(width: 10),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                height: screenHeight / 30,
+                decoration: BoxDecoration(
+                  color: AllColors.mediumPurple,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Center(
+                  child: TextStyles.w500_12(color: AllColors.whiteColor, context, Strings.addLeadType),
+                ),
+              ),
+            ],
+          ),
+          SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: isTabletOrDesktop ? screenWidth * 0.03 : 15,
-                vertical: isTabletOrDesktop ? screenHeight * 0.03 : screenHeight * 0.15, // Adjust vertical padding
+                vertical: isTabletOrDesktop ? screenHeight * 0.03 : screenHeight * 0.15,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: screenHeight * (isTabletOrDesktop ? 0.05 : 0.03)), // Additional height for tablet/desktop
-                  _buildFilterRow(context),
+                  SizedBox(height: screenHeight * (isTabletOrDesktop ? 0.05 : 0.03)),
+                  Row(
+                    children: [
+                      _buildTabButton(context, Strings.types, 'types'),
+                      const SizedBox(width: 10),
+                      _buildTabButton(context, Strings.source, 'source'),
+                      const SizedBox(width: 10),
+                      _buildTabButton(context, Strings.status, 'status'),
+                    ],
+                  ),
                   SizedBox(height: screenHeight * 0.03),
-                  TextStyles.w500_14_Black(context, Strings.availableLeadStatus),
-                  SizedBox(height: screenHeight * 0.02),
-                  _buildLeadMasterCards(),
+                  _buildContentSection(context, screenHeight),
                   SizedBox(height: screenHeight * 0.05),
                 ],
               ),
             ),
           ),
-          // Conditionally render AppBar based on screen size
-          if (!isTabletOrDesktop)
-            CustomAppBar(
-              child: _buildAppBar(context, screenHeight),
-            ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, backgroundColor:AllColors.mediumPurple,
-    );
-  }
-
-  Widget _buildFilterRow(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildFilterButton(context, Strings.types, AllColors.mediumPurple, AllColors.whiteColor),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: _buildFilterButton(context, Strings.source, AllColors.textField2, AllColors.blackColor),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: _buildFilterButton(context, Strings.status, AllColors.textField2, AllColors.blackColor),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildLeadMasterCards() {
-    return Column(
-      children: const [
-        LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-        LeadMasterScreenCard(title: 'Hot', activity: 'In Progress'),
-        LeadMasterScreenCard(title: 'Hot', activity: 'Completed'),
-        LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-        LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-        LeadMasterScreenCard(title: 'Cold', activity: 'In Progress'),
-      ],
-    );
-  }
-
-  Widget _buildAppBar(BuildContext context, double screenHeight) {
-    return Row(
-      children: [
-        // Show the drawer icon only for mobile screens
-        if (MediaQuery.of(context).size.width < 500) // Mobile view
-          InkWell(
-            onTap: () {
-              _globalKey.currentState?.openDrawer();
-            },
-            child: const Icon(
-              Icons.menu_sharp,
-              size: 25,
-            ),
-          ),
-        const SizedBox(width: 12),
-        // Always show the title in the AppBar
-        TextStyles.w700_17(color: AllColors.blackColor, context, Strings.leadMaster),
-        const Spacer(),
-        Icon(Icons.search, size: 20, color: AllColors.lightGrey),
-        const SizedBox(width: 10),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          height: screenHeight / 30,
-          decoration: BoxDecoration(
-            color: AllColors.mediumPurple,
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: Center(
-            child: TextStyles.w500_12(color: AllColors.whiteColor, context, Strings.addLeadType),
-          ),
-        ),
-      ],
-    );
-  }
-
-
-  Widget _buildFilterButton(BuildContext context, String text, Color bgColor, Color textColor) {
-    return Container(
-      height: Get.height / 30,
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Center(
-        child: TextStyles.w400_15(color: textColor, context, text),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      backgroundColor: AllColors.mediumPurple,
     );
   }
 }

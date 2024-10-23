@@ -102,7 +102,7 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
       _textController.text = _selectedCategories.join(', ');
     }
   }
-
+//
   @override
   Widget build(BuildContext context) {
     return Column(

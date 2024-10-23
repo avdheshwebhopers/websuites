@@ -21,6 +21,7 @@ class _MasterDivisionScreenState extends State<MasterDivisionScreen> {
   String userName = '';
   String userEmail = '';
 
+
   @override
   void initState() {
     super.initState();

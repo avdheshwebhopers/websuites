@@ -57,6 +57,15 @@ class AppUrls{
   static const String leadType = '${baseurl}v1/api/lead-types';
 
   //============================================================================
+
+
+  //Setting SCREEN
+  static const String leadSetting="https://webhopers.whsuites.com/api/lead-fields-management";
+  static const String fieldSetting="https://webhopers.whsuites.com/api/lead-fields";
+  static const String settingCustomFields='https://webhopers.whsuites.com/api/lead-custom-fields';
+
+
+
   // LEAD MASTER
   // TYPES
   static const String leadMastersTypes = '${baseurl}v1/api/lead-types';

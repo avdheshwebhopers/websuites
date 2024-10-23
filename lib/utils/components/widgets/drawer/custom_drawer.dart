@@ -196,19 +196,7 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
                       ),
-                      ListTile(
-                        onTap: () {
 
-                        },
-                        title: Text(
-                          '• Customize Fields',
-                          style: TextStyle(
-                              color: AllColors.welcomeColor,
-
-                              fontWeight: FontWeight.w300,
-                              fontSize: 14),
-                        ),
-                      ),
                       ListTile(
                         onTap: () {
                           Get.toNamed(RoutesName.leadMaster_screen);

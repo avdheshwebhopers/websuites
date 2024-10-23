@@ -260,6 +260,10 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         isForDivisions:
                             true, // Add this line to use the special styling for divisions
                       ),
+
+
+
+
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.categories),
 
