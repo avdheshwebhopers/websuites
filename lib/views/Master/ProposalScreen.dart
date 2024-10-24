@@ -4,6 +4,8 @@ import '../../../../../resources/strings/strings.dart';
 import '../../../../../utils/appColors/app_colors.dart';
 import '../../resources/textStyles/text_styles.dart';
 import '../../utils/MasterScreen/MasterUtils.dart';
+import '../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../viewModels/leadScreens/leadMasters/controller.dart';
 import '../../viewModels/master/proposals/master_proposals_viewModel.dart';
 
 class MasterProposalScreen extends StatefulWidget {
@@ -14,6 +16,7 @@ class MasterProposalScreen extends StatefulWidget {
 }
 
 class _MasterProposalScreenState extends State<MasterProposalScreen> {
+  final LeadMasterController controller = Get.put(LeadMasterController());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final MasterProposalsViewModel proposalViewModel = Get.put(MasterProposalsViewModel());
@@ -54,6 +57,13 @@ class _MasterProposalScreenState extends State<MasterProposalScreen> {
       title: Strings.masterProposal,
       addButtonTitle: Strings.addDivision, // Consider changing this to a more appropriate string for proposals
       onAddPressed: () {},
+      drawer: Obx(
+            () => CustomDrawer(
+          userName: controller.userName.value,
+          phoneNumber: controller.userEmail.value,
+          version: '1.0.12',
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

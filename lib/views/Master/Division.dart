@@ -5,6 +5,8 @@ import '../../../../../utils/appColors/app_colors.dart';
 import '../../../../../viewModels/master/divisions/master_divisions_viewModel.dart';
 import '../../resources/textStyles/text_styles.dart';
 import '../../utils/MasterScreen/MasterUtils.dart';
+import '../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../viewModels/leadScreens/leadMasters/controller.dart';
 
 
 class MasterDivisionScreen extends StatefulWidget {
@@ -15,6 +17,7 @@ class MasterDivisionScreen extends StatefulWidget {
 }
 
 class _MasterDivisionScreenState extends State<MasterDivisionScreen> {
+  final LeadMasterController controller = Get.put(LeadMasterController());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final MasterDivisionsViewModel divisionViewModel = Get.put(MasterDivisionsViewModel());
@@ -47,6 +50,13 @@ class _MasterDivisionScreenState extends State<MasterDivisionScreen> {
       title: Strings.masterDivision,
       addButtonTitle: Strings.addDivision,
       onAddPressed: () {},
+      drawer: Obx(
+            () => CustomDrawer(
+          userName: controller.userName.value,
+          phoneNumber: controller.userEmail.value,
+          version: '1.0.12',
+        ),
+      ),
 
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

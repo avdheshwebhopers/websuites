@@ -62,37 +62,37 @@ class Items {
 
   Items(
       {this.id,
-      this.score,
-      this.first_name,
-      this.last_name,
-      this.country_code,
-      this.mobile,
-      this.mobile_with_countrycode,
-      this.email,
-      this.address,
-      this.organization,
-      this.city,
-      this.state,
-      this.description,
-      this.flag,
-      this.import_custom_data,
-      this.query_time,
-      this.query_type,
-      this.ref_id,
-      this.lead_buyer_email,
-      this.lead_buyer_name,
-      this.label,
-      this.note,
-      this.deleted_at,
-      this.created_id,
-      this.updated_id,
-      this.deleted_by,
-      this.oldLead,
-      this.isOldLead,
-      this.facebookLeadgenId,
-      this.latest_enquiry_date,
-      this.type,
-      this.delete_remark});
+        this.score,
+        this.first_name,
+        this.last_name,
+        this.country_code,
+        this.mobile,
+        this.mobile_with_countrycode,
+        this.email,
+        this.address,
+        this.organization,
+        this.city,
+        this.state,
+        this.description,
+        this.flag,
+        this.import_custom_data,
+        this.query_time,
+        this.query_type,
+        this.ref_id,
+        this.lead_buyer_email,
+        this.lead_buyer_name,
+        this.label,
+        this.note,
+        this.deleted_at,
+        this.created_id,
+        this.updated_id,
+        this.deleted_by,
+        this.oldLead,
+        this.isOldLead,
+        this.facebookLeadgenId,
+        this.latest_enquiry_date,
+        this.type,
+        this.delete_remark});
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -218,13 +218,13 @@ class Data {
 
   Data(
       {this.gst_number,
-      this.drug_license,
-      this.website_link,
-      this.ind_type,
-      this.industry,
-      this.designation,
-      this.pincode,
-      this.companyName});
+        this.drug_license,
+        this.website_link,
+        this.ind_type,
+        this.industry,
+        this.designation,
+        this.pincode,
+        this.companyName});
 
   Data.fromJson(Map<String, dynamic> json) {
     gst_number = json['gst_number'];
@@ -267,17 +267,17 @@ class Type {
 
   Type(
       {this.id,
-      this.name,
-      this.sub_types,
-      this.status,
-      this.created_at,
-      this.updated_at,
-      this.activity_chart_interval,
-      this.activity_chart_label_y,
-      this.activity_chart_label_x,
-      this.isReminderRequired,
-      this.remove_from_todo,
-      this.remove_from_list});
+        this.name,
+        this.sub_types,
+        this.status,
+        this.created_at,
+        this.updated_at,
+        this.activity_chart_interval,
+        this.activity_chart_label_y,
+        this.activity_chart_label_x,
+        this.isReminderRequired,
+        this.remove_from_todo,
+        this.remove_from_list});
 
   Type.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -336,25 +336,25 @@ class DeletedBy {
 
   DeletedBy(
       {this.id,
-      this.first_name,
-      this.last_name,
-      this.email,
-      this.mobile,
-      this.address,
-      this.bio,
-      this.profile_pic,
-      this.password,
-      this.status,
-      this.remember_token,
-      this.remember_token_time,
-      this.isdefault,
-      this.created_at,
-      this.updated_at,
-      this.device_id,
-      this.tracking,
-      this.crm_category,
-      this.mobile_app,
-      this.superSettings});
+        this.first_name,
+        this.last_name,
+        this.email,
+        this.mobile,
+        this.address,
+        this.bio,
+        this.profile_pic,
+        this.password,
+        this.status,
+        this.remember_token,
+        this.remember_token_time,
+        this.isdefault,
+        this.created_at,
+        this.updated_at,
+        this.device_id,
+        this.tracking,
+        this.crm_category,
+        this.mobile_app,
+        this.superSettings});
 
   DeletedBy.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -414,10 +414,10 @@ class Meta {
 
   Meta(
       {this.currentPage,
-      this.itemsPerPage,
-      this.totalPages,
-      this.totalItems,
-      this.itemCount});
+        this.itemsPerPage,
+        this.totalPages,
+        this.totalItems,
+        this.itemCount});
 
   Meta.fromJson(Map<String, dynamic> json) {
     currentPage = json['currentPage'];
@@ -437,3 +437,10 @@ class Meta {
     return data;
   }
 }
+
+
+
+
+
+
+

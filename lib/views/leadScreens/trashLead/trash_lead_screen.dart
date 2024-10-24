@@ -20,7 +20,7 @@ class TrashLeadScreen extends StatefulWidget {
 
 class _TrashLeadScreenState extends State<TrashLeadScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  final DeleteListViewModel _customFieldsController = Get.put(DeleteListViewModel());
+  // final DeleteListViewModel _customFieldsController = Get.put(DeleteListViewModel());
   final LeadTypeViewModel _leadTypeController = Get.put(LeadTypeViewModel());
 
 
@@ -37,8 +37,8 @@ class _TrashLeadScreenState extends State<TrashLeadScreen> {
     super.initState();
 
 
-    _customFieldsController.deleteList(context);
-    // _leadTypeController.leadTypes(context);
+    // _customFieldsController.deleteList(context);
+    // // _leadTypeController.leadTypes(context);
 
   }
 

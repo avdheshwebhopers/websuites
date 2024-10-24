@@ -31,6 +31,10 @@ import '../models/responseModels/inventory/request/inventory_request_response_mo
 import '../models/responseModels/inventory/stock/inventory_stock_response_model.dart';
 import '../models/responseModels/inventory/transactions/inventory_transactions_response_model.dart';
 import '../models/responseModels/inventory/vendors/inventory_vendors_response_model.dart';
+
+import '../models/responseModels/leads/LeadTrash/TrashLeads.dart';
+import '../models/responseModels/leads/Leadlist/lead_assign/lead_assign.dart';
+import '../models/responseModels/leads/Leadlist/lead_list.dart';
 import '../models/responseModels/leads/createNewLead/assignedLeadTo/assigned_lead_to_response_model.dart';
 import '../models/responseModels/leads/createNewLead/createNewModelPost/CreateNewModelbutton.dart';
 import '../models/responseModels/leads/createNewLead/divisions/divisions_response_model.dart';
@@ -348,22 +352,112 @@ class Repositories {
     }
   }
 
-
-
-
-
-
+  //============================================================================
+  // Leads List
+  //
+  // Future<List<LeadListModel>> fetchLeadListApi() async {
+  //   try {
+  //     final dynamic response = await _apiService.getApi(AppUrls.leadList);
+  //     debugPrint('API Raw Response: $response'); // For debugging raw response
+  //
+  //     // Ensure response is a List before mapping
+  //     if (response != null && response is List) {
+  //       return response
+  //           .map((lead) => LeadListModel.fromJson(lead))
+  //           .toList();
+  //     } else {
+  //       debugPrint('API returned null or not a list');
+  //       return [];
+  //     }
+  //   } catch (e, stacktrace) {
+  //     debugPrint('Error: $e');
+  //     debugPrint('Stacktrace: $stacktrace');
+  //     throw Exception('Failed to fetch lead list');
+  //   }
+  // }
   //============================================================================
   // TRASH LEADS
 
-  Future<DeleteListResponseModel> deleteListApi() async {
-    try {
-      dynamic response = await _apiService.getApi(AppUrls.deleteList);
-      return response = DeleteListResponseModel.fromJson(response);
-    } catch (e){
+
+  //
+  // Future<LeadTrashResponseModel > TrashListApi() async {
+  //   try {
+  //     dynamic response = await _apiService.getApi(AppUrls.deleteList);
+  //     return response = LeadTrashResponseModel .fromJson(response);
+  //   } catch (e){
+  //     rethrow;
+  //   }
+  // }
+  //
+  //
+
+  //LEAD LIST
+
+  Future<LeadListResponseModel>leadList(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.leadList,data);
+      print("Lead List Response $response");
+      return response = LeadListResponseModel.fromJson(response);
+    }
+    catch(e){
       rethrow;
     }
   }
+
+
+
+
+  //LEAD TYPE
+  Future<List<LeadTypesResponseModel>> leadListLeadType()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.leadType);
+      print("Lead LeadType Response$response");
+      if (response is List) {
+        return LeadTypesResponseModel.fromJsonList(response);
+      }
+      else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+
+  //LEAD ASSIGN
+  Future<List<LeadAssignResponseModel>> leadListLeadAssign(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.leadAssign,data);
+      print("Lead LeadAssign Response$response");
+      return LeadAssignResponseModel.fromJsonList(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+  Future<LeadTrashResponseModel> getTrashListApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.leadListTrash);
+      return LeadTrashResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+  // Future<void> deleteTrashLeadsApi(List<String> leadIds) async {
+  //   try {
+  //     await _apiService.postApi(
+  //       AppUrls.deleteList,
+  //       data: {'leadIds': leadIds},
+  //     );
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
 // Lead type (Hot cold)
 

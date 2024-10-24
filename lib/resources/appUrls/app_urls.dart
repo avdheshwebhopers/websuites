@@ -36,7 +36,9 @@ class AppUrls{
   //============================================================================
   // LEAD SCREEN API
   // CREATE NEW LEAD API
+  static const String leadList = '${baseurl}v1/api/leads/list';
 
+  static const String leadAssign='https://webhopers.whsuites.com/api/auth/users-list-and-search';
   static const String assignedLeadTo = '${baseurl}v1/api/auth/get-descendants';
 
   static const String createNewLeadSource = '${baseurl}v1/api/lead-sources';
@@ -48,11 +50,13 @@ class AppUrls{
   static const String createNewLeadCustomFields = '${baseurl}v1/api/lead-custom-fields';
   static const String createLeadPincode='${baseurl}v1/api/city-pincodes/search?search=';
   static const String createNewLead = '${baseurl}https://webhopers.whsuites.com:3006/v1/api/leads';
+  static const String  leadListTrash= '${baseurl}v1/api/leads/delete_list';
 
   //============================================================================
   // TRASH LEADS
 
   static const String deleteList = '${baseurl}v1/api/leads/delete_list';
+
 
   static const String leadType = '${baseurl}v1/api/lead-types';
 

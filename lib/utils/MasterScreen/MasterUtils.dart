@@ -9,8 +9,11 @@ import '../../../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../../../utils/responsive/bodies/responsive scaffold.dart';
 import '../../../../../viewModels/saveToken/save_token.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
+import '../components/widgets/navBar/custom_navBar.dart';
 
 class MasterScreenUtils {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   static final SaveUserData userPreference = SaveUserData();
 
   static Future<Map<String, String>> fetchUserData() async {
@@ -32,7 +35,7 @@ class MasterScreenUtils {
     required String title,
     String addButtonTitle = '', // Made this parameter optional with a default value
     required VoidCallback onAddPressed,
-    required Widget body,
+    required Widget body, required Obx drawer,
   }) {
     return ResponsiveScaffold(
       scaffoldKey: scaffoldKey,
@@ -51,7 +54,9 @@ class MasterScreenUtils {
               children: [
                 if (Get.width < 500)
                   InkWell(
-                    onTap: () => globalKey.currentState?.openDrawer(),
+                    onTap: () =>
+                    // _scaffoldKey.currentState?.openDrawer(),
+                      scaffoldKey.currentState?.openDrawer(),
                     child: const Icon(Icons.menu_sharp, size: 25),
                   ),
                 const SizedBox(width: 10),
@@ -72,7 +77,11 @@ class MasterScreenUtils {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: CustomBottomNavBar(),
     );
+
+
+
   }
 
 

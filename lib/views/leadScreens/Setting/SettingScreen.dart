@@ -8,7 +8,9 @@ import '../../../Utils/utils.dart';
 import '../../../data/models/responseModels/leads/setting/setting.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/MasterScreen/MasterUtils.dart';
+import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../viewModels/leadScreens/Setting/setting.dart';
+import '../../../viewModels/leadScreens/leadMasters/controller.dart';
 import '../../../viewModels/master/citiesStatesAndCountry/cities/master_cities_viewModel.dart';
 import 'Column_Setting/ColumnSettingScreen.dart';
 import 'Fields_Setting/FieldsSettingScreen.dart';
@@ -21,6 +23,7 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+  final LeadMasterController controller = Get.put(LeadMasterController());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final LeadSettingsViewModel settingsViewModel = Get.put(LeadSettingsViewModel());
@@ -59,7 +62,14 @@ class _SettingScreenState extends State<SettingScreen> {
         } else {
           // Handle create fields
         }
-      }, 
+      },
+        drawer: Obx(
+              () => CustomDrawer(
+            userName: controller.userName.value,
+            phoneNumber: controller.userEmail.value,
+            version: '1.0.12',
+          ),
+        ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

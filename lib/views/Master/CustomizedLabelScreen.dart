@@ -4,6 +4,8 @@ import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadC
 import '../../../../../resources/strings/strings.dart';
 import '../../../../../resources/textStyles/text_styles.dart';
 import '../../../../../utils/MasterScreen/MasterUtils.dart';
+import '../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../viewModels/leadScreens/leadMasters/controller.dart';
 import '../../viewModels/master/customizeLabels/master_customize_viewModel.dart';
 
 class CustomizedLabelScreen extends StatefulWidget {
@@ -14,6 +16,7 @@ class CustomizedLabelScreen extends StatefulWidget {
 }
 
 class _CustomizedLabelScreenState extends State<CustomizedLabelScreen> {
+  final LeadMasterController controller = Get.put(LeadMasterController());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   late MasterCustomizeListViewModel viewModel;
@@ -48,6 +51,13 @@ class _CustomizedLabelScreenState extends State<CustomizedLabelScreen> {
       onAddPressed: () {
         // Handle Add button press
       },
+      drawer: Obx(
+            () => CustomDrawer(
+          userName: controller.userName.value,
+          phoneNumber: controller.userEmail.value,
+          version: '1.0.12',
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

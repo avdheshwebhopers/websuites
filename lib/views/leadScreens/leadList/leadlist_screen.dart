@@ -52,93 +52,126 @@ class _LeadListScreenState extends State<LeadListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveScaffold(
+    // Get the screen width to determine if it's a desktop screen
+    var screenWidth = MediaQuery.of(context).size.width;
 
-        scaffoldKey: _scaffoldKey,
-        key: _globalKey,
-        bottomNavigationBar: CustomBottomNavBar(),
-        floatingActionButton: CustomFloatingButton(
-            onPressed: () {},
-            imageIcon: IconStrings.navSearch3,
-            backgroundColor: AllColors.mediumPurple
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        // key: _globalKey,
-        backgroundColor: AllColors.whiteColor,
+    return
+      ResponsiveScaffold(
+      scaffoldKey: _scaffoldKey,
+      key: _globalKey,
+      bottomNavigationBar: CustomBottomNavBar(),
 
-        drawer: CustomDrawer(
-            userName: '$userName',
-            phoneNumber: '$userEmail',
-            version: '1.0.12'),
+      floatingActionButton: CustomFloatingButton(
+          onPressed: () {},
+          imageIcon: IconStrings.navSearch3,
+          backgroundColor: AllColors.mediumPurple),
 
-        body: Stack(
-          children: [
-            const SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child:
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 125,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      backgroundColor: AllColors.whiteColor,
+      drawer: CustomDrawer(userName: '$userName', phoneNumber: '$userEmail', version: '1.0.12'),
+      body:
+      Stack(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child:
+              Column( // Wrap GridView in a Column
+                children: [
+                  // Responsive SizedBox based on screen width
+                  SizedBox(height: screenWidth > 900 ? 20 : 80), // 20px for desktop, 80px for mobile
+
+                  GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(), // Disable GridView's own scrolling
+                    shrinkWrap: true, // Prevents it from taking infinite height
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: screenWidth > 900 ? 2 : 1, // Show 2 items per row on desktop
+                      childAspectRatio: 2.5, // Adjust the aspect ratio to your needs
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
                     ),
+                    itemCount: 8, // Total number of items
+                    itemBuilder: (context, index) {
+                      // Example data for your LeadListScreenCard
+                      List<Map<String, String>> leadData = [
+                        {'title': 'Sanjay Kumar', 'companyName': 'Prelims Pharma Private Limited'},
+                        {'title': 'Lokesh Kumar', 'companyName': 'Biophar Pharma'},
+                        {'title': 'Rahul Choudhary', 'companyName': 'Tata Pharma'},
+                        {'title': 'Sanjay Kumar', 'companyName': 'Prelims Pharma Private Limited'},
+                        {'title': 'Mukesh', 'companyName': 'Prelims Pharma Private Limited'},
+                        {'title': 'Mukesh', 'companyName': 'Prelims Pharma Private Limited'},
+                        {'title': 'Mukesh', 'companyName': 'Prelims Pharma Private Limited'},
+                        {'title': 'Sunil', 'companyName': 'Prelims Pharma Private Limited'},
+                      ];
 
-                    LeadListScreenCard(title: 'Sanjay Kumar', companyName: 'Prelims Pharma Private Limited'),
-                    LeadListScreenCard(title: 'Lokesh Kumar', companyName: 'Biophar Pharma'),
-                    LeadListScreenCard(title: 'Rahul Choudhary', companyName: 'Tata Pharma'),
-                    LeadListScreenCard(title: 'Sanjay Kumar', companyName: 'Prelims Pharma Private Limited'),
-                    LeadListScreenCard(title: 'Mukesh', companyName: 'Prelims Pharma Private Limited'),
+                      return LeadListScreenCard(
+                        title: leadData[index]['title']!,
+                        companyName: leadData[index]['companyName']!,
+                      );
+                    },
+                  ),
+                  SizedBox(height: 15,)
+                ],
+              ),
+
+            ),
+          ),
+
+          // Custom App Bar
+          CustomAppBar(
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    _scaffoldKey.currentState?.openDrawer();
+                  },
+                  child: const Icon(
+                    Icons.menu_sharp,
+                    size: 25,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                TextStyles.w700_17(color: AllColors.blackColor, context, Strings.leadList),
+                const Spacer(),
+                Row(
+                  children: [
+                    Icon(Icons.filter_list_outlined, color: AllColors.lightGrey, size: 17),
+                    const SizedBox(width: 5),
+                    TextStyles.w400_14(color: AllColors.blackColor, context, Strings.filter),
+                    const SizedBox(width: 10),
+                    TextStyles.w400_13(color: AllColors.blackColor, context, Strings.lastWeek),
+                    const Icon(Icons.arrow_drop_down, size: 34),
                   ],
+                ),
+
+              ],
+
+            ),
+          ),
+          Positioned(
+            bottom: 30,
+            right: 16,
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              child: FloatingActionButton(
+                elevation: 2,
+                shape: CircleBorder(),
+                backgroundColor: AllColors.mediumPurple,
+                onPressed: () {},
+                child: Icon(
+                  Icons.add,
+                  size: 30,
+                  color: AllColors.whiteColor,
                 ),
               ),
             ),
+          ),
+        ],
+      ),
 
-            //==================================================================
-            //Custom App Bar
 
-            CustomAppBar(
-              child: Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                        _globalKey.currentState?.openDrawer();
-                      },
-                      child:
-                      const Icon(
-                        Icons.menu_sharp,
-                        size: 25,
-                      )
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextStyles.w700_17(color: AllColors.blackColor,
-                      context, Strings.leadList),
-                  const Spacer(),
-                  Row(
-                    children: [
-                      Icon(Icons.filter_list_outlined,
-                          color: AllColors.lightGrey, size: 17),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      TextStyles.w400_14(color: AllColors.blackColor,
-                          context, Strings.filter),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      TextStyles.w400_13(color: AllColors.blackColor,
-                          context, Strings.lastWeek),
-                      const Icon(
-                        Icons.arrow_drop_down,
-                        size: 34,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
-        ));
+    );
+
   }
 }

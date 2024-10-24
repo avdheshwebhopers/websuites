@@ -21,6 +21,7 @@ import '../../../viewModels/leadScreens/createNewLead/ProductCategory/ProductCat
 import '../../../viewModels/leadScreens/createNewLead/createnewlead_button/CreateNewLeadButton.dart';
 import '../../../viewModels/leadScreens/createNewLead/pincode/pincode_view_model.dart';
 import '../../../viewModels/leadScreens/createNewLead/source/source_view_model.dart';
+import '../../../viewModels/leadScreens/leadMasters/controller.dart';
 import '../../../viewModels/leadScreens/trashLeads/leadTypes/lead_type_viewModel.dart';
 import '../../../viewModels/saveToken/save_token.dart';
 import '../../../data/network/network_api_services.dart';
@@ -33,7 +34,9 @@ class CreateNewLeadScreen extends StatefulWidget {
 }
 
 class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
+
   RxList<String> categoriesRxList = RxList<String>();
+  final LeadMasterController controller1 = Get.put(LeadMasterController());
   final PinCodeViewModel createLeadPinController = Get.put(PinCodeViewModel());
   final PinCodeViewModel _viewModel = Get.put(PinCodeViewModel());
   TextEditingController searchController = TextEditingController();
@@ -53,6 +56,10 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
   final SaveUserData userPreference = SaveUserData();
   String userName = '';
   String? userEmail;
+
+
+  var selectedTab = 'types'.obs; // Track selected tab
+
 
   @override
   void initState() {
@@ -96,10 +103,12 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       backgroundColor: AllColors.whiteColor,
-      drawer: CustomDrawer(
-        userName: userName,
-        phoneNumber: userEmail ?? '',
-        version: '1.0.12',
+      drawer: Obx(
+            () => CustomDrawer(
+          userName: controller1.userName.value,
+          phoneNumber: controller1.userEmail.value,
+          version: '1.0.12',
+        ),
       ),
       body: Stack(
         children: [
@@ -579,7 +588,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
               children: [
                 InkWell(
                     onTap: () {
-                      _globalKey.currentState?.openDrawer();
+                      _scaffoldKey.currentState?.openDrawer();
                     },
                     child: Icon(
                       Icons.menu,
