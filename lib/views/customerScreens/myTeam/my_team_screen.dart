@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
@@ -15,6 +16,7 @@ class CustomerMyTeamScreen extends StatefulWidget {
 }
 
 class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -45,7 +47,8 @@ class _CustomerMyTeamScreenState extends State<CustomerMyTeamScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ResponsiveScaffold(
+       scaffoldKey: _scaffoldKey,
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
 

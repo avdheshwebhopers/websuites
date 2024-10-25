@@ -70,6 +70,19 @@ class AppUrls{
 
 
 
+
+
+
+//LEAD ACTIVITY
+  static const String leadActivityList='https://webhopers.whsuites.com/api/lead-activities/history';
+  static const String leadActivityLeadType="https://webhopers.whsuites.com/api/lead-types";
+  //LEAD ACTIVITY DAILY REPORTS---------
+  static const String leadActivityDailySaleReports="https://webhopers.whsuites.com/api/lead-activities/reports";
+  static const String leadActivityNoActivities="https://webhopers.whsuites.com/api/lead-activities/no-activity-reports";
+  static const String leadActivityLeadReports="https://webhopers.whsuites.com/api/lead-activities/reports-leadwise";
+  static  const String leadActivityTeamLeads="https://webhopers.whsuites.com/api/dashboard/team-lead-type-count";
+
+
   // LEAD MASTER
   // TYPES
   static const String leadMastersTypes = '${baseurl}v1/api/lead-types';

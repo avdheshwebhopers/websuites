@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/customerScreens/activationListScreen/widgets/ActivationListCard/list_screen_card.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';
@@ -18,6 +19,7 @@ class CustomerActivationListScreen extends StatefulWidget {
 }
 
 class _CustomerActivationListScreenState extends State<CustomerActivationListScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -47,7 +49,8 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ResponsiveScaffold(
+      scaffoldKey: _scaffoldKey,
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
       drawer: CustomDrawer(
@@ -202,6 +205,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
               CustomAppBar(
                   child: Row(
                     children: [
+                      if(Get.width<500)
                       InkWell(
                           onTap: (){
                             _globalKey.currentState?.openDrawer();

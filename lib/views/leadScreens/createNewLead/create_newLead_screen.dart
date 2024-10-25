@@ -586,6 +586,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
             child:
             Row(
               children: [
+                if(Get.width<500)
                 InkWell(
                     onTap: () {
                       _scaffoldKey.currentState?.openDrawer();

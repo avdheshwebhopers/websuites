@@ -44,6 +44,11 @@ import '../models/responseModels/leads/createNewLead/productCategoryList.dart';
 import '../models/responseModels/leads/createNewLead/source/source_response_model.dart';
 import '../models/responseModels/leads/leadMasters/source/source_response_model.dart';
 import '../models/responseModels/leads/leadMasters/types/types_response_model.dart';
+import '../models/responseModels/leads/lead_activity/daily_sales_reports/daily_sales_reports.dart';
+import '../models/responseModels/leads/lead_activity/lead_activity_lead_type/lead_type.dart';
+import '../models/responseModels/leads/lead_activity/lead_activity_list/lead_activity_list.dart';
+import '../models/responseModels/leads/lead_activity/lead_reports/lead_reports.dart';
+import '../models/responseModels/leads/lead_activity/no_activities/no_activities.dart';
 import '../models/responseModels/leads/setting/custom_field/custom_fields.dart';
 import '../models/responseModels/leads/setting/field_setting/field_setting.dart';
 import '../models/responseModels/leads/setting/setting.dart';
@@ -404,6 +409,90 @@ class Repositories {
     }
   }
 
+  //LEAD ACTIVITY---------
+  //Activity List
+
+  Future<LeadActivityResponseModel> leadActivityList(dynamic data) async {
+    try {
+      // Make the API call
+      dynamic response = await _apiService.postApiResponse(AppUrls.leadActivityList, data);
+      print("Lead activity List Response data: $response");
+
+      // Ensure the response is valid JSON and parse it
+      return LeadActivityResponseModel.fromJson(response);
+    } catch (e) {
+      // Log the error for debugging
+      print('Error in leadActivityList: ${e.toString()}');
+      rethrow; // Rethrow the error to handle it in the ViewModel
+    }
+  }
+
+
+
+  Future<List<LeadActivityLeadTypeResponseModel>>leadActivityLeadType()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.leadActivityLeadType,);
+      print("Lead activity Lead Type Response data$response");
+      return response =LeadActivityLeadTypeResponseModel.fromJsonList(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+  //NO ACTIVITIES
+  Future<LeadNoActivitiesResponseModel>leadNoActivities(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.leadActivityNoActivities,data);
+      print("Lead activity No Activities $response");
+      return response =LeadNoActivitiesResponseModel.fromJson(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+
+  //DAILY SALES REPORTS---------
+
+  Future<DailySalesReportsResponseModel>dailySalesReportList(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.leadActivityDailySaleReports,data);
+      print("Lead activity Daily Sales Reports$response");
+      return response =DailySalesReportsResponseModel.fromJson(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+
+
+  //LEAD REPORTS
+
+  Future<LeadReportsResponseModel>leadActivityLeadReports(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.leadActivityLeadReports,data);
+      print("Lead activity Lead Reports $response");
+      return response =LeadReportsResponseModel.fromJson(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+  //TEAM LEADS
+
+  Future<LeadReportsResponseModel>leadActivityTeamLead(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.leadActivityTeamLeads,data);
+      print("Lead activity Team Leads $response");
+      return response =LeadReportsResponseModel.fromJson(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
 
 
 
@@ -485,6 +574,9 @@ class Repositories {
       rethrow;
     }
   }
+
+
+
 
   //TYPE
   Future<List<LeadMasterTypeResponseModel>> leadMasterType()async{

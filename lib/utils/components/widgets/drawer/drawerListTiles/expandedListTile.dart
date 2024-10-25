@@ -1,8 +1,11 @@
-
 import 'package:flutter/material.dart';
-
 import '../../../../appColors/app_colors.dart';
 
+// Track selected items globally
+class SelectedMenuItems {
+  static String? selectedParent;
+  static String? selectedChild;
+}
 
 class CustomExpandedListTile extends StatefulWidget {
   final String title;
@@ -25,34 +28,88 @@ class CustomExpandedListTile extends StatefulWidget {
 }
 
 class _CustomExpandedListTileState extends State<CustomExpandedListTile> {
+  bool isExpanded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isExpanded = widget.initiallyExpanded;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return
-      Theme(
-        data: ThemeData(
-          dividerColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-        ),
-        child: ExpansionTile(
-          minTileHeight: 45,
-          trailing: const Icon(Icons.arrow_forward_ios_sharp, size: 10),
-          childrenPadding: EdgeInsets.symmetric(horizontal: 20,),
-          title: Text(
-            widget.title,
-            style: TextStyle(
-              color: AllColors.welcomeColor,
+    bool isSelected = SelectedMenuItems.selectedParent == widget.title;
 
-              fontWeight: FontWeight.w300,
-              fontSize: 14,
-            ),
-          ),
-          leading: Image.asset(widget.leadingIconImage),
-          initiallyExpanded: widget.initiallyExpanded,
-          onExpansionChanged: widget.onExpansionChanged,
-          children: widget.children,
+    return Theme(
+      data: ThemeData(
+        dividerColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
+      child: ExpansionTile(
+        minTileHeight: 45,
+        trailing: Icon(
+          Icons.arrow_forward_ios_sharp,
+          size: 10,
+          color: isSelected ? AllColors.mediumPurple : AllColors.welcomeColor,
         ),
-      );
+        childrenPadding: const EdgeInsets.symmetric(horizontal: 20),
+        title: Text(
+          widget.title,
+          style: TextStyle(
+            color: isSelected ? AllColors.mediumPurple : AllColors.welcomeColor,
+            fontWeight: FontWeight.w300,
+            fontSize: 14,
+          ),
+        ),
+        leading: ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            isSelected ? AllColors.mediumPurple : AllColors.welcomeColor,
+            BlendMode.srcIn,
+          ),
+          child: Image.asset(widget.leadingIconImage),
+        ),
+        initiallyExpanded: widget.initiallyExpanded,
+        onExpansionChanged: (expanded) {
+          setState(() {
+            isExpanded = expanded;
+            if (expanded) {
+              // Set the currently selected parent
+              SelectedMenuItems.selectedParent = widget.title;
+            }
+          });
+          if (widget.onExpansionChanged != null) {
+            widget.onExpansionChanged!(expanded);
+          }
+        },
+        children: widget.children.map((child) {
+          if (child is ListTile) {
+            return ListTile(
+              onTap: () {
+                setState(() {
+                  // Update both parent and child selection
+                  SelectedMenuItems.selectedParent = widget.title;
+                  SelectedMenuItems.selectedChild = (child.title as Text).data;
+                });
+                if (child.onTap != null) {
+                  child.onTap!();
+                }
+              },
+              title: Text(
+                (child.title as Text).data!,
+                style: TextStyle(
+                  color: SelectedMenuItems.selectedChild == (child.title as Text).data
+                      ? AllColors.mediumPurple
+                      : AllColors.welcomeColor,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 14,
+                ),
+              ),
+            );
+          }
+          return child;
+        }).toList(),
+      ),
+    );
   }
 }
-
