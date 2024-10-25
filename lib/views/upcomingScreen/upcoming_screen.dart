@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/upcomingScreen/widgets/upcomingScreenCard/upcoming_screen_card.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
 import '../../resources/iconStrings/icon_strings.dart';
@@ -50,7 +51,8 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ResponsiveScaffold(
+        scaffoldKey: _globalKey,
         bottomNavigationBar: CustomBottomNavBar(),
         floatingActionButton: CustomFloatingButton(
             onPressed: () {},

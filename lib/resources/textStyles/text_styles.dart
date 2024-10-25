@@ -115,7 +115,7 @@ class TextStyles{
     );
   }
 
-  static w500_12(context, String message, {Color color = Colors.black}) {
+  static w500_12(BuildContext, String message, {Color color = Colors.black}) {
     return Text(message,
         style: TextStyle(
           fontWeight: FontWeight.w500,

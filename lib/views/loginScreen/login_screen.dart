@@ -299,7 +299,8 @@ class _LoginScreenState extends State<LoginScreen> {
           },
         ),
       ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, backgroundColor:AllColors.mediumPurple,
+
+      backgroundColor:AllColors.whiteColor,
     );
   }
 }

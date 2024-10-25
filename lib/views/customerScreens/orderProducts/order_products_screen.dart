@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/customerScreens/orderProducts/widgets/orderProductsCard/order_product_screen_card.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';
@@ -17,6 +18,7 @@ class CustomerOrderProductsScreen extends StatefulWidget {
 }
 
 class _CustomerOrderProductsScreenState extends State<CustomerOrderProductsScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreferences = SaveUserData();
 
@@ -46,8 +48,9 @@ class _CustomerOrderProductsScreenState extends State<CustomerOrderProductsScree
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _globalKey,
+    return ResponsiveScaffold(
+      scaffoldKey: _scaffoldKey,
+        key: _globalKey,
       backgroundColor: AllColors.whiteColor,
 
       drawer: CustomDrawer(

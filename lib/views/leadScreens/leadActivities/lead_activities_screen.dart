@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/views/leadScreens/leadActivities/widgets/leadActivitiesCard/lead_activities_card.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
@@ -9,9 +10,11 @@ import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
+import '../../../utils/responsive/bodies/responsive scaffold.dart';
+
+import '../../../viewModels/leadScreens/lead_activity/lead_activity.dart';
 import '../../../viewModels/saveToken/save_token.dart';
-
-
+import 'widgets/leadActivitiesCard/lead_activities_card.dart';
 
 class LeadActivitiesScreen extends StatefulWidget {
   const LeadActivitiesScreen({super.key});
@@ -23,122 +26,159 @@ class LeadActivitiesScreen extends StatefulWidget {
 class _LeadActivitiesScreenState extends State<LeadActivitiesScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
+  final LeadActivityViewModel _leadActivityViewModel = Get.put(LeadActivityViewModel());
 
   String? userName = '';
   String? userEmail = '';
 
   @override
   void initState() {
-    FetchUserData();
     super.initState();
+    _fetchUserData();
+    // Check if the lead activity response already has data
+    if (_leadActivityViewModel.leadActivityResponse.value.items == null || _leadActivityViewModel.leadActivityResponse.value.items!.isEmpty) {
+      _leadActivityViewModel.leadActivityList(context); // Fetch data once during initialization
+    }
   }
 
-  Future<void> FetchUserData() async {
+  Future<void> _fetchUserData() async {
     try {
-      LoginResponseModel response = await userPreference.getUser();
-      String? first_name = response.user!.first_name;
-      String? email = response.user!.email;
-
-      setState(() {
-        userEmail = email;
-        userName = first_name;
-      });
+      LoginResponseModel response = await userPreference.getUser ();
+      userEmail = response.user?.email;
+      userName = response.user?.first_name;
     } catch (e) {
       print('Error fetching userData: $e');
     }
   }
 
+  String formatReminderDate(String? reminder) {
+    if (reminder == null || reminder.isEmpty) {
+      return '';
+    }
+    try {
+      DateTime dateTime = DateTime.parse(reminder);
+      return DateFormat('dd/MM/yyyy hh:mm a').format(dateTime);
+    } catch (e) {
+      print('Error parsing date: $e');
+      return reminder;
+    }
+  }
+
+  // Helper method to create a LeadActivitiesScreenCard
+  Widget _buildLeadActivityCard(item) {
+    return LeadActivitiesScreenCard(
+      title: '${item.lead?.firstName ?? "Unknown"}',
+      companyName: '${item.lead?.organization ?? "Unknown Company"}',
+      actionDate: formatReminderDate(item.createdAt),
+      activity: item.activity ?? 'Unknown Activity',
+      info: item.remark ?? 'No Remark',
+      request_Location: 'View',
+      action_by: item.createdBy?.firstName ?? 'Unknown',
+      status: item.subActivity?.name ?? 'Unknown Status',
+      created_Date: formatReminderDate(item.reminder),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _globalKey,
-        backgroundColor: AllColors.whiteColor,
-        bottomNavigationBar: CustomBottomNavBar(),
-        floatingActionButton: CustomFloatingButton(
-            onPressed: (){},
-            imageIcon: IconStrings.navSearch3,
-            backgroundColor: AllColors.mediumPurple
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    return ResponsiveScaffold(
+      scaffoldKey: _globalKey,
+      backgroundColor: AllColors.whiteColor,
+      bottomNavigationBar: CustomBottomNavBar(),
+      drawer: CustomDrawer(
+        userName: userName ?? 'Loading...',
+        phoneNumber: userEmail ?? 'Loading...',
+        version: '1.0.12',
+      ),
+      body: Obx(() {
+        if (_leadActivityViewModel.loading.value) {
+          return Center(child: CircularProgressIndicator());
+        }
 
-        drawer:
-        CustomDrawer(
-            userName: '$userName',
-            phoneNumber: '$userEmail',
-            version: '1.0.12'),
-        body: Stack(
+        if (_leadActivityViewModel.leadActivityResponse.value.items?.isEmpty ?? true) {
+          return Center(child: Text("No leads found"));
+        }
+
+        return Stack(
           children: [
-            const SingleChildScrollView(
+            SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   children: [
-                    SizedBox(height: 125),
-                    LeadActivitiesScreenCard(
-                        title: 'Dr. Nitasha Gupta',
-                        companyName: 'Nitasha Gupta (Infertility Specialist)'),
-                    LeadActivitiesScreenCard(
-                        title: 'Dr. Nitasha Gupta',
-                        companyName: 'Nitasha Gupta (Infertility Specialist)'),
-                    LeadActivitiesScreenCard(
-                        title: 'Dr. Nitasha Gupta',
-                        companyName: 'Nitasha Gupta (Infertility Specialist)'),
-                    LeadActivitiesScreenCard(
-                        title: 'Dr. Nitasha Gupta',
-                        companyName: 'Nitasha Gupta (Infertility Specialist)'),
-                    LeadActivitiesScreenCard(
-                        title: 'Dr. Nitasha Gupta',
-                        companyName: 'Nitasha Gupta (Infertility Specialist)'),
+                    const SizedBox(height: 125),
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        if (constraints.maxWidth > 800) {
+                          return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: (_leadActivityViewModel.leadActivityResponse.value.items!.length / 2).ceil(),
+                            itemBuilder: (context, index) {
+                              final firstItem = _leadActivityViewModel.leadActivityResponse.value.items![index * 2];
+                              final secondItem = (index * 2 + 1 < _leadActivityViewModel.leadActivityResponse .value.items!.length)
+                                  ? _leadActivityViewModel.leadActivityResponse.value.items![index * 2 + 1]
+                                  : null;
+
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: _buildLeadActivityCard(firstItem),
+                                  ),
+                                  const SizedBox(width: 15),
+                                  if (secondItem != null)
+                                    Expanded(
+                                      child: _buildLeadActivityCard(secondItem),
+                                    ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: _leadActivityViewModel.leadActivityResponse.value.items!.length,
+                            itemBuilder: (context, index) {
+                              final item = _leadActivityViewModel.leadActivityResponse.value.items![index];
+                              return _buildLeadActivityCard(item);
+                            },
+                          );
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
-
-            //==================================================================
-            //CUSTOM APP BAR
-
             CustomAppBar(
               child: Row(
                 children: [
-                  InkWell(
-                    onTap: (){
-                      _globalKey.currentState?.openDrawer();
-                    },
-                    child: const Icon(
-                      Icons.menu_sharp,
-                      size: 25,
+                  if (Get.width < 500)
+                    InkWell(
+                      onTap: () => _globalKey.currentState?.openDrawer(),
+                      child: const Icon(Icons.menu_sharp, size: 25),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                 TextStyles.w600_universal(fontSize: 18, color: AllColors.blackColor, context, Strings.leadActivities),
-                  Spacer(),
+                  const SizedBox(width: 12),
+                  TextStyles.w600_universal(fontSize: 18, color: AllColors.blackColor, context, Strings.leadActivities),
+                  const Spacer(),
                   Row(
                     children: [
-                      Icon(
-                        Icons.filter_list_outlined,
-                        size: 15,
-                        color: AllColors.lightGrey,
-                      ),
-                      const SizedBox(
-                        width: 2,
-                      ),
+                      Icon(Icons.filter_list_outlined, size: 15, color: AllColors.lightGrey),
+                      const SizedBox(width: 2),
                       TextStyles.w400_13(color: AllColors.lightGrey, context, Strings.filter),
-                      const SizedBox(
-                        width: 13,
-                      ),
-                     TextStyles.w400_13(color: AllColors.blackColor, context, Strings.details),
-                      const Icon(
-                        Icons.keyboard_arrow_right,
-                        size: 20,
-                      ),
+                      const SizedBox(width: 13),
+                      TextStyles.w400_13(color: AllColors.blackColor, context, Strings.details),
+                      const Icon(Icons.keyboard_arrow_right, size: 20),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
           ],
-        ));
+        );
+      }),
+    );
   }
 }

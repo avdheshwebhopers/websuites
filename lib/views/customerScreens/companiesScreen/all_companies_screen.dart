@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/customerScreens/companiesScreen/widgets/companiesCard/companies_screen_card.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';
@@ -44,7 +47,8 @@ class _CustomerCompaniesScreenState extends State<CustomerCompaniesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ResponsiveScaffold(
+        scaffoldKey: _globalKey,
         key: _globalKey,
         backgroundColor: AllColors.whiteColor,
         drawer: CustomDrawer(
@@ -77,6 +81,7 @@ class _CustomerCompaniesScreenState extends State<CustomerCompaniesScreen> {
             CustomAppBar(
               child: Row(
                 children: [
+                  if (Get.width < 500)
                   InkWell(
                       onTap: () {
                         _globalKey.currentState?.openDrawer();

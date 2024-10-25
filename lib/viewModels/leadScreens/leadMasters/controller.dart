@@ -25,7 +25,7 @@ class LeadMasterController extends GetxController {
     }
   }
 
-  void updateSelectedTab(String tab) {
-    selectedTab.value = tab;
+  void updateSelectedTab(String tabName) {
+    selectedTab.value = tabName;
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/usersScreen/widgets/users_card.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
 import '../../resources/iconStrings/icon_strings.dart';
@@ -17,6 +20,7 @@ class UsersScreen extends StatefulWidget {
 }
 
 class _UsersScreenState extends State<UsersScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -46,7 +50,9 @@ class _UsersScreenState extends State<UsersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ResponsiveScaffold(
+
+      scaffoldKey: _scaffoldKey,
         key: _globalKey,
         bottomNavigationBar: CustomBottomNavBar(),
         floatingActionButton: CustomFloatingButton(
@@ -90,6 +96,8 @@ class _UsersScreenState extends State<UsersScreen> {
             CustomAppBar(
               child: Row(
                 children: [
+                  if(Get.width<500)
+
                   InkWell(
                       onTap: () {
                         _globalKey.currentState?.openDrawer();

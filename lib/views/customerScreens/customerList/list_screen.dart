@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/customerScreens/customerList/widgets/customerListCard/list_screen_card.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/strings/strings.dart';
@@ -17,6 +18,7 @@ class CustomersListScreen extends StatefulWidget {
 }
 
 class _CustomersListScreenState extends State<CustomersListScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -46,7 +48,8 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ResponsiveScaffold(
+        scaffoldKey: _scaffoldKey,
         key: _globalKey,
         backgroundColor: AllColors.whiteColor,
         drawer: CustomDrawer(
@@ -82,6 +85,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
             CustomAppBar(
               child: Row(
                 children: [
+                  if (Get.width < 500)
                   InkWell(
                       onTap: () {
                         _globalKey.currentState?.openDrawer();

@@ -71,11 +71,7 @@ class LeadMasterScreen extends StatelessWidget {
     return ResponsiveScaffold(
       scaffoldKey: _globalKey,
       bottomNavigationBar: CustomBottomNavBar(),
-      floatingActionButton: CustomFloatingButton(
-        onPressed: () {},
-        imageIcon: IconStrings.navSearch3,
-        backgroundColor: AllColors.mediumPurple,
-      ),
+
       drawer: Obx(
             () => CustomDrawer(
           userName: controller.userName.value,
@@ -123,7 +119,7 @@ class LeadMasterScreen extends StatelessWidget {
                       const SizedBox(width: 10),
                       _buildTabButton(context, Strings.source, 'source'),
                       const SizedBox(width: 10),
-                      _buildTabButton(context, Strings.status, 'status'),
+
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.03),
@@ -136,7 +132,7 @@ class LeadMasterScreen extends StatelessWidget {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      backgroundColor: AllColors.mediumPurple,
+      backgroundColor: AllColors.whiteColor,
     );
   }
 }
