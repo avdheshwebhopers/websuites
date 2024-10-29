@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Responsive/Custom_Drawer.dart';
+import '../../../controler/viewModels/leadScreens/leadMasters/controller.dart';
+import '../../../data/models/controller.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
-import '../../../utils/responsive/bodies/responsive scaffold.dart';
 
-import '../../../viewModels/leadScreens/leadMasters/controller.dart';
-
-import '../../../utils/components/widgets/appBar/custom_appBar.dart';
-import '../../../utils/components/widgets/drawer/custom_drawer.dart';
-import '../../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
 import 'SourceScreen/LeadMasterSourceScreen.dart';
 import 'StatusScreen/LeadMasterStatusScreen.dart';
@@ -18,7 +15,7 @@ import 'TypeScreen/LeadMasterTypeScreen.dart';
 
 class LeadMasterScreen extends StatelessWidget {
   LeadMasterScreen({Key? key}) : super(key: key);
-
+  final ScreenController _screenController = Get.put(ScreenController());
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final LeadMasterController controller = Get.put(LeadMasterController());
 
@@ -68,46 +65,52 @@ class LeadMasterScreen extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
     final bool isTabletOrDesktop = screenWidth >= 500;
 
-    return ResponsiveScaffold(
-      scaffoldKey: _globalKey,
-      bottomNavigationBar: CustomBottomNavBar(),
+    return Scaffold(
+      // scaffoldKey: _globalKey,
+      // bottomNavigationBar: CustomBottomNavBar(),
 
       drawer: Obx(
             () => CustomDrawer(
-          userName: controller.userName.value,
-          phoneNumber: controller.userEmail.value,
-          version: '1.0.12',
-        ),
+              selectedIndex: 0, // Customize as needed
+              onItemSelected: (index) {
+                // Handle item selection
+              },
+              isCollapsed: false,
+              onCollapseToggle: () {
+                // Handle drawer collapse/expand
+              },
+              isTabletOrDesktop: screenWidth >= 500,
+            ),
       ),
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            pinned: true,
-            floating: false,
-            backgroundColor: AllColors.whiteColor,
-
-            title: TextStyles.w700_17(color: AllColors.blackColor, context, Strings.leadMaster),
-            actions: [
-              Icon(Icons.search, size: 20, color: AllColors.lightGrey),
-              const SizedBox(width: 10),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  color: AllColors.mediumPurple,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Center(
-                  child: TextStyles.w500_12(color: AllColors.whiteColor, context, Strings.addLeadType),
-                ),
-              ),
-            ],
-          ),
+          // SliverAppBar(
+          //   pinned: true,
+          //   floating: false,
+          //   backgroundColor: AllColors.whiteColor,
+          //
+          //   title: TextStyles.w700_17(color: AllColors.blackColor, context, Strings.leadMaster),
+          //   actions: [
+          //     Icon(Icons.search, size: 20, color: AllColors.lightGrey),
+          //     const SizedBox(width: 10),
+          //     Container(
+          //       padding: const EdgeInsets.symmetric(horizontal: 12),
+          //       height: screenHeight / 30,
+          //       decoration: BoxDecoration(
+          //         color: AllColors.mediumPurple,
+          //         borderRadius: BorderRadius.circular(5),
+          //       ),
+          //       child: Center(
+          //         child: TextStyles.w500_12(color: AllColors.whiteColor, context, Strings.addLeadType),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: isTabletOrDesktop ? screenWidth * 0.03 : 15,
-                vertical: isTabletOrDesktop ? screenHeight * 0.03 : screenHeight * 0.15,
+                // vertical: isTabletOrDesktop ? screenHeight * 0.03 : screenHeight * 0.15,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,6 +133,11 @@ class LeadMasterScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      floatingActionButton: CustomFloatingButton(
+        onPressed: () {},
+        imageIcon: IconStrings.navSearch3,
+        backgroundColor: AllColors.mediumPurple,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       backgroundColor: AllColors.whiteColor,

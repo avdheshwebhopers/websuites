@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../Utils/Routes/routes_name.dart';
 import '../../Utils/utils.dart';
+import '../../controler/viewModels/loginScreen/login_view_model.dart';
 import '../../resources/imageStrings/image_strings.dart';
 import '../../resources/strings/strings.dart';
 import '../../resources/textStyles/text_styles.dart';
@@ -12,7 +13,7 @@ import '../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../utils/responsive/bodies/Responsive.dart';
 
 import '../../utils/responsive/bodies/responsive scaffold.dart';
-import '../../viewModels/loginScreen/login_view_model.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -34,11 +35,11 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     // Determine whether to show the drawer based on the login status and device type
-    Widget drawer = isLoggedIn.value ? CustomDrawer(userName: '', phoneNumber: '', version: '') : SizedBox.shrink();
+    // Widget drawer = isLoggedIn.value ? CustomDrawer(userName: '', phoneNumber: '', version: '') : SizedBox.shrink();
 
-    return ResponsiveScaffold(
-      scaffoldKey: scaffoldKey,
-      drawer: drawer,
+    return Scaffold(
+      // scaffoldKey: scaffoldKey,
+      // drawer: drawer,
       body: SafeArea(
         child: OrientationBuilder(
           builder: (context, orientation) {

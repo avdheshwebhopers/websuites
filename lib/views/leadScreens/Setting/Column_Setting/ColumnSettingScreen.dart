@@ -9,10 +9,11 @@ import '../../../../../../resources/textStyles/text_styles.dart';
 import '../../../../../../utils/MasterScreen/MasterUtils.dart';
 import '../../../../../../utils/appColors/app_colors.dart';
 import '../../../../../../utils/components/buttons/common_button.dart';
-import '../../../../../../viewModels/master/citiesStatesAndCountry/cities/master_cities_viewModel.dart';
+
 import '../../../../../../views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
+import '../../../../controler/viewModels/leadScreens/Setting/setting.dart';
 import '../../../../data/models/responseModels/leads/setting/setting.dart';
-import '../../../../viewModels/leadScreens/Setting/setting.dart';
+
 
 class ColumnSettingView extends StatelessWidget {
   final LeadSettingsViewModel settingsViewModel;

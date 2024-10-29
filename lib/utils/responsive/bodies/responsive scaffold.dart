@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../resources/iconStrings/icon_strings.dart';
-import '../../appColors/app_colors.dart';
-import '../../components/widgets/navBar/floatingActionButton/floating_action_button.dart';
 import 'Responsive.dart'; // Assuming you have a Responsive utility class defined elsewhere
 
 class ResponsiveScaffold extends StatelessWidget {
@@ -50,7 +47,7 @@ class ResponsiveScaffold extends StatelessWidget {
           return body;
         },
       ),
-      floatingActionButton: floatingActionButton,
+      floatingActionButton:isMobile? floatingActionButton:null,
       floatingActionButtonLocation: floatingActionButtonLocation,
       bottomNavigationBar: isMobile ? bottomNavigationBar : null,
     );

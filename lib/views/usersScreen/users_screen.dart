@@ -4,13 +4,16 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
 import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/usersScreen/widgets/users_card.dart';
+import '../../controler/viewModels/saveToken/save_token.dart';
+import '../../data/models/controller.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
 import '../../resources/iconStrings/icon_strings.dart';
 import '../../utils/appColors/app_colors.dart';
 import '../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
-import '../../viewModels/saveToken/save_token.dart';
+import '../../utils/responsive/bodies/Responsive.dart';
+
 
 class UsersScreen extends StatefulWidget {
   const UsersScreen({super.key});
@@ -22,6 +25,7 @@ class UsersScreen extends StatefulWidget {
 class _UsersScreenState extends State<UsersScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final ScreenController _screenController = Get.put(ScreenController());
   SaveUserData userPreference = SaveUserData();
 
   String userName = '';
@@ -50,11 +54,11 @@ class _UsersScreenState extends State<UsersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveScaffold(
+    return Scaffold(
 
-      scaffoldKey: _scaffoldKey,
+      // scaffoldKey: _scaffoldKey,
         key: _globalKey,
-        bottomNavigationBar: CustomBottomNavBar(),
+        // bottomNavigationBar: CustomBottomNavBar(),
         floatingActionButton: CustomFloatingButton(
             onPressed: (){},
             imageIcon: IconStrings.navSearch3, backgroundColor: AllColors.mediumPurple),
@@ -62,8 +66,15 @@ class _UsersScreenState extends State<UsersScreen> {
 
 
         backgroundColor: AllColors.whiteColor,
-        drawer: CustomDrawer(
-            userName: userName, phoneNumber: userEmail, version: '1.0.12'),
+        // drawer: CustomDrawer(
+        //     userName: userName, phoneNumber: userEmail, version: '1.0.12',
+        //
+        //   onTap: (index) {
+        //     _screenController.updateIndex(index);
+        //     if (ResponsiveUtils.isMobile(context)) {
+        //       _globalKey.currentState?.closeDrawer();
+        //     }
+        //   },),
         body: Stack(
           children: [
             const SafeArea(

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:websuites/views/customerScreens/activitiesScreen/widgets/ActivitiesScreenCard/activities_screen_card.dart';
+import '../../../controler/viewModels/saveToken/save_token.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
-import '../../../viewModels/saveToken/save_token.dart';
+
 
 
 
@@ -51,10 +52,10 @@ class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
     return Scaffold(
         backgroundColor: AllColors.whiteColor,
         key: _globalKey,
-        drawer: CustomDrawer(
-            userName: '$userName',
-            phoneNumber: '$userEmail',
-            version: '1.0.12'),
+        // drawer: CustomDrawer(
+        //     userName: '$userName',
+        //     phoneNumber: '$userEmail',
+        //     version: '1.0.12'),
         body: Stack(
           children: [
             const SingleChildScrollView(

@@ -6,8 +6,9 @@ import 'package:websuites/utils/appColors/app_colors.dart';
 import '../../../../../../resources/textStyles/text_styles.dart';
 import '../../../../../../utils/MasterScreen/MasterUtils.dart';
 import '../../../../Utils/utils.dart';
-import '../../../../viewModels/leadScreens/Setting/custom_field/custom_fields.dart';
-import '../../../../viewModels/leadScreens/Setting/fieldsSetting.dart';
+import '../../../../controler/viewModels/leadScreens/Setting/custom_field/custom_fields.dart';
+import '../../../../controler/viewModels/leadScreens/Setting/fieldsSetting.dart';
+
 
 class FieldSettingView extends StatefulWidget {
   const FieldSettingView({Key? key}) : super(key: key);

@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import '../../../../../utils/appColors/app_colors.dart';
 
 
-class CustomerListScreenCard extends StatelessWidget {
+class
+CustomerListScreenCard extends StatelessWidget {
   final String title;
 
   const CustomerListScreenCard({

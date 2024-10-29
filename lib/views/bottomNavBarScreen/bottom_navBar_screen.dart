@@ -10,7 +10,7 @@ class BottomNavBarScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AllColors.whiteColor,
 
-      bottomNavigationBar: CustomBottomNavBar(),
+      // bottomNavigationBar: CustomBottomNavBar(),
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(),
         onPressed: () {},

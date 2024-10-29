@@ -74,7 +74,6 @@ class _CustomExpandedListTileState extends State<CustomExpandedListTile> {
           setState(() {
             isExpanded = expanded;
             if (expanded) {
-              // Set the currently selected parent
               SelectedMenuItems.selectedParent = widget.title;
             }
           });
@@ -84,27 +83,34 @@ class _CustomExpandedListTileState extends State<CustomExpandedListTile> {
         },
         children: widget.children.map((child) {
           if (child is ListTile) {
-            return ListTile(
-              onTap: () {
-                setState(() {
-                  // Update both parent and child selection
-                  SelectedMenuItems.selectedParent = widget.title;
-                  SelectedMenuItems.selectedChild = (child.title as Text).data;
-                });
-                if (child.onTap != null) {
-                  child.onTap!();
-                }
-              },
-              title: Text(
-                (child.title as Text).data!,
-                style: TextStyle(
-                  color: SelectedMenuItems.selectedChild == (child.title as Text).data
-                      ? AllColors.mediumPurple
-                      : AllColors.welcomeColor,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 14,
+            return Column(
+              children: [
+                ListTile(
+                  onTap: () {
+                    setState(() {
+                      SelectedMenuItems.selectedParent = widget.title;
+                      SelectedMenuItems.selectedChild =
+                          (child.title as Text).data;
+                    });
+                    if (child.onTap != null) {
+                      child.onTap!();
+                    }
+                  },
+                  title: Text(
+                    (child.title as Text).data!,
+                    style: TextStyle(
+                      color: SelectedMenuItems.selectedChild ==
+                              (child.title as Text).data
+                          ? AllColors.mediumPurple
+                          : AllColors.welcomeColor,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 14,
+                    ),
+                  ),
                 ),
-              ),
+                // Add minimal space between each ListTile
+                const SizedBox(height: 2),
+              ],
             );
           }
           return child;

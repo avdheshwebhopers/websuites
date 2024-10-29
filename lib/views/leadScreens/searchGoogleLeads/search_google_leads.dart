@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../controler/viewModels/saveToken/save_token.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/imageStrings/image_strings.dart';
 import '../../../resources/strings/strings.dart';
@@ -9,7 +10,7 @@ import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_15h.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_22h.dart';
-import '../../../viewModels/saveToken/save_token.dart';
+
 import '../createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 
 
@@ -54,11 +55,11 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
         key: _globalKey,
         backgroundColor: AllColors.whiteColor,
 
-        drawer:
-        CustomDrawer(
-            userName: userName,
-            phoneNumber: '$userEmail',
-            version: '1.0.12'),
+        // drawer:
+        // CustomDrawer(
+        //     userName: userName,
+        //     phoneNumber: '$userEmail',
+        //     version: '1.0.12'),
 
         body:
         Stack(
@@ -77,7 +78,7 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 140,
+                    height: 10,
                   ),
                   Center(
                     child:
@@ -122,27 +123,27 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
             //====================================================================
             //CUSTOM APP BAR
 
-            CustomAppBar(
-              child: Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                        _globalKey.currentState?.openDrawer();
-                      },
-                      child: Icon(
-                        Icons.menu_sharp,
-                        size: 25,
-                        color: AllColors.blackColor,
-                      )
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child:
-                   TextStyles.w700_16(color: AllColors.blackColor, context, Strings.searchGoogleLeads)
-                  )
-                ],
-              ),
-            ),
+            // CustomAppBar(
+            //   child: Row(
+            //     children: [
+            //       InkWell(
+            //           onTap: () {
+            //             _globalKey.currentState?.openDrawer();
+            //           },
+            //           child: Icon(
+            //             Icons.menu_sharp,
+            //             size: 25,
+            //             color: AllColors.blackColor,
+            //           )
+            //       ),
+            //       Padding(
+            //         padding: const EdgeInsets.only(left: 10),
+            //         child:
+            //        TextStyles.w700_16(color: AllColors.blackColor, context, Strings.searchGoogleLeads)
+            //       )
+            //     ],
+            //   ),
+            // ),
           ],
         )
     );

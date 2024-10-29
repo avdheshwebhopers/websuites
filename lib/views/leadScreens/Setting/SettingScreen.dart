@@ -4,14 +4,15 @@ import 'package:websuites/utils/components/buttons/common_button.dart';
 import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 import '../../../../../resources/strings/strings.dart';
 import '../../../../../utils/appColors/app_colors.dart';
+import '../../../Responsive/Custom_Drawer.dart';
 import '../../../Utils/utils.dart';
+import '../../../controler/viewModels/leadScreens/Setting/setting.dart';
+import '../../../controler/viewModels/leadScreens/leadMasters/controller.dart';
+import '../../../data/models/controller.dart';
 import '../../../data/models/responseModels/leads/setting/setting.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/MasterScreen/MasterUtils.dart';
-import '../../../utils/components/widgets/drawer/custom_drawer.dart';
-import '../../../viewModels/leadScreens/Setting/setting.dart';
-import '../../../viewModels/leadScreens/leadMasters/controller.dart';
-import '../../../viewModels/master/citiesStatesAndCountry/cities/master_cities_viewModel.dart';
+
 import 'Column_Setting/ColumnSettingScreen.dart';
 import 'Fields_Setting/FieldsSettingScreen.dart';
 
@@ -27,6 +28,7 @@ class _SettingScreenState extends State<SettingScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   final LeadSettingsViewModel settingsViewModel = Get.put(LeadSettingsViewModel());
+  final ScreenController _screenController = Get.put(ScreenController());
 
   final userName = ''.obs;
   final userEmail = ''.obs;
@@ -47,6 +49,7 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
     return
 
       MasterScreenUtils.buildCommonScaffold(
@@ -64,11 +67,18 @@ class _SettingScreenState extends State<SettingScreen> {
         }
       },
         drawer: Obx(
-              () => CustomDrawer(
-            userName: controller.userName.value,
-            phoneNumber: controller.userEmail.value,
-            version: '1.0.12',
-          ),
+              () =>
+                  CustomDrawer(
+                selectedIndex: 0, // Customize as needed
+                onItemSelected: (index) {
+                  // Handle item selection
+                },
+                isCollapsed: false,
+                onCollapseToggle: () {
+                  // Handle drawer collapse/expand
+                },
+                isTabletOrDesktop: screenWidth >= 500,
+              ),
         ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/resources/getxLocalization/languages.dart';
-import 'Utils/Routes/routes.dart';
 
-void main(){
+import 'Utils/Routes/routes.dart';
+import 'Utils/Routes/routes_name.dart';
+
+void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
+      // initialRoute: RoutesName.home_screen, // Set your initial route
+      // getPages: AllRoutes.appRoutes(),
+      initialRoute: RoutesName.splash_screen,
       getPages: AllRoutes.appRoutes(),
     );
   }

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/upcomingScreen/widgets/upcomingScreenCard/upcoming_screen_card.dart';
+import '../../Responsive/Custom_Drawer.dart';
+import '../../controler/viewModels/saveToken/save_token.dart';
+import '../../data/models/controller.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
 import '../../resources/iconStrings/icon_strings.dart';
 import '../../resources/imageStrings/image_strings.dart';
@@ -11,7 +14,8 @@ import '../../utils/appColors/app_colors.dart';
 import '../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
-import '../../viewModels/saveToken/save_token.dart';
+import '../../utils/responsive/bodies/Responsive.dart';
+
 
 class UpcomingScreen extends StatefulWidget {
   const UpcomingScreen({super.key});
@@ -21,6 +25,7 @@ class UpcomingScreen extends StatefulWidget {
 }
 
 class _UpcomingScreenState extends State<UpcomingScreen> {
+ final ScreenController _screenController = Get.put(ScreenController());
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -51,9 +56,10 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveScaffold(
-        scaffoldKey: _globalKey,
-        bottomNavigationBar: CustomBottomNavBar(),
+    var screenWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+        // scaffoldKey: _globalKey,
+        // bottomNavigationBar: CustomBottomNavBar(),
         floatingActionButton: CustomFloatingButton(
             onPressed: () {},
             imageIcon: IconStrings.navSearch3,
@@ -61,8 +67,17 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         key: _globalKey,
         backgroundColor: AllColors.whiteColor,
-        drawer: CustomDrawer(
-            userName: userName, phoneNumber: '$userEmail', version: '1.0.12'),
+        // drawer: CustomDrawer(
+        //   selectedIndex: 0, // Customize as needed
+        //   onItemSelected: (index) {
+        //     // Handle item selection
+        //   },
+        //   isCollapsed: false,
+        //   onCollapseToggle: () {
+        //     // Handle drawer collapse/expand
+        //   },
+        //   isTabletOrDesktop: screenWidth >= 500, userName: '',
+        // ),
         body: Stack(
           children: [
             SingleChildScrollView(

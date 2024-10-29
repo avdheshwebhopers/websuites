@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/views/salesTargetScreen/widgets/sales_target_card.dart';
+import '../../controler/viewModels/saveToken/save_token.dart';
+import '../../data/models/controller.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
 import '../../resources/iconStrings/icon_strings.dart';
 import '../../utils/appColors/app_colors.dart';
@@ -8,7 +10,8 @@ import '../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
-import '../../viewModels/saveToken/save_token.dart';
+import '../../utils/responsive/bodies/Responsive.dart';
+
 
 class SalesTargetScreen extends StatefulWidget {
   const SalesTargetScreen({super.key});
@@ -19,6 +22,7 @@ class SalesTargetScreen extends StatefulWidget {
 
 class _SalesTargetScreenState extends State<SalesTargetScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+final ScreenController _screenController = Get.put(ScreenController());
   SaveUserData userPreference = SaveUserData();
 
   String userName = '';
@@ -51,7 +55,7 @@ class _SalesTargetScreenState extends State<SalesTargetScreen> {
     return Scaffold(
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
-      bottomNavigationBar: CustomBottomNavBar(),
+      // bottomNavigationBar: CustomBottomNavBar(),
       floatingActionButton: CustomFloatingButton(
           onPressed: (){},
           imageIcon: IconStrings.navSearch3,
@@ -59,10 +63,19 @@ class _SalesTargetScreenState extends State<SalesTargetScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      drawer: CustomDrawer(
-          userName: userName,
-          phoneNumber: userEmail,
-          version: '1.0.12'),
+      // drawer: CustomDrawer(
+      //     userName: userName,
+      //     phoneNumber: userEmail,
+      //     version: '1.0.12',
+      //
+      //   onTap: (index) {
+      //     _screenController.updateIndex(index);
+      //     if (ResponsiveUtils.isMobile(context)) {
+      //       _globalKey.currentState?.closeDrawer();
+      //     }
+      //   },
+      //
+      // ),
       body:
           Stack(
             children: [

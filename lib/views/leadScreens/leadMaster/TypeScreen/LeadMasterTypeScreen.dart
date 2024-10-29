@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../controler/viewModels/leadScreens/leadMasters/types/lead_master_types_viewModel.dart';
 import '../../../../resources/strings/strings.dart';
 import '../../../../resources/textStyles/text_styles.dart';
-import '../../../../viewModels/leadScreens/leadMasters/types/lead_master_types_viewModel.dart';
+
 import '../widgets/leadMasterCard/lead_master_card.dart';
 
 class TypesTab extends StatelessWidget {
