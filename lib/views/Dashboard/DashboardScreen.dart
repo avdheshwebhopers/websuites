@@ -153,15 +153,15 @@ class _HomeScreenState extends State<Dashboardscreen> {
                                   top: Get.height / 15),
                               child: Row(
                                 children: [
-                                  if (Get.width < 500)
-                                    IconButton(
-                                      onPressed: () {
-                                        _globalKey.currentState?.openDrawer();
-                                      },
-                                      icon: const Icon(Icons.menu),
-                                      iconSize: 35,
-                                      color: AllColors.whiteColor,
-                                    ),
+                                  // if (Get.width < 500)
+                                  //   IconButton(
+                                  //     onPressed: () {
+                                  //       _globalKey.currentState?.openDrawer();
+                                  //     },
+                                  //     icon: const Icon(Icons.menu),
+                                  //     iconSize: 35,
+                                  //     color: AllColors.whiteColor,
+                                  //   ),
                                   const SizedBox(width: 6),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,

@@ -4,8 +4,9 @@ import 'package:websuites/views/bottomNavBarScreen/bottom_navBar_screen.dart';
 import 'package:websuites/views/leadScreens/Setting/SettingScreen.dart';
 import 'package:websuites/views/leadScreens/leadList/leadlist_screen.dart';
 import 'package:websuites/views/splashScreen/splash_screen.dart';
-import '../../Responsive/HomeScreen.dart';
+
 import '../../views/forgotPasswordScreen/forgot_password_screen.dart';
+import '../../views/homeScreen/home_screen.dart';
 import '../../views/leadScreens/createNewLead/create_newLead_screen.dart';
 import '../../views/leadScreens/leadActivities/lead_activities_screen.dart';
 import '../../views/leadScreens/leadMaster/lead_master_screen.dart';

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'Responsive.dart'; // Assuming you have a Responsive utility class defined elsewhere
+import '../../../Responsive/Custom_Drawer.dart';
+import 'Responsive.dart';
 
 class ResponsiveScaffold extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
   final PreferredSizeWidget? appBar;
-  final Widget drawer;
+  final Widget? drawer; // Pass the drawer as a parameter
   final Widget body;
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
@@ -15,7 +16,7 @@ class ResponsiveScaffold extends StatelessWidget {
     Key? key,
     required this.scaffoldKey,
     this.appBar,
-    required this.drawer,
+    this.drawer, // Assign drawer parameter
     required this.body,
     this.floatingActionButton,
     this.bottomNavigationBar,
@@ -32,14 +33,14 @@ class ResponsiveScaffold extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: appBar,
-      drawer: isMobile || isTablet ? drawer : null,
+      drawer: isMobile ? drawer : null, // Display drawer for mobile only
       backgroundColor: backgroundColor,
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (isDesktop || isTablet) {
             return Row(
               children: [
-                drawer,
+                if (isTablet && drawer != null) drawer!, // Display drawer for tablet if available
                 Expanded(child: body),
               ],
             );
@@ -47,10 +48,9 @@ class ResponsiveScaffold extends StatelessWidget {
           return body;
         },
       ),
-      floatingActionButton:isMobile? floatingActionButton:null,
+      floatingActionButton: isMobile ? floatingActionButton : null,
       floatingActionButtonLocation: floatingActionButtonLocation,
       bottomNavigationBar: isMobile ? bottomNavigationBar : null,
     );
   }
 }
-
