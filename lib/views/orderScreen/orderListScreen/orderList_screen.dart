@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../controler/viewModels/saveToken/save_token.dart';
+import '../../../data/models/controller.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
@@ -7,7 +9,8 @@ import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_10w.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_5h.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_5w.dart';
-import '../../../viewModels/saveToken/save_token.dart';
+import '../../../utils/responsive/bodies/Responsive.dart';
+
 
 class OrderListScreen extends StatefulWidget {
   const OrderListScreen({super.key});
@@ -17,6 +20,7 @@ class OrderListScreen extends StatefulWidget {
 }
 
 class _OrderListScreenState extends State<OrderListScreen> {
+  final ScreenController _screenController = Get.put(ScreenController());
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -51,10 +55,19 @@ class _OrderListScreenState extends State<OrderListScreen> {
       key: _globalKey,
         backgroundColor:  AllColors.whiteColor,
 
-        drawer: CustomDrawer(
-            userName: '$userName',
-            phoneNumber: '$userEmail',
-            version: '1.0.12'),
+        // drawer: CustomDrawer(
+        //     userName: '$userName',
+        //     phoneNumber: '$userEmail',
+        //     version: '1.0.12',
+        //
+        //   onTap: (index) {
+        //     _screenController.updateIndex(index);
+        //     if (ResponsiveUtils.isMobile(context)) {
+        //       _globalKey.currentState?.closeDrawer();
+        //     }
+        //   },
+        //
+        // ),
 
         body: Stack(
           children: [

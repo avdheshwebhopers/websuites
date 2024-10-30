@@ -40,19 +40,41 @@ class LeadListScreenCard extends StatelessWidget {
             children: [
 
 
-              Text(title, style: TextStyle(
-                  color: AllColors.grey,
-                    
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400
-              ),),
+
 
               Text(companyName, style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 18,
-                    
+
                   color: AllColors.welcomeColor
               ),),
+
+              Row(
+
+                children: [
+                  Expanded(
+                    child: Text(title, style: TextStyle(
+                        color: AllColors.grey,
+
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400
+                    ),
+
+
+                    ),
+                  ),
+                  Icon(Icons.call_rounded, size: 15, color: AllColors.lightGrey,),
+
+                  SizedBox(width: 5,),
+
+                  Text('+91-88105399221', style: TextStyle(
+                      fontWeight: FontWeight.w400,
+
+                      fontSize: 12,
+                      color: AllColors.grey
+                  ),),
+                ],
+              ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -61,7 +83,7 @@ class LeadListScreenCard extends StatelessWidget {
                   SizedBox(width: 8,),
                   Text('Wed 26, June 2024 at 12:09 pm', style: TextStyle(
                     color: AllColors.vividPurple,
-                      
+
                     fontSize: 12,
                   ), ),
                   Spacer(),
@@ -75,27 +97,18 @@ class LeadListScreenCard extends StatelessWidget {
                       Text('Google', style: TextStyle(
                           color: AllColors.grey,
                           fontSize: 12,
-                            
+
                           fontWeight: FontWeight.w400
                       ),)
                     ],
                   )
                 ],
               ),
-
+              Divider(thickness: 0.5, color: AllColors.lighterGrey,),
               Row(
                 children: [
-                  Icon(Icons.call_rounded, size: 15, color: AllColors.lightGrey,),
 
-                  SizedBox(width: 5,),
 
-                  Text('+91-88105399221', style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                        
-                      fontSize: 12,
-                      color: AllColors.grey
-                  ),),
-                  Spacer(),
 
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 12),
@@ -107,38 +120,43 @@ class LeadListScreenCard extends StatelessWidget {
                       child: Center(
                         child: Text('Manish Jindal', style: TextStyle(
                             fontSize: 12,
-                              
+
                             fontWeight: FontWeight.w400,
                             color: AllColors.vividPurple
                         ),),
+                      )
+                  ),
+                  Spacer(),
+                  Container(
+                      height: Get.height / 40,
+                      width: Get.width / 3.5,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AllColors.lightBlue
+                      ),
+                      child: Center(
+                        child: Text('PharmaHopers', style: TextStyle(
+                            fontSize: 12,
+
+                            fontWeight: FontWeight.w400,
+                            color: AllColors.darkBlue
+                        ),
+                        ),
                       )
                   ),
 
                 ],
               ),
 
-              Divider(thickness: 0.5, color: AllColors.lighterGrey,),
 
-              Container(
-                  height: Get.height / 40,
-                  width: Get.width / 3.5,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AllColors.lightBlue
-                  ),
-                  child: Center(
-                    child: Text('PharmaHopers', style: TextStyle(
-                        fontSize: 12,
-                          
-                        fontWeight: FontWeight.w400,
-                        color: AllColors.darkBlue
-                    ),
-                    ),
-                  )
-              ),
+
+
             ],
+
           ),
+
         ),
       );
+
   }
 }

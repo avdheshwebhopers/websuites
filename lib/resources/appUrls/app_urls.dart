@@ -2,6 +2,7 @@ class AppUrls{
 
   static const String baseurl = 'https://webhopers.whsuites.com:3006/';
 
+
   //============================================================================
   // LOGIN SCREEN API
 
@@ -36,7 +37,9 @@ class AppUrls{
   //============================================================================
   // LEAD SCREEN API
   // CREATE NEW LEAD API
+  static const String leadList = '${baseurl}v1/api/leads/list';
 
+  static const String leadAssign='https://webhopers.whsuites.com/api/auth/users-list-and-search';
   static const String assignedLeadTo = '${baseurl}v1/api/auth/get-descendants';
 
   static const String createNewLeadSource = '${baseurl}v1/api/lead-sources';
@@ -48,15 +51,39 @@ class AppUrls{
   static const String createNewLeadCustomFields = '${baseurl}v1/api/lead-custom-fields';
   static const String createLeadPincode='${baseurl}v1/api/city-pincodes/search?search=';
   static const String createNewLead = '${baseurl}https://webhopers.whsuites.com:3006/v1/api/leads';
+  static const String  leadListTrash= '${baseurl}v1/api/leads/delete_list';
 
   //============================================================================
   // TRASH LEADS
 
   static const String deleteList = '${baseurl}v1/api/leads/delete_list';
 
+
   static const String leadType = '${baseurl}v1/api/lead-types';
 
   //============================================================================
+
+
+  //Setting SCREEN
+  static const String leadSetting="https://webhopers.whsuites.com/api/lead-fields-management";
+  static const String fieldSetting="https://webhopers.whsuites.com/api/lead-fields";
+  static const String settingCustomFields='https://webhopers.whsuites.com/api/lead-custom-fields';
+
+
+
+
+
+
+//LEAD ACTIVITY
+  static const String leadActivityList='https://webhopers.whsuites.com/api/lead-activities/history';
+  static const String leadActivityLeadType="https://webhopers.whsuites.com/api/lead-types";
+  //LEAD ACTIVITY DAILY REPORTS---------
+  static const String leadActivityDailySaleReports="https://webhopers.whsuites.com/api/lead-activities/reports";
+  static const String leadActivityNoActivities="https://webhopers.whsuites.com/api/lead-activities/no-activity-reports";
+  static const String leadActivityLeadReports="https://webhopers.whsuites.com/api/lead-activities/reports-leadwise";
+  static  const String leadActivityTeamLeads="https://webhopers.whsuites.com/api/dashboard/team-lead-type-count";
+
+
   // LEAD MASTER
   // TYPES
   static const String leadMastersTypes = '${baseurl}v1/api/lead-types';

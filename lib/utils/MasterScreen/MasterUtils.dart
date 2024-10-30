@@ -7,10 +7,20 @@ import '../../../../../utils/components/buttons/common_button.dart';
 import '../../../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../../../utils/responsive/bodies/responsive scaffold.dart';
-import '../../../../../viewModels/saveToken/save_token.dart';
+
+import '../../Responsive/Custom_Drawer.dart';
+import '../../controler/viewModels/saveToken/save_token.dart';
+import '../../data/models/controller.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
+import '../components/widgets/navBar/custom_navBar.dart';
+import '../responsive/bodies/Responsive.dart';
 
 class MasterScreenUtils {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final ScreenController _screenController = Get.put(ScreenController());
+
+
+
   static final SaveUserData userPreference = SaveUserData();
 
   static Future<Map<String, String>> fetchUserData() async {
@@ -30,39 +40,50 @@ class MasterScreenUtils {
     required String userName,
     required String userEmail,
     required String title,
-    String addButtonTitle = '', // Made this parameter optional with a default value
+    String addButtonTitle = '',
     required VoidCallback onAddPressed,
-    required Widget body,
+    required Widget body, // This is already defined correctly
+    required Obx drawer, // Ensure that drawer is of type Obx
   }) {
-    return ResponsiveScaffold(
-      scaffoldKey: scaffoldKey,
+    return Scaffold(
+      // scaffoldKey: scaffoldKey,
       key: globalKey,
       backgroundColor: AllColors.whiteColor,
-      drawer: CustomDrawer(
-        userName: userName,
-        phoneNumber: userEmail,
-        version: '1.0.12',
-      ),
+      // drawer: CustomDrawer(
+      //   userName: userName,
+      //   phoneNumber: userEmail,
+      //   version: '1.0.12', onTap: (int ) {  },
+      //
+      //   // onTap: (index) {
+      //   //   _screenController.updateIndex(index);
+      //   //   if (ResponsiveUtils.isMobile(context)) {
+      //   //     _globalKey.currentState?.closeDrawer();
+      //   //   }
+      //   // },
+      //
+      // ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomAppBar(
-            child: Row(
-              children: [
-                if (Get.width < 500)
-                  InkWell(
-                    onTap: () => globalKey.currentState?.openDrawer(),
-                    child: const Icon(Icons.menu_sharp, size: 25),
-                  ),
-                const SizedBox(width: 10),
-                TextStyles.w700_16(color: AllColors.blackColor, Get.context!, title),
-                const Spacer(),
-                // Only show the button if addButtonTitle is not empty
-                if (addButtonTitle.isNotEmpty)
-                  CommonButton(title: addButtonTitle, onPress: onAddPressed)
-              ],
-            ),
-          ),
+          // CustomAppBar(
+          //   child: Row(
+          //     children: [
+          //       if (Get.width < 500)
+          //         InkWell(
+          //           onTap: () =>
+          //           // _scaffoldKey.currentState?.openDrawer(),
+          //             scaffoldKey.currentState?.openDrawer(),
+          //           child: const Icon(Icons.menu_sharp, size: 25),
+          //         ),
+          //       const SizedBox(width: 10),
+          //       TextStyles.w700_16(color: AllColors.blackColor, Get.context!, title),
+          //       const Spacer(),
+          //       // Only show the button if addButtonTitle is not empty
+          //       if (addButtonTitle.isNotEmpty)
+          //         CommonButton(title: addButtonTitle, onPress: onAddPressed)
+          //     ],
+          //   ),
+          // ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
@@ -71,8 +92,12 @@ class MasterScreenUtils {
           ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // bottomNavigationBar: CustomBottomNavBar(),
     );
+
+
+
   }
 
 

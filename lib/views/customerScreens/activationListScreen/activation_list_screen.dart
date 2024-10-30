@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/customerScreens/activationListScreen/widgets/ActivationListCard/list_screen_card.dart';
+import 'package:websuites/views/homeScreen/home_screen.dart';
+import '../../../Responsive/HomeScreen.dart';
+import '../../../controler/viewModels/saveToken/save_token.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_10w.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_5w.dart';
-import '../../../viewModels/saveToken/save_token.dart';
+
 
 
 class CustomerActivationListScreen extends StatefulWidget {
@@ -18,6 +22,7 @@ class CustomerActivationListScreen extends StatefulWidget {
 }
 
 class _CustomerActivationListScreenState extends State<CustomerActivationListScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey <ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -48,13 +53,14 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // scaffoldKey: _scaffoldKey,
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
-      drawer: CustomDrawer(
-          userName: '$userName',
-          phoneNumber: '$userEmail',
-          version: '1.0.12'),
-
+      // drawer: CustomDrawer(
+      //     userName: '$userName',
+      //     phoneNumber: '$userEmail',
+      //     version: '1.0.12'),
+drawer: HomeScreen(),
         body:
           Stack(
             children: [
@@ -199,35 +205,36 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
               //================================================================
               // CUSTOM APP BAR
 
-              CustomAppBar(
-                  child: Row(
-                    children: [
-                      InkWell(
-                          onTap: (){
-                            _globalKey.currentState?.openDrawer();
-                          },
-                          child: const Icon(Icons.menu_sharp, size: 25,)),
-                      SizedBox10w(),
-                      Text('Activation List', style: TextStyle(
-                          
-                        fontWeight: FontWeight.w600,
-                        fontSize: 17,
-                        color: AllColors.blackColor,
-                      ),
-                      ),
-
-                      const Spacer(),
-                      
-                      Icon(Icons.filter_list_outlined, size: 14, color: AllColors.lightGrey,),
-                      SizedBox5w(),
-                      Text('Filter', style: TextStyle(
-                        color: AllColors.lightGrey,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                          
-                      ),),
-                    ],
-                  ))
+              // CustomAppBar(
+              //     child: Row(
+              //       children: [
+              //         if(Get.width<500)
+              //         InkWell(
+              //             onTap: (){
+              //               _globalKey.currentState?.openDrawer();
+              //             },
+              //             child: const Icon(Icons.menu_sharp, size: 25,)),
+              //         SizedBox10w(),
+              //         Text('Activation List', style: TextStyle(
+              //
+              //           fontWeight: FontWeight.w600,
+              //           fontSize: 17,
+              //           color: AllColors.blackColor,
+              //         ),
+              //         ),
+              //
+              //         const Spacer(),
+              //
+              //         Icon(Icons.filter_list_outlined, size: 14, color: AllColors.lightGrey,),
+              //         SizedBox5w(),
+              //         Text('Filter', style: TextStyle(
+              //           color: AllColors.lightGrey,
+              //           fontSize: 15,
+              //           fontWeight: FontWeight.w400,
+              //
+              //         ),),
+              //       ],
+              //     ))
             ],
           )
 

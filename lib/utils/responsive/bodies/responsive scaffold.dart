@@ -8,6 +8,8 @@ class ResponsiveScaffold extends StatelessWidget {
   final Widget body;
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
+  final Color backgroundColor;
 
   const ResponsiveScaffold({
     Key? key,
@@ -16,7 +18,9 @@ class ResponsiveScaffold extends StatelessWidget {
     required this.drawer,
     required this.body,
     this.floatingActionButton,
-    this.bottomNavigationBar, required FloatingActionButtonLocation floatingActionButtonLocation, required Color backgroundColor,
+    this.bottomNavigationBar,
+    this.floatingActionButtonLocation,
+    required this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -28,24 +32,24 @@ class ResponsiveScaffold extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: appBar,
-      drawer: isMobile || isTablet ? drawer : null, // Drawer only for mobile/tablet
-      backgroundColor: Colors.white,
+      drawer: isMobile || isTablet ? drawer : null,
+      backgroundColor: backgroundColor,
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (isDesktop || isTablet) {
-            // Desktop: include drawer permanently on the side
             return Row(
               children: [
-                drawer, // Display drawer as a permanent side menu for desktop
+                drawer,
                 Expanded(child: body),
               ],
             );
           }
-          return body; // For mobile/tablet, just return the body
+          return body;
         },
       ),
-      floatingActionButton: floatingActionButton,
-      bottomNavigationBar: isMobile ? bottomNavigationBar:null,
+      floatingActionButton:isMobile? floatingActionButton:null,
+      floatingActionButtonLocation: floatingActionButtonLocation,
+      bottomNavigationBar: isMobile ? bottomNavigationBar : null,
     );
   }
 }

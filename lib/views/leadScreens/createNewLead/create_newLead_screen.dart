@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/Responsive/HomeScreen.dart';
 import 'package:websuites/resources/appUrls/app_urls.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
 import 'package:websuites/utils/responsive/bodies/Responsive.dart';
-import 'package:websuites/viewModels/leadScreens/createNewLead/assignedLeadTo/assigned_lead_to_viewModel.dart';
-import 'package:websuites/viewModels/leadScreens/createNewLead/customFields/custom_fields_viewModels.dart';
-import 'package:websuites/viewModels/leadScreens/createNewLead/divisions/divisions_view_model.dart';
+
 import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
+import '../../../Responsive/Custom_Drawer.dart';
+import '../../../controler/viewModels/leadScreens/createNewLead/ProductCategory/ProductCategory.dart';
+import '../../../controler/viewModels/leadScreens/createNewLead/assignedLeadTo/assigned_lead_to_viewModel.dart';
+import '../../../controler/viewModels/leadScreens/createNewLead/createnewlead_button/CreateNewLeadButton.dart';
+import '../../../controler/viewModels/leadScreens/createNewLead/customFields/custom_fields_viewModels.dart';
+import '../../../controler/viewModels/leadScreens/createNewLead/divisions/divisions_view_model.dart';
+import '../../../controler/viewModels/leadScreens/createNewLead/pincode/pincode_view_model.dart';
+import '../../../controler/viewModels/leadScreens/createNewLead/source/source_view_model.dart';
+import '../../../controler/viewModels/leadScreens/leadMasters/controller.dart';
+import '../../../controler/viewModels/leadScreens/trashLeads/leadTypes/lead_type_viewModel.dart';
+import '../../../controler/viewModels/saveToken/save_token.dart';
+import '../../../data/models/controller.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
@@ -17,12 +28,7 @@ import '../../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_15h.dart';
 import '../../../utils/responsive/bodies/responsive scaffold.dart';
-import '../../../viewModels/leadScreens/createNewLead/ProductCategory/ProductCategory.dart';
-import '../../../viewModels/leadScreens/createNewLead/createnewlead_button/CreateNewLeadButton.dart';
-import '../../../viewModels/leadScreens/createNewLead/pincode/pincode_view_model.dart';
-import '../../../viewModels/leadScreens/createNewLead/source/source_view_model.dart';
-import '../../../viewModels/leadScreens/trashLeads/leadTypes/lead_type_viewModel.dart';
-import '../../../viewModels/saveToken/save_token.dart';
+
 import '../../../data/network/network_api_services.dart';
 
 class CreateNewLeadScreen extends StatefulWidget {
@@ -33,7 +39,9 @@ class CreateNewLeadScreen extends StatefulWidget {
 }
 
 class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
+
   RxList<String> categoriesRxList = RxList<String>();
+  final LeadMasterController controller1 = Get.put(LeadMasterController());
   final PinCodeViewModel createLeadPinController = Get.put(PinCodeViewModel());
   final PinCodeViewModel _viewModel = Get.put(PinCodeViewModel());
   TextEditingController searchController = TextEditingController();
@@ -51,8 +59,13 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
   final LeadSourceController _leadSourceController =
       Get.put(LeadSourceController(apiService: NetworkApiServices()));
   final SaveUserData userPreference = SaveUserData();
+  final ScreenController _screenController = Get.put(ScreenController());
   String userName = '';
   String? userEmail;
+
+
+  var selectedTab = 'types'.obs; // Track selected tab
+
 
   @override
   void initState() {
@@ -86,9 +99,10 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveScaffold(
-      scaffoldKey: _scaffoldKey,
-      bottomNavigationBar: CustomBottomNavBar(),
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      // scaffoldKey: _scaffoldKey,
+      // bottomNavigationBar: CustomBottomNavBar(),
       floatingActionButton: CustomFloatingButton(
         onPressed: () {},
         imageIcon: IconStrings.navSearch3,
@@ -96,10 +110,20 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       backgroundColor: AllColors.whiteColor,
-      drawer: CustomDrawer(
-        userName: userName,
-        phoneNumber: userEmail ?? '',
-        version: '1.0.12',
+
+      drawer: Obx(
+            () =>
+                CustomDrawer(
+                  selectedIndex: 0, // Customize as needed
+                  onItemSelected: (index) {
+                    // Handle item selection
+                  },
+                  isCollapsed: false,
+                  onCollapseToggle: () {
+                    // Handle drawer collapse/expand
+                  },
+                  isTabletOrDesktop: screenWidth >= 500,
+                ),
       ),
       body: Stack(
         children: [
@@ -109,7 +133,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 140),
+                  const SizedBox(height: 10),
                   TextStyles.w600_15(
                       color: AllColors.vividPurple,
                       context,
@@ -260,6 +284,10 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         isForDivisions:
                             true, // Add this line to use the special styling for divisions
                       ),
+
+
+
+
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.categories),
 
@@ -568,52 +596,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
               ),
             ),
           ),
-          // CustomAppBar(scaffoldKey: _scaffoldKey),
-          CustomAppBar(
-            child:
-            Row(
-              children: [
-                InkWell(
-                    onTap: () {
-                      _globalKey.currentState?.openDrawer();
-                    },
-                    child: Icon(
-                      Icons.menu,
-                      size: 25,
-                      color: AllColors.blackColor,
-                    )),
-                const SizedBox(
-                  width: 10,
-                ),
-                TextStyles.w700_16(
-                    color: AllColors.blackColor,
-                    context,
-                    Strings.createNewLead),
-                const Spacer(),
-                Container(
-                  height: Get.height / 28,
-                  width: Get.width / 3.4,
-                  decoration: BoxDecoration(
-                      color: AllColors.mediumPurple,
-                      borderRadius: BorderRadius.circular(4)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(
-                        Icons.cloud_download_sharp,
-                        size: 15,
-                        color: AllColors.whiteColor,
-                      ),
-                      TextStyles.w400_14(
-                          color: AllColors.whiteColor,
-                          context,
-                          Strings.importLeads),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+
         ],
       ),
     );

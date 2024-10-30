@@ -32,6 +32,8 @@ class Utils {
       snackStyle: SnackStyle.FLOATING,
       backgroundColor: Colors.red, // Background color of the snackbar
       colorText: Colors.white,
+        duration: Duration(milliseconds: 600)
+
     ); // Text color of the message);
   }
 
@@ -40,6 +42,7 @@ class Utils {
       snackStyle: SnackStyle.FLOATING,
       backgroundColor: Colors.green, // Background color of the snackbar
       colorText: Colors.white,
+        duration: Duration(milliseconds: 600)
     ); // Text color of the message);
   }
 
