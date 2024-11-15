@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/customerScreens/customerList/widgets/customerListCard/list_screen_card.dart';
 import '../../../Responsive/Custom_Drawer.dart';
-import '../../../controler/viewModels/saveToken/save_token.dart';
+
 import '../../../data/models/controller.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/strings/strings.dart';
@@ -12,6 +12,7 @@ import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/responsive/bodies/Responsive.dart';
+import '../../../viewModels/saveToken/save_token.dart';
 
 
 class CustomersListScreen extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../Utils/Routes/routes_name.dart';
 import '../../Utils/utils.dart';
-import '../../controler/viewModels/loginScreen/login_view_model.dart';
+
 import '../../resources/imageStrings/image_strings.dart';
 import '../../resources/strings/strings.dart';
 import '../../resources/textStyles/text_styles.dart';
@@ -13,6 +13,7 @@ import '../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../utils/responsive/bodies/Responsive.dart';
 
 import '../../utils/responsive/bodies/responsive scaffold.dart';
+import '../../viewModels/loginScreen/login_view_model.dart';
 
 
 class LoginScreen extends StatefulWidget {

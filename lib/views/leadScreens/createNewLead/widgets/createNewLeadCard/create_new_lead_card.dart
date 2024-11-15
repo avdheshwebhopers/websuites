@@ -33,7 +33,8 @@ class CreateNewLeadScreenCard extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CreateNewLeadScreenCardState createState() => _CreateNewLeadScreenCardState();
+  _CreateNewLeadScreenCardState createState() =>
+      _CreateNewLeadScreenCardState();
 }
 
 class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
@@ -42,6 +43,7 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
   List<String> _selectedCategories = [];
   bool _isDropdownVisible = false;
   late TextEditingController _textController;
+  List<String> _filteredCategories = [];
 
   @override
   void initState() {
@@ -52,6 +54,7 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
         _isFocused = _focusNode.hasFocus;
       });
     });
+    _filteredCategories = widget.categories ?? [];
   }
 
   @override
@@ -87,22 +90,27 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
     });
   }
 
-  void _removeCategory(String category) {
-    setState(() {
-      _selectedCategories.remove(category);
-      _updateTextController();
-      if (widget.isMultiSelect) {
-        widget.onCategoriesChanged?.call(_selectedCategories);
-      }
-    });
-  }
-
   void _updateTextController() {
     if (!widget.isForDivisions) {
       _textController.text = _selectedCategories.join(', ');
     }
   }
-//
+
+  void _filterCategories(String query) {
+    if (query.isEmpty) {
+      setState(() {
+        _filteredCategories = widget.categories ?? [];
+      });
+    } else {
+      setState(() {
+        _filteredCategories = (widget.categories ?? [])
+            .where((category) =>
+            category.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -131,12 +139,15 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                     return Chip(
                       label: Text(
                         category,
-                        style: const TextStyle(fontSize: 12, color: Colors.white),
+                        style:
+                        const TextStyle(fontSize: 12, color: Colors.white),
                       ),
                       backgroundColor: AllColors.mediumPurple,
-                      deleteIcon: const Icon(Icons.close, size: 16, color: Colors.white),
+                      deleteIcon: const Icon(Icons.close,
+                          size: 16, color: Colors.white),
                       onDeleted: () => _removeCategory(category),
-                      visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+                      visualDensity:
+                      const VisualDensity(horizontal: -4, vertical: -4),
                       padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.02,
                         vertical: MediaQuery.of(context).size.height * 0.005,
@@ -144,10 +155,8 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                     );
                   }).toList(),
                 ),
-
               if (widget.isForDivisions && _selectedCategories.isNotEmpty)
                 SizedBox(height: 8),
-
               Row(
                 children: [
                   Expanded(
@@ -155,15 +164,18 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                       controller: _textController,
                       focusNode: _focusNode,
                       decoration: InputDecoration(
-                        hintText: widget.isForDivisions && _selectedCategories.isNotEmpty
+                        hintText: widget.isForDivisions &&
+                            _selectedCategories.isNotEmpty
                             ? ''
                             : widget.hintText,
                         border: InputBorder.none,
                         isDense: true,
-                        contentPadding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 0),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 4.0, horizontal: 0),
                       ),
                       style: const TextStyle(fontSize: 14),
                       onChanged: (text) {
+                        _filterCategories(text); // Call the filter function
                         if (widget.allowCustomInput) {
                           if (!widget.isMultiSelect) {
                             widget.onCategoryChanged?.call(text);
@@ -175,8 +187,6 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                       },
                     ),
                   ),
-
-
                   if (_selectedCategories.isNotEmpty && widget.isMultiSelect)
                     GestureDetector(
                       onTap: () {
@@ -186,16 +196,20 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                       },
                       child: Container(
                         width: 16,
-                        child: Icon(Icons.close, color: AllColors.lighterGrey,size: 16,),
+                        child: Icon(
+                          Icons.close,
+                          color: AllColors.lighterGrey,
+                          size: 16,
+                        ),
                       ),
                     ),
-
                   if (widget.categories != null)
                     GestureDetector(
                       onTap: _toggleDropdownMenu,
                       child: Container(
                         width: 40,
-                        child: Icon(Icons.arrow_drop_down_sharp, color: AllColors.lighterGrey),
+                        child: Icon(Icons.arrow_drop_down_sharp,
+                            color: AllColors.lighterGrey),
                       ),
                     ),
                 ],
@@ -203,7 +217,6 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
             ],
           ),
         ),
-
         if (_isDropdownVisible)
           Column(
             children: [
@@ -211,7 +224,6 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
               Container(
                 height: 200,
                 width: double.infinity,
-
                 decoration: BoxDecoration(
                   color: AllColors.whiteColor,
                   borderRadius: BorderRadius.circular(8),
@@ -223,7 +235,6 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                     ),
                   ],
                 ),
-//ok
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -231,36 +242,34 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                       ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: widget.categories!.length,
+                        itemCount: _filteredCategories.length,
                         itemBuilder: (context, index) {
-                          final category = widget.categories![index];
-                          final isSelected = _selectedCategories.contains(category);
+                          final category = _filteredCategories[index];
+                          final isSelected =
+                          _selectedCategories.contains(category);
 
-                          return Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () => _selectCategory(category),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: isSelected ? AllColors.mediumPurple : Colors.transparent,
-
-                                  ),
-                                  height: 40,
-                                  alignment: Alignment.centerLeft,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 5),
-                                    child: Text(
-                                      category,
-                                      style: TextStyle(
-                                        color: isSelected ? Colors.white : AllColors.blackColor,
-                                      ),
-                                    ),
+                          return GestureDetector(
+                            onTap: () => _selectCategory(category),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: isSelected
+                                    ? AllColors.mediumPurple
+                                    : Colors.transparent,
+                              ),
+                              height: 40,
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Text(
+                                  category,
+                                  style: TextStyle(
+                                    color: isSelected
+                                        ? Colors.white
+                                        : AllColors.blackColor,
                                   ),
                                 ),
                               ),
-
-                              SizedBox(height: 8),
-                            ],
+                            ),
                           );
                         },
                       ),
@@ -293,5 +302,16 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
           ),
       ],
     );
+  }
+
+
+  void _removeCategory(String category) {
+    setState(() {
+      _selectedCategories.remove(category);
+      _updateTextController();
+      if (widget.isMultiSelect) {
+        widget.onCategoriesChanged?.call(_selectedCategories);
+      }
+    });
   }
 }

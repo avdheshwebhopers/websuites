@@ -1,14 +1,14 @@
 class LeadNoActivitiesResponseModel {
-  List<Items>? items;
+  List<LeadActivityItem>? items; // Updated type
   Meta? meta;
 
   LeadNoActivitiesResponseModel({this.items, this.meta});
 
   LeadNoActivitiesResponseModel.fromJson(Map<String, dynamic> json) {
     if (json['items'] != null) {
-      items = <Items>[];
+      items = <LeadActivityItem>[];
       json['items'].forEach((v) {
-        items!.add(new Items.fromJson(v));
+        items!.add(LeadActivityItem.fromJson(v)); // Updated to use LeadActivityItem
       });
     }
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
@@ -26,33 +26,32 @@ class LeadNoActivitiesResponseModel {
   }
 }
 
-class Items {
+class LeadActivityItem { // Renamed from Item to LeadActivityItem
   String? id;
-  Null firstName;
-  Null lastName;
+  String? firstName;
+  String? lastName;
   String? mobile;
   String? email;
   LastCall? lastCall;
-  Null lastMeeting;
+  String? lastMeeting;
 
-  Items(
-      {this.id,
-        this.firstName,
-        this.lastName,
-        this.mobile,
-        this.email,
-        this.lastCall,
-        this.lastMeeting});
+  LeadActivityItem({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.mobile,
+    this.email,
+    this.lastCall,
+    this.lastMeeting,
+  });
 
-  Items.fromJson(Map<String, dynamic> json) {
+  LeadActivityItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     firstName = json['first_name'];
     lastName = json['last_name'];
     mobile = json['mobile'];
     email = json['email'];
-    lastCall = json['lastCall'] != null
-        ? new LastCall.fromJson(json['lastCall'])
-        : null;
+    lastCall = json['lastCall'] != null ? LastCall.fromJson(json['lastCall']) : null;
     lastMeeting = json['lastMeeting'];
   }
 
@@ -70,7 +69,6 @@ class Items {
     return data;
   }
 }
-
 class LastCall {
   String? id;
   String? remark;
@@ -83,9 +81,7 @@ class LastCall {
     id = json['id'];
     remark = json['remark'];
     createdAt = json['created_at'];
-    createdBy = json['created_by'] != null
-        ? new CreatedBy.fromJson(json['created_by'])
-        : null;
+    createdBy = json['created_by'] != null ? CreatedBy.fromJson(json['created_by']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -116,7 +112,7 @@ class CreatedBy {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['first_name'] = firstName;
+    data['first_name '] = firstName;
     data['last_name'] = lastName;
     return data;
   }
@@ -129,12 +125,13 @@ class Meta {
   int? totalItems;
   int? itemCount;
 
-  Meta(
-      {this.currentPage,
-        this.itemsPerPage,
-        this.totalPages,
-        this.totalItems,
-        this.itemCount});
+  Meta({
+    this.currentPage,
+    this.itemsPerPage,
+    this.totalPages,
+    this.totalItems,
+    this.itemCount,
+  });
 
   Meta.fromJson(Map<String, dynamic> json) {
     currentPage = json['currentPage'];

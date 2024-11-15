@@ -46,6 +46,8 @@ class AllColors {
   static Color mediumGreen = const Color(0xffbcf8b8);
   static Color lightGreen = const Color(0xffedffeb);
 
+  static Color background_green = const Color(0x1F47BD82);
+  static Color text__green = const Color(0xFF47BD82);
   static Color greenJungle = const Color(0xff24a959);
   static Color greenJungleLight = const Color(0xffdeffe7);
 

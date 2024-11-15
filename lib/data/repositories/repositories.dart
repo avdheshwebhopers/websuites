@@ -10,6 +10,7 @@ import '../models/responseModels/HRM/attendance/hrm_attendance_response_model.da
 import '../models/responseModels/campaign/list/campaign_list_response_model.dart';
 import '../models/responseModels/campaign/mailLogs/mail_logs_response_model.dart';
 import '../models/responseModels/customers/activationList/customer_activation_list_response_model.dart';
+
 import '../models/responseModels/customers/master/activation/customer_activation_response_model.dart';
 import '../models/responseModels/customers/master/activity_purpose/activity_purpose_response_model.dart';
 import '../models/responseModels/customers/master/companyCredentials/customer_company_credential_response_model.dart';
@@ -33,6 +34,7 @@ import '../models/responseModels/inventory/transactions/inventory_transactions_r
 import '../models/responseModels/inventory/vendors/inventory_vendors_response_model.dart';
 
 import '../models/responseModels/leads/LeadTrash/TrashLeads.dart';
+import '../models/responseModels/leads/Leadlist/filter/country_code/country_code.dart';
 import '../models/responseModels/leads/Leadlist/lead_assign/lead_assign.dart';
 import '../models/responseModels/leads/Leadlist/lead_list.dart';
 import '../models/responseModels/leads/createNewLead/assignedLeadTo/assigned_lead_to_response_model.dart';
@@ -49,6 +51,7 @@ import '../models/responseModels/leads/lead_activity/lead_activity_lead_type/lea
 import '../models/responseModels/leads/lead_activity/lead_activity_list/lead_activity_list.dart';
 import '../models/responseModels/leads/lead_activity/lead_reports/lead_reports.dart';
 import '../models/responseModels/leads/lead_activity/no_activities/no_activities.dart';
+import '../models/responseModels/leads/lead_activity/team_leads/team_leads.dart';
 import '../models/responseModels/leads/setting/custom_field/custom_fields.dart';
 import '../models/responseModels/leads/setting/field_setting/field_setting.dart';
 import '../models/responseModels/leads/setting/setting.dart';
@@ -409,6 +412,72 @@ class Repositories {
     }
   }
 
+
+
+
+
+
+  //FILTER CITY
+  Future<FilterCityResponseModel>filterCityApi(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.filterCity,data);
+      if (kDebugMode) {
+        print("Customer city Api Search$response");
+      }
+      return FilterCityResponseModel.fromJson(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+
+
+
+
+
+
+  //LEAD TYPE
+  Future<List<LeadTypesResponseModel>> leadListLeadType()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.leadType);
+      print("Lead LeadType Response$response");
+      if (response is List) {
+        return LeadTypesResponseModel.fromJsonList(response);
+      }
+      else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+  //LEAD ASSIGN
+  Future<List<LeadAssignResponseModel>> leadListLeadAssign(dynamic data)async{
+    try{
+      dynamic response= await _apiService.postApiResponse(AppUrls.leadAssign,data);
+      print("Lead LeadAssign Response$response");
+      return LeadAssignResponseModel.fromJsonList(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
+  //LEAD lIST PHONE CODE
+  Future<LeadListCountryCodeResponseModel> countryCodeApi()async{
+    try{
+      dynamic response= await _apiService.getApi(AppUrls.leadListPhoneCode);
+      print("Lead List Country code$response");
+      return LeadListCountryCodeResponseModel.fromJson(response);
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
   //LEAD ACTIVITY---------
   //Activity List
 
@@ -483,23 +552,32 @@ class Repositories {
 
   //TEAM LEADS
 
-  Future<LeadReportsResponseModel>leadActivityTeamLead(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.leadActivityTeamLeads,data);
+  // Future<LeadReportsResponseModel>leadActivityTeamLead(dynamic data)async{
+  //   try{
+  //     dynamic response= await _apiService.postApiResponse(AppUrls.leadActivityTeamLeads,data);
+  //     print("Lead activity Team Leads $response");
+  //     return response =LeadReportsResponseModel.fromJson(response);
+  //   }
+  //   catch(e){
+  //     rethrow;
+  //   }
+  // }
+
+  Future<List<LeadActivityTeamLeadResponseModel>> leadActivityTeamLead(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.leadActivityTeamLeads, data);
       print("Lead activity Team Leads $response");
-      return response =LeadReportsResponseModel.fromJson(response);
-    }
-    catch(e){
+      return LeadActivityTeamLeadResponseModel.fromJsonList(response);
+    } catch (e) {
       rethrow;
     }
   }
 
 
-
   //LEAD TYPE
-  Future<List<LeadTypesResponseModel>> leadListLeadType()async{
+  Future<List<LeadTypesResponseModel>> leadListLeadTypes()async{
     try{
-      dynamic response= await _apiService.getApi(AppUrls.leadType);
+      dynamic response= await _apiService.getApi(AppUrls.leadTypes);
       print("Lead LeadType Response$response");
       if (response is List) {
         return LeadTypesResponseModel.fromJsonList(response);
@@ -515,9 +593,9 @@ class Repositories {
 
 
   //LEAD ASSIGN
-  Future<List<LeadAssignResponseModel>> leadListLeadAssign(dynamic data)async{
+  Future<List<LeadAssignResponseModel>> leadListLeadAssignsearch(dynamic data)async{
     try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.leadAssign,data);
+      dynamic response= await _apiService.postApiResponse(AppUrls.leadAssignsearch,data);
       print("Lead LeadAssign Response$response");
       return LeadAssignResponseModel.fromJsonList(response);
     }
@@ -526,15 +604,15 @@ class Repositories {
     }
   }
 
-  Future<LeadTrashResponseModel> getTrashListApi() async {
+  Future<DeleteListResponseModel> trashDeleteListApi(dynamic data) async {
     try {
-      dynamic response = await _apiService.getApi(AppUrls.leadListTrash);
-      return LeadTrashResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.deleteList, data);
+      print("Response Trash Delete List: $response"); // Log the response
+      return DeleteListResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
-
 
 
   // Future<void> deleteTrashLeadsApi(List<String> leadIds) async {
@@ -610,25 +688,25 @@ class Repositories {
   //============================================================================
 // CUSTOMERS
 // LIST
-  Future<CustomersListResponseModel> customersListApi() async {
-    try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.customersList, null);
-      return response = CustomersListResponseModel.fromJson(response);
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  //ACTIVITIES
-
-  Future<CustomersListResponseModel> customersActivitiesApi() async {
-    try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.customersActivities, null);
-      return response = CustomersListResponseModel.fromJson(response);
-    } catch (e) {
-      rethrow;
-    }
-  }
+//   Future<CustomersListResponseModel> customersListApi() async {
+//     try {
+//       dynamic response = await _apiService.postApiResponse(AppUrls.customersList, null);
+//       return response = CustomersListResponseModel.fromJson(response);
+//     } catch (e) {
+//       rethrow;
+//     }
+//   }
+//
+//   //ACTIVITIES
+//
+//   Future<CustomersListResponseModel> customersActivitiesApi() async {
+//     try {
+//       dynamic response = await _apiService.postApiResponse(AppUrls.customersActivities, null);
+//       return response = CustomersListResponseModel.fromJson(response);
+//     } catch (e) {
+//       rethrow;
+//     }
+//   }
 
   // PAYMENT REMINDER
 

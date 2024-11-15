@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:websuites/views/orderScreen/orderProformaScreen/widgets/orderProformaListCard/order_proforma_list_card.dart';
-import '../../../controler/viewModels/saveToken/save_token.dart';
+import '../../../viewModels/saveToken/save_token.dart';
 import '../../../data/models/controller.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';

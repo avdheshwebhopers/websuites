@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../controler/viewModels/leadScreens/leadMasters/source/lead_masters_source_viewModel.dart';
+import '../../../../viewModels/leadScreens/leadMasters/source/lead_masters_source_viewModel.dart';
 import '../../../../utils/appColors/app_colors.dart';
 
 class SourceTab extends StatefulWidget {

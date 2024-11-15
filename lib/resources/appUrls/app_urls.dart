@@ -6,6 +6,7 @@ class AppUrls{
   //============================================================================
   // LOGIN SCREEN API
 
+
   static const String loginApi = '${baseurl}v1/api/auth/signin';
 
   //============================================================================
@@ -52,6 +53,10 @@ class AppUrls{
   static const String createLeadPincode='${baseurl}v1/api/city-pincodes/search?search=';
   static const String createNewLead = '${baseurl}https://webhopers.whsuites.com:3006/v1/api/leads';
   static const String  leadListTrash= '${baseurl}v1/api/leads/delete_list';
+  static const String leadListPhoneCode="https://webhopers.whsuites.com/api/countries/phonecode";
+  static const String leadType='https://webhopers.whsuites.com/api/lead-types';
+  static const String leadAssignsearch='https://webhopers.whsuites.com/api/auth/users-list-and-search';
+  static const String filterCity="https://webhopers.whsuites.com/api/cities/list";
 
   //============================================================================
   // TRASH LEADS
@@ -59,7 +64,7 @@ class AppUrls{
   static const String deleteList = '${baseurl}v1/api/leads/delete_list';
 
 
-  static const String leadType = '${baseurl}v1/api/lead-types';
+  static const String leadTypes = '${baseurl}v1/api/lead-types';
 
   //============================================================================
 
@@ -77,7 +82,9 @@ class AppUrls{
 //LEAD ACTIVITY
   static const String leadActivityList='https://webhopers.whsuites.com/api/lead-activities/history';
   static const String leadActivityLeadType="https://webhopers.whsuites.com/api/lead-types";
+
   //LEAD ACTIVITY DAILY REPORTS---------
+
   static const String leadActivityDailySaleReports="https://webhopers.whsuites.com/api/lead-activities/reports";
   static const String leadActivityNoActivities="https://webhopers.whsuites.com/api/lead-activities/no-activity-reports";
   static const String leadActivityLeadReports="https://webhopers.whsuites.com/api/lead-activities/reports-leadwise";

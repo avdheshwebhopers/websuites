@@ -31,13 +31,14 @@ class AllRoutes {
             GetPage(name: RoutesName.createNewLead_screen, page: () => const CreateNewLeadScreen()), // Unique route for CreateNewLeadScreen
             GetPage(name: RoutesName.createNewLead_screen, page: () => const SearchGoogleLeads()), // Unique route for CreateNewLeadScreen
             GetPage(name: RoutesName.lead_list_screen, page: () => const LeadListScreen()), // This should be unique as well
+            GetPage(name: RoutesName.trashLead_screen, page: () => TrashLeadScreen()),
             GetPage(name: RoutesName.upcoming_screen, page: () => const LeadActivitiesScreen()),
-            GetPage(name: RoutesName.search_google_leads_screen, page: () => const TrashLeadScreen()),
+            GetPage(name: RoutesName.search_google_leads_screen, page: () => TrashLeadScreen()),
             GetPage(name: RoutesName.search_google_leads_screen, page: () => const SettingScreen()),
             GetPage(name: RoutesName.search_google_leads_screen, page: () => LeadMasterScreen()),
             // Uncomment if you want to use this route
             // GetPage(name: RoutesName.lead_activities_screen, page: () => const LeadActivitiesScreen()),
             GetPage(name: RoutesName.my_teamLead_screen, page: () => const TeamLeadScreen()),
-            GetPage(name: RoutesName.trashLead_screen, page: () => const TrashLeadScreen()),
+
       ];
 }
