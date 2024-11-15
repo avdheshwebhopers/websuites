@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/resources/getxLocalization/languages.dart';
+import 'package:websuites/views/homeScreen/home_screen.dart';
 
 import 'Utils/Routes/routes.dart';
 import 'Utils/Routes/routes_name.dart';
 
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
+
   runApp(const MyApp());
 }
 
@@ -17,21 +22,23 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'WHCrm',
       translations: Languages(),
-      locale: const Locale('en_US'),
-      fallbackLocale: const Locale('en_US'),
+      locale: const Locale('en', 'US'),  // Corrected locale
+      fallbackLocale: const Locale('en', 'US'),  // Corrected fallback locale
       theme: ThemeData(
         fontFamily: 'Nunito',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      // initialRoute: RoutesName.home_screen, // Set your initial route
-      // getPages: AllRoutes.appRoutes(),
       initialRoute: RoutesName.splash_screen,
       getPages: AllRoutes.appRoutes(),
     );
   }
 }
-
-
-
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext? context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+  }
+}

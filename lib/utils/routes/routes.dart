@@ -4,8 +4,9 @@ import 'package:websuites/views/bottomNavBarScreen/bottom_navBar_screen.dart';
 import 'package:websuites/views/leadScreens/Setting/SettingScreen.dart';
 import 'package:websuites/views/leadScreens/leadList/leadlist_screen.dart';
 import 'package:websuites/views/splashScreen/splash_screen.dart';
-import '../../Responsive/HomeScreen.dart';
+
 import '../../views/forgotPasswordScreen/forgot_password_screen.dart';
+import '../../views/homeScreen/home_screen.dart';
 import '../../views/leadScreens/createNewLead/create_newLead_screen.dart';
 import '../../views/leadScreens/leadActivities/lead_activities_screen.dart';
 import '../../views/leadScreens/leadMaster/lead_master_screen.dart';
@@ -30,13 +31,14 @@ class AllRoutes {
             GetPage(name: RoutesName.createNewLead_screen, page: () => const CreateNewLeadScreen()), // Unique route for CreateNewLeadScreen
             GetPage(name: RoutesName.createNewLead_screen, page: () => const SearchGoogleLeads()), // Unique route for CreateNewLeadScreen
             GetPage(name: RoutesName.lead_list_screen, page: () => const LeadListScreen()), // This should be unique as well
+            GetPage(name: RoutesName.trashLead_screen, page: () => TrashLeadScreen()),
             GetPage(name: RoutesName.upcoming_screen, page: () => const LeadActivitiesScreen()),
-            GetPage(name: RoutesName.search_google_leads_screen, page: () => const TrashLeadScreen()),
+            GetPage(name: RoutesName.search_google_leads_screen, page: () => TrashLeadScreen()),
             GetPage(name: RoutesName.search_google_leads_screen, page: () => const SettingScreen()),
             GetPage(name: RoutesName.search_google_leads_screen, page: () => LeadMasterScreen()),
             // Uncomment if you want to use this route
             // GetPage(name: RoutesName.lead_activities_screen, page: () => const LeadActivitiesScreen()),
             GetPage(name: RoutesName.my_teamLead_screen, page: () => const TeamLeadScreen()),
-            GetPage(name: RoutesName.trashLead_screen, page: () => const TrashLeadScreen()),
+
       ];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controler/viewModels/saveToken/save_token.dart';
+
+import '../../../data/models/responseModels/leads/lead_activity/no_activities/no_activities.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/imageStrings/image_strings.dart';
 import '../../../resources/strings/strings.dart';
@@ -11,8 +12,9 @@ import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_15h.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_22h.dart';
 
+import '../../../viewModels/leadScreens/lead_activity/no_activities/no_activities.dart';
+import '../../../viewModels/saveToken/save_token.dart';
 import '../createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
-
 
 class SearchGoogleLeads extends StatefulWidget {
   const SearchGoogleLeads({super.key});
@@ -23,129 +25,78 @@ class SearchGoogleLeads extends StatefulWidget {
 
 class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  SaveUserData userPreference = SaveUserData();
+  final SaveUserData userPreference = SaveUserData();
+  final LeadActivityNoActivityViewModel viewModel = Get.put(LeadActivityNoActivityViewModel());
 
   String userName = '';
   String? userEmail = "";
 
   @override
   void initState() {
-    FetchUserData();
     super.initState();
+    fetchUserData();
+    viewModel.fetchNoActivities(context);
   }
 
-  Future<void> FetchUserData() async {
+  Future<void> fetchUserData() async {
     try {
-      LoginResponseModel response = await userPreference.getUser();
-      String? first_name = response.user!.first_name;
-      String? email = response.user!.email;
-
+      LoginResponseModel response = await userPreference.getUser ();
       setState(() {
-        userName = first_name!;
-        userEmail = email!;
+        userName = response.user?.first_name ?? 'Unknown User';
+        userEmail = response.user?.email ?? 'No Email';
       });
     } catch (e) {
-      print('Error fetching userData: $e');
+      print('Error fetching user data: $e');
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _globalKey,
-        backgroundColor: AllColors.whiteColor,
+      key: _globalKey,
+      backgroundColor: AllColors.whiteColor,
+      appBar: AppBar(
+        title: Text('Search Google Leads'),
+      ),
+      body:   ListView.builder(
+        itemCount: viewModel.items.length,
+        itemBuilder: (context, index) {
+          final item = viewModel.items[index];
 
-        // drawer:
-        // CustomDrawer(
-        //     userName: userName,
-        //     phoneNumber: '$userEmail',
-        //     version: '1.0.12'),
+          // Calculate the number of days since the last call
+          String daysSinceLastCall = 'Not available';
 
-        body:
-        Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 130, left: 30, right: 20),
-              child: Image.asset(
-                ImageStrings.worldMap,
-                scale: 1,
-              ),
-            ),
+          // Check if lastCall and createdAt are not null
+          if (item.lastCall?.createdAt != null) {
+            DateTime? createdAt = DateTime.tryParse(item.lastCall!.createdAt!);
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
+            if (createdAt != null) {
+              Duration difference = DateTime.now().difference(createdAt);
+              daysSinceLastCall = '${difference.inDays} days';
+            } else {
+              print('Error parsing date: ${item.lastCall!.createdAt}');
+            }
+          }
+
+          return Card(
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            child: ListTile(
+              title: Text(item.firstName ?? 'Not available'),
+              subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Center(
-                    child:
-                  TextStyles.w700_16(color: AllColors.vividPurple, context, Strings.findActiveSmall),
-                  ),
-                  Center(
-                    child:
-                  TextStyles.w700_16(color: AllColors.vividPurple, context, Strings.andPlacesOnGoogleMap),
-                  ),
-                  SizedBox22h(),
-                  TextStyles.w500_14_Black(context, Strings.searchLead),
-
-                  const CreateNewLeadScreenCard(hintText: Strings.search),
-                  SizedBox15h(),
-
-                  TextStyles.w500_14_Black(context, Strings.byLocation),
-
-                  const CreateNewLeadScreenCard(hintText: Strings.enterLocation),
-                  const SizedBox(
-                    height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        height: Get.height / 24,
-                        width: Get.width / 4,
-                        decoration: BoxDecoration(
-                          color: AllColors.mediumPurple,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Center(
-                          child:
-                          TextStyles.w500_14_White(context, Strings.search),
-                        ),
-                      ),
-                    ],
-                  )
+                  Text(item.email ?? 'Not available'),
+                  Text(item.mobile ?? 'Not available'),
+                  Text(item.lastCall?.remark ?? 'Not available'),
+                  Text(item.lastCall?.createdBy?.firstName ?? 'Not available'),
+                  Text(daysSinceLastCall), // Display the days count
+                  Text(item.lastMeeting ?? 'Not available'),
                 ],
               ),
             ),
-
-            //====================================================================
-            //CUSTOM APP BAR
-
-            // CustomAppBar(
-            //   child: Row(
-            //     children: [
-            //       InkWell(
-            //           onTap: () {
-            //             _globalKey.currentState?.openDrawer();
-            //           },
-            //           child: Icon(
-            //             Icons.menu_sharp,
-            //             size: 25,
-            //             color: AllColors.blackColor,
-            //           )
-            //       ),
-            //       Padding(
-            //         padding: const EdgeInsets.only(left: 10),
-            //         child:
-            //        TextStyles.w700_16(color: AllColors.blackColor, context, Strings.searchGoogleLeads)
-            //       )
-            //     ],
-            //   ),
-            // ),
-          ],
-        )
+          );
+        },
+      )
     );
   }
 }

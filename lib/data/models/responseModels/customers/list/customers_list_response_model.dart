@@ -1,11 +1,10 @@
-class CustomersListResponseModel {
+class FilterCityResponseModel {
   List<Items>? items;
   Meta? meta;
-  String? userKey;
 
-  CustomersListResponseModel({this.items, this.meta, this.userKey});
+  FilterCityResponseModel({this.items, this.meta});
 
-  CustomersListResponseModel.fromJson(Map<String, dynamic> json) {
+  FilterCityResponseModel.fromJson(Map<String, dynamic> json) {
     if (json['items'] != null) {
       items = <Items>[];
       json['items'].forEach((v) {
@@ -13,7 +12,6 @@ class CustomersListResponseModel {
       });
     }
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
-    userKey = json['user_key'];
   }
 
   Map<String, dynamic> toJson() {
@@ -24,157 +22,151 @@ class CustomersListResponseModel {
     if (meta != null) {
       data['meta'] = meta!.toJson();
     }
-    data['user_key'] = userKey;
     return data;
   }
+
 }
 
 class Items {
   String? id;
-  String? companyName;
-  String? firstName;
-  String? lastName;
-  String? primaryEmail;
-  String? createdAt;
+  String? name;
   String? status;
-  List<Divisions>? divisions;
-  List<Companies>? companies;
-  List<dynamic>? customerActivities;
-  List<CustomerToCustomFields>? customerToCustomFields;
+  String? createdAt;
+  String? updatedAt;
+  State? state;
 
   Items(
       {this.id,
-        this.companyName,
-        this.firstName,
-        this.lastName,
-        this.primaryEmail,
-        this.createdAt,
+        this.name,
         this.status,
-        this.divisions,
-        this.companies,
-        this.customerActivities,
-        this.customerToCustomFields});
+        this.createdAt,
+        this.updatedAt,
+        this.state});
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    companyName = json['company_name'];
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    primaryEmail = json['primary_email'];
-    createdAt = json['created_at'];
-    status = json['status'];
-    if (json['divisions'] != null) {
-      divisions = <Divisions>[];
-      json['divisions'].forEach((v) {
-        divisions!.add(Divisions.fromJson(v));
-      });
-    }
-    if (json['companies'] != null) {
-      companies = <Companies>[];
-      json['companies'].forEach((v) {
-        companies!.add(Companies.fromJson(v));
-      });
-    }
-    if (json['customer_activities'] != null) {
-      customerActivities = [];
-      json['customer_activities'].forEach((v) {
-        customerActivities!.add(v);
-      });
-    }
-    if (json['customerToCustomFields'] != null) {
-      customerToCustomFields = <CustomerToCustomFields>[];
-      json['customerToCustomFields'].forEach((v) {
-        customerToCustomFields!.add(CustomerToCustomFields.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['company_name'] = companyName;
-    data['first_name'] = firstName;
-    data['last_name'] = lastName;
-    data['primary_email'] = primaryEmail;
-    data['created_at'] = createdAt;
-    data['status'] = status;
-    if (divisions != null) {
-      data['divisions'] = divisions!.map((v) => v.toJson()).toList();
-    }
-    if (companies != null) {
-      data['companies'] = companies!.map((v) => v.toJson()).toList();
-    }
-    if (customerActivities != null) {
-      data['customer_activities'] =
-          customerActivities!.map((v) => v.toJson()).toList();
-    }
-    if (customerToCustomFields != null) {
-      data['customerToCustomFields'] =
-          customerToCustomFields!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Divisions {
-  String? id;
-  String? name;
-
-  Divisions({this.id, this.name});
-
-  Divisions.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
     name = json['name'];
+    status = json['status'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    state = json['state'] != null ? State.fromJson(json['state']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
+    data['status'] = status;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (state != null) {
+      data['state'] = state!.toJson();
+    }
     return data;
   }
 }
 
-class Companies {
+class State {
   String? id;
-  String? companyName;
-  String? companyEmail;
+  String? name;
+  String? code;
+  String? status;
+  String? createdAt;
+  String? updatedAt;
+  Country? country;
 
-  Companies({this.id, this.companyName, this.companyEmail});
+  State(
+      {this.id,
+        this.name,
+        this.code,
+        this.status,
+        this.createdAt,
+        this.updatedAt,
+        this.country});
 
-  Companies.fromJson(Map<String, dynamic> json) {
+  State.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    companyName = json['company_name'];
-    companyEmail = json['company_email'];
+    name = json['name'];
+    code = json['code'];
+    status = json['status'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    country =
+    json['country'] != null ? Country.fromJson(json['country']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['company_name'] = companyName;
-    data['company_email'] = companyEmail;
+    data['name'] = name;
+    data['code'] = code;
+    data['status'] = status;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (country != null) {
+      data['country'] = country!.toJson();
+    }
     return data;
   }
 }
 
-class CustomerToCustomFields {
+class Country {
   String? id;
-  String? fieldName;
-  String? value;
+  String? name;
+  String? shortName;
+  String? native;
+  String? phone;
+  String? continent;
+  String? capital;
+  String? currency;
+  String? status;
+  bool? installStatus;
+  String? createdAt;
+  String? updatedAt;
 
-  CustomerToCustomFields({this.id, this.fieldName, this.value});
+  Country(
+      {this.id,
+        this.name,
+        this.shortName,
+        this.native,
+        this.phone,
+        this.continent,
+        this.capital,
+        this.currency,
+        this.status,
+        this.installStatus,
+        this.createdAt,
+        this.updatedAt});
 
-  CustomerToCustomFields.fromJson(Map<String, dynamic> json) {
+  Country.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    fieldName = json['field_name'];
-    value = json['value'];
+    name = json['name'];
+    shortName = json['shortName'];
+    native = json['native'];
+    phone = json['phone'];
+    continent = json['continent'];
+    capital = json['capital'];
+    currency = json['currency'];
+    status = json['status'];
+    installStatus = json['installStatus'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['field_name'] = fieldName;
-    data['value'] = value;
+    data['name'] = name;
+    data['shortName'] = shortName;
+    data['native'] = native;
+    data['phone'] = phone;
+    data['continent'] = continent;
+    data['capital'] = capital;
+    data['currency'] = currency;
+    data['status'] = status;
+    data['installStatus'] = installStatus;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

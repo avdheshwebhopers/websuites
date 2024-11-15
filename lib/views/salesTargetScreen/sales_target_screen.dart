@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/views/salesTargetScreen/widgets/sales_target_card.dart';
-import '../../controler/viewModels/saveToken/save_token.dart';
+import '../../viewModels/saveToken/save_token.dart';
 import '../../data/models/controller.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
 import '../../resources/iconStrings/icon_strings.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Responsive/Custom_Drawer.dart';
-import '../../../controler/viewModels/leadScreens/leadMasters/controller.dart';
+
 import '../../../data/models/controller.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
@@ -9,6 +9,7 @@ import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
 
 import '../../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
+import '../../../viewModels/leadScreens/leadMasters/controller.dart';
 import 'SourceScreen/LeadMasterSourceScreen.dart';
 import 'StatusScreen/LeadMasterStatusScreen.dart';
 import 'TypeScreen/LeadMasterTypeScreen.dart';

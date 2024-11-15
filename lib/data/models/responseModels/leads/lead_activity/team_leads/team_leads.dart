@@ -1,18 +1,18 @@
 class LeadActivityTeamLeadResponseModel {
   User? user;
-  List<Null>? leadType;
+  List<String>? leadType;  // Changed from List<Null> to List<String>
   int? total;
 
   LeadActivityTeamLeadResponseModel({this.user, this.leadType, this.total});
 
   LeadActivityTeamLeadResponseModel.fromJson(Map<String, dynamic> json) {
     user = json['user'] != null ? User.fromJson(json['user']) : null;
+
+    // If lead_type exists in the JSON, make sure it's a List<String> instead of List<Null>
     if (json['lead_type'] != null) {
-      leadType = <Null>[];
-      json['lead_type'].forEach((v) {
-        leadType!.add((v));
-      });
+      leadType = List<String>.from(json['lead_type'].map((v) => v.toString())); // Ensures leadType is a list of strings
     }
+
     total = json['total'];
   }
 
@@ -22,10 +22,14 @@ class LeadActivityTeamLeadResponseModel {
       data['user'] = user!.toJson();
     }
     if (leadType != null) {
-      data['lead_type'] = leadType!.map((v) => v).toList();
+      data['lead_type'] = leadType;  // No need to map since leadType is already List<String>
     }
     data['total'] = total;
     return data;
+  }
+
+  static List<LeadActivityTeamLeadResponseModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) => LeadActivityTeamLeadResponseModel.fromJson(json)).toList();
   }
 }
 

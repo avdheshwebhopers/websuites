@@ -3,14 +3,15 @@ import 'package:get/get.dart';
 import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/customerScreens/activationListScreen/widgets/ActivationListCard/list_screen_card.dart';
 import 'package:websuites/views/homeScreen/home_screen.dart';
-import '../../../Responsive/HomeScreen.dart';
-import '../../../controler/viewModels/saveToken/save_token.dart';
+
+
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_10w.dart';
 import '../../../utils/components/widgets/sizedBoxes/sizedBox_5w.dart';
+import '../../../viewModels/saveToken/save_token.dart';
 
 
 
@@ -60,7 +61,7 @@ class _CustomerActivationListScreenState extends State<CustomerActivationListScr
       //     userName: '$userName',
       //     phoneNumber: '$userEmail',
       //     version: '1.0.12'),
-drawer: HomeScreen(),
+// drawer: HomeScreen(),
         body:
           Stack(
             children: [

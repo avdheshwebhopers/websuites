@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../Utils/Routes/routes_name.dart';
 import '../../Utils/utils.dart';
-import '../../controler/viewModels/forgotPasswordScreen/forgot_password.dart';
+import '../../viewModels/forgotPasswordScreen/forgot_password.dart';
 import '../../resources/imageStrings/image_strings.dart';
 import '../../resources/strings/strings.dart';
 import '../../resources/textStyles/text_styles.dart';

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../../../../appColors/app_colors.dart';
-import 'expandedListTile.dart';
+
+// Static class to manage selected menu items
+class SelectedMenuItems {
+  static String? selectedChild;
+}
 
 class CustomListTile extends StatelessWidget {
   final String leadIconImage;
@@ -21,13 +24,24 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Update the selection logic to highlight the "Dashboard" when selectedIndex is 0
-    bool isSelected = (selectedIndex == 0 && title == 'Dashboard') || SelectedMenuItems.selectedChild == title;
+    // Check if this item is selected
+    bool isSelected = (selectedIndex == 0 && title == 'Dashboard') ||
+        SelectedMenuItems.selectedChild == title;
 
     return ListTile(
       dense: true,
-      contentPadding: EdgeInsets.symmetric(horizontal: 15.0),
-      leading: Image.asset(leadIconImage),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 15.0),
+      leading: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          isSelected ? AllColors.mediumPurple : AllColors.welcomeColor,
+          BlendMode.srcIn,
+        ),
+        child: Image.asset(
+          leadIconImage,
+          width: 24,
+          height: 24,
+        ),
+      ),
       title: isCollapsed
           ? null
           : Text(
@@ -42,10 +56,10 @@ class CustomListTile extends StatelessWidget {
         SelectedMenuItems.selectedChild = title; // Update selected child
         onTap(); // Call the onTap function
       },
+      // Add hover effect
+      hoverColor: AllColors.mediumPurple.withOpacity(0.1),
+      // Add selected background color
+      tileColor: isSelected ? AllColors.mediumPurple.withOpacity(0.1) : null,
     );
   }
 }
-
-
-
-
