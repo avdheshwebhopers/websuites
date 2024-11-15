@@ -1,68 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/views/customerScreens/companiesScreen/all_companies_screen.dart';
-import 'package:websuites/views/customerScreens/customerList/list_screen.dart';
-import 'package:websuites/views/leadScreens/Setting/SettingScreen.dart';
-import 'package:websuites/views/leadScreens/leadActivities/lead_activities_screen.dart';
-import 'package:websuites/views/leadScreens/leadList/leadlist_screen.dart';
-import 'package:websuites/views/leadScreens/leadMaster/lead_master_screen.dart';
+import 'package:websuites/views/customerScreens/activitiesScreen/activities_screen.dart';
+import 'package:websuites/views/customerScreens/customerPaymentReminder/payment_reminder.dart';
+import 'package:websuites/views/customerScreens/orderProducts/order_products_screen.dart';
+import 'package:websuites/views/homeScreen/widgets/apppbarFilterIcon/FilterActionButton.dart';
+import 'package:websuites/views/leadScreens/trashLead/widgets/filter/TrashFilter.dart';
+import 'package:websuites/views/orderScreen/orderActivityScreen/order_activity_screen.dart';
+import 'package:websuites/views/orderScreen/orderProformaScreen/proforma_list_screen.dart';
+import 'package:websuites/views/orderScreen/ordermaster/OrderMasterListScreen.dart';
+
 import '../../Responsive/Custom_Drawer.dart';
-import '../../data/models/controller.dart';
 import '../../resources/strings/strings.dart';
-import '../../utils/appColors/app_colors.dart';
 import '../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../utils/responsive/bodies/responsive scaffold.dart';
 import '../Dashboard/DashboardScreen.dart';
-
+import '../customerScreens/companiesScreen/all_companies_screen.dart';
+import '../customerScreens/customerList/list_screen.dart';
+import '../customerScreens/customerServices/services_screen.dart';
+import '../leadScreens/Setting/SettingScreen.dart';
 import '../leadScreens/createNewLead/create_newLead_screen.dart';
+import '../leadScreens/leadActivities/lead_activities_screen.dart';
+import '../leadScreens/leadList/leadlist_screen.dart';
+import '../leadScreens/leadMaster/lead_master_screen.dart';
 import '../leadScreens/searchGoogleLeads/search_google_leads.dart';
 import '../leadScreens/trashLead/trash_lead_screen.dart';
+import '../orderScreen/orderListScreen/orderList_screen.dart';
+import '../salesTargetScreen/sales_target_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreenController extends GetxController {
+  RxInt selectedIndex = 0.obs;
+  RxBool isCollapsed = false.obs;
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final ScreenController _screenController = Get.put(ScreenController());
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  int selectedIndex = 0;
-  bool isCollapsed = false;
-
-  final List<Widget> _screens = [
+  final List<Widget> screens = [
     Dashboardscreen(),
     CreateNewLeadScreen(),
     SearchGoogleLeads(),
     LeadListScreen(),
-    LeadActivitiesScreen(),
     TrashLeadScreen(),
+    LeadActivitiesScreen(),
     SettingScreen(),
     LeadMasterScreen(),
     CustomersListScreen(),
+    CustomersActivitiesScreen(),
+    CustomerPaymentReminders(),
     CustomerCompaniesScreen(),
+    CustomerServicesScreen(),
+    CustomerOrderProductsScreen(),
+    OrderListScreen(),
+    OrderActivityScreen(),
+    OrderProformaList(),
+    OrderMasterListScreen(),
+    SalesTargetScreen()
+
+
   ];
 
-  void onDrawerItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-
+  void onDrawerItemTapped(int index, BuildContext context) {
+    selectedIndex.value = index;
     if (MediaQuery.of(context).size.width < 500) {
       Navigator.pop(context);
     }
   }
 
   void toggleDrawerCollapse() {
-    setState(() {
-      isCollapsed = !isCollapsed;
-    });
+    isCollapsed.value = !isCollapsed.value;
   }
 
   String getAppBarTitle() {
-    switch (selectedIndex) {
+    switch (selectedIndex.value) {
       case 1:
         return Strings.createNewLead;
       case 2:
@@ -70,116 +76,58 @@ class _HomeScreenState extends State<HomeScreen> {
       case 3:
         return Strings.leadList;
       case 4:
-        return Strings.leadActivities;
+        return Strings.leadTrash;
       case 5:
-        return Strings.leadList;
+        return Strings.leadActivities;
       case 6:
         return Strings.setting;
       case 7:
         return Strings.leadMaster;
       case 8:
-        return Strings.master;
+        return Strings.customers;
       case 9:
+        return Strings.customerActivity;
+      case 10:
+        return 'Payment Reminder';
+      case 11:
         return 'Customer Companies';
+      case 12:
+        return 'All Services';
+      case 13:
+        return 'Order Products';
+      case 14:
+        return 'Order List';
+      case 15:
+        return 'Activity';
+      case 13:
+        return 'Proforma List';
+      case 14:
+        return 'Order Master';
+      case 15:
+        return 'Sales';
+
+
       default:
-        return 'Hello, Avdhesh !';
+        return 'Hello, Avdhesh!';
     }
   }
 
-  Widget _buildTabletContent() {
-    return Column(
-      children: [
-        Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              Container(
-                height: 80,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                margin: const EdgeInsets.only(top: 22),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Back arrow icon on tablet/desktop for non-dashboard screens
-                    if (Get.width >= 500 && selectedIndex != 0)
-                      IconButton(
-                        icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-                        onPressed: () {
-                          setState(() {
-                            selectedIndex = 0; // Navigate back to the dashboard
-                          });
-                        },
-                      ),
-                    Expanded(
-                      child: Text(
-                        getAppBarTitle(),
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    if (selectedIndex == 4) // Additional icons for Lead Activities
-                      Row(
-                        children: [
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(Icons.filter_list_sharp, color: AllColors.mediumPurple),
-                                onPressed: () {
-                                  // Handle filter action
-                                },
-                              ),
-                              Text("Filter"),
-                            ],
-                          ),
-                          SizedBox(width: 20),
-                          Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  // Handle details action
-                                },
-                                child: Text(Strings.details),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.arrow_forward_ios, color: AllColors.mediumPurple, size: 17),
-                                onPressed: () {
-                                  // Handle forward action
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Container(
-            color: Colors.grey[100],
-            child: IndexedStack(
-              index: selectedIndex,
-              children: _screens,
-            ),
-          ),
-        ),
-      ],
-    );
+  bool shouldShowFilterActionButton() {
+    return selectedIndex.value == 3;
   }
+}
+
+class HomeScreen extends GetView<HomeScreenController> {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomeScreenController());
     final isTabletOrDesktop = MediaQuery.of(context).size.width >= 500;
 
     return ResponsiveScaffold(
       bottomNavigationBar: CustomBottomNavBar(),
-      scaffoldKey: _scaffoldKey,
+      scaffoldKey: controller.scaffoldKey,
       appBar: !isTabletOrDesktop
           ? AppBar(
         surfaceTintColor: Colors.white,
@@ -188,55 +136,52 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: IconButton(
           icon: const Icon(Icons.menu, color: Colors.black),
           onPressed: () {
-            _scaffoldKey.currentState?.openDrawer();
+            controller.scaffoldKey.currentState?.openDrawer();
           },
         ),
         title: Row(
           children: [
-            Expanded(
-              child: Text(
-                getAppBarTitle(),
-                style: const
-                TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                ),
-                textAlign: TextAlign.start,
+            Obx(() => Text(
+              controller.getAppBarTitle(),
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
               ),
-            ),
+            )),
           ],
         ),
         actions: [
-          if (selectedIndex == 4)
-            Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.notifications),
-                  onPressed: () {
-                    // Handle notifications
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.more_vert),
-                  onPressed: () {
-                    // Handle more options
-                  },
-                ),
-              ],
-            ),
+          Obx(() => Visibility(
+            visible: controller.selectedIndex.value == 3 ||
+
+                controller.selectedIndex.value == 5 ||
+                controller.selectedIndex.value == 6 ||
+                controller.selectedIndex.value == 7 ||
+                controller.selectedIndex.value == 8,
+            child: const FilterActionButtons(),
+          )),
+          Obx(() => Visibility(
+            visible: controller.selectedIndex.value == 4,
+            child:TrashFilter()
+
+
+
+          )
+          ),
         ],
+
       )
           : null,
       drawer: !isTabletOrDesktop
           ? Drawer(
-        child: CustomDrawer(
-          selectedIndex: selectedIndex,
-          onItemSelected: onDrawerItemTapped,
-          isCollapsed: isCollapsed,
-          onCollapseToggle: toggleDrawerCollapse,
+        child: Obx(() => CustomDrawer(
+          selectedIndex: controller.selectedIndex.value,
+          onItemSelected: (index) => controller.onDrawerItemTapped(index, context),
+          isCollapsed: controller.isCollapsed.value,
+          onCollapseToggle: controller.toggleDrawerCollapse,
           isTabletOrDesktop: isTabletOrDesktop,
-        ),
+        )),
       )
           : null,
       body: Container(
@@ -244,22 +189,79 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Row(
           children: [
             if (isTabletOrDesktop)
-              CustomDrawer(
-                selectedIndex: selectedIndex,
-                onItemSelected: onDrawerItemTapped,
-                isCollapsed: isCollapsed,
-                onCollapseToggle: toggleDrawerCollapse,
+              Obx(() => CustomDrawer(
+                selectedIndex: controller.selectedIndex.value,
+                onItemSelected: (index) => controller.onDrawerItemTapped(index, context),
+                isCollapsed: controller.isCollapsed.value,
+                onCollapseToggle: controller.toggleDrawerCollapse,
                 isTabletOrDesktop: isTabletOrDesktop,
-              ),
+              )),
             Expanded(
-              child: isTabletOrDesktop
-                  ? _buildTabletContent()
-                  : Container(
-                color: Colors.grey[100],
-                child: IndexedStack(
-                  index: selectedIndex,
-                  children: _screens,
-                ),
+              child: Column(
+                children: [
+                  if (isTabletOrDesktop)
+                    Container(
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 80,
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            margin: const EdgeInsets.only(top: 22),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Obx(() => Visibility(
+                                  visible: Get.width >= 500 && controller.selectedIndex.value != 0,
+                                  child: IconButton(
+                                    icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+                                    onPressed: () => controller.selectedIndex.value = 0,
+                                  ),
+                                )),
+                                Expanded(
+                                  child: Obx(() => Text(
+                                    controller.getAppBarTitle(),
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                    textAlign: TextAlign.start,
+                                  )),
+                                ),
+                                Obx(() => Visibility(
+                                  visible: controller.selectedIndex.value == 3 ||
+
+                                      controller.selectedIndex.value == 5 ||
+                                      controller.selectedIndex.value == 6 ||
+                                      controller.selectedIndex.value == 7 ||
+                                      controller.selectedIndex.value == 8,
+                                  child: const FilterActionButtons(),
+                                )),
+                                Obx(() => Visibility(
+                                  visible: controller.selectedIndex.value == 4,
+                                  child: TrashFilter()
+
+
+
+                                )
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  Expanded(
+                    child: Container(
+                      color: Colors.grey[100],
+                      child: Obx(() => IndexedStack(
+                        index: controller.selectedIndex.value,
+                        children: controller.screens,
+                      )),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

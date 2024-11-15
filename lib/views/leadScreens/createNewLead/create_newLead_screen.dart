@@ -7,16 +7,17 @@ import 'package:websuites/utils/responsive/bodies/Responsive.dart';
 
 import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 import '../../../Responsive/Custom_Drawer.dart';
-import '../../../controler/viewModels/leadScreens/createNewLead/ProductCategory/ProductCategory.dart';
-import '../../../controler/viewModels/leadScreens/createNewLead/assignedLeadTo/assigned_lead_to_viewModel.dart';
-import '../../../controler/viewModels/leadScreens/createNewLead/createnewlead_button/CreateNewLeadButton.dart';
-import '../../../controler/viewModels/leadScreens/createNewLead/customFields/custom_fields_viewModels.dart';
-import '../../../controler/viewModels/leadScreens/createNewLead/divisions/divisions_view_model.dart';
-import '../../../controler/viewModels/leadScreens/createNewLead/pincode/pincode_view_model.dart';
-import '../../../controler/viewModels/leadScreens/createNewLead/source/source_view_model.dart';
-import '../../../controler/viewModels/leadScreens/leadMasters/controller.dart';
-import '../../../controler/viewModels/leadScreens/trashLeads/leadTypes/lead_type_viewModel.dart';
-import '../../../controler/viewModels/saveToken/save_token.dart';
+import '../../../viewModels/filterdate/DateFilter.dart';
+import '../../../viewModels/leadScreens/createNewLead/ProductCategory/ProductCategory.dart';
+import '../../../viewModels/leadScreens/createNewLead/assignedLeadTo/assigned_lead_to_viewModel.dart';
+import '../../../viewModels/leadScreens/createNewLead/createnewlead_button/CreateNewLeadButton.dart';
+import '../../../viewModels/leadScreens/createNewLead/customFields/custom_fields_viewModels.dart';
+import '../../../viewModels/leadScreens/createNewLead/divisions/divisions_view_model.dart';
+import '../../../viewModels/leadScreens/createNewLead/pincode/pincode_view_model.dart';
+import '../../../viewModels/leadScreens/createNewLead/source/source_view_model.dart';
+import '../../../viewModels/leadScreens/leadMasters/controller.dart';
+import '../../../viewModels/leadScreens/trashLeads/leadTypes/lead_type_viewModel.dart';
+import '../../../viewModels/saveToken/save_token.dart';
 import '../../../data/models/controller.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
@@ -39,50 +40,60 @@ class CreateNewLeadScreen extends StatefulWidget {
 }
 
 class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
-
   RxList<String> categoriesRxList = RxList<String>();
   final LeadMasterController controller1 = Get.put(LeadMasterController());
   final PinCodeViewModel createLeadPinController = Get.put(PinCodeViewModel());
   final PinCodeViewModel _viewModel = Get.put(PinCodeViewModel());
   TextEditingController searchController = TextEditingController();
-  final ProductCategoryController productCategoryController = Get.put(ProductCategoryController());
+  final ProductCategoryController productCategoryController =
+      Get.put(ProductCategoryController());
   final CreateNewLeadController controller = Get.put(CreateNewLeadController());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+
+  final LeadSourceController leadSourceController =
+      Get.put(LeadSourceController(apiService: NetworkApiServices()));
+
   final AssignedLeadToViewModel _assignedLeadToController =
       Get.put(AssignedLeadToViewModel());
-  final DivisionsViewModel _divisionsController = Get.put(DivisionsViewModel());
+
+  // final DivisionsViewModel _divisionsController = Get.put(DivisionsViewModel());
   final LeadTypeViewModel leadTypeViewModel = Get.put(LeadTypeViewModel());
   final CreateLeadCustomFieldsViewModel customFieldsController =
       Get.put(CreateLeadCustomFieldsViewModel());
 
-  final LeadSourceController _leadSourceController =
-      Get.put(LeadSourceController(apiService: NetworkApiServices()));
+  final ConstantValueViewModel constantValueViewModel =
+      Get.put(ConstantValueViewModel());
   final SaveUserData userPreference = SaveUserData();
   final ScreenController _screenController = Get.put(ScreenController());
   String userName = '';
   String? userEmail;
 
-
   var selectedTab = 'types'.obs; // Track selected tab
-
 
   @override
   void initState() {
     super.initState();
     // customFieldsController.getIndustryType();
+    leadSourceController.fetchLeadSources(AppUrls.createNewLeadSource);
+    productCategoryController
+        .fetchLeadProductCategories(context); // Ensure this is called
+    _assignedLeadToController
+        .fetchAssignedLeads(context); // Ensure this is called
+    productCategoryController.fetchLeadProductCategories(context);
 
     fetchUserData();
     _initControllers();
-    _divisionsController.createNewLeadDivisions(context);
+    // _divisionsController.createNewLeadDivisions(context);
+    // productCategoryController.fetchLeadProductCategories(context); // Ensure this is called
   }
 
   void _initControllers() {
-    _assignedLeadToController.assignedLead(context);
-    _divisionsController.createNewLeadDivisions(context);
+    // _assignedLeadToController.assignedLead(context);
+    // _divisionsController.createNewLeadDivisions(context);
     customFieldsController.createNewLeadCustomFields(context);
-    _leadSourceController.fetchLeadSources(AppUrls.createNewLeadSource);
-    productCategoryController.fetchLeadProductCategories(context);
+    leadSourceController.fetchLeadSources(AppUrls.createNewLeadSource);
+    // productCategoryController.fetchLeadProductCategories(context);
   }
 
   Future<void> fetchUserData() async {
@@ -99,6 +110,8 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final DivisionsViewModel _divisionsController =
+        Get.put(DivisionsViewModel());
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       // scaffoldKey: _scaffoldKey,
@@ -112,18 +125,18 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
       backgroundColor: AllColors.whiteColor,
 
       drawer: Obx(
-            () =>
-                CustomDrawer(
-                  selectedIndex: 0, // Customize as needed
-                  onItemSelected: (index) {
-                    // Handle item selection
-                  },
-                  isCollapsed: false,
-                  onCollapseToggle: () {
-                    // Handle drawer collapse/expand
-                  },
-                  isTabletOrDesktop: screenWidth >= 500,
-                ),
+        () => CustomDrawer(
+          selectedIndex: 0,
+          // Customize as needed
+          onItemSelected: (index) {
+            // Handle item selection
+          },
+          isCollapsed: false,
+          onCollapseToggle: () {
+            // Handle drawer collapse/expand
+          },
+          isTabletOrDesktop: screenWidth >= 500,
+        ),
       ),
       body: Stack(
         children: [
@@ -160,8 +173,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         controller: controller.mobileController,
                       ),
                       SizedBox15h(),
-                      TextStyles.w500_14_Black(
-                          context, Strings.email),
+                      TextStyles.w500_14_Black(context, Strings.email),
 
                       CreateNewLeadScreenCard(
                         hintText: Strings.emailExample,
@@ -169,7 +181,8 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                       ),
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.address),
-                      CreateNewLeadScreenCard(hintText: Strings.enterAddresscal),
+                      CreateNewLeadScreenCard(
+                          hintText: Strings.enterAddresscal),
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.cityPincode),
                       CreateNewLeadScreenCard(hintText: Strings.cityPincode),
@@ -184,23 +197,27 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.source),
                       const SizedBox(height: 5),
-                      CreateNewLeadScreenCard(
-                        hintText: Strings.source,
-                        categories: _leadSourceController.leadSources
-                            .map((source) => source['name'] as String)
-                            .toList(),
-                        onCategoryChanged: (selectedSource) {
-                          final selectedSourceData =
-                              _leadSourceController.leadSources.firstWhere(
-                            (source) => source['name'] == selectedSource,
-                            orElse: () => {'id': null},
-                          );
-                          _leadSourceController
-                              .setSelectedSource(selectedSourceData['id']);
-                        },
-                        allowCustomInput:
-                            true, // Add this line to allow custom input
-                      ),
+
+                      Obx(() {
+                        if (productCategoryController.isLoading.value) {
+                          return CircularProgressIndicator();
+                        } else if (productCategoryController.errorMessage.isNotEmpty) {
+                          return Text(productCategoryController.errorMessage.value);
+                        } else if (productCategoryController.leadProductCategories.isEmpty) {
+                          return Text('No product categories available');
+                        }
+
+                        return CreateNewLeadScreenCard(
+                          hintText: Strings.select,
+                          categories: productCategoryController.leadProductCategories
+                              .map((category) => category.name) // Assuming 'name' is the field you want to display
+                              .toList(),
+                          onCategoriesChanged: (selectedCategories) {
+                            productCategoryController.updateSelectedCategories(selectedCategories);
+                          },
+                          isMultiSelect: true, // Allow multiple selections
+                        );
+                      }),
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.type),
                       Obx(() {
@@ -230,6 +247,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         context,
                         Strings.assignedLeadTo,
                       ),
+
                       Obx(() {
                         if (_assignedLeadToController.loading.value) {
                           return const CircularProgressIndicator();
@@ -240,20 +258,18 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                                 ? Strings.select
                                 : _assignedLeadToController
                                     .selectedLeadName.value,
-                            categories: _assignedLeadToController
-                                .categoriesRxList.value,
+                            categories:
+                                _assignedLeadToController.fullCategoriesRxList,
                             onCategoryChanged: (selectedCategory) {
-                              // Extract first and last names for the selected category
-                              final names = selectedCategory.split('\n')[0].split(
-                                  ' '); // Get first and last name from the first line
+                              // Handle selection for full names with emails
+                              final names =
+                                  selectedCategory.split('\n')[0].split(' ');
                               if (names.length >= 2) {
                                 final firstName = names[0];
                                 final lastName = names[1];
-                                _assignedLeadToController
-                                        .selectedLeadName.value =
-                                    '$firstName $lastName'; // Update the selected lead name
+                                _assignedLeadToController.selectedLeadName
+                                    .value = '$firstName $lastName';
                               }
-
                             },
                           );
                         }
@@ -270,42 +286,57 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         Strings.divisions,
                       ),
 
-
-                      CreateNewLeadScreenCard(
-                        hintText: Strings.select,
-                        categories: _divisionsController.divisionsList
-                            .map((division) => division.name ?? '')
-                            .toList(),
-                        isMultiSelect: true,
-                        onCategoriesChanged: (selectedDivisions) {
-                          _divisionsController
-                              .updateSelectedDivisions(selectedDivisions);
-                        },
-                        isForDivisions:
-                            true, // Add this line to use the special styling for divisions
-                      ),
-
-
-
+                      Obx(() {
+                        if (_divisionsController.isLoading.value) {
+                          // Change 'loading' to 'isLoading'
+                          return const CircularProgressIndicator();
+                        } else {
+                          return CreateNewLeadScreenCard(
+                            hintText: Strings.select,
+                            categories: _divisionsController.divisionsList
+                                .map((division) => division.name ?? '')
+                                .toList(),
+                            onCategoryChanged: (selectedDivision) {
+                              _divisionsController
+                                  .updateSelectedDivisions([selectedDivision]);
+                            },
+                            isMultiSelect: true,
+                            isForDivisions: true,
+                          );
+                        }
+                      }),
 
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.categories),
 
-                      CreateNewLeadScreenCard(
-                        hintText: Strings.select,
-                        categories: productCategoryController.leadProductCategories
-                            .map((category) => category.description ?? '')
-                            .toList(),
-                        isMultiSelect: true,
-                        onCategoriesChanged: (selectedCategories) {
-                          productCategoryController.updateSelectedCategories(selectedCategories);
-                        },
-                        isForDivisions: true, // Add this line to use the special styling for divisions
-                      ),
+                      Obx(() {
+                        if (productCategoryController.isLoading.value) {
+                          return CircularProgressIndicator();
+                        } else if (productCategoryController
+                            .errorMessage.isNotEmpty) {
+                          return Text(
+                              productCategoryController.errorMessage.value);
+                        } else if (productCategoryController
+                            .leadProductCategories.isEmpty) {
+                          return Text('No product categories available');
+                        }
 
-
+                        return CreateNewLeadScreenCard(
+                          hintText: Strings.select,
+                          categories: productCategoryController
+                              .leadProductCategories
+                              .map((category) => category
+                                  .name) // Assuming 'name' is the field you want to display
+                              .toList(),
+                          onCategoriesChanged: (selectedCategories) {
+                            productCategoryController
+                                .updateSelectedCategories(selectedCategories);
+                          },
+                          isMultiSelect:
+                              true, // Assuming you want to allow multiple selections
+                        );
+                      }),
 //
-
 
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.requirement),
@@ -344,8 +375,6 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                       context,
                       Strings.customFields),
                   const SizedBox(height: 30),
-
-
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -361,7 +390,6 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         // isLoading: _viewModel.isLoading,
                         // filteredPincodeList: _viewModel.filteredPincodeList,filteredPincodeList
                       ),
-
 
 ////
 
@@ -379,7 +407,6 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                       //     );
                       //   },
                       // )),
-
 
                       SizedBox15h(),
                       TextStyles.w500_14_Black(context, Strings.designation),
@@ -517,12 +544,14 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                       Obx(() {
                         if (customFieldsController.loading.value) {
                           return const CircularProgressIndicator();
-                        } else if (customFieldsController.errorMessage.isNotEmpty) {
+                        } else if (customFieldsController
+                            .errorMessage.isNotEmpty) {
                           return Text(
                             customFieldsController.errorMessage.value,
                             style: const TextStyle(color: Colors.red),
                           );
-                        } else if (customFieldsController.industryList.isEmpty) {
+                        } else if (customFieldsController
+                            .industryList.isEmpty) {
                           return Text(
                             'No industry options available',
                             style: const TextStyle(color: Colors.red),
@@ -537,7 +566,6 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                           );
                         }
                       }),
-
 
                       SizedBox15h(),
 
@@ -596,7 +624,6 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
               ),
             ),
           ),
-
         ],
       ),
     );

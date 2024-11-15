@@ -1,37 +1,29 @@
 class OrderMasterResponseModel {
-  String? id;
-  String? name;
-  String? color;
-  bool? isdefault;
-  String? created_at;
-  String? updated_at;
+  final String id;
+  final String name;
+  final String? color; // Color can be null
+  final bool isDefault; // Renamed from 'default' to avoid conflict with Dart keyword
+  final String createdAt;
+  final String updatedAt;
 
   OrderMasterResponseModel({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
     this.color,
-    this.isdefault,
-    this.updated_at,
-    this.created_at
-});
+    required this.isDefault,
+    required this.createdAt,
+    required this.updatedAt,
+  });
 
-  OrderMasterResponseModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    color = json['color'];
-    isdefault = json['isdefault'];
-    updated_at = json['updated_at'];
-    created_at = json['created_at'];
-  }
-
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
-    data['id'] = id;
-    data['name'] = name;
-    data['color'] = color;
-    data['isdefault'] = isdefault;
-    data['updated_at'] = updated_at;
-    data['created_at'] = created_at;
-    return data;
+  // Factory method to parse the JSON response
+  factory OrderMasterResponseModel.fromJson(Map<String, dynamic> json) {
+    return OrderMasterResponseModel(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      color: json['color'] as String?,
+      isDefault: json['default'] as bool,
+      createdAt: json['created_at'] as String,
+      updatedAt: json['updated_at'] as String,
+    );
   }
 }

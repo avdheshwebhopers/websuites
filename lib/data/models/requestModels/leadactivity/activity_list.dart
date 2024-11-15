@@ -1,4 +1,7 @@
-import '../lead_list/lead_list.dart';
+
+
+
+import '../lead/lead_list.dart';
 
 class LeadActivityRequestModel {
   final int active;

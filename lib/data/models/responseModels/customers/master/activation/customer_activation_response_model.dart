@@ -1,39 +1,43 @@
-class CustomerActivationResponseModel {
+class CustomerMasterActivationServicesResponseModel {
   String? id;
   String? name;
   String? description;
   String? image;
-  String? created_at;
-  String? updated_at;
+  String? createdAt;
+  String? updatedAt;
 
-  CustomerActivationResponseModel({
-    this.id,
-    this.name,
-    this.description,
-    this.image,
-    this.created_at,
-    this.updated_at
-});
+  CustomerMasterActivationServicesResponseModel(
+      {this.id,
+        this.name,
+        this.description,
+        this.image,
+        this.createdAt,
+        this.updatedAt});
 
-  CustomerActivationResponseModel.fromJson(Map<String, dynamic> json) {
+  CustomerMasterActivationServicesResponseModel.fromJson(
+      Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];
     image = json['image'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 
-  Map<String, dynamic> toJson (){
-    final Map<String, dynamic> data = <String, dynamic> {};
-    data['id'] = id;
-    data['name'] = name;
-    data['description'] = description;
-    data['image'] = image;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['description'] = this.description;
+    data['image'] = this.image;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
     return data;
   }
+  static List<CustomerMasterActivationServicesResponseModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) => CustomerMasterActivationServicesResponseModel.fromJson(json)).toList();
+  }
+
 }
 
 

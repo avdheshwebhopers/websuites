@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controler/viewModels/saveToken/save_token.dart';
+
 import '../resources/iconStrings/icon_strings.dart';
 import '../utils/appColors/app_colors.dart';
 import '../utils/components/buttons/common_button.dart';
 import '../utils/components/widgets/drawer/drawerListTiles/custom_list_tile.dart';
 import '../utils/components/widgets/drawer/drawerListTiles/expandedListTile.dart';
+import '../viewModels/saveToken/save_token.dart';
 
 class CustomDrawer extends StatefulWidget {
   final int selectedIndex;
@@ -73,7 +74,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 (index) => ListTile(
               onTap: () => widget.onItemSelected(index + 1),
               title: Text(
-                '• ${["Create", "Google Leads", "List", "Activities", "Trash", "Setting", "(Lead) Master"][index]}',
+                '• ${["Create", "Google Leads", "List", "Trash", "Activities", "Setting", "(Lead) Master"][index]}',
                 style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w300, fontSize: 14),
               ),
             ),
@@ -94,11 +95,83 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ListTile(
               onTap: () => widget.onItemSelected(9),
               title: Text(
+                '• Activities',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(10),
+              title: Text(
+                '• Payment Reminder',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(11),
+              title: Text(
                 '• Companies',
                 style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
               ),
             ),
+            ListTile(
+              onTap: () => widget.onItemSelected(12),
+              title: Text(
+                '• Services',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(13),
+              title: Text(
+                '• Order Products',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
           ],
+        ),
+
+
+        CustomExpandedListTile(
+          title: 'Orders',
+          leadingIconImage: IconStrings.orders,
+          initiallyExpanded: expandedSection == 'orders',
+          children: [
+            ListTile(
+              onTap: () => widget.onItemSelected(14),
+              title: Text(
+                '• List',
+                style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(15),
+              title: Text(
+                '• Activities',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(16),
+              title: Text(
+                '• Proforma List',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(17),
+              title: Text(
+                '• Order(Master)',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+
+          ],
+        ),
+        CustomListTile(
+          leadIconImage: IconStrings.sales,
+          title: 'Sales',
+          onTap: () => widget.onItemSelected(18),
+          selectedIndex: widget.selectedIndex,
         ),
       ],
     );
@@ -108,54 +181,86 @@ class _CustomDrawerState extends State<CustomDrawer> {
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: 16),
       children: [
-        IconButton(
-          icon: Image.asset(IconStrings.dashboard, width: 40),
-          onPressed: () => widget.onItemSelected(0),
+        Container(
+          width: double.infinity,
+          alignment: Alignment.center,
+          child: IconButton(
+            icon: Image.asset(IconStrings.dashboard, width: 40),
+            onPressed: () => widget.onItemSelected(0),
+          ),
         ),
-        IconButton(
-          icon: Image.asset(IconStrings.lead, width: 40),
-          onPressed: () => toggleDrawerWithSection('lead'),
+        Container(
+          width: double.infinity,
+          alignment: Alignment.center,
+          child: IconButton(
+            icon: Image.asset(IconStrings.lead, width: 40),
+            onPressed: () => toggleDrawerWithSection('lead'),
+          ),
         ),
-        IconButton(
-          icon: Image.asset(IconStrings.customer, width: 40),
-          onPressed: () => toggleDrawerWithSection('customer'),
+        Container(
+          width: double.infinity,
+          alignment: Alignment.center,
+          child: IconButton(
+            icon: Image.asset(IconStrings.customer, width: 40),
+            onPressed: () => toggleDrawerWithSection('customer'),
+          ),
         ),
       ],
     );
   }
 
+  Widget buildHeader() {
+    if (isLocalCollapsed) {
+      return Container(
+        padding: const EdgeInsets.symmetric(vertical: 32.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ClipOval(
+              child: Image.asset(
+                'assets/images/WHLogo.png',
+                width: 40,
+                height: 40,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ],
+        ),
+      );
+    } else {
+      return Container(
+        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            ClipOval(
+              child: Image.asset(
+                'assets/images/WHLogo.png',
+                width: 40,
+                height: 40,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              'Webhopers',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return
-      Container(
+    return Container(
       width: isLocalCollapsed ? 80 : 200,
       color: Colors.white,
       child: Column(
         children: [
-          // Header with logo and collapse button
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 12.0),
-            child: Row(
-              children: [
-                ClipOval(
-                  child: Image.asset(
-                    'assets/images/WHLogo.png',
-                    width: 40,
-                    height: 40,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                if (!isLocalCollapsed)
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text(
-                      'Webhopers',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-              ],
-            ),
-          ),
+          // Header with logo
+          buildHeader(),
           // Navigation items
           Expanded(
             child: isLocalCollapsed
@@ -181,10 +286,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               const SizedBox(height: 20),
               Container(
+                alignment: Alignment.center,
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 child: CommonButton(
                   height: 40,
-                  width: 120,
+                  width: isLocalCollapsed ? 60 : 120,
                   title: 'Logout',
                   onPress: () {
                     _saveUser.removeUser();

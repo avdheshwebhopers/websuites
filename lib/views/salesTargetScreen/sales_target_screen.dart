@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/views/salesTargetScreen/widgets/sales_target_card.dart';
-import '../../controler/viewModels/saveToken/save_token.dart';
+import '../../viewModels/saveToken/save_token.dart';
 import '../../data/models/controller.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
 import '../../resources/iconStrings/icon_strings.dart';
@@ -82,15 +82,20 @@ final ScreenController _screenController = Get.put(ScreenController());
               const SafeArea(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: EdgeInsets.symmetric(horizontal: 15,vertical: 6),
                     child: Column(
                       children: [
-                        SizedBox(height: 70),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
+
+                        SalesTargetScreenCard(
+                          title: 'Dinesh Thakur October Sale Target',
+                          startDate: 'Oct 1, 2023',
+                          price:   '₹11,55,000',
+                          created_Date:  'Dec 14, 2023, 11:38 AM',
+                          deadline:   'Oct 31, 2023',
+                          member: '07' ,
+
+                        ),
+
                       ],
                     ),
                   ),
@@ -100,45 +105,7 @@ final ScreenController _screenController = Get.put(ScreenController());
               //================================================================
               //CUSTOM APP BAR
 
-              CustomAppBar(child: Row(
-                children: [
-                  InkWell(
-                    onTap: (){
-                      _globalKey.currentState?.openDrawer();
-                    },
-                      child: Icon(Icons.menu_sharp,size: 25,)),
-                  SizedBox(width: 10,),
-                  Text('Sales Target', style: TextStyle(
-                    color: AllColors.blackColor,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
-                      
-                  ),),
 
-                  Spacer(),
-
-                  Container(
-                    height: Get.height/30,
-                    width: Get.width/4,
-                    decoration: BoxDecoration(
-                      color: AllColors.mediumPurple,
-                      borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(Icons.add, size: 20, color: AllColors.whiteColor,),
-                        Text('Add Target', style: TextStyle(
-                          color: AllColors.whiteColor,
-                            
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400
-                        ),)
-                      ],
-                    ),
-                  )
-                ],
-              )),
             ]
           )
     );

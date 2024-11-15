@@ -1,147 +1,142 @@
-class CustomerOrderProductsResponseModel {
+class CustomerOrderProductResponseModel {
   List<Items>? items;
   Meta? meta;
   String? userKey;
 
-  CustomerOrderProductsResponseModel({
-    this.items,
-    this.meta,
-    this.userKey
-  });
+  CustomerOrderProductResponseModel({this.items, this.meta, this.userKey});
 
-  CustomerOrderProductsResponseModel.fromJson(Map<String, dynamic> json) {
+  CustomerOrderProductResponseModel.fromJson(Map<String, dynamic> json) {
     if (json['items'] != null) {
       items = <Items>[];
       json['items'].forEach((v) {
-        items!.add(Items.fromJson(v));
+        items!.add(new Items.fromJson(v));
       });
     }
-    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
+    meta = json['meta'] != null ? new Meta.fromJson(json['meta']) : null;
     userKey = json['user_key'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (items != null) {
-      data['items'] = items!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.items != null) {
+      data['items'] = this.items!.map((v) => v.toJson()).toList();
     }
-    if (meta != null) {
-      data['meta'] = meta!.toJson();
+    if (this.meta != null) {
+      data['meta'] = this.meta!.toJson();
     }
-    data['user_key'] = userKey;
+    data['user_key'] = this.userKey;
     return data;
   }
 }
 
 class Items {
   String? id;
-  String? product_type;
-  String? payment_mode;
-  String? payment_type;
+  String? productType;
+  String? paymentMode;
+  String? paymentType;
   int? mrp;
-  int? sale_price;
+  int? salePrice;
   int? gst;
-  int? gst_percentage;
-  String? tds_option;
+  int? gstPercentage;
+  String? tdsOption;
   int? tds;
-  int? tds_percentage;
-  String? gst_info;
+  int? tdsPercentage;
+  String? gstInfo;
   int? total;
   int? quantity;
   int? duration;
   String? status;
-  String? created_at;
-  String? updated_at;
-  String? deleted_at;
+  String? createdAt;
+  String? updatedAt;
+  Null? deletedAt;
   Product? product;
   List<Services>? services;
   Order? order;
 
   Items(
       {this.id,
-        this.product_type,
-        this.payment_mode,
-        this.payment_type,
+        this.productType,
+        this.paymentMode,
+        this.paymentType,
         this.mrp,
-        this.sale_price,
+        this.salePrice,
         this.gst,
-        this.gst_percentage,
-        this.tds_option,
+        this.gstPercentage,
+        this.tdsOption,
         this.tds,
-        this.tds_percentage,
-        this.gst_info,
+        this.tdsPercentage,
+        this.gstInfo,
         this.total,
         this.quantity,
         this.duration,
         this.status,
-        this.created_at,
-        this.updated_at,
-        this.deleted_at,
+        this.createdAt,
+        this.updatedAt,
+        this.deletedAt,
         this.product,
         this.services,
-        this.order
-      });
+        this.order});
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    product_type = json['product_type'];
-    payment_mode = json['payment_mode'];
-    payment_type = json['payment_type'];
+    productType = json['product_type'];
+    paymentMode = json['payment_mode'];
+    paymentType = json['payment_type'];
     mrp = json['mrp'];
-    sale_price = json['sale_price'];
+    salePrice = json['sale_price'];
     gst = json['gst'];
-    gst_percentage = json['gst_percentage'];
-    tds_option = json['tds_option'];
+    gstPercentage = json['gst_percentage'];
+    tdsOption = json['tds_option'];
     tds = json['tds'];
-    tds_percentage = json['tds_percentage'];
-    gst_info = json['gst_info'];
+    tdsPercentage = json['tds_percentage'];
+    gstInfo = json['gst_info'];
     total = json['total'];
     quantity = json['quantity'];
     duration = json['duration'];
     status = json['status'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    deleted_at = json['deleted_at'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    deletedAt = json['deleted_at'];
     product =
-    json['product'] != null ? Product.fromJson(json['product']) : null;
+    json['product'] != null ? new Product.fromJson(json['product']) : null;
     if (json['services'] != null) {
       services = <Services>[];
       json['services'].forEach((v) {
-        services!.add(Services.fromJson(v));
+        services!.add(new Services.fromJson(v));
       });
     }
-    order = json['order'] != null ? Order.fromJson(json['order']) : null;
+    order = json['order'] != null ? new Order.fromJson(json['order']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['product_type'] = product_type;
-    data['payment_mode'] = payment_mode;
-    data['payment_type'] = payment_type;
-    data['mrp'] = mrp;
-    data['sale_price'] = sale_price;
-    data['gst'] = gst;
-    data['gst_percentage'] = gst_percentage;
-    data['tds_option'] = tds_option;
-    data['tds'] = tds;
-    data['tds_percentage'] = tds_percentage;
-    data['gst_info'] = gst_info;
-    data['total'] = total;
-    data['quantity'] = quantity;
-    data['duration'] = duration;
-    data['status'] = status;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['deleted_at'] = deleted_at;
-    if (product != null) {
-      data['product'] = product!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['product_type'] = this.productType;
+    data['payment_mode'] = this.paymentMode;
+    data['payment_type'] = this.paymentType;
+    data['mrp'] = this.mrp;
+    data['sale_price'] = this.salePrice;
+    data['gst'] = this.gst;
+    data['gst_percentage'] = this.gstPercentage;
+    data['tds_option'] = this.tdsOption;
+    data['tds'] = this.tds;
+    data['tds_percentage'] = this.tdsPercentage;
+    data['gst_info'] = this.gstInfo;
+    data['total'] = this.total;
+    data['quantity'] = this.quantity;
+    data['duration'] = this.duration;
+    data['status'] = this.status;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    data['deleted_at'] = this.deletedAt;
+    if (this.product != null) {
+      data['product'] = this.product!.toJson();
     }
-    if (services != null) {
-      data['services'] = services!.map((v) => v.toJson()).toList();
+    if (this.services != null) {
+      data['services'] = this.services!.map((v) => v.toJson()).toList();
     }
-    if (order != null) {
-      data['order'] = order!.toJson();
+    if (this.order != null) {
+      data['order'] = this.order!.toJson();
     }
     return data;
   }
@@ -149,28 +144,28 @@ class Items {
 
 class Product {
   String? id;
-  String? product_type;
+  String? productType;
   String? name;
-  ProductCategory? product_category;
+  ProductCategory? productCategory;
 
-  Product({this.id, this.product_type, this.name, this.product_category});
+  Product({this.id, this.productType, this.name, this.productCategory});
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    product_type = json['product_type'];
+    productType = json['product_type'];
     name = json['name'];
-    product_category = json['product_category'] != null
-        ? ProductCategory.fromJson(json['product_category'])
+    productCategory = json['product_category'] != null
+        ? new ProductCategory.fromJson(json['product_category'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['product_type'] = product_type;
-    data['name'] = name;
-    if (product_category != null) {
-      data['product_category'] = product_category!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['product_type'] = this.productType;
+    data['name'] = this.name;
+    if (this.productCategory != null) {
+      data['product_category'] = this.productCategory!.toJson();
     }
     return data;
   }
@@ -188,114 +183,113 @@ class ProductCategory {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
     return data;
   }
 }
 
 class Services {
   String? id;
-  String? start_date;
-  String? end_date;
-  String? remark;
-  String? reminder_before_expire;
+  String? startDate;
+  String? endDate;
+  Null? remark;
+  String? reminderBeforeExpire;
   bool? status;
-  String? quit_reason;
-  String? quit_date;
-  String? created_at;
-  String? updated_at;
-  String? deleted_at;
+  Null? quitReason;
+  Null? quitDate;
+  String? createdAt;
+  String? updatedAt;
+  Null? deletedAt;
   bool? isDisposed;
 
   Services(
       {this.id,
-        this.start_date,
-        this.end_date,
+        this.startDate,
+        this.endDate,
         this.remark,
-        this.reminder_before_expire,
+        this.reminderBeforeExpire,
         this.status,
-        this.quit_reason,
-        this.quit_date,
-        this.created_at,
-        this.updated_at,
-        this.deleted_at,
+        this.quitReason,
+        this.quitDate,
+        this.createdAt,
+        this.updatedAt,
+        this.deletedAt,
         this.isDisposed});
 
   Services.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    start_date = json['start_date'];
-    end_date = json['end_date'];
+    startDate = json['start_date'];
+    endDate = json['end_date'];
     remark = json['remark'];
-    reminder_before_expire = json['reminder_before_expire'];
+    reminderBeforeExpire = json['reminder_before_expire'];
     status = json['status'];
-    quit_reason = json['quit_reason'];
-    quit_date = json['quit_date'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    deleted_at = json['deleted_at'];
+    quitReason = json['quit_reason'];
+    quitDate = json['quit_date'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    deletedAt = json['deleted_at'];
     isDisposed = json['isDisposed'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['start_date'] = start_date;
-    data['end_date'] = end_date;
-    data['remark'] = remark;
-    data['reminder_before_expire'] = reminder_before_expire;
-    data['status'] = status;
-    data['quit_reason'] = quit_reason;
-    data['quit_date'] = quit_date;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['deleted_at'] = deleted_at;
-    data['isDisposed'] = isDisposed;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['start_date'] = this.startDate;
+    data['end_date'] = this.endDate;
+    data['remark'] = this.remark;
+    data['reminder_before_expire'] = this.reminderBeforeExpire;
+    data['status'] = this.status;
+    data['quit_reason'] = this.quitReason;
+    data['quit_date'] = this.quitDate;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    data['deleted_at'] = this.deletedAt;
+    data['isDisposed'] = this.isDisposed;
     return data;
   }
 }
 
 class Order {
-  int? order_number;
+  int? orderNumber;
   String? status;
-  CreatedBy? created_by;
+  CreatedBy? createdBy;
   Company? company;
   Customer? customer;
 
   Order(
-      {this.order_number,
+      {this.orderNumber,
         this.status,
-        this.created_by,
+        this.createdBy,
         this.company,
-        this.customer
-      });
+        this.customer});
 
   Order.fromJson(Map<String, dynamic> json) {
-    order_number = json['order_number'];
+    orderNumber = json['order_number'];
     status = json['status'];
-    created_by = json['created_by'] != null
-        ? CreatedBy.fromJson(json['created_by'])
+    createdBy = json['created_by'] != null
+        ? new CreatedBy.fromJson(json['created_by'])
         : null;
     company =
-    json['company'] != null ? Company.fromJson(json['company']) : null;
+    json['company'] != null ? new Company.fromJson(json['company']) : null;
     customer = json['customer'] != null
-        ? Customer.fromJson(json['customer'])
+        ? new Customer.fromJson(json['customer'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['order_number'] = order_number;
-    data['status'] = status;
-    if (created_by != null) {
-      data['created_by'] = created_by!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['order_number'] = this.orderNumber;
+    data['status'] = this.status;
+    if (this.createdBy != null) {
+      data['created_by'] = this.createdBy!.toJson();
     }
-    if (company != null) {
-      data['company'] = company!.toJson();
+    if (this.company != null) {
+      data['company'] = this.company!.toJson();
     }
-    if (customer != null) {
-      data['customer'] = customer!.toJson();
+    if (this.customer != null) {
+      data['customer'] = this.customer!.toJson();
     }
     return data;
   }
@@ -303,41 +297,41 @@ class Order {
 
 class CreatedBy {
   String? id;
-  String? first_name;
-  String? last_name;
+  String? firstName;
+  String? lastName;
 
-  CreatedBy({this.id, this.first_name, this.last_name});
+  CreatedBy({this.id, this.firstName, this.lastName});
 
   CreatedBy.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    first_name = json['first_name'];
-    last_name = json['last_name'];
+    firstName = json['first_name'];
+    lastName = json['last_name'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['first_name'] = first_name;
-    data['last_name'] = last_name;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['first_name'] = this.firstName;
+    data['last_name'] = this.lastName;
     return data;
   }
 }
 
 class Company {
   String? id;
-  String? company_name;
+  String? companyName;
 
-  Company({this.id, this.company_name});
+  Company({this.id, this.companyName});
 
   Company.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    company_name = json['company_name'];
+    companyName = json['company_name'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['company_name'] = company_name;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['company_name'] = this.companyName;
     return data;
   }
 }
@@ -352,8 +346,8 @@ class Customer {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
     return data;
   }
 }
@@ -381,12 +375,12 @@ class Meta {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['currentPage'] = currentPage;
-    data['itemsPerPage'] = itemsPerPage;
-    data['totalPages'] = totalPages;
-    data['totalItems'] = totalItems;
-    data['itemCount'] = itemCount;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['currentPage'] = this.currentPage;
+    data['itemsPerPage'] = this.itemsPerPage;
+    data['totalPages'] = this.totalPages;
+    data['totalItems'] = this.totalItems;
+    data['itemCount'] = this.itemCount;
     return data;
   }
 }

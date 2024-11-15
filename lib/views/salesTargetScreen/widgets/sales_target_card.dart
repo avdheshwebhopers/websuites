@@ -6,10 +6,22 @@ import '../../../utils/appColors/app_colors.dart';
 
 class SalesTargetScreenCard extends StatelessWidget {
   final String title;
+  final String startDate;
+  final String price;
+  final String created_Date;
+  final String deadline;
+  final String member;
+
 
   const SalesTargetScreenCard({
     Key? key,
     required this.title,
+    required this.startDate,
+    required this.price,
+    required this.created_Date,
+    required this.deadline,
+    required this.member,
+
   }) : super(key: key);
 
   @override
@@ -37,40 +49,46 @@ class SalesTargetScreenCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
+                    title,
+                    style: TextStyle(
+                        color: AllColors.blackColor,
+                        fontWeight: FontWeight.w700,
+
+                        fontSize: 18),
+                  ),
+
+                ],
+              ),
+
+              Row(
+                children: [
+                  Text(
                     'START DATE - ',
                     style: TextStyle(
                       fontSize: 12,
-                        
+
                       fontWeight: FontWeight.w600,
                       color: AllColors.blackColor,
                     ),
                   ),
                   Text(
-                    'Oct 1, 2023',
+                    startDate,
                     style: TextStyle(
                         color: AllColors.grey,
                         fontWeight: FontWeight.w400,
-                          
+
                         fontSize: 12),
                   ),
                   const Spacer(),
                   Text(
-                    '₹11,55,000',
+                    price,
                     style: TextStyle(
                         color: AllColors.blackColor,
                         fontSize: 12,
-                          
+
                         fontWeight: FontWeight.w600),
                   ),
                 ],
-              ),
-              Text(
-                title,
-                style: TextStyle(
-                    color: AllColors.blackColor,
-                    fontWeight: FontWeight.w700,
-                      
-                    fontSize: 18),
               ),
               Row(
                 children: [
@@ -83,7 +101,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    'Dec 14, 2023, 11:38 AM',
+                   created_Date,
                     style: TextStyle(
                       color: AllColors.mediumPurple,
                       fontSize: 12,
@@ -101,7 +119,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                         color: AllColors.blackColor),
                   ),
                   Text(
-                    'Oct 31, 2023',
+                  deadline,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       color: AllColors.grey,
@@ -125,7 +143,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    '07',
+                   member,
                     style: TextStyle(
                         color: AllColors.grey,
                         fontWeight: FontWeight.w400,
@@ -133,11 +151,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                           ),
                   ),
                   const Spacer(),
-                  Icon(
-                    Icons.report,
-                    size: 18,
-                    color: AllColors.mediumPurple,
-                  ),
+                Image.asset('assets/svg/report.svg',height: 14,width: 14,),
                   const SizedBox(
                     width: 5,
                   ),

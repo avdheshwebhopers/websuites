@@ -1,10 +1,13 @@
 class AppUrls{
 
-  static const String baseurl = 'https://webhopers.whsuites.com:3006/';
+  static const String
+
+  baseurl = 'https://webhopers.whsuites.com:3006/';
 
 
   //============================================================================
   // LOGIN SCREEN API
+
 
   static const String loginApi = '${baseurl}v1/api/auth/signin';
 
@@ -52,6 +55,10 @@ class AppUrls{
   static const String createLeadPincode='${baseurl}v1/api/city-pincodes/search?search=';
   static const String createNewLead = '${baseurl}https://webhopers.whsuites.com:3006/v1/api/leads';
   static const String  leadListTrash= '${baseurl}v1/api/leads/delete_list';
+  static const String leadListPhoneCode="https://webhopers.whsuites.com/api/countries/phonecode";
+  static const String leadType='https://webhopers.whsuites.com/api/lead-types';
+  static const String leadAssignsearch='https://webhopers.whsuites.com/api/auth/users-list-and-search';
+  static const String filterCity="https://webhopers.whsuites.com/api/cities/list";
 
   //============================================================================
   // TRASH LEADS
@@ -59,7 +66,7 @@ class AppUrls{
   static const String deleteList = '${baseurl}v1/api/leads/delete_list';
 
 
-  static const String leadType = '${baseurl}v1/api/lead-types';
+  static const String leadTypes = '${baseurl}v1/api/lead-types';
 
   //============================================================================
 
@@ -77,7 +84,9 @@ class AppUrls{
 //LEAD ACTIVITY
   static const String leadActivityList='https://webhopers.whsuites.com/api/lead-activities/history';
   static const String leadActivityLeadType="https://webhopers.whsuites.com/api/lead-types";
+
   //LEAD ACTIVITY DAILY REPORTS---------
+
   static const String leadActivityDailySaleReports="https://webhopers.whsuites.com/api/lead-activities/reports";
   static const String leadActivityNoActivities="https://webhopers.whsuites.com/api/lead-activities/no-activity-reports";
   static const String leadActivityLeadReports="https://webhopers.whsuites.com/api/lead-activities/reports-leadwise";
@@ -94,21 +103,49 @@ class AppUrls{
   static const String leadMastersStatus = '${baseurl}v1/api/lead-status?q=';
 
   //============================================================================
+  //============================================================================
   // CUSTOMER
-  //LIST
-  static const String customersList = '${baseurl}v1/api/customers/customer-list';
+  //LIST----
 
-  //ACTIVITIES
-  static const String customersActivities = '${baseurl}v1/api/customer-activities/history';
+  static const String customersList = 'https://webhopers.whsuites.com/api/customers/customer-list';
+  static const String customerType='https://webhopers.whsuites.com/api/customer-types';
+  static const String customerSource='https://webhopers.whsuites.com/api/lead-sources?q=';
+  static const String customerListSearchAssign='https://webhopers.whsuites.com/api/auth/users-list-and-search';
+  static const String customerListDivision='https://webhopers.whsuites.com/api/divisions?q=';
+  static const String customerMasterCompanyCredentialCreate="${baseurl}/api/companies/credential-type";
+  static const String customerMasterActivationSettingCreate="${baseurl}/api/project-activation-settings";
+  static const String customerMasterActivationSetting="${baseurl}api/project-activation-settings/list";
 
-  // PAYMENT REMINDER
-  static const String customersPaymentReminder = '${baseurl}v1/api/customer-payment-reminders/list';
+  static const String customerMasterActivationSettingUpdate="${baseurl}/api/project-activation-settings/05516662-95b7-440d-bfbb-b4ecd509da52";
+  // static const String filterCity="https://webhopers.whsuites.com/api/cities/list";
 
-  // COMPANIES
-  static const String customersCompanies = '${baseurl}v1/api/companies/list-all';
+  //ACTIVITIES---
 
-  // SERVICES
-  static const String customersServices = '${baseurl}v1/api/customer-services/list';
+  static const String customerActivityList='https://webhopers.whsuites.com/api/customer-activities/history';
+  static const String
+  customerActivityReports='${baseurl}api/customer-activities/reports-userwise';
+  static const String customerActivityNoActivities='${baseurl}api/customer-activities/inactive-reports';
+  static const String customerActivityCustomerReports='${baseurl}api/customer-activities/reports';
+  static const String customerActivityUniqueMeeting='';
+  static const String customerActivityStatusReport='${baseurl}api/customer-activities/customer-status';
+
+
+
+  // PAYMENT REMINDER------
+  static const String customersPaymentReminder = 'https://webhopers.whsuites.com:3006/v1/api/customer-payment-reminders/list';
+
+  //COMPANIES
+  static const String customerCompanies='https://webhopers.whsuites.com:3006/v1/api/companies/list-all';
+  //SERVICES----
+  static const String customerServices='https://webhopers.whsuites.com:3006/v1/api/customer-services/list';
+
+  //SERVICE AREA
+  static const String safeAreaState="${baseurl}api/service-areas/available/states";
+  static const String safeAreaCity="${baseurl}api/service-areas/available/districts";
+  static const String safeAreaPincode='${baseurl}api/service-areas/available/pincodes';
+  static const String safeAreaProduct='${baseurl}api/service-areas/available/products';
+  static const String safeAreaSelectCompany='${baseurl}api/companies/list-all';
+  static const String safeAreaAllotProduct='${baseurl}api/service-areas/create';
 
   // ORDER PRODUCTS
   static const String customersOrderProducts = '${baseurl}v1/api/order-products/list';
@@ -139,12 +176,22 @@ class AppUrls{
   // SETTINGS
   static const String customerSettings = '${baseurl}v1/api/customer-field-management';
 
+
+
+
+
   //============================================================================
   // ORDER
   static const String orderList = '${baseurl}v1/api/orders/order-list';
 
+
+  // Activities
+  static const String orderActivities = '${baseurl}v1/api/order-activity/products';
+
+
+
   // PROFORMA
-  static const String orderProforma = '${baseurl}v1/api/performa';
+  static const String orderProforma = 'https://webhopers.whsuites.com:3006/v1/api/performa';
 
   // PAYMENTS
   static const String orderPayments = '${baseurl}v1/api/customer-payments/payment-list';
@@ -153,6 +200,15 @@ class AppUrls{
   static const String orderMaster = '${baseurl}v1/api/order-status';
 
   //============================================================================
+
+
+
+
+
+
+
+
+
 
   // HRM
   // ATTENDANCE

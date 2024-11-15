@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../resources/strings/strings.dart';
 import '../../../../../resources/textStyles/text_styles.dart';
@@ -34,7 +35,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      height: 200, // Set a fixed height for the card
+      height: 180, // Set a fixed height for the card
       width: Get.width,
       decoration: BoxDecoration(
         color: AllColors.whiteColor,
@@ -65,33 +66,36 @@ class LeadActivitiesScreenCard extends StatelessWidget {
               ),
 
             ),
-            Flexible(
-              child:
-              Text(
-                title,
-                style: TextStyle(color: AllColors.grey, fontSize: 12, fontWeight: FontWeight.w400),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-            ),
-            SizedBox(height: 5),
 
-            // Date and Activity Info
             Row(
               children: [
-                Icon(Icons.calendar_month_outlined, size: 15, color: AllColors.mediumPurple),
-                SizedBox(width: 5),
-                Expanded(
-                  child: Text(
-                    actionDate,
-                    style: TextStyle(color: AllColors.mediumPurple, fontSize: 10, fontWeight: FontWeight.w400),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                  ),
+                Text(
+                  title,
+                  style: TextStyle(color: AllColors.grey, fontSize: 12, fontWeight: FontWeight.w400),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
+                Spacer(),
+                Icon(Icons.calendar_month_outlined, size: 15, color: AllColors.mediumPurple),
+                Text(
+                created_Date,
+                  style: TextStyle(
+                    color: AllColors.mediumPurple,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                )
+
               ],
             ),
-            SizedBox(height: 5),
+
+            // SizedBox(height: 5),
+            Divider(thickness: 0.09, color: AllColors.blackColor),
+
+            // Date and Activity Info
+
 
             // Activity Row
             Row(
@@ -99,15 +103,12 @@ class LeadActivitiesScreenCard extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 4,
-                  child: Text(
-                    activity,
-                    style: TextStyle(color: AllColors.blackColor, fontSize: 10, fontWeight: FontWeight.w500),
-                    overflow: TextOverflow.visible,
-                    maxLines: 2, // Allow activity to take up to 2 lines
-                  ),
+                  child:
+                  Icon(Icons.phone_in_talk,size: 15,color: AllColors.lightGrey,),
+
                 ),
-                SizedBox(width: 5),
-                Icon(Icons.arrow_right_alt, size: 15),
+                // SizedBox(width: 5),
+
                 SizedBox(width: 5),
                 Expanded(
                   flex: 70,
@@ -119,23 +120,21 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  height: Get.height / 40,
-                  decoration: BoxDecoration(color: AllColors.lighterPurple, borderRadius: BorderRadius.circular(20)),
-                  child: Center(
-                    child: Text(
-                      action_by,
-                      style: TextStyle(color: AllColors.mediumPurple, fontSize: 10),
-                    ),
-                  ),
+                Icon(Icons.menu_open_rounded,size: 14,),
+                SizedBox(width: 5,),
+                Text(
+                  status,
+                  style: TextStyle(color: AllColors.lightGrey, fontSize: 10),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
+
               ],
             ),
             SizedBox(height: 5),
 
             // Divider
-            Divider(thickness: 0.09, color: AllColors.blackColor),
+
 
             // Remark and Status
             Row(
@@ -145,33 +144,14 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          TextStyles.w500_12(color: AllColors.blackColor, context, Strings.remark),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 3),
-                            child: Icon(Icons.arrow_right_alt, size: 20, color: AllColors.lightGrey),
-                          ),
-                          Flexible(
-                            child: Text(
-                              status,
-                              style: TextStyle(color: AllColors.lightGrey, fontSize: 10),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                          ),
-                        ],
-                      ),
+                  
                       SizedBox(height: 5),
                       Row(
                         children: [
-                          TextStyles.w500_12(color: AllColors.blackColor, context, Strings.reminder),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 3),
-                            child: Icon(Icons.arrow_right_alt, size: 20, color: AllColors.lightGrey),
-                          ),
+                         Icon(Icons.notifications_active_outlined,color: AllColors.vividBlue,size: 14,),
 
-                          Text(created_Date, style: TextStyle(
+                          SizedBox(width: 5,),
+                          Text(actionDate, style: TextStyle(
                               color: AllColors.vividBlue,
                               fontWeight: FontWeight.w500,
 
@@ -185,27 +165,42 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                   ),
                 ),
                 // Location Button
+
+              ],
+            ),
+            Row(
+              children: [
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8),
                   height: Get.height / 40,
-                  decoration: BoxDecoration(
-                    color: AllColors.lightBlue,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
+                  decoration: BoxDecoration(color: AllColors.lighterPurple, borderRadius: BorderRadius.circular(20)),
+                  child:
+
+                  Center(
                     child: Text(
-                      request_Location,
-                      style: TextStyle(color: AllColors.vividBlue, fontWeight: FontWeight.w400, fontSize: 10),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
+                      action_by,
+                      style: TextStyle(color: AllColors.mediumPurple, fontSize: 10),
                     ),
                   ),
                 ),
+                Spacer(),
+                IconButton(
+                  onPressed: () {
+                    // Action to be executed when the button is pressed
+                  },
+                  icon: Icon(
+                    Icons.remove_red_eye_outlined, // Correct usage of Icon widget
+                    color: AllColors.vividBlue, // Set the icon color
+                  ),
+                )
+
               ],
-            ),
+            )
           ],
         ),
       ),
     );
   }
 }
+
+
