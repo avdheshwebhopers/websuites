@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/models/responseModels/order/proformaList/order_proforma_list_response_model.dart';
@@ -79,4 +80,36 @@ class OrderProformaListViewModel extends GetxController {
 
 
 
+=======
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../../data/repositories/repositories.dart';
+import '../../../../utils/utils.dart';
+
+class OrderProformaListViewModel extends GetxController {
+  final _api = Repositories();
+  RxBool loading = false.obs;
+
+  Future<void> orderProformaList (BuildContext context) async {
+    loading.value = true;
+
+    _api.orderProformaApi().then((value) {
+
+      if(value.id!= null){
+        Utils.snackbarSuccess('order proforma list fetched');
+        loading.value = false;
+
+      }else{
+        Utils.snackbarFailed('order proforma list not fetched');
+      }
+    }).onError((error, stackTrace) {
+      if (kDebugMode) {
+        print(error.toString());
+      }
+    }
+    );
+  }
+>>>>>>> origin/main
 }

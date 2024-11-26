@@ -4,37 +4,21 @@ import 'package:websuites/data/models/responseModels/customers/payment_reminder/
 import 'package:websuites/data/models/responseModels/leads/leadMasters/status/lead_masters_status_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/trashLeads/deleteList/delete_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/trashLeads/leadTypes/lead_types_response_model.dart';
-import 'package:websuites/data/models/responseModels/order/activities/OrderActivitiesResponseModel.dart';
 
 import '../../resources/appUrls/app_urls.dart';
 import '../models/responseModels/HRM/attendance/hrm_attendance_response_model.dart';
 import '../models/responseModels/campaign/list/campaign_list_response_model.dart';
 import '../models/responseModels/campaign/mailLogs/mail_logs_response_model.dart';
+import '../models/responseModels/customers/activationList/customer_activation_list_response_model.dart';
 
-import '../models/responseModels/customers/activities/activities_list/activities_list.dart';
-import '../models/responseModels/customers/activities/customer_reports/customer_activity_customer_reports.dart';
-import '../models/responseModels/customers/activities/daily_reports/customer_activity_reports.dart';
-import '../models/responseModels/customers/activities/no_activities/customer_activity_no_activities.dart';
-import '../models/responseModels/customers/activities/status_reports/status_reports.dart';
-import '../models/responseModels/customers/companies/customer_companies_response_model.dart';
-import '../models/responseModels/customers/list/assign_search/assign_search.dart';
-import '../models/responseModels/customers/list/customer_city/customer_city.dart';
-import '../models/responseModels/customers/list/customer_type/customer_type.dart';
-import '../models/responseModels/customers/list/filter/customer_division.dart';
-import '../models/responseModels/customers/list/filter/customer_source.dart';
-
-import '../models/responseModels/customers/master/activation_setting/customer_master_activtaion_setting_response_model.dart';
-
-
+import '../models/responseModels/customers/master/activation/customer_activation_response_model.dart';
+import '../models/responseModels/customers/master/activity_purpose/activity_purpose_response_model.dart';
+import '../models/responseModels/customers/master/companyCredentials/customer_company_credential_response_model.dart';
 import '../models/responseModels/customers/master/fields/customer_master_fields_response_model.dart';
-
-
+import '../models/responseModels/customers/master/types/customer_master_type_response_model.dart';
 import '../models/responseModels/customers/orderProducts/customer_order_products_response_model.dart';
-import '../models/responseModels/customers/service_area/city/customer_service_area_city_response_model.dart';
-import '../models/responseModels/customers/service_area/pincode/customer_service_area_pinCode_response_model.dart';
-import '../models/responseModels/customers/service_area/state/customer_service_area_response_model.dart';
 import '../models/responseModels/customers/services/customer_services_response_model.dart';
-
+import '../models/responseModels/customers/trash/customer_trash_response_model.dart';
 import '../models/responseModels/dashboard/db_count_response_model.dart';
 import '../models/responseModels/dashboard/db_latest_customer_response_model.dart';
 import '../models/responseModels/dashboard/db_lead_by_type_count_response_model.dart';
@@ -49,12 +33,12 @@ import '../models/responseModels/inventory/stock/inventory_stock_response_model.
 import '../models/responseModels/inventory/transactions/inventory_transactions_response_model.dart';
 import '../models/responseModels/inventory/vendors/inventory_vendors_response_model.dart';
 
-
+import '../models/responseModels/leads/LeadTrash/TrashLeads.dart';
 import '../models/responseModels/leads/Leadlist/filter/country_code/country_code.dart';
 import '../models/responseModels/leads/Leadlist/lead_assign/lead_assign.dart';
 import '../models/responseModels/leads/Leadlist/lead_list.dart';
 import '../models/responseModels/leads/createNewLead/assignedLeadTo/assigned_lead_to_response_model.dart';
-
+import '../models/responseModels/leads/createNewLead/createNewModelPost/CreateNewModelbutton.dart';
 import '../models/responseModels/leads/createNewLead/divisions/divisions_response_model.dart';
 import '../models/responseModels/leads/createNewLead/leadCustomFields/lead_custom_fields.dart';
 import '../models/responseModels/leads/createNewLead/pincode/pincode.dart';
@@ -288,9 +272,6 @@ class Repositories {
       rethrow;
     }
   }
-
-
-
 
 
   Future<SourceResponseModel> createNewLeadSourceApi() async {
@@ -705,306 +686,125 @@ class Repositories {
   }
 
   //============================================================================
-         //  ***********    Customer
+// CUSTOMERS
+// LIST
+//   Future<CustomersListResponseModel> customersListApi() async {
+//     try {
+//       dynamic response = await _apiService.postApiResponse(AppUrls.customersList, null);
+//       return response = CustomersListResponseModel.fromJson(response);
+//     } catch (e) {
+//       rethrow;
+//     }
+//   }
+//
+//   //ACTIVITIES
+//
+//   Future<CustomersListResponseModel> customersActivitiesApi() async {
+//     try {
+//       dynamic response = await _apiService.postApiResponse(AppUrls.customersActivities, null);
+//       return response = CustomersListResponseModel.fromJson(response);
+//     } catch (e) {
+//       rethrow;
+//     }
+//   }
 
-  // LIST----
-  Future<CustomersListResponseModel> customersListApi(dynamic data) async {
+  // PAYMENT REMINDER
+
+  Future<CustomersPaymentReminderResponseModel> customersPaymentReminderApi() async {
     try {
-      dynamic response =
-      await _apiService.postApiResponse(AppUrls.customersList, data);
-      print("Customer List Api $response");
-      return response = CustomersListResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersPaymentReminder, null);
+      return response = CustomersPaymentReminderResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
 
+  // COMPANIES
 
-
-
-
-
-  //Activation Settings
-  Future<CustomerMasterActivationSettingResponseModel> customerMasterActivationSetting(dynamic data) async {
+  Future<CustomersPaymentReminderResponseModel> customersCompaniesApi() async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.customerMasterActivationSetting, data);
-      print("Customer Master Activation Setting Api successfully call");
-      print("Customer Master Activation Setting response  $response ");
-      return response =CustomerMasterActivationSettingResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersPaymentReminder, null);
+      return response = CustomersPaymentReminderResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
 
+  // SERVICES
 
-  //Customer TYPE
-  Future<List<CustomerTypeResponseModel>> customerType()async{
-    try{
-      dynamic response= await _apiService.getApi(AppUrls.customerType);
-      print("Customer TYpe Response$response");
-      if (response is List) {
-        return CustomerTypeResponseModel.fromJsonList(response);
-      } else {
-        throw Exception("Expected a list from the API but got something else.");
-      }
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
-
-
-  //CUSTOMER SOURCE
-
-  Future<List<CustomerSourceResponseModel>>customerSourceApi()async{
-    try{
-      dynamic response= await _apiService.getApi(AppUrls.customerSource);
-      print("Customer Source Response$response");
-      if (response is List) {
-        return  CustomerSourceResponseModel.fromJsonList(response);
-      } else {
-        throw Exception("Expected a list from the API but got something else.");
-      }
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
-  //ASSIGN SEARCH
-
-  Future<List<CustomerAssignResponseModel>>customerAssignSearch(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customerListSearchAssign,data);
-      print("Customer Assign Search$response");
-      if (response is List) {
-        return  CustomerAssignResponseModel.fromJsonList(response);
-      } else {
-        throw Exception("Expected a list from the API but got something else.");
-      }
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
-  //Customer DIVISION
-
-  Future<List<CustomerDivisionResponseModel>>customerDivision()async{
-    try{
-      dynamic response= await _apiService.getApi(AppUrls.customerListDivision);
-      print("Customer Division Api Search$response");
-      if (response is List) {
-        return  CustomerDivisionResponseModel.fromJsonList(response);
-      } else {
-        throw Exception("Expected a list from the API but got something else.");
-      }
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
-
-  //CUSTOMER ACTIVITY ----------
-
-  //LIST
-  Future<CustomerActivityListResponseModel> customerActivityListApi(dynamic data) async {
+  Future<CustomerServicesResponseModel> customersServicesApi() async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.customerActivityList, data);
-      if (kDebugMode) {
-        print("Response Customer Activity List data $response");
-      }
-      return CustomerActivityListResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersServices, null);
+      return response = CustomerServicesResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
 
+  // ORDER PRODUCTS
 
-
-  //DAILY REPORTS
-  Future<CustomerActivityReportResponseModel>customerActivityReports(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customerActivityReports,data);
-      if (kDebugMode) {
-        print("Response Customer Activity Reports List$response");
-      }
-      return CustomerActivityReportResponseModel.fromJson(response);
-    }
-    catch(e){
+  Future<CustomerOrderProductsResponseModel> customersOrderProductsApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersOrderProducts, null);
+      return response = CustomerOrderProductsResponseModel.fromJson(response);
+    } catch (e) {
       rethrow;
     }
   }
 
+  // CUSTOMER TRASH
 
-  //CUSTOMER NO ACTIVITY
-
-  Future<CustomerActivityNoActivityResponseModel>customerNoActivitiesList(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customerActivityNoActivities,data);
-      if (kDebugMode) {
-        print("Response Customer No Activities List$response");
-      }
-      return CustomerActivityNoActivityResponseModel.fromJson(response);
-    }
-    catch(e){
+  Future<CustomerTrashResponseModel> customersTrashApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersTrashLead, null);
+      return response = CustomerTrashResponseModel.fromJson(response);
+    } catch (e) {
       rethrow;
     }
   }
 
-  //CUSTOMER REPORTS
-  Future<ActivityCustomerReportResponseModel>customerReports(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customerActivityCustomerReports,data);
-      if (kDebugMode) {
-        print("Response Customer Reports $response");
-      }
-      return ActivityCustomerReportResponseModel.fromJson(response);
-    }
-    catch(e){
+  // ACTIVATION LIST
+
+  Future<CustomerActivationListResponseModel> customersActivationListApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersActivationList, null);
+      return response = CustomerActivationListResponseModel.fromJson(response);
+    } catch (e) {
       rethrow;
     }
   }
 
+  // CUSTOMER (MASTER)
 
-  //CUSTOMER STATUS REPORT
-  Future<CustomerActivityStatusReportsResponseModel>customerActivityStatusReport(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customerActivityStatusReport,data);
-      if (kDebugMode) {
-        print("Response Customer Status Reports $response");
-      }
-      return CustomerActivityStatusReportsResponseModel.fromJson(response);
-    }
-    catch(e){
+// COMPANY CREDENTIAL
+  Future<CustomerCompanyCredentialResponseModel> companyCredentialsApi() async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.customersCompanyCredential, null);
+      return response = CustomerCompanyCredentialResponseModel.fromJson(response);
+    } catch (e) {
       rethrow;
     }
   }
 
-
-  //CUSTOMER---------------------
-
-
-
-
-
-
-  // PAYMENT REMINDER------------
-  Future<CustomerPaymentsReminderResponseModel>customerPaymentReminderList(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customersPaymentReminder,data);
-      if (kDebugMode) {
-        print("Response Customer payments Reminders $response");
-      }
-      return CustomerPaymentsReminderResponseModel.fromJson(response);
-    }
-    catch(e){
+  // TYPES
+  Future<CustomerMasterTypeResponseModel> customerMasterTypeApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.customersMasterTypes);
+      return response = CustomerMasterTypeResponseModel.fromJson(response);
+    } catch (e) {
       rethrow;
     }
   }
 
-
-
-
-
-  //CUSTOMER COMPANIES
-
-  Future<CustomerCompaniesResponseModel>customerCompaniesList(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customerCompanies,data);
-      if (kDebugMode) {
-        print("Response Customer Companies List $response");
-      }
-      return CustomerCompaniesResponseModel.fromJson(response);
-    }
-    catch(e){
+  // ACTIVITY PURPOSE
+  Future<ActivityPurposeResponseModel> customerActivityPurposeApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.customerActivityPurpose);
+      return response = ActivityPurposeResponseModel.fromJson(response);
+    } catch (e) {
       rethrow;
     }
   }
-
-  //SERVICES-----------
-
-  Future<CustomerServiceResponseModel>customerServices(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customerServices,data);
-      if (kDebugMode) {
-        print("Response Customer Services$response");
-      }
-      return CustomerServiceResponseModel.fromJson(response);
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
-
-  //SERVICES AREA--
-
-  //STATE
-  Future<List<CustomerServiceAreaResponseModel>>safeAreaState(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.safeAreaState,data);
-      if (kDebugMode) {
-        print("Response Customer SafeArea State$response");
-      }
-      return CustomerServiceAreaResponseModel.fromJsonList(response);
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
-
-//CITY
-  Future<List<CustomerServiceAreaCityResponseModel>>safeAreaCity(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.safeAreaCity,data);
-      if (kDebugMode) {
-        print("Response Customer SafeArea City$response");
-      }
-      return CustomerServiceAreaCityResponseModel.fromJsonList(response);
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
-
-  //PINCODE
-  Future<List<CustomerServiceAreaPinCodeResponseModel>>safeAreaPincode(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.safeAreaPincode,data);
-      if (kDebugMode) {
-        print("Response Customer SafeArea Pincode $response");
-      }
-      return CustomerServiceAreaPinCodeResponseModel.fromJsonList(response);
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
-
-
-
-  //ORDER PRODUCT
-
-
-  Future<CustomerOrderProductResponseModel>customerOrderProduct(dynamic data)async{
-    try{
-      dynamic response= await _apiService.postApiResponse(AppUrls.customersOrderProducts,data);
-      if (kDebugMode) {
-        print("Response Customer Order Products ${response}");
-      }
-      return CustomerOrderProductResponseModel.fromJson(response);
-    }
-    catch(e){
-      rethrow;
-    }
-  }
-
 
   // ACTIVATION
   //
@@ -1065,47 +865,27 @@ class Repositories {
   }
 
   // ORDER
-
-
-
 // LIST
-  Future<OrderListResponseModel> orderList(Map<String, dynamic> requestData) async {
+
+  Future<OrderListResponseModel> orderListApi() async {
     try {
-      final response = await _apiService.postApiResponse(AppUrls.orderList, requestData);
-      return OrderListResponseModel.fromJson(response);
-    } catch (e) {
-      rethrow; // Propagate the error to the caller
-    }
-  }
-
-//Activities
-
-
-
-  Future<OrderActivitiesResponseModel> orderActivitiesApi() async {
-    try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.orderActivities, null);
-      return response = OrderActivitiesResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.orderList, null);
+      return response = OrderListResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
 
+  // PROFORMA LIST
 
-
-
-
-
-  Future< OrderPerformaResponseModel> orderproformaApi() async {
+  Future<OrderProformaListResponseModel> orderProformaApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.orderProforma);
-      return response =  OrderPerformaResponseModel.fromJson(response);
+      return response = OrderProformaListResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
-
-
 
   // PAYMENTS
 
@@ -1119,24 +899,15 @@ class Repositories {
   }
 
   // ORDER MASTER
-  Future<List<OrderMasterResponseModel>> orderMasterApi() async {
-    try {
-      // Fetch response from API
-      dynamic response = await _apiService.getApi(AppUrls.orderMaster);
 
-      // Ensure the response is a List and map each item to OrderMasterResponseModel
-      if (response is List) {
-        return response
-            .map((item) => OrderMasterResponseModel.fromJson(item as Map<String, dynamic>))
-            .toList();
-      } else {
-        throw Exception("Expected response to be a list of order masters.");
-      }
+  Future<OrderMasterResponseModel> orderMasterApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.orderMaster);
+      return response = OrderMasterResponseModel.fromJson(response);
     } catch (e) {
-      rethrow; // Rethrow the error for further handling
+      rethrow;
     }
   }
-
 
 // HRM
 

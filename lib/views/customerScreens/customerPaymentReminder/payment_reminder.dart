@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+<<<<<<< HEAD
 import 'package:intl/intl.dart';
 import '../../../data/models/responseModels/customers/payment_reminder/customer_payment_reminder_response_model.dart';
 import '../../../viewModels/customerScreens/paymentReminder/customer_payment_reminder_viewModel.dart';
 import 'customerPaymentReminder/CustomerPaymentReminderCard.dart';
+=======
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../data/models/responseModels/login/login_response_model.dart';
+import '../../../utils/appColors/app_colors.dart';
+import '../../../utils/components/widgets/appBar/custom_appBar.dart';
+import '../../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../../utils/components/widgets/sizedBoxes/sizedBox_10h.dart';
+import '../../../utils/components/widgets/sizedBoxes/sizedBox_10w.dart';
+import '../../../viewModels/saveToken/save_token.dart';
+
+
+>>>>>>> origin/main
 
 class CustomerPaymentReminders extends StatefulWidget {
   const CustomerPaymentReminders({Key? key}) : super(key: key);

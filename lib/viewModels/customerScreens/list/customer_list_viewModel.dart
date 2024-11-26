@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -100,3 +101,55 @@ class CustomerListViewModel extends GetxController {
     }
   }
 }
+=======
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+//
+// import '../../../../data/repositories/repositories.dart';
+// import '../../../../utils/utils.dart';
+//
+<<<<<<<< HEAD:lib/viewModels/campaign/list/campaign_list_viewModel.dart
+// class CampaignListViewModels extends GetxController {
+//   final _api = Repositories();
+//   RxBool loading = false.obs;
+//
+//   Future<void> campaignList (BuildContext context) async {
+//     loading.value = true;
+//
+//     _api.customersActivationListApi().then((value) {
+//
+//       if(value.items!= null){
+//         Utils.snackbarSuccess('activationList Id fetched');
+//         loading.value = false;
+//
+//       }else{
+//         Utils.snackbarFailed('activationList Id not fetched');
+========
+// class CustomerListViewModel extends GetxController {
+//   final _api = Repositories();
+//   RxBool loading = false.obs;
+//
+//   Future<void> customerList (BuildContext context) async {
+//     loading.value = true;
+//
+//     _api.customersListApi().then((value) {
+//
+//       if(value.items!= null){
+//         Utils.snackbarSuccess('customer list Id fetched');
+//         loading.value = false;
+//
+//       }else{
+//         Utils.snackbarFailed('customer list Id not fetched');
+>>>>>>>> origin/main:lib/viewModels/customerScreens/list/customer_list_viewModel.dart
+//       }
+//     }).onError((error, stackTrace) {
+//       if (kDebugMode) {
+//         print(error.toString()
+//         );
+//       }
+//     }
+//     );
+//   }
+// }
+>>>>>>> origin/main

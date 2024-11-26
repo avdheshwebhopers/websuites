@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Responsive/Custom_Drawer.dart';
+<<<<<<< HEAD
 import '../../../Utils/utils.dart';
+=======
+
+import '../../../data/models/controller.dart';
+import '../../../data/models/responseModels/login/login_response_model.dart';
+>>>>>>> origin/main
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
+<<<<<<< HEAD
 import '../../../viewModels/customerScreens/companies/customer_companies_viewModel.dart';
+=======
+import '../../../utils/responsive/bodies/responsive scaffold.dart';
+import '../../../viewModels/saveToken/save_token.dart';
+>>>>>>> origin/main
 import '../../customerScreens/companiesScreen/widgets/companiesCard/companies_screen_card.dart';
 
 class CustomerCompaniesScreen extends StatefulWidget {

@@ -94,8 +94,12 @@ late final LeadActivityLeadReportViewModel  _leadactivitiesreport ;
               color: Colors.white,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+<<<<<<< HEAD
                 child:
                 Row(
+=======
+                child: Row(
+>>>>>>> origin/main
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: buttonData.map((data) {
                     return Padding(

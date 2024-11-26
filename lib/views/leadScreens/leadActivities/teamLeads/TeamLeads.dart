@@ -92,11 +92,18 @@ class _TeamLeadsScreenState extends State<TeamLeadsScreen> {
                     const Divider(thickness: 1, color: Colors.grey),
                     const SizedBox(height: 16),
                     Row(
+<<<<<<< HEAD
                       crossAxisAlignment: CrossAxisAlignment.start, // Aligns the children vertically at the start of the row
                       children: [
                         // First Column (Team Lead)
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center, // Centers the content of the column horizontally
+=======
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+>>>>>>> origin/main
                           children: [
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
@@ -115,7 +122,11 @@ class _TeamLeadsScreenState extends State<TeamLeadsScreen> {
                             ),
                             const SizedBox(height: 5),
                             Text(
+<<<<<<< HEAD
                               teamLead.total?.toString() ?? '0', // Displays the total or 0 if null
+=======
+                              teamLead.total?.toString() ?? '0',
+>>>>>>> origin/main
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.black,
@@ -123,6 +134,7 @@ class _TeamLeadsScreenState extends State<TeamLeadsScreen> {
                               ),
                             ),
                             const SizedBox(height: 5),
+<<<<<<< HEAD
                           ],
                         ),
 
@@ -132,6 +144,13 @@ class _TeamLeadsScreenState extends State<TeamLeadsScreen> {
                         // Second Column (Lead Type)
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center, // Centers the content of the column horizontally
+=======
+
+                          ],
+                        ),
+                        Column(
+                          // crossAxisAlignment: CrossAxisAlignment.start,
+>>>>>>> origin/main
                           children: [
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
@@ -140,12 +159,16 @@ class _TeamLeadsScreenState extends State<TeamLeadsScreen> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Text(
+<<<<<<< HEAD
                                 // Checks if leadType is null or empty, then shows fallback text
                                 (teamLead.leadType == null || teamLead.leadType!.isEmpty)
                                     ? 'Lead Type' // Fallback text
                                     : (teamLead.leadType!.first.toString() == '0'
                                     ? 'Lead Type'
                                     : teamLead.leadType!.first.toString()), // First item or fallback text
+=======
+                                'Lead Type',
+>>>>>>> origin/main
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
@@ -153,17 +176,26 @@ class _TeamLeadsScreenState extends State<TeamLeadsScreen> {
                                 ),
                               ),
                             ),
+<<<<<<< HEAD
                             const SizedBox(height: 5),
                             Text(
                               // Displays first item of leadType or fallback to '0'
                               (teamLead.leadType != null && teamLead.leadType!.isNotEmpty)
                                   ? teamLead.leadType!.first
                                   : '0', // Default to '0' if leadType is empty
+=======
+
+                            Text(
+                              (teamLead.leadType != null && teamLead.leadType!.isNotEmpty)
+                                  ? teamLead.leadType!.first
+                                  : '0',  // Display first item of the list if available, else 'ok'
+>>>>>>> origin/main
                               style: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),
+<<<<<<< HEAD
                             ),
                           ],
                         ),
@@ -171,6 +203,18 @@ class _TeamLeadsScreenState extends State<TeamLeadsScreen> {
                     )
 
 
+=======
+                            )
+
+
+
+
+
+                          ],
+                        )
+                      ],
+                    ),
+>>>>>>> origin/main
                   ],
                 ),
               ),

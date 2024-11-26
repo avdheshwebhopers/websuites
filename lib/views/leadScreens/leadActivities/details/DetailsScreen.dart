@@ -20,8 +20,12 @@ class DetailsScreen extends StatelessWidget {
           final item = leadActivityViewModel.leadActivityResponse.value.items![index];
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 19),
+<<<<<<< HEAD
             child:
             LeadActivitiesScreenCard(
+=======
+            child: LeadActivitiesScreenCard(
+>>>>>>> origin/main
               title: item.lead?.firstName ?? "Unknown",
               companyName: item.lead?.organization ?? "Unknown Company",
               actionDate: DateFormat('dd/MM/yyyy hh:mm a').format(DateTime.parse(item.createdAt ?? '')),

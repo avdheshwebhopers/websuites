@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+<<<<<<< HEAD
 import 'package:websuites/views/customerScreens/activitiesScreen/activities_screen.dart';
 import 'package:websuites/views/customerScreens/customerPaymentReminder/payment_reminder.dart';
 import 'package:websuites/views/customerScreens/orderProducts/order_products_screen.dart';
@@ -8,6 +9,10 @@ import 'package:websuites/views/leadScreens/trashLead/widgets/filter/TrashFilter
 import 'package:websuites/views/orderScreen/orderActivityScreen/order_activity_screen.dart';
 import 'package:websuites/views/orderScreen/orderProformaScreen/proforma_list_screen.dart';
 import 'package:websuites/views/orderScreen/ordermaster/OrderMasterListScreen.dart';
+=======
+import 'package:websuites/views/homeScreen/widgets/apppbarFilterIcon/FilterActionButton.dart';
+import 'package:websuites/views/leadScreens/trashLead/widgets/filter/TrashFilter.dart';
+>>>>>>> origin/main
 
 import '../../Responsive/Custom_Drawer.dart';
 import '../../resources/strings/strings.dart';
@@ -16,7 +21,10 @@ import '../../utils/responsive/bodies/responsive scaffold.dart';
 import '../Dashboard/DashboardScreen.dart';
 import '../customerScreens/companiesScreen/all_companies_screen.dart';
 import '../customerScreens/customerList/list_screen.dart';
+<<<<<<< HEAD
 import '../customerScreens/customerServices/services_screen.dart';
+=======
+>>>>>>> origin/main
 import '../leadScreens/Setting/SettingScreen.dart';
 import '../leadScreens/createNewLead/create_newLead_screen.dart';
 import '../leadScreens/leadActivities/lead_activities_screen.dart';
@@ -80,16 +88,23 @@ class HomeScreenController extends GetxController {
       case 5:
         return Strings.leadActivities;
       case 6:
-        return Strings.setting;
+        return Strings.leadList;
       case 7:
-        return Strings.leadMaster;
+        return Strings.setting;
       case 8:
+<<<<<<< HEAD
         return Strings.customers;
       case 9:
         return Strings.customerActivity;
       case 10:
         return 'Payment Reminder';
       case 11:
+=======
+        return Strings.leadMaster;
+      case 9:
+        return Strings.master;
+      case 10:
+>>>>>>> origin/main
         return 'Customer Companies';
       case 12:
         return 'All Services';

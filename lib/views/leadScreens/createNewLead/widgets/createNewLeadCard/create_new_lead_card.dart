@@ -171,7 +171,11 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                         border: InputBorder.none,
                         isDense: true,
                         contentPadding: const EdgeInsets.symmetric(
+<<<<<<< HEAD
                             vertical: 2.0, horizontal: 9),
+=======
+                            vertical: 4.0, horizontal: 0),
+>>>>>>> origin/main
                       ),
                       style: const TextStyle(fontSize: 14),
                       onChanged: (text) {
