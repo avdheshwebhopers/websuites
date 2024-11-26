@@ -108,7 +108,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text(email, style: TextStyle(
                       color: AllColors.mediumGrey,
                       fontSize: 12,
-                        
+
                       fontWeight: FontWeight.w400
                   ),),
 
@@ -117,7 +117,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text('ORDER NO', style: TextStyle(
 
                       fontWeight: FontWeight.bold,
-                        
+
                       fontSize: 13
                   ),),
                 ],
@@ -133,7 +133,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text(date, style: TextStyle(
                       color: AllColors.mediumPurple,
                       fontSize: 12,
-                        
+
                       fontWeight: FontWeight.w400
                   ),),
                   Spacer(),
@@ -141,7 +141,7 @@ class AllServicesScreenCard extends StatelessWidget {
                   Text(orderNumber, style: TextStyle(
                     color: AllColors.lightGrey,
                     fontWeight: FontWeight.w400,
-                      
+
                     fontSize: 12,
 
                   ),)
@@ -154,32 +154,32 @@ class AllServicesScreenCard extends StatelessWidget {
 
 
 
-    Row(
-      children: [
-        Container(
-          height: Get.height/40,
-          width: Get.width/3,
-          decoration: BoxDecoration(
-            color: AllColors.lighterPurple,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Center(
-            child: Text(status, style: TextStyle(
-                color: AllColors.mediumPurple,
-                fontSize: 12,
+              Row(
+                children: [
+                  Container(
+                    height: Get.height/40,
+                    width: Get.width/3,
+                    decoration: BoxDecoration(
+                      color: AllColors.lighterPurple,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Center(
+                      child: Text(status, style: TextStyle(
+                          color: AllColors.mediumPurple,
+                          fontSize: 12,
 
-                fontWeight: FontWeight.w500
-            ),),
-          ),
-        ),
-      Spacer(),
-      Text(price, style: TextStyle(
+                          fontWeight: FontWeight.w500
+                      ),),
+                    ),
+                  ),
+                  Spacer(),
+                  Text(price, style: TextStyle(
 
-          fontSize: 14,
+                      fontSize: 14,
 
-        fontWeight: FontWeight.bold
-      ),),
-    ],)
+                      fontWeight: FontWeight.bold
+                  ),),
+                ],)
             ],
           ),
         ),

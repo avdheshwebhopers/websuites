@@ -53,50 +53,50 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _globalKey,
-      backgroundColor: AllColors.whiteColor,
-      appBar: AppBar(
-        title: Text('Search Google Leads'),
-      ),
-      body:   ListView.builder(
-        itemCount: viewModel.items.length,
-        itemBuilder: (context, index) {
-          final item = viewModel.items[index];
+        key: _globalKey,
+        backgroundColor: AllColors.whiteColor,
+        appBar: AppBar(
+          title: Text('Search Google Leads'),
+        ),
+        body:   ListView.builder(
+          itemCount: viewModel.items.length,
+          itemBuilder: (context, index) {
+            final item = viewModel.items[index];
 
-          // Calculate the number of days since the last call
-          String daysSinceLastCall = 'Not available';
+            // Calculate the number of days since the last call
+            String daysSinceLastCall = 'Not available';
 
-          // Check if lastCall and createdAt are not null
-          if (item.lastCall?.createdAt != null) {
-            DateTime? createdAt = DateTime.tryParse(item.lastCall!.createdAt!);
+            // Check if lastCall and createdAt are not null
+            if (item.lastCall?.createdAt != null) {
+              DateTime? createdAt = DateTime.tryParse(item.lastCall!.createdAt!);
 
-            if (createdAt != null) {
-              Duration difference = DateTime.now().difference(createdAt);
-              daysSinceLastCall = '${difference.inDays} days';
-            } else {
-              print('Error parsing date: ${item.lastCall!.createdAt}');
+              if (createdAt != null) {
+                Duration difference = DateTime.now().difference(createdAt);
+                daysSinceLastCall = '${difference.inDays} days';
+              } else {
+                print('Error parsing date: ${item.lastCall!.createdAt}');
+              }
             }
-          }
 
-          return Card(
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: ListTile(
-              title: Text(item.firstName ?? 'Not available'),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(item.email ?? 'Not available'),
-                  Text(item.mobile ?? 'Not available'),
-                  Text(item.lastCall?.remark ?? 'Not available'),
-                  Text(item.lastCall?.createdBy?.firstName ?? 'Not available'),
-                  Text(daysSinceLastCall), // Display the days count
-                  Text(item.lastMeeting ?? 'Not available'),
-                ],
+            return Card(
+              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: ListTile(
+                title: Text(item.firstName ?? 'Not available'),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item.email ?? 'Not available'),
+                    Text(item.mobile ?? 'Not available'),
+                    Text(item.lastCall?.remark ?? 'Not available'),
+                    Text(item.lastCall?.createdBy?.firstName ?? 'Not available'),
+                    Text(daysSinceLastCall), // Display the days count
+                    Text(item.lastMeeting ?? 'Not available'),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-      )
+            );
+          },
+        )
     );
   }
 }

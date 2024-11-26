@@ -162,8 +162,8 @@ class HomeScreen extends GetView<HomeScreenController> {
             child: const FilterActionButtons(),
           )),
           Obx(() => Visibility(
-            visible: controller.selectedIndex.value == 4,
-            child:TrashFilter()
+              visible: controller.selectedIndex.value == 4,
+              child:TrashFilter()
 
 
 
@@ -239,8 +239,8 @@ class HomeScreen extends GetView<HomeScreenController> {
                                   child: const FilterActionButtons(),
                                 )),
                                 Obx(() => Visibility(
-                                  visible: controller.selectedIndex.value == 4,
-                                  child: TrashFilter()
+                                    visible: controller.selectedIndex.value == 4,
+                                    child: TrashFilter()
 
 
 

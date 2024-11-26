@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/appColors/app_colors.dart';
-  
+
 
 class RolesScreenCard extends StatelessWidget {
   final String title;
@@ -20,15 +20,15 @@ class RolesScreenCard extends StatelessWidget {
         height: Get.height/6,
         width: Get.width/1,
         decoration: BoxDecoration(
-            color: AllColors.whiteColor,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                  color: AllColors.blackColor.withOpacity(0.06),
-                  spreadRadius: 2,
-                  blurRadius: 4
-              )
-            ],
+          color: AllColors.whiteColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+                color: AllColors.blackColor.withOpacity(0.06),
+                spreadRadius: 2,
+                blurRadius: 4
+            )
+          ],
         ),
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -42,7 +42,7 @@ class RolesScreenCard extends StatelessWidget {
                 children: [
                   Text(title, style: TextStyle(
                       color: AllColors.blackColor,
-                        
+
                       fontSize: 18,
                       fontWeight: FontWeight.w700
                   ),),
@@ -57,12 +57,12 @@ class RolesScreenCard extends StatelessWidget {
                     color: AllColors.blackColor,
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-                      
+
                   ),),
 
                   Text('Graphic Designer', style: TextStyle(
                       color: AllColors.grey,
-                        
+
                       fontSize: 12,
                       fontWeight: FontWeight.w400
                   ),),
@@ -78,13 +78,13 @@ class RolesScreenCard extends StatelessWidget {
                   Text('MEMBERS - ', style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 12,
-                      
+
                     color: AllColors.blackColor,
                   ),),
 
                   Text('12',style: TextStyle(
                       color: AllColors.grey,
-                        
+
                       fontSize: 12,
                       fontWeight: FontWeight.w400
                   ),),
@@ -174,10 +174,10 @@ class RolesScreenCard extends StatelessWidget {
                   ),
 
                   Text('+3', style: TextStyle(
-                      color: AllColors.grey,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 13,
-                        
+                    color: AllColors.grey,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 13,
+
                   ),)
 
                 ],

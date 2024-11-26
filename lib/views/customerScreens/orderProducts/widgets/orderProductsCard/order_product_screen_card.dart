@@ -94,62 +94,62 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                 )
               else
 
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        decoration: BoxDecoration(
-                          color: AllColors.lightGreen,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Running',
-                              style: TextStyle(
-                                color: AllColors.greenJungle,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-
-                          ],
-                        ),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      decoration: BoxDecoration(
+                        color: AllColors.lightGreen,
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      SizedBox(width: 5,),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Running',
+                            style: TextStyle(
+                              color: AllColors.greenJungle,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 5,),
 
 
-                      GestureDetector(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            contentPadding: EdgeInsets.zero,
+                            content: Container(
+                              width: double.infinity,
+                              height: 200, // Fixed height for the dialog
+                              constraints: BoxConstraints(
+                                maxWidth: 400, // Maximum width
+                                minHeight: 200, // Minimum height
+                                maxHeight: 200, // Maximum height to keep it fixed
                               ),
-                              contentPadding: EdgeInsets.zero,
-                              content: Container(
-                                width: double.infinity,
-                                height: 200, // Fixed height for the dialog
-                                constraints: BoxConstraints(
-                                  maxWidth: 400, // Maximum width
-                                  minHeight: 200, // Minimum height
-                                  maxHeight: 200, // Maximum height to keep it fixed
-                                ),
-                                padding: EdgeInsets.all(16),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Header row with title and close icon
-                                    Container(
-                                      width: double.infinity,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
+                              padding: EdgeInsets.all(16),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Header row with title and close icon
+                                  Container(
+                                    width: double.infinity,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
                                             child:
                                             Row(
                                               children: [
@@ -167,89 +167,89 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
                                               ],
                                             )
 
-                                          ),
+                                        ),
 
-                                          Material(
-                                            color: Colors.transparent,
-                                            child: InkWell(
-                                              borderRadius: BorderRadius.circular(12),
-                                              onTap: () => Navigator.of(context).pop(),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(4),
-                                                child: Icon(
-                                                  Icons.close,
-                                                  color: AllColors.mediumPurple,
-                                                  size: 20,
-                                                ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          child: InkWell(
+                                            borderRadius: BorderRadius.circular(12),
+                                            onTap: () => Navigator.of(context).pop(),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(4),
+                                              child: Icon(
+                                                Icons.close,
+                                                color: AllColors.mediumPurple,
+                                                size: 20,
                                               ),
                                             ),
                                           ),
-                                        ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 16),
+                                  Expanded(
+                                    child: SingleChildScrollView(
+                                      child: Container(
+                                        constraints: BoxConstraints(
+                                          minHeight: 80, // Minimum height for text area
+                                          maxHeight: 80, // Maximum height for text area
+                                        ),
+                                        child: CreateNewLeadScreenCard(hintText: "Reason..."),
                                       ),
                                     ),
-                                    SizedBox(height: 16),
-                                    Expanded(
-                                      child: SingleChildScrollView(
-                                        child: Container(
-                                          constraints: BoxConstraints(
-                                            minHeight: 80, // Minimum height for text area
-                                            maxHeight: 80, // Maximum height for text area
-                                          ),
-                                          child: CreateNewLeadScreenCard(hintText: "Reason..."),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Center(
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.white,
+                                        backgroundColor: Color(0xFFD50020),
+                                        minimumSize: const Size(150, 35),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(7),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(height: 20),
-                                    Center(
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          foregroundColor: Colors.white,
-                                          backgroundColor: Color(0xFFD50020),
-                                          minimumSize: const Size(150, 35),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(7),
-                                          ),
-                                        ),
-                                        child: Text(
-                                          'Quit Service',
-                                          style: TextStyle(fontWeight: FontWeight.bold),
-                                        ),
+                                      child: Text(
+                                        'Quit Service',
+                                        style: TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
-                          );
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: BoxDecoration(
-                            color: AllColors.lightRed,
-                            borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'Quit',
-                                style: TextStyle(
-                                  color: AllColors.darkRed,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        decoration: BoxDecoration(
+                          color: AllColors.lightRed,
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                      )
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Quit',
+                              style: TextStyle(
+                                color: AllColors.darkRed,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
 
 
-                    ],
-                  ),
+                  ],
+                ),
 
             ],
           ),

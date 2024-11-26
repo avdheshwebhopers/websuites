@@ -49,18 +49,18 @@ class CreateNewLeadController extends GetxController {
       };
 
       // Make POST request
-      final response = await api.createNewLeadApi(leadData);
+      final response = await api.createLead(context);
 
-      // Handle response
-      if (response is List<CreateNewModel>) {
-        createnewList.addAll(response);
-        Get.snackbar('Success', 'New lead(s) created successfully');
-      } else if (response is CreateNewModel) {
-        createnewList.add(response);
-        Get.snackbar('Success', 'New lead created successfully');
-      } else {
-        errorMessage.value = 'Failed to create new lead';
-      }
+      // // Handle response
+      // if (response is List<CreateNewModel>) {
+      //   createnewList.addAll(response);
+      //   Get.snackbar('Success', 'New lead(s) created successfully');
+      // } else if (response is CreateNewModel) {
+      //   createnewList.add(response);
+      //   Get.snackbar('Success', 'New lead created successfully');
+      // } else {
+      //   errorMessage.value = 'Failed to create new lead';
+      // }
 
     } catch (e) {
       errorMessage.value = 'Error creating new lead: $e';

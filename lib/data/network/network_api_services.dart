@@ -49,17 +49,19 @@ class NetworkApiServices extends BaseApiServices {
 
   // Generalized PATCH API method
   @override
-  Future patchApi(String url) async {
+  Future patchApi(String url, dynamic data) async {
     return _makeApiRequest(() async {
       String? token = await _getToken();
       final response = await http.patch(
         Uri.parse(url),
         headers: _buildHeaders(token),
+        body: data != null ? jsonEncode(data) : '',
       ).timeout(const Duration(seconds: 90));
 
       return returnResponse(response);
     });
   }
+
 
   // POST API request with dynamic body data
   @override

@@ -149,62 +149,62 @@ class Detail {
 
   Detail();
 
-Detail.fromJson(Map<String, dynamic> json) {
-}
+  Detail.fromJson(Map<String, dynamic> json) {
+  }
 
-Map<String, dynamic> toJson() {
-final Map<String, dynamic> data = <String, dynamic>{};
-return data;
-}
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    return data;
+  }
 }
 
 class Meta {
-int? currentPage;
-int? itemsPerPage;
-int? totalPages;
-int? totalItems;
-int? itemCount;
+  int? currentPage;
+  int? itemsPerPage;
+  int? totalPages;
+  int? totalItems;
+  int? itemCount;
 
-Meta({this.currentPage, this.itemsPerPage, this.totalPages, this.totalItems, this.itemCount});
+  Meta({this.currentPage, this.itemsPerPage, this.totalPages, this.totalItems, this.itemCount});
 
-Meta.fromJson(Map<String, dynamic> json) {
-currentPage = json['currentPage'];
-itemsPerPage = json['itemsPerPage'];
-totalPages = json['totalPages'];
-totalItems = json['totalItems'];
-itemCount = json['itemCount'];
-}
+  Meta.fromJson(Map<String, dynamic> json) {
+    currentPage = json['currentPage'];
+    itemsPerPage = json['itemsPerPage'];
+    totalPages = json['totalPages'];
+    totalItems = json['totalItems'];
+    itemCount = json['itemCount'];
+  }
 
-Map<String, dynamic> toJson() {
-final Map<String, dynamic> data = <String, dynamic>{};
-data['currentPage'] = currentPage;
-data['itemsPerPage'] = itemsPerPage;
-data['totalPages'] = totalPages;
-data['totalItems'] = totalItems;
-data['itemCount'] = itemCount;
-return data;
-}
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['currentPage'] = currentPage;
+    data['itemsPerPage'] = itemsPerPage;
+    data['totalPages'] = totalPages;
+    data['totalItems'] = totalItems;
+    data['itemCount'] = itemCount;
+    return data;
+  }
 }
 
 class Activity {
-Calls? calls;
-Calls? meetings;
+  Calls? calls;
+  Calls? meetings;
 
-Activity({this.calls, this.meetings});
+  Activity({this.calls, this.meetings});
 
-Activity.fromJson(Map<String, dynamic> json) {
-calls = json['calls'] != null ? Calls.fromJson(json['calls']) : null;
-meetings = json['meetings'] != null ? Calls.fromJson(json['meetings']) : null;
-}
+  Activity.fromJson(Map<String, dynamic> json) {
+    calls = json['calls'] != null ? Calls.fromJson(json['calls']) : null;
+    meetings = json['meetings'] != null ? Calls.fromJson(json['meetings']) : null;
+  }
 
-Map<String, dynamic> toJson() {
-final Map<String, dynamic> data = <String, dynamic>{};
-if (calls != null) {
-data['calls'] = calls!.toJson();
-}
-if (meetings != null) {
-data['meetings'] = meetings!.toJson();
-}
-return data;
-}
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (calls != null) {
+      data['calls'] = calls!.toJson();
+    }
+    if (meetings != null) {
+      data['meetings'] = meetings!.toJson();
+    }
+    return data;
+  }
 }

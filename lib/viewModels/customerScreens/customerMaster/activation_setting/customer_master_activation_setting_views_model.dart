@@ -17,13 +17,13 @@ class CustomerMasterActivationSettingViewModels extends GetxController{
       if (response.items != null && response.items!.isNotEmpty) {
         // Process each lead item
         for (var data in response.items!) {
-            print('Customer Master Activation Setting  CC Users: ${data.ccUsers?.first.firstName}');
+          print('Customer Master Activation Setting  CC Users: ${data.ccUsers?.first.firstName}');
           print('Customer Master Activation Setting sentCustomer ${data.isSentCustomer}');
-            print('Customer Master Activation Setting email ${data.mailTo?.email}');
+          print('Customer Master Activation Setting email ${data.mailTo?.email}');
         }
         Utils.snackbarSuccess('Customer Trash list fetched successfully');
       }
-     else {
+      else {
         Utils.snackbarFailed('activity Purpose Id not fetched');
       }
     }).onError((error, stackTrace) {

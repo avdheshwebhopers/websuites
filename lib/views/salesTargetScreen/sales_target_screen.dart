@@ -22,7 +22,7 @@ class SalesTargetScreen extends StatefulWidget {
 
 class _SalesTargetScreenState extends State<SalesTargetScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-final ScreenController _screenController = Get.put(ScreenController());
+  final ScreenController _screenController = Get.put(ScreenController());
   SaveUserData userPreference = SaveUserData();
 
   String userName = '';
@@ -53,31 +53,31 @@ final ScreenController _screenController = Get.put(ScreenController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _globalKey,
-      backgroundColor: AllColors.whiteColor,
-      // bottomNavigationBar: CustomBottomNavBar(),
-      floatingActionButton: CustomFloatingButton(
-          onPressed: (){},
-          imageIcon: IconStrings.navSearch3,
-          backgroundColor: AllColors.mediumPurple
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        key: _globalKey,
+        backgroundColor: AllColors.whiteColor,
+        // bottomNavigationBar: CustomBottomNavBar(),
+        floatingActionButton: CustomFloatingButton(
+            onPressed: (){},
+            imageIcon: IconStrings.navSearch3,
+            backgroundColor: AllColors.mediumPurple
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      // drawer: CustomDrawer(
-      //     userName: userName,
-      //     phoneNumber: userEmail,
-      //     version: '1.0.12',
-      //
-      //   onTap: (index) {
-      //     _screenController.updateIndex(index);
-      //     if (ResponsiveUtils.isMobile(context)) {
-      //       _globalKey.currentState?.closeDrawer();
-      //     }
-      //   },
-      //
-      // ),
-      body:
-          Stack(
+        // drawer: CustomDrawer(
+        //     userName: userName,
+        //     phoneNumber: userEmail,
+        //     version: '1.0.12',
+        //
+        //   onTap: (index) {
+        //     _screenController.updateIndex(index);
+        //     if (ResponsiveUtils.isMobile(context)) {
+        //       _globalKey.currentState?.closeDrawer();
+        //     }
+        //   },
+        //
+        // ),
+        body:
+        Stack(
             children: [
               const SafeArea(
                 child: SingleChildScrollView(
@@ -107,7 +107,7 @@ final ScreenController _screenController = Get.put(ScreenController());
 
 
             ]
-          )
+        )
     );
   }
 }

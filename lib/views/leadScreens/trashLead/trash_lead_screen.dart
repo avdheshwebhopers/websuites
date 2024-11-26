@@ -133,7 +133,7 @@ class TrashLeadScreenState extends State<TrashLeadScreen> {
                 ),
               ),
             ),
-SizedBox(height: 10,),
+            SizedBox(height: 10,),
             Expanded(
               child: Obx(() {
                 if (_trashLeadController.loading.value && _trashLeadController.leads.isEmpty) {
@@ -182,7 +182,7 @@ SizedBox(height: 10,),
                 );
               }),
             ),
-  ],
+          ],
         ),
       ),
     );

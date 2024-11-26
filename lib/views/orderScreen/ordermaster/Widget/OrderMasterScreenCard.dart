@@ -37,7 +37,7 @@ class OrderMasterListScreenCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 14),
                       child: Text(
-    orderStatusTitle,
+                        orderStatusTitle,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -54,7 +54,7 @@ class OrderMasterListScreenCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 8),
-                 Image.asset('assets/icons/Edit.png',color: AllColors.darkGrey,height: 17),
+                        Image.asset('assets/icons/Edit.png',color: AllColors.darkGrey,height: 17),
                       ],
                     ),
                   ],

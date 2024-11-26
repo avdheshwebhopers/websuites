@@ -1,14 +1,16 @@
 class AppUrls{
 
-  static const String
-
-  baseurl = 'https://webhopers.whsuites.com:3006/';
+  static const String baseurl = 'https://webhopers.whsuites.com:3006/';
+  static const  String  baseurl2 = 'https://dev.whsuites.com';
 
 
   //============================================================================
   // LOGIN SCREEN API
 
+// //Dev login
+//   static const String logindevApi='$baseurl/api/auth/signin';
 
+  //Live Login
   static const String loginApi = '${baseurl}v1/api/auth/signin';
 
   //============================================================================
@@ -44,6 +46,7 @@ class AppUrls{
 
   static const String leadAssign='https://webhopers.whsuites.com/api/auth/users-list-and-search';
   static const String assignedLeadTo = '${baseurl}v1/api/auth/get-descendants';
+  static const String createLead='$baseurl/api/leads';
 
   static const String createNewLeadSource = '${baseurl}v1/api/lead-sources';
 
@@ -60,6 +63,47 @@ class AppUrls{
   static const String leadAssignsearch='https://webhopers.whsuites.com/api/auth/users-list-and-search';
   static const String filterCity="https://webhopers.whsuites.com/api/cities/list";
 
+
+  //LEad import--------
+  //Status
+  static const String leadImportStatus='${baseurl}/api/lead-status?q=';
+
+
+// lead List******************-------------------
+
+  static const String leadListBulkDelete='${baseurl}/api/leads/delete';
+  static const String leadListBulkAssign="${baseurl}/api/lead-assigned/multiple/4ab12ff3-77c3-4bb0-a2da-d5b2600bf9b5";
+  static const String leadListBulkUnAssign="${baseurl}/api/lead-assigned/unassigned?userId=4ab12ff3-77c3-4bb0-a2da-d5b2600bf9b5";
+
+
+
+  //Lead List Column List
+  static const String leadListColumnList='${baseurl}api/lead-fields-management/view-permissions';
+  static const String leadListColumnUpdate='${baseurl}/api/lead-fields-management/user-lead-fields';
+
+
+
+
+
+  //Lead Detail View--------------
+  static const String leadDetailView="${baseurl}api/leads/7c8bf173-a6d4-4383-8a2d-a3c948b9c298";
+  static const String leadDetailCallType="${baseurl}api/lead-activity-purposes?type=Call";
+  static const String leadDetailMeetingType="${baseurl}api/lead-activity-purposes?type=Meeting";
+  static const String leadDetailTaskType="${baseurl}api/task-type";
+  static const String leadDetailTaskStatus="${baseurl}api/task-status/list";
+  static const String leadDetailProposal="${baseurl}/api/proposals";
+
+
+
+
+
+  //Setting SCREEN
+  static const String leadSetting="https://webhopers.whsuites.com/api/lead-fields-management";
+  static const String settingUserProfile='https://webhopers.whsuites.com/api/auth/52fd0c63-4a9b-4047-8736-0cace72393d6';
+  static const String fieldSetting="https://webhopers.whsuites.com/api/lead-fields";
+  static const String settingCustomFields='https://webhopers.whsuites.com/api/lead-custom-fields';
+  static const String settingRoles='https://webhopers.whsuites.com/api/roles';
+
   //============================================================================
   // TRASH LEADS
 
@@ -68,16 +112,47 @@ class AppUrls{
 
   static const String leadTypes = '${baseurl}v1/api/lead-types';
 
+
+
   //============================================================================
 
 
-  //Setting SCREEN
-  static const String leadSetting="https://webhopers.whsuites.com/api/lead-fields-management";
-  static const String fieldSetting="https://webhopers.whsuites.com/api/lead-fields";
-  static const String settingCustomFields='https://webhopers.whsuites.com/api/lead-custom-fields';
+
+  // //Setting SCREEN
+  // static const String leadSetting="https://webhopers.whsuites.com/api/lead-fields-management";
+  // static const String fieldSetting="https://webhopers.whsuites.com/api/lead-fields";
+  // static const String settingCustomFields='https://webhopers.whsuites.com/api/lead-custom-fields';
+  //
 
 
 
+//Lead Detail Action------
+  //Action Lead
+  static const String leadDetailActionLead="${baseurl}/api/lead-activities/ca661553-d140-4a22-8c09-e96a2b330adf";
+  //Action Service-----
+  static const String leadDetailActionService="${baseurl}/api/lead-activities/ca661553-d140-4a22-8c09-e96a2b330adf";
+  //Lead Detail Attachment---
+  static const String leadDetailAttachment="${baseurl}/api/leads/lead-attachments/ca661553-d140-4a22-8c09-e96a2b330adf";
+
+
+  //Activity Create call, meeting,note,reminder-------
+  static const String leadDetailActivityCallCreate="${baseurl}/api/lead-activities/2c165cd5-2987-4255-b4dc-0df64fef5985";
+
+  //Lead Detail Assign History ---
+  static const String leadDetailAssignHistory="${baseurl}/api/leads/9e231960-6448-4beb-93a5-c0b0a834c4b4/assigned-history";
+  //Lead Detail History
+  static const String leadDetailHistory="${baseurl}/api/lead-activities/history/8192bb2a-72d0-4958-9937-f622a948d867";
+
+  //Lead Detail Projection
+  static const String leadDetailProjection="${baseurl}api/projection";
+  //lead Detail status --
+  static const String leadDetailUpdateStatus="${baseurl}/api/leads/ca661553-d140-4a22-8c09-e96a2b330adf/status";
+
+
+  //Currency
+  static const String leadDetailCurrency="${baseurl}/api/currencies";
+  //Generate Proforma
+  static const String leadDetailProforma="${baseurl}/api/performa";
 
 
 
@@ -102,6 +177,11 @@ class AppUrls{
   // STATUS
   static const String leadMastersStatus = '${baseurl}v1/api/lead-status?q=';
 
+  //COMPANY PROFILE
+
+  static const String companyProfile='https://webhopers.whsuites.com/api/company-profile';
+
+
   //============================================================================
   //============================================================================
   // CUSTOMER
@@ -118,6 +198,60 @@ class AppUrls{
 
   static const String customerMasterActivationSettingUpdate="${baseurl}/api/project-activation-settings/05516662-95b7-440d-bfbb-b4ecd509da52";
   // static const String filterCity="https://webhopers.whsuites.com/api/cities/list";
+
+
+
+
+
+
+  //Customer List Detail View
+  static const String customerListDetailViewList="${baseurl}api/customers/8d19a603-e558-40f1-ab2c-a6ab764716d3";
+  //Service categories
+  static const String customerListServiceCategories="${baseurl}api/customers/8d19a603-e558-40f1-ab2c-a6ab764716d3/service-categories";
+  //Company List
+  static const String customerDetailViewCompanyList="${baseurl}api/companies/list/8d19a603-e558-40f1-ab2c-a6ab764716d3";
+  //Activities
+  static const String customerDetailViewActivities="${baseurl}api/customer-activities/history-customer-view";
+  //Assign History
+  static const String customerDetailViewAssignedHistory="${baseurl}api/customers/c5f2b49c-e836-4a1f-8e84-61eb9cd3e9b0/assigned-history";
+
+  //Services
+
+  static const String customerDetailViewServices="${baseurl}api/customers/c5f2b49c-e836-4a1f-8e84-61eb9cd3e9b0/services";
+  //orderList
+  static const String customerDetailViewOrderList="${baseurl}api/customers/8d19a603-e558-40f1-ab2c-a6ab764716d3/orders";
+
+  //payments
+  static const String customerDetailViewPaymentList="${baseurl}api/customers/9e47d5a5-a8f2-461d-9fdb-70a43e661d8b?option=payments";
+//Projects
+  static const String customerDetailViewProjects="${baseurl}api/customers/5a577a41-79af-4c6c-b31b-ebd359a8a0be?option=projects";
+
+  //Credit Debit
+
+  static const String customerDetailViewCreditDebit="${baseurl}api/customers/d7318a8e-d73a-4e61-b45a-a91bedda1a93?option=creditdebit";
+
+  //Lead
+  static const String customerDetailViewLead="${baseurl}api/customers/8d19a603-e558-40f1-ab2c-a6ab764716d3?option=leads";
+
+  //Activity Purpose call Type
+  static const String customerDetailViewCallType="${baseurl}api/customer-activity-purposes";
+
+  //Create Company
+
+  static const String customerDetailCreateCompany="${baseurl}/api/companies";
+  //Update Company Api
+  static const String customerDetailUpdateCompany="${baseurl}/api/companies/e09bd99f-3c6b-4013-9299-ac874b974c71";
+
+
+
+
+
+
+
+
+
+
+
 
   //ACTIVITIES---
 
@@ -149,12 +283,59 @@ class AppUrls{
 
   // ORDER PRODUCTS
   static const String customersOrderProducts = '${baseurl}v1/api/order-products/list';
+  static const String orderProductSearch="${baseurl}api/products?searchTerm=";
+  static const String orderProductService="${baseurl}/api/customer-services";
+  static const String orderProductQuit="${baseurl}/api/customer-services/quit/a48a7b87-5be3-43a4-b2f4-6a2bbaf0b1a0";
+  static const String orderProductRenew="${baseurl}/api/customer-services/restart";
+
+
+
+  //CUSTOMER ORDERLESS SERVICES
+//Use dev url
+  static const String orderlessServicesList="$baseurl/api/orderless-services/list";
+  static const String orderlessServiceCreate="${baseurl}/api/orderless-services";
+  static const String orderlessServiceQuit="${baseurl}/api/orderless-services/a239af48-02c9-46e9-80c2-39b33d1752ee/quit";
+  static const String orderlessServiceRenew="${baseurl}/api/orderless-services/a239af48-02c9-46e9-80c2-39b33d1752ee/restart";
+
+
 
   // TRASH
   static const String customersTrashLead = '${baseurl}v1/api/customers/trash';
 
   // ACTIVATION LIST
   static const String customersActivationList = '${baseurl}v1/api/sent-project-activation/list';
+
+  // CUSTOMER (MASTER)
+  // COMPANY CREDENTIAL
+  //============================================================================
+
+  //Customer Master
+
+  static const String customerMasterCompanyCredential="${baseurl}api/companies/credential-type";
+  static const String customerMasterCompanyCredentialUpdate="${baseurl}/api/companies/credential-type/218fd612-2501-4ce1-b42d-6282ed8b49b3";
+  static const String customerMasterCustomerType="${baseurl}api/customer-types";
+  static const String customerTypeCreate="${baseurl}/api/customer-types";
+  static const String customerTypeUpdate="${baseurl}/api/customer-types/08531989-ac1c-469d-bb0c-2a457b0fa858";
+  static const String customerMasterActivityPurpose="${baseurl}api/customer-activity-purposes";
+  static const String customerMasterActivityPurposeCreate="${baseurl}/api/customer-activity-purposes";
+  static const String customerMasterActivationServices="${baseurl}api/product-categories/list";
+  static const String customerMasterActivationAvailableField="${baseurl}/api/project-activation-fields/list";
+  static const String customerMasterActivationUpdate="${baseurl}/api/project-activation-managements/create-activation/0647c740-0c84-4599-9a49-cd3c88f901b9";
+  static const String customerMasterActivationField="${baseurl}api/project-activation-fields/list";
+  static const String customerMasterActivationFieldCreate="${baseurl}/api/project-activation-fields";
+
+
+  //Customer  Setting
+  static const String customerSettingColumnList="${baseurl}api/customer-field-management";
+  static const String customerSettingColumnSaveChange="${baseurl}/api/customer-field-management";
+  static const String customerSettingColumnUpdate="${baseurl}/api/hide-customer-columns-from-role/create";
+  static const String customerSettingFieldList="${baseurl}api/customer-fields";
+
+//Customer Trash -----
+  //List
+  // TRASH
+  static const String customersTrashList = '${baseurl}/api/customers/trash';
+
 
   // CUSTOMER (MASTER)
   // COMPANY CREDENTIAL
@@ -178,25 +359,23 @@ class AppUrls{
 
 
 
-
-
   //============================================================================
   // ORDER
   static const String orderList = '${baseurl}v1/api/orders/order-list';
+  static const String orderCompany="${baseurl}/api/companies/list-all";
+  static const String orderGenerateList="${baseurl}/api/orders/41d25a24-1dca-4e5a-ab9c-d22d5a76ad55/performa-invoice";
+  static const String orderDetailList="${baseurl}/api/orders/01ecd555-6254-488d-a2c3-5a5cdc3602fa";
 
-
-  // Activities
+     //:------- Activities
   static const String orderActivities = '${baseurl}v1/api/order-activity/products';
 
-
-
-  // PROFORMA
+      //:-------PROFORMA
   static const String orderProforma = 'https://webhopers.whsuites.com:3006/v1/api/performa';
 
-  // PAYMENTS
+  //:-------PAYMENTS
   static const String orderPayments = '${baseurl}v1/api/customer-payments/payment-list';
 
-  // ORDER MASTER
+  //:-------ORDER MASTER
   static const String orderMaster = '${baseurl}v1/api/order-status';
 
   //============================================================================

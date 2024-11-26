@@ -303,9 +303,9 @@ class CustomerOrderDetailView extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                       Padding(
-                            padding: EdgeInsets.only(top: 2),
-                            child:Image.asset('assets/svg/gridview.svg',height: 12,width: 12,)
+                          Padding(
+                              padding: EdgeInsets.only(top: 2),
+                              child:Image.asset('assets/svg/gridview.svg',height: 12,width: 12,)
                           ),
                           const SizedBox(width: 11),
                           const Expanded(
@@ -315,7 +315,7 @@ class CustomerOrderDetailView extends StatelessWidget {
                             ),
                           ),
 
-                        Image.asset('assets/svg/person.svg',height: 10.75,width: 9.34,),
+                          Image.asset('assets/svg/person.svg',height: 10.75,width: 9.34,),
                           SizedBox(width: 12,),
                           Text(
                             'Kewal Rana',
@@ -350,7 +350,7 @@ class CustomerOrderDetailView extends StatelessWidget {
 
                       // Person info row
                       Row(
-                       crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
 
                           Image.asset('assets/icons/google_forms.png', height: 14, width: 14,color: Colors.grey,),
@@ -395,20 +395,20 @@ class CustomerOrderDetailView extends StatelessWidget {
                         children: [
 
 
-                       Column(
-                         crossAxisAlignment:CrossAxisAlignment.start,
-                         children: [
-                           const Text(
-                             'INDUSTRY',
-                             style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),
-                           ),
-                           const Text(
-                             'Real Estate',
-                             style: TextStyle(fontSize: 12,color: Colors.grey),
-                           ),
+                          Column(
+                            crossAxisAlignment:CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'INDUSTRY',
+                                style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),
+                              ),
+                              const Text(
+                                'Real Estate',
+                                style: TextStyle(fontSize: 12,color: Colors.grey),
+                              ),
 
-                         ],
-                       ),
+                            ],
+                          ),
                           Spacer(),
                           Column(
                             crossAxisAlignment:CrossAxisAlignment.end,

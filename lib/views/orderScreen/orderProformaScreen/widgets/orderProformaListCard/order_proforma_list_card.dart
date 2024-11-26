@@ -67,7 +67,7 @@ class OrderProformaListCard extends StatelessWidget {
                   Text(performaNumber, style: TextStyle(
                     color: AllColors.grey,
                     fontSize: 12,
-                      
+
                     fontWeight: FontWeight.w400,
                   ),),
                 ],
@@ -88,7 +88,7 @@ class OrderProformaListCard extends StatelessWidget {
                   SizedBox5w(),
                   Text(date, style: TextStyle(
                       fontSize: 13,
-                        
+
                       fontWeight: FontWeight.w400,
                       color: AllColors.mediumPurple
                   ),),
@@ -118,30 +118,30 @@ class OrderProformaListCard extends StatelessWidget {
                 thickness: 0.4,
               ),
 
-             Row(
-               children: [
-                 Container(
-                   height: Get.height/40,
-                   padding: EdgeInsets.symmetric(horizontal: 12),
-                   decoration: BoxDecoration(
-                       color: AllColors.lighterPurple,
-                       borderRadius :BorderRadius.circular(20)
-                   ),
-                   child: Center(
-                     child: Text(createdBy, style: TextStyle(
-                         color: AllColors.mediumPurple,
-                         fontWeight: FontWeight.w400,
+              Row(
+                children: [
+                  Container(
+                    height: Get.height/40,
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    decoration: BoxDecoration(
+                        color: AllColors.lighterPurple,
+                        borderRadius :BorderRadius.circular(20)
+                    ),
+                    child: Center(
+                      child: Text(createdBy, style: TextStyle(
+                          color: AllColors.mediumPurple,
+                          fontWeight: FontWeight.w400,
 
-                         fontSize: 12
-                     ),),
-                   ),
-                 ),
+                          fontSize: 12
+                      ),),
+                    ),
+                  ),
 
-               Spacer(),
-                 Icon(Icons.remove_red_eye,color:Colors.blue,)
+                  Spacer(),
+                  Icon(Icons.remove_red_eye,color:Colors.blue,)
 
-               ],
-             )
+                ],
+              )
             ],
           ),
         ),

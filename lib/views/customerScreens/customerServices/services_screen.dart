@@ -44,8 +44,8 @@ class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
                   child: Column(
                     children: _viewModel.response.value!.items!
                         .map((item) => AllServicesScreenCard(
-                        title: item.orderProduct?.product?.name ?? 'N/A',
-                       subtitle: item.orderProduct?.order?.customer?.organization?? 'N/A',
+                      title: item.orderProduct?.product?.name ?? 'N/A',
+                      subtitle: item.orderProduct?.order?.customer?.organization?? 'N/A',
                       paymentMode: item.orderProduct?.paymentMode ?? 'N/A',
                       email: 'eventpharma@gmail.com',
                       orderNumber: item.orderProduct?.order?.orderNumber != null

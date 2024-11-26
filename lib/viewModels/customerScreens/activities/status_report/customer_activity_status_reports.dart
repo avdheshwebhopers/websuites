@@ -12,7 +12,7 @@ class CustomerActivityStatusReportViewModel extends GetxController{
   RxBool loading = false.obs;
   Future<void> statusReports(BuildContext context) async {
     loading.value = true;
-   CustomerStatusReportsRequestModel customerStatusReportsRequestModel= CustomerStatusReportsRequestModel(
+    CustomerStatusReportsRequestModel customerStatusReportsRequestModel= CustomerStatusReportsRequestModel(
       assignedTo: null,
       customerStatus: null,
       isFilterUserWithTeam: true,

@@ -10,7 +10,7 @@ class DBTransactionsRequestModel {
     this.items,
     this.meta,
     this.user_key
-});
+  });
 
   Map<String,dynamic> toJson () {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -26,7 +26,7 @@ class DBTransactionsRequestModel {
 }
 
 
- class Items {
+class Items {
   String? id;
   int? amount;
   int? gstAndFees;
@@ -103,7 +103,7 @@ class DBTransactionsRequestModel {
     data['status_action_by'] = statusActionBy;
     return data;
   }
-  }
+}
 
 class Product {
   String? id;

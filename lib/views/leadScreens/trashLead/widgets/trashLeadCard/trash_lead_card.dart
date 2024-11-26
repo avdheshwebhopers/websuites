@@ -122,7 +122,7 @@ class TrashLeadScreenCard extends StatelessWidget {
 
                     Image.asset('assets/icons/remark.png',height: 12,color: AllColors.lightGrey,)
                     ,
-SizedBox(width: 5,),
+                    SizedBox(width: 5,),
                     Text(
                       remark,
                       style: TextStyle(

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import '../../../../../data/models/requestModels/leadactivity/daily_sales_reports/daily_sales_reports.dart';
 import '../../../../../data/repositories/repositories.dart';
 import '../../../../../Utils/utils.dart';
+import '../../../../data/models/requestModels/lead/activity/daily_sales_reports/daily_sales_reports.dart';
 import '../../../../views/leadScreens/leadActivities/dailySalesReport/dailyreportcard/SalesPersonCard.dart';
 
 class DailySalesReportsViewModel extends GetxController {

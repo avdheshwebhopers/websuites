@@ -8,6 +8,6 @@ abstract class BaseApiServices {
 
   Future<dynamic> deleteApiResponse(String url);
 
-  Future<dynamic> patchApi(String url);
+  Future<dynamic> patchApi(String url,dynamic data);
 
 }

@@ -4,7 +4,6 @@ import '../../../../viewModels/leadScreens/lead_activity/lead_reports/lead_repor
 import '../../../../viewModels/leadScreens/lead_activity/no_activities/no_activities.dart';
 import 'leadrepoertCard/LeadActivitiesReportCard.dart';
 import '../../../../../Utils/utils.dart';
-import '../../../../../data/models/requestModels/leadactivity/lead_reports/lead_reports.dart';
 import '../../../../../data/repositories/repositories.dart';
 
 

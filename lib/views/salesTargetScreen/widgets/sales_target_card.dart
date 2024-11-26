@@ -101,11 +101,11 @@ class SalesTargetScreenCard extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                   created_Date,
+                    created_Date,
                     style: TextStyle(
                       color: AllColors.mediumPurple,
                       fontSize: 12,
-                        
+
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -114,17 +114,17 @@ class SalesTargetScreenCard extends StatelessWidget {
                     'DEADLINE - ',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                          
+
                         fontSize: 12,
                         color: AllColors.blackColor),
                   ),
                   Text(
-                  deadline,
+                    deadline,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       color: AllColors.grey,
                       fontSize: 12,
-                        
+
                     ),
                   ),
                 ],
@@ -138,20 +138,20 @@ class SalesTargetScreenCard extends StatelessWidget {
                     'MEMBERS - ',
                     style: TextStyle(
                         color: AllColors.blackColor,
-                          
+
                         fontSize: 12,
                         fontWeight: FontWeight.w600),
                   ),
                   Text(
-                   member,
+                    member,
                     style: TextStyle(
-                        color: AllColors.grey,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                          ),
+                      color: AllColors.grey,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                    ),
                   ),
                   const Spacer(),
-                Image.asset('assets/svg/report.svg',height: 14,width: 14,),
+                  Image.asset('assets/svg/report.svg',height: 14,width: 14,),
                   const SizedBox(
                     width: 5,
                   ),
@@ -159,7 +159,7 @@ class SalesTargetScreenCard extends StatelessWidget {
                     'REPORT',
                     style: TextStyle(
                         color: AllColors.blackColor,
-                          
+
                         fontSize: 12,
                         fontWeight: FontWeight.w500),
                   )

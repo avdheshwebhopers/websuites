@@ -78,7 +78,7 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                 Spacer(),
                 Icon(Icons.calendar_month_outlined, size: 15, color: AllColors.mediumPurple),
                 Text(
-                created_Date,
+                  created_Date,
                   style: TextStyle(
                     color: AllColors.mediumPurple,
                     fontSize: 10,
@@ -144,11 +144,11 @@ class LeadActivitiesScreenCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                  
+
                       SizedBox(height: 5),
                       Row(
                         children: [
-                         Icon(Icons.notifications_active_outlined,color: AllColors.vividBlue,size: 14,),
+                          Icon(Icons.notifications_active_outlined,color: AllColors.vividBlue,size: 14,),
 
                           SizedBox(width: 5,),
                           Text(actionDate, style: TextStyle(

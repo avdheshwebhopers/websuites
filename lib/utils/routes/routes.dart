@@ -30,40 +30,40 @@ import '../../views/upcomingScreen/upcoming_screen.dart';
 import '../../views/welcomeToCompanyScreen/welcome_to_company_screen.dart';
 
 class AllRoutes {
-      static List<GetPage> appRoutes() => [
-            GetPage(name: RoutesName.splash_screen, page: () => const SplashScreen()),
-            GetPage(name: RoutesName.welcome_company_screen, page: () => const WelcomeToCompany()),
-            GetPage(name: RoutesName.otp_screen, page: () => const OtpScreen()),
-            GetPage(name: RoutesName.forgot_password_screen, page: () => const ForgotPasswordScreen()),
-            GetPage(name: RoutesName.login_screen, page: () => const LoginScreen()),
-            GetPage(name: RoutesName.bottomNavBar_screen, page: () => const BottomNavBarScreen()),
-            GetPage(name: RoutesName.home_screen, page: () => const HomeScreen()),
-            GetPage(name: RoutesName.createNewLead_screen, page: () => const CreateNewLeadScreen()), // Unique route for CreateNewLeadScreen
-            GetPage(name: RoutesName.createNewLead_screen, page: () => const SearchGoogleLeads()), // Unique route for CreateNewLeadScreen
-            GetPage(name: RoutesName.lead_list_screen, page: () => const LeadListScreen()), // This should be unique as well
-            GetPage(name: RoutesName.trashLead_screen, page: () => TrashLeadScreen()),
-            GetPage(name: RoutesName.upcoming_screen, page: () => const LeadActivitiesScreen()),
-            GetPage(name: RoutesName.search_google_leads_screen, page: () => TrashLeadScreen()),
-            GetPage(name: RoutesName.search_google_leads_screen, page: () => const SettingScreen()),
-            GetPage(name: RoutesName.search_google_leads_screen, page: () => LeadMasterScreen()),
-            // Uncomment if you want to use this route
-            // GetPage(name: RoutesName.lead_activities_screen, page: () => const LeadActivitiesScreen()),
+  static List<GetPage> appRoutes() => [
+    GetPage(name: RoutesName.splash_screen, page: () => const SplashScreen()),
+    GetPage(name: RoutesName.welcome_company_screen, page: () => const WelcomeToCompany()),
+    GetPage(name: RoutesName.otp_screen, page: () => const OtpScreen()),
+    GetPage(name: RoutesName.forgot_password_screen, page: () => const ForgotPasswordScreen()),
+    GetPage(name: RoutesName.login_screen, page: () => const LoginScreen()),
+    GetPage(name: RoutesName.bottomNavBar_screen, page: () => const BottomNavBarScreen()),
+    GetPage(name: RoutesName.home_screen, page: () => const HomeScreen()),
+    GetPage(name: RoutesName.createNewLead_screen, page: () => const CreateNewLeadScreen()), // Unique route for CreateNewLeadScreen
+    GetPage(name: RoutesName.createNewLead_screen, page: () => const SearchGoogleLeads()), // Unique route for CreateNewLeadScreen
+    GetPage(name: RoutesName.lead_list_screen, page: () => const LeadListScreen()), // This should be unique as well
+    GetPage(name: RoutesName.trashLead_screen, page: () => TrashLeadScreen()),
+    GetPage(name: RoutesName.upcoming_screen, page: () => const LeadActivitiesScreen()),
+    GetPage(name: RoutesName.search_google_leads_screen, page: () => TrashLeadScreen()),
+    GetPage(name: RoutesName.search_google_leads_screen, page: () => const SettingScreen()),
+    GetPage(name: RoutesName.search_google_leads_screen, page: () => LeadMasterScreen()),
+    // Uncomment if you want to use this route
+    // GetPage(name: RoutesName.lead_activities_screen, page: () => const LeadActivitiesScreen()),
 
-            GetPage(name: RoutesName.my_teamLead_screen, page: () => const TeamLeadScreen()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () => const  CustomersListScreen()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () =>  CustomersActivitiesScreen()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () => const  CustomerPaymentReminders()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () => const  CustomerCompaniesScreen()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () => const  CustomerServicesScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => const TeamLeadScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => const  CustomersListScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () =>  CustomersActivitiesScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => const  CustomerPaymentReminders()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => const  CustomerCompaniesScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => const  CustomerServicesScreen()),
 
-            GetPage(name: RoutesName.my_teamLead_screen, page: () =>   OrderListScreen()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () =>  OrderActivityScreen()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () =>  OrderProformaList()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () => OrderMasterListScreen()),
-            GetPage(name: RoutesName.my_teamLead_screen, page: () => SalesTargetScreen()),
-
-
+    GetPage(name: RoutesName.my_teamLead_screen, page: () =>   OrderListScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () =>  OrderActivityScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () =>  OrderProformaList()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => OrderMasterListScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => SalesTargetScreen()),
 
 
-      ];
+
+
+  ];
 }

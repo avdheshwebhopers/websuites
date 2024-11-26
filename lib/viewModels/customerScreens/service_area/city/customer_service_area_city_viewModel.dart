@@ -11,9 +11,9 @@ class CustomerServiceAreaCityViewModel extends GetxController {
   Future<void> customerSafeAreaCity(BuildContext context) async {
     loading.value = true;
     ServiceAreaCityRequestModel safeAreaCityRequestModel =
-        ServiceAreaCityRequestModel(
-            divisionId: "2dc8cc03-a7ed-4763-80c9-b37c32d39c80",
-            stateId: "406d3dab-1230-4555-8c96-771efae4e50a");
+    ServiceAreaCityRequestModel(
+        divisionId: "2dc8cc03-a7ed-4763-80c9-b37c32d39c80",
+        stateId: "406d3dab-1230-4555-8c96-771efae4e50a");
     _api.safeAreaCity(safeAreaCityRequestModel.toJson()).then((value) {
       if (value.isNotEmpty) {
         for (var response in value) {

@@ -26,7 +26,7 @@ class _LeadActivitiesScreenState extends State<LeadActivitiesScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   late final LeadActivityViewModel _leadActivityViewModel;
   late final LeadActivityNoActivityViewModel _leadActivityno;
-late final LeadActivityLeadReportViewModel  _leadactivitiesreport ;
+  late final LeadActivityLeadReportViewModel  _leadactivitiesreport ;
   late final  TeamLeadsViewModel  _leadactivitiesteamreports ;
   String? userName = '';
   String? userEmail = '';

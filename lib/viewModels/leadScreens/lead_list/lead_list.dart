@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../../data/models/responseModels/leads/Leadlist/lead_list.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../data/models/responseModels/leads/Leadlist/lead_list.dart' as leadModels;
-import '../../../data/models/requestModels/lead/lead_list.dart';
+import '../../../data/models/requestModels/lead/lead_list/lead_list.dart';
 
 class LeadListViewModel extends GetxController {
   final api = Repositories();
