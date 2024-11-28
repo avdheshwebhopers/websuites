@@ -2417,15 +2417,27 @@ class Repositories {
   //============================================================================
   // SALES
 
+  //
+  // Future<SalesResponseModel> salesApi(dynamic data) async {
+  //   try {
+  //     dynamic response = await _apiService.postApiResponse(AppUrls.salesApi, data);
+  //     return response = SalesResponseModel.fromJson(response);
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
+
+
   Future<SalesResponseModel> salesApi() async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.salesApi, null);
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.salesApi, null);
       return response = SalesResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
-
   //============================================================================
   // ROLES
 

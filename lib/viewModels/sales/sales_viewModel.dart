@@ -3,49 +3,50 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../utils/utils.dart';
-
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../../data/repositories/repositories.dart';
-import '../../../../utils/utils.dart';
-import '../../data/models/responseModels/sales/sales_response_model.dart'; // Import your sales response model
-
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../../data/repositories/repositories.dart';
-import '../../../../utils/utils.dart';
-import '../../data/models/responseModels/sales/sales_response_model.dart';
+import '../../data/models/requestModels/sales/SalesListRequestModel.dart';
+import '../../data/models/responseModels/sales/sales_response_model.dart'; // Ensure this path is correct
 
 class SalesViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
+  Rx<String?> errorMessage = Rx<String?>(null);
+  RxList<Items> salesItems = <Items>[].obs; // Ensure Items is defined
 
-  // Change to RxList for better reactivity
-  RxList<Items> salesItems = <Items>[].obs;
-
-  Future<void> fetchSales() async {
+  Future<void> fetchSales({String? notificationTo, int? limit, int? page}) async {
     try {
       loading.value = true;
+      errorMessage.value = null;
 
-      // Directly await the API call
-      SalesResponseModel response = await _api.salesApi();
+      // Prepare request model
+      SalesListRequestModel requestModel = SalesListRequestModel(
+        notificationTo: notificationTo,
+        limit: limit,
+        page: page,
+      );
 
-      if (response.items != null && response.items!.isNotEmpty) {
-        // Clear previous items and add new items
+      // Fetch sales data from API
+      SalesResponseModel response = await _api.salesApi(); // Call without arguments
+      // Log response details
+      print('🔍 VIVEK SALES RESPONSE DETAILS 🔍');
+      if (response.items != null) {
+        print('Total Items: ${response.items!.length}');
+        response.items!.asMap().forEach((index, item) {
+          print('\n📊 Sales Item [$index] Details:');
+          print('ID: ${item.id}');
+          print('Name: ${item.name}');
+          print('Start Date: ${item.start_date}');
+          // Continue logging...
+        });
         salesItems.clear();
         salesItems.addAll(response.items!);
-
-        print('Fetched ${salesItems.length} sales items'); // Debug print
         Utils.snackbarSuccess('Sales fetched successfully');
       } else {
-        print('No sales items found'); // Debug print
+        errorMessage.value = 'No sales data found';
         Utils.snackbarFailed('No sales data found');
       }
     } catch (error) {
-      print('Error fetching sales: $error'); // Detailed error logging
-      Utils.snackbarFailed('Failed to fetch sales');
+      errorMessage.value = error.toString();
+      Utils.snackbarFailed('Failed to fetch sales: $error');
     } finally {
       loading.value = false;
     }
@@ -53,7 +54,7 @@ class SalesViewModel extends GetxController {
 
   @override
   void onInit() {
-    fetchSales();
     super.onInit();
+    fetchSales(); // Fetch sales data on initialization
   }
 }
