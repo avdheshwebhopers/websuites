@@ -4,8 +4,12 @@ class MasterDivisionsResponseModel {
   String? status;
   String? createdAt;
 
-  MasterDivisionsResponseModel(
-      {this.id, this.name, this.status, this.createdAt});
+  MasterDivisionsResponseModel({
+    this.id,
+    this.name,
+    this.status,
+    this.createdAt,
+  });
 
   MasterDivisionsResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -21,5 +25,9 @@ class MasterDivisionsResponseModel {
     data['status'] = status;
     data['created_at'] = createdAt;
     return data;
+  }
+
+  static List<MasterDivisionsResponseModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) => MasterDivisionsResponseModel.fromJson(json)).toList();
   }
 }

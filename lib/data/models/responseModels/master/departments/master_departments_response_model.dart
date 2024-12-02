@@ -8,11 +8,11 @@ class MasterDepartmentsResponseModel {
 
   MasterDepartmentsResponseModel(
       {this.id,
-      this.name,
-      this.description,
-      this.isdefault,
-      this.createdAt,
-      this.updatedAt});
+        this.name,
+        this.description,
+        this.isdefault,
+        this.createdAt,
+        this.updatedAt});
 
   MasterDepartmentsResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -33,4 +33,9 @@ class MasterDepartmentsResponseModel {
     data['updated_at'] = updatedAt;
     return data;
   }
+
+  static List<MasterDepartmentsResponseModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) =>MasterDepartmentsResponseModel.fromJson(json)).toList();
+  }
+
 }

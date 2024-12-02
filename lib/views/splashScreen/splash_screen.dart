@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/utils.dart';
 import 'package:get/get.dart';
+import '../../viewModels/services/splash_services.dart';
 import '../../resources/imageStrings/image_strings.dart';
 import '../../utils/appColors/app_colors.dart';
-import '../../viewModels/services/splash_services.dart';
+
 
 
 

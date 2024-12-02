@@ -28,72 +28,70 @@ class CustomerCompaniesResponseModel {
 
 class Items {
   String? id;
-  String? company_name;
-  String? company_email;
-  String? company_phone;
-  int? country_code;
-  String? contact_person_name;
-  String? contact_person_number;
-  int? c_country_code;
+  String? companyName;
+  String? companyEmail;
+  String? companyPhone;
+  int? countryCode;
+  String? contactPersonName;
+  String? contactPersonNumber;
+  int? contactCountryCode;
   String? address;
   String? website;
   String? gst;
   String? logo;
-  int? lat;
-  int? lng;
+  double? lat;
+  double? lng;
   Customer? customer;
   Parent? parent;
 
-  Items(
-      {this.id,
-        this.company_name,
-        this.company_email,
-        this.company_phone,
-        this.country_code,
-        this.contact_person_name,
-        this.contact_person_number,
-        this.c_country_code,
-        this.address,
-        this.website,
-        this.gst,
-        this.logo,
-        this.lat,
-        this.lng,
-        this.customer,
-        this.parent});
+  Items({
+    this.id,
+    this.companyName,
+    this.companyEmail,
+    this.companyPhone,
+    this.countryCode,
+    this.contactPersonName,
+    this.contactPersonNumber,
+    this.contactCountryCode,
+    this.address,
+    this.website,
+    this.gst,
+    this.logo,
+    this.lat,
+    this.lng,
+    this.customer,
+    this.parent,
+  });
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    company_name = json['company_name'];
-    company_email = json['company_email'];
-    company_phone = json['company_phone'];
-    country_code = json['country_code'];
-    contact_person_name = json['contact_person_name'];
-    contact_person_number = json['contact_person_number'];
-    c_country_code = json['c_country_code'];
+    companyName = json['company_name'];
+    companyEmail = json['company_email'];
+    companyPhone = json['company_phone'];
+    countryCode = json['country_code'];
+    contactPersonName = json['contact_person_name'];
+    contactPersonNumber = json['contact_person_number'];
+    contactCountryCode = json['c_country_code'];
     address = json['address'];
     website = json['website'];
     gst = json['gst'];
     logo = json['logo'];
-    lat = json['lat'];
-    lng = json['lng'];
-    customer = json['customer'] != null
-        ? Customer.fromJson(json['customer'])
-        : null;
-    parent =
-    json['parent'] != null ? Parent.fromJson(json['parent']) : null;
+    lat = json['lat']?.toDouble();
+    lng = json['lng']?.toDouble();
+    customer = json['customer'] != null ? Customer.fromJson(json['customer']) : null;
+    parent = json['parent'] != null ? Parent.fromJson(json['parent']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['company_name'] = company_name;
-    data['company_email'] = company_email;
-    data['company_phone'] = company_phone;
-    data['country_code'] = country_code;
-    data['contact_person_name'] = contact_person_name;
-    data['contact_person_number'] = contact_person_number;
-    data['c_country_code'] = c_country_code;
+    data['company_name'] = companyName;
+    data['company_email'] = companyEmail;
+    data['company_phone'] = companyPhone;
+    data['country_code'] = countryCode;
+    data['contact_person_name'] = contactPersonName;
+    data['contact_person_number'] = contactPersonNumber;
+    data['c_country_code'] = contactCountryCode;
     data['address'] = address;
     data['website'] = website;
     data['gst'] = gst;
@@ -112,164 +110,166 @@ class Items {
 
 class Customer {
   String? id;
-  String? company_name;
-  String? first_name;
-  String? last_name;
-  String? primary_email;
-  int? country_code;
-  String? primary_contact;
+  String? companyName;
+  String? firstName;
+  String? lastName;
+  String? primaryEmail;
+  int? countryCode;
+  String? primaryContact;
   String? organization;
-  String? primary_address;
-  String? profile_image;
+  String? primaryAddress;
+  String? profileImage;
   String? dob;
-  String? about_client;
-  String? other_information;
+  String? aboutClient;
+  String? otherInformation;
   double? lat;
   double? lng;
-  String? created_at;
-  String? updated_at;
-  String? deleted_at;
-  String? delete_remark;
-  String? zoho_contact_id;
+  String? createdAt;
+  String? updatedAt;
+  String? deletedAt;
+  String? deleteRemark;
+  String? zohoContactId;
   String? status;
-  String? sub_status;
+  String? subStatus;
 
-  Customer(
-      {this.id,
-        this.company_name,
-        this.first_name,
-        this.last_name,
-        this.primary_email,
-        this.country_code,
-        this.primary_contact,
-        this.organization,
-        this.primary_address,
-        this.profile_image,
-        this.dob,
-        this.about_client,
-        this.other_information,
-        this.lat,
-        this.lng,
-        this.created_at,
-        this.updated_at,
-        this.deleted_at,
-        this.delete_remark,
-        this.zoho_contact_id,
-        this.status,
-        this.sub_status});
+  Customer({
+    this.id,
+    this.companyName,
+    this.firstName,
+    this.lastName,
+    this.primaryEmail,
+    this.countryCode,
+    this.primaryContact,
+    this.organization,
+    this.primaryAddress,
+    this.profileImage,
+    this.dob,
+    this.aboutClient,
+    this.otherInformation,
+    this.lat,
+    this.lng,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.deleteRemark,
+    this.zohoContactId,
+    this.status,
+    this.subStatus,
+  });
 
   Customer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    company_name = json['company_name'];
-    first_name = json['first_name'];
-    last_name = json['last_name'];
-    primary_email = json['primary_email'];
-    country_code = json['country_code'];
-    primary_contact = json['primary_contact'];
+    companyName = json['company_name'];
+    firstName = json['first_name'];
+    lastName = json['last_name'];
+    primaryEmail = json['primary_email'];
+    countryCode = json['country_code'];
+    primaryContact = json['primary_contact'];
     organization = json['organization'];
-    primary_address = json['primary_address'];
-    profile_image = json['profile_image'];
+    primaryAddress = json['primary_address'];
+    profileImage = json['profile_image'];
     dob = json['dob'];
-    about_client = json['about_client'];
-    other_information = json['other_information'];
-    lat = json['lat'];
-    lng = json['lng'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    deleted_at = json['deleted_at'];
-    delete_remark = json['delete_remark'];
-    zoho_contact_id = json['zoho_contact_id'];
+    aboutClient = json['about_client'];
+    otherInformation = json['other_information'];
+    lat = json['lat']?.toDouble();
+    lng = json['lng']?.toDouble();
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    deletedAt = json['deleted_at'];
+    deleteRemark = json['delete_remark'];
+    zohoContactId = json['zoho_contact_id'];
     status = json['status'];
-    sub_status = json['subStatus'];
+    subStatus = json['subStatus'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['company_name'] = company_name;
-    data['first_name'] = first_name;
-    data['last_name'] = last_name;
-    data['primary_email'] = primary_email;
-    data['country_code'] = country_code;
-    data['primary_contact'] = primary_contact;
+    data['company_name'] = companyName;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['primary_email'] = primaryEmail;
+    data['country_code'] = countryCode;
+    data['primary_contact'] = primaryContact;
     data['organization'] = organization;
-    data['primary_address'] = primary_address;
-    data['profile_image'] = profile_image;
+    data['primary_address'] = primaryAddress;
+    data['profile_image'] = profileImage;
     data['dob'] = dob;
-    data['about_client'] = about_client;
-    data['other_information'] = other_information;
+    data['about_client'] = aboutClient;
+    data['other_information'] = otherInformation;
     data['lat'] = lat;
     data['lng'] = lng;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['deleted_at'] = deleted_at;
-    data['delete_remark'] = delete_remark;
-    data['zoho_contact_id'] = zoho_contact_id;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['deleted_at'] = deletedAt;
+    data['delete_remark'] = deleteRemark;
+    data['zoho_contact_id'] = zohoContactId;
     data['status'] = status;
-    data['subStatus'] = sub_status;
+    data['subStatus'] = subStatus;
     return data;
   }
 }
 
 class Parent {
   String? id;
-  String? company_name;
-  String? company_email;
-  String? company_phone;
-  int? country_code;
-  String? contact_person_name;
-  String? contact_person_number;
-  int? c_country_code;
+  String? companyName;
+  String? companyEmail;
+  String? companyPhone;
+  int? countryCode;
+  String? contactPersonName;
+  String? contactPersonNumber;
+  int? contactCountryCode;
   String? address;
   String? website;
   String? gst;
   String? logo;
-  int? lat;
-  int? lng;
+  double? lat;
+  double? lng;
 
-  Parent(
-      {this.id,
-        this.company_name,
-        this.company_email,
-        this.company_phone,
-        this.country_code,
-        this.contact_person_name,
-        this.contact_person_number,
-        this.c_country_code,
-        this.address,
-        this.website,
-        this.gst,
-        this.logo,
-        this.lat,
-        this.lng});
+  Parent({
+    this.id,
+    this.companyName,
+    this.companyEmail,
+    this.companyPhone,
+    this.countryCode,
+    this.contactPersonName,
+    this.contactPersonNumber,
+    this.contactCountryCode,
+    this.address,
+    this.website,
+    this.gst,
+    this.logo,
+    this.lat,
+    this.lng,
+  });
 
   Parent.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    company_name = json['company_name'];
-    company_email = json['company_email'];
-    company_phone = json['company_phone'];
-    country_code = json['country_code'];
-    contact_person_name = json['contact_person_name'];
-    contact_person_number = json['contact_person_number'];
-    c_country_code = json['c_country_code'];
+    companyName = json['company_name'];
+    companyEmail = json['company_email'];
+    companyPhone = json['company_phone'];
+    countryCode = json['country_code'];
+    contactPersonName = json['contact_person_name'];
+    contactPersonNumber = json['contact_person_number'];
+    contactCountryCode = json['c_country_code'];
     address = json['address'];
     website = json['website'];
     gst = json['gst'];
     logo = json['logo'];
-    lat = json['lat'];
-    lng = json['lng'];
+    lat = json['lat']?.toDouble();
+    lng = json['lng']?.toDouble();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['company_name'] = company_name;
-    data['company_email'] = company_email;
-    data['company_phone'] = company_phone;
-    data['country_code'] = country_code;
-    data['contact_person_name'] = contact_person_name;
-    data['contact_person_number'] = contact_person_number;
-    data['c_country_code'] = c_country_code;
+    data['company_name'] = companyName;
+    data['company_email'] = companyEmail;
+    data['company_phone'] = companyPhone;
+    data['country_code'] = countryCode;
+    data['contact_person_name'] = contactPersonName;
+    data['contact_person_number'] = contactPersonNumber;
+    data['c_country_code'] = contactCountryCode;
     data['address'] = address;
     data['website'] = website;
     data['gst'] = gst;
@@ -287,12 +287,13 @@ class Meta {
   int? totalItems;
   int? itemCount;
 
-  Meta(
-      {this.currentPage,
-        this.itemsPerPage,
-        this.totalPages,
-        this.totalItems,
-        this.itemCount});
+  Meta({
+    this.currentPage,
+    this.itemsPerPage,
+    this.totalPages,
+    this.totalItems,
+    this.itemCount,
+  });
 
   Meta.fromJson(Map<String, dynamic> json) {
     currentPage = json['currentPage'];

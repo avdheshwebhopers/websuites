@@ -9,7 +9,7 @@ class DivisionsResponseModel {
     this.name,
     this.status,
     this.created_at
-});
+  });
 
   DivisionsResponseModel.fromJson(Map<String, dynamic> json){
     id = json['id'];

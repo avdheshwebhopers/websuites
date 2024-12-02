@@ -1,7 +1,8 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/models/responseModels/login/login_response_model.dart';
+import '../../../data/models/responseModels/login/login_response_model.dart';
+
 
 
 
@@ -14,6 +15,7 @@ class SaveUserData {
     await sp.setString('email', email);
     return LoginResponseModel();
   }
+
 
   Future<LoginResponseModel> getUser() async {
     final SharedPreferences sp = await SharedPreferences.getInstance();

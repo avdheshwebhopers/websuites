@@ -22,4 +22,9 @@ class MasterCustomizeResponseModel {
     data['updated_at'] = updatedAt;
     return data;
   }
+
+  static List<MasterCustomizeResponseModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) =>MasterCustomizeResponseModel.fromJson(json)).toList();
+  }
+
 }

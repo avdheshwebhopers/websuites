@@ -1,37 +1,44 @@
 import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import '../../Utils/Routes/routes_name.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../Utils/Routes/routes_name.dart';
 import '../saveToken/save_token.dart';
 
 class SplashServices {
+  final SaveUserData userPreference = SaveUserData();
 
-  SaveUserData userPreference = SaveUserData();
   void isLogin() {
+    userPreference.getUser().then((value) {
+      debugPrint('Token: ${value.accessToken}');
 
-    userPreference.getUser().then((value){
-      print(value.accessToken);
-
-      if(value.accessToken == "null" || value.accessToken.toString() == ''){
-        Timer(const Duration(seconds: 2),
-                () => Get.toNamed(RoutesName.login_screen));
-      }else {
-         print('token is Not null');
-
-
+      if (value.accessToken == null || value.accessToken.toString().isEmpty) {
+        Timer(
+          const Duration(seconds: 2),
+              () => Get.offNamed(RoutesName.login_screen),
+        );
+      } else {
+        debugPrint('Token is not null');
         Timer(
           const Duration(seconds: 1),
               () => Get.offNamed(
             RoutesName.home_screen,
             arguments: {
               'accessToken': value.accessToken,
-              'email' : value.user!.email,
-              'first_name' : value.user!.first_name,
+              'email': value.user?.email,
+              'first_name': value.user?.first_name,
             },
           ),
         );
       }
-    }
-    );
+    }).catchError((error) {
+      debugPrint('Error retrieving user data: $error');
+      Timer(
+        const Duration(seconds: 2),
+            () => Get.offNamed(RoutesName.login_screen),
+      );
+    });
   }
 }
-

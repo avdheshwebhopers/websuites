@@ -1,31 +1,44 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../data/repositories/repositories.dart';
-import '../../../../utils/utils.dart';
+import '../../../../../data/models/responseModels/leads/createNewLead/assignedLeadTo/assigned_lead_to_response_model.dart';
+import '../../../../../data/repositories/repositories.dart';
 
 class AssignedLeadToViewModel extends GetxController {
-  final _api = Repositories();
+  final Repositories _api = Repositories();
   RxBool loading = false.obs;
+  RxList<String> fullCategoriesRxList = <String>[].obs; // Full names with emails
+  RxList<String> namesOnlyRxList = <String>[].obs; // Only first and last names
+  RxString selectedLeadName = ''.obs;
 
-  Future<void> assignedLead (BuildContext context) async {
+  Future<void> fetchAssignedLeads(BuildContext context) async {
     loading.value = true;
+    fullCategoriesRxList.clear();
+    namesOnlyRxList.clear(); // Clear previous names before fetching
 
-    _api.assignedLeadApi().then((value) {
+    try {
+      List<AssignedLeadToResponseModel> response = await _api.assignedLeadApi();
+      if (response.isNotEmpty) {
+        print("Lead IDs fetched");
+        for (var item in response) {
+          String firstName = item.first_name ?? '';
+          String lastName = item.last_name ?? '';
+          String email = item.email ?? '';
 
-      if(value.id!= null){
-        Utils.snackbarSuccess('lead Id fetched');
-        loading.value = false;
-
-      }else{
-        Utils.snackbarFailed('lead Id not fetched');
+          // Add full name with email
+          fullCategoriesRxList.add('$firstName $lastName\n$email');
+          // Add only first and last name
+          namesOnlyRxList.add('$firstName $lastName');
+        }
+      } else {
+        print("No lead IDs found");
       }
-    }).onError((error, stackTrace) {
+    } catch (e) {
       if (kDebugMode) {
-        print(error.toString());
+        print("Error fetching leads: ${e.toString()}");
       }
+    } finally {
+      loading.value = false;
     }
-    );
   }
 }

@@ -15,7 +15,7 @@ class DashboardLeadSourceResponseModel{
     this.update_at,
     this.leads,
     this.leadCount
-});
+  });
 
   DashboardLeadSourceResponseModel.fromJson(Map<String, dynamic> json){
     id = json['id'];

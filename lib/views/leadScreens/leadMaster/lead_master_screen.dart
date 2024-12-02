@@ -1,189 +1,147 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:websuites/views/leadScreens/leadMaster/widgets/leadMasterCard/lead_master_card.dart';
-import '../../../data/models/responseModels/login/login_response_model.dart';
+import '../../../Responsive/Custom_Drawer.dart';
+
+import '../../../data/models/controller.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
-import '../../../utils/components/widgets/appBar/custom_appBar.dart';
-import '../../../utils/components/widgets/drawer/custom_drawer.dart';
-import '../../../utils/components/widgets/navBar/custom_navBar.dart';
+
 import '../../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
-import '../../../viewModels/saveToken/save_token.dart';
+import '../../../viewModels/leadScreens/leadMasters/controller.dart';
+import 'SourceScreen/LeadMasterSourceScreen.dart';
+import 'StatusScreen/LeadMasterStatusScreen.dart';
+import 'TypeScreen/LeadMasterTypeScreen.dart';
 
-class LeadMasterScreen extends StatefulWidget {
-  const LeadMasterScreen({super.key});
-
-  @override
-  State<LeadMasterScreen> createState() => _LeadMasterScreenState();
-}
-
-class _LeadMasterScreenState extends State<LeadMasterScreen> {
+class LeadMasterScreen extends StatelessWidget {
+  LeadMasterScreen({Key? key}) : super(key: key);
+  final ScreenController _screenController = Get.put(ScreenController());
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  SaveUserData userPreference = SaveUserData();
+  final LeadMasterController controller = Get.put(LeadMasterController());
 
-  String? userName = '';
-  String? userEmail = '';
-
-  @override
-  void initState(){
-    FetchUserData();
-    super.initState();
+  Widget _buildTabButton(BuildContext context, String title, String tabName) {
+    return Obx(() {
+      final isSelected = controller.selectedTab.value == tabName;
+      return Expanded(
+        child: GestureDetector(
+          onTap: () => controller.updateSelectedTab(tabName),
+          child: Container(
+            height: Get.height / 30,
+            decoration: BoxDecoration(
+              color: isSelected ? AllColors.mediumPurple : AllColors.textField2,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Center(
+              child: TextStyles.w400_15(
+                color: isSelected ? AllColors.whiteColor : AllColors.blackColor,
+                context,
+                title,
+              ),
+            ),
+          ),
+        ),
+      );
+    });
   }
 
-  Future<void> FetchUserData() async {
-    try {
-      LoginResponseModel response = await userPreference.getUser();
-      String? first_name = response.user!.first_name;
-      String? email = response.user!.email;
-
-      setState(() {
-        userName = first_name;
-        userEmail = email;
-      });
-    } catch (e) {
-      print('Error fetching userData: $e');
-    }
+  Widget _buildContentSection(BuildContext context, double screenHeight) {
+    return Obx(() {
+      switch (controller.selectedTab.value) {
+        case 'types':
+          return const TypesTab(); // Use the TypesTab widget
+        case 'source':
+          return const SourceTab(); // Use the SourceTab widget
+        case 'status':
+          return const StatusTab(); // Use the StatusTab widget
+        default:
+          return SizedBox.shrink();
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: CustomBottomNavBar(),
-      floatingActionButton: CustomFloatingButton(
-          onPressed: (){},
-          imageIcon: IconStrings.navSearch3,
-          backgroundColor: AllColors.mediumPurple
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final bool isTabletOrDesktop = screenWidth >= 500;
 
-      key: _globalKey,
-      backgroundColor: AllColors.whiteColor,
-      drawer: CustomDrawer(
-          userName: '$userName',
-          phoneNumber: '$userEmail',
-          version: '1.0.12'
+    return Scaffold(
+      // scaffoldKey: _globalKey,
+      // bottomNavigationBar: CustomBottomNavBar(),
+
+      drawer: Obx(
+            () => CustomDrawer(
+          selectedIndex: 0, // Customize as needed
+          onItemSelected: (index) {
+            // Handle item selection
+          },
+          isCollapsed: false,
+          onCollapseToggle: () {
+            // Handle drawer collapse/expand
+          },
+          isTabletOrDesktop: screenWidth >= 500,
+        ),
       ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
+      body: CustomScrollView(
+        slivers: [
+          // SliverAppBar(
+          //   pinned: true,
+          //   floating: false,
+          //   backgroundColor: AllColors.whiteColor,
+          //
+          //   title: TextStyles.w700_17(color: AllColors.blackColor, context, Strings.leadMaster),
+          //   actions: [
+          //     Icon(Icons.search, size: 20, color: AllColors.lightGrey),
+          //     const SizedBox(width: 10),
+          //     Container(
+          //       padding: const EdgeInsets.symmetric(horizontal: 12),
+          //       height: screenHeight / 30,
+          //       decoration: BoxDecoration(
+          //         color: AllColors.mediumPurple,
+          //         borderRadius: BorderRadius.circular(5),
+          //       ),
+          //       child: Center(
+          //         child: TextStyles.w500_12(color: AllColors.whiteColor, context, Strings.addLeadType),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
+              padding: EdgeInsets.symmetric(
+                horizontal: isTabletOrDesktop ? screenWidth * 0.03 : 15,
+                // vertical: isTabletOrDesktop ? screenHeight * 0.03 : screenHeight * 0.15,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 150,
-                  ),
+                  SizedBox(height: screenHeight * (isTabletOrDesktop ? 0.05 : 0.03)),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: Get.height / 30,
-                        width: Get.width / 3.5,
-                        decoration: BoxDecoration(
-                            color: AllColors.mediumPurple,
-                            borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child:
-                          TextStyles.w400_15(color: AllColors.whiteColor, context, Strings.types),
-                        ),
-                      ),
-                      Container(
-                        height: Get.height / 30,
-                        width: Get.width / 3.5,
-                        decoration: BoxDecoration(
-                            color: AllColors.textField2,
-                            borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child: 
-                         TextStyles.w400_15(color: AllColors.blackColor, context, Strings.source),
-                        ),
-                      ),
-                      Container(
-                        height: Get.height / 30,
-                        width: Get.width / 3.5,
-                        decoration: BoxDecoration(
-                            color: AllColors.textField2,
-                            borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child:
+                      _buildTabButton(context, Strings.types, 'types'),
+                      const SizedBox(width: 10),
+                      _buildTabButton(context, Strings.source, 'source'),
+                      const SizedBox(width: 10),
 
-                          TextStyles.w400_15(color: AllColors.blackColor, context, Strings.status),
-                        ),
-                      ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  TextStyles.w500_14_Black(context, Strings.availableLeadStatus),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-                  const LeadMasterScreenCard(title: 'Hot', activity: 'In Progress'),
-                  const LeadMasterScreenCard(title: 'Hot', activity: 'Completed'),
-                  const LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-                  const LeadMasterScreenCard(title: 'Cold', activity: 'Active'),
-                  const LeadMasterScreenCard(title: 'Cold', activity: 'In Progress'),
-                  const SizedBox(height: 50
-                  ),
+                  SizedBox(height: screenHeight * 0.03),
+                  _buildContentSection(context, screenHeight),
+                  SizedBox(height: screenHeight * 0.05),
                 ],
               ),
             ),
           ),
-
-          //====================================================================
-          //CUSTOM APP BAR
-
-          CustomAppBar(
-            child: Row(
-              children: [
-                InkWell(
-                    onTap: () {
-                      _globalKey.currentState?.openDrawer();
-                    },
-                    child: const Icon(
-                      Icons.menu_sharp,
-                      size: 25,
-                    )),
-                const SizedBox(
-                  width: 12,
-                ),
-                TextStyles.w700_17(color: AllColors.blackColor, context, Strings.leadMaster),
-                const Spacer(),
-                Icon(
-                  Icons.search,
-                  size: 20,
-                  color: AllColors.lightGrey,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  height: Get.height / 30,
-                  decoration: BoxDecoration(
-                      color: AllColors.mediumPurple,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Center(
-                    child:
-                      TextStyles.w500_12(color: AllColors.whiteColor, context, Strings.addLeadType),
-                  ),
-                )
-              ],
-            ),
-          )
         ],
       ),
+      floatingActionButton: CustomFloatingButton(
+        onPressed: () {},
+        imageIcon: IconStrings.navSearch3,
+        backgroundColor: AllColors.mediumPurple,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      backgroundColor: AllColors.whiteColor,
     );
   }
 }

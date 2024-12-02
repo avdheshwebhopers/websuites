@@ -58,7 +58,7 @@ class LatestCustomersCard extends StatelessWidget {
                     Text(title,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                          
+
                         fontSize: 12,
                         color: AllColors.blackColor,
                       ),),
@@ -67,7 +67,7 @@ class LatestCustomersCard extends StatelessWidget {
                     Text(subtitle,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                          
+
                         fontSize: 13,
                         color: AllColors.blackColor,
                       ),),
@@ -82,7 +82,7 @@ class LatestCustomersCard extends StatelessWidget {
                         Text(date,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                              
+
                             fontSize: 11,
                             color: AllColors.vividPurple,
                           ),),
@@ -133,7 +133,7 @@ class LatestCustomersCard extends StatelessWidget {
                                   child: Text('G', style: TextStyle(
                                     color: circleTextColorOne,
                                     fontSize: 13,
-                                      
+
                                   ),),
                                 )
                             ),
@@ -153,7 +153,7 @@ class LatestCustomersCard extends StatelessWidget {
                                   child: Text('A', style: TextStyle(
                                     color: circleTextColorTwo,
                                     fontSize: 13,
-                                      
+
                                   ),),
                                 )
                             ),
@@ -355,7 +355,7 @@ class AppCardsTwoTab extends StatelessWidget {
                     Text(title,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                          
+
                         fontSize: 15,
                         color: AllColors.blackColor,
                       ),),
@@ -364,7 +364,7 @@ class AppCardsTwoTab extends StatelessWidget {
                     Text(subtitle,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                          
+
                         fontSize: 17,
                         color: AllColors.blackColor,
                       ),),
@@ -379,7 +379,7 @@ class AppCardsTwoTab extends StatelessWidget {
                         Text(date,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                              
+
                             fontSize: 14,
                             color: AllColors.vividPurple,
                           ),),
@@ -431,7 +431,7 @@ class AppCardsTwoTab extends StatelessWidget {
                                   child: Text('G', style: TextStyle(
                                     color: circleTextColorOne,
                                     fontSize: 13,
-                                      
+
                                   ),),
                                 )
                             ),
@@ -451,7 +451,7 @@ class AppCardsTwoTab extends StatelessWidget {
                                   child: Text('A', style: TextStyle(
                                     color: circleTextColorTwo,
                                     fontSize: 13,
-                                      
+
                                   ),),
                                 )
                             ),

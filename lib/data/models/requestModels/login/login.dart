@@ -9,7 +9,7 @@ class LoginRequestedModel {
     this.deviceId,
   });
 
- // Factory constructor to create a User from a JSON map
+  // Factory constructor to create a User from a JSON map
   factory LoginRequestedModel.fromJson(Map<String, dynamic> json){
     return LoginRequestedModel(
       email: json['email'],

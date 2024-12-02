@@ -4,12 +4,7 @@ class SourceResponseModel {
   String? status;
   String? createdAt;
 
-  SourceResponseModel({
-    this.id,
-    this.name,
-    this.status,
-    this.createdAt
-  });
+  SourceResponseModel({this.id, this.name, this.status, this.createdAt});
 
   SourceResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -19,11 +14,11 @@ class SourceResponseModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['status'] = status;
-    data['created_at'] = createdAt;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['status'] = this.status;
+    data['created_at'] = this.createdAt;
     return data;
   }
 }

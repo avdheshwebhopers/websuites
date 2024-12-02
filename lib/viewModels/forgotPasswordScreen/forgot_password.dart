@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
-import '../../data/models/requestModels/forgotPassword/forgot_password.dart';
-import '../../data/repositories/repositories.dart';
+import '../../../data/models/requestModels/forgotPassword/forgot_password.dart';
+import '../../../data/repositories/repositories.dart';
 
 class ForgotPasswordViewModel extends GetxController {
   final emailController = TextEditingController().obs;
@@ -18,6 +18,7 @@ class ForgotPasswordViewModel extends GetxController {
     super.dispose();
 
     emailController();
+
   }
 
   Future<void> forgot(BuildContext context)async{

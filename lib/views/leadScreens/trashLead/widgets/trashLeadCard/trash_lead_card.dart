@@ -1,147 +1,188 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../../utils/appColors/app_colors.dart';
 
 class TrashLeadScreenCard extends StatelessWidget {
   final String title;
   final String email;
+  final String mobile;
+  final String date;
+  final String remark;
+  final String deleteBy;
+  final String leadType;
 
   const TrashLeadScreenCard({
     Key? key,
     required this.title,
     required this.email,
+    required this.mobile,
+    required this.date,
+    required this.remark,
+    required this.deleteBy,
+    required this.leadType,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
-    return  Container(
-      margin: EdgeInsets.only(bottom: 10),
-      height: Get.height/4.5,
-      width: Get.width*1,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          color: AllColors.whiteColor,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                color: AllColors.blackColor.withOpacity(0.06),
-                spreadRadius: 3,
-                blurRadius: 4
-            )
-          ]
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Padding(
-        padding: EdgeInsets.all(13),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Text(email, style: TextStyle(
-                color: AllColors.grey,
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                  
-            ),),
-
-
-            Text(title, style: TextStyle(
+            // Title
+            Text(
+              title,
+              style: TextStyle(
                 color: AllColors.welcomeColor,
-                  
                 fontWeight: FontWeight.w700,
-                fontSize: 19
-            ),),
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(height: 12),
 
+            // Email and Phone Row
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.calendar_month_outlined, size: 15, color: AllColors.vividPurple,),
-                SizedBox(width: 5,),
-                Text('Wed June 26, 2024 at 11:39 AM', style: TextStyle(
-                    color: AllColors.vividPurple,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                      
-                ),)
+                Expanded(
+                  child: Text(
+                    email,
+                    style: TextStyle(
+                      color: AllColors.grey,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Row(
+                  children: [
+                    Icon(Icons.phone_in_talk,
+                        color: AllColors.lightGrey,
+                        size: 16
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      mobile,
+                      style: TextStyle(
+                        color: AllColors.lightGrey,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
+            const SizedBox(height: 12),
 
+            // Date and Remark Row
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.call, size: 15, color: AllColors.lightGrey,),
-                SizedBox(width: 5,),
-                Text('+91-9999333456', style: TextStyle(
-                    color: AllColors.lightGrey,
-                      
-                    fontWeight: FontWeight.w400,
-                    fontSize: 13
-                ),),
-                Spacer(),
-
-                Container(
-                  padding: EdgeInsets.only(left: 12, right: 12),
-                  height: Get.height/40,
-                  // width: Get.width/3.5,
-                  decoration: BoxDecoration(
-                    color: AllColors.lighterPurple,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Text('Siddharth Kapoor', style: TextStyle(
+                Expanded(
+                  child: Row(
+                    children: [
+                      Icon(Icons.calendar_month_outlined,
+                        size: 16,
                         color: AllColors.vividPurple,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                          
-                    ),),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        date,
+                        style: TextStyle(
+                          color: AllColors.vividPurple,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
                   ),
+                ),
+                const SizedBox(width: 8),
+                Row(
+                  children: [
+
+
+
+                    Image.asset('assets/icons/remark.png',height: 12,color: AllColors.lightGrey,)
+                    ,
+                    SizedBox(width: 5,),
+                    Text(
+                      remark,
+                      style: TextStyle(
+                        color: AllColors.lightGrey,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
 
-            const Divider(
-              thickness: 0.2,
-            ),
+            const Divider(height: 24, thickness: 0.5),
 
+            // Chips Row
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'REMARK',
-                  style: TextStyle(
-                    color: AllColors.blackColor,
-                      
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14
-                ),),
-
-                Icon(Icons.arrow_right_alt, size: 25, color: AllColors.lightGrey,),
-
-                Text('No Use',style: TextStyle(
-                    color: AllColors.lightGrey,
-                    fontWeight: FontWeight.w400,
-                      
-                    fontSize: 13
-                ),),
-
-                Spacer(),
-
+                // DeleteBy Chip
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                  height: Get.height/40,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 4
+                  ),
                   decoration: BoxDecoration(
-                      color: AllColors.lightBlue,
-                      borderRadius: BorderRadius.circular(20)
+                    color: AllColors.lighterPurple,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Center(
-                    child: Text('Hot', style: TextStyle(
-                        color: AllColors.darkBlue,
-                        fontSize: 13,
-                          
-                        fontWeight: FontWeight.w400
-                    ),),
+                  child: Text(
+                    deleteBy,
+                    style: TextStyle(
+                      color: AllColors.vividPurple,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                )
+                ),
 
+                // LeadType Chip
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 4
+                  ),
+                  decoration: BoxDecoration(
+                    color: AllColors.lightBlue,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    leadType,
+                    style: TextStyle(
+                      color: AllColors.darkBlue,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

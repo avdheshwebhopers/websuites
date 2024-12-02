@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/resources/textStyles/text_styles.dart';
 
 import '../../../../../utils/appColors/app_colors.dart';
 import '../../../../../utils/components/widgets/sizedBoxes/sizedBox_5w.dart';
@@ -49,7 +50,7 @@ class CustomerActivationListCard extends StatelessWidget {
                   Spacer(),
 
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: TextStyles.defaultPadding(context),
                     height: Get.height/40,
                     decoration: BoxDecoration(
                       color: AllColors.lightBlue,

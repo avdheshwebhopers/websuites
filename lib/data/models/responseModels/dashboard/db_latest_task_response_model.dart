@@ -9,7 +9,7 @@ class DbLatestTaskResponseModel {
     this.meta,
     this.user_key,
     this.members,
-});
+  });
 
   DbLatestTaskResponseModel.fromJson(Map<String, dynamic> json) {
     if(json['items'] != null) {
@@ -78,7 +78,7 @@ class Items {
     this.task_type,
     this.histories,
     this.status
-});
+  });
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -184,7 +184,7 @@ class Histories {
     this.notify,
     this.created_at,
     this.updated_at
-});
+  });
 
   Histories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -218,7 +218,7 @@ class TaskType {
     this.created_at,
     this.status,
     this.updated_at
-});
+  });
 
   TaskType.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -252,7 +252,7 @@ class Assigned {
     this.created_at,
     this.updated_at,
     this.assigned_to
-});
+  });
 
   Assigned.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -284,7 +284,7 @@ class AssignedTo {
     this.id,
     this.first_name,
     this.last_name
-});
+  });
 
   AssignedTo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -310,7 +310,7 @@ class CreatedBy {
     this.id,
     this.last_name,
     this.first_name
-});
+  });
 
   CreatedBy.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -351,7 +351,7 @@ class Status {
     this.description,
     this.updated_at,
     this.created_at
-});
+  });
 
   Status.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -394,7 +394,7 @@ class Meta {
     this.totalItems,
     this.totalPages,
     this.itemCount
-});
+  });
 
   Meta.fromJson(Map<String, dynamic> json) {
     currentPage = json['currentPages'];

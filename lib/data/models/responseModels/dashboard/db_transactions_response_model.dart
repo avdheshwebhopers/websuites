@@ -54,26 +54,26 @@ class Items {
 
   Items(
       {this.id,
-      this.amount,
-      this.gstAndFees,
-      this.paymentMode,
-      this.paymentType,
-      this.txnId,
-      this.chequeNumber,
-      this.chequeDate,
-      this.uploadDocument,
-      this.invoice,
-      this.information,
-      this.isFresh,
-      this.status,
-      this.remark,
-      this.createdAt,
-      this.updatedAt,
-      this.deletedAt,
-      this.createdBy,
-      this.order,
-      this.product,
-      this.statusActionBy});
+        this.amount,
+        this.gstAndFees,
+        this.paymentMode,
+        this.paymentType,
+        this.txnId,
+        this.chequeNumber,
+        this.chequeDate,
+        this.uploadDocument,
+        this.invoice,
+        this.information,
+        this.isFresh,
+        this.status,
+        this.remark,
+        this.createdAt,
+        this.updatedAt,
+        this.deletedAt,
+        this.createdBy,
+        this.order,
+        this.product,
+        this.statusActionBy});
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -98,7 +98,7 @@ class Items {
         : null;
     order = json['order'] != null ? Order.fromJson(json['order']) : null;
     product =
-        json['product'] != null ? Product.fromJson(json['product']) : null;
+    json['product'] != null ? Product.fromJson(json['product']) : null;
     statusActionBy = json['status_action_by'];
   }
 
@@ -250,23 +250,23 @@ class Order {
 
   Order(
       {this.id,
-      this.orderNumber,
-      this.gstFees,
-      this.tdsPercentage,
-      this.amount,
-      this.tdsAmount,
-      this.totalAmount,
-      this.payabaleAmount,
-      this.performaInvoice,
-      this.status,
-      this.remark,
-      this.createdAt,
-      this.updatedAt,
-      this.deletedAt,
-      this.deleteRemark,
-      this.zohoSalesorderId,
-      this.customer,
-      this.company});
+        this.orderNumber,
+        this.gstFees,
+        this.tdsPercentage,
+        this.amount,
+        this.tdsAmount,
+        this.totalAmount,
+        this.payabaleAmount,
+        this.performaInvoice,
+        this.status,
+        this.remark,
+        this.createdAt,
+        this.updatedAt,
+        this.deletedAt,
+        this.deleteRemark,
+        this.zohoSalesorderId,
+        this.customer,
+        this.company});
 
   Order.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -286,9 +286,9 @@ class Order {
     deleteRemark = json['delete_remark'];
     zohoSalesorderId = json['zoho_salesorder_id'];
     customer =
-        json['customer'] != null ? Customer.fromJson(json['customer']) : null;
+    json['customer'] != null ? Customer.fromJson(json['customer']) : null;
     company =
-        json['company'] != null ? Company.fromJson(json['company']) : null;
+    json['company'] != null ? Company.fromJson(json['company']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -344,26 +344,26 @@ class Customer {
 
   Customer(
       {this.id,
-      this.companyName,
-      this.firstName,
-      this.lastName,
-      this.primaryEmail,
-      this.countryCode,
-      this.primaryContact,
-      this.organization,
-      this.primaryAddress,
-      this.profileImage,
-      this.dob,
-      this.aboutClient,
-      this.otherInformation,
-      this.lat,
-      this.lng,
-      this.createdAt,
-      this.updatedAt,
-      this.deletedAt,
-      this.deleteRemark,
-      this.zohoContactId,
-      this.divisions});
+        this.companyName,
+        this.firstName,
+        this.lastName,
+        this.primaryEmail,
+        this.countryCode,
+        this.primaryContact,
+        this.organization,
+        this.primaryAddress,
+        this.profileImage,
+        this.dob,
+        this.aboutClient,
+        this.otherInformation,
+        this.lat,
+        this.lng,
+        this.createdAt,
+        this.updatedAt,
+        this.deletedAt,
+        this.deleteRemark,
+        this.zohoContactId,
+        this.divisions});
 
   Customer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -439,17 +439,17 @@ class Divisions {
 
   Divisions(
       {this.id,
-      this.name,
-      this.status,
-      this.mobileNo,
-      this.contactPerson,
-      this.email,
-      this.address,
-      this.logo,
-      this.createdAt,
-      this.updatedAt,
-      this.zohoOrganizationId,
-      this.zohoTaxExemptionId});
+        this.name,
+        this.status,
+        this.mobileNo,
+        this.contactPerson,
+        this.email,
+        this.address,
+        this.logo,
+        this.createdAt,
+        this.updatedAt,
+        this.zohoOrganizationId,
+        this.zohoTaxExemptionId});
 
   Divisions.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -502,19 +502,19 @@ class Company {
 
   Company(
       {this.id,
-      this.companyName,
-      this.companyEmail,
-      this.companyPhone,
-      this.countryCode,
-      this.contactPersonName,
-      this.contactPersonNumber,
-      this.cCountryCode,
-      this.address,
-      this.website,
-      this.gst,
-      this.logo,
-      this.lat,
-      this.lng});
+        this.companyName,
+        this.companyEmail,
+        this.companyPhone,
+        this.countryCode,
+        this.contactPersonName,
+        this.contactPersonNumber,
+        this.cCountryCode,
+        this.address,
+        this.website,
+        this.gst,
+        this.logo,
+        this.lat,
+        this.lng});
 
   Company.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -574,22 +574,22 @@ class Product {
 
   Product(
       {this.id,
-      this.productType,
-      this.name,
-      this.description,
-      this.mrp,
-      this.salePrice,
-      this.quantity,
-      this.duration,
-      this.downloadLink,
-      this.packing,
-      this.status,
-      this.isTaxable,
-      this.createdAt,
-      this.updatedAt,
-      this.deletedAt,
-      this.zohoItemId,
-      this.projectActivationDisabled});
+        this.productType,
+        this.name,
+        this.description,
+        this.mrp,
+        this.salePrice,
+        this.quantity,
+        this.duration,
+        this.downloadLink,
+        this.packing,
+        this.status,
+        this.isTaxable,
+        this.createdAt,
+        this.updatedAt,
+        this.deletedAt,
+        this.zohoItemId,
+        this.projectActivationDisabled});
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -646,13 +646,13 @@ class Meta {
 
   Meta(
       {this.currentPage,
-      this.itemsPerPage,
-      this.totalPages,
-      this.totalItems,
-      this.itemCount,
-      this.totalAmount,
-      this.approvedAmount,
-      this.cancelledAmount});
+        this.itemsPerPage,
+        this.totalPages,
+        this.totalItems,
+        this.itemCount,
+        this.totalAmount,
+        this.approvedAmount,
+        this.cancelledAmount});
 
   Meta.fromJson(Map<String, dynamic> json){
     currentPage = json['currentPage'];

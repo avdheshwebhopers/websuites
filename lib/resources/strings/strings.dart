@@ -4,7 +4,7 @@ class Strings {
   // LOGIN SCREEN
 
   static const String login = 'Login';
-  static const String pleaseSignIn = 'Please sign-in to your account and start';
+  static const String pleaseSignIn = 'Please sign-in to your account and start the the adventure';
   static const String theAdventure = 'the adventure';
   static const String email = 'Email';
   static const String hint = ' Enter your mail Id';
@@ -14,15 +14,18 @@ class Strings {
   static const String forgotPassword = 'Forgot Password';
   static const String button = 'Login';
   static const String newOn = 'New on our Platform?';
+  static const String flushEmailPassword = 'Enter your email and password';
   static const String purchaseNow = '   Purchase Now?';
   static const String flushEmail = 'Enter your email';
   static const String flushPass = 'Enter your email';
+  static const String validemailpassword="Please enter a valid email";
+  static const String adventure = 'adventure';
 
   //============================================================================
 
   // FORGOT PASSWORD SCREEN
 
-  static const String enterYour = 'Enter your email and we will send you a link to\nreset password';
+  static const String enterYour = 'Enter your email and we will send you a link to reset password';
   static const String buttonSubmit = 'Submit';
   static const String hintEmail = 'Enter your email';
   static const String backToLogin = 'Back to Login';
@@ -95,8 +98,48 @@ class Strings {
 //LeadList Screen
 
   static const String leadList = 'Lead list';
+  static const String leadTrash = 'lead trash';
   static const String filter = 'Filter';
+  static const String data_range = 'Date Range';
+  static const String select_date_range = 'Date range --';
+  static const String search_assigned = 'Search assigned';
   static const String lastWeek = 'Last Week';
+  static const String order_by = 'Order By';
+  static const String to_do_leads = 'TO-DO Leads';
+  static const String select_to_do_leads = 'Select TO-DO Leads';
+
+  static const String desc = 'DESC';
+  static const String asc = 'ASC';
+  static const String lead_source = 'Lead Source';
+  static const String activity_Range = 'Activity Range';
+  static const String query_type = 'Query Type';
+  static const String select_query_type = 'Select Query Type';
+  static const String  reminder_type_lead = 'Last Week';
+  static const String select_reminder_type = 'Last Week';
+  static const String repeat_type = 'Repeat Type';
+  static const String select_repeat_type = 'Select Repeat Type';
+  static const String assigned_type = 'Assigned Type';
+  static const String select_assigned_type = 'Select Assigned Type';
+  static const String acitivity_range = 'Activity Range';
+  static const String select_activity_range = 'Select Activity Range';
+  static const String select_diviion = 'Select Division';
+  static const String select_lead_source = 'Select Lead Source';
+  static const String select_product_category = 'Select Product Category';
+  static const String reminder_Range= 'Reminder Range';
+  static const String reminder_range = 'Reminder range';
+  static const String assigned_Range = 'Assigned Range';
+  static const String assigned_range = 'Assigned range';
+  static const String search_city = 'Search City...';
+  static const String product_category = 'Product Category';
+  static const String  reminder_type = 'Reminder Type';
+  static const String  select_reminder_type_lead = 'Select Reminder Type';
+
+
+
+
+
+
+
 
 //==============================================================================
 
@@ -110,9 +153,24 @@ class Strings {
 //==============================================================================
 
 //Create New Lead Screen
-
+  static const available_department ='Available Department';
+  static const add_department ='Add Department';
+  static const search_department ='Search departments...';
   static const String createNewLead = 'Create New Lead';
+  static const String masterDivision = 'Available Division';
+  static const String setting = 'Setting';
+  static const String masterProposal = 'Available Proposal';
+  static const String masterDepartment = 'Master Department';
+  static const String mastercustomlabel = 'Customized Lables';
   static const String importLeads = 'Import Leads';
+  static const String column = 'Columns';
+  static const String visible = 'Visible';
+  static const String search_filter = 'Search Filter';
+  static const String update_perission = 'Update Permission';
+
+
+  static const String addDivision = 'Add Division';
+  static const String saveChanges = 'Save Changes';
   static const String standardFields = 'Standard Fields';
   static const String firstName = 'First name';
   static const String enterFirstName = 'Enter First name';
@@ -122,13 +180,19 @@ class Strings {
   static const String enterPhoneNumber = 'Enter Phone Number';
   static const String add = '+  Add';
   static const String createNewLeadEmail = 'Email';
-  static const String emailExample = 'example@gmail.com';
+  static const String emailExample = 'Example@gmail.com';
   static const String address = 'Address';
   static const String enterAddress = 'Enter Address';
   static const String cityPincode = 'City / Pincode';
+  static const String enterAddresscal="ST.X32, California";
   static const String state = 'State';
   static const String country = 'Country';
+  static const String country_code = 'Country Code';
   static const String source = 'Source';
+  static const String type = 'Type';
+  static const String lead_type = 'Lead Type';
+  static const String lead_type_filter = 'Lead Type Filter';
+  static const String lead_assigned = 'Lead Assigned';
   static const String assignedLeadTo = 'Assigned-Lead to';
   static const String select = 'Select';
   static const String organisation = 'Organisation';
@@ -168,6 +232,7 @@ class Strings {
   static const String searchLead = 'Search Lead';
   static const String search = 'Search';
   static const String byLocation = 'By Location';
+  static const String location = 'Location';
   static const String enterLocation = 'Enter Location';
 
 //==============================================================================
@@ -204,6 +269,7 @@ class Strings {
   static const String addLeadType = 'Add Lead Type';
   static const String types = 'Types';
   static const String status = 'Status';
+  static const String lead_status = 'Lead Status';
   static const String availableLeadStatus = 'Available Lead Status';
   static const String subtypes = 'SUB TYPES';
 
@@ -225,4 +291,26 @@ class Strings {
   //Order Payment Screen
 
   static const String order_payment_total = 'Total: 27,87,000';
+
+
+
+
+  //Master Screen
+  static const String sno = 'SN';
+  static const String name = 'NAME';
+  static const String description = 'DESCRIPTION';
+  static const String created_date = 'CREATED DATE';
+  static const String created_date2 = 'Create Date';
+  static const String action = 'ACTION';
+  static const String masterStatus = 'STATUS';
+  static const String masterkey = 'KEY';
+  static const String masterUpdated_Date = 'UPDATED DATE';
+  static const String masterLangauge = 'LANGUAGE VALUE ';
+  // static const String sno = 'SNO';
+
 }
+
+
+
+
+

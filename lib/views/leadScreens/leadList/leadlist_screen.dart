@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/views/leadScreens/leadList/widgets/leadListCard/lead_list_card.dart';
-import '../../../data/models/responseModels/login/login_response_model.dart';
+import 'package:get/get.dart';
+
+import '../../../../../utils/appColors/app_colors.dart';
+import '../../../viewModels/leadScreens/lead_list/lead_list.dart';
 import '../../../resources/iconStrings/icon_strings.dart';
-import '../../../resources/strings/strings.dart';
-import '../../../resources/textStyles/text_styles.dart';
-import '../../../utils/appColors/app_colors.dart';
-import '../../../utils/components/widgets/appBar/custom_appBar.dart';
-import '../../../utils/components/widgets/drawer/custom_drawer.dart';
-import '../../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
-import '../../../viewModels/saveToken/save_token.dart';
+import 'widgets/leadListCard/lead_list_card.dart';
 
 class LeadListScreen extends StatefulWidget {
   const LeadListScreen({super.key});
@@ -20,118 +16,58 @@ class LeadListScreen extends StatefulWidget {
 
 class _LeadListScreenState extends State<LeadListScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  SaveUserData userPreference = SaveUserData();
-
-  String? userName = '';
-  String? userEmail = "";
-
-  DateTime dateTime = DateTime.now();
+  final LeadListViewModel _leadListViewModel = Get.put(LeadListViewModel());
 
   @override
   void initState() {
-    fetchUserData();
     super.initState();
-  }
-
-  Future<void> fetchUserData() async {
-    try {
-      LoginResponseModel response = await userPreference.getUser();
-      String? first_name = response.user!.first_name;
-      String? email = response.user!.email;
-
-      setState(() {
-        userName = first_name!;
-        userEmail = email!;
-      });
-    } catch (e) {
-      print('Error fetching userData: $e');
-    }
+    _leadListViewModel.fetchLeadList(context); // Fetch lead list on init
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: CustomBottomNavBar(),
-        floatingActionButton: CustomFloatingButton(
-            onPressed: () {},
-            imageIcon: IconStrings.navSearch3,
-            backgroundColor: AllColors.mediumPurple
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        key: _globalKey,
-        backgroundColor: AllColors.whiteColor,
+      key: _globalKey,
+      backgroundColor: AllColors.whiteColor,
+      floatingActionButton: CustomFloatingButton(
+        onPressed: () {},
+        imageIcon: IconStrings.navSearch3,
+        backgroundColor: AllColors.mediumPurple,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: Obx(() {
+        if (_leadListViewModel.loading.value) {
+          return Center(child: CircularProgressIndicator());
+        }
 
-        drawer: CustomDrawer(
-            userName: '$userName',
-            phoneNumber: '$userEmail',
-            version: '1.0.12'),
+        if (_leadListViewModel.leadList.isEmpty) {
+          return Center(child: Text('No leads found'));
+        }
 
-        body: Stack(
-          children: [
-            const SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 125,
-                    ),
-                    LeadListScreenCard(title: 'Sanjay Kumar', companyName: 'Prelims Pharma Private Limited'),
-                    LeadListScreenCard(title: 'Lokesh Kumar', companyName: 'Biophar Pharma'),
-                    LeadListScreenCard(title: 'Rahul Choudhary', companyName: 'Tata Pharma'),
-                    LeadListScreenCard(title: 'Sanjay Kumar', companyName: 'Prelims Pharma Private Limited'),
-                    LeadListScreenCard(title: 'Mukesh', companyName: 'Prelims Pharma Private Limited'),
-                  ],
-                ),
-              ),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: GridView.builder(
+            physics: const AlwaysScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: MediaQuery.of(context).size.width > 900 ? 2 : 1,
+              childAspectRatio: 2.5,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
             ),
-
-            //==================================================================
-            //Custom App Bar
-
-            CustomAppBar(
-              child: Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                        _globalKey.currentState?.openDrawer();
-                      },
-                      child:
-                      const Icon(
-                        Icons.menu_sharp,
-                        size: 25,
-                      )
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextStyles.w700_17(color: AllColors.blackColor,
-                      context, Strings.leadList),
-                  const Spacer(),
-                  Row(
-                    children: [
-                      Icon(Icons.filter_list_outlined,
-                          color: AllColors.lightGrey, size: 17),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      TextStyles.w400_14(color: AllColors.blackColor,
-                          context, Strings.filter),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      TextStyles.w400_13(color: AllColors.blackColor,
-                          context, Strings.lastWeek),
-                      const Icon(
-                        Icons.arrow_drop_down,
-                        size: 34,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
-        ));
+            itemCount: _leadListViewModel.leadList.length,
+            itemBuilder: (context, index) {
+              final lead = _leadListViewModel.leadList[index];
+              return LeadListScreenCard(
+                title: lead.firstName ?? 'No Name',
+                companyName: lead.organization ?? 'No Company',
+                contact: lead.mobile ?? 'No Contact',
+                createdDate: lead.createdAt != null ? _leadListViewModel.formatCreatedAt(lead.createdAt) : 'No Date',
+                source: lead.source?.name ?? 'Unknown Source',
+              );
+            },
+          ),
+        );
+      }),
+    );
   }
 }

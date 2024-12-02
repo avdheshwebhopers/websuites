@@ -398,129 +398,129 @@ class LatestTaskCard extends StatelessWidget {
   // }
 
   @override
-Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-  return
-    Container(
-      margin: EdgeInsets.only(right: 12, left: 10, top: 4, bottom: 4),
-      height: screenSize.height / 9.5,
-      width: screenSize.width / 1.05,
-      decoration: BoxDecoration(
-        color: AllColors.whiteColor,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black45.withOpacity(0.06),
-            spreadRadius: 0.5,
-            blurRadius: 4,
-            offset: const Offset(0, 0),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.only(left: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    color: Color(0xff4d4d4d),
-                      
-                  ),
-                ),
-                const SizedBox(height: 3),
-                Text(
-                  subtitle,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Colors.black,
-                      
-                  ),
-                ),
-                const SizedBox(height: 3),
-                Row(
-                  children: [
-                    Icon(Icons.access_time, size:15, color: AllColors.vividPurple),
-                    const SizedBox(width: 5),
-                    Text(
-                      date,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: Color(0xff5131ff),
-                          
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+    return
+      Container(
+        margin: EdgeInsets.only(right: 12, left: 10, top: 4, bottom: 4),
+        height: screenSize.height / 9.5,
+        width: screenSize.width / 1.05,
+        decoration: BoxDecoration(
+          color: AllColors.whiteColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black45.withOpacity(0.06),
+              spreadRadius: 0.5,
+              blurRadius: 4,
+              offset: const Offset(0, 0),
             ),
-          ),
-          const Spacer(),
-          Container(
-            // color: Colors.blue,
-            margin: const EdgeInsets.only(top: 6, bottom: 6, right: 7),
-            padding: const EdgeInsets.only(top: 6, bottom: 8, right: 4),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      // padding: EdgeInsets.symmetric(vertical: Get.height/100, horizontal: Get.width/100),
-                      height: Get.height / 30,
-                      width: Get.width / 12.5,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: statusBackgroundColor,
-                      ),
-                      child: Icon(
-                        ContainerIcon,
-                        size: 20,
-                        color: IconColor,
-                      ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(left: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      color: Color(0xff4d4d4d),
+
                     ),
-                  ],
-                ),
-                Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      // padding: EdgeInsets.symmetric(horizontal: 40, vertical: 7),
-                      height: Get.height / 49,
-                      width: Get.width / 6,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: statusBackgroundColor.withOpacity(0.5),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Colors.black,
+
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Row(
+                    children: [
+                      Icon(Icons.access_time, size:15, color: AllColors.vividPurple),
+                      const SizedBox(width: 5),
+                      Text(
+                        date,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: Color(0xff5131ff),
+
+                        ),
                       ),
-                      child: Center(
-                        child: Text(
-                          statusText,
-                          style: TextStyle(
-                              
-                            fontSize: 10,
-                            color: IconColor,
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            Container(
+              // color: Colors.blue,
+              margin: const EdgeInsets.only(top: 6, bottom: 6, right: 7),
+              padding: const EdgeInsets.only(top: 6, bottom: 8, right: 4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        // padding: EdgeInsets.symmetric(vertical: Get.height/100, horizontal: Get.width/100),
+                        height: Get.height / 30,
+                        width: Get.width / 12.5,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: statusBackgroundColor,
+                        ),
+                        child: Icon(
+                          ContainerIcon,
+                          size: 20,
+                          color: IconColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        // padding: EdgeInsets.symmetric(horizontal: 40, vertical: 7),
+                        height: Get.height / 49,
+                        width: Get.width / 6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: statusBackgroundColor.withOpacity(0.5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            statusText,
+                            style: TextStyle(
+
+                              fontSize: 10,
+                              color: IconColor,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
   }
 }
 
@@ -580,7 +580,7 @@ class AppCardOneTab extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: 17,
                       color: Color(0xff4d4d4d),
-                        
+
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -590,7 +590,7 @@ class AppCardOneTab extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 19,
                       color: Colors.black,
-                        
+
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -604,7 +604,7 @@ class AppCardOneTab extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           fontSize: 15,
                           color: Color(0xff5131ff),
-                            
+
                         ),
                       ),
                     ],
@@ -656,7 +656,7 @@ class AppCardOneTab extends StatelessWidget {
                           child: Text(
                             statusText,
                             style: TextStyle(
-                                
+
                               fontSize: 14,
                               color: IconColor,
                             ),

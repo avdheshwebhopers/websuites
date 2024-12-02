@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:websuites/views/customerScreens/customerServices/widgets/ServicesCard/services_card.dart';
-import '../../../data/models/responseModels/login/login_response_model.dart';
-import '../../../utils/appColors/app_colors.dart';
-import '../../../utils/components/widgets/appBar/custom_appBar.dart';
-import '../../../utils/components/widgets/drawer/custom_drawer.dart';
-import '../../../viewModels/saveToken/save_token.dart';
+import '../../../viewModels/customerScreens/services/customer_service_viewModel.dart';
 
 class CustomerServicesScreen extends StatefulWidget {
   const CustomerServicesScreen({super.key});
@@ -14,120 +12,60 @@ class CustomerServicesScreen extends StatefulWidget {
 }
 
 class _CustomerServicesScreenState extends State<CustomerServicesScreen> {
-  final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  SaveUserData userPreference = SaveUserData();
-
-  String? userName = '';
-  String? userEmail = '';
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final CustomerServiceViewModel _viewModel = Get.put(CustomerServiceViewModel());
 
   @override
   void initState() {
-    FetchUserData();
     super.initState();
+    _viewModel.customerServicesList(context);  // Pass context to handle errors
   }
 
-  Future<void> FetchUserData() async {
-    try {
-      LoginResponseModel response = await userPreference.getUser();
-      String? first_name = response.user!.first_name;
-      String? email = response.user!.email;
-
-      setState(() {
-        userName = first_name;
-        userEmail = email;
-      });
-    } catch (e) {
-      print('Error fetching userData: $e');
-    }
+  String formatDate(DateTime? date) {
+    if (date == null) return 'N/A'; // Handle null case
+    return DateFormat('MMM d, yyyy').format(date);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _globalKey,
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          Obx(() {
+            if (_viewModel.loading.value) {
+              return Center(child: CircularProgressIndicator());
+            }
 
-        backgroundColor: AllColors.whiteColor,
+            if (_viewModel.response.value != null && _viewModel.response.value!.items != null) {
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                  child: Column(
+                    children: _viewModel.response.value!.items!
+                        .map((item) => AllServicesScreenCard(
+                      title: item.orderProduct?.product?.name ?? 'N/A',
+                      subtitle: item.orderProduct?.order?.customer?.organization?? 'N/A',
+                      paymentMode: item.orderProduct?.paymentMode ?? 'N/A',
+                      email: 'eventpharma@gmail.com',
+                      orderNumber: item.orderProduct?.order?.orderNumber != null
+                          ? '#${item.orderProduct!.order!.orderNumber}'
+                          : 'N/A',
+                      date: '${formatDate(item.startDate)} TO ${formatDate(item.endDate)}',
 
-        drawer: CustomDrawer(
-            userName: '$userName',
-            phoneNumber: '$userEmail',
-            version: '1.0.12'
-        ),
-
-        body: Stack(
-          children: [
-            const SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 130,
-                    ),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                    AllServicesScreenCard(
-                        title: 'Events Pharmaceuticals Pvt ltd'),
-                  ],
+                      status: item.status == true ? 'Currently Running' : 'Completed',
+                      price: '₹ ${item.orderProduct?.total ?? 0}',
+                    ))
+                        .toList(),
+                  ),
                 ),
-              ),
-            ),
-
-            //============================================================
-            // CUSTOM APP BAR
-
-            CustomAppBar(
-              child: Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                        _globalKey.currentState?.openDrawer();
-                      },
-                      child: const Icon(
-                        Icons.menu_sharp,
-                        size: 25,
-                      )),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'All Services',
-                    style: TextStyle(
-                        color: AllColors.blackColor,
-                        fontWeight: FontWeight.w700,
-                          
-                        fontSize: 17),
-                  ),
-
-                  const Spacer(),
-                  Icon(
-                    Icons.filter_list_outlined,
-                    size: 15,
-                    color: AllColors.lightGrey,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'Filter',
-                    style: TextStyle(
-                        color: AllColors.lightGrey,
-                        fontSize: 15,
-                          
-                        fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        )
-
+              );
+            } else {
+              return Center(child: Text('No customer services found'));
+            }
+          }),
+        ],
+      ),
     );
   }
 }

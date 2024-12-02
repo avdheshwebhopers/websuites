@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
 import 'package:websuites/views/leadScreens/teamLead/widgets/teamLeadCard/team_lead_screen_card.dart';
+
+import '../../../data/models/controller.dart';
 import '../../../data/models/responseModels/login/login_response_model.dart';
 import '../../../resources/strings/strings.dart';
 import '../../../resources/textStyles/text_styles.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/components/widgets/appBar/custom_appBar.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../../utils/responsive/bodies/Responsive.dart';
 import '../../../viewModels/saveToken/save_token.dart';
+
 
 class TeamLeadScreen extends StatefulWidget {
   const TeamLeadScreen({super.key});
@@ -16,7 +23,9 @@ class TeamLeadScreen extends StatefulWidget {
 }
 
 class _TeamLeadScreenState extends State<TeamLeadScreen> {
+
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final ScreenController _screenController = Get.put(ScreenController());
   SaveUserData userPreference = SaveUserData();
 
   String? userName = '';
@@ -46,14 +55,15 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // scaffoldKey: _globalKey,
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
-      drawer:
-      CustomDrawer(
-          userName: '$userName',
-          phoneNumber: '$userEmail',
-          version: '1.0.12'
-      ),
+      // drawer:
+      // CustomDrawer(
+      //     userName: '$userName',
+      //     phoneNumber: '$userEmail',
+      //     version: '1.0.12'
+      // ),
       body: Stack(
         children: [
           const SingleChildScrollView(
@@ -85,6 +95,7 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
                   TeamLeadScreenCard(
                       title: 'Great Khali',
                       email: 'khalibali999@gmail.com'),
+
                 ],
               ),
             ),
@@ -96,15 +107,16 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
           CustomAppBar(
             child: Row(
               children: [
-                InkWell(
-                  onTap: () {
-                    _globalKey.currentState?.openDrawer();
-                  },
-                  child: const Icon(
-                    Icons.menu_sharp,
-                    size: 25,
+                if(Get.width<500)
+                  InkWell(
+                    onTap: () {
+                      _globalKey.currentState?.openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu_sharp,
+                      size: 25,
+                    ),
                   ),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child:
@@ -125,6 +137,21 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
           )
         ],
       ),
+      //   drawer: CustomDrawer(
+      //   userName: '$userName',
+      //   phoneNumber: '$userEmail',
+      //   version: 'version 1.0.12',
+      //
+      //   onTap: (index) {
+      //     _screenController.updateIndex(index);
+      //     if (ResponsiveUtils.isMobile(context)) {
+      //       _globalKey.currentState?.closeDrawer();
+      //     }
+      //   },
+      //
+      //
+      //
+      // ),
     );
   }
 }

@@ -19,7 +19,7 @@ class LeadMastersStatusResponseModel {
     this.order,
     this.created_at,
     this.updated_at
-});
+  });
 
   LeadMastersStatusResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

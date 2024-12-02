@@ -6,251 +6,173 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../../Utils/Routes/routes_name.dart';
+
+
 import '../../viewModels/saveToken/save_token.dart';
 import '../app_exceptions.dart';
 import 'base_api_services.dart';
 
-
 class NetworkApiServices extends BaseApiServices {
+  // Get token from SharedPreferences
+  Future<String?> _getToken() async {
+    final sp = await SharedPreferences.getInstance();
+    return sp.getString('accessToken');
+  }
+
+  // Generalized GET API method
   @override
   Future getApi(String url) async {
-    if (kDebugMode) {
-      print(url);
-    }
-    dynamic responseJson;
-    try {
-      final sp = await SharedPreferences.getInstance();
-      String? token = sp.getString('accessToken');
-
+    return _makeApiRequest(() async {
+      String? token = await _getToken();
       final response = await http.get(
         Uri.parse(url),
-        headers: {
-          'Authorization': 'Bearer ${token ?? ''}',
-        },
+        headers: _buildHeaders(token),
       ).timeout(const Duration(seconds: 90));
 
-      responseJson = returnResponse(response);
-    } on TimeoutException {
-      //  _showTimeoutDialog();
-      throw RequestTimeOut('Request Time out');
-    } on SocketException {
-      throw InternetExceptions('');
-    } on Exception catch (e) {
-      _handleError(e);
-      rethrow;
-    }
-    return responseJson;
+      return returnResponse(response);
+    });
   }
 
+  // Generalized DELETE API method
+  @override
   Future deleteApi(String url) async {
-    if (kDebugMode) {
-      print(url);
-    }
-    dynamic responseJson;
-    try {
-      final sp = await SharedPreferences.getInstance();
-      String? token = sp.getString('accessToken');
-
+    return _makeApiRequest(() async {
+      String? token = await _getToken();
       final response = await http.delete(
         Uri.parse(url),
-        headers: {
-          'Authorization': 'Bearer ${token ?? ''}',
-        },
+        headers: _buildHeaders(token),
       ).timeout(const Duration(seconds: 90));
 
-      responseJson = returnResponse(response);
-    } on TimeoutException {
-      throw RequestTimeOut('Request Time out');
-    } on SocketException {
-      throw InternetExceptions('');
-    } on Exception catch (e) {
-      _handleError(e);
-      rethrow; // Propagate the error up the chain
-    }
-    return responseJson;
+      return returnResponse(response);
+    });
   }
 
+  // Generalized PATCH API method
   @override
-  Future patchApi(String url) async {
-    if (kDebugMode) {
-      print(url);
-    }
-    dynamic responseJson;
-    try {
-      final sp = await SharedPreferences.getInstance();
-      String? token = sp.getString('accessToken');
-
+  Future patchApi(String url, dynamic data) async {
+    return _makeApiRequest(() async {
+      String? token = await _getToken();
       final response = await http.patch(
         Uri.parse(url),
-        headers: {
-          'Authorization': 'Bearer ${token ?? ''}',
-        },
+        headers: _buildHeaders(token),
+        body: data != null ? jsonEncode(data) : '',
       ).timeout(const Duration(seconds: 90));
 
-      responseJson = returnResponse(response);
-    } on TimeoutException {
-      //  _showTimeoutDialog();
-      throw RequestTimeOut('Request Time out');
-    } on SocketException {
-      throw InternetExceptions('');
-    } on Exception catch (e) {
-      _handleError(e);
-      rethrow; // Propagate the error up the chain
-    }
-    return responseJson;
+      return returnResponse(response);
+    });
   }
 
+
+  // POST API request with dynamic body data
   @override
   Future<dynamic> postApiResponse(String url, data) async {
-    final sp = await SharedPreferences.getInstance();
-    String? token = sp.getString('accessToken');
-    if (kDebugMode) {
-      print(url);
-      print(token);
-      print('>>>>>$data');
-    }
-    try {
-      final response = await http
-          .post(
-            Uri.parse(url),
-            headers: {
-              'Content-Type': 'application/json',
-              "Authorization": "Bearer ${token ?? ''}"
-            },
-            body: data != null ? jsonEncode(data) : '',
-          )
-          .timeout(const Duration(seconds: 90));
+    return _makeApiRequest(() async {
+      String? token = await _getToken();
+      final response = await http.post(
+        Uri.parse(url),
+        headers: _buildHeaders(token),
+        body: data != null ? jsonEncode(data) : '',
+      ).timeout(const Duration(seconds: 90));
 
-      final responseJson = returnResponse(response);
-      if (kDebugMode) {
-        print(responseJson.toString());
-      }
-      return responseJson;
-    } catch (e) {
+      return returnResponse(response);
+    });
+  }
+
+  // POST API request with MultipartRequest for file uploads
+  Future<dynamic> postApiResponseRequest(String url, http.MultipartRequest request, String token) async {
+    return _makeApiRequest(() async {
+      request.headers['Authorization'] = 'Bearer $token';
+
+      final client = http.Client();
+      final streamedResponse = await client.send(request).timeout(const Duration(seconds: 60));
+      final responseBody = await streamedResponse.stream.bytesToString();
+
+      return returnResponse(http.Response(responseBody, streamedResponse.statusCode));
+    });
+  }
+
+  // Helper to build headers
+  Map<String, String> _buildHeaders(String? token) {
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${token ?? ''}',
+    };
+  }
+
+  // Centralized error and request handling logic
+  Future<dynamic> _makeApiRequest(Future<dynamic> Function() requestFunc) async {
+    try {
+      return await requestFunc();
+    } on TimeoutException {
+      throw RequestTimeOut('Request timed out');
+    } on SocketException {
+      throw InternetExceptions('No internet connection');
+    } on Exception catch (e) {
       _handleError(e);
       rethrow;
     }
   }
 
-  Future postApiResponseRequest(
-      String url, http.MultipartRequest request, String token) async {
-    if (kDebugMode) {
-      print(url);
-      print(request);
-    }
-
-    try {
-      // Set the authorization header
-      request.headers['Authorization'] = 'Bearer ${token ?? ''}';
-
-      // Use http.Client to send the multipart request
-      final client = http.Client();
-      final response =
-          await client.send(request).timeout(const Duration(seconds: 60));
-
-      // Read and parse the response
-      final responseBody = await response.stream.bytesToString();
-      final responseJson =
-          returnResponse(http.Response(responseBody, response.statusCode));
-      if (kDebugMode) {
-        print("Json response : ${responseJson.toString()}");
-      }
-
-      final responseToken = response.headers['authorization'] ??
-          json.decode(responseBody)['authorization'];
-
-      // Close the client
-      client.close();
-
-      print("Response Token: $responseToken");
-
-      return responseJson;
-    } catch (e) {
-      _handleError(e);
-      rethrow; // Propagate the error up the chain
-    }
-  }
-
-// Helper function to handle errors
-  void _handleError(dynamic e) {
-    if (e is SocketException) {
-      throw InternetExceptions('No internet');
-    } else if (e is TimeoutException) {
-      throw RequestTimeOut('Request Time out');
-    }
-  }
-
-  Future<String> postApiResponseToken() async {
-    final sp = await SharedPreferences.getInstance();
-    return sp.getString('accessToken') ?? '';
-  }
-
+  // Handle API response with status code checks
   dynamic returnResponse(http.Response response) {
+    var responseJson = json.decode(response.body);
+
+    if (kDebugMode) {
+      print("Response status: ${response.statusCode}");
+      print("Response body: $responseJson");
+    }
+
     switch (response.statusCode) {
       case 200:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
-
       case 201:
-        var responseJson = json.decode(response.body.toString());
-        print("json response is here: $responseJson");
         return responseJson;
-
       case 400:
-        var responseJson = json.decode(response.body.toString());
+      case 403:
+      case 404:
+      case 422:
+      case 500:
         return responseJson;
-
       case 401:
         _handleUnauthorized();
         break;
-
-      case 403:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
-
-      case 404:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
-
-      case 405:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
-
-      case 422:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
-
-      case 500:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
-
       default:
-        throw FetchDataException(
-            'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+        throw FetchDataException('Error: Status code ${response.statusCode}');
     }
+    return null;
   }
 
+  // Handle unauthorized access (session expired)
   void _handleUnauthorized() async {
     await Get.defaultDialog(
       barrierDismissible: false,
       title: "Session Expired",
       middleText: "Your session has expired. Please log in again.",
       onConfirm: () async {
-        // Clear any user-related data
         await _logoutAndNavigateToSignIn();
       },
     );
   }
 
+  // Clear user data and navigate to login screen
   Future<void> _logoutAndNavigateToSignIn() async {
     SaveUserData userViewModel = SaveUserData();
     userViewModel.removeUser();
     Get.offAllNamed(RoutesName.login_screen);
   }
 
+  // General error handling
+  void _handleError(dynamic e) {
+    if (e is SocketException) {
+      throw InternetExceptions('No internet connection');
+    } else if (e is TimeoutException) {
+      throw RequestTimeOut('Request timed out');
+    } else {
+      throw FetchDataException('Unexpected error occurred: $e');
+    }
+  }
+
   @override
   Future deleteApiResponse(String url) {
-    // TODO: implement deleteApiResponse
     throw UnimplementedError();
   }
 }

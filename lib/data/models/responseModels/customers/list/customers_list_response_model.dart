@@ -1,213 +1,287 @@
 class CustomersListResponseModel {
-  List<Items>? items;
-  Meta? meta;
-  String? userKey;
+  CustomersListResponseModel({
+    required this.items,
+    required this.meta,
+    required this.userKey,
+  });
 
-  CustomersListResponseModel({this.items, this.meta, this.userKey});
+  final List<Item> items;
+  final Meta? meta;
+  final dynamic userKey;
 
-  CustomersListResponseModel.fromJson(Map<String, dynamic> json) {
-    if (json['items'] != null) {
-      items = <Items>[];
-      json['items'].forEach((v) {
-        items!.add(Items.fromJson(v));
-      });
-    }
-    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
-    userKey = json['user_key'];
+  factory CustomersListResponseModel.fromJson(Map<String, dynamic> json){
+    return CustomersListResponseModel(
+      items: json["items"] == null ? [] : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
+      meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
+      userKey: json["user_key"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (items != null) {
-      data['items'] = items!.map((v) => v.toJson()).toList();
-    }
-    if (meta != null) {
-      data['meta'] = meta!.toJson();
-    }
-    data['user_key'] = userKey;
-    return data;
-  }
 }
 
-class Items {
-  String? id;
-  String? companyName;
-  String? firstName;
-  String? lastName;
-  String? primaryEmail;
-  String? createdAt;
-  String? status;
-  List<Divisions>? divisions;
-  List<Companies>? companies;
-  List<dynamic>? customerActivities;
-  List<CustomerToCustomFields>? customerToCustomFields;
+class Item {
+  Item({
+    required this.serviceStatus,
+    required this.projectStatus,
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.primaryEmail,
+    required this.countryCode,
+    required this.primaryContact,
+    required this.organization,
+    required this.createdAt,
+    required this.status,
+    required this.customerAssigned,
+    required this.city,
+    required this.state,
+    required this.country,
+    required this.divisions,
+    required this.companies,
+    required this.orders,
+    required this.projects,
+  });
 
-  Items(
-      {this.id,
-        this.companyName,
-        this.firstName,
-        this.lastName,
-        this.primaryEmail,
-        this.createdAt,
-        this.status,
-        this.divisions,
-        this.companies,
-        this.customerActivities,
-        this.customerToCustomFields});
+  final String? serviceStatus;
+  final dynamic? projectStatus;
+  final String? id;
+  final String? firstName;
+  final String? lastName;
+  final String? primaryEmail;
+  final int? countryCode;
+  final String? primaryContact;
+  final String? organization;
+  final DateTime? createdAt;
+  final String? status;
+  final List<CustomerAssigned> customerAssigned;
+  final City? city;
+  final City? state;
+  final City? country;
+  final List<City> divisions;
+  final List<Company> companies;
+  final List<Order> orders;
+  final List<Project> projects;
 
-  Items.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    companyName = json['company_name'];
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    primaryEmail = json['primary_email'];
-    createdAt = json['created_at'];
-    status = json['status'];
-    if (json['divisions'] != null) {
-      divisions = <Divisions>[];
-      json['divisions'].forEach((v) {
-        divisions!.add(Divisions.fromJson(v));
-      });
-    }
-    if (json['companies'] != null) {
-      companies = <Companies>[];
-      json['companies'].forEach((v) {
-        companies!.add(Companies.fromJson(v));
-      });
-    }
-    if (json['customer_activities'] != null) {
-      customerActivities = [];
-      json['customer_activities'].forEach((v) {
-        customerActivities!.add(v);
-      });
-    }
-    if (json['customerToCustomFields'] != null) {
-      customerToCustomFields = <CustomerToCustomFields>[];
-      json['customerToCustomFields'].forEach((v) {
-        customerToCustomFields!.add(CustomerToCustomFields.fromJson(v));
-      });
-    }
+  factory Item.fromJson(Map<String, dynamic> json){
+    return Item(
+      serviceStatus: json["serviceStatus"],
+      projectStatus: json["projectStatus"],
+      id: json["id"],
+      firstName: json["first_name"],
+      lastName: json["last_name"],
+      primaryEmail: json["primary_email"],
+      countryCode: json["country_code"],
+      primaryContact: json["primary_contact"],
+      organization: json["organization"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      status: json["status"],
+      customerAssigned: json["customer_assigned"] == null ? [] : List<CustomerAssigned>.from(json["customer_assigned"]!.map((x) => CustomerAssigned.fromJson(x))),
+      city: json["city"] == null ? null : City.fromJson(json["city"]),
+      state: json["state"] == null ? null : City.fromJson(json["state"]),
+      country: json["country"] == null ? null : City.fromJson(json["country"]),
+      divisions: json["divisions"] == null ? [] : List<City>.from(json["divisions"]!.map((x) => City.fromJson(x))),
+      companies: json["companies"] == null ? [] : List<Company>.from(json["companies"]!.map((x) => Company.fromJson(x))),
+      orders: json["orders"] == null ? [] : List<Order>.from(json["orders"]!.map((x) => Order.fromJson(x))),
+      projects: json["projects"] == null ? [] : List<Project>.from(json["projects"]!.map((x) => Project.fromJson(x))),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['company_name'] = companyName;
-    data['first_name'] = firstName;
-    data['last_name'] = lastName;
-    data['primary_email'] = primaryEmail;
-    data['created_at'] = createdAt;
-    data['status'] = status;
-    if (divisions != null) {
-      data['divisions'] = divisions!.map((v) => v.toJson()).toList();
-    }
-    if (companies != null) {
-      data['companies'] = companies!.map((v) => v.toJson()).toList();
-    }
-    if (customerActivities != null) {
-      data['customer_activities'] =
-          customerActivities!.map((v) => v.toJson()).toList();
-    }
-    if (customerToCustomFields != null) {
-      data['customerToCustomFields'] =
-          customerToCustomFields!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
-class Divisions {
-  String? id;
-  String? name;
+class City {
+  City({
+    required this.id,
+    required this.name,
+  });
 
-  Divisions({this.id, this.name});
+  final String? id;
+  final String? name;
 
-  Divisions.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
+  factory City.fromJson(Map<String, dynamic> json){
+    return City(
+      id: json["id"],
+      name: json["name"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    return data;
-  }
 }
 
-class Companies {
-  String? id;
-  String? companyName;
-  String? companyEmail;
+class Company {
+  Company({
+    required this.id,
+    required this.companyName,
+    required this.companyEmail,
+  });
 
-  Companies({this.id, this.companyName, this.companyEmail});
+  final String? id;
+  final String? companyName;
+  final String? companyEmail;
 
-  Companies.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    companyName = json['company_name'];
-    companyEmail = json['company_email'];
+  factory Company.fromJson(Map<String, dynamic> json){
+    return Company(
+      id: json["id"],
+      companyName: json["company_name"],
+      companyEmail: json["company_email"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['company_name'] = companyName;
-    data['company_email'] = companyEmail;
-    return data;
-  }
 }
 
-class CustomerToCustomFields {
-  String? id;
-  String? fieldName;
-  String? value;
+class CustomerAssigned {
+  CustomerAssigned({
+    required this.id,
+    required this.user,
+  });
 
-  CustomerToCustomFields({this.id, this.fieldName, this.value});
+  final String? id;
+  final User? user;
 
-  CustomerToCustomFields.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    fieldName = json['field_name'];
-    value = json['value'];
+  factory CustomerAssigned.fromJson(Map<String, dynamic> json){
+    return CustomerAssigned(
+      id: json["id"],
+      user: json["user"] == null ? null : User.fromJson(json["user"]),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['field_name'] = fieldName;
-    data['value'] = value;
-    return data;
+}
+
+class User {
+  User({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+  });
+
+  final String? id;
+  final String? firstName;
+  final String? lastName;
+
+  factory User.fromJson(Map<String, dynamic> json){
+    return User(
+      id: json["id"],
+      firstName: json["first_name"],
+      lastName: json["last_name"],
+    );
   }
+
+}
+
+class Order {
+  Order({
+    required this.id,
+    required this.orderProducts,
+  });
+
+  final String? id;
+  final List<OrderProduct> orderProducts;
+
+  factory Order.fromJson(Map<String, dynamic> json){
+    return Order(
+      id: json["id"],
+      orderProducts: json["order_products"] == null ? [] : List<OrderProduct>.from(json["order_products"]!.map((x) => OrderProduct.fromJson(x))),
+    );
+  }
+
+}
+
+class OrderProduct {
+  OrderProduct({
+    required this.id,
+    required this.services,
+  });
+
+  final String? id;
+  final List<Service> services;
+
+  factory OrderProduct.fromJson(Map<String, dynamic> json){
+    return OrderProduct(
+      id: json["id"],
+      services: json["services"] == null ? [] : List<Service>.from(json["services"]!.map((x) => Service.fromJson(x))),
+    );
+  }
+
+}
+
+class Service {
+  Service({
+    required this.id,
+    required this.status,
+  });
+
+  final String? id;
+  final bool? status;
+
+  factory Service.fromJson(Map<String, dynamic> json){
+    return Service(
+      id: json["id"],
+      status: json["status"],
+    );
+  }
+
+}
+
+class ProjectStatusClass {
+  ProjectStatusClass({
+    required this.inProgress,
+    required this.notStarted,
+    required this.finished,
+  });
+
+  final int? inProgress;
+  final int? notStarted;
+  final int? finished;
+
+  factory ProjectStatusClass.fromJson(Map<String, dynamic> json){
+    return ProjectStatusClass(
+      inProgress: json["In Progress"],
+      notStarted: json["Not Started"],
+      finished: json["Finished"],
+    );
+  }
+
+}
+
+class Project {
+  Project({
+    required this.id,
+    required this.status,
+  });
+
+  final String? id;
+  final String? status;
+
+  factory Project.fromJson(Map<String, dynamic> json){
+    return Project(
+      id: json["id"],
+      status: json["status"],
+    );
+  }
+
 }
 
 class Meta {
-  int? currentPage;
-  int? itemsPerPage;
-  int? totalPages;
-  int? totalItems;
-  int? itemCount;
+  Meta({
+    required this.currentPage,
+    required this.itemsPerPage,
+    required this.totalPages,
+    required this.totalItems,
+    required this.itemCount,
+  });
 
-  Meta(
-      {this.currentPage,
-        this.itemsPerPage,
-        this.totalPages,
-        this.totalItems,
-        this.itemCount});
+  final int? currentPage;
+  final int? itemsPerPage;
+  final int? totalPages;
+  final int? totalItems;
+  final int? itemCount;
 
-  Meta.fromJson(Map<String, dynamic> json) {
-    currentPage = json['currentPage'];
-    itemsPerPage = json['itemsPerPage'];
-    totalPages = json['totalPages'];
-    totalItems = json['totalItems'];
-    itemCount = json['itemCount'];
+  factory Meta.fromJson(Map<String, dynamic> json){
+    return Meta(
+      currentPage: json["currentPage"],
+      itemsPerPage: json["itemsPerPage"],
+      totalPages: json["totalPages"],
+      totalItems: json["totalItems"],
+      itemCount: json["itemCount"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['currentPage'] = currentPage;
-    data['itemsPerPage'] = itemsPerPage;
-    data['totalPages'] = totalPages;
-    data['totalItems'] = totalItems;
-    data['itemCount'] = itemCount;
-    return data;
-  }
 }

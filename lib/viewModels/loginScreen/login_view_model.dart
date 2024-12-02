@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Utils/Routes/routes_name.dart';
 import '../../../Utils/utils.dart';
-import '../../data/models/requestModels/login/login.dart';
-import '../../data/repositories/repositories.dart';
+
+import '../../../data/models/requestModels/login/login.dart';
+import '../../../data/repositories/repositories.dart';
 import '../saveToken/save_token.dart';
 
 class LoginViewModel extends GetxController {
@@ -17,7 +18,7 @@ class LoginViewModel extends GetxController {
   final emailFocusNode = FocusNode().obs;
   final passwordFocusNode = FocusNode().obs;
   RxBool loading = false.obs;
-  
+
   @override
   void onClose() {
     // TODO: implement dispose
@@ -30,7 +31,7 @@ class LoginViewModel extends GetxController {
     passwordFocusNode();
   }
 
-  Future<void> login (BuildContext context) async {
+  Future<void> login (BuildContext context, String password) async {
     if (emailController.value.text.isEmpty || passwordController.value.text.isEmpty) {
       await Utils.snackbarFailed('Please enter email and password');
       return;
@@ -50,7 +51,7 @@ class LoginViewModel extends GetxController {
         print(value.user?.first_name);
         print(value.user?.email);
 
-        Get.offNamed(RoutesName.home_screen,
+        Get.offNamed(RoutesName.upcoming_screen,
         );
 
         Utils.snackbarSuccess('login Successful');

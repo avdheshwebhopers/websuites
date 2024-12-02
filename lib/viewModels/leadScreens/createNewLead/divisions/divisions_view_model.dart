@@ -1,31 +1,36 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../data/repositories/repositories.dart';
-import '../../../../utils/utils.dart';
+import '../../../../../data/models/responseModels/leads/createNewLead/divisions/divisions_response_model.dart';
+import '../../../../../data/repositories/repositories.dart';
 
 class DivisionsViewModel extends GetxController {
-  final _api = Repositories();
-  RxBool loading = false.obs;
+  final Repositories _api = Repositories();
+  RxBool isLoading = false.obs; // This should be defined
+  RxString errorMessage = ''.obs;
+  RxList<DivisionsResponseModel> divisionsList = <DivisionsResponseModel>[].obs;
+  RxList<String> selectedDivisions = <String>[].obs;
 
-  Future<void> createNewLeadDivisions (BuildContext context) async {
-    loading.value = true;
+  @override
+  void onInit() {
+    super.onInit();
+    fetchDivisions(); // Fetch divisions on initialization
+  }
 
-    _api.createNewLeadDivisionsApi().then((value) {
+  Future<void> fetchDivisions() async {
+    isLoading.value = true; // Set loading to true when fetching
+    errorMessage.value = ''; // Clear previous error message
 
-      if(value.id!= null){
-        Utils.snackbarSuccess('lead Id fetched');
-        loading.value = false;
-
-      }else{
-        Utils.snackbarFailed('lead Id not fetched');
-      }
-    }).onError((error, stackTrace) {
-      if (kDebugMode) {
-        print(error.toString());
-      }
+    try {
+      final List<DivisionsResponseModel> response = await _api.createNewLeadDivisionsApi();
+      divisionsList.assignAll(response); // Use assignAll to update the observable list
+    } catch (e) {
+      errorMessage.value = 'Error fetching divisions: $e';
+    } finally {
+      isLoading.value = false; // Ensure loading is set to false in both success and failure
     }
-    );
+  }
+
+  void updateSelectedDivisions(List<String> divisions) {
+    selectedDivisions.assignAll(divisions); // Use assignAll for observable lists
   }
 }

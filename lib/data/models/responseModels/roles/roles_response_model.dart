@@ -11,7 +11,7 @@ class RolesResponseModel {
     this.description,
     this.isdefault,
     this.users
-});
+  });
 
   RolesResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -47,7 +47,7 @@ class Users {
     this.id,
     this.first_name,
     this.last_name
-});
+  });
 
   Users.fromJson(Map<String, dynamic> json) {
     id = json['id'];
