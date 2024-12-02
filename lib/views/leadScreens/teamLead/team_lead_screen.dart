@@ -108,15 +108,15 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
             child: Row(
               children: [
                 if(Get.width<500)
-                InkWell(
-                  onTap: () {
-                    _globalKey.currentState?.openDrawer();
-                  },
-                  child: const Icon(
-                    Icons.menu_sharp,
-                    size: 25,
+                  InkWell(
+                    onTap: () {
+                      _globalKey.currentState?.openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu_sharp,
+                      size: 25,
+                    ),
                   ),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child:
@@ -137,21 +137,21 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
           )
         ],
       ),
-    //   drawer: CustomDrawer(
-    //   userName: '$userName',
-    //   phoneNumber: '$userEmail',
-    //   version: 'version 1.0.12',
-    //
-    //   onTap: (index) {
-    //     _screenController.updateIndex(index);
-    //     if (ResponsiveUtils.isMobile(context)) {
-    //       _globalKey.currentState?.closeDrawer();
-    //     }
-    //   },
-    //
-    //
-    //
-    // ),
+      //   drawer: CustomDrawer(
+      //   userName: '$userName',
+      //   phoneNumber: '$userEmail',
+      //   version: 'version 1.0.12',
+      //
+      //   onTap: (index) {
+      //     _screenController.updateIndex(index);
+      //     if (ResponsiveUtils.isMobile(context)) {
+      //       _globalKey.currentState?.closeDrawer();
+      //     }
+      //   },
+      //
+      //
+      //
+      // ),
     );
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../../../../../Utils/utils.dart';
-import '../../../../../data/models/requestModels/leadactivity/no_activities/no_activities.dart';
 import '../../../../../data/repositories/repositories.dart';
+import '../../../../data/models/requestModels/lead/activity/no_activities/no_activities.dart';
 import '../../../../data/models/responseModels/leads/lead_activity/no_activities/no_activities.dart';
 
 class LeadActivityNoActivityViewModel extends GetxController {

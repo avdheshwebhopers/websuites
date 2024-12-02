@@ -56,15 +56,15 @@ class LeadMasterScreenCard extends StatelessWidget {
     return Row(
       children: [
 
-          Text(
-            title,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: Get.width < 600 ? 13 : 16,
-              color: AllColors.blackColor,
-            ),
-            overflow: TextOverflow.ellipsis,
+        Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: Get.width < 600 ? 13 : 16,
+            color: AllColors.blackColor,
           ),
+          overflow: TextOverflow.ellipsis,
+        ),
 
         const SizedBox(width: 10),
         Container(

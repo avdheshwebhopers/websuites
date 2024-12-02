@@ -15,7 +15,7 @@ class HrmAttendanceResponseModel{
     this.created_at,
     this.endTime,
     this.updated_at
-});
+  });
 
   HrmAttendanceResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

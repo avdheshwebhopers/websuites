@@ -6,8 +6,8 @@ class UniqueMeetingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(child:
-    
-SingleChildScrollView(child: Image.network('https://img.freepik.com/premium-vector/no-data-concept-illustration_86047-488.jpg?semt=ais_hybrid"'))
+
+    SingleChildScrollView(child: Image.network('https://img.freepik.com/premium-vector/no-data-concept-illustration_86047-488.jpg?semt=ais_hybrid"'))
 
 
 

@@ -72,16 +72,16 @@ class LeadMasterScreen extends StatelessWidget {
 
       drawer: Obx(
             () => CustomDrawer(
-              selectedIndex: 0, // Customize as needed
-              onItemSelected: (index) {
-                // Handle item selection
-              },
-              isCollapsed: false,
-              onCollapseToggle: () {
-                // Handle drawer collapse/expand
-              },
-              isTabletOrDesktop: screenWidth >= 500,
-            ),
+          selectedIndex: 0, // Customize as needed
+          onItemSelected: (index) {
+            // Handle item selection
+          },
+          isCollapsed: false,
+          onCollapseToggle: () {
+            // Handle drawer collapse/expand
+          },
+          isTabletOrDesktop: screenWidth >= 500,
+        ),
       ),
       body: CustomScrollView(
         slivers: [

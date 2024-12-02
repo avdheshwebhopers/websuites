@@ -125,7 +125,7 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
               width: _isFocused ? 1.0 : 0.3,
             ),
             color: AllColors.whiteColor,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(22),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,7 +171,7 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                         border: InputBorder.none,
                         isDense: true,
                         contentPadding: const EdgeInsets.symmetric(
-                            vertical: 4.0, horizontal: 0),
+                            vertical: 2.0, horizontal: 9),
                       ),
                       style: const TextStyle(fontSize: 14),
                       onChanged: (text) {

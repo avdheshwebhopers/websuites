@@ -54,26 +54,26 @@ class Items {
 
   Items(
       {this.id,
-      this.amount,
-      this.gst_and_fees,
-      this.payment_mode,
-      this.payment_type,
-      this.txn_id,
-      this.cheque_number,
-      this.cheque_date,
-      this.upload_document,
-      this.invoice,
-      this.information,
-      this.is_fresh,
-      this.status,
-      this.remark,
-      this.created_at,
-      this.updated_at,
-      this.deleted_at,
-      this.created_by,
-      this.order,
-      this.product,
-      this.status_action_by});
+        this.amount,
+        this.gst_and_fees,
+        this.payment_mode,
+        this.payment_type,
+        this.txn_id,
+        this.cheque_number,
+        this.cheque_date,
+        this.upload_document,
+        this.invoice,
+        this.information,
+        this.is_fresh,
+        this.status,
+        this.remark,
+        this.created_at,
+        this.updated_at,
+        this.deleted_at,
+        this.created_by,
+        this.order,
+        this.product,
+        this.status_action_by});
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -98,7 +98,7 @@ class Items {
         : null;
     order = json['order'] != null ? Order.fromJson(json['order']) : null;
     product =
-        json['product'] != null ? Product.fromJson(json['product']) : null;
+    json['product'] != null ? Product.fromJson(json['product']) : null;
     status_action_by = json['status_action_by'];
   }
 
@@ -159,25 +159,25 @@ class CreatedBy {
 
   CreatedBy(
       {this.id,
-      this.first_name,
-      this.last_name,
-      this.email,
-      this.mobile,
-      this.address,
-      this.bio,
-      this.profile_pic,
-      this.password,
-      this.status,
-      this.remember_token,
-      this.remember_token_time,
-      this.isdefault,
-      this.created_at,
-      this.updated_at,
-      this.device_id,
-      this.tracking,
-      this.crm_category,
-      this.mobile_app,
-      this.super_settings});
+        this.first_name,
+        this.last_name,
+        this.email,
+        this.mobile,
+        this.address,
+        this.bio,
+        this.profile_pic,
+        this.password,
+        this.status,
+        this.remember_token,
+        this.remember_token_time,
+        this.isdefault,
+        this.created_at,
+        this.updated_at,
+        this.device_id,
+        this.tracking,
+        this.crm_category,
+        this.mobile_app,
+        this.super_settings});
 
   CreatedBy.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -250,23 +250,23 @@ class Order {
 
   Order(
       {this.id,
-      this.order_number,
-      this.gst_fees,
-      this.tds_percentage,
-      this.amount,
-      this.tds_amount,
-      this.total_amount,
-      this.payabale_amount,
-      this.performa_invoice,
-      this.status,
-      this.remark,
-      this.created_at,
-      this.updated_at,
-      this.deleted_at,
-      this.delete_remark,
-      this.zoho_sales_order_id,
-      this.customer,
-      this.company});
+        this.order_number,
+        this.gst_fees,
+        this.tds_percentage,
+        this.amount,
+        this.tds_amount,
+        this.total_amount,
+        this.payabale_amount,
+        this.performa_invoice,
+        this.status,
+        this.remark,
+        this.created_at,
+        this.updated_at,
+        this.deleted_at,
+        this.delete_remark,
+        this.zoho_sales_order_id,
+        this.customer,
+        this.company});
 
   Order.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -286,9 +286,9 @@ class Order {
     delete_remark = json['delete_remark'];
     zoho_sales_order_id = json['zoho_salesorder_id'];
     customer =
-        json['customer'] != null ? Customer.fromJson(json['customer']) : null;
+    json['customer'] != null ? Customer.fromJson(json['customer']) : null;
     company =
-        json['company'] != null ? Company.fromJson(json['company']) : null;
+    json['company'] != null ? Company.fromJson(json['company']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -346,28 +346,28 @@ class Customer {
 
   Customer(
       {this.id,
-      this.company_name,
-      this.first_name,
-      this.last_name,
-      this.primary_email,
-      this.country_code,
-      this.primary_contact,
-      this.organization,
-      this.primary_address,
-      this.profile_image,
-      this.dob,
-      this.about_client,
-      this.other_information,
-      this.lat,
-      this.lng,
-      this.created_at,
-      this.updated_at,
-      this.deleted_at,
-      this.delete_remark,
-      this.zoho_contact_id,
-      this.status,
-      this.sub_status,
-      this.divisions});
+        this.company_name,
+        this.first_name,
+        this.last_name,
+        this.primary_email,
+        this.country_code,
+        this.primary_contact,
+        this.organization,
+        this.primary_address,
+        this.profile_image,
+        this.dob,
+        this.about_client,
+        this.other_information,
+        this.lat,
+        this.lng,
+        this.created_at,
+        this.updated_at,
+        this.deleted_at,
+        this.delete_remark,
+        this.zoho_contact_id,
+        this.status,
+        this.sub_status,
+        this.divisions});
 
   Customer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -447,17 +447,17 @@ class Divisions {
 
   Divisions(
       {this.id,
-      this.name,
-      this.status,
-      this.mobile_no,
-      this.contact_person,
-      this.email,
-      this.address,
-      this.logo,
-      this.created_at,
-      this.updatedAt,
-      this.zohoOrganizationId,
-      this.zohoTaxExemptionId});
+        this.name,
+        this.status,
+        this.mobile_no,
+        this.contact_person,
+        this.email,
+        this.address,
+        this.logo,
+        this.created_at,
+        this.updatedAt,
+        this.zohoOrganizationId,
+        this.zohoTaxExemptionId});
 
   Divisions.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -510,19 +510,19 @@ class Company {
 
   Company(
       {this.id,
-      this.company_name,
-      this.company_email,
-      this.company_phone,
-      this.country_code,
-      this.contact_person_name,
-      this.contact_person_number,
-      this.c_country_code,
-      this.address,
-      this.website,
-      this.gst,
-      this.logo,
-      this.lat,
-      this.lng});
+        this.company_name,
+        this.company_email,
+        this.company_phone,
+        this.country_code,
+        this.contact_person_name,
+        this.contact_person_number,
+        this.c_country_code,
+        this.address,
+        this.website,
+        this.gst,
+        this.logo,
+        this.lat,
+        this.lng});
 
   Company.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -582,22 +582,22 @@ class Product {
 
   Product(
       {this.id,
-      this.product_type,
-      this.name,
-      this.description,
-      this.mrp,
-      this.sale_price,
-      this.quantity,
-      this.duration,
-      this.download_link,
-      this.packing,
-      this.status,
-      this.is_taxable,
-      this.created_at,
-      this.updated_at,
-      this.deleted_at,
-      this.zoho_item_id,
-      this.project_activation_disabled});
+        this.product_type,
+        this.name,
+        this.description,
+        this.mrp,
+        this.sale_price,
+        this.quantity,
+        this.duration,
+        this.download_link,
+        this.packing,
+        this.status,
+        this.is_taxable,
+        this.created_at,
+        this.updated_at,
+        this.deleted_at,
+        this.zoho_item_id,
+        this.project_activation_disabled});
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -654,13 +654,13 @@ class Meta {
 
   Meta(
       {this.currentPage,
-      this.itemsPerPage,
-      this.totalPages,
-      this.totalItems,
-      this.itemCount,
-      this.totalAmount,
-      this.approvedAmount,
-      this.cancelledAmount});
+        this.itemsPerPage,
+        this.totalPages,
+        this.totalItems,
+        this.itemCount,
+        this.totalAmount,
+        this.approvedAmount,
+        this.cancelledAmount});
 
   Meta.fromJson(Map<String, dynamic> json) {
     currentPage = json['currentPage'];

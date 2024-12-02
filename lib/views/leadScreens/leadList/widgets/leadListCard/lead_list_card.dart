@@ -114,7 +114,8 @@ class LeadListScreenCard extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: Container(
+                child:
+                Container(
                   padding: EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),

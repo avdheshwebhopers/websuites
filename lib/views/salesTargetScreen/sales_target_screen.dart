@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/views/salesTargetScreen/widgets/sales_target_card.dart';
+import '../../viewModels/sales/sales_viewModel.dart';
 import '../../viewModels/saveToken/save_token.dart';
 import '../../data/models/controller.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
@@ -12,7 +13,6 @@ import '../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
 import '../../utils/responsive/bodies/Responsive.dart';
 
-
 class SalesTargetScreen extends StatefulWidget {
   const SalesTargetScreen({super.key});
 
@@ -22,7 +22,8 @@ class SalesTargetScreen extends StatefulWidget {
 
 class _SalesTargetScreenState extends State<SalesTargetScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-final ScreenController _screenController = Get.put(ScreenController());
+  final ScreenController _screenController = Get.put(ScreenController());
+  final SalesViewModel _salesViewModel = Get.put(SalesViewModel()); // Initialize SalesViewModel
   SaveUserData userPreference = SaveUserData();
 
   String userName = '';
@@ -31,12 +32,14 @@ final ScreenController _screenController = Get.put(ScreenController());
   @override
   void initState() {
     FetchUserData();
+    _salesViewModel.fetchSales(); // Add this line
+
     super.initState();
   }
 
-  Future<void> FetchUserData ()async {
-    try{
-      LoginResponseModel response = await userPreference.getUser();
+  Future<void> FetchUserData() async {
+    try {
+      LoginResponseModel response = await userPreference.getUser ();
       String? first_name = response.user!.first_name;
       String? email = response.user!.email;
 
@@ -45,102 +48,60 @@ final ScreenController _screenController = Get.put(ScreenController());
         userEmail = email!;
       });
 
-    }catch (e){
+    } catch (e) {
       print('Error fetching userData: $e');
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
-      // bottomNavigationBar: CustomBottomNavBar(),
       floatingActionButton: CustomFloatingButton(
-          onPressed: (){},
-          imageIcon: IconStrings.navSearch3,
-          backgroundColor: AllColors.mediumPurple
+        onPressed: () {},
+        imageIcon: IconStrings.navSearch3,
+        backgroundColor: AllColors.mediumPurple,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: Obx(() {
+        // Add more detailed logging
+        print('Loading: ${_salesViewModel.loading.value}');
+        print('Sales Items Length: ${_salesViewModel.salesItems.length}');
 
-      // drawer: CustomDrawer(
-      //     userName: userName,
-      //     phoneNumber: userEmail,
-      //     version: '1.0.12',
-      //
-      //   onTap: (index) {
-      //     _screenController.updateIndex(index);
-      //     if (ResponsiveUtils.isMobile(context)) {
-      //       _globalKey.currentState?.closeDrawer();
-      //     }
-      //   },
-      //
-      // ),
-      body:
-          Stack(
-            children: [
-              const SafeArea(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(height: 70),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                        SalesTargetScreenCard(title: 'Dinesh Thakur October Sale Target'),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+        if (_salesViewModel.loading.value) {
+          return Center(child: CircularProgressIndicator());
+        }
 
-              //================================================================
-              //CUSTOM APP BAR
+        if (_salesViewModel.salesItems.isEmpty) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('No sales data found.'),
+                ElevatedButton(
+                  onPressed: () => _salesViewModel.fetchSales(),
+                  child: Text('Retry Fetch'),
+                )
+              ],
+            ),
+          );
+        }
 
-              CustomAppBar(child: Row(
-                children: [
-                  InkWell(
-                    onTap: (){
-                      _globalKey.currentState?.openDrawer();
-                    },
-                      child: Icon(Icons.menu_sharp,size: 25,)),
-                  SizedBox(width: 10,),
-                  Text('Sales Target', style: TextStyle(
-                    color: AllColors.blackColor,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
-                      
-                  ),),
-
-                  Spacer(),
-
-                  Container(
-                    height: Get.height/30,
-                    width: Get.width/4,
-                    decoration: BoxDecoration(
-                      color: AllColors.mediumPurple,
-                      borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(Icons.add, size: 20, color: AllColors.whiteColor,),
-                        Text('Add Target', style: TextStyle(
-                          color: AllColors.whiteColor,
-                            
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400
-                        ),)
-                      ],
-                    ),
-                  )
-                ],
-              )),
-            ]
-          )
+        return ListView.builder(
+          itemCount: _salesViewModel.salesItems.length,
+          itemBuilder: (context, index) {
+            final item = _salesViewModel.salesItems[index];
+            return SalesTargetScreenCard(
+              title: item.name ?? 'No Title',
+              startDate: item.created_at?.toString() ?? 'No Start Date',
+              price: '',
+              created_Date:'No Created Date',
+              deadline:  'No End Date',
+              member: '',
+            );
+          },
+        );
+      }),
     );
   }
 }

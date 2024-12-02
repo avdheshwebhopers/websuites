@@ -41,7 +41,7 @@ class AssignedLeadToResponseModel {
     this.crm_category,
     this.mobile_app,
     this.superSettings
-});
+  });
 
   AssignedLeadToResponseModel.fromJson(Map<String, dynamic> json){
     id = json['id'];

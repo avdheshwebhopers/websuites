@@ -46,24 +46,24 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
   final PinCodeViewModel _viewModel = Get.put(PinCodeViewModel());
   TextEditingController searchController = TextEditingController();
   final ProductCategoryController productCategoryController =
-      Get.put(ProductCategoryController());
+  Get.put(ProductCategoryController());
   final CreateNewLeadController controller = Get.put(CreateNewLeadController());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 
   final LeadSourceController leadSourceController =
-      Get.put(LeadSourceController(apiService: NetworkApiServices()));
+  Get.put(LeadSourceController(apiService: NetworkApiServices()));
 
   final AssignedLeadToViewModel _assignedLeadToController =
-      Get.put(AssignedLeadToViewModel());
+  Get.put(AssignedLeadToViewModel());
 
   // final DivisionsViewModel _divisionsController = Get.put(DivisionsViewModel());
   final LeadTypeViewModel leadTypeViewModel = Get.put(LeadTypeViewModel());
   final CreateLeadCustomFieldsViewModel customFieldsController =
-      Get.put(CreateLeadCustomFieldsViewModel());
+  Get.put(CreateLeadCustomFieldsViewModel());
 
   final ConstantValueViewModel constantValueViewModel =
-      Get.put(ConstantValueViewModel());
+  Get.put(ConstantValueViewModel());
   final SaveUserData userPreference = SaveUserData();
   final ScreenController _screenController = Get.put(ScreenController());
   String userName = '';
@@ -111,7 +111,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
   @override
   Widget build(BuildContext context) {
     final DivisionsViewModel _divisionsController =
-        Get.put(DivisionsViewModel());
+    Get.put(DivisionsViewModel());
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       // scaffoldKey: _scaffoldKey,
@@ -125,7 +125,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
       backgroundColor: AllColors.whiteColor,
 
       drawer: Obx(
-        () => CustomDrawer(
+            () => CustomDrawer(
           selectedIndex: 0,
           // Customize as needed
           onItemSelected: (index) {
@@ -254,16 +254,16 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                         } else {
                           return CreateNewLeadScreenCard(
                             hintText: _assignedLeadToController
-                                    .selectedLeadName.value.isEmpty
+                                .selectedLeadName.value.isEmpty
                                 ? Strings.select
                                 : _assignedLeadToController
-                                    .selectedLeadName.value,
+                                .selectedLeadName.value,
                             categories:
-                                _assignedLeadToController.fullCategoriesRxList,
+                            _assignedLeadToController.fullCategoriesRxList,
                             onCategoryChanged: (selectedCategory) {
                               // Handle selection for full names with emails
                               final names =
-                                  selectedCategory.split('\n')[0].split(' ');
+                              selectedCategory.split('\n')[0].split(' ');
                               if (names.length >= 2) {
                                 final firstName = names[0];
                                 final lastName = names[1];
@@ -326,14 +326,14 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
                           categories: productCategoryController
                               .leadProductCategories
                               .map((category) => category
-                                  .name) // Assuming 'name' is the field you want to display
+                              .name) // Assuming 'name' is the field you want to display
                               .toList(),
                           onCategoriesChanged: (selectedCategories) {
                             productCategoryController
                                 .updateSelectedCategories(selectedCategories);
                           },
                           isMultiSelect:
-                              true, // Assuming you want to allow multiple selections
+                          true, // Assuming you want to allow multiple selections
                         );
                       }),
 //

@@ -1,130 +1,176 @@
 import 'package:flutter/material.dart';
-import 'package:websuites/views/customerScreens/activitiesScreen/widgets/ActivitiesScreenCard/activities_screen_card.dart';
-
-import '../../../data/models/responseModels/login/login_response_model.dart';
-import '../../../resources/strings/strings.dart';
-import '../../../resources/textStyles/text_styles.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../../../utils/appColors/app_colors.dart';
-import '../../../utils/components/widgets/appBar/custom_appBar.dart';
-import '../../../utils/components/widgets/drawer/custom_drawer.dart';
+import '../../../viewModels/customerScreens/activities/activities_list/activities_list.dart';
+import '../../../viewModels/leadScreens/lead_activity/lead_activity.dart';
+
 import '../../../viewModels/saveToken/save_token.dart';
+import '../../../views/customerScreens/activitiesScreen/widgets/ActivitiesScreenCard/activities_screen_card.dart';
 
+import 'dailySalesReport/DailySalesReport.dart';
 
-
-
-class CustomersActivitiesScreen extends StatefulWidget {
-  const CustomersActivitiesScreen({super.key});
-
-  @override
-  State<CustomersActivitiesScreen> createState() =>
-      _CustomersActivitiesScreenState();
-}
-
-class _CustomersActivitiesScreenState extends State<CustomersActivitiesScreen> {
+class CustomersActivitiesScreen extends StatelessWidget {
+  final CustomerActivitiesListViewModel viewModel = Get.put(CustomerActivitiesListViewModel());
+  final LeadActivityViewModel _leadActivityViewModel = Get.put(LeadActivityViewModel());
+  final SaveUserData userPreference = SaveUserData();
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  SaveUserData userPreference = SaveUserData();
+  final RxString userName = "Guest".obs;
+  final RxString userEmail = "guest@example.com".obs;
+  final RxString selectedButton = "All".obs;
 
-  String? userName = '';
-  String? userEmail = '';
+  final List<Map<String, dynamic>> buttonData = [
+    {"text": "All", "icon": Icons.list_alt},
+    {"text": "Daily Sales Report", "icon": Icons.bar_chart},
+    {"text": "No Activities", "icon": Icons.pending_actions},
+    {"text": "Customers Report", "icon": Icons.check_circle_outline},
+    {"text": "Unique Meeting", "icon": Icons.schedule},
+    {"text": "Status Report", "icon": Icons.group_work},
+  ];
 
-  @override
-  void initState() {
-    FetchUserData();
-    super.initState();
+  CustomersActivitiesScreen({Key? key}) : super(key: key) {
+    fetchUserData();
+    viewModel.customerActivityList(Get.context!);
   }
 
-  Future<void> FetchUserData() async {
+  Future<void> fetchUserData() async {
     try {
-      LoginResponseModel response = await userPreference.getUser();
-      String? first_name = response.user!.first_name;
-      String? email = response.user!.email;
-
-      setState(() {
-        userName = first_name;
-        userEmail = email;
-      });
+      final response = await userPreference.getUser ();
+      userName.value = response.user?.first_name ?? 'Guest';
+      userEmail.value = response.user?.email ?? 'guest@example.com';
     } catch (e) {
-      print('Error fetching userData: $e');
+      debugPrint('Error fetching userData: $e');
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AllColors.whiteColor,
-        key: _globalKey,
-        // drawer: CustomDrawer(
-        //     userName: '$userName',
-        //     phoneNumber: '$userEmail',
-        //     version: '1.0.12'),
-        body: Stack(
-          children: [
-            const SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 135,
+      backgroundColor: AllColors.whiteColor,
+      key: _globalKey,
+      body: Column(
+        children: [
+          // Button Row
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1),
+            color: Colors.white,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Obx(() {
+                return Row(
+                  children: buttonData.map((data) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: IntrinsicWidth(
+                        child: Container(
+                          height: 35,
+                          decoration: BoxDecoration(
+                            color: selectedButton.value == data["text"]
+                                ? AllColors.background_green
+                                : AllColors.lightPurple,
+                            borderRadius: BorderRadius.circular(19),
+                          ),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(19),
+                              onTap: () {
+                                selectedButton.value = data["text"] as String;
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      data["icon"] as IconData,
+                                      color: selectedButton.value == data["text"]
+                                          ? AllColors.text__green
+                                          : AllColors.mediumPurple,
+                                      size: 15,
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Text(
+                                      data["text"] as String,
+                                      style: TextStyle(
+                                        color: selectedButton.value == data["text"]
+                                            ? AllColors.text__green
+                                            : AllColors.mediumPurple,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                );
+              }),
+            ),
+          ),
+          const SizedBox(height: 8),
+          // Content
+          Expanded(
+            child: Obx(() {
+              if (viewModel.loading.value) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              if (viewModel.customerActivities.isEmpty) {
+                return const Center(child: Text('No activities found'));
+              }
+
+              switch (selectedButton.value) {
+                case "All":
+                  return SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Column(
+                        children: viewModel.customerActivities.map((item) {
+                          return CustomerActivitiesScreenCard(
+                            companyName: item.customer?.organization ?? 'N/A',
+                            title: item.meetingWithName ?? 'No Meeting Contact',
+                            actionDate: item.createdAt != null
+                                ? DateFormat('EEE, MMM dd, yyyy').format(item.createdAt!)
+                                : 'Not Available',
+                            activity: item.activity ?? 'Unknown Activity',
+                            info: item.remark ?? 'Not Available',
+                            request_Location: 'View',
+                            action_by: item.createdBy?.firstName ?? 'Unknown',
+                            status: item.subActivity?.name ?? 'Unknown Status',
+                            created_Date: item.reminder != null &&
+                                item.reminder.toString().isNotEmpty
+                                ? DateFormat('EEE, MMM dd, yyyy')
+                                .format(DateTime.parse(item.reminder.toString()))
+                                : 'Not Available',
+                          );
+                        }).toList(),
+                      ),
                     ),
-                    CustomerActivitiesScreenCard(
-                        title: 'Ms. Komal Sharma',
-                        subtitle: 'Medisys biotech Private Limited'),
-                    CustomerActivitiesScreenCard(
-                        title: 'Ms. Komal Sharma',
-                        subtitle: 'Medisys biotech Private Limited'),
-                    CustomerActivitiesScreenCard(
-                        title: 'Ms. Komal Sharma',
-                        subtitle: 'Medisys biotech Private Limited'),
-                    CustomerActivitiesScreenCard(
-                        title: 'Ms. Komal Sharma',
-                        subtitle: 'Medisys biotech Private Limited'),
-                  ],
-                ),
-              ),
-            ),
-
-            //====================================================================
-            //CUSTOM APP BAR
-
-            CustomAppBar(
-              child: Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                        _globalKey.currentState?.openDrawer();
-                      },
-                      child: const Icon(
-                        Icons.menu_sharp,
-                        size: 25,
-                      )),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                 TextStyles.w700_17(color: AllColors.blackColor, context, Strings.customerActivity),
-                  const Spacer(),
-                  Icon(
-                    Icons.filter_list_outlined,
-                    size: 17,
-                    color: AllColors.grey,
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  TextStyles.w400_14(color: AllColors.lightGrey, context, Strings.filter),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TextStyles.w400_14(color: AllColors.blackColor, context, Strings.details),
-                  const Icon(
-                    Icons.keyboard_arrow_right,
-                    size: 20,
-                  )
-                ],
-              ),
-            ),
-          ],
-        )
+                  );
+                case "Daily Sales Report":
+                  return ActivityDailySalesReportScreen();
+                case "No Activities":
+                  return const Center(child: Text("Pending Activities"));
+                case "Customers Report":
+                  return const Center(child: Text("Completed Activities"));
+                case "Unique Meeting":
+                  return const Center(child: Text("Scheduled Activities"));
+                case "Status Report":
+                  return const Center(child: Text("Team Activities Overview"));
+                default:
+                  return const Center(child: Text("Unknown section"));
+              }
+            }),
+          ),
+        ],
+      ),
     );
   }
 }

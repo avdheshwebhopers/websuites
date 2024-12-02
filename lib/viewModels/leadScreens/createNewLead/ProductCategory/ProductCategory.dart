@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import '../../../../../data/models/responseModels/leads/createNewLead/productCategoryList.dart';
 import '../../../../../data/repositories/repositories.dart';
+import '../../../../data/models/responseModels/leads/createNewLead/product_category/product_category.dart';
 
 class ProductCategoryController extends GetxController {
   final Repositories repository = Repositories();

@@ -8,10 +8,21 @@ import '../../../../../utils/components/widgets/sizedBoxes/sizedBox_5w.dart';
 
 class OrderProformaListCard extends StatelessWidget {
   final String title;
+  final String customer;
+  final String performaNumber;
+  final String email;
+  final String date;
+  final String createdBy;
 
   const OrderProformaListCard({
     super.key,
     required this.title,
+    required this.customer,
+    required this.performaNumber,
+    required this.email,
+    required this.date,
+    required this.createdBy,
+
   });
 
 
@@ -41,16 +52,47 @@ class OrderProformaListCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text('gayatri@bpis.health', style: TextStyle(
-                      color: AllColors.grey,
-                        
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12
-                  ),
-                  ),
+                  Text(title, style: TextStyle(
+                      color: AllColors.blackColor,
+                      fontWeight: FontWeight.w700,
+
+                      fontSize: 18
+                  ),),
 
                   SizedBox10w(),
 
+
+                  const Spacer(),
+
+                  Text(performaNumber, style: TextStyle(
+                    color: AllColors.grey,
+                    fontSize: 12,
+
+                    fontWeight: FontWeight.w400,
+                  ),),
+                ],
+              ),
+              Text(email, style: TextStyle(
+                  color: AllColors.grey,
+
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12
+              ),
+              ),
+
+
+              Row(
+                children: [
+                  Icon(Icons.calendar_month_outlined, size: 15, color: AllColors.mediumPurple,),
+
+                  SizedBox5w(),
+                  Text(date, style: TextStyle(
+                      fontSize: 13,
+
+                      fontWeight: FontWeight.w400,
+                      color: AllColors.mediumPurple
+                  ),),
+                  Spacer(),
                   Container(
                     height: Get.height/45,
                     padding: TextStyles.defaultPadding(context),
@@ -59,45 +101,25 @@ class OrderProformaListCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)
                     ),
                     child: Center(
-                      child: Text('Customer', style: TextStyle(
+                      child: Text(customer, style: TextStyle(
                           color: AllColors.vividOrange,
                           fontWeight: FontWeight.w400,
-                            
+
                           fontSize: 12
                       ),),
                     ),
                   ),
-                  const Spacer(),
 
-                  Text('#254', style: TextStyle(
-                    color: AllColors.grey,
-                    fontSize: 12,
-                      
-                    fontWeight: FontWeight.w400,
-                  ),),
+
                 ],
               ),
 
-              Text(title, style: TextStyle(
-                  color: AllColors.blackColor,
-                  fontWeight: FontWeight.w700,
-                    
-                  fontSize: 18
-              ),),
+              const Divider(
+                thickness: 0.4,
+              ),
 
               Row(
                 children: [
-                  Icon(Icons.calendar_month_outlined, size: 15, color: AllColors.mediumPurple,),
-
-                  SizedBox5w(),
-                  Text('Jun 26, 2024', style: TextStyle(
-                      fontSize: 13,
-                        
-                      fontWeight: FontWeight.w400,
-                      color: AllColors.mediumPurple
-                  ),),
-                  Spacer(),
-
                   Container(
                     height: Get.height/40,
                     padding: EdgeInsets.symmetric(horizontal: 12),
@@ -106,36 +128,19 @@ class OrderProformaListCard extends StatelessWidget {
                         borderRadius :BorderRadius.circular(20)
                     ),
                     child: Center(
-                      child: Text('Ashish Mohan', style: TextStyle(
+                      child: Text(createdBy, style: TextStyle(
                           color: AllColors.mediumPurple,
                           fontWeight: FontWeight.w400,
-                            
+
                           fontSize: 12
                       ),),
                     ),
-                  )
+                  ),
+
+                  Spacer(),
+                  Icon(Icons.remove_red_eye,color:Colors.blue,)
+
                 ],
-              ),
-
-              const Divider(
-                thickness: 0.4,
-              ),
-
-              Container(
-                height: Get.height/40,
-                width: Get.width/4,
-                decoration: BoxDecoration(
-                  color: AllColors.lightBlue,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                  child: Text('View Proforma', style: TextStyle(
-                      color: AllColors.darkBlue,
-                      fontWeight: FontWeight.w400,
-                        
-                      fontSize: 12
-                  ),),
-                ),
               )
             ],
           ),

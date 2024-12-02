@@ -26,7 +26,7 @@ class HrmLeaveResponseModel {
     this.updated_at,
     this.created_at,
     this.reason
-});
+  });
 
   HrmLeaveResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -73,7 +73,7 @@ class Reason{
   Reason({
     this.name,
     this.id
-});
+  });
 
   Reason.fromJson(Map<String, dynamic> json) {
     id = json['id'];

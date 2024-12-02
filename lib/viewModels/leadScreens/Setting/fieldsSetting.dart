@@ -9,14 +9,20 @@ import '../../../../data/repositories/repositories.dart';
 class FieldSettingController extends GetxController {
   final api = Repositories();
   RxBool loading = false.obs;
+  RxBool dataLoaded = false.obs;  // Flag to track if data has been loaded
   RxList<FieldSettingResponseModel> fieldsettings = <FieldSettingResponseModel>[].obs;
 
   Future<void> fieldSettingList(BuildContext context) async {
+    if (dataLoaded.value) {
+      return; // Skip loading if data has already been loaded
+    }
+
     loading.value = true;
     try {
       final value = await api.fieldSetting();
       if (value.isNotEmpty) {
         fieldsettings.value = value;
+        dataLoaded.value = true; // Set flag to true once data is loaded
       } else {
         Utils.snackbarFailed('Field Setting not fetched');
       }
@@ -30,7 +36,6 @@ class FieldSettingController extends GetxController {
     }
   }
 
-
   // Method to update isRequired status
   void toggleFieldRequired(String id, bool? isRequired) {
     int index = fieldsettings.indexWhere((field) => field.id == id);
@@ -40,6 +45,7 @@ class FieldSettingController extends GetxController {
     }
   }
 }
+
 
 
 

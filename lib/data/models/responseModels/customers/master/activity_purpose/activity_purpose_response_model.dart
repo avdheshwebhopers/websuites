@@ -1,41 +1,46 @@
-class ActivityPurposeResponseModel {
+class CustomerMasterActivityPurposeResponseModel {
   String? id;
   String? type;
   String? name;
   bool? status;
-  String? created_at;
-  String? updated_at;
-  String? deleted_at;
+  String? createdAt;
+  String? updatedAt;
+  Null deletedAt;
 
-  ActivityPurposeResponseModel({
-    this.id,
-    this.type,
-    this.name,
-    this.status,
-    this.created_at,
-    this.updated_at,
-    this.deleted_at
-});
+  CustomerMasterActivityPurposeResponseModel(
+      {this.id,
+        this.type,
+        this.name,
+        this.status,
+        this.createdAt,
+        this.updatedAt,
+        this.deletedAt});
 
-  ActivityPurposeResponseModel.fromJson(Map<String, dynamic> json) {
+  CustomerMasterActivityPurposeResponseModel.fromJson(
+      Map<String, dynamic> json) {
     id = json['id'];
     type = json['type'];
     name = json['name'];
     status = json['status'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    deleted_at = json['deleted_at'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    deletedAt = json['deleted_at'];
   }
 
-  Map<String, dynamic> toJson (){
-    final Map<String, dynamic> data = <String, dynamic> {};
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['type'] = type;
     data['name'] = name;
     data['status'] = status;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['deleted_at'] = deleted_at;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['deleted_at'] = deletedAt;
     return data;
   }
+
+  static List<CustomerMasterActivityPurposeResponseModel> fromJsonList(List<dynamic> jsonList) {
+    return jsonList.map((json) => CustomerMasterActivityPurposeResponseModel.fromJson(json)).toList();
+  }
+
 }

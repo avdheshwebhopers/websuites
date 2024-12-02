@@ -32,20 +32,20 @@ class ColumnSettingView extends StatelessWidget {
         MasterScreenUtils.
 
         buildDataTable(
-        context: context,
-        columns: const [
-          DataColumn(label: Text('Column', style: TextStyles.masterScreen)),
-          DataColumn(label: Text('Visible', style: TextStyles.masterScreen)),
-          DataColumn(label: Text('Search Filter', style: TextStyles.masterScreen)),
-          DataColumn(label: Text('Update Permission', style: TextStyles.masterScreen)),
-        ],
-        rows: settingsViewModel.settings.isNotEmpty
-            ? List.generate(
-          settingsViewModel.settings.length,
-              (index) => _buildDataRow(settingsViewModel.settings[index], index),
-        )
-            : [],
-      );
+          context: context,
+          columns: const [
+            DataColumn(label: Text('Column', style: TextStyles.masterScreen)),
+            DataColumn(label: Text('Visible', style: TextStyles.masterScreen)),
+            DataColumn(label: Text('Search Filter', style: TextStyles.masterScreen)),
+            DataColumn(label: Text('Update Permission', style: TextStyles.masterScreen)),
+          ],
+          rows: settingsViewModel.settings.isNotEmpty
+              ? List.generate(
+            settingsViewModel.settings.length,
+                (index) => _buildDataRow(settingsViewModel.settings[index], index),
+          )
+              : [],
+        );
     });
   }
 

@@ -9,7 +9,7 @@ class PinCodeModelResponseModel {
     id = json['id'];
     code = json['code'];
     district =
-        json['district'] != null ? District.fromJson(json['district']) : null;
+    json['district'] != null ? District.fromJson(json['district']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -58,7 +58,7 @@ class State {
     id = json['id'];
     name = json['name'];
     country =
-        json['country'] != null ? new Country.fromJson(json['country']) : null;
+    json['country'] != null ? new Country.fromJson(json['country']) : null;
   }
 
   Map<String, dynamic> toJson() {

@@ -1,6 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:websuites/utils/appColors/app_colors.dart';
+import 'package:get/get.dart';
+
+class SalesPersonController extends GetxController {
+  var isExpanded = false.obs;
+
+  void toggleExpanded() {
+    isExpanded.value = !isExpanded.value;
+  }
+}
 
 class SalesPerson {
   final String name;
@@ -28,20 +35,14 @@ class SalesPerson {
   });
 }
 
-class SalesPersonCard extends StatefulWidget {
+class SalesPersonCard extends StatelessWidget {
   final SalesPerson salesPerson;
-  const SalesPersonCard({Key? key, required this.salesPerson}) : super(key: key);
+  final SalesPersonController controller = Get.put(SalesPersonController());
 
-  @override
-  _SalesPersonCardState createState() => _SalesPersonCardState();
-}
-
-class _SalesPersonCardState extends State<SalesPersonCard> {
-  bool _isExpanded = false;
+  SalesPersonCard({Key? key, required this.salesPerson}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     TextStyle subtitleStyle = TextStyle(color: Colors.grey);
 
     return Card(
@@ -56,7 +57,7 @@ class _SalesPersonCardState extends State<SalesPersonCard> {
             Row(
               children: [
                 Text(
-                  widget.salesPerson.name,
+                  salesPerson.name,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -66,131 +67,153 @@ class _SalesPersonCardState extends State<SalesPersonCard> {
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Image.asset('assets/icons/Edit.png', height: 16,color: Color(0xFF6E6A7C), // Background color,),
+                  child: Image.asset(
+                    'assets/icons/Edit.png',
+                    height: 16,
+                    color: Color(0xFF6E6A7C),
+                  ),
                 ),
-                ) ],
+              ],
             ),
-            // SizedBox(height: 2),
             Row(
               children: [
-
                 Padding(
-                  padding: const EdgeInsets.only(top:2 ),
-                  child: Icon(Icons.email_outlined,color:Colors.grey,size: 14,),
+                  padding: const EdgeInsets.only(top: 2),
+                  child: Icon(
+                    Icons.email_outlined,
+                    color: Colors.grey,
+                    size: 14,
+                  ),
                 ),
-                SizedBox(width: 5,),
+                SizedBox(width: 5),
                 Text(
-                  widget.salesPerson.email,
+                  salesPerson.email,
                   style: subtitleStyle,
                 ),
                 Spacer(),
-                IconButton(
-                  icon: Icon(
-                    _isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
-                    size: 18,
-                    color: AllColors.blackColor,
+                Obx(
+                      () => IconButton(
+                    icon: Icon(
+                      controller.isExpanded.value
+                          ? Icons.keyboard_arrow_up
+                          : Icons.keyboard_arrow_down,
+                      size: 18,
+                      color: Colors.black,
+                    ),
+                    onPressed: controller.toggleExpanded,
                   ),
-                  onPressed: () {
-                    setState(() {
-                      _isExpanded = !_isExpanded;
-                    });
-                  },
                 ),
               ],
             ),
             Divider(),
             Row(
-
               children: [
-                Icon(Icons.phone_in_talk_outlined, color: Colors.green,size: 16,),
+                Icon(
+                  Icons.phone_in_talk_outlined,
+                  color: Colors.green,
+                  size: 16,
+                ),
                 SizedBox(width: 10),
                 Text(
-                  "Total: ${widget.salesPerson.total}",
-                  style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                  "Total: ${salesPerson.total}",
+                  style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(top:2 ),
-                  child: Icon(Icons.group_sharp,color:Colors.blue,size: 19,),
+                  padding: const EdgeInsets.only(top: 2),
+                  child: Icon(
+                    Icons.group_sharp,
+                    color: Colors.blue,
+                    size: 19,
+                  ),
                 ),
-                // SizedBox(width: 0,),
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                 child: Text(
-                      "Total: ${widget.salesPerson.totalMeeting}",
-                      style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(
+                    "Total: ${salesPerson.totalMeeting}",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                     ),
-               ),
-
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 8),
-            if (_isExpanded) ...[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Left Column - Call Metrics
-                  Expanded(
-                    child: Column(
+            Obx(
+                  () {
+                if (!controller.isExpanded.value) return SizedBox.shrink();
+
+                return Column(
+                  children: [
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Text(
-                            "Answered: ${widget.salesPerson.answered}",
-                            style: TextStyle(color: Colors.black),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: Text(
+                                  "Answered: ${salesPerson.answered}",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: Text(
+                                  "Not Answered: ${salesPerson.notAnswered}",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: Text(
+                                  "Wrong Number: ${salesPerson.wrongNumber}",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: Text(
+                                  "Number Busy: ${salesPerson.numberBusy}",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Text(
-                            "Not Answered: ${widget.salesPerson.notAnswered}",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Text(
-                            "Wrong Number: ${widget.salesPerson.wrongNumber}",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Text(
-                            "Number Busy: ${widget.salesPerson.numberBusy}",
-                            style: TextStyle(color: Colors.black),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0, right: 15.0),
+                                child: Text(
+                                  "Physical Meeting: ${salesPerson.physicalMeeting}",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0, right: 15.0),
+                                child: Text(
+                                  "Virtual Meeting: ${salesPerson.virtualMeeting}",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  // Right Column - Meeting Metrics
-                  Expanded(
-                    child: Column(
-
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0, right: 15.0),
-                          child: Text(
-                            "Physical Meeting: ${widget.salesPerson.physicalMeeting}",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0, right: 15.0),
-                          child: Text(
-                            "Virtual Meeting: ${widget.salesPerson.virtualMeeting}",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                );
+              },
+            ),
           ],
         ),
       ),

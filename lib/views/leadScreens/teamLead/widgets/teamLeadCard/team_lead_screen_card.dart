@@ -44,22 +44,22 @@ class TeamLeadScreenCard extends StatelessWidget {
                     title,
                     style: TextStyle(
                         color: AllColors.mediumPurple,
-                          
+
                         fontWeight: FontWeight.w600,
                         fontSize: 16),
                   ),
                   Text(
                     email,
                     style: TextStyle(
-                        color: AllColors.lightGrey,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                          ),
+                      color: AllColors.lightGrey,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
                   )
                 ],
               ),
               const Divider(
-                thickness: 0.5
+                  thickness: 0.5
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +71,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         'T.Leads',
                         style: TextStyle(
                             color: AllColors.blackColor,
-                              
+
                             fontWeight: FontWeight.w600,
                             fontSize: 13
                         ),
@@ -83,7 +83,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         '8776',
                         style: TextStyle(
                             color: AllColors.lightGrey,
-                              
+
                             fontWeight: FontWeight.w400,
                             fontSize: 12
                         ),
@@ -96,7 +96,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         'Cold',
                         style: TextStyle(
                             color: AllColors.blackColor,
-                              
+
                             fontWeight: FontWeight.w600,
                             fontSize: 13
                         ),
@@ -107,7 +107,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         '10',
                         style: TextStyle(
                             color: AllColors.lightGrey,
-                              
+
                             fontWeight: FontWeight.w400,
                             fontSize: 12),
                       ),
@@ -119,7 +119,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         'Hot',
                         style: TextStyle(
                             color: AllColors.blackColor,
-                              
+
                             fontWeight: FontWeight.w600,
                             fontSize: 13
                         ),
@@ -129,7 +129,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         '33',
                         style: TextStyle(
                             color: AllColors.lightGrey,
-                              
+
                             fontWeight: FontWeight.w400,
                             fontSize: 12),
                       ),
@@ -141,7 +141,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         'Follow Up',
                         style: TextStyle(
                             color: AllColors.blackColor,
-                              
+
                             fontWeight: FontWeight.w600,
                             fontSize: 13
                         ),
@@ -151,7 +151,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         '65',
                         style: TextStyle(
                             color: AllColors.lightGrey,
-                              
+
                             fontWeight: FontWeight.w400,
                             fontSize: 12),
                       ),
@@ -163,7 +163,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         'Dead',
                         style: TextStyle(
                             color: AllColors.blackColor,
-                              
+
                             fontWeight: FontWeight.w600,
                             fontSize: 13
                         ),
@@ -173,7 +173,7 @@ class TeamLeadScreenCard extends StatelessWidget {
                         '11',
                         style: TextStyle(
                             color: AllColors.lightGrey,
-                              
+
                             fontWeight: FontWeight.w400,
                             fontSize: 12),
                       ),

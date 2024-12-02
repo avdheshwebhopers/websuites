@@ -1,8 +1,8 @@
 class ConstantsResponseModel {
   final String? newValue;
- final  String? inProgress;
- final  String? converted;
- final  String? dead;
+  final  String? inProgress;
+  final  String? converted;
+  final  String? dead;
   final  String? withteam;
   final  String? individual;
   final String? createDate;
@@ -68,12 +68,12 @@ class ConstantsResponseModel {
         this.repeated,
         this.nonRepeated,
         this.orderDesc,
-      this.orderAsc,
-      this.toDoNeedAction,
-      this.toDoActionTaken,
-      this.queryTypeDirect,
-      this.queryTypeBuy,
-      this.queryTypeCall,
+        this.orderAsc,
+        this.toDoNeedAction,
+        this.toDoActionTaken,
+        this.queryTypeDirect,
+        this.queryTypeBuy,
+        this.queryTypeCall,
         this.assignTypeAssigned,
         this.assignTypeUnassigned,
         this.assignTypeAssignFresh,

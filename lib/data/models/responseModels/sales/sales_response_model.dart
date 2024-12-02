@@ -5,7 +5,7 @@ class SalesResponseModel {
   SalesResponseModel({
     this.items,
     this.meta
-});
+  });
 
   SalesResponseModel.fromJson(Map<String, dynamic> json) {
     if(json['items'] != null) {
@@ -52,7 +52,7 @@ class Items {
     this.updated_at,
     this.members,
     this.product
-});
+  });
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -75,9 +75,9 @@ class Items {
         product!.add(Product.fromJson(v));
       });
     }
-    }
+  }
 
-    Map<String, dynamic> toJson () {
+  Map<String, dynamic> toJson () {
     final Map<String, dynamic> data = <String, dynamic> {};
     data['id'] = id;
     data['name'] = name;
@@ -97,9 +97,9 @@ class Items {
     }
     return data;
   }
-  }
+}
 
-  class Team {
+class Team {
   String? id;
   String? bio;
   String? email;
@@ -251,7 +251,7 @@ class MailJetSender {
     this.is_default_sender,
     this.mailjet_sender_id,
     this.smtp_authentication
-});
+  });
 
   MailJetSender.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -300,7 +300,7 @@ class RoleList {
     this.name,
     this.isdefault,
     this.description
-});
+  });
 
   RoleList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -360,7 +360,7 @@ class Children {
     this.crm_category,
     this.remember_token,
     this.remember_token_time
-});
+  });
 
   Children.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -428,7 +428,7 @@ class Members {
     this.created_at,
     this.updated_at,
     this.achieve_breakdown
-});
+  });
 
   Members.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -470,7 +470,7 @@ class AchieveBreakdown {
     this.incentive,
     this.created_at,
     this.updated_at
-});
+  });
 
   AchieveBreakdown.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -500,7 +500,7 @@ class Product {
   Product({
     this.name,
     this.id
-});
+  });
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -528,7 +528,7 @@ class Meta {
     this.totalPages,
     this.totalItems,
     this.itemCount
-});
+  });
 
   Meta.fromJson(Map<String, dynamic> json) {
     currentPage = json['currentPage'];

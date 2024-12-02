@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 
 
 
-import '../../../../data/models/requestModels/leadactivity/activity_list.dart';
 import '../../../../data/models/responseModels/leads/lead_activity/lead_activity_list/lead_activity_list.dart';
 import '../../../../data/repositories/repositories.dart';
-import '../../../data/models/requestModels/lead/lead_list.dart';
+import '../../../data/models/requestModels/customer/customer_list/customer_list.dart';
+import '../../../data/models/requestModels/lead/activity/activity_list.dart';
 
 
 class LeadActivityViewModel extends GetxController {

@@ -10,13 +10,13 @@ class MasterProposalsResponseModel {
 
   MasterProposalsResponseModel(
       {this.id,
-      this.subject,
-      this.body,
-      this.attachment,
-      this.status,
-      this.createdAt,
-      this.updatedAt,
-      this.deletedAt});
+        this.subject,
+        this.body,
+        this.attachment,
+        this.status,
+        this.createdAt,
+        this.updatedAt,
+        this.deletedAt});
 
   MasterProposalsResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

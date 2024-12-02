@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/views/customerScreens/activitiesScreen/activities_screen.dart';
+import 'package:websuites/views/customerScreens/customerPaymentReminder/payment_reminder.dart';
+import 'package:websuites/views/customerScreens/orderProducts/order_products_screen.dart';
 import 'package:websuites/views/homeScreen/widgets/apppbarFilterIcon/FilterActionButton.dart';
 import 'package:websuites/views/leadScreens/trashLead/widgets/filter/TrashFilter.dart';
+import 'package:websuites/views/orderScreen/orderActivityScreen/order_activity_screen.dart';
+import 'package:websuites/views/orderScreen/orderProformaScreen/proforma_list_screen.dart';
+import 'package:websuites/views/orderScreen/ordermaster/OrderMasterListScreen.dart';
 
 import '../../Responsive/Custom_Drawer.dart';
 import '../../resources/strings/strings.dart';
@@ -10,6 +16,7 @@ import '../../utils/responsive/bodies/responsive scaffold.dart';
 import '../Dashboard/DashboardScreen.dart';
 import '../customerScreens/companiesScreen/all_companies_screen.dart';
 import '../customerScreens/customerList/list_screen.dart';
+import '../customerScreens/customerServices/services_screen.dart';
 import '../leadScreens/Setting/SettingScreen.dart';
 import '../leadScreens/createNewLead/create_newLead_screen.dart';
 import '../leadScreens/leadActivities/lead_activities_screen.dart';
@@ -17,6 +24,8 @@ import '../leadScreens/leadList/leadlist_screen.dart';
 import '../leadScreens/leadMaster/lead_master_screen.dart';
 import '../leadScreens/searchGoogleLeads/search_google_leads.dart';
 import '../leadScreens/trashLead/trash_lead_screen.dart';
+import '../orderScreen/orderListScreen/orderList_screen.dart';
+import '../salesTargetScreen/sales_target_screen.dart';
 
 class HomeScreenController extends GetxController {
   RxInt selectedIndex = 0.obs;
@@ -33,7 +42,18 @@ class HomeScreenController extends GetxController {
     SettingScreen(),
     LeadMasterScreen(),
     CustomersListScreen(),
+    CustomersActivitiesScreen(),
+    CustomerPaymentReminders(),
     CustomerCompaniesScreen(),
+    CustomerServicesScreen(),
+    CustomerOrderProductsScreen(),
+    OrderListScreen(),
+    OrderActivityScreen(),
+    OrderProformaList(),
+    OrderMasterListScreen(),
+    SalesTargetScreen()
+
+
   ];
 
   void onDrawerItemTapped(int index, BuildContext context) {
@@ -60,15 +80,33 @@ class HomeScreenController extends GetxController {
       case 5:
         return Strings.leadActivities;
       case 6:
-        return Strings.leadList;
-      case 7:
         return Strings.setting;
-      case 8:
+      case 7:
         return Strings.leadMaster;
+      case 8:
+        return Strings.customers;
       case 9:
-        return Strings.master;
+        return Strings.customerActivity;
       case 10:
+        return 'Payment Reminder';
+      case 11:
         return 'Customer Companies';
+      case 12:
+        return 'All Services';
+      case 13:
+        return 'Order Products';
+      case 14:
+        return 'Order List';
+      case 15:
+        return 'Activity';
+      case 13:
+        return 'Proforma List';
+      case 14:
+        return 'Order Master';
+      case 15:
+        return 'Sales';
+
+
       default:
         return 'Hello, Avdhesh!';
     }
@@ -124,8 +162,8 @@ class HomeScreen extends GetView<HomeScreenController> {
             child: const FilterActionButtons(),
           )),
           Obx(() => Visibility(
-            visible: controller.selectedIndex.value == 4,
-            child:TrashFilter()
+              visible: controller.selectedIndex.value == 4,
+              child:TrashFilter()
 
 
 
@@ -201,8 +239,8 @@ class HomeScreen extends GetView<HomeScreenController> {
                                   child: const FilterActionButtons(),
                                 )),
                                 Obx(() => Visibility(
-                                  visible: controller.selectedIndex.value == 4,
-                                  child: TrashFilter()
+                                    visible: controller.selectedIndex.value == 4,
+                                    child: TrashFilter()
 
 
 

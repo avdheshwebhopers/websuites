@@ -98,6 +98,7 @@ class _FieldSettingViewState extends State<FieldSettingView> {
     );
   }
 
+
   // Method to build a data row based on the field setting
   DataRow _buildDataRow(dynamic setting, bool isStandardField) {
     return DataRow(cells: [
@@ -132,7 +133,7 @@ class _FieldSettingViewState extends State<FieldSettingView> {
               child: Checkbox(
                 value: setting.isRequired ?? false,
                 onChanged: setting.isStatusFixed == true ? null : (value) {
-             _controller2.toggleFieldRequired(setting.id!, value);
+                  _controller2.toggleFieldRequired(setting.id!, value);
                   _controller.toggleFieldRequired(setting.id!, value);
                   Utils.snackbarSuccess('You have updated Field');
                 },

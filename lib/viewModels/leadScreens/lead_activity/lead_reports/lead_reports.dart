@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../../../../Utils/utils.dart';
-import '../../../../../data/models/requestModels/leadactivity/lead_reports/lead_reports.dart';
 import '../../../../../data/repositories/repositories.dart';
+import '../../../../data/models/requestModels/lead/activity/lead_reports/lead_reports.dart';
 import '../../../../views/leadScreens/leadActivities/leadReport/leadrepoertCard/LeadActivitiesReportCard.dart';
 
 class LeadActivityLeadReportViewModel extends GetxController {

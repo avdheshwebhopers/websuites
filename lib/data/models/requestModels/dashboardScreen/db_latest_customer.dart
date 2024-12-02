@@ -73,7 +73,7 @@ class Items {
     this.zoho_contact_id,
     this.companies,
     this.customer_assigned,
-});
+  });
 
   Map<String, dynamic> toJson (){
     final Map<String, dynamic> data = <String, dynamic> {};
@@ -114,7 +114,7 @@ class Companies{
   Companies({
     this.id,
     this.company_name,
-});
+  });
 
   Map<String,dynamic> toJson () {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -135,7 +135,7 @@ class CustomerAssigned{
     this.status,
     this.created_at,
     this.user
-});
+  });
 
   Map<String, dynamic> toJson (){
     final Map<String, dynamic> data = <String, dynamic> {};

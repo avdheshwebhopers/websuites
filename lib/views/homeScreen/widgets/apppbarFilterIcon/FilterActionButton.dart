@@ -283,11 +283,11 @@ class FilterContent extends StatelessWidget {
                   SizedBox(height: 16),
                   TextStyles.w500_14_Black(context, Strings.order_by),
                   CreateNewLeadScreenCard(hintText: Strings.order_by,
-                      categories: [
-                        constantValueViewModel.constantList.value[0].createDate ?? "No Value",
-                        constantValueViewModel.constantList.value[0].activityDate ?? "No Value",
+                    categories: [
+                      constantValueViewModel.constantList.value[0].createDate ?? "No Value",
+                      constantValueViewModel.constantList.value[0].activityDate ?? "No Value",
 
-                      ],),
+                    ],),
                   SizedBox(height: 16),
                   TextStyles.w500_14_Black(context, Strings.to_do_leads),
                   CreateNewLeadScreenCard(hintText: Strings.select_to_do_leads,
@@ -309,56 +309,56 @@ class FilterContent extends StatelessWidget {
                   ),
                   TextStyles.w500_14_Black(context, Strings.assigned_type),
                   CreateNewLeadScreenCard(hintText: Strings.select_assigned_type,
-                  categories: [
-                    constantValueViewModel.constantList.value[0]. assignTypeAssigned ?? "No Value",
-                    constantValueViewModel.constantList.value[0]. assignTypeUnassigned ?? "No Value",
-                    constantValueViewModel.constantList.value[0]. assignTypeAssignFresh ?? "No Value",
-                    constantValueViewModel.constantList.value[0]. assignTypeUnAssignFresh ?? "No Value",
-                    constantValueViewModel.constantList.value[0]. reAssigned ?? "No Value",
-                    constantValueViewModel.constantList.value[0]. reUnAssigned ?? "No Value",
+                    categories: [
+                      constantValueViewModel.constantList.value[0]. assignTypeAssigned ?? "No Value",
+                      constantValueViewModel.constantList.value[0]. assignTypeUnassigned ?? "No Value",
+                      constantValueViewModel.constantList.value[0]. assignTypeAssignFresh ?? "No Value",
+                      constantValueViewModel.constantList.value[0]. assignTypeUnAssignFresh ?? "No Value",
+                      constantValueViewModel.constantList.value[0]. reAssigned ?? "No Value",
+                      constantValueViewModel.constantList.value[0]. reUnAssigned ?? "No Value",
 
-                  ],
+                    ],
                   ),
                   SizedBox(height: 16),
 
                   TextStyles.w500_14_Black(context, Strings.reminder_type),
                   CreateNewLeadScreenCard(hintText: Strings.select_reminder_type_lead,
-                  categories: [
+                    categories: [
 
-                    constantValueViewModel.constantList.value[0].reminderTypeToday ?? "No Value",
-                    constantValueViewModel.constantList.value[0]. reminderTypeMissed ?? "No Value",
-                    constantValueViewModel.constantList.value[0]. reminderTypeUpcoming?? "No Value",
-                    constantValueViewModel.constantList.value[0]. reminderTypeTodayMissed ?? "No Value",
+                      constantValueViewModel.constantList.value[0].reminderTypeToday ?? "No Value",
+                      constantValueViewModel.constantList.value[0]. reminderTypeMissed ?? "No Value",
+                      constantValueViewModel.constantList.value[0]. reminderTypeUpcoming?? "No Value",
+                      constantValueViewModel.constantList.value[0]. reminderTypeTodayMissed ?? "No Value",
 
-                  ],
+                    ],
 
                   ),
                   SizedBox(height: 16),
                   TextStyles.w500_14_Black(context, Strings.repeat_type),
                   CreateNewLeadScreenCard(hintText: Strings.select_repeat_type,
 
-                  categories: [
-                    constantValueViewModel.constantList.value[0].all ?? "No Value",
-                    constantValueViewModel.constantList.value[0].repeated ?? "No Value",
-                    constantValueViewModel.constantList.value[0].nonRepeated ?? "No Value",
+                    categories: [
+                      constantValueViewModel.constantList.value[0].all ?? "No Value",
+                      constantValueViewModel.constantList.value[0].repeated ?? "No Value",
+                      constantValueViewModel.constantList.value[0].nonRepeated ?? "No Value",
 
 
 
-                  ],),
+                    ],),
                   SizedBox(height: 16),
                   TextStyles.w500_14_Black(context, Strings.activity_Range),
                   CreateNewLeadScreenCard(hintText: Strings.select_activity_range,
 
-                  categories: [
-                    constantValueViewModel.constantList.value[0].activityRangeStartDays ?? "No Value",
-                    constantValueViewModel.constantList.value[0].   activityRangeSecond ?? "No Value",
-                    constantValueViewModel.constantList.value[0].   activityRangeThird ?? "No Value",
-                    constantValueViewModel.constantList.value[0].   activityRangeFour ?? "No Value",
-                    constantValueViewModel.constantList.value[0].   activityRangeFifth ?? "No Value",
-                    constantValueViewModel.constantList.value[0].   activityRangeSix ?? "No Value",
-                    constantValueViewModel.constantList.value[0].   activityRangeSeven ?? "No Value",
+                    categories: [
+                      constantValueViewModel.constantList.value[0].activityRangeStartDays ?? "No Value",
+                      constantValueViewModel.constantList.value[0].   activityRangeSecond ?? "No Value",
+                      constantValueViewModel.constantList.value[0].   activityRangeThird ?? "No Value",
+                      constantValueViewModel.constantList.value[0].   activityRangeFour ?? "No Value",
+                      constantValueViewModel.constantList.value[0].   activityRangeFifth ?? "No Value",
+                      constantValueViewModel.constantList.value[0].   activityRangeSix ?? "No Value",
+                      constantValueViewModel.constantList.value[0].   activityRangeSeven ?? "No Value",
 
-                  ],
+                    ],
                   ),
                   SizedBox(height: 16),
                   TextStyles.w500_14_Black(context, Strings.divisions),
@@ -446,17 +446,17 @@ class FilterContent extends StatelessWidget {
 
                     return
                       CreateNewLeadScreenCard(
-                      hintText: Strings.search_city,
-                      categories: filteredCountries.map((country) => '+${country.phone}-${country.name}').toList(),
-                      onCategoryChanged: (selectedCountry) {
-                        print("Selected Country: $selectedCountry");
-                      },
-                      controller: TextEditingController(text: searchQuery.value), // Pass the controller
-                      allowCustomInput: true, // Allow custom input for searching
-                      onSearch: (value) {
-                        searchQuery.value = value; // Update the search query
-                      },
-                    );
+                        hintText: Strings.search_city,
+                        categories: filteredCountries.map((country) => '+${country.phone}-${country.name}').toList(),
+                        onCategoryChanged: (selectedCountry) {
+                          print("Selected Country: $selectedCountry");
+                        },
+                        controller: TextEditingController(text: searchQuery.value), // Pass the controller
+                        allowCustomInput: true, // Allow custom input for searching
+                        onSearch: (value) {
+                          searchQuery.value = value; // Update the search query
+                        },
+                      );
                   }),
 
                   SizedBox(height: 16),

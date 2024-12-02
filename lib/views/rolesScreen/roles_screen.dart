@@ -21,7 +21,7 @@ class RolesScreen extends StatefulWidget {
 }
 
 class _RolesScreenState extends State<RolesScreen> {
-final ScreenController _screenController = Get.put(ScreenController());
+  final ScreenController _screenController = Get.put(ScreenController());
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   SaveUserData userPreference = SaveUserData();
 
@@ -52,78 +52,78 @@ final ScreenController _screenController = Get.put(ScreenController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _globalKey,
-      backgroundColor: AllColors.whiteColor,
-      // bottomNavigationBar: CustomBottomNavBar(),
-      floatingActionButton: CustomFloatingButton(
-          onPressed: (){},
-          imageIcon: IconStrings.navSearch3,
-          backgroundColor: AllColors.mediumPurple
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        key: _globalKey,
+        backgroundColor: AllColors.whiteColor,
+        // bottomNavigationBar: CustomBottomNavBar(),
+        floatingActionButton: CustomFloatingButton(
+            onPressed: (){},
+            imageIcon: IconStrings.navSearch3,
+            backgroundColor: AllColors.mediumPurple
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      // drawer: CustomDrawer(
-      //     userName: userName,
-      //     phoneNumber: userEmail,
-      //     version: '1.0.12',
-      //
-      //
-      //   onTap: (index) {
-      //     _screenController.updateIndex(index);
-      //     if (ResponsiveUtils.isMobile(context)) {
-      //       _globalKey.currentState?.closeDrawer();
-      //     }
-      //   },
-      // ),
+        // drawer: CustomDrawer(
+        //     userName: userName,
+        //     phoneNumber: userEmail,
+        //     version: '1.0.12',
+        //
+        //
+        //   onTap: (index) {
+        //     _screenController.updateIndex(index);
+        //     if (ResponsiveUtils.isMobile(context)) {
+        //       _globalKey.currentState?.closeDrawer();
+        //     }
+        //   },
+        // ),
 
-      body:
-          Stack(
-            children: [
-              const SafeArea(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(height: 70),
-                        RolesScreenCard(title: 'Graphic Designer'),
-                        RolesScreenCard(title: 'Graphic Designer'),
-                        RolesScreenCard(title: 'Graphic Designer'),
-                        RolesScreenCard(title: 'Graphic Designer'),
-                        RolesScreenCard(title: 'Graphic Designer'),
-                        RolesScreenCard(title: 'Graphic Designer')
-                      ],
-                    ),
+        body:
+        Stack(
+          children: [
+            const SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 70),
+                      RolesScreenCard(title: 'Graphic Designer'),
+                      RolesScreenCard(title: 'Graphic Designer'),
+                      RolesScreenCard(title: 'Graphic Designer'),
+                      RolesScreenCard(title: 'Graphic Designer'),
+                      RolesScreenCard(title: 'Graphic Designer'),
+                      RolesScreenCard(title: 'Graphic Designer')
+                    ],
                   ),
                 ),
               ),
+            ),
 
-              //================================================================
-              //CUSTOM APP BAR
+            //================================================================
+            //CUSTOM APP BAR
 
-              CustomAppBar(
-                  child: Row(
-                    children: [
-                      InkWell(
+            CustomAppBar(
+                child: Row(
+                  children: [
+                    InkWell(
                         onTap:(){
                           _globalKey.currentState?.openDrawer();
                         },
-                          child: Icon(Icons.menu_sharp, size: 25,)),
-                      SizedBox(width: 10),
-                      Text('Roles', style: TextStyle(
-                        color: AllColors.blackColor,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 17,
-                          
-                      ),),
-                      Spacer(),
-                      Container(
+                        child: Icon(Icons.menu_sharp, size: 25,)),
+                    SizedBox(width: 10),
+                    Text('Roles', style: TextStyle(
+                      color: AllColors.blackColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 17,
+
+                    ),),
+                    Spacer(),
+                    Container(
                         padding: EdgeInsets.symmetric(horizontal: 5),
                         height: Get.height/30,
                         width: Get.width/4.3,
                         decoration: BoxDecoration(
-                          color: AllColors.mediumPurple,
-                          borderRadius: BorderRadius.circular(4)
+                            color: AllColors.mediumPurple,
+                            borderRadius: BorderRadius.circular(4)
                         ),
                         child: Row(
                           children: [
@@ -133,21 +133,21 @@ final ScreenController _screenController = Get.put(ScreenController());
                               color: AllColors.whiteColor,
                               fontWeight: FontWeight.w500,
                               fontSize: 12,
-                                
+
                             ),)
                           ],
                         )
-                      ),
+                    ),
 
 
 
 
-                    ],
+                  ],
 
-                  ))
+                ))
 
-            ],
-          )
+          ],
+        )
 
 
 

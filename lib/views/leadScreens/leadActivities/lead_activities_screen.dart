@@ -26,7 +26,7 @@ class _LeadActivitiesScreenState extends State<LeadActivitiesScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   late final LeadActivityViewModel _leadActivityViewModel;
   late final LeadActivityNoActivityViewModel _leadActivityno;
-late final LeadActivityLeadReportViewModel  _leadactivitiesreport ;
+  late final LeadActivityLeadReportViewModel  _leadactivitiesreport ;
   late final  TeamLeadsViewModel  _leadactivitiesteamreports ;
   String? userName = '';
   String? userEmail = '';
@@ -94,7 +94,8 @@ late final LeadActivityLeadReportViewModel  _leadactivitiesreport ;
               color: Colors.white,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
+                child:
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: buttonData.map((data) {
                     return Padding(

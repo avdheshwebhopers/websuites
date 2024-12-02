@@ -8,11 +8,11 @@ class MasterDepartmentsResponseModel {
 
   MasterDepartmentsResponseModel(
       {this.id,
-      this.name,
-      this.description,
-      this.isdefault,
-      this.createdAt,
-      this.updatedAt});
+        this.name,
+        this.description,
+        this.isdefault,
+        this.createdAt,
+        this.updatedAt});
 
   MasterDepartmentsResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

@@ -23,11 +23,11 @@ class DashboardResponseModel {
     data['name'] = name;
     data['isDefault'] = isDefault;
     if (roles != null) {
-     data['roles'] = roles !.map((v) => v.toJson()).toList();
-    data['id'] = id;
+      data['roles'] = roles !.map((v) => v.toJson()).toList();
+      data['id'] = id;
     }
     return data;
-}}
+  }}
 
 class Roles {
   String? id;
