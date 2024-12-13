@@ -35,9 +35,9 @@ class CustomerPaymentReminderListViewModel extends GetxController {
 
       if (response.items.isNotEmpty) {
         paymentReminders.assignAll(response.items);  // Directly assigning PaymentReminderItem list
-        Utils.snackbarSuccess('Customer list fetched successfully');
+        // Utils.snackbarSuccess('Customer list fetched successfully');
       } else {
-        Utils.snackbarFailed('Customer Payment not fetched');
+        // Utils.snackbarFailed('Customer Payment not fetched');
       }
     } catch (error) {
       if (kDebugMode) {

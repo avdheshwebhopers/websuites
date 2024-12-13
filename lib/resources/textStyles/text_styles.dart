@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../utils/appColors/app_colors.dart';
+import '../../utils/fontfamily/FontFamily.dart';
+
 
 
 class TextStyles{
@@ -234,7 +236,12 @@ class TextStyles{
     );
   }
 
-
+  static const TextStyle w400_12_Black = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 17,
+    color: Colors.black,  // Color set to black
+    fontFamily: FontFamily.sfPro,  // Correct font family reference
+  );
 
   static const TextStyle datatable = TextStyle(
       color: Colors.black,
@@ -246,7 +253,6 @@ class TextStyles{
 
     fontSize: 13
   );
-
 
   static const TextStyle namelength = TextStyle(
       fontWeight: FontWeight.w600,

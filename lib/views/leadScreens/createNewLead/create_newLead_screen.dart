@@ -100,7 +100,7 @@ class _CreateNewLeadScreenState extends State<CreateNewLeadScreen> {
     try {
       LoginResponseModel response = await userPreference.getUser();
       setState(() {
-        userName = response.user?.first_name ?? '';
+        userName = response.user?.firstName ?? '';
         userEmail = response.user?.email;
       });
     } catch (e) {

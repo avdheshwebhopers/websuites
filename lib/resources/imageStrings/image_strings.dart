@@ -16,6 +16,8 @@ class ImageStrings{
   static const String userAvatarDemo3 = 'assets/images/user_demo_avtar.jpg';
 
   static const String worldMap = 'assets/images/World_Map.png';
+  static const String dateCalender = 'assets/icons/date.png';
+
 
 
 

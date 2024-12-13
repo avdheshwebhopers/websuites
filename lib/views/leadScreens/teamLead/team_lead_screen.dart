@@ -40,7 +40,7 @@ class _TeamLeadScreenState extends State<TeamLeadScreen> {
   Future<void> FetchUserData() async {
     try {
       LoginResponseModel response = await userPreference.getUser();
-      String? first_name = response.user!.first_name;
+      String? first_name = response.user!.firstName;
       String? email = response.user!.email;
 
       setState(() {

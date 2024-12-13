@@ -163,7 +163,7 @@ class RevenueCard extends StatelessWidget {
               Text(
                 amount,
                 style: TextStyle(
-                  fontSize: amountFontSize,
+                  fontSize: 18,
 
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
@@ -172,7 +172,7 @@ class RevenueCard extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: titleFontSize,
+                  fontSize: 12,
 
                   fontWeight: FontWeight.w400,
                   color: Colors.black,

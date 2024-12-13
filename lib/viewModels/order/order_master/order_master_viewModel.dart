@@ -24,9 +24,12 @@ class OrderMasterViewModel extends GetxController {
       // Check if the response is a List of OrderMasterResponseModel
       if (response is List<OrderMasterResponseModel>) {
         orderMasterData.value = response;  // Directly assign the list to the observable
-        Utils.snackbarSuccess('Order Master fetched');
+        // Utils.snackbarSuccess('Order Master fetched');
+        print('Order Master fetched');
+
       } else {
-        Utils.snackbarFailed('Unexpected response format');
+        // Utils.snackbarFailed('Unexpected response format');
+        print('Unexpected response format');
       }
     } catch (error) {
       if (kDebugMode) {

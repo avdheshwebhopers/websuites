@@ -125,7 +125,7 @@ class ColumnSettingView extends StatelessWidget {
       // Edit Button
       DataCell(
         IconButton(
-          icon: Image.asset('assets/icons/Edit.png', height: 20),
+          icon: Image.asset('assets/icons/edit.png', height: 20),
           onPressed: () => _showEditDialog(setting, parentContext), // Use the passed context
         ),
       ),

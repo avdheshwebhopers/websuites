@@ -4,26 +4,33 @@ import 'package:get/get.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../utils/utils.dart';
 
+import 'package:get/get.dart';
+import '../../../../data/repositories/repositories.dart';
+import '../../../../utils/utils.dart';
+import '../../data/models/responseModels/roles/roles_response_model.dart';
+
 class RolesViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
+  RxList<RolesResponseModel> roles = <RolesResponseModel>[].obs;
 
-  Future<void> rolesListApi (BuildContext context) async {
+  Future<void> rolesListApi(BuildContext context) async {
     loading.value = true;
 
-    _api.rolesApi().then((value) {
-
-      if(value.id!= null){
-        Utils.snackbarSuccess('roles fetched');
-        loading.value = false;
-
-      }else{
-        Utils.snackbarFailed('roles not fetched');
+    try {
+      List<RolesResponseModel> response = await _api.rolesApi();
+      if (response.isNotEmpty) {
+        roles.assignAll(response); // Assign all roles to the observable list
+        // Utils.snackbarSuccess('Roles fetched');
+        print('');
+      } else {
+        // Utils.snackbarFailed('No roles found');
+        print('No roles found');
       }
-    }).onError((error, stackTrace) {
-      if (kDebugMode) {
-        print(error.toString());
-      }}
-    );
+    } catch (error) {
+      Utils.snackbarFailed('Error fetching roles: $error');
+    } finally {
+      loading.value = false; // Set loading to false after fetching
+    }
   }
 }

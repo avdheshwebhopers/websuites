@@ -54,7 +54,7 @@ class OrderMasterListScreenCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Image.asset('assets/icons/Edit.png',color: AllColors.darkGrey,height: 17),
+                        Image.asset('assets/icons/edit.png',color: AllColors.darkGrey,height: 17),
                       ],
                     ),
                   ],

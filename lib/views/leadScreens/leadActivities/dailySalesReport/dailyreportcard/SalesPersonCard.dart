@@ -68,7 +68,7 @@ class SalesPersonCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Image.asset(
-                    'assets/icons/Edit.png',
+                    'assets/icons/edit.png',
                     height: 16,
                     color: Color(0xFF6E6A7C),
                   ),

@@ -46,9 +46,9 @@ class LoginViewModel extends GetxController {
     _api.loginApi(data).then((value) {
 
       if (value.accessToken!= null) {
-        _saveToken.saveUser(value.accessToken.toString(), value.user?.first_name ?? '', value.user?.email ?? '' );
+        _saveToken.saveUser(value.accessToken.toString(), value.user?.firstName ?? '', value.user?.email ?? '' );
         print(value.accessToken);
-        print(value.user?.first_name);
+        print(value.user?.firstName);
         print(value.user?.email);
 
         Get.offNamed(RoutesName.upcoming_screen,

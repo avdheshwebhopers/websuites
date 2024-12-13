@@ -44,9 +44,11 @@ class OrderListViewModel extends GetxController {
         // Assign fetched items to the list
         if (response.items.isNotEmpty) {
           orders.assignAll(response.items); // Assign fetched items to the list
-          Utils.snackbarSuccess('Order list fetched successfully');
+          // Utils.snackbarSuccess('Order list fetched successfully');
+          print('Order list fetched successfully');
         } else {
-          Utils.snackbarFailed('No orders found');
+          // Utils.snackbarFailed('No orders found');
+          print('No orders found');
         }
       } else {
         Utils.snackbarFailed('Unexpected response type');

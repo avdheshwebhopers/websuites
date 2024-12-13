@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
+import 'package:websuites/data/models/requestModels/sales/SalesListRequestModel.dart';
 import 'package:websuites/data/models/responseModels/customers/list/customers_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/customers/payment_reminder/customer_payment_reminder_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/leadMasters/status/lead_masters_status_response_model.dart';
@@ -7,6 +10,7 @@ import 'package:websuites/data/models/responseModels/leads/trashLeads/leadTypes/
 import 'package:websuites/data/models/responseModels/order/activities/OrderActivitiesResponseModel.dart';
 
 import '../../resources/appUrls/app_urls.dart';
+import '../models/requestModels/report/project_overview/task/ProjectOverViewTaskListRequestModel.dart';
 import '../models/responseModels/HRM/attendance/hrm_attendance_response_model.dart';
 import '../models/responseModels/campaign/list/campaign_list_response_model.dart';
 import '../models/responseModels/campaign/mailLogs/mail_logs_response_model.dart';
@@ -155,6 +159,15 @@ import '../models/responseModels/products/list/products_list_response_model.dart
 import '../models/responseModels/products/master/product_master_response_model.dart';
 import '../models/responseModels/projects/list/projects_list_response_model.dart';
 import '../models/responseModels/projects/master/project_master_response_model.dart';
+import '../models/responseModels/reports/TaskReportsResponseModels.dart';
+import '../models/responseModels/reports/taskdetails/TaskDetailsResponseModel.dart';
+import '../models/responseModels/reports/taskdetails/project_overview/project_overview_list/task_report_project_overview_response_model.dart';
+import '../models/responseModels/reports/taskdetails/project_overview/remove_attachment/task_report_remove_attachment_response_model.dart';
+import '../models/responseModels/reports/taskdetails/project_overview/report_list/task_report_list_response_model.dart';
+import '../models/responseModels/reports/taskdetails/project_overview/task/ProjectOverViewTaskListResponseModel.dart';
+import '../models/responseModels/reports/taskdetails/start_stop/StartStopResponseModels.dart';
+import '../models/responseModels/reports/taskdetails/task_tracker_event/task_tracker_event_response_model.dart';
+import '../models/responseModels/reports/taskdetails/task_update/task_update_response_model.dart';
 import '../models/responseModels/roles/roles_response_model.dart';
 import '../models/responseModels/sales/sales_response_model.dart';
 import '../models/responseModels/tasks/list/tasks_list_response_model.dart';
@@ -1342,6 +1355,7 @@ class Repositories {
 
   //Assigned History
 
+
   Future<List<CustomerDetailViewAssignedHistoryResponseModel>>customerDetailViewAssignHistory() async {
     try {
       dynamic response =
@@ -2276,17 +2290,20 @@ class Repositories {
   }
 
 
+  //order Payment----
 
-  // PAYMENTS
-
-  Future<OrderPaymentsResponseModel> orderPaymentsApi() async {
+  Future< OrderPaymentsResponseModel>orderPaymentList(dynamic data) async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.orderPayments, null);
-      return response = OrderPaymentsResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.orderPayment,data);
+      print("Order payment Response $response ");
+      return response =OrderPaymentsResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
+
+
+
 
   // ORDER MASTER
   Future<List<OrderMasterResponseModel>> orderMasterApi() async {
@@ -2347,13 +2364,19 @@ class Repositories {
     }
   }
 
+  Future<StartStopResponseModels> taskStartStop(dynamic data) async {
+    try {
+      // Make the POST request
+      final response = await _apiService.postApiResponse(AppUrls.taskStartStop, data);
+      print("Start and stop task response: $response");
 
-
-
-
-
-
-
+      // Parse the response
+      return StartStopResponseModels.fromJson(response);
+    } catch (e) {
+      print("Error in taskStartStop: $e");
+      rethrow; // Rethrow the error for handling in the ViewModel
+    }
+  }
 
 
 
@@ -2429,22 +2452,27 @@ class Repositories {
 
 
 
-  Future<SalesResponseModel> salesApi() async {
+
+  Future<SalesResponseModel> salesApi(dynamic data) async {
     try {
       dynamic response =
-      await _apiService.postApiResponse(AppUrls.salesApi, null);
+      await _apiService.postApiResponse(AppUrls.salesApi, data);
+      print("Sale Response  $response");
       return response = SalesResponseModel.fromJson(response);
     } catch (e) {
+      print("Sale Error $e");
       rethrow;
     }
   }
+
   //============================================================================
   // ROLES
 
-  Future<RolesResponseModel> rolesApi() async {
+  Future<List<RolesResponseModel>> rolesApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.rolesApi);
-      return response = RolesResponseModel.fromJson(response);
+      // Assuming response is a List
+      return (response as List).map((role) => RolesResponseModel.fromJson(role)).toList();
     } catch (e) {
       rethrow;
     }
@@ -2484,6 +2512,144 @@ class Repositories {
       rethrow;
     }
   }
+
+
+
+
+  //**************************************************
+
+// Reports
+
+
+
+  Future<TaskReportResponseModel>taskReportList(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskReport,data);
+      print(" task reports successfully  $response ");
+      return response =TaskReportResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+//Task tracker Event START STOP
+  Future<TaskTrackerEventResponseModel>taskTrackerEvent(dynamic data ) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskStartStop,data);
+      print("Report Task Tracker Event $response ");
+      return response =TaskTrackerEventResponseModel.fromJson(response);
+    } catch (e) {
+      print("Report Task Tracker Event Error$e");
+      rethrow;
+    }
+  }
+
+//Report task Attachment Remove // PENDING
+
+  Future<TaskReportRemoveAttachmentResponseModel>taskReportRemoveAttachment() async {
+    try {
+      dynamic response = await _apiService.deleteApi(AppUrls.reportTaskRemoveAttachment,);
+      print("Report Task Remove Attachment Response $response ");
+      return response =TaskReportRemoveAttachmentResponseModel.fromJson(response);
+    } catch (e) {
+      print("Report Remove Attachment Error$e");
+      rethrow;
+    }
+  }
+
+//Update Task
+
+  Future<ReportTaskUpdateResponseModel>taskUpdate(dynamic data ) async {
+    try {
+      dynamic response = await _apiService.patchApi(AppUrls.taskUpdate,data);
+      print("Task Update Response value $response ");
+      return response =ReportTaskUpdateResponseModel.fromJson(response);
+    } catch (e) {
+      print("Report  Update Error$e");
+      rethrow;
+    }
+  }
+
+
+
+  Future<TaskDetailsResponseModel> fetchTaskDetails(String taskId) async {
+    try {
+      dynamic response = await _apiService.getApi('https://webhopers.whsuites.com/api/tasks/$taskId/');
+      print("Raw response type: ${response.runtimeType}");
+      print("Raw response: $response");
+
+      // If the response is a list, and you want the first item
+      if (response is List) {
+        response = response.isNotEmpty ? response[0] : {};
+      }
+
+      return TaskDetailsResponseModel.fromJson(response);
+    } catch (e) {
+      print('Error fetching task details: $e');
+      rethrow;
+    }
+  }
+
+
+// Project Overview API call
+
+  Future<ProjectOverViewResponseModel> taskProjectOverview(String listId) async {
+    try {
+      dynamic response = await _apiService.getApi('https://webhopers.whsuites.com/api/projects/$listId');
+      print("Fetching data for listId: $listId");
+
+      print("Raw response type: ${response.runtimeType}");
+      print("Task Project Overview Response $response");
+
+      // Return the parsed response model
+      return ProjectOverViewResponseModel.fromJson(response);
+    } catch (e) {
+      print("Project Overview Error: $e");
+      rethrow; // Rethrow the error to handle it in the view model
+    }
+  }
+
+
+
+  //Report List----
+  Future<List<TaskReportListResponseModel>>taskProjectReportList(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskProjectReportList,data);
+      print("Task Project Report List Overview Response $response ");
+      return response =TaskReportListResponseModel.fromJsonList(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  //Create Report -------
+  Future<List<TaskReportListResponseModel>>taskCreateReportList(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskProjectReportList,data);
+      print("Task create Project Report Response $response ");
+      return response =TaskReportListResponseModel.fromJsonList(response);
+    } catch (e) {
+      print("Project Create Report list overView Error $e");
+      rethrow;
+    }
+  }
+
+
+  //-------------// Project overview TaskList
+
+
+  Future<ProjectOverViewTaskListResponseModel> ProjectOverViewTasksListApi(ProjectOverviewTaskRequestModel requestModel) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskListApi, requestModel.toJson());
+      return ProjectOverViewTaskListResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+
 
   // MASTER
   Future<TaskMasterResponseModel> tasksMasterApi() async {

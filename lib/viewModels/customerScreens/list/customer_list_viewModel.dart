@@ -83,14 +83,18 @@ class CustomerListViewModel extends GetxController {
         }).toList();
 
         // Success snackbar.
-        Utils.snackbarSuccess('Customer list fetched successfully');
+        // Utils.snackbarSuccess('Customer list fetched successfully');
+        print('Customer list fetched successfully');
+
       } else {
         // Failure snackbar.
-        Utils.snackbarFailed('Customer list not fetched');
+        // Utils.snackbarFailed('Customer list not fetched');
+        print('Customer list not fetched');
       }
     } catch (error) {
       // Handle errors.
-      Utils.snackbarFailed('Error fetching customer list');
+      // Utils.snackbarFailed('Error fetching customer list');
+      print('Error fetching customer list');
       if (kDebugMode) {
         print("Error fetching customer list: $error");
       }

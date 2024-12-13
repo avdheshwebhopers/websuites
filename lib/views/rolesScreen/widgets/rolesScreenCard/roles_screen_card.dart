@@ -2,194 +2,174 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/appColors/app_colors.dart';
-
+import '../../roles_screen.dart';
 
 class RolesScreenCard extends StatelessWidget {
   final String title;
+  final String description;
+  final String members;
+  final List<String> firstLetters; // List of first letters
+  final String count;
 
   const RolesScreenCard({
     Key? key,
     required this.title,
+    required this.description,
+    required this.members,
+    required this.firstLetters,
+    required this.count,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return
-      Container(
-        margin: const EdgeInsets.only(bottom: 10),
-        height: Get.height/6,
-        width: Get.width/1,
-        decoration: BoxDecoration(
-          color: AllColors.whiteColor,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                color: AllColors.blackColor.withOpacity(0.06),
-                spreadRadius: 2,
-                blurRadius: 4
-            )
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    // Get screen size
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(title, style: TextStyle(
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      height: screenHeight / 6, // Adjust height based on screen size
+      width: screenWidth * 0.95, // Use a percentage of the screen width
+      decoration: BoxDecoration(
+        color: AllColors.whiteColor,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: AllColors.blackColor.withOpacity(0.06),
+            spreadRadius: 2,
+            blurRadius: 4,
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
                       color: AllColors.blackColor,
-
                       fontSize: 18,
-                      fontWeight: FontWeight.w700
-                  ),),
-
-                  const Icon(Icons.edit_calendar_outlined, size: 20,)
-                ],
-              ),
-
-              Row(
-                children: [
-                  Text('DESCRIPTION - ', style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Text(
+                  'DESCRIPTION - ',
+                  style: TextStyle(
                     color: AllColors.blackColor,
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-
-                  ),),
-
-                  Text('Graphic Designer', style: TextStyle(
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    description,
+                    style: TextStyle(
                       color: AllColors.grey,
-
                       fontSize: 12,
-                      fontWeight: FontWeight.w400
-                  ),),
-                ],
-              ),
-
-              const Divider(
-                thickness: 0.4,
-              ),
-
-              Row(
-                children: [
-                  Text('MEMBERS - ', style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12,
-
-                    color: AllColors.blackColor,
-                  ),),
-
-                  Text('12',style: TextStyle(
-                      color: AllColors.grey,
-
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400
-                  ),),
-
-                  Spacer(),
-
-                  Container(
-                    height: Get.height/30,
-                    width: Get.width/4.3,
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: Get.height/30,
-                          width: Get.width/12,
-                          decoration: BoxDecoration(
-                              color: AllColors.lightRed,
-                              shape: BoxShape.circle
-                          ),
-                          child: Center(
-                            child: Text('A', style: TextStyle(
-                                color: AllColors.vividRed,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400
-                            ),),
-                          ),
-                        ),
-
-                        Positioned(
-                          left: 20,
-                          child: Container(
-                            height: Get.height/30,
-                            width: Get.width/12,
-                            decoration: BoxDecoration(
-                                color: AllColors.lighterPurple,
-                                shape: BoxShape.circle
-                            ),
-                            child: Center(
-                              child: Text('R', style: TextStyle(
-                                  color: AllColors.mediumPurple,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 12
-                              ),),
-
-                            ),
-                          ),
-                        ),
-
-                        Positioned(
-                          left: 40,
-                          child: Container(
-                            height: Get.height/30,
-                            width: Get.width/12,
-                            decoration: BoxDecoration(
-                                color: AllColors.lightBlue,
-                                shape: BoxShape.circle
-                            ),
-                            child: Center(
-                              child: Text('V', style: TextStyle(
-                                color: AllColors.vividBlue,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                              ),),
-                            ),
-                          ),
-                        ),
-
-                        Positioned(
-                            left: 60,
-                            child: Container(
-                              height: Get.height/30,
-                              width: Get.width/12,
-                              decoration: BoxDecoration(
-                                color: AllColors.lightYellow,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Text('J', style: TextStyle(
-                                    color: AllColors.darkYellow,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12
-                                ),),
-                              ),
-                            )
-                        ),
-                      ],
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
+                ),
+              ],
+            ),
+            const Divider(thickness: 0.4),
+            Row(
+              children: [
+                Text(
+                  'MEMBERS - ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color: AllColors.blackColor,
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    members,
+                    style: TextStyle(
+                      color: AllColors.grey,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                Container(
+                  height: screenHeight / 30,
+                  width: screenWidth / 3,
+                  child: Stack(
+                    children: [
+                      for (int i = 0; i < firstLetters.take(4).length; i++)
+                        Positioned(
+                          // right: (i * 27.0),
+          right: (i * 26.0),
+                          child: Container(
+                            height: screenHeight / 30,
+                            width: screenWidth / 12,
+                            decoration: BoxDecoration(
+                              color: i % 4 == 0
+                                  ? AllColors.lightRed
+                                  : i % 4 == 1
+                                  ? AllColors.lighterPurple
+                                  : i % 4 == 2
+                                  ? AllColors.lightBlue
+                                  : AllColors.lightYellow,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Text(
+                                firstLetters[i],
+                                style: TextStyle(
+                                  color: i % 4 == 0
+                                      ? AllColors.vividRed
+                                      : i % 4 == 1
+                                      ? AllColors .mediumPurple
+                                      : i % 4 == 2
+                                      ? AllColors.vividBlue
+                                      : AllColors.darkYellow,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
 
-                  Text('+3', style: TextStyle(
-                    color: AllColors.grey,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 13,
 
-                  ),)
-
-                ],
-              ),
-
-
-
-
-
-            ],
-          ),
+                GestureDetector(
+                  onTap: (){
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => RoleDetailsScreen(),));
+                  },
+                  child: Text(
+                    count,
+                    style: TextStyle(
+                      color: AllColors.grey,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }
+
+
