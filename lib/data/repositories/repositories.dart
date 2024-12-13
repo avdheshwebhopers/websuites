@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
+import 'package:websuites/data/models/requestModels/sales/SalesListRequestModel.dart';
 import 'package:websuites/data/models/responseModels/customers/list/customers_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/customers/payment_reminder/customer_payment_reminder_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/leadMasters/status/lead_masters_status_response_model.dart';
@@ -7,6 +10,8 @@ import 'package:websuites/data/models/responseModels/leads/trashLeads/leadTypes/
 import 'package:websuites/data/models/responseModels/order/activities/OrderActivitiesResponseModel.dart';
 
 import '../../resources/appUrls/app_urls.dart';
+import '../models/requestModels/project_reminder_setting/ProjectReminderSettingRequestModel.dart';
+import '../models/requestModels/report/project_overview/task/ProjectOverViewTaskListRequestModel.dart';
 import '../models/responseModels/HRM/attendance/hrm_attendance_response_model.dart';
 import '../models/responseModels/campaign/list/campaign_list_response_model.dart';
 import '../models/responseModels/campaign/mailLogs/mail_logs_response_model.dart';
@@ -148,18 +153,36 @@ import '../models/responseModels/order/list/order_list_response_model.dart';
 import '../models/responseModels/order/master/order_master_response_model.dart';
 import '../models/responseModels/order/payments/order_payments_response_model.dart';
 import '../models/responseModels/order/proformaList/order_proforma_list_response_model.dart';
+import '../models/responseModels/products/brand/add_brand/add_product_brand_response_model.dart';
 import '../models/responseModels/products/brand/product_brand_response_model.dart';
 import '../models/responseModels/products/category/product_category_response_model.dart';
-import '../models/responseModels/products/gstList/product_gstList_response_model.dart';
+import '../models/responseModels/products/gst_list/product_add_gst_response_model.dart';
+import '../models/responseModels/products/gst_list/product_gstList_response_model.dart';
+import '../models/responseModels/products/list/add_product/add_product_response_model.dart';
 import '../models/responseModels/products/list/products_list_response_model.dart';
+import '../models/responseModels/products/list/updat_product/update_product_response_model.dart';
+import '../models/responseModels/products/master/master_add_product_response_model.dart';
 import '../models/responseModels/products/master/product_master_response_model.dart';
+import '../models/responseModels/projects/list/details/ProjectDetailsResponseModels.dart';
 import '../models/responseModels/projects/list/projects_list_response_model.dart';
 import '../models/responseModels/projects/master/project_master_response_model.dart';
+import '../models/responseModels/reports/TaskReportsResponseModels.dart';
+import '../models/responseModels/reports/taskdetails/TaskDetailsResponseModel.dart';
+import '../models/responseModels/reports/taskdetails/project_overview/project_overview_list/task_report_project_overview_response_model.dart';
+import '../models/responseModels/reports/taskdetails/project_overview/remove_attachment/task_report_remove_attachment_response_model.dart';
+import '../models/responseModels/reports/taskdetails/project_overview/report_list/task_report_list_response_model.dart';
+import '../models/responseModels/reports/taskdetails/project_overview/task/ProjectOverViewTaskListResponseModel.dart';
+import '../models/responseModels/reports/taskdetails/start_stop/StartStopResponseModels.dart';
+import '../models/responseModels/reports/taskdetails/task_tracker_event/task_tracker_event_response_model.dart';
+import '../models/responseModels/reports/taskdetails/task_update/task_update_response_model.dart';
 import '../models/responseModels/roles/roles_response_model.dart';
 import '../models/responseModels/sales/sales_response_model.dart';
+import '../models/responseModels/tasks/list/new_board/task_list_new_board_response_model.dart';
+import '../models/responseModels/tasks/list/project_search/task_list_project_search_response_model.dart';
 import '../models/responseModels/tasks/list/tasks_list_response_model.dart';
-import '../models/responseModels/tasks/master/task_master_response_model.dart';
-import '../models/responseModels/tasks/report/task_report_response_model.dart';
+
+
+import '../models/responseModels/tasks/master/task_master_list/task_master_response_model.dart';
 import '../models/responseModels/userList/user_list_response_model.dart';
 import '../models/responseModels/users/users_response_model.dart';
 import '../network/network_api_services.dart';
@@ -1342,6 +1365,7 @@ class Repositories {
 
   //Assigned History
 
+
   Future<List<CustomerDetailViewAssignedHistoryResponseModel>>customerDetailViewAssignHistory() async {
     try {
       dynamic response =
@@ -2276,17 +2300,20 @@ class Repositories {
   }
 
 
+  //order Payment----
 
-  // PAYMENTS
-
-  Future<OrderPaymentsResponseModel> orderPaymentsApi() async {
+  Future< OrderPaymentsResponseModel>orderPaymentList(dynamic data) async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.orderPayments, null);
-      return response = OrderPaymentsResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.orderPayment,data);
+      print("Order payment Response $response ");
+      return response =OrderPaymentsResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
+
+
+
 
   // ORDER MASTER
   Future<List<OrderMasterResponseModel>> orderMasterApi() async {
@@ -2347,13 +2374,19 @@ class Repositories {
     }
   }
 
+  Future<StartStopResponseModels> taskStartStop(dynamic data) async {
+    try {
+      // Make the POST request
+      final response = await _apiService.postApiResponse(AppUrls.taskStartStop, data);
+      print("Start and stop task response: $response");
 
-
-
-
-
-
-
+      // Parse the response
+      return StartStopResponseModels.fromJson(response);
+    } catch (e) {
+      print("Error in taskStartStop: $e");
+      rethrow; // Rethrow the error for handling in the ViewModel
+    }
+  }
 
 
 
@@ -2429,22 +2462,27 @@ class Repositories {
 
 
 
-  Future<SalesResponseModel> salesApi() async {
+
+  Future<SalesResponseModel> salesApi(dynamic data) async {
     try {
       dynamic response =
-      await _apiService.postApiResponse(AppUrls.salesApi, null);
+      await _apiService.postApiResponse(AppUrls.salesApi, data);
+      print("Sale Response  $response");
       return response = SalesResponseModel.fromJson(response);
     } catch (e) {
+      print("Sale Error $e");
       rethrow;
     }
   }
+
   //============================================================================
   // ROLES
 
-  Future<RolesResponseModel> rolesApi() async {
+  Future<List<RolesResponseModel>> rolesApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.rolesApi);
-      return response = RolesResponseModel.fromJson(response);
+      // Assuming response is a List
+      return (response as List).map((role) => RolesResponseModel.fromJson(role)).toList();
     } catch (e) {
       rethrow;
     }
@@ -2474,18 +2512,226 @@ class Repositories {
       rethrow;
     }
   }
+  //
+  // // REPORT
+  // Future<TasksReportResponseModel> tasksReportApi() async {
+  //   try {
+  //     dynamic response = await _apiService.postApiResponse(AppUrls.taskListApi, null);
+  //     return response = TasksReportResponseModel.fromJson(response);
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
-  // REPORT
-  Future<TasksReportResponseModel> tasksReportApi() async {
+
+
+
+  //**************************************************
+
+// Reports
+
+
+
+  Future<TaskReportResponseModel>taskReportList(dynamic data) async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.taskListApi, null);
-      return response = TasksReportResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskReport,data);
+      print(" task reports successfully  $response ");
+      return response =TaskReportResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
 
-  // MASTER
+//Task tracker Event START STOP
+  Future<TaskTrackerEventResponseModel>taskTrackerEvent(dynamic data ) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskStartStop,data);
+      print("Report Task Tracker Event $response ");
+      return response =TaskTrackerEventResponseModel.fromJson(response);
+    } catch (e) {
+      print("Report Task Tracker Event Error$e");
+      rethrow;
+    }
+  }
+
+//Report task Attachment Remove // PENDING
+
+  Future<TaskReportRemoveAttachmentResponseModel>taskReportRemoveAttachment() async {
+    try {
+      dynamic response = await _apiService.deleteApi(AppUrls.reportTaskRemoveAttachment,);
+      print("Report Task Remove Attachment Response $response ");
+      return response =TaskReportRemoveAttachmentResponseModel.fromJson(response);
+    } catch (e) {
+      print("Report Remove Attachment Error$e");
+      rethrow;
+    }
+  }
+
+//Update Task
+
+  Future<ReportTaskUpdateResponseModel>taskUpdate(dynamic data ) async {
+    try {
+      dynamic response = await _apiService.patchApi(AppUrls.taskUpdate,data);
+      print("Task Update Response value $response ");
+      return response =ReportTaskUpdateResponseModel.fromJson(response);
+    } catch (e) {
+      print("Report  Update Error$e");
+      rethrow;
+    }
+  }
+
+
+
+  Future<TaskDetailsResponseModel> fetchTaskDetails(String taskId) async {
+    try {
+      dynamic response = await _apiService.getApi('https://webhopers.whsuites.com/api/tasks/$taskId/');
+      print("Raw response type: ${response.runtimeType}");
+      print("Raw response: $response");
+
+      // If the response is a list, and you want the first item
+      if (response is List) {
+        response = response.isNotEmpty ? response[0] : {};
+      }
+
+      return TaskDetailsResponseModel.fromJson(response);
+    } catch (e) {
+      print('Error fetching task details: $e');
+      rethrow;
+    }
+  }
+
+
+// Project Overview API call
+
+  Future<ProjectOverViewResponseModel> taskProjectOverview(String listId) async {
+    try {
+      dynamic response = await _apiService.getApi('https://webhopers.whsuites.com/api/projects/$listId');
+      print("Fetching data for listId: $listId");
+
+      print("Raw response type: ${response.runtimeType}");
+      print("Task Project Overview Response $response");
+
+      // Return the parsed response model
+      return ProjectOverViewResponseModel.fromJson(response);
+    } catch (e) {
+      print("Project Overview Error: $e");
+      rethrow; // Rethrow the error to handle it in the view model
+    }
+  }
+
+
+
+  //Report List----
+
+  Future<List<TaskReportListResponseModel>>taskProjectReportList(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskProjectReportList,data);
+      print("Task Project Report List Overview Response $response ");
+      return response =TaskReportListResponseModel.fromJsonList(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  //Create Report -------
+  Future<List<TaskReportListResponseModel>>taskCreateReportList(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskProjectReportList,data);
+      print("Task create Project Report Response $response ");
+      return response =TaskReportListResponseModel.fromJsonList(response);
+    } catch (e) {
+      print("Project Create Report list overView Error $e");
+      rethrow;
+    }
+  }
+
+
+  //-------------// Project overview TaskList
+
+
+  Future<ProjectOverViewTaskListResponseModel> ProjectOverViewTasksListApi(ProjectOverviewTaskRequestModel requestModel) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskListApi, requestModel.toJson());
+      return ProjectOverViewTaskListResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+//Task-----------------
+  //Task List
+
+  Future<TasksListResponseModel>taskListApi(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskList,data);
+      print("Task List Response   $response");
+      return response =TasksListResponseModel.fromJson(response);
+    } catch (e) {
+      print("Task List Error $e");
+      rethrow;
+    }
+  }
+
+
+//new Board
+
+  Future<NewBoardResponseModel>taskListNewBoard(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.newBoard,data);
+      print("New Board Response   $response");
+      return response =NewBoardResponseModel.fromJson(response);
+    } catch (e) {
+      print("New Board Error $e");
+      rethrow;
+    }
+  }
+
+
+  //Search Project------
+  Future<List<TaskListProjectSearchResponseModel>>projectSearch(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.searchProject,data);
+      print("Search project Response   $response");
+      return response =TaskListProjectSearchResponseModel.fromJsonList(response);
+    } catch (e) {
+      print("Search Project Error $e");
+      rethrow;
+    }
+  }
+
+
+//Master--------------------
+//AddTASk----------
+
+  Future<NewBoardResponseModel>addTaskType(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskMasterAddTaskType,data);
+      print("Task Master Add task Type  $response");
+      return response =NewBoardResponseModel.fromJson(response);
+    } catch (e) {
+      print("Task Master Add TAsk Error $e");
+      rethrow;
+    }
+  }
+
+
+  //Task Master Update--------
+
+  Future<dynamic>taskMasterUpdate(dynamic data) async {
+    try {
+      dynamic response = await _apiService.patchApi(AppUrls.taskMasterUpdate,data);
+      print("Task Master Update Response $response");
+      return response =NewBoardResponseModel.fromJson(response);
+    } catch (e) {
+      print("Task Master Update Error $e");
+      rethrow;
+    }
+  }
+
+
+
+  // MASTER MAIN
   Future<TaskMasterResponseModel> tasksMasterApi() async {
     try {
       dynamic response = await _apiService.postApiResponse(AppUrls.taskListApi, null);
@@ -2498,14 +2744,17 @@ class Repositories {
   //============================================================================
   // PROJECT
   // LIST
-  Future<ProjectsListResponseModel> projectListApi() async {
+
+  Future<ProjectListResponseModel>projectList(dynamic data)async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.projectList, null);
-      return response = ProjectsListResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.projectList,data);
+      print("Project List  Response $response");
+      return response =ProjectListResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
+
   Future<ProjectsMasterResponseModel> projectMasterApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.projectMaster);
@@ -2514,57 +2763,168 @@ class Repositories {
       rethrow;
     }
   }
-
-  // PRODUCT
-  // LIST
-  Future<ProductsListResponseModel> productListApi() async {
+  Future<ProjectDetailResponseModel> projectDetailView(String projectId) async {
     try {
-      dynamic response = await _apiService.getApi(AppUrls.productList);
-      return response = ProductsListResponseModel.fromJson(response);
+      // Construct the URL by appending the projectId
+      final String url = "${AppUrls.projectDetailView}$projectId";
+
+      // Make the API call
+      dynamic response = await _apiService.getApi(url);
+      print("Project Detail view Response: $response");
+
+      // Parse the response into ProjectDetailResponseModel
+      return ProjectDetailResponseModel.fromJson(response);
+    } catch (e) {
+      print("Project Detail view Response Error: $e");
+      rethrow; // Rethrow the error to be handled by the caller
+    }
+  }
+
+
+
+  Future<ProjectReminderSetting> projecReminderApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.projectReminder);
+      return response = ProjectReminderSetting.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
 
-  // CATEGORY
-  Future<ProductCategoryResponseModel> productCategoryApi() async {
+
+
+  //product List-------------
+
+  Future<ProductsListResponseModel>productList(dynamic data)async {
     try {
-      dynamic response = await _apiService.getApi(AppUrls.productCategory);
-      return response = ProductCategoryResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.productList,data);
+      print("Product List Response $response");
+      return response =ProductsListResponseModel.fromJson(response);
     } catch (e) {
+      print("Product List  Response Error$e");
       rethrow;
     }
   }
+
 
   // BRAND
-  Future<ProductBrandResponseModel> productBrandApi() async {
+  Future<List<ProductBrandResponseModel>>productBrand() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.productBrand);
+      print("Product Brand Api Response $response");
+      return response = ProductBrandResponseModel.fromJsonList(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+  //Add Product---
+  Future<AddProductResponseModel>addProduct(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.addProduct,data);
+      print("Response add  Product Response  $response");
+      return response = AddProductResponseModel.fromJson(response);
+    } catch (e) {
+      print("Add product Response Error$e");
+      rethrow;
+    }
+  }
+
+
+
+  // CATEGORY
+  Future<List<ProductCategoryResponseModel>> productCategoryApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.productCategory);
-      return response = ProductBrandResponseModel.fromJson(response);
+      List<ProductCategoryResponseModel> categories = (response as List)
+          .map((category) => ProductCategoryResponseModel.fromJson(category))
+          .toList();
+      return categories;
     } catch (e) {
       rethrow;
     }
   }
 
-  // GST LIST
-  Future<ProductGstListResponseModel> productGstApi() async {
+
+
+  //update Product--------------
+
+  Future<UpdateProductResponseModel>updateProduct(dynamic data) async {
+    try {
+      dynamic response = await _apiService.patchApi(AppUrls.updateProduct,data);
+      print("Update Product Response  $response");
+      return response = UpdateProductResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update product Response Error$e");
+      rethrow;
+    }
+  }
+
+
+
+//Add product brand----------
+  Future<AddProductBrandResponseModel>addProductBrand(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.addProductBrand,data);
+      print("Add Product Brand Response  $response");
+      return response = AddProductBrandResponseModel.fromJson(response);
+    } catch (e) {
+      print("Add Product Brand Response Error$e");
+      rethrow;
+    }
+  }
+
+
+
+// gst List--------------
+  Future<List<ProductGstListResponseModel>> productGstList() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.productGstList);
-      return response = ProductGstListResponseModel.fromJson(response);
+      print("Product Gst List Response  $response");
+      return response = ProductGstListResponseModel.fromJsonList(response);
     } catch (e) {
       rethrow;
     }
   }
 
-  // MASTER
-  Future<ProductMasterResponseModel> productMasterApi() async {
+
+//add gst-------
+
+  Future<AddGstResponseModel>addGstApi(dynamic data) async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.productMaster, null);
-      return response = ProductMasterResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.productGstList,data);
+      print("Product add Gst  Response  $response");
+      return response = AddGstResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
+
+
+  //master-----
+  //add product----------
+  Future<MasterAddProductResponseModel>masterAddProduct(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.masterAddProduct,data);
+      print("Master Add Product  Response  $response");
+      return response =MasterAddProductResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  //Product Master List-----
+  Future<ProjectsMasterResponseModel>masterProductList(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.masterProductList,data);
+      print("Master Product List Response  $response");
+      return response =ProjectsMasterResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
 
   //============================================================================
   // INVENTORY

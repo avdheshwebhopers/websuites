@@ -70,7 +70,7 @@ class _LeadActivitiesScreenState extends State<LeadActivitiesScreen> {
       LoginResponseModel response = await SaveUserData().getUser();
       setState(() {
         userEmail = response.user?.email;
-        userName = response.user?.first_name;
+        userName = response.user?.firstName;
       });
     } catch (e) {
       print('Error fetching userData: $e');
@@ -82,6 +82,7 @@ class _LeadActivitiesScreenState extends State<LeadActivitiesScreen> {
     return Scaffold(
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
+
       body: Obx(() {
         if (_leadActivityViewModel.loading.value) {
           return const Center(child: CircularProgressIndicator());

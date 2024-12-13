@@ -1,528 +1,302 @@
 class ProductsListResponseModel {
-  List<Items>? items;
-  Meta? meta;
+  ProductsListResponseModel({
+    required this.items,
+    required this.meta,
+  });
 
-  ProductsListResponseModel({this.items, this.meta});
+  final List<Item> items;
+  final Meta? meta;
 
-  ProductsListResponseModel.fromJson(Map<String, dynamic> json) {
-    if (json['items'] != null) {
-      items = <Items>[];
-      json['items'].forEach((v) {
-        items!.add(Items.fromJson(v));
-      });
-    }
-    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
+  factory ProductsListResponseModel.fromJson(Map<String, dynamic> json){
+    return ProductsListResponseModel(
+      items: json["items"] == null ? [] : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
+      meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (items != null) {
-      data['items'] = items!.map((v) => v.toJson()).toList();
-    }
-    if (meta != null) {
-      data['meta'] = meta!.toJson();
-    }
-    return data;
-  }
 }
 
-class Items {
-  String? id;
-  String? productType;
-  String? name;
-  String? description;
-  int? mrp;
-  int? salePrice;
-  int? quantity;
-  int? duration;
-  String? downloadLink;
-  String? packing;
-  bool? status;
-  bool? isTaxable;
-  String? createdAt;
-  String? updatedAt;
-  String? deletedAt;
-  String? zohoItemId;
-  bool? projectActivationDisabled;
-  ProductCategory? productCategory;
-  Brand? brand;
-  Gst? gst;
-  Division? division;
-  List<ProductPrices>? productPrices;
-  Inventory? inventory;
+class Item {
+  Item({
+    required this.id,
+    required this.productType,
+    required this.serviceType,
+    required this.name,
+    required this.description,
+    required this.mrp,
+    required this.salePrice,
+    required this.quantity,
+    required this.duration,
+    required this.downloadLink,
+    required this.packing,
+    required this.status,
+    required this.isTaxable,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.deletedAt,
+    required this.distributorshipOnly,
+    required this.zohoItemId,
+    required this.projectActivationDisabled,
+    required this.productCategory,
+    required this.brand,
+    required this.gst,
+    required this.division,
+    required this.productPrices,
+    required this.inventory,
+  });
 
-  Items(
-      {this.id,
-        this.productType,
-        this.name,
-        this.description,
-        this.mrp,
-        this.salePrice,
-        this.quantity,
-        this.duration,
-        this.downloadLink,
-        this.packing,
-        this.status,
-        this.isTaxable,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt,
-        this.zohoItemId,
-        this.projectActivationDisabled,
-        this.productCategory,
-        this.brand,
-        this.gst,
-        this.division,
-        this.productPrices,
-        this.inventory
-      });
+  final String? id;
+  final String? productType;
+  final dynamic serviceType;
+  final String? name;
+  final String? description;
+  final int? mrp;
+  final int? salePrice;
+  final int? quantity;
+  final int? duration;
+  final String? downloadLink;
+  final String? packing;
+  final bool? status;
+  final bool? isTaxable;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final dynamic deletedAt;
+  final bool? distributorshipOnly;
+  final dynamic zohoItemId;
+  final bool? projectActivationDisabled;
+  final Brand? productCategory;
+  final Brand? brand;
+  final Gst? gst;
+  final Division? division;
+  final List<ProductPrice> productPrices;
+  final Inventory? inventory;
 
-  Items.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    productType = json['product_type'];
-    name = json['name'];
-    description = json['description'];
-    mrp = json['mrp'];
-    salePrice = json['sale_price'];
-    quantity = json['quantity'];
-    duration = json['duration'];
-    downloadLink = json['download_link'];
-    packing = json['packing'];
-    status = json['status'];
-    isTaxable = json['is_taxable'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    deletedAt = json['deleted_at'];
-    zohoItemId = json['zoho_item_id'];
-    projectActivationDisabled = json['project_activation_disabled'];
-    productCategory = json['product_category'] != null
-        ? ProductCategory.fromJson(json['product_category'])
-        : null;
-    brand = json['brand'] != null ? Brand.fromJson(json['brand']) : null;
-    gst = json['gst'] != null ? Gst.fromJson(json['gst']) : null;
-    division = json['division'] != null
-        ? Division.fromJson(json['division'])
-        : null;
-    if (json['productPrices'] != null) {
-      productPrices = <ProductPrices>[];
-      json['productPrices'].forEach((v) {
-        productPrices!.add(ProductPrices.fromJson(v));
-      });
-    }
-    inventory = json['inventory'] != null
-        ? Inventory.fromJson(json['inventory'])
-        : null;
+  factory Item.fromJson(Map<String, dynamic> json){
+    return Item(
+      id: json["id"],
+      productType: json["product_type"],
+      serviceType: json["service_type"],
+      name: json["name"],
+      description: json["description"],
+      mrp: json["mrp"],
+      salePrice: json["sale_price"],
+      quantity: json["quantity"],
+      duration: json["duration"],
+      downloadLink: json["download_link"],
+      packing: json["packing"],
+      status: json["status"],
+      isTaxable: json["is_taxable"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+      deletedAt: json["deleted_at"],
+      distributorshipOnly: json["distributorshipOnly"],
+      zohoItemId: json["zoho_item_id"],
+      projectActivationDisabled: json["project_activation_disabled"],
+      productCategory: json["product_category"] == null ? null : Brand.fromJson(json["product_category"]),
+      brand: json["brand"] == null ? null : Brand.fromJson(json["brand"]),
+      gst: json["gst"] == null ? null : Gst.fromJson(json["gst"]),
+      division: json["division"] == null ? null : Division.fromJson(json["division"]),
+      productPrices: json["productPrices"] == null ? [] : List<ProductPrice>.from(json["productPrices"]!.map((x) => ProductPrice.fromJson(x))),
+      inventory: json["inventory"] == null ? null : Inventory.fromJson(json["inventory"]),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['product_type'] = productType;
-    data['name'] = name;
-    data['description'] = description;
-    data['mrp'] = mrp;
-    data['sale_price'] = salePrice;
-    data['quantity'] = quantity;
-    data['duration'] = duration;
-    data['download_link'] = downloadLink;
-    data['packing'] = packing;
-    data['status'] = status;
-    data['is_taxable'] = isTaxable;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    data['deleted_at'] = deletedAt;
-    data['zoho_item_id'] = zohoItemId;
-    data['project_activation_disabled'] = projectActivationDisabled;
-    if (productCategory != null) {
-      data['product_category'] = productCategory!.toJson();
-    }
-    if (brand != null) {
-      data['brand'] = brand!.toJson();
-    }
-    if (gst != null) {
-      data['gst'] = gst!.toJson();
-    }
-    if (division != null) {
-      data['division'] = division!.toJson();
-    }
-    if (productPrices != null) {
-      data['productPrices'] =
-          productPrices!.map((v) => v.toJson()).toList();
-    }
-    if (inventory != null) {
-      data['inventory'] = inventory!.toJson();
-    }
-    return data;
-  }
-}
-
-class ProductCategory {
-  String? id;
-  String? name;
-  String? description;
-  String? image;
-  String? createdAt;
-  String? updatedAt;
-
-  ProductCategory(
-      {this.id,
-        this.name,
-        this.description,
-        this.image,
-        this.createdAt,
-        this.updatedAt});
-
-  ProductCategory.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    image = json['image'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['description'] = description;
-    data['image'] = image;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
 }
 
 class Brand {
-  String? id;
-  String? name;
-  String? description;
-  String? createdAt;
-  String? updatedAt;
+  Brand({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.image,
+  });
 
-  Brand({this.id, this.name, this.description, this.createdAt, this.updatedAt});
+  final String? id;
+  final String? name;
+  final String? description;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final dynamic image;
 
-  Brand.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+  factory Brand.fromJson(Map<String, dynamic> json){
+    return Brand(
+      id: json["id"],
+      name: json["name"],
+      description: json["description"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+      image: json["image"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['description'] = description;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
-}
-
-class Gst {
-  String? id;
-  String? name;
-  int? sgst;
-  int? cgst;
-  int? igst;
-  int? status;
-  String? createdAt;
-  String? updatedAt;
-
-  Gst(
-      {this.id,
-        this.name,
-        this.sgst,
-        this.cgst,
-        this.igst,
-        this.status,
-        this.createdAt,
-        this.updatedAt});
-
-  Gst.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    sgst = json['sgst'];
-    cgst = json['cgst'];
-    igst = json['igst'];
-    status = json['status'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['sgst'] = sgst;
-    data['cgst'] = cgst;
-    data['igst'] = igst;
-    data['status'] = status;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
 }
 
 class Division {
-  String? id;
-  String? name;
+  Division({
+    required this.id,
+    required this.name,
+  });
 
-  Division({this.id, this.name});
+  final String? id;
+  final String? name;
 
-  Division.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
+  factory Division.fromJson(Map<String, dynamic> json){
+    return Division(
+      id: json["id"],
+      name: json["name"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    return data;
-  }
 }
 
-class ProductPrices {
-  String? id;
-  int? mrp;
-  int? salePrice;
-  String? createdAt;
-  String? updatedAt;
-  Currency? currency;
+class Gst {
+  Gst({
+    required this.id,
+    required this.name,
+    required this.sgst,
+    required this.cgst,
+    required this.igst,
+    required this.status,
+    required this.createdAt,
+    required this.updatedAt,
+  });
 
-  ProductPrices(
-      {this.id,
-        this.mrp,
-        this.salePrice,
-        this.createdAt,
-        this.updatedAt,
-        this.currency});
+  final String? id;
+  final String? name;
+  final int? sgst;
+  final int? cgst;
+  final int? igst;
+  final int? status;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
-  ProductPrices.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    mrp = json['mrp'];
-    salePrice = json['sale_price'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    currency = json['currency'] != null
-        ? Currency.fromJson(json['currency'])
-        : null;
+  factory Gst.fromJson(Map<String, dynamic> json){
+    return Gst(
+      id: json["id"],
+      name: json["name"],
+      sgst: json["sgst"],
+      cgst: json["cgst"],
+      igst: json["igst"],
+      status: json["status"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['mrp'] = mrp;
-    data['sale_price'] = salePrice;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    if (currency != null) {
-      data['currency'] = currency!.toJson();
-    }
-    return data;
-  }
-}
-
-class Currency {
-  String? id;
-  String? name;
-  String? code;
-  String? symbol;
-  String? createdAt;
-  String? updatedAt;
-
-  Currency(
-      {this.id,
-        this.name,
-        this.code,
-        this.symbol,
-        this.createdAt,
-        this.updatedAt});
-
-  Currency.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    code = json['code'];
-    symbol = json['symbol'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['code'] = code;
-    data['symbol'] = symbol;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
 }
 
 class Inventory {
-  String? id;
-  int? quantity;
-  String? createdAt;
-  String? updatedAt;
-  List<InventoryStocks>? inventoryStocks;
+  Inventory({
+    required this.id,
+    required this.quantity,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.inventoryStocks,
+  });
 
-  Inventory(
-      {this.id,
-        this.quantity,
-        this.createdAt,
-        this.updatedAt,
-        this.inventoryStocks});
+  final String? id;
+  final int? quantity;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final List<dynamic> inventoryStocks;
 
-  Inventory.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    quantity = json['quantity'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    if (json['inventoryStocks'] != null) {
-      inventoryStocks = <InventoryStocks>[];
-      json['inventoryStocks'].forEach((v) {
-        inventoryStocks!.add(InventoryStocks.fromJson(v));
-      });
-    }
+  factory Inventory.fromJson(Map<String, dynamic> json){
+    return Inventory(
+      id: json["id"],
+      quantity: json["quantity"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+      inventoryStocks: json["inventoryStocks"] == null ? [] : List<dynamic>.from(json["inventoryStocks"]!.map((x) => x)),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['quantity'] = quantity;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    if (inventoryStocks != null) {
-      data['inventoryStocks'] =
-          inventoryStocks!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
-class InventoryStocks {
-  String? id;
-  int? quantity;
-  int? price;
-  String? batch;
-  String? expiryDate;
-  String? createdAt;
-  String? updatedAt;
-  Manufacturer? manufacturer;
+class ProductPrice {
+  ProductPrice({
+    required this.id,
+    required this.mrp,
+    required this.salePrice,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.currency,
+  });
 
-  InventoryStocks(
-      {this.id,
-        this.quantity,
-        this.price,
-        this.batch,
-        this.expiryDate,
-        this.createdAt,
-        this.updatedAt,
-        this.manufacturer});
+  final String? id;
+  final int? mrp;
+  final int? salePrice;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final Currency? currency;
 
-  InventoryStocks.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    quantity = json['quantity'];
-    price = json['price'];
-    batch = json['batch'];
-    expiryDate = json['expiry_date'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    manufacturer = json['manufacturer'] != null
-        ? Manufacturer.fromJson(json['manufacturer'])
-        : null;
+  factory ProductPrice.fromJson(Map<String, dynamic> json){
+    return ProductPrice(
+      id: json["id"],
+      mrp: json["mrp"],
+      salePrice: json["sale_price"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+      currency: json["currency"] == null ? null : Currency.fromJson(json["currency"]),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['quantity'] = quantity;
-    data['price'] = price;
-    data['batch'] = batch;
-    data['expiry_date'] = expiryDate;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    if (manufacturer != null) {
-      data['manufacturer'] = manufacturer!.toJson();
-    }
-    return data;
-  }
 }
 
-class Manufacturer {
-  String? id;
-  String? name;
-  String? mobile;
-  String? email;
-  String? address;
-  String? createdAt;
-  String? updatedAt;
+class Currency {
+  Currency({
+    required this.id,
+    required this.name,
+    required this.code,
+    required this.symbol,
+    required this.createdAt,
+    required this.updatedAt,
+  });
 
-  Manufacturer(
-      {this.id,
-        this.name,
-        this.mobile,
-        this.email,
-        this.address,
-        this.createdAt,
-        this.updatedAt});
+  final String? id;
+  final String? name;
+  final String? code;
+  final String? symbol;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
-  Manufacturer.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    mobile = json['mobile'];
-    email = json['email'];
-    address = json['address'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+  factory Currency.fromJson(Map<String, dynamic> json){
+    return Currency(
+      id: json["id"],
+      name: json["name"],
+      code: json["code"],
+      symbol: json["symbol"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['mobile'] = mobile;
-    data['email'] = email;
-    data['address'] = address;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
 }
 
 class Meta {
-  int? currentPage;
-  int? itemsPerPage;
-  int? totalPages;
-  int? totalItems;
-  int? itemCount;
+  Meta({
+    required this.currentPage,
+    required this.itemsPerPage,
+    required this.totalPages,
+    required this.totalItems,
+    required this.itemCount,
+  });
 
-  Meta(
-      {this.currentPage,
-        this.itemsPerPage,
-        this.totalPages,
-        this.totalItems,
-        this.itemCount});
+  final int? currentPage;
+  final int? itemsPerPage;
+  final int? totalPages;
+  final int? totalItems;
+  final int? itemCount;
 
-  Meta.fromJson(Map<String, dynamic> json) {
-    currentPage = json['currentPage'];
-    itemsPerPage = json['itemsPerPage'];
-    totalPages = json['totalPages'];
-    totalItems = json['totalItems'];
-    itemCount = json['itemCount'];
+  factory Meta.fromJson(Map<String, dynamic> json){
+    return Meta(
+      currentPage: json["currentPage"],
+      itemsPerPage: json["itemsPerPage"],
+      totalPages: json["totalPages"],
+      totalItems: json["totalItems"],
+      itemCount: json["itemCount"],
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['currentPage'] = currentPage;
-    data['itemsPerPage'] = itemsPerPage;
-    data['totalPages'] = totalPages;
-    data['totalItems'] = totalItems;
-    data['itemCount'] = itemCount;
-    return data;
-  }
 }

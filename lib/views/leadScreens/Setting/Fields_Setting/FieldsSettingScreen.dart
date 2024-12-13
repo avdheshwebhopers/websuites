@@ -148,7 +148,7 @@ class _FieldSettingViewState extends State<FieldSettingView> {
       ),
       DataCell(
         IconButton(
-          icon: Image.asset('assets/icons/Edit.png', height: 20),
+          icon: Image.asset('assets/icons/edit.png', height: 20),
           onPressed: setting.isStatusFixed == true ? null : () {
             // Handle edit action
           },

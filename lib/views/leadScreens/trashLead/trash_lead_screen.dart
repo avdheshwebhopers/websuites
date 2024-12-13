@@ -48,7 +48,7 @@ class TrashLeadScreenState extends State<TrashLeadScreen> {
     try {
       final response = await _userPreference.getUser ();
       setState(() {
-        userName = response.user?.first_name;
+        userName = response.user?.firstName;
         userEmail = response.user?.email;
       });
     } catch (e) {

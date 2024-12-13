@@ -28,7 +28,7 @@ class SplashServices {
             arguments: {
               'accessToken': value.accessToken,
               'email': value.user?.email,
-              'first_name': value.user?.first_name,
+              'first_name': value.user?.firstName
             },
           ),
         );

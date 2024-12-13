@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:websuites/Utils/Routes/routes_name.dart';
+import 'package:websuites/data/models/responseModels/order/list/detail/order_detail_response_model.dart';
+
 import 'package:websuites/views/bottomNavBarScreen/bottom_navBar_screen.dart';
 import 'package:websuites/views/customerScreens/activitiesScreen/activities_screen.dart';
 import 'package:websuites/views/customerScreens/companiesScreen/all_companies_screen.dart';
@@ -8,9 +10,18 @@ import 'package:websuites/views/leadScreens/Setting/SettingScreen.dart';
 import 'package:websuites/views/leadScreens/leadList/leadlist_screen.dart';
 import 'package:websuites/views/orderScreen/orderActivityScreen/order_activity_screen.dart';
 import 'package:websuites/views/orderScreen/orderListScreen/orderList_screen.dart';
+import 'package:websuites/views/orderScreen/orderPaymentsScreen/order_payments_screen.dart';
 import 'package:websuites/views/orderScreen/orderProformaScreen/proforma_list_screen.dart';
+import 'package:websuites/views/orderScreen/orderProjection/OrdeProjectionsScreen.dart';
+import 'package:websuites/views/products/category/CategoryListScreen.dart';
+import 'package:websuites/views/products/productlist/ProductsScreen.dart';
+import 'package:websuites/views/project/ProjectListScreen.dart';
+import 'package:websuites/views/reports/taskreport/TaskReport.dart';
+
+import 'package:websuites/views/rolesScreen/roles_screen.dart';
 import 'package:websuites/views/salesTargetScreen/sales_target_screen.dart';
 import 'package:websuites/views/splashScreen/splash_screen.dart';
+import 'package:websuites/views/task/master/MasterScreen.dart';
 
 import '../../views/customerScreens/customerList/list_screen.dart';
 import '../../views/customerScreens/customerServices/services_screen.dart';
@@ -25,8 +36,9 @@ import '../../views/leadScreens/trashLead/trash_lead_screen.dart';
 import '../../views/loginScreen/login_screen.dart';
 import '../../views/orderScreen/ordermaster/OrderMasterListScreen.dart';
 import '../../views/otpScreen/otp_screen.dart';
-import '../../views/purchase_now_screen/purchase_now_screen.dart';
-import '../../views/upcomingScreen/upcoming_screen.dart';
+
+import '../../views/task/tasklist/TaskList.dart';
+
 import '../../views/welcomeToCompanyScreen/welcome_to_company_screen.dart';
 
 class AllRoutes {
@@ -59,8 +71,21 @@ class AllRoutes {
     GetPage(name: RoutesName.my_teamLead_screen, page: () =>   OrderListScreen()),
     GetPage(name: RoutesName.my_teamLead_screen, page: () =>  OrderActivityScreen()),
     GetPage(name: RoutesName.my_teamLead_screen, page: () =>  OrderProformaList()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () =>  OrderPaymentsScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () =>  OrderProjectionScreen()),
     GetPage(name: RoutesName.my_teamLead_screen, page: () => OrderMasterListScreen()),
     GetPage(name: RoutesName.my_teamLead_screen, page: () => SalesTargetScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => RolesScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => TaskReportScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => TaskReportScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => TaskListScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => TaskMasterScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () => ProjectListScreen()),
+    GetPage(name: RoutesName.my_teamLead_screen, page: () =>ProductsListScreen())
+
+
+
+
 
 
 

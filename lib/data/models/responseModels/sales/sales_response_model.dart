@@ -29,12 +29,15 @@ class SalesResponseModel {
   }
 }
 
+
+
+
 class Items {
   String? id;
   String? name;
   String? start_date;
   String? end_date;
-  String? sale_target;
+  int? sale_target;
   Team? team;
   String? created_at;
   String? updated_at;
@@ -60,7 +63,7 @@ class Items {
     start_date = json['start_date'];
     end_date = json['end_date'];
     sale_target = json['sale_target'];
-    team = json['team'] != null ? Team.fromJson(json['Team']) : null;
+    team = json['team'] != null ? Team.fromJson(json['team']) : null;
     created_at = json['created_at'];
     updated_at = json['updated_at'];
     if(json['members'] != null) {
@@ -366,7 +369,7 @@ class Children {
     id = json['id'];
     bio = json['bio'];
     email = json['email'];
-    mobile = json['mobile'];
+//     mobile = json['mobile'];
     status = json['status'];
     address = json['address'];
     isdefault = json['isdefault'];
@@ -415,6 +418,7 @@ class Children {
     return data;
   }
 }
+
 class Members {
   String? id;
   int? sale_target;

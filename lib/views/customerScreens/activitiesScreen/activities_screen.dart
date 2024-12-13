@@ -36,7 +36,7 @@ class CustomersActivitiesScreen extends StatelessWidget {
   Future<void> fetchUserData() async {
     try {
       final response = await userPreference.getUser ();
-      userName.value = response.user?.first_name ?? 'Guest';
+      userName.value = response.user?.firstName ?? 'Guest';
       userEmail.value = response.user?.email ?? 'guest@example.com';
     } catch (e) {
       debugPrint('Error fetching userData: $e');

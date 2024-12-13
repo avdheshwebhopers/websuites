@@ -76,7 +76,7 @@ class ActivitiesDailySalesReportCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 Image.asset(
-                  'assets/icons/Edit.png',
+                  'assets/icons/edit.png',
                   height: 14,
                   color: const Color(0xFF6E6A7C),
                 ),
