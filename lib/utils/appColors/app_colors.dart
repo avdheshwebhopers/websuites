@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AllColors {
+class
+AllColors {
 //==============================================================================
 
   static Color textField = const Color(0xFFF3F3F3);
@@ -11,6 +12,7 @@ class AllColors {
   static Color appBarColorBottom = const Color(0xff221c60);
   static Color appBarColorlight = const Color(0xffdbdbff);
   static Color yellowGoogleForm=const Color(0xFFEBA801);
+  static Color greenGoogleForm=const Color(0xFFEDEFD0);
   // static Color lightColorPurple = const Color(0xFFCBC3E3);
 
 
@@ -68,6 +70,21 @@ class AllColors {
   static Color mediumOrange = const Color(0xffff8a33);
   static Color lightOrange = const Color(0xffffbe87);
   static Color lighterOrange = const Color(0xfffddec8);
+  static Color thinOrange = const Color(0xfffff5dc);
+
+  //___________________________________
+     // border color
+
+  static Color borderLine = const Color(0xFFE2E8F0);
+
+
+  // FigmaGrey
+
+  static Color figmaGrey = const  Color(0xFF6E6A7C);
+  static Color  greenishYellow = const  Color(0xFF8E9711);
+  static Color   greyGoogleForm= const  Color(0xFFE5E5E5);
+
+
 
 
 }

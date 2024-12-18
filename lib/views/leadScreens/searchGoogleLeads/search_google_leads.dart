@@ -42,7 +42,7 @@ class _SearchGoogleLeadsState extends State<SearchGoogleLeads> {
     try {
       LoginResponseModel response = await userPreference.getUser ();
       setState(() {
-        userName = response.user?.first_name ?? 'Unknown User';
+        userName = response.user?.firstName?? 'Unknown User';
         userEmail = response.user?.email ?? 'No Email';
       });
     } catch (e) {

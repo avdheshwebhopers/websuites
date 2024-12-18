@@ -208,7 +208,7 @@ class CustomerOrderDetailView extends StatelessWidget {
                                       Text(
                                         'Task',
                                         style: TextStyle(
-                                          fontSize: 10, // Adjust font size
+                                          fontSize: 1, // Adjust font size
                                         ),
                                       ),
                                     ],

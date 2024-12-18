@@ -25,7 +25,7 @@ class SaveUserData {
     return LoginResponseModel(
     accessToken: token.toString(),
         user: User(
-          first_name: first_name.toString(),
+          firstName: first_name.toString(),
           email: email.toString(),
         ));
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../../../../../utils/appColors/app_colors.dart';
 
 class CreateNewLeadScreenCard extends StatefulWidget {
@@ -9,19 +10,29 @@ class CreateNewLeadScreenCard extends StatefulWidget {
   final Function(String)? onCategoryChanged;
   final TextEditingController? controller;
   final bool isMultiSelect;
+  final bool isDateField; // New parameter to distinguish date fields
   final bool allowCustomInput;
   final bool isForDivisions;
   final bool isPincode;
   final Function(String)? onSearch;
   final bool isLoading;
   final List<String>? filteredPincodeList;
+  final Icon? prefixIcon;
+  final Icon? suffixIcon;
+  final VoidCallback? onSuffixPressed;
+  final BorderRadius? allowCustomBorderInput; // Change type to BorderRadius?
+
+
+
 
   const CreateNewLeadScreenCard({
+
     Key? key,
     required this.hintText,
     this.categories,
     this.onCategoriesChanged,
     this.onCategoryChanged,
+    this.isDateField = false,
     this.controller,
     this.isMultiSelect = false,
     this.allowCustomInput = false,
@@ -30,6 +41,13 @@ class CreateNewLeadScreenCard extends StatefulWidget {
     this.onSearch,
     this.isLoading = false,
     this.filteredPincodeList,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.onSuffixPressed,
+    this.allowCustomBorderInput, // Now accepts BorderRadius
+
+
+
   }) : super(key: key);
 
   @override
@@ -111,6 +129,45 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
     }
   }
 
+  Future<void> _selectDate(BuildContext context) async {
+    DateTime initialDate = DateTime.now();
+
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.light(
+              primary: AllColors.mediumPurple, // Header background color
+              onPrimary: Colors.white, // Header text color
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        _textController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+      });
+    }
+  }
+
+  void _removeCategory(String category) {
+    setState(() {
+      _selectedCategories.remove(category);
+      _updateTextController();
+
+      if (widget.isMultiSelect) {
+        widget.onCategoriesChanged?.call(_selectedCategories);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -125,8 +182,10 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
               width: _isFocused ? 1.0 : 0.3,
             ),
             color: AllColors.whiteColor,
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: widget.allowCustomBorderInput ?? BorderRadius.circular(22), // Corrected line
           ),
+
+
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -139,8 +198,7 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                     return Chip(
                       label: Text(
                         category,
-                        style:
-                        const TextStyle(fontSize: 12, color: Colors.white),
+                        style: const TextStyle(fontSize: 12, color: Colors.white),
                       ),
                       backgroundColor: AllColors.mediumPurple,
                       deleteIcon: const Icon(Icons.close,
@@ -156,26 +214,42 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                   }).toList(),
                 ),
               if (widget.isForDivisions && _selectedCategories.isNotEmpty)
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
               Row(
                 children: [
+                  if (widget.prefixIcon != null)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: widget.prefixIcon!,
+                    ),
                   Expanded(
                     child: TextField(
                       controller: _textController,
                       focusNode: _focusNode,
                       decoration: InputDecoration(
-                        hintText: widget.isForDivisions &&
-                            _selectedCategories.isNotEmpty
+                        // suffixIcon: widget.suffixIcon != null
+                        //     ? IconButton(
+                        //   icon: Icon(Icons.close,color: Colors.grey,),
+                        //   onPressed: widget.onSuffixPressed,
+                        // )
+                        //     : null,
+                        hintText: widget.isDateField
+                            ? 'Select a date'
+                            : (widget.isForDivisions && _selectedCategories.isNotEmpty
                             ? ''
-                            : widget.hintText,
+                            : widget.hintText),
                         border: InputBorder.none,
                         isDense: true,
                         contentPadding: const EdgeInsets.symmetric(
-                            vertical: 2.0, horizontal: 9),
+                          vertical: 2.0,
+                          horizontal: 9.0,
+                        ),
                       ),
-                      style: const TextStyle(fontSize: 14),
+                      readOnly: widget.isDateField,
+                      onTap: widget.isDateField ? () => _selectDate(context) : null,
+                      style: const TextStyle(fontSize: 14.0),
                       onChanged: (text) {
-                        _filterCategories(text); // Call the filter function
+                        _filterCategories(text);
                         if (widget.allowCustomInput) {
                           if (!widget.isMultiSelect) {
                             widget.onCategoryChanged?.call(text);
@@ -194,23 +268,12 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                           _selectedCategories.clear();
                         });
                       },
-                      child: Container(
-                        width: 16,
-                        child: Icon(
-                          Icons.close,
-                          color: AllColors.lighterGrey,
-                          size: 16,
-                        ),
-                      ),
+                      child: const Icon(Icons.close, size: 16),
                     ),
                   if (widget.categories != null)
                     GestureDetector(
                       onTap: _toggleDropdownMenu,
-                      child: Container(
-                        width: 40,
-                        child: Icon(Icons.arrow_drop_down_sharp,
-                            color: AllColors.lighterGrey),
-                      ),
+                      child: const Icon(Icons.arrow_drop_down_sharp),
                     ),
                 ],
               )
@@ -237,35 +300,29 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                 ),
                 child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: _filteredCategories.length,
                         itemBuilder: (context, index) {
                           final category = _filteredCategories[index];
-                          final isSelected =
-                          _selectedCategories.contains(category);
+                          final isSelected = _selectedCategories.contains(category);
 
                           return GestureDetector(
                             onTap: () => _selectCategory(category),
                             child: Container(
-                              decoration: BoxDecoration(
-                                color: isSelected
-                                    ? AllColors.mediumPurple
-                                    : Colors.transparent,
-                              ),
                               height: 40,
                               alignment: Alignment.centerLeft,
+                              decoration: BoxDecoration(
+                                color: isSelected ? AllColors.mediumPurple : Colors.transparent,
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 5),
                                 child: Text(
                                   category,
                                   style: TextStyle(
-                                    color: isSelected
-                                        ? Colors.white
-                                        : AllColors.blackColor,
+                                    color: isSelected ? Colors.white : AllColors.blackColor,
                                   ),
                                 ),
                               ),
@@ -280,38 +337,20 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
             ],
           ),
         if (widget.isLoading)
-          Center(
+          const Center(
             child: CircularProgressIndicator(),
           ),
-        if (widget.filteredPincodeList != null)
-          ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: widget.filteredPincodeList!.length,
-            itemBuilder: (context, index) {
-              final pincode = widget.filteredPincodeList![index];
-
-              return ListTile(
-                title: Text(pincode),
-                onTap: () {
-                  _textController.text = pincode;
-                  _isDropdownVisible = false;
-                },
-              );
-            },
+        if (widget.filteredPincodeList != null && widget.filteredPincodeList!.isEmpty)
+          Center(
+            child: Text(
+              'No Results Found!',
+              style: TextStyle(
+                color: Colors.redAccent,
+                fontSize: MediaQuery.of(context).size.width * 0.04,
+              ),
+            ),
           ),
       ],
     );
-  }
-
-
-  void _removeCategory(String category) {
-    setState(() {
-      _selectedCategories.remove(category);
-      _updateTextController();
-      if (widget.isMultiSelect) {
-        widget.onCategoriesChanged?.call(_selectedCategories);
-      }
-    });
   }
 }

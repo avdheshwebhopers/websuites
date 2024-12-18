@@ -1,60 +1,48 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/data/models/requestModels/sales/SalesListRequestModel.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../utils/utils.dart';
-import '../../data/models/requestModels/sales/SalesListRequestModel.dart';
-import '../../data/models/responseModels/sales/sales_response_model.dart'; // Ensure this path is correct
+import '../../data/models/responseModels/sales/sales_response_model.dart';
 
 class SalesViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
-  Rx<String?> errorMessage = Rx<String?>(null);
-  RxList<Items> salesItems = <Items>[].obs; // Ensure Items is defined
+  RxList<Items> salesList = <Items>[].obs;
 
-  Future<void> fetchSales({String? notificationTo, int? limit, int? page}) async {
+  Future<void> salesApi(BuildContext context) async {
+    loading.value = true;
+    SalesListRequestModel salesResponseModel = SalesListRequestModel(limit: 15, page: 1);
+
     try {
-      loading.value = true;
-      errorMessage.value = null;
+      SalesResponseModel response = await _api.salesApi(salesResponseModel.toJson());
 
-      // Prepare request model
-      SalesListRequestModel requestModel = SalesListRequestModel(
-        notificationTo: notificationTo,
-        limit: limit,
-        page: page,
-      );
+      if (response.items != null && response.items!.isNotEmpty) {
+        salesList.value = response.items!;
 
-      // Fetch sales data from API
-      SalesResponseModel response = await _api.salesApi(); // Call without arguments
-      // Log response details
-      print('🔍 VIVEK SALES RESPONSE DETAILS 🔍');
-      if (response.items != null) {
-        print('Total Items: ${response.items!.length}');
-        response.items!.asMap().forEach((index, item) {
-          print('\n📊 Sales Item [$index] Details:');
-          print('ID: ${item.id}');
-          print('Name: ${item.name}');
-          print('Start Date: ${item.start_date}');
-          // Continue logging...
-        });
-        salesItems.clear();
-        salesItems.addAll(response.items!);
-        Utils.snackbarSuccess('Sales fetched successfully');
+        for (var data in response.items!) {
+          debugPrint('Sale List Name: ${data.name}');
+          debugPrint('Sale List Email: ${data.team?.email}');
+          debugPrint('Sale List Category: ${data.team?.crm_category}');
+          debugPrint('Sale List Sale Target: ${data.members?[0].sale_target}');
+        }
+
+        // Utils.snackbarSuccess('Sales data fetched successfully');
+        print('Sales data fetched successfully');
+        loading.value = false;
       } else {
-        errorMessage.value = 'No sales data found';
-        Utils.snackbarFailed('No sales data found');
+        // Utils.snackbarFailed('No sales data found');
+        print('No sales data found');
+
+        loading.value = false;
       }
     } catch (error) {
-      errorMessage.value = error.toString();
-      Utils.snackbarFailed('Failed to fetch sales: $error');
-    } finally {
+      if (kDebugMode) {
+        print(error.toString());
+      }
+      Utils.snackbarFailed('Error fetching sales data');
       loading.value = false;
     }
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    fetchSales(); // Fetch sales data on initialization
   }
 }

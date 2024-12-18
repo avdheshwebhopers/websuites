@@ -69,7 +69,7 @@ class _TeamLeadsScreenState extends State<TeamLeadsScreen> {
                             ),
                           ),
                         ),
-                        Image.asset('assets/icons/Edit.png',height: 14,)
+                        Image.asset('assets/icons/edit.png',height: 14,)
                       ],
                     ),
                     Row(

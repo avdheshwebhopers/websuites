@@ -373,7 +373,7 @@ class AppUrls{
   static const String orderProforma = 'https://webhopers.whsuites.com:3006/v1/api/performa';
 
   //:-------PAYMENTS
-  static const String orderPayments = '${baseurl}v1/api/customer-payments/payment-list';
+  static const String orderPayment = '${baseurl}v1/api/customer-payments/payment-list';
 
   //:-------ORDER MASTER
   static const String orderMaster = '${baseurl}v1/api/order-status';
@@ -383,10 +383,16 @@ class AppUrls{
 
 
 
+//Reports
 
 
-
-
+ // Task stop start
+  static const String taskStartStop = 'https://webhopers.whsuites.com/api/tasks/task-tracker-event';
+  // static const String taskProjectOverViewList="${baseurl}api/projects/4e71cae5-a4ba-403f-aaf6-35ebb5295baf";
+  static const String taskUpdate="${baseurl}/api/tasks/98a676ad-23b2-4f3b-8f26-33906250c10a";
+  static const String taskProjectReportList="https://webhopers.whsuites.com/api/projects/project-report-list";
+  static const String taskCreateReportList="${baseurl}api/projects/create-project-report";
+  static const String reportTaskRemoveAttachment="${baseurl}/api/tasks/remove-attachment/8a7f359a-2d03-4e41-b41a-98559eaf4ac2";
 
 
   // HRM

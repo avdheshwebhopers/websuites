@@ -6,8 +6,12 @@ import 'package:websuites/views/customerScreens/orderProducts/order_products_scr
 import 'package:websuites/views/homeScreen/widgets/apppbarFilterIcon/FilterActionButton.dart';
 import 'package:websuites/views/leadScreens/trashLead/widgets/filter/TrashFilter.dart';
 import 'package:websuites/views/orderScreen/orderActivityScreen/order_activity_screen.dart';
+import 'package:websuites/views/orderScreen/orderPaymentsScreen/order_payments_screen.dart';
 import 'package:websuites/views/orderScreen/orderProformaScreen/proforma_list_screen.dart';
 import 'package:websuites/views/orderScreen/ordermaster/OrderMasterListScreen.dart';
+import 'package:websuites/views/reports/emoloyeesReports/EmployeeReportsScreen.dart';
+import 'package:websuites/views/reports/taskreport/TaskReport.dart';
+import 'package:websuites/views/rolesScreen/roles_screen.dart';
 
 import '../../Responsive/Custom_Drawer.dart';
 import '../../resources/strings/strings.dart';
@@ -25,6 +29,8 @@ import '../leadScreens/leadMaster/lead_master_screen.dart';
 import '../leadScreens/searchGoogleLeads/search_google_leads.dart';
 import '../leadScreens/trashLead/trash_lead_screen.dart';
 import '../orderScreen/orderListScreen/orderList_screen.dart';
+import '../orderScreen/orderProjection/OrdeProjectionsScreen.dart';
+import '../reports/analytics/AnalyticsTaskReportScreen.dart';
 import '../salesTargetScreen/sales_target_screen.dart';
 
 class HomeScreenController extends GetxController {
@@ -50,8 +56,18 @@ class HomeScreenController extends GetxController {
     OrderListScreen(),
     OrderActivityScreen(),
     OrderProformaList(),
+    OrderPaymentsScreen(),
+    OrderProjectionScreen(),
     OrderMasterListScreen(),
-    SalesTargetScreen()
+    SalesTargetScreen(),
+    RolesScreen(),
+    AnalyticsTaskReportScreen(),
+    TaskReportScreen(),
+    EmployeeReportsScreen(),
+
+
+
+
 
 
   ];
@@ -99,12 +115,20 @@ class HomeScreenController extends GetxController {
         return 'Order List';
       case 15:
         return 'Activity';
-      case 13:
+      case 16:
         return 'Proforma List';
-      case 14:
+      case 17:
+        return 'Payments';
+      case 18:
+        return 'Projection';
+      case 19:
         return 'Order Master';
-      case 15:
+      case 20:
         return 'Sales';
+      case 21:
+        return 'Roles';
+      case 21:
+        return 'Task Report';
 
 
       default:
