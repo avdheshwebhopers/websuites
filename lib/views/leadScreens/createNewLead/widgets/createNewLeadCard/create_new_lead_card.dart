@@ -33,6 +33,7 @@ class CreateNewLeadScreenCard extends StatefulWidget {
   final String? errorMessage;
   final Color? borderColor; // Add this line
   final bool hasError; // Add this line
+  final String? value; // Add this line to accept a value
 
 
 
@@ -40,6 +41,7 @@ class CreateNewLeadScreenCard extends StatefulWidget {
 
     Key? key,
     required this.hintText,
+    this.value, // Make this parameter optional
 
     this.categories,
     this.onCategoriesChanged,
@@ -92,6 +94,9 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
   void initState() {
     super.initState();
     _textController = widget.controller ?? TextEditingController();
+    if (widget.value != null) {
+      _textController.text = widget.value!; // Set initial value if provided
+    }
     _focusNode.addListener(() {
       setState(() {
         _isFocused = _focusNode.hasFocus;
@@ -286,6 +291,19 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                       //   }
                       // },
 
+                      // onChanged: (value) {
+                      //   if (widget.allowCustomInput) {
+                      //     _filterCategories(value);
+                      //   }
+                      //   widget.onChanged?.call(value);
+                      //
+                      //   if (widget.validator != null) {
+                      //     setState(() {
+                      //       _errorMessage = widget.validator!(value);
+                      //     });
+                      //   }
+                      // },
+
                       onChanged: (value) {
                         if (widget.allowCustomInput) {
                           _filterCategories(value);
@@ -298,6 +316,7 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                           });
                         }
                       },
+
                     ),
                   ),
                   if (_selectedCategories.isNotEmpty && widget.isMultiSelect)

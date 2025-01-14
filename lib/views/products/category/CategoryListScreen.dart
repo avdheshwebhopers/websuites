@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/utils/datetrim/DateTrim.dart';
 import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
-import '../../../Responsive/Custom_Drawer.dart';
 import '../../../utils/appColors/app_colors.dart';
 import '../../../utils/button/CustomButton.dart';
 import '../../../utils/components/widgets/drawer/custom_drawer.dart';
@@ -13,14 +12,14 @@ import 'package:file_picker/file_picker.dart';
 
 import '../../../viewModels/saveToken/save_token.dart';
 
-class ProductCategoryListScreen extends StatefulWidget {
-  const ProductCategoryListScreen({super.key});
+class CategoryListScreen extends StatefulWidget {
+  const CategoryListScreen({super.key});
 
   @override
-  State<ProductCategoryListScreen> createState() => _ProductCategoryListScreenState();
+  State<CategoryListScreen> createState() => _CategoryListScreenState();
 }
 
-class _ProductCategoryListScreenState extends State<ProductCategoryListScreen> {
+class _CategoryListScreenState extends State<CategoryListScreen> {
   bool showAttachmentError = false;
   Map<String, dynamic>? attachment;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -415,17 +414,20 @@ class _ProductCategoryListScreenState extends State<ProductCategoryListScreen> {
         } else if (_viewModel.categories.isEmpty) {
           return Center(child: Text('No categories found'));
         } else {
-          return Padding(
-            padding: const EdgeInsets.only(left: 15,right: 15,top: 10,),
-            child: Column(
+          return
+
+            Column(
               children: [
-                // Fixed search card at the top
-                CreateNewLeadScreenCard(
-                  hintText: 'Search',
-                  suffixIcon: Icon(Icons.search, color: AllColors.mediumPurple, size: 20),
-                  onChanged: (value) {
-                    _viewModel.searchCategories(value);
-                  },
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 15,right: 15,top: 10),
+                  child: CreateNewLeadScreenCard(
+                    hintText: 'Search',
+                    suffixIcon: Icon(Icons.search, color: AllColors.mediumPurple, size: 20),
+                    onChanged: (value) {
+                      _viewModel.searchCategories(value);
+                    },
+                  ),
                 ),
                 SizedBox(height: 10), // Space between the search card and the list
                 // Expanded ListView that scrolls
@@ -435,78 +437,81 @@ class _ProductCategoryListScreenState extends State<ProductCategoryListScreen> {
                     itemCount: _viewModel.filteredCategories.length,
                     itemBuilder: (context, index) {
                       final category = _viewModel.filteredCategories[index];
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              blurRadius: 8.0,
-                              spreadRadius: 2.0,
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  category.name ?? 'Unnamed Category',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: FontFamily.sfPro,
-                                    fontWeight: FontWeight.w700,
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 15,right: 15,top: 10),
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                blurRadius: 8.0,
+                                spreadRadius: 2.0,
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    category.name ?? 'Unnamed Category',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: FontFamily.sfPro,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
-                                ),
-                                Spacer(),
-                                Icon(Icons.edit),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(Icons.date_range, color: AllColors.mediumPurple, size: 12),
-                                SizedBox(width: 4),
-                                Text(
-                                  formatDateToLongMonth(category.createdAt ?? 'Unknown Date'),
-                                  style: TextStyle(
-                                    color: AllColors.mediumPurple,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: FontFamily.sfPro,
-                                    fontSize: 12,
+                                  Spacer(),
+                                  Icon(Icons.edit),
+                                ],
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Icon(Icons.date_range, color: AllColors.mediumPurple, size: 12),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    formatDateToLongMonth(category.createdAt ?? 'Unknown Date'),
+                                    style: TextStyle(
+                                      color: AllColors.mediumPurple,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: FontFamily.sfPro,
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
-                                Spacer(),
-                                // Uncomment and modify the following code if you want to display the category image
-                                // if (category.image != null && category.image!.isNotEmpty)
-                                //   Image.network(
-                                //     category.image!,
-                                //     width: 24,
-                                //     height: 19,
-                                //     errorBuilder: (context, error, stackTrace) {
-                                //       return Image.asset(
-                                //         'assets/images/data-not-found.png',
-                                //         width: 24,
-                                //         height: 19,
-                                //       );
-                                //     },
-                                //   ),
-                              ],
-                            ),
-                          ],
+                                  Spacer(),
+                                  // Uncomment and modify the following code if you want to display the category image
+                                  // if (category.image != null && category.image!.isNotEmpty)
+                                  //   Image.network(
+                                  //     category.image!,
+                                  //     width: 24,
+                                  //     height: 19,
+                                  //     errorBuilder: (context, error, stackTrace) {
+                                  //       return Image.asset(
+                                  //         'assets/images/data-not-found.png',
+                                  //         width: 24,
+                                  //         height: 19,
+                                  //       );
+                                  //     },
+                                  //   ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
                   ),
                 ),
               ],
-            ),
-          );
+            );
+
         }
       }),
     );

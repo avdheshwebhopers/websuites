@@ -25,7 +25,7 @@ class AppUrls {
 
   static const String dashboard = '${baseurl}v1/api/dashboard';
 
-  static const String userListApi = '${baseurl}v1/api/auth/userlist';
+  static const String userListApi = 'https://webhopers.whsuites.com/api/auth/users-list';
 
   static const String dashLeadsByTypeCount =
       '${baseurl}v1/api/dashboard/leads-by-type-count';
@@ -534,6 +534,32 @@ class AppUrls {
 
   // USERS
   static const String usersApi = '${baseurl}v1/api/auth/user-list';
+
+  // static const String usersActivitiesApi = 'https://dev.whsuites.com/api/user-activities/list';
+  static const String usersActivitiesApi = '${baseurl}v1/api/user-activities/list';
+
+
+  static const String usersAddDepartment = '${baseurl}v1/api/departments';
+
+  // static String roleEdit(String roleId) {return 'https://dev.whsuites.com/api/roles/$roleId/update';
+  // }
+
+  static String roleEdit(String roleId) {return '${baseurl}v1/api/roles/$roleId/update';
+  }
+
+  static const String roleUpdateList = '${baseurl}v1/api/modules';
+
+
+  static String usersStatusApi(String userId) {
+    return '${baseurl}v1/api/auth/status-change/$userId';
+  }
+
+
+
+  static String userUpdateApi(String userId) {
+    return '${baseurl}v1/api/auth/update-user/$userId';
+  }
+
 
   //============================================================================
 

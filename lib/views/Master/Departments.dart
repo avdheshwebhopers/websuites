@@ -47,27 +47,27 @@
 //   Widget build(BuildContext context) {
 //     var screenWidth = MediaQuery.of(context).size.width;
 //     return MasterScreenUtils.buildCommonScaffold(
-//       scaffoldKey: _scaffoldKey,
-//       globalKey: _globalKey,
-//       userName: userName,
-//       userEmail: userEmail,
-//       title: Strings.masterDepartment,
-//       addButtonTitle: Strings.add_department,
-//       onAddPressed: () {},
-//       drawer: Obx(
-//             () =>
-//                 CustomDrawer(
-//                   selectedIndex: 0, // Customize as needed
-//                   onItemSelected: (index) {
-//                     // Handle item selection
-//                   },
-//                   isCollapsed: false,
-//                   onCollapseToggle: () {
-//                     // Handle drawer collapse/expand
-//                   },
-//                   isTabletOrDesktop: screenWidth >= 500,
-//                 ),
-//       ),
+//       // scaffoldKey: _scaffoldKey,
+//       // globalKey: _globalKey,
+//       // userName: userName,
+//       // userEmail: userEmail,
+//       // title: Strings.masterDepartment,
+//       // addButtonTitle: Strings.add_department,
+//       // onAddPressed: () {},
+//       // drawer: Obx(
+//       //       () =>
+//       //           CustomDrawer(
+//       //             selectedIndex: 0, // Customize as needed
+//       //             onItemSelected: (index) {
+//       //               // Handle item selection
+//       //             },
+//       //             isCollapsed: false,
+//       //             onCollapseToggle: () {
+//       //               // Handle drawer collapse/expand
+//       //             },
+//       //             isTabletOrDesktop: screenWidth >= 500,
+//       //           ),
+//       // ),
 //       body: Column(
 //         crossAxisAlignment: CrossAxisAlignment.start,
 //         children: [

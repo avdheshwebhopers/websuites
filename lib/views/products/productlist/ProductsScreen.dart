@@ -59,8 +59,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                 ),
                 child: Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Image.asset('assets/icons/FilterIcon.png',width: 10,height: 12,),
-                    Icon(Icons.filter,size: 14,),
+                    Image.asset('assets/icons/FilterIcon.png',width: 10,height: 12,),
                     SizedBox(width: 5,),
 
                     Text(
@@ -199,128 +198,113 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
 
 
   void _showAddProductBottomSheet() {
-    showDialog(
+    showModalBottomSheet(
+      backgroundColor: Colors.white,
       context: context,
       builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16), // Optional, to make the dialog corners rounded
-          ),
-          backgroundColor: Colors.white, // Set the background color to white
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Add Products',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: FontFamily.sfPro,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text('Name *'),
-                  CreateNewLeadScreenCard(
-                    containerPadding: EdgeInsets.only(top: 5, bottom: 5),
-                    hintText: 'Product Name',
-                    allowCustomBorderInput: BorderRadius.circular(30),
-                    maxLines: 5,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Title is required';
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.multiline,
-                    onChanged: (value) {},
-                  ),
-                  SizedBox(height: 8),
-                  Text('Product Type *'),
-                  CreateNewLeadScreenCard(
-                    containerPadding: EdgeInsets.only(top: 5, bottom: 5),
-                    hintText: 'Enter Title',
-                    allowCustomBorderInput: BorderRadius.circular(30),
-                    maxLines: 5,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Title is required';
-                      }
-                      return null;
-                    },
-                    keyboardType: TextInputType.multiline,
-                    onChanged: (value) {},
-                  ),
-                  SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomButton(
+        return SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+
+                Text('Add Products',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,fontFamily: FontFamily.sfPro),),
+            SizedBox(height:  10,),
+                Text('Name *'),
+                CreateNewLeadScreenCard(
+                  containerPadding:
+                  EdgeInsets.only(top: 5, bottom: 5),
+                  hintText: 'Product Name',
+                  allowCustomBorderInput:
+                  BorderRadius.circular(30),
+                  maxLines: 5,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Title is required';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.multiline,
+                  onChanged: (value) {
+
+                  },
+                ),
+                SizedBox(height: 8,),
+                Text('Products Type *'),
+                CreateNewLeadScreenCard(
+                  containerPadding:
+                  EdgeInsets.only(top: 5, bottom: 5),
+                  hintText: 'Enter Title',
+                  allowCustomBorderInput:
+                  BorderRadius.circular(30),
+                  maxLines: 5,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Title is required';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.multiline,
+                  onChanged: (value) {
+
+                  },
+                ),
+                SizedBox(height: 8,),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomButton(
+
                           width: 70,
                           height: 22,
                           borderRadius: 54,
-                          child: InkWell(
-                            onTap: () {
+                          child:
+                          InkWell(
+                            onTap: (){
                               _showAddProductBottomSheet();
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  'SUBMIT',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: FontFamily.sfPro,
-                                  ),
-                                ),
+                                Text('SUBMIT',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,fontFamily: FontFamily.sfPro),),
                               ],
                             ),
-                          ),
-                          onPressed: () {},
-                        ),
-                        SizedBox(width: 20),
-                        CustomButton(
+                          ), onPressed: (){}),
+                      SizedBox(width: 20,),
+
+                      CustomButton(
                           backgroundColor: Colors.red,
+
                           width: 70,
                           height: 22,
                           borderRadius: 54,
-                          child: InkWell(
-                            onTap: () {
+                          child:
+                          InkWell(
+                            onTap: (){
                               _showAddProductBottomSheet();
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  'CANCEL',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: FontFamily.sfPro,
-                                  ),
-                                ),
+                                Text('CANCEL',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,fontFamily: FontFamily.sfPro),),
                               ],
                             ),
-                          ),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
+                          ), onPressed: (){}),
+
+                    ],
                   ),
-                ],
-              ),
+                )
+
+              ],
             ),
           ),
         );
       },
     );
   }
-
 }

@@ -1,29 +1,29 @@
-class ProductMasterResponseModel{
+class ProductMasterResponseModel {
   List<Items>? items;
   Meta? meta;
 
-  ProductMasterResponseModel ({
+  ProductMasterResponseModel({
     this.items,
-    this.meta
-});
+    this.meta,
+  });
 
   ProductMasterResponseModel.fromJson(Map<String, dynamic> json) {
-    if(json['items']!= null) {
-      items = <Items> [];
-      json['items'].forEach((v){
+    if (json['items'] != null) {
+      items = <Items>[];
+      json['items'].forEach((v) {
         items!.add(Items.fromJson(v));
       });
     }
-    meta = json['Meta'] != null ? Meta.fromJson(json['meta']): null;
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null; // Corrected here
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
-    if(items != null) {
-      data['items'] = items!.map((v) => toJson()).toList();
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (items != null) {
+      data['items'] = items!.map((v) => v.toJson()).toList(); // Corrected here
     }
-    if(meta != null) {
-      data['meta'] = meta !.toJson();
+    if (meta != null) {
+      data['meta'] = meta!.toJson();
     }
     return data;
   }
@@ -47,8 +47,8 @@ class Items {
     this.created_at,
     this.updated_at,
     this.product,
-    this.incentive
-});
+    this.incentive,
+  });
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -58,11 +58,11 @@ class Items {
     created_at = json['created_at'];
     updated_at = json['updated_at'];
     incentive_type = json['incentive_type'];
-    product = json['product'] != null ? Product.fromJson(json['product']): null;
+    product = json['product'] != null ? Product.fromJson(json['product']) : null;
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['incentive'] = incentive;
     data['incentive_type'] = incentive_type;
@@ -70,13 +70,12 @@ class Items {
     data['is_sale'] = is_sale;
     data['created_at'] = created_at;
     data['updated_at'] = updated_at;
-    if(product != null) {
-      data['product'] = product !. toJson();
+    if (product != null) {
+      data['product'] = product!.toJson();
     }
     return data;
   }
 }
-
 
 class Product {
   String? id;
@@ -114,8 +113,8 @@ class Product {
     this.updated_at,
     this.deleted_at,
     this.project_activation_disabled,
-    this.zoho_item_id
-});
+    this.zoho_item_id,
+  });
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -137,8 +136,8 @@ class Product {
     zoho_item_id = json['zoho_item_id'];
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['product_type'] = product_type;
     data['name'] = name;
@@ -172,10 +171,10 @@ class Meta {
     this.itemCount,
     this.itemsPerPage,
     this.totalPages,
-    this.currentPage
-});
+    this.currentPage,
+  });
 
-  Meta.fromJson(Map<String, dynamic> json){
+  Meta.fromJson(Map<String, dynamic> json) {
     totalItems = json['totalItems'];
     itemsPerPage = json['itemsPerPage'];
     totalPages = json['totalPages'];
@@ -183,13 +182,13 @@ class Meta {
     currentPage = json['currentPage'];
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['totalItems'] = totalItems;
     data['itemsPerPage'] = itemsPerPage;
     data['totalPages'] = totalPages;
     data['itemCount'] = itemCount;
-    data['currentPage'] = currentPage;
+    data['currentPage'] = currentPage; // Added missing semicolon here
     return data;
   }
 }

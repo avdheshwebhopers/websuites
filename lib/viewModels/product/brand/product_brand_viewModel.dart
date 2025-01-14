@@ -3,29 +3,47 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../utils/utils.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../../../data/repositories/repositories.dart';
+import '../../../../utils/utils.dart';
+import '../../../data/models/responseModels/products/brand/product_brand_response_model.dart';
+
 class ProductBrandViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
-  Future<void> productBrand (BuildContext context) async {
+  RxList<ProductBrandResponseModel> productBrands = <ProductBrandResponseModel>[].obs;
+  RxList<ProductBrandResponseModel> filteredCategories = <ProductBrandResponseModel>[].obs;
+
+  Future<void> fetchProductBrands(BuildContext context) async {
     loading.value = true;
-    _api.productBrand().then((value) {
-      if(value.isNotEmpty){
-        for(var data in value){
-          print("Product Response name  ${data.id}");
-          print("Product Response name ${data.name}");
-          print("Product Response division id ${data.division?.id}");
-          print("Product Response mobile ${data.division?.mobileNo}");
-        }
-        Utils.snackbarSuccess('product brand fetched');
-        loading.value = false;
-      }else {
-        Utils.snackbarFailed('product brand not fetched');
+    try {
+      final value = await _api.productBrand();
+      if (value.isNotEmpty) {
+        productBrands.value = value;
+        filteredCategories.value = value; // Initialize filtered list
+        Utils.snackbarSuccess('Product brands fetched');
+      } else {
+        Utils.snackbarFailed('No product brands found');
       }
-    }).onError((error, stackTrace) {
+    } catch (error) {
       if (kDebugMode) {
         print(error.toString());
       }
+      Utils.snackbarFailed('Error fetching product brands');
+    } finally {
+      loading.value = false;
     }
-    );
+  }
+
+  void searchCategories(String query) {
+    if (query.isEmpty) {
+      filteredCategories.value = productBrands; // Show all if query is empty
+    } else {
+      filteredCategories.value = productBrands.where((category) {
+        return category.name!.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    }
   }
 }

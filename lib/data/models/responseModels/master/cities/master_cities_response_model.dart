@@ -8,19 +8,19 @@ class MasterCitiesResponseModel {
     if (json['items'] != null) {
       items = <Items>[];
       json['items'].forEach((v) {
-        items!.add(Items.fromJson(v));
+        items!.add(new Items.fromJson(v));
       });
     }
-    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
+    meta = json['meta'] != null ? new Meta.fromJson(json['meta']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (items != null) {
-      data['items'] = items!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.items != null) {
+      data['items'] = this.items!.map((v) => v.toJson()).toList();
     }
-    if (meta != null) {
-      data['meta'] = meta!.toJson();
+    if (this.meta != null) {
+      data['meta'] = this.meta!.toJson();
     }
     return data;
   }
@@ -48,18 +48,18 @@ class Items {
     status = json['status'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    state = json['state'] != null ? State.fromJson(json['state']) : null;
+    state = json['state'] != null ? new State.fromJson(json['state']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['status'] = status;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    if (state != null) {
-      data['state'] = state!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['status'] = this.status;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    if (this.state != null) {
+      data['state'] = this.state!.toJson();
     }
     return data;
   }
@@ -91,19 +91,19 @@ class State {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     country =
-    json['country'] != null ? Country.fromJson(json['country']) : null;
+    json['country'] != null ? new Country.fromJson(json['country']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['code'] = code;
-    data['status'] = status;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    if (country != null) {
-      data['country'] = country!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['code'] = this.code;
+    data['status'] = this.status;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    if (this.country != null) {
+      data['country'] = this.country!.toJson();
     }
     return data;
   }
@@ -153,19 +153,19 @@ class Country {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['shortName'] = shortName;
-    data['native'] = native;
-    data['phone'] = phone;
-    data['continent'] = continent;
-    data['capital'] = capital;
-    data['currency'] = currency;
-    data['status'] = status;
-    data['installStatus'] = installStatus;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['shortName'] = this.shortName;
+    data['native'] = this.native;
+    data['phone'] = this.phone;
+    data['continent'] = this.continent;
+    data['capital'] = this.capital;
+    data['currency'] = this.currency;
+    data['status'] = this.status;
+    data['installStatus'] = this.installStatus;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
     return data;
   }
 }
@@ -193,12 +193,12 @@ class Meta {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['currentPage'] = currentPage;
-    data['itemsPerPage'] = itemsPerPage;
-    data['totalPages'] = totalPages;
-    data['totalItems'] = totalItems;
-    data['itemCount'] = itemCount;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['currentPage'] = this.currentPage;
+    data['itemsPerPage'] = this.itemsPerPage;
+    data['totalPages'] = this.totalPages;
+    data['totalItems'] = this.totalItems;
+    data['itemCount'] = this.itemCount;
     return data;
   }
 }

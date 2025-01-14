@@ -310,14 +310,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
             ),
             ListTile(
-              onTap: () => widget.onItemSelected(30),
+              onTap: () => widget.onItemSelected(31),
               title: Text(
                 '• Brand',
                 style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
               ),
             ),
             ListTile(
-              onTap: () => widget.onItemSelected(30),
+              onTap: () => widget.onItemSelected(32),
               title: Text(
                 '• GST List',
                 style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
@@ -325,12 +325,87 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
 
             ListTile(
-              onTap: () => widget.onItemSelected(30),
+              onTap: () => widget.onItemSelected(33),
               title: Text(
                 '• Master',
                 style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
               ),
             ),
+
+
+
+          ],
+        ),
+
+        CustomExpandedListTile(
+          title: 'User',
+          leadingIconImage: IconStrings.tasks,
+          initiallyExpanded: expandedSection == 'User',
+          children: [
+            ListTile(
+              onTap: () => widget.onItemSelected(34),
+              title: Text(
+                '• List',
+                style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(35),
+              title: Text(
+                '• Roles',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(36),
+              title: Text(
+                '• Departments',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(37),
+              title: Text(
+                '• Activities',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+
+
+
+
+
+          ],
+        ),
+
+        CustomExpandedListTile(
+          title: 'Setting',
+          leadingIconImage: IconStrings.tasks,
+          initiallyExpanded: expandedSection == 'Setting',
+          children: [
+            ListTile(
+              onTap: () => widget.onItemSelected(38),
+              title: Text(
+                '• Divisions',
+                style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(39),
+              title: Text(
+                '• Proposals',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+            ListTile(
+              onTap: () => widget.onItemSelected(40),
+              title: Text(
+                '• Cities',
+                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+              ),
+            ),
+
+
 
 
 

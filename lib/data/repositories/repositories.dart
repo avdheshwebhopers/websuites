@@ -15,6 +15,7 @@ import '../models/requestModels/report/project_overview/task/ProjectOverViewTask
 import '../models/responseModels/HRM/attendance/hrm_attendance_response_model.dart';
 import '../models/responseModels/campaign/list/campaign_list_response_model.dart';
 import '../models/responseModels/campaign/mailLogs/mail_logs_response_model.dart';
+import 'package:http/http.dart' as http;
 
 import '../models/responseModels/createLeadResponseModel/createLeadResponseModel.dart';
 import '../models/responseModels/customers/activationList/customer_activation_list_response_model.dart';
@@ -140,12 +141,13 @@ import '../models/responseModels/leads/setting/roles/roles.dart';
 import '../models/responseModels/leads/setting/setting.dart';
 import '../models/responseModels/leads/setting/setting_userprofile/setting_user_profile.dart';
 import '../models/responseModels/login/login_response_model.dart';
-import '../models/responseModels/master/cityStateAndCountry/cities/master_cities_response_model.dart';
+import '../models/responseModels/master/cities/master_cities_response_model.dart';
 import '../models/responseModels/master/cityStateAndCountry/country/master_country_response_model.dart';
 import '../models/responseModels/master/customizeLabel/customize/customize_response_model.dart';
 import '../models/responseModels/master/customizeLabel/customize_lead_source/customize_lead_source.dart';
 import '../models/responseModels/master/customizeLabel/customize_type/customize_type.dart';
 import '../models/responseModels/master/departments/master_departments_response_model.dart';
+import '../models/responseModels/master/departments/update/UserDepartmentUpdateResponseModel.dart';
 import '../models/responseModels/master/divisions/master_divisions_response_model.dart';
 import '../models/responseModels/master/proposals/master_proposals_resposne_model.dart';
 import '../models/responseModels/order/list/company_list/order_company_list_response_model.dart';
@@ -175,15 +177,21 @@ import '../models/responseModels/reports/taskdetails/project_overview/task/Proje
 import '../models/responseModels/reports/taskdetails/start_stop/StartStopResponseModels.dart';
 import '../models/responseModels/reports/taskdetails/task_tracker_event/task_tracker_event_response_model.dart';
 import '../models/responseModels/reports/taskdetails/task_update/task_update_response_model.dart';
+import '../models/responseModels/roles/edit_role/RoleListEditResponseModel.dart';
+import '../models/responseModels/roles/edit_role/check_box_permission/RoleCheckEditResponseModel.dart';
 import '../models/responseModels/roles/roles_response_model.dart';
 import '../models/responseModels/sales/sales_response_model.dart';
 import '../models/responseModels/tasks/list/new_board/task_list_new_board_response_model.dart';
 import '../models/responseModels/tasks/list/project_search/task_list_project_search_response_model.dart';
 import '../models/responseModels/tasks/list/tasks_list_response_model.dart';
-
-
 import '../models/responseModels/tasks/master/task_master_list/task_master_response_model.dart';
-import '../models/responseModels/userList/user_list_response_model.dart';
+import '../models/responseModels/userList/activity/UserActivitiesResponseModel.dart';
+import '../models/responseModels/userList/add/UserDepartmentAddResponsetModel.dart';
+import '../models/responseModels/userList/list/UserListResponseModels.dart';
+import '../models/responseModels/userList/list/add_role/UserAddRoleResponseModel.dart';
+import '../models/responseModels/userList/list/update/RolesListUpdateResponseModel.dart';
+import '../models/responseModels/userList/status/UserStatusResponseModel.dart';
+import '../models/responseModels/userList/user_update/UserUpdateResponseModel.dart';
 import '../models/responseModels/users/users_response_model.dart';
 import '../network/network_api_services.dart';
 
@@ -191,6 +199,9 @@ import '../network/network_api_services.dart';
 class Repositories {
 
   final _apiService = NetworkApiServices();
+  static const String userDepartmentUpdate =
+      'https://dev.whsuites.com/api/departments'; // Define the constant here
+  static const String  baseurl= 'https://dev.whsuites.com/api';
 
   //============================================================================
   // LOGIN SCREEN API
@@ -241,11 +252,11 @@ class Repositories {
   }
 
 
-  Future<UserListResponseModel> userListApi() async {
+  Future<UsersListResponseModel> userListApi() async {
     try {
       dynamic response = await _apiService.postApiResponse(
           AppUrls.userListApi, null);
-      return response = UserListResponseModel.fromJson(response);
+      return response = UsersListResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
@@ -2500,6 +2511,167 @@ class Repositories {
     }
   }
 
+
+  Future<UserActivitiesResponseModel> usersActivitiesApi() async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.usersActivitiesApi, null);
+      return response = UserActivitiesResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+  Future<UserDepartmentUpdateResponseModel> updateUserDepartmentApi(
+      Map<String, dynamic> data, String? departmentId) async {
+    try {
+      final String url = '$userDepartmentUpdate/$departmentId';
+      final response = await _apiService.patchApi(url, data);
+      print("Update Department Response: $response");
+      return UserDepartmentUpdateResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update Department Response Error: $e");
+      rethrow;
+    }
+  }
+
+  Future<UserDepartmentAddResponseModel> usersAddDepartmentApi(
+      Map<String, dynamic> data) async {
+    try {
+      final response = await _apiService.postApiResponse(
+        AppUrls.usersAddDepartment,
+        data,
+      );
+      return UserDepartmentAddResponseModel.fromJson(
+          response as Map<String, dynamic>);
+    } catch (e) {
+      print("Error fetching departments: $e");
+      rethrow;
+    }
+  }
+
+
+
+  Future<UserAddRoleResponseModel> usersAddRoleApi(
+      Map<String, dynamic> data) async {
+    try {
+      final response = await _apiService.postApiResponse(
+        AppUrls.rolesApi,
+        data,
+      );
+
+      return UserAddRoleResponseModel.fromJson(
+          response as Map<String, dynamic>);
+    } catch (e) {
+      print("Error fetching departments: $e");
+      rethrow;
+    }
+  }
+
+  Future<RoleListEditResponseModel> roleListEditApi(
+      String roleId, Map<String, dynamic> data) async {
+    try {
+      String url = AppUrls.roleEdit(roleId);
+      dynamic response = await _apiService.patchApi(url, data);
+
+      if (response != null) {
+        return RoleListEditResponseModel.fromJson(response);
+      } else {
+        throw Exception("Received null response from the API");
+      }
+    } catch (e) {
+      print("Update Role Response Error: $e");
+      rethrow;
+    }
+  }
+
+
+
+  Future<List<RolesListUpdateResponseModel>> roleUpdateListApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.roleUpdateList);
+      if (response is List) {
+        return response.map((item) {
+          return RolesListUpdateResponseModel.fromJson(item);
+        }).toList();
+      } else {
+        throw Exception('Expected a list but got ${response.runtimeType}');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+  Future<UserStatusResponseModel> userStatusUpdate(
+      String userId, Map<String, dynamic> data) async {
+    try {
+      String url = AppUrls.usersStatusApi(userId);
+      dynamic response = await _apiService.patchApi(url, data);
+      return UserStatusResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update User Status Response Error: $e");
+      rethrow;
+    }
+  }
+
+
+
+// user update
+
+  Future<UserUpdateResponseModel> userUpdateApi(
+      String userId, Map<String, dynamic> data) async {
+    try {
+      String url = AppUrls.userUpdateApi(userId);
+      dynamic response = await _apiService.patchApi(url, data);
+      return UserUpdateResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update User Status Response Error: $e");
+      rethrow;
+    }
+  }
+
+
+
+
+
+  Future<bool> saveRolePermissions(String roleId, List<Map<String, dynamic>> updatedPermissions) async {
+    final url = Uri.parse('$baseurl/roles/$roleId/permissions'); // Update URL based on your API endpoint
+
+    try {
+      // Send the updated permissions in the body of the request
+      final response = await http.patch(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: json.encode({
+          'permissions': updatedPermissions,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return true;  // Successfully updated permissions
+      } else {
+        return false; // Failed to update permissions
+      }
+    } catch (error) {
+      print('Error saving permissions: $error');
+      return false; // Handle network or other errors
+    }
+  }
+
+  Future<RoleCheckEditResponseModel> roleCheckEditApi() async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.taskListApi, null);
+      return response = RoleCheckEditResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   //============================================================================
   // TASKS
   // LIST
@@ -2982,8 +3154,7 @@ class Repositories {
   //============================================================================
 
 
-//Master
-  //division
+
   Future<List<MasterDivisionsResponseModel>> masterDivision() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.masterDivisions);

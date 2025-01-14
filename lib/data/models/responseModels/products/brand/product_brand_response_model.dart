@@ -6,13 +6,14 @@ class ProductBrandResponseModel {
   String? updatedAt;
   Division? division;
 
-  ProductBrandResponseModel(
-      {this.id,
-        this.name,
-        this.description,
-        this.createdAt,
-        this.updatedAt,
-        this.division});
+  ProductBrandResponseModel({
+    this.id,
+    this.name,
+    this.description,
+    this.createdAt,
+    this.updatedAt,
+    this.division,
+  });
 
   ProductBrandResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -20,9 +21,7 @@ class ProductBrandResponseModel {
     description = json['description'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    division = json['division'] != null
-        ? Division.fromJson(json['division'])
-        : null;
+    division = json['division'] != null ? Division.fromJson(json['division']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -37,8 +36,9 @@ class ProductBrandResponseModel {
     }
     return data;
   }
+
   static List<ProductBrandResponseModel> fromJsonList(List<dynamic> jsonList) {
-    return jsonList.map((json) =>ProductBrandResponseModel.fromJson(json)).toList();
+    return jsonList.map((json) => ProductBrandResponseModel.fromJson(json)).toList();
   }
 }
 
@@ -56,19 +56,20 @@ class Division {
   dynamic zohoOrganizationId;
   dynamic zohoTaxExemptionId;
 
-  Division(
-      {this.id,
-        this.name,
-        this.status,
-        this.mobileNo,
-        this.contactPerson,
-        this.email,
-        this.address,
-        this.logo,
-        this.createdAt,
-        this.updatedAt,
-        this.zohoOrganizationId,
-        this.zohoTaxExemptionId});
+  Division({
+    this.id,
+    this.name,
+    this.status,
+    this.mobileNo,
+    this.contactPerson,
+    this.email,
+    this.address,
+    this.logo,
+    this.createdAt,
+    this.updatedAt,
+    this.zohoOrganizationId,
+    this.zohoTaxExemptionId,
+  });
 
   Division.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -101,6 +102,4 @@ class Division {
     data['zoho_tax_exemption_id'] = this.zohoTaxExemptionId;
     return data;
   }
-
-
 }

@@ -31,7 +31,7 @@ class ProductCategoryViewModel extends GetxController {
       final response = await _api.productCategoryApi();
       categories.clear();
       categories.addAll(response);
-      // Update filtered categories initially with all categories
+
       filteredCategories.value = categories;
 
     } catch (error) {
