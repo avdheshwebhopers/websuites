@@ -1,383 +1,293 @@
-class ProjectsListResponseModel {
-  List<Items>? items;
-  Meta? meta;
-  String? user_key;
+class ProjectListResponseModel {
+  ProjectListResponseModel({
+    required this.items,
+    required this.meta,
+    required this.userKey,
+  });
 
-  ProjectsListResponseModel ({
-    this.user_key,
-    this.meta,
-    this.items
-});
+  final List<Item> items;
+  final Meta? meta;
+  final dynamic userKey;
 
-  ProjectsListResponseModel.fromJson(Map<String, dynamic> json) {
-    if(json['items'] != null) {
-      items = <Items> [];
-      json['items'].forEach((v) {
-        items!.add(Items.fromJson(v));
-      });
-    }
-    meta = json['meta'] != null ? Meta.fromJson(json['meta']): null;
-    user_key = json['user_key'];
+  factory ProjectListResponseModel.fromJson(Map<String, dynamic> json){
+    return ProjectListResponseModel(
+      items: json["items"] == null ? [] : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
+      meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
+      userKey: json["user_key"],
+    );
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
-    if(items != null) {
-      data['items'] = items !. map((v) => v.toJson()).toList();
-    }
-    if(meta != null) {
-      data['meta'] = meta !. toJson();
-    }
-    data['user_key'] = user_key;
-    return data;
-  }
 }
 
-class Items {
-  String? id;
-  String? project_name;
-  String? billing_type;
-  String? status;
-  int? total_rate;
-  int? estimated_hours;
-  String? start_date;
-  String? deadline;
-  String? description;
-  String? demo_url;
-  String? live_url;
-  String? created_at;
-  String? updated_at;
-  Customer? customer;
-  List<Members>? members;
-  List<Tags>? tags;
+class Item {
+  Item({
+    required this.id,
+    required this.projectName,
+    required this.billingType,
+    required this.status,
+    required this.totalRate,
+    required this.estimatedHours,
+    required this.startDate,
+    required this.deadline,
+    required this.description,
+    required this.demoUrl,
+    required this.finishDate,
+    required this.liveUrl,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.customer,
+    required this.members,
+    required this.tags,
+  });
 
-  Items({
-    this.id,
-    this.project_name,
-    this.billing_type,
-    this.status,
-    this.total_rate,
-    this.estimated_hours,
-    this.start_date,
-    this.deadline,
-    this.description,
-    this.demo_url,
-    this.live_url,
-    this.created_at,
-    this.updated_at,
-    this.customer,
-    this.members,
-    this.tags
-});
+  final String? id;
+  final String? projectName;
+  final String? billingType;
+  final String? status;
+  final int? totalRate;
+  final int? estimatedHours;
+  final DateTime? startDate;
+  final DateTime? deadline;
+  final String? description;
+  final String? demoUrl;
+  final dynamic finishDate;
+  final String? liveUrl;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final Customer? customer;
+  final List<Member> members;
+  final List<Tag> tags;
 
-  Items.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    project_name = json['project_name'];
-    billing_type = json['billing_type'];
-    status = json['status'];
-    total_rate = json['total_rate'];
-    estimated_hours = json['estimated_hours'];
-    start_date = json['start_date'];
-    deadline = json['deadline'];
-    description = json['description'];
-    demo_url = json['demo_url'];
-    live_url = json['live_url'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    customer = json['customer'] != null ? Customer.fromJson(json['customer']): null;
-    if(json['Members'] != null) {
-      members = <Members> [];
-      json['customer'].forEach((v){
-        members !.add(Members.fromJson(v));
-      });
-    }
-    if(json['tags'] != null) {
-      tags = <Tags> [];
-      json['customer'].forEach((v){
-        tags !.add(Tags.fromJson(v));
-      });
-    }
+  factory Item.fromJson(Map<String, dynamic> json){
+    return Item(
+      id: json["id"],
+      projectName: json["project_name"],
+      billingType: json["billing_type"],
+      status: json["status"],
+      totalRate: json["total_rate"],
+      estimatedHours: json["estimated_hours"],
+      startDate: DateTime.tryParse(json["start_date"] ?? ""),
+      deadline: DateTime.tryParse(json["deadline"] ?? ""),
+      description: json["description"],
+      demoUrl: json["demo_url"],
+      finishDate: json["finish_date"],
+      liveUrl: json["live_url"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+      customer: json["customer"] == null ? null : Customer.fromJson(json["customer"]),
+      members: json["members"] == null ? [] : List<Member>.from(json["members"]!.map((x) => Member.fromJson(x))),
+      tags: json["tags"] == null ? [] : List<Tag>.from(json["tags"]!.map((x) => Tag.fromJson(x))),
+    );
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
-    data['id'] = id;
-    data['project_name'] = project_name;
-    data['billing_type'] = billing_type;
-    data['status'] = status;
-    data['total_rate'] = total_rate;
-    data['estimated_hours'] = estimated_hours;
-    data['start_date'] = start_date;
-    data['deadline'] = deadline;
-    data['description'] = description;
-    data['demo_url'] = demo_url;
-    data['live_url'] = live_url;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    if(customer != null) {
-      data['customer'] = customer !.toJson();
-    }
-    if(members != null) {
-      data['members'] = members !.map((v) => toJson()).toList();
-    }
-    if(tags != null){
-      data['tags'] = tags !.map((v) => toJson()).toList();
-    }
-    return data;
-  }
 }
 
 class Customer {
-  String? id;
-  String? company_name;
-  String? first_name;
-  String? last_name;
-  String? primary_email;
-  int? country_code;
-  String? primary_contact;
-  String? organization;
-  String? primary_address;
-  String? profile_image;
-  String? dob;
-  String? about_client;
-  String? other_information;
-  int? lat;
-  int? lng;
-  String? created_at;
-  String? updated_at;
-  String? delete_at;
-  String? delete_remark;
-  String? zoho_contact_id;
-  String? status;
-  String? subStatus;
+  Customer({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.primaryEmail,
+    required this.countryCode,
+    required this.primaryContact,
+    required this.organization,
+    required this.websites,
+    required this.primaryAddress,
+    required this.profileImage,
+    required this.dob,
+    required this.gstin,
+    required this.aboutClient,
+    required this.otherInformation,
+    required this.lat,
+    required this.lng,
+    required this.joinedAt,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.deletedAt,
+    required this.deleteRemark,
+    required this.zohoContactId,
+    required this.status,
+    required this.subStatus,
+  });
 
-  Customer ({
-    this.id,
-    this.company_name,
-    this.first_name,
-    this.last_name,
-    this.primary_email,
-    this.country_code,
-    this.primary_contact,
-    this.organization,
-    this.primary_address,
-    this.profile_image,
-    this.dob,
-    this.about_client,
-    this.other_information,
-    this.lat,
-    this.lng,
-    this.created_at,
-    this.updated_at,
-    this.delete_at,
-    this.delete_remark,
-    this.zoho_contact_id,
-    this.status,
-    this.subStatus
-});
+  final String? id;
+  final String? firstName;
+  final String? lastName;
+  final String? primaryEmail;
+  final int? countryCode;
+  final String? primaryContact;
+  final String? organization;
+  final List<dynamic> websites;
+  final String? primaryAddress;
+  final dynamic profileImage;
+  final DateTime? dob;
+  final String? gstin;
+  final String? aboutClient;
+  final String? otherInformation;
+  final double? lat;
+  final double? lng;
+  final dynamic joinedAt;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final dynamic deletedAt;
+  final dynamic deleteRemark;
+  final dynamic zohoContactId;
+  final String? status;
+  final dynamic subStatus;
 
-  Customer.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    company_name = json['company'];
-    first_name = json['first_name'];
-    last_name = json['last_name'];
-    primary_email = json['primary_email'];
-    country_code = json['country_code'];
-    primary_contact = json['primary_contact'];
-    profile_image = json['profile_image'];
-    dob = json['dob'];
-    about_client = json['about_client'];
-    other_information = json['other_information'];
-    lat = json['lat'];
-    lng = json['lng'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    delete_at = json['delete_at'];
-    delete_remark = json['delete_remark'];
-    zoho_contact_id = json['zoho_contact_id'];
-    status = json['status'];
-    subStatus = json['subStatus'];
-  }
-
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
-    data['id'] = id;
-    data['company_name'] = company_name;
-    data['first_name'] = first_name;
-    data['last_name'] = last_name;
-    data['primary_email'] = primary_email;
-    data['country_code'] = country_code;
-    data['primary_contact'] = primary_contact;
-    data['dob'] = dob;
-    data['about_client'] = about_client;
-    data['other_information'] = other_information;
-    data['lat'] = lat;
-    data['lng'] = lng;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['delete_at'] = delete_at;
-    data['delete_remark'] = delete_remark;
-    data['zoho_contact_id'] = zoho_contact_id;
-    data['status'] = status;
-    data['subStatus'] = subStatus;
-    return data;
+  factory Customer.fromJson(Map<String, dynamic> json) {
+    return Customer(
+      id: json["id"],
+      firstName: json["first_name"],
+      lastName: json["last_name"],
+      primaryEmail: json["primary_email"],
+      countryCode: json["country_code"],
+      primaryContact: json["primary_contact"],
+      organization: json["organization"],
+      websites: json["websites"] == null ? [] : List<dynamic>.from(json["websites"].map((x) => x)),
+      primaryAddress: json["primary_address"],
+      profileImage: json["profile_image"],
+      dob: DateTime.tryParse(json["dob"] ?? ""),
+      gstin: json["gstin"],
+      aboutClient: json["about_client"],
+      otherInformation: json["other_information"],
+      lat: json["lat"] != null ? (json["lat"] as num).toDouble() : null,
+      lng: json["lng"] != null ? (json["lng"] as num).toDouble() : null,
+      joinedAt: json["joined_at"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+      deletedAt: json["deleted_at"],
+      deleteRemark: json["delete_remark"],
+      zohoContactId: json["zoho_contact_id"],
+      status: json["status"],
+      subStatus: json["subStatus"],
+    );
   }
 }
 
-class Members {
-  String? id;
-  String? first_name;
-  String? last_name;
-  String? email;
-  String? mobile;
-  String? address;
-  String? bio;
-  String? profile_pic;
-  String? password;
-  bool? status;
-  String? remember_token;
-  String? remember_token_time;
-  bool? isdefault;
-  String? created_at;
-  String? updated_at;
-  String? device_id;
-  bool? tracking;
-  String? crm_category;
-  bool? mobile_app;
-  bool? superSettings;
 
-  Members({
-    this.id,
-    this.first_name,
-    this.last_name,
-    this.email,
-    this.mobile,
-    this.address,
-    this.bio,
-    this.profile_pic,
-    this.password,
-    this.status,
-    this.remember_token,
-    this.remember_token_time,
-    this.isdefault,
-    this.created_at,
-    this.updated_at,
-    this.device_id,
-    this.tracking,
-    this.crm_category,
-    this.mobile_app,
-    this.superSettings
-});
+class Member {
+  Member({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.mobile,
+    required this.address,
+    required this.bio,
+    required this.profilePic,
+    required this.password,
+    required this.status,
+    required this.rememberToken,
+    required this.rememberTokenTime,
+    required this.memberDefault,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.deviceId,
+    required this.tracking,
+    required this.crmCategory,
+    required this.mobileApp,
+    required this.superSettings,
+  });
 
-  Members.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    first_name = json['first_name'];
-    last_name = json['last_name'];
-    email = json['email'];
-    mobile = json['mobile'];
-    address = json['address'];
-    bio = json['bio'];
-    profile_pic = json['profile_pic'];
-    password = json['password'];
-    status = json['status'];
-    remember_token = json['remember_token'];
-    remember_token_time = json['remember_token_time'];
-    isdefault = json['isdefault'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    device_id = json['device_id'];
-    tracking = json['tracking'];
-    crm_category = json['crm_category'];
-    mobile_app = json['mobile_app'];
-    superSettings = json['superSettings'];
+  final String? id;
+  final String? firstName;
+  final String? lastName;
+  final String? email;
+  final String? mobile;
+  final String? address;
+  final String? bio;
+  final dynamic profilePic;
+  final String? password;
+  final bool? status;
+  final dynamic rememberToken;
+  final dynamic rememberTokenTime;
+  final bool? memberDefault;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final String? deviceId;
+  final bool? tracking;
+  final String? crmCategory;
+  final bool? mobileApp;
+  final bool? superSettings;
+
+  factory Member.fromJson(Map<String, dynamic> json){
+    return Member(
+      id: json["id"],
+      firstName: json["first_name"],
+      lastName: json["last_name"],
+      email: json["email"],
+      mobile: json["mobile"],
+      address: json["address"],
+      bio: json["bio"],
+      profilePic: json["profile_pic"],
+      password: json["password"],
+      status: json["status"],
+      rememberToken: json["remember_token"],
+      rememberTokenTime: json["remember_token_time"],
+      memberDefault: json["default"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+      deviceId: json["device_id"],
+      tracking: json["tracking"],
+      crmCategory: json["crm_category"],
+      mobileApp: json["mobile_app"],
+      superSettings: json["superSettings"],
+    );
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
-    data['id'] = id;
-    data['first_name'] = first_name;
-    data['last_name'] = last_name;
-    data['email'] = email;
-    data['mobile'] = mobile;
-    data['address'] = address;
-    data['bio'] = bio;
-    data['profile_pic'] = profile_pic;
-    data['password'] = password;
-    data['status'] = status;
-    data['remember_token'] = remember_token;
-    data['remember_token_time'] = remember_token_time;
-    data['isdefault'] = isdefault;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['device_id'] = device_id;
-    data['tracking'] = tracking;
-    data['crm_category'] = crm_category;
-    data['mobile_app'] = mobile_app;
-    data['superSettings'] = superSettings;
-    return data;
-  }
 }
 
-class Tags {
-  String? id;
-  String? name;
-  String? created_at;
-  String? updated_at;
+class Tag {
+  Tag({
+    required this.id,
+    required this.name,
+    required this.status,
+    required this.createdAt,
+    required this.updatedAt,
+  });
 
-  Tags({
-    this.id,
-    this.name,
-    this.created_at,
-    this.updated_at
-});
+  final String? id;
+  final String? name;
+  final bool? status;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
-  Tags.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
+  factory Tag.fromJson(Map<String, dynamic> json){
+    return Tag(
+      id: json["id"],
+      name: json["name"],
+      status: json["status"],
+      createdAt: DateTime.tryParse(json["created_at"] ?? ""),
+      updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+    );
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
-    data['id'] = id;
-    data['name'] = name;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    return data;
-  }
 }
 
 class Meta {
-  int? currentPage;
-  int? itemsPerPage;
-  int? totalPages;
-  int? totalItems;
-  int? itemCount;
-
   Meta({
-    this.currentPage,
-    this.itemsPerPage,
-    this.totalPages,
-    this.totalItems,
-    this.itemCount
-});
+    required this.currentPage,
+    required this.itemsPerPage,
+    required this.totalPages,
+    required this.totalItems,
+    required this.itemCount,
+  });
 
-  Meta.fromJson(Map<String, dynamic> json) {
-    currentPage = json['currentPage'];
-    itemsPerPage = json['itemsPerPage'];
-    totalPages = json['totalPages'];
-    totalItems = json['totalItems'];
-    itemCount = json['itemCount'];
+  final int? currentPage;
+  final int? itemsPerPage;
+  final int? totalPages;
+  final int? totalItems;
+  final int? itemCount;
+
+  factory Meta.fromJson(Map<String, dynamic> json){
+    return Meta(
+      currentPage: json["currentPage"],
+      itemsPerPage: json["itemsPerPage"],
+      totalPages: json["totalPages"],
+      totalItems: json["totalItems"],
+      itemCount: json["itemCount"],
+    );
   }
 
-  Map<String, dynamic> toJson () {
-    final Map<String, dynamic> data = <String, dynamic> {};
-    data['currentPage'] = currentPage;
-    data['itemsPerPage'] = itemsPerPage;
-    data['totalPages'] = totalPages;
-    data['totalItems'] = totalItems;
-    data['itemCount'] = itemCount;
-    return data;
-  }
 }

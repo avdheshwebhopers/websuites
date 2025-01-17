@@ -12,6 +12,18 @@ class RoutesName {
   static const String bottomNavBar_screen = '/bottomNavBar_screen';
   static const String dropDown = '/dropDown';
 
+
+
+
+
+
+  // Analytics============================================================================
+  static const String sale_analytics = '/sale_analytics';
+  static const String lead_analytics = '/lead_analytics';
+  static const String customer_analytics = '/customer_analytics';
+  static const String ph_analytics = '/ph_analytics';
+
+
   //============================================================================
   //Lead Screen
 
@@ -24,6 +36,8 @@ class RoutesName {
   static const String trashLead_screen = '/trashLead_screen';
   static const String dashboard_screen = '/dashboard_screen';
   static const String leadMaster_screen = '/';
+  static const String  task_master_screen = '/task_master_screen';
+
 
 
   //============================================================================

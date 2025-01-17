@@ -11,7 +11,7 @@ class ProjectsMasterResponseModel {
     this.status,
     this.updated_at,
     this.created_at
-});
+  });
 
   ProjectsMasterResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
