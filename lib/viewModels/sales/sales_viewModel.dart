@@ -1,123 +1,48 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/data/models/requestModels/sales/sales_list_request_model.dart';
-import 'package:websuites/data/models/responseModels/sales/sales_response_model.dart';
+import 'package:websuites/data/models/requestModels/sales/SalesListRequestModel.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../utils/utils.dart';
+import '../../data/models/responseModels/sales/sales_response_model.dart';
 
 class SalesViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
-
-  // Observable for the sales response model with proper initialization
-  final Rx<SalesResponseModel> salesResponseModel = SalesResponseModel(
-    items: [],
-    meta: null,
-  ).obs;
-
-  // Observable for error state
-  RxString error = ''.obs;
-
-  // Pagination variables
-  RxInt currentPage = 1.obs;
-  final int itemsPerPage = 15;
-  RxBool hasMoreData = true.obs;
-
-  // Refresh control
-  Future<void> refreshSales(BuildContext context) async {
-    currentPage.value = 1;
-    hasMoreData.value = true;
-    await salesApi(context);
-  }
-
-  // Load more data
-  Future<void> loadMoreSales(BuildContext context) async {
-    if (!loading.value && hasMoreData.value) {
-      currentPage.value++;
-      await salesApi(context);
-    }
-  }
+  RxList<Items> salesList = <Items>[].obs;
 
   Future<void> salesApi(BuildContext context) async {
+    loading.value = true;
+    SalesListRequestModel salesResponseModel = SalesListRequestModel(limit: 15, page: 1);
+
     try {
-      if (currentPage.value == 1) {
-        loading.value = true;
-      }
+      SalesResponseModel response = await _api.salesApi(salesResponseModel.toJson());
 
-      error.value = '';
+      if (response.items != null && response.items!.isNotEmpty) {
+        salesList.value = response.items!;
 
-      final requestModel = SalesListRequestModel(
-        limit: itemsPerPage,
-        page: currentPage.value,
-      );
+        for (var data in response.items!) {
+          debugPrint('Sale List Name: ${data.name}');
+          debugPrint('Sale List Email: ${data.team?.email}');
+          debugPrint('Sale List Category: ${data.team?.crm_category}');
+          debugPrint('Sale List Sale Target: ${data.members?[0].sale_target}');
+        }
 
-      final response = await _api.salesApi(requestModel.toJson());
-
-      if (currentPage.value == 1) {
-        salesResponseModel.value = response;
+        // Utils.snackbarSuccess('Sales data fetched successfully');
+        print('Sales data fetched successfully');
+        loading.value = false;
       } else {
-        // Append new items to existing list for pagination
-        final updatedItems = [...salesResponseModel.value.items, ...response.items];
-        salesResponseModel.value = SalesResponseModel(
-          items: updatedItems,
-          meta: response.meta,
-        );
-      }
+        // Utils.snackbarFailed('No sales data found');
+        print('No sales data found');
 
-      // Update pagination status
-      hasMoreData.value = (response.meta?.currentPage ?? 0) < (response.meta?.totalPages ?? 0);
-      // Show success message only on initial load
-      if (currentPage.value == 1) {
-        Utils.snackbarSuccess('Sales data fetched successfully');
+        loading.value = false;
       }
-
-      // Log data in debug mode
+    } catch (error) {
       if (kDebugMode) {
-        _logSalesData(response);
+        print(error.toString());
       }
-    } catch (e, stackTrace) {
-      error.value = e.toString();
-      if (kDebugMode) {
-        print('Sales API Error: $e');
-        print('Stack trace: $stackTrace');
-      }
-      Utils.snackbarFailed('Failed to fetch sales data: ${e.toString()}');
-    } finally {
+      Utils.snackbarFailed('Error fetching sales data');
       loading.value = false;
     }
-  }
-
-  // Helper method to log sales data in debug mode
-  void _logSalesData(SalesResponseModel response) {
-    print('--- Sales Data Log ---');
-    print('Total Items: ${response.meta?.totalItems}');
-    print('Current Page: ${response.meta?.currentPage}');
-    print('Items per Page: ${response.meta?.itemsPerPage}');
-
-    for (var data in response.items) {
-      print('Sale Name: ${data.name}');
-      print('Team Email: ${data.team?.email}');
-      print('CRM Category: ${data.team?.crmCategory}');
-      if (data.members.isNotEmpty) {
-        print('First Member Sale Target: ${data.members[0].saleTarget}');
-      }
-      print('-------------------');
-    }
-  }
-
-  // Method to check if we should load more data
-  bool shouldLoadMore(ScrollController scrollController) {
-    return scrollController.position.pixels >=
-        scrollController.position.maxScrollExtent - 200 && // 200px before end
-        !loading.value &&
-        hasMoreData.value;
-  }
-
-  // Clean up method
-  @override
-  void onClose() {
-    // Clean up any controllers or streams if needed
-    super.onClose();
   }
 }

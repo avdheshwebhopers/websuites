@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:websuites/utils/appColors/app_colors.dart';
-import 'package:websuites/utils/components/buttons/common_button.dart';
-import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 import 'package:websuites/views/reports/taskreport/taskdetails/TaskDetailsScreen.dart';
 import '../../../Utils/utils.dart';
 import '../../../data/models/responseModels/reports/taskdetails/TaskDetailsResponseModel.dart';
 import '../../../utils/datetrim/DateTrim.dart';
 import '../../../utils/paginationdropdownwidget/PaginationDropdownWidget.dart';
-import '../../../viewModels/reports/task_report/report_task_view_model.dart';
-
+import '../../../viewModels/reports/TaskReportsListViewModels.dart';
 
 class TaskReportScreen extends StatefulWidget {
   const TaskReportScreen({super.key});
@@ -30,7 +27,7 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
     'n/a': '',
   };
   final TaskReportsListViewModel _viewModel =
-  Get.put(TaskReportsListViewModel());
+      Get.put(TaskReportsListViewModel());
   String selectedLimit = '15'; // Default limit
 
   late DateTime _startTime;
@@ -77,249 +74,240 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Obx(() {
-                if (_viewModel.loading.value) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (_viewModel.taskReportResponse.value.items == null ||
-                    _viewModel.taskReportResponse.value.items!.isEmpty) {
-                  return const Center(child: Text('No task reports found.'));
-                }
-
-                // Collect user data for the first card
-                List<String> userCategories = _viewModel.taskReportResponse.value.items!
-                    .map((item) => item.user ?? 'Unknown User')
-                    .toList();
-
-                return Column(
-                  children: [
-
-                    Row(
-       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        CommonButton(
-                          width: 80,
-                          height: 30,
-                          title: 'Filter',
-                          onPress: () {
-                            // Show the dialog when the button is pressed
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  backgroundColor: Colors.white, // Set the background color of the dialog
-                                  content: SingleChildScrollView(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              child: CreateNewLeadScreenCard(
-                                                hintText: 'ok',
-                                                categories: userCategories, // Assuming userCategories is defined in your context
-                                              ),
-                                            ),
-                                            const SizedBox(width: 10),
-                                            Expanded(
-                                              child: CreateNewLeadScreenCard(
-                                                hintText: 'ok',
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop(); // Close the dialog
-                                      },
-                                      child: const Text('Close'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ],
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
                     ),
-
-                       CreateNewLeadScreenCard(
-                            hintText: 'ok',
-                            categories: userCategories,
-                          ),
-
-                        SizedBox(width: 10,),
-                      CreateNewLeadScreenCard(
-
-                            hintText: 'ok',
-
-
-
-                    ),
-                    const SizedBox(height: 10), // Add some spacing between cards
-                    // Second SliverToBoxAdapter for ongoing task report
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Ongoing Task Report',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Ongoing Task Report',
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            const Divider(thickness: 1, color: Colors.grey),
-                            ListView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: _viewModel.taskReportResponse.value.items!.length,
-                              itemBuilder: (context, index) {
-                                final item = _viewModel.taskReportResponse.value.items![index];
-                                final createdAt = item.currentTask?.createdAt;
-                                _startTime = createdAt != null
-                                    ? DateTime.parse(createdAt)
-                                    : DateTime.now();
-                                _elapsedSeconds =
-                                    DateTime.now().difference(_startTime).inSeconds;
+                      const Divider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
+                      Obx(() {
+                        if (_viewModel.loading.value) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                        if (_viewModel.taskReportResponse.value.items == null ||
+                            _viewModel
+                                .taskReportResponse.value.items!.isEmpty) {
+                          return const Center(
+                              child: Text('No task reports found.'));
+                        }
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount:
+                              _viewModel.taskReportResponse.value.items!.length,
+                          itemBuilder: (context, index) {
+                            final item = _viewModel
+                                .taskReportResponse.value.items![index];
+                            final createdAt = item.currentTask?.createdAt;
+                            _startTime = createdAt != null
+                                ? DateTime.parse(createdAt)
+                                : DateTime.now();
+                            _elapsedSeconds =
+                                DateTime.now().difference(_startTime).inSeconds;
 
-                                _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-                                  setState(() {
-                                    _elapsedSeconds = DateTime.now().difference(_startTime).inSeconds;
-                                  });
-                                });
+                            _timer = Timer.periodic(const Duration(seconds: 1),
+                                (timer) {
+                              setState(() {
+                                _elapsedSeconds = DateTime.now()
+                                    .difference(_startTime)
+                                    .inSeconds;
+                              });
+                            });
 
-                                return Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              item.user ?? 'Unknown User',
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
+                                      Expanded(
+                                        child: Text(
+                                          item.user ?? 'Unknown User',
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                          Row(
-                                            children: [
-                                              const Icon(Icons.timer, size: 16, color: Colors.green),
-                                              const SizedBox(width: 5),
-                                              Text(
-                                                _formatElapsedTime(_elapsedSeconds),
-                                                style: const TextStyle(
-                                                    color: Colors.green,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                        ),
                                       ),
-                                      const SizedBox(height: 5),
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Expanded(
-                                            child: Text(
-                                              item.email ?? 'No email',
-                                              style: const TextStyle(color: Colors.grey),
-                                            ),
-                                          ),
+                                          const Icon(Icons.timer,
+                                              size: 16, color: Colors.green),
+                                          const SizedBox(width: 5),
                                           Text(
-                                            item.currentTask?.createdAt != null
-                                                ? formatDateWithTime(item.currentTask!.createdAt)
-                                                : 'N/A',
-                                            style: const TextStyle(color: Colors.blue),
+                                            _formatElapsedTime(_elapsedSeconds),
+                                            style: const TextStyle(
+                                                color: Colors.green,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16),
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 10),
-                                      InkWell(
-                                        onTap: () async {
-                                          String taskId = item.currentTask?.task?.id ?? 'N/A';
-                                          var taskDetails;
+                                    ],
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          item.email ?? 'No email',
+                                          style: const TextStyle(
+                                              color: Colors.grey),
+                                        ),
+                                      ),
+                                      Text(
+                                        item.currentTask?.createdAt != null
+                                            ? formatDateWithTime(
+                                                item.currentTask!.createdAt)
+                                            : 'N/A',
+                                        style:
+                                            const TextStyle(color: Colors.blue),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  InkWell(
+                                    onTap: () async {
+                                      String taskId =
+                                          item.currentTask?.task?.id ?? 'N/A';
+                                      var taskDetails;
 
-                                          try {
-                                            taskDetails = await _viewModel.fetchTaskDetails(taskId);
-                                          } catch (error) {
-                                            print("Error fetching task details: $error");
-                                          }
+                                      try {
+                                        taskDetails = await _viewModel
+                                            .fetchTaskDetails(taskId);
+                                      } catch (error) {
+                                        print(
+                                            "Error fetching task details: $error");
+                                      }
 
-                                          // Prepare the task details or use default values if not available
-                                          String assignedTo = 'N/A'; // Default value
-                                          String duration = 'N/A';
-                                          String startOn = 'N/A';
-                                          String endOn = 'N/A';
-                                          String taskType = ' N/A';
-                                          String status = 'N/A';
-                                          String deadline = 'N/A';
-                                          String priority = item.currentTask?.task?.priority ?? 'N/A';
-                                          String createdBy = 'N/A';
-                                          String projectName = 'N/A';
-                                          String projectStartDate = 'N/A';
-                                          String projectEndDate = 'N/A';
-                                          String projectId = 'N/A';
+                                      // Prepare the task details or use default values if not available
+                                      String assignedTo =
+                                          'N/A'; // Default value
+                                      String duration = 'N/A';
+                                      String startOn = 'N/A';
+                                      String endOn = 'N/A';
+                                      String taskType = 'N/A';
+                                      String status = 'N/A';
+                                      String deadline = 'N/A';
+                                      String priority =
+                                          item.currentTask?.task?.priority ??
+                                              'N/A';
+                                      String createdBy = 'N/A';
+                                      String projectName = 'N/A';
+                                      String projectStartDate = 'N/A';
+                                      String projectEndDate = 'N/A';
+                                      String projectId = 'N/A';
 
-                                          if (taskDetails != null) {
-                                            // Prepare assignedTo string if taskDetails is not null
-                                            if (taskDetails.taskInfo.assigned.isNotEmpty) {
-                                              Assigned assignedUser  = taskDetails.taskInfo.assigned[0];
-                                              assignedTo = '${assignedUser .assignedTo.firstName} ${assignedUser .assignedTo.lastName}';
-                                            }
+                                      if (taskDetails != null) {
+                                        // Prepare assignedTo string if taskDetails is not null
+                                        if (taskDetails
+                                            .taskInfo.assigned.isNotEmpty) {
+                                          Assigned assignedUser =
+                                              taskDetails.taskInfo.assigned[0];
+                                          assignedTo =
+                                              '${assignedUser.assignedTo.firstName} ${assignedUser.assignedTo.lastName}';
+                                        }
 
-                                            // Update values with taskDetails if available
-                                            duration = formatHoursMinutes(taskDetails.hours.toDouble(), taskDetails.minutes.toDouble());
-                                            startOn = taskDetails.taskInfo.timeTracker.where((tracker) => tracker.action == 'start').isNotEmpty
-                                                ? formatDateWithTime(taskDetails.taskInfo.timeTracker.lastWhere((tracker) => tracker.action == 'start').dateTime)
+                                        // Update values with taskDetails if available
+                                        duration = formatHoursMinutes(
+                                            taskDetails.hours.toDouble(),
+                                            taskDetails.minutes.toDouble());
+                                        startOn = taskDetails
+                                                .taskInfo.timeTracker
+                                                .where((tracker) =>
+                                                    tracker.action == 'start')
+                                                .isNotEmpty
+                                            ? formatDateWithTime(taskDetails
+                                                .taskInfo.timeTracker
+                                                .lastWhere((tracker) =>
+                                                    tracker.action == 'start')
+                                                .dateTime)
+                                            : 'N/A';
+                                        endOn = taskDetails.taskInfo.timeTracker
+                                                .where((tracker) =>
+                                                    tracker.action == 'end')
+                                                .isNotEmpty
+                                            ? formatDateWithTime(taskDetails
+                                                .taskInfo.timeTracker
+                                                .lastWhere((tracker) =>
+                                                    tracker.action == 'end')
+                                                .dateTime)
+                                            : 'N/A';
+                                        projectId =
+                                            taskDetails.taskInfo.project.id ??
+                                                'N/A';
+                                        taskType = taskDetails
+                                                .taskInfo.taskType?.name ??
+                                            'N/A';
+                                        status =
+                                            taskDetails.taskInfo.status?.name ??
+                                                'N/A';
+                                        deadline =
+                                            taskDetails.taskInfo.deadline !=
+                                                    null
+                                                ? formatShortDate(taskDetails
+                                                    .taskInfo.deadline
+                                                    .toString())
                                                 : 'N/A';
-                                            endOn = taskDetails.taskInfo.timeTracker.where((tracker) => tracker.action == 'end').isNotEmpty
-                                                ? formatDateWithTime(taskDetails.taskInfo.timeTracker.lastWhere((tracker) => tracker.action == 'end').dateTime)
-                                                : 'N/A';
-                                            projectId = taskDetails.taskInfo.project.id ?? 'N/A';
-                                            taskType = taskDetails.taskInfo.taskType?.name ?? 'N/A';
-                                            status = taskDetails.taskInfo.status?.name ?? 'N/A';
-                                            deadline = taskDetails.taskInfo.deadline != null
-                                                ? formatShortDate(taskDetails.taskInfo.deadline.toString())
-                                                : 'N/A';
-                                            createdBy = '${taskDetails.taskInfo.createdBy.firstName} ${taskDetails.taskInfo.createdBy.lastName}';
-                                            projectName = taskDetails.taskInfo.project.projectName ?? '';
-                                            projectStartDate = taskDetails.taskInfo.project.startDate != null
-                                                ? formatShortDate(taskDetails.taskInfo.project.startDate.toString())
-                                                : 'N/A';
-                                            projectEndDate = taskDetails.taskInfo.project.deadline != null
-                                                ? formatShortDate(taskDetails.taskInfo.project.deadline.toString())
-                                                : 'N/A';
-                                          } else {
-                                            // Handle the case where task details are not fetched
-                                            Utils.snackbarFailed('Failed to fetch task details.');
-                                          }
+                                        createdBy =
+                                            '${taskDetails.taskInfo.createdBy.firstName} ${taskDetails.taskInfo.createdBy.lastName}';
+                                        projectName = taskDetails
+                                                .taskInfo.project.projectName ??
+                                            '';
+                                        projectStartDate = taskDetails.taskInfo
+                                                    .project.startDate !=
+                                                null
+                                            ? formatShortDate(taskDetails
+                                                .taskInfo.project.startDate
+                                                .toString())
+                                            : 'N/A';
+                                        projectEndDate = taskDetails.taskInfo
+                                                    .project.deadline !=
+                                                null
+                                            ? formatShortDate(taskDetails
+                                                .taskInfo.project.deadline
+                                                .toString())
+                                            : 'N/A';
+                                      } else {
+                                        // Handle the case where task details are not fetched
+                                        Utils.snackbarFailed(
+                                            'Failed to fetch task details.');
+                                      }
 
-                                          // Navigate to TaskDetailsScreen regardless of success or failure
-                                          Get.to(() => TaskDetailsScreen(taskItem: {
-                                            'subject': item.currentTask?.task?.subject ?? 'No task subject',
+                                      // Navigate to TaskDetailsScreen regardless of success or failure
+                                      Get.to(() => TaskDetailsScreen(taskItem: {
+                                            'subject': item.currentTask?.task
+                                                    ?.subject ??
+                                                'No task subject',
                                             'duration': duration,
                                             'startOn': startOn,
                                             'endOn': endOn,
@@ -330,47 +318,90 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                             'assignedTo': assignedTo,
                                             'createdBy': createdBy,
                                             'projectName': projectName,
-                                            'projectStartDate': projectStartDate,
+                                            'projectStartDate':
+                                                projectStartDate,
                                             'projectEndDate': projectEndDate,
                                             'projectId': projectId,
+                                            // Add this line
                                           }));
-                                        },
-                                        child: Text(
-                                          item.currentTask?.task?.subject ?? 'No task subject',
-                                          style: const TextStyle(fontWeight: FontWeight.bold),
-                                        ),
+
+                                      // Optionally, you can log time tracker details for debugging
+                                      if (taskDetails != null) {
+                                        var startTrackers = taskDetails
+                                            .taskInfo.timeTracker
+                                            .where((tracker) =>
+                                                tracker.action == 'start')
+                                            .toList();
+
+                                        if (startTrackers.isEmpty) {
+                                          print(
+                                              "No 'start' actions found in timeTracker.");
+                                        } else {
+                                          print(
+                                              "Last start action: ${startTrackers.last.dateTime}");
+                                        }
+                                      }
+                                    },
+                                    child: Text(
+                                      item.currentTask?.task?.subject ??
+                                          'No task subject',
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      const Icon(Icons.access_time,
+                                          size: 16, color: Colors.orange),
+                                      const SizedBox(width: 5),
+                                      Text(
+                                        item.currentTask?.task
+                                                    ?.estimatedMinutes !=
+                                                null
+                                            ? '${item.currentTask!.task!.estimatedMinutes} min'
+                                            : 'No time estimate',
+                                        style: const TextStyle(
+                                            color: Colors.orange),
                                       ),
-                                      const SizedBox(height: 10),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          const Icon(Icons.access_time, size: 16, color: Colors.orange),
-                                          const SizedBox(width: 5),
-                                          Text(
-                                            item.currentTask?.task?.estimatedMinutes != null
-                                                ? '${item.currentTask!.task!.estimatedMinutes} min'
-                                                : 'No time estimate',
-                                            style: const TextStyle(color: Colors.orange),
-                                          ),
-                                        ],
-                                      ),
-                                      const Divider(thickness: 1, color: Colors.grey),
                                     ],
                                   ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
+                                  const Divider(
+                                    thickness: 1,
+                                    color: Colors.grey,
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      }),
+                      PaginationDropdownWidget(
+                        maxNumber: 100,
+                        initialDropdownValue: selectedLimit,
+                        onDropdownChanged: (newValue) {
+                          setState(() {
+                            selectedLimit = newValue;
+                            _fetchTaskReports();
+                          });
+                        },
+                        onPageChanged: (newPage) {
+                          print('Selected page: $newPage');
+                        },
+                        selectedPageColor: Colors.white,
+                        unselectedPageColor: Colors.transparent,
+                        selectedPageTextColor: Colors.black,
+                        unselectedPageTextColor: Colors.black,
+                        dropdownBorderColor: Colors.grey,
+                        dropdownBorderRadius: BorderRadius.circular(8),
                       ),
-                    ),
-                  ],
-                );
-              }),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
-
-
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(15.0),
@@ -420,7 +451,7 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                               child: Text('No task reports found.'));
                         }
                         final item =
-                        _viewModel.taskReportResponse.value.items![0];
+                            _viewModel.taskReportResponse.value.items![0];
 
                         return ListView.builder(
                             shrinkWrap: true,
@@ -453,7 +484,7 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                   // Row containing name and totalTime
                                   Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         item.user ?? 'Unknown User',
@@ -472,11 +503,11 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                           const SizedBox(width: 6.0),
                                           Text(
                                             item.currentTask?.task?.startDate !=
-                                                null
+                                                    null
                                                 ? formatTimeDifference(item
-                                                .currentTask!
-                                                .task!
-                                                .startDate!)
+                                                    .currentTask!
+                                                    .task!
+                                                    .startDate!)
                                                 : 'No task subject',
                                             // You can replace this with actual data if available
                                             style: const TextStyle(
@@ -513,8 +544,8 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                       const SizedBox(width: 6.0),
                                       Text(
                                         item.currentTask?.task
-                                            ?.estimatedMinutes !=
-                                            null
+                                                    ?.estimatedMinutes !=
+                                                null
                                             ? '${(item.currentTask!.task!.estimatedMinutes! / 60).floor()} hours'
                                             : 'N/A',
                                         style: const TextStyle(
@@ -545,7 +576,7 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                         // Add horizontal padding to adjust the content
                                         child: Text(
                                           item.taskList != null &&
-                                              item.taskList!.isNotEmpty
+                                                  item.taskList!.isNotEmpty
                                               ? '${item.taskList!.length}' // Displays the count of tasks in taskList
                                               : '0',
                                           // If no tasks are available, display a default message
@@ -566,7 +597,7 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                   ),
                                   Text(
                                     item.taskList != null &&
-                                        item.taskList!.isNotEmpty
+                                            item.taskList!.isNotEmpty
                                         ? '${item.taskList!.length}' // Displays the count of tasks in taskList
                                         : '0',
                                     // If no tasks are available, display a default message
@@ -576,7 +607,7 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                         fontWeight: FontWeight.bold,
                                         color: AllColors
                                             .darkRed // Use the specified color
-                                    ),
+                                        ),
                                   ),
 
                                   Row(
@@ -593,11 +624,11 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                         children: [
                                           Text(
                                             item.currentTask?.task?.startDate !=
-                                                null
+                                                    null
                                                 ? formatDateWithDay(item
-                                                .currentTask!
-                                                .task!
-                                                .startDate!)
+                                                    .currentTask!
+                                                    .task!
+                                                    .startDate!)
                                                 : 'No task subject',
                                           ),
                                         ],
@@ -621,23 +652,23 @@ class _TaskReportScreenState extends State<TaskReportScreen> {
                                       ),
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
                                           // Get the image based on the task's priority
                                           Image.asset(
                                             _priorityImages[item
-                                                .currentTask?.task?.priority
-                                                ?.toLowerCase()] ??
+                                                    .currentTask?.task?.priority
+                                                    ?.toLowerCase()] ??
                                                 _priorityImages[
-                                                'N/A'] ?? // Fallback to 'Low' if still not found
+                                                    'N/A'] ?? // Fallback to 'Low' if still not found
                                                 'assets/svg/error.svg',
                                             height: 10,
                                             width: 20,
                                           ),
                                           Text(
                                             (item.currentTask?.task?.priority ??
-                                                'N/A')
-                                                .isNotEmpty
+                                                        'N/A')
+                                                    .isNotEmpty
                                                 ? '${(item.currentTask?.task?.priority ?? 'N/A')[0].toUpperCase()}${(item.currentTask?.task?.priority ?? 'N/A').substring(1)}'
                                                 : 'N/A',
                                             style: const TextStyle(

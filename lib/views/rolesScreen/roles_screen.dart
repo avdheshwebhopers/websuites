@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:websuites/Responsive/Custom_Drawer.dart';
 import 'package:websuites/data/models/responseModels/roles/roles_response_model.dart';
 import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
-import 'package:websuites/views/leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
-import 'package:websuites/views/rolesScreen/role_details/RoleDetailsScreen.dart';
-import '../../data/models/requestModels/role/add_role/UserAddRoleRequestModel.dart';
-
-import '../../data/models/responseModels/customers/orderProducts/services/order_product_services.dart';
-import '../../data/models/responseModels/roles/roles_response_model.dart';
-import '../../data/models/responseModels/roles/roles_response_model.dart';
-import '../../data/models/responseModels/userList/list/add_role/UserAddRoleResponseModel.dart';
-import '../../utils/button/CustomButton.dart';
-import '../../utils/fontfamily/FontFamily.dart';
-
+import 'package:websuites/views/rolesScreen/widgets/rolesScreenCard/roles_screen_card.dart';
+import '../../viewModels/roles/roles_viewModel.dart';
 import '../../viewModels/saveToken/save_token.dart';
+import '../../data/models/controller.dart';
 import '../../data/models/responseModels/login/login_response_model.dart';
+import '../../resources/iconStrings/icon_strings.dart';
 import '../../utils/appColors/app_colors.dart';
+import '../../utils/components/widgets/appBar/custom_appBar.dart';
+import '../../utils/components/widgets/navBar/custom_navBar.dart';
+import '../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
+import '../../utils/responsive/bodies/Responsive.dart';
 
-import '../../viewModels/userlistViewModel/roles/add_role/UserAddRoleViewModel.dart';
-import '../../viewModels/userlistViewModel/roles/roles_viewModel.dart';
-import '../usersScreen/list/UserUpdateRoleScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../viewModels/roles/roles_viewModel.dart';
+import '../../data/models/controller.dart';
+import '../../data/models/responseModels/login/login_response_model.dart';
+import '../../resources/iconStrings/icon_strings.dart';
+import '../../utils/appColors/app_colors.dart';
+import '../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
+
+import '../homeScreen/home_screen.dart';
+import 'widgets/rolesScreenCard/roles_screen_card.dart';
 
 class RolesScreen extends StatefulWidget {
   const RolesScreen({Key? key}) : super(key: key);
@@ -30,12 +35,9 @@ class RolesScreen extends StatefulWidget {
 }
 
 class _RolesScreenState extends State<RolesScreen> {
+  final ScreenController _screenController = Get.put(ScreenController());
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-
   final RolesViewModel rolesViewModel = Get.put(RolesViewModel());
-
-  final UserAddRoleViewModel userAddRoleViewModel =
-      Get.put(UserAddRoleViewModel());
 
   String userName = '';
   String userEmail = '';
@@ -44,7 +46,7 @@ class _RolesScreenState extends State<RolesScreen> {
   void initState() {
     super.initState();
     fetchUserData();
-    rolesViewModel.fetchRoles(context);
+    rolesViewModel.rolesListApi(context); // Fetch roles when the screen initializes
   }
 
   Future<void> fetchUserData() async {
@@ -62,63 +64,15 @@ class _RolesScreenState extends State<RolesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
-      // drawer: CustomDrawer(
-      //   userName: '$userName',
-      //   phoneNumber: '$userEmail',
-      //   version: '1.0.12',
-      // ),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Role',
-              style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20,
-                  fontFamily: FontFamily.sfPro),
-            ),
-            const Spacer(),
-            CustomButton(
-              width: 120,
-              height: 22,
-              borderRadius: 54,
-              onPressed: () {
-                UserAddRoleResponseModel addRole = UserAddRoleResponseModel(
-                  id: null,
-                  name: '',
-                  description: '',
-                  isDefault: true,
-                );
-
-                _showDialog(
-                    addRole); // Open the dialog to add/edit a department
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.add, color: AllColors.whiteColor, size: 18),
-                  const SizedBox(width: 5),
-                  const Text(
-                    'Add New Role',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: FontFamily.sfPro,
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+      floatingActionButton: CustomFloatingButton(
+        onPressed: () {},
+        imageIcon: IconStrings.navSearch3,
+        backgroundColor: AllColors.mediumPurple,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Obx(() {
         if (rolesViewModel.loading.value) {
           return const Center(child: CircularProgressIndicator());
@@ -127,268 +81,179 @@ class _RolesScreenState extends State<RolesScreen> {
           return const Center(child: Text('No roles available'));
         }
         return SafeArea(
-            child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: rolesViewModel.roles.map((role) {
-                List<String> firstLetters = role.users
-                    .map((user) => user.firstName?.substring(0, 1) ?? 'N')
-                    .toList();
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                children: rolesViewModel.roles.map((role) {
+                  return GestureDetector(
+                    onTap: () {
+                      // Navigate to RoleDetailsScreen with role data
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RoleDetailsScreen(role: role),
+                        ),
+                      );
+                    },
+                    child: RolesScreenCard(
+                      title: role.name ?? 'No Title',
+                      description: role.description ?? 'No Description',
+                      members: role.users.length.toString(),
+                      firstLetters: role.users.map((user) {
+                        return user.firstName?.substring(0, 1) ?? 'N';
+                      }).toList(),
+                      count: '+${role.users.length}',
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+}
 
-                return GestureDetector(
-                  onTap: () {
-                    // Navigate to RoleDetailsScreen with role data
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RoleDetailsScreen(role: role),
-                      ),
-                    );
-                  },
-                  child: Container(
+
+
+class RoleDetailsScreen extends StatelessWidget {
+  final RolesResponseModel role;
+
+  const RoleDetailsScreen({Key? key, required this.role}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isTabletOrDesktop = MediaQuery.of(context).size.width >= 500;
+    final controller = Get.put(HomeScreenController());
+
+    return Scaffold(
+        drawer: !isTabletOrDesktop
+            ? Drawer(
+          child: Obx(() => CustomDrawer(
+            selectedIndex: controller.selectedIndex.value,
+            onItemSelected: (index) => controller.onDrawerItemTapped(index, context),
+            isCollapsed: controller.isCollapsed.value,
+            onCollapseToggle: controller.toggleDrawerCollapse,
+            isTabletOrDesktop: isTabletOrDesktop,
+          )),
+        )
+            : null,
+      appBar: AppBar(
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(role.name ?? 'Role Details'),
+          ],
+        ),
+        backgroundColor: Colors.white,
+      ),
+      backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 15),
+            child:
+            Column(
+              children: [
+                // Display details for each user in the role
+                ...role.users.asMap().entries.map((entry) {
+                  final int index = entry.key; // Index of the current user
+                  final user = entry.value;
+
+                  // Define your custom color logic here based on index
+                  Color backgroundColor;
+                  Color textColor;
+
+                  if (index % 4 == 0) {
+                    backgroundColor = AllColors.lightRed;
+                    textColor = AllColors.vividRed;
+                  } else if (index % 4 == 1) {
+                    backgroundColor = AllColors.lighterPurple;
+                    textColor = AllColors.mediumPurple;
+                  } else if (index % 4 == 2) {
+                    backgroundColor = AllColors.lightBlue;
+                    textColor = AllColors.vividBlue;
+                  } else {
+                    backgroundColor = AllColors.lightYellow;
+                    textColor = AllColors.darkYellow;
+                  }
+
+                  return Container(
                     margin: const EdgeInsets.only(bottom: 10),
-                    height: screenHeight / 6,
-                    // Adjust height based on screen size
-                    width: screenWidth * 0.95,
-                    // Use a percentage of the screen width
                     decoration: BoxDecoration(
-                      color: AllColors.whiteColor,
-                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
                       boxShadow: [
                         BoxShadow(
-                          color: AllColors.blackColor.withOpacity(0.06),
+                          color: Colors.grey.withOpacity(0.2),
                           spreadRadius: 2,
                           blurRadius: 4,
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  role.name ?? 'No Title',
-                                  style: TextStyle(
-                                    color: AllColors.blackColor,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ),
-                              const Spacer(),
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UserUpdateRolescreen(
-                                        role: role, // You can pass RolesResponseModel directly now
-                                      ),
-                                    ),
-                                  );
-                                },
-                                icon: Image.asset(
-                                  'assets/icons/edit.png',
-                                  height: 17,
-                                  width: 16,
-                                ),
-                              )
-                            ],
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        // Increased CircleAvatar size
+                        Container(
+                          height: screenHeight / 16, // Increased height for bigger circle
+                          width: screenWidth / 9, // Increased width for bigger circle
+                          decoration: BoxDecoration(
+                            color: backgroundColor,
+                            shape: BoxShape.circle,
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                'DESCRIPTION - ',
-                                style: TextStyle(
-                                  color: AllColors.blackColor,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 12,
-                                ),
+                          child: Center(
+                            child: Text(
+                              user.firstName?.substring(0, 1).toUpperCase() ?? 'N',
+                              style: TextStyle(
+                                color: textColor,
+                                fontSize: 16, // Increased font size to match the bigger circle
+                                fontWeight: FontWeight.w400,
                               ),
-                              Expanded(
-                                child: Text(
-                                  role.description ?? 'No Description',
-                                  style: TextStyle(
-                                    color: AllColors.grey,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                          const Divider(thickness: 0.4),
-                          Row(
-                            children: [
-                              Text(
-                                'MEMBERS - ',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 12,
-                                  color: AllColors.blackColor,
-                                ),
+                        ),
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "${user.firstName ?? ''} ${user.lastName ?? ''}".trim().isNotEmpty
+                                  ? "${user.firstName ?? ''} ${user.lastName ?? ''}".trim()
+                                  : "No Name",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
-                              Expanded(
-                                child: Text(
-                                  role.users.length.toString(),
-                                  style: TextStyle(
-                                    color: AllColors.grey,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              role.name ?? 'No Role Name',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
                               ),
-                              Container(
-                                height: screenHeight / 30,
-                                width: screenWidth / 3,
-                                child: Stack(
-                                  children: [
-                                    for (int i = 0;
-                                        i < firstLetters.take(4).length;
-                                        i++)
-                                      Positioned(
-                                        right: (i * 26.0),
-                                        child: Container(
-                                          height: screenHeight / 30,
-                                          width: screenWidth / 12,
-                                          decoration: BoxDecoration(
-                                            color: i % 4 == 0
-                                                ? AllColors.lightRed
-                                                : i % 4 == 1
-                                                    ? AllColors.lighterPurple
-                                                    : i % 4 == 2
-                                                        ? AllColors.lightBlue
-                                                        : AllColors.lightYellow,
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              firstLetters[i],
-                                              style: TextStyle(
-                                                  color: i % 4 == 0
-                                                      ? AllColors.vividRed
-                                                      : i % 4 == 1
-                                                          ? AllColors
-                                                              .mediumPurple
-                                                          : i % 4 == 2
-                                                              ? AllColors
-                                                                  .vividBlue
-                                                              : AllColors
-                                                                  .darkYellow,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  // Navigate to members list if needed
-                                },
-                                child: Text(
-                                  '+${role.users.length}',
-                                  style: TextStyle(
-                                    color: AllColors.grey,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                );
-              }).toList(),
-            ),
-          ),
-        ));
-      }),
-    );
-  }
-
-  // Show dialog method
-  void _showDialog(UserAddRoleResponseModel addRole) {
-    // Fixed method signature
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController descriptionController = TextEditingController();
-
-    // Pre-fill controllers if editing existing role
-    if (addRole.id != null) {
-      nameController.text = addRole.name ?? '';
-      descriptionController.text = addRole.description ?? '';
-    }
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: Colors.white,
-          title: Center(
-            child: Text(
-              'Add New Role',
-              style: TextStyle(
-                  fontFamily: FontFamily.sfPro,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 22),
-            ),
-          ),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text('Role Name'),
-              SizedBox(height: 8),
-              CreateNewLeadScreenCard(
-                hintText: 'Enter role name',
-                controller: nameController,
-              ),
-              SizedBox(height: 8),
-              Text('Role Description'),
-              SizedBox(height: 8),
-              CreateNewLeadScreenCard(
-                hintText: 'Enter role description',
-                controller: descriptionController,
-              ),
-              SizedBox(height: 15),
-              CustomButton(
-                width: double.infinity,
-                height: 35,
-                borderRadius: 8,
-                onPressed: () async {
-                  UserAddRoleRequestModel newRole = UserAddRoleRequestModel(
-                    name: nameController.text,
-                    description: descriptionController.text,
                   );
-
-                  // Use the correct ViewModel method for roles
-                  await userAddRoleViewModel.addRole(context, newRole);
-
-                  // Refresh the roles list
-                  await rolesViewModel.fetchRoles(context);
-
-                  Navigator.pop(context);
-                },
-                child:
-                    Text('Save', style: TextStyle(color: AllColors.whiteColor)),
-              ),
-              SizedBox(height: 8),
-            ],
+                }).toList(),
+              ],
+            )
           ),
-        );
-      },
+        )
+
+
     );
   }
 }
+
+
+
