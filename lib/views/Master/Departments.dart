@@ -11,7 +11,7 @@
 // import '../../viewModels/leadScreens/leadMasters/controller.dart';
 //
 //
-// class MasterDepartmentScreen extends StatefulWidget {
+// class MasterDepartmentScreen extends StatefulWidg
 //   const MasterDepartmentScreen({super.key});
 //
 //   @override

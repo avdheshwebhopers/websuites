@@ -21,6 +21,10 @@ import '../Dashboard/DashboardScreen.dart';
 import '../Master/Division.dart';
 import '../Master/ProposalScreen.dart';
 import '../Master/cities/SettingCitiesScreen.dart';
+import '../analytics/customer/CustomerAnalyticsScreen.dart';
+import '../analytics/lead/LeadAnalyticsScreen.dart';
+import '../analytics/ph/PHAnalyticsScreen.dart';
+import '../analytics/sale/SaleAnalyticsScreen.dart';
 import '../customerScreens/companiesScreen/all_companies_screen.dart';
 import '../customerScreens/customerList/list_screen.dart';
 import '../customerScreens/customerServices/services_screen.dart';
@@ -41,6 +45,7 @@ import '../products/productlist/ProductsScreen.dart';
 import '../project/ProjectListScreen.dart';
 import '../project/master/ProjectMastetScreen.dart';
 import '../reports/analytics/AnalyticsTaskReportScreen.dart';
+import '../salesTargetScreen/projection/SaleProjectionScreen.dart';
 import '../salesTargetScreen/sales_target_screen.dart';
 import '../task/master/MasterScreen.dart';
 import '../task/tasklist/TaskList.dart';
@@ -75,11 +80,13 @@ class HomeScreenController extends GetxController {
     OrderProjectionScreen(),
     OrderMasterListScreen(),
     SalesTargetScreen(),
+    SaleProjectionScreen(),
     RolesScreen(),
     AnalyticsTaskReportScreen(),
     TaskReportScreen(),
     EmployeeReportsScreen(),
     TaskListScreen(),
+
     TaskMasterScreen(),
     ProjectListScreen(),
     ProjectMasterScreen(),
@@ -94,8 +101,11 @@ class HomeScreenController extends GetxController {
     UserActivityScreen(),
     MasterDivisionScreen(),
     MasterProposalScreen(),
-    SettingCitiesScreen()
-
+    SettingCitiesScreen(),
+    SaleAnalyticsScreen(),
+    LeadAnalyticsScreen(),
+    CustomerAnalyticsScreen(),
+    PHAnalyticsScreen(),
 
 
 

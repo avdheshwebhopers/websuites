@@ -32,8 +32,13 @@ class _SettingCitiesScreenState extends State<SettingCitiesScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('Cities',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600)
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Cities',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600)
+            ),
+          ],
         ),
       ),
       body: Obx(() {
@@ -73,6 +78,7 @@ class _SettingCitiesScreenState extends State<SettingCitiesScreen> {
                     Row(
                       children: [
                         Expanded(
+                          flex: 9,
                           child: Text(
                             city.name ?? 'Unknown City',
                             style: TextStyle(

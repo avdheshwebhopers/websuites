@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:websuites/data/models/requestModels/sales/SalesListRequestModel.dart';
 import 'package:websuites/data/models/responseModels/customers/list/customers_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/customers/payment_reminder/customer_payment_reminder_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/leadMasters/status/lead_masters_status_response_model.dart';
@@ -149,6 +148,7 @@ import '../models/responseModels/master/customizeLabel/customize_type/customize_
 import '../models/responseModels/master/departments/master_departments_response_model.dart';
 import '../models/responseModels/master/departments/update/UserDepartmentUpdateResponseModel.dart';
 import '../models/responseModels/master/divisions/master_divisions_response_model.dart';
+import '../models/responseModels/master/divisions/update/UpdateDivisionListResponseModel.dart';
 import '../models/responseModels/master/proposals/master_proposals_resposne_model.dart';
 import '../models/responseModels/order/list/company_list/order_company_list_response_model.dart';
 import '../models/responseModels/order/list/order_list_response_model.dart';
@@ -180,6 +180,18 @@ import '../models/responseModels/reports/taskdetails/task_update/task_update_res
 import '../models/responseModels/roles/edit_role/RoleListEditResponseModel.dart';
 import '../models/responseModels/roles/edit_role/check_box_permission/RoleCheckEditResponseModel.dart';
 import '../models/responseModels/roles/roles_response_model.dart';
+import '../models/responseModels/sales/add_target/sales_add_target_response_model.dart';
+import '../models/responseModels/sales/projection/SalesProjectionsListResponseModel.dart';
+import '../models/responseModels/sales/projection/update/SalesUpdateProjectionListResponseModel.dart';
+import '../models/responseModels/sales/projection/update/SalesUpdateProjectionResModel.dart';
+import '../models/responseModels/sales/sales_detail_target/add_product_incentive/add_product_incentive_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/delete/delete_breakdown_incentive_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/delete/delete_product_incentive_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/delete/delete_product_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/incentive_breakdown/incentive_breakdown_add_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/sale_add_product/sales_add_product_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/sales_detail_target_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/update/update_product_incentive_response_model.dart';
 import '../models/responseModels/sales/sales_response_model.dart';
 import '../models/responseModels/tasks/list/new_board/task_list_new_board_response_model.dart';
 import '../models/responseModels/tasks/list/project_search/task_list_project_search_response_model.dart';
@@ -2486,6 +2498,192 @@ class Repositories {
     }
   }
 
+
+
+  //Sales---------
+  //Add Target
+  Future<SaleAddTargetResponseModel> saleAddTarget(dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.saleAddTarget, data);
+      print("Sale Add Target Response value $response ");
+      return response = SaleAddTargetResponseModel.fromJson(response);
+    } catch (e) {
+      print("Sale Add Target Error$e");
+      rethrow;
+    }
+  }
+
+  Future<List<SalesUpdateProjectionListResponseModel>> salesProjectionUpdateApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.projectionUpdateList);
+      print("Response Master Department$response");
+      if (response is List) {
+        return SalesUpdateProjectionListResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+  Future<SalesUpdateProjectionResModel> salesUpdateProjection(
+      String userId, Map<String, dynamic> data) async {
+    try {
+      String url = AppUrls.salesUptProjection(userId);
+
+      // Ensure 'amount' is an integer and 'projection_date' is in the correct format.
+      final processedData = {
+        'projection_date': data['projection_date'], // Keep as is
+        'amount': data['amount'],  // Ensure amount is an integer
+      };
+
+      dynamic response = await _apiService.patchApi(url, processedData);
+
+      if (response == null) {
+        throw Exception('Failed to update projection: Response was null');
+      }
+
+      return SalesUpdateProjectionResModel.fromJson(response);
+    } catch (e) {
+      print("Error in updating sales projection: $e");
+      rethrow;
+    }
+  }
+
+
+
+  Future<List<SalesProjectionsListResponseModel>> salesProjectionApi(Map<String, dynamic> data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.salesProjection, data);
+      // Assuming response is a List<dynamic>
+      return (response as List).map((item) => SalesProjectionsListResponseModel.fromJson(item)).toList();
+    } catch (e) {
+      print("Sale Error: $e");
+      rethrow;
+    }
+  }
+
+
+  // Add Product incentive -----------
+  Future<AddProductIncentiveResponseModel> addProductIncentive(
+      dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.addProductIncentive, data);
+      print("Add Product Incentive Update Response $response");
+      return response = AddProductIncentiveResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+
+//delete product---------
+  Future<DeleteProductResponseModel> deleteProduct() async {
+    try {
+      dynamic response = await _apiService.deleteApi(AppUrls.deleteProduct);
+      print("Delete Product Response $response");
+      return response = DeleteProductResponseModel.fromJson(response);
+    } catch (e) {
+      print("Delete Product  Response Error $e");
+      rethrow;
+    }
+  }
+
+
+  //delete deleteBreakDownIncentive------------
+  Future<SalesDeleteBreakDownIncentiveResponseModel>
+  deleteBreakDownIncentive() async {
+    try {
+      dynamic response =
+      await _apiService.deleteApi(AppUrls.deleteBreakDownIncentive);
+      print("delete BreakDown Incentive  Response $response");
+      return response =
+          SalesDeleteBreakDownIncentiveResponseModel.fromJson(response);
+    } catch (e) {
+      print("Delete Incentive Breakdown Response Error $e");
+      rethrow;
+    }
+  }
+
+
+
+//delete productIncentive--------------
+  Future<DeleteProductIncentiveResponseModel> deleteProductIncentive() async {
+    try {
+      dynamic response =
+      await _apiService.deleteApi(AppUrls.deleteProductIncentive);
+      print("delete Product Incentive  Response $response");
+      return response = DeleteProductIncentiveResponseModel.fromJson(response);
+    } catch (e) {
+      print("Delete Incentive  Product Response Error $e");
+      rethrow;
+    }
+  }
+
+  //Incentive BreakDown-------------
+
+  Future<IncentiveBreakdownAddResponseModel> incentiveBreakdown(
+      dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(
+          AppUrls.incentiveBreakDownUpdate, data);
+      print("Incentive BreakDown Update ResponseModel $response");
+      return response = IncentiveBreakdownAddResponseModel.fromJson(response);
+    } catch (e) {
+      print("Incentive Breakdown Response Error $e");
+      rethrow;
+    }
+  }
+
+
+  //Sale Add Product
+
+  Future<SalesAddProductResponseModel> salesAddProduct(dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.saleAddProduct, data);
+      print("Sales Add Product  Response $response");
+      return response = SalesAddProductResponseModel.fromJson(response);
+    } catch (e) {
+      print("Sales Add Product  Response Error $e");
+      rethrow;
+    }
+  }
+
+  //Update Product Incentive ---------------
+  Future<UpdateProductIncentiveResponseModel> updateProductIncentive(
+      dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.patchApi(AppUrls.updateProductIncentive, data);
+      print("Update Product Incentive  Response $response");
+      return response = UpdateProductIncentiveResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update Product Incentive   Response Error $e");
+      rethrow;
+    }
+  }
+
+  //Target Detail--------
+  Future<TargetDetailResponseModel> targetDetail() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.targetDetail);
+      print("Target Detail Response$response ");
+      return response = TargetDetailResponseModel.fromJson(response);
+    } catch (e) {
+      print("Target Detail Response  Error$e");
+      rethrow;
+    }
+  }
+
+
   //============================================================================
   // ROLES
 
@@ -3186,6 +3384,30 @@ class Repositories {
     }
   }
 
+
+
+  Future<List<UpdateDivisionListResponseModel>> updateDivisionList(String id) async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.updateDivisionList(id));
+      // print("Response master Proposals: $response");
+      // Handle single object response
+      if (response is Map<String, dynamic>) {
+        // Create a single model and return it in a list
+        return [UpdateDivisionListResponseModel.fromJson(response)];
+      }
+      // Handle list response (in case API changes in future)
+      else if (response is List) {
+        return UpdateDivisionListResponseModel.fromJsonList(response);
+      }
+      // Handle invalid response
+      else {
+        throw Exception("Invalid response format from the API");
+      }
+    } catch (e) {
+      // print("Error in updateDivisionList: $e");
+      rethrow;
+    }
+  }
 
 
 

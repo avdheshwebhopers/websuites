@@ -149,12 +149,15 @@ class _UsersDepartmentsScreenState extends State<UsersDepartmentsScreen> {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        department.name ?? 'N/A',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: FontFamily.sfPro,
-                            fontWeight: FontWeight.w700),
+                      Expanded(
+                        flex: 9,
+                        child: Text(
+                          department.name ?? 'N/A',
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontFamily: FontFamily.sfPro,
+                              fontWeight: FontWeight.w700),
+                        ),
                       ),
                       const Spacer(),
                       Text(

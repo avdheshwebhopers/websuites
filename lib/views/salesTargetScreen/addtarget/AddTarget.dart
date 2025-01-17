@@ -95,27 +95,27 @@ class _AddTargetDialogState extends State<AddTargetDialog> {
               SizedBox(height: 20),
               Text("Sale's Head member"),
               SizedBox(height: 5),
-              Obx(() {
-                if (_assignedLeadToController.loading.value) {
-                  return const CircularProgressIndicator();
-                } else {
-                  return CreateNewLeadScreenCard(
-                    hintText: _assignedLeadToController.selectedLeadName.value.isEmpty
-                        ? Strings.select
-                        : _assignedLeadToController.selectedLeadName.value,
-                    categories: _assignedLeadToController.namesOnlyRxList,  // Use names only list
-                    onCategoryChanged: (selectedCategory) {
-                      // Handle selection for only first and last name
-                      final names = selectedCategory.split(' '); // Split by space
-                      if (names.length >= 2) {
-                        final firstName = names[0];
-                        final lastName = names[1];
-                        _assignedLeadToController.selectedLeadName.value = '$firstName $lastName';
-                      }
-                    },
-                  );
-                }
-              }),
+              // Obx(() {
+              //   if (_assignedLeadToController.loading.value) {
+              //     return const CircularProgressIndicator();
+              //   } else {
+              //     return CreateNewLeadScreenCard(
+              //       hintText: _assignedLeadToController.selectedLeadName.value.isEmpty
+              //           ? Strings.select
+              //           : _assignedLeadToController.selectedLeadName.value,
+              //       categories: _assignedLeadToController.namesOnlyRxList,  // Use names only list
+              //       onCategoryChanged: (selectedCategory) {
+              //         // Handle selection for only first and last name
+              //         final names = selectedCategory.split(' '); // Split by space
+              //         if (names.length >= 2) {
+              //           final firstName = names[0];
+              //           final lastName = names[1];
+              //           _assignedLeadToController.selectedLeadName.value = '$firstName $lastName';
+              //         }
+              //       },
+              //     );
+              //   }
+              // }),
 
               SizedBox(height: 15),
               Text("Name"),
@@ -135,31 +135,31 @@ class _AddTargetDialogState extends State<AddTargetDialog> {
               SizedBox(height: 15),
               Text("Start Date"),
               SizedBox(height: 5),
-              CreateNewLeadScreenCard(
-                hintText: 'Select start date',
-                controller: _startDateController,
-                isDateField: true, // Mark as a date field
-                isLoading: false, // Set to true if loading
-                prefixIcon: Icon(Icons.date_range,color: Colors.grey,size: 19,),
-                suffixIcon: Icon(Icons.clear, color: Colors.grey, size: 19),
-                onSuffixPressed: () {
-                  setState(() {
-                    _startDateController.clear(); // Clear the date
-                  });
-                },
-              ),
+              // CreateNewLeadScreenCard(
+              //   hintText: 'Select start date',
+              //   controller: _startDateController,
+              //   isDateField: true, // Mark as a date field
+              //   isLoading: false, // Set to true if loading
+              //   prefixIcon: Icon(Icons.date_range,color: Colors.grey,size: 19,),
+              //   suffixIcon: Icon(Icons.clear, color: Colors.grey, size: 19),
+              //   onSuffixPressed: () {
+              //     setState(() {
+              //       _startDateController.clear(); // Clear the date
+              //     });
+              //   },
+              // ),
               SizedBox(height: 15),
               Text("End Date"),
               SizedBox(height: 5),
-              CreateNewLeadScreenCard(
-                hintText: 'Select end date',
-                controller: _endDateController,
-                isDateField: true, // Mark as a date field
-                prefixIcon: Icon(Icons.date_range,color: Colors.grey,size: 19,),
-
-                isLoading: false, // Set to true if loading
-
-              ),
+              // CreateNewLeadScreenCard(
+              //   hintText: 'Select end date',
+              //   controller: _endDateController,
+              //   isDateField: true, // Mark as a date field
+              //   prefixIcon: Icon(Icons.date_range,color: Colors.grey,size: 19,),
+              //
+              //   isLoading: false, // Set to true if loading
+              //
+              // ),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

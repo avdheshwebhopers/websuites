@@ -528,6 +528,29 @@ class AppUrls {
 
   // SALES
   static const String salesApi = '${baseurl}v1/api/target-incentives/list';
+  static const String saleAddTarget = "${baseurl}v1/api/target-incentives";
+
+  static const String projectionUpdateList = '${baseurl}v1/api/projection/2c9e464b-73bd-4f0a-8084-2fdf2479f740t';
+
+
+  static String salesUptProjection(String userId) {
+    return '${baseurl}v1//api/projection/$userId';
+  }
+
+  static const String deleteProduct = "${baseurl}v1/api/target-incentives/remove-product-require/a99c6556-fc3e-4fa4-ae91-05d14fe79434";
+
+
+  static const String addProductIncentive = "${baseurl}v1/api/target-incentives/add-product-incentive";
+  static const String salesProjection = '${baseurl}v1//api/projection/list';
+
+  static const String deleteProductIncentive = "${baseurl}v1/api/target-incentives/remove-product-incentive/251025a2-a037-499f-ac85-166fe4c29713";
+
+  static const String incentiveBreakDownUpdate = "${baseurl}/v1api/target-incentives/add-incentive-breakdown";
+
+  static const String saleAddProduct = "${baseurl}v1/api/target-incentives/add-product-require";
+  static const String deleteBreakDownIncentive = "${baseurl}v1/api/target-incentives/remove-incentive-breakdown/f9cb6b4c-af4e-4002-adc1-5b16bb877d14";
+  static const String updateProductIncentive = "${baseurl}v1/api/target-incentives/edit-product-incentive/6c2a00db-27dc-4b8d-9d51-afbf12a29b7e";
+  static const String targetDetail = "${baseurl}v1/api/target-incentives/06e5fbfe-936a-45a6-82e2-5adc59628692";
 
   // ROLES
   static const String rolesApi = '${baseurl}v1/api/roles';
@@ -621,6 +644,14 @@ class AppUrls {
   // DEPARTMENTS
   static const String masterDepartments =
       '${baseurl}v1/api/departments/search?q=';
+
+
+  static const String masterAddDivision = '${baseurl}v1/api/divisions';
+
+  static String updateDivisionList(String id) {
+    return '${baseurl}api/divisions/$id';
+  }
+
 
   // DIVISIONS
   static const String masterDivisions = '${baseurl}v1/api/divisions?q=';

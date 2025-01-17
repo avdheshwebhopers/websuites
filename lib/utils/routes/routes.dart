@@ -23,6 +23,10 @@ import 'package:websuites/views/salesTargetScreen/sales_target_screen.dart';
 import 'package:websuites/views/splashScreen/splash_screen.dart';
 import 'package:websuites/views/task/master/MasterScreen.dart';
 
+import '../../views/analytics/customer/CustomerAnalyticsScreen.dart';
+import '../../views/analytics/lead/LeadAnalyticsScreen.dart';
+import '../../views/analytics/ph/PHAnalyticsScreen.dart';
+import '../../views/analytics/sale/SaleAnalyticsScreen.dart';
 import '../../views/customerScreens/customerList/list_screen.dart';
 import '../../views/customerScreens/customerServices/services_screen.dart';
 import '../../views/forgotPasswordScreen/forgot_password_screen.dart';
@@ -77,11 +81,20 @@ class AllRoutes {
     GetPage(name: RoutesName.my_teamLead_screen, page: () => SalesTargetScreen()),
     GetPage(name: RoutesName.my_teamLead_screen, page: () => RolesScreen()),
     GetPage(name: RoutesName.my_teamLead_screen, page: () => TaskReportScreen()),
-    GetPage(name: RoutesName.my_teamLead_screen, page: () => TaskReportScreen()),
     GetPage(name: RoutesName.my_teamLead_screen, page: () => TaskListScreen()),
-    GetPage(name: RoutesName.my_teamLead_screen, page: () => TaskMasterScreen()),
+    GetPage(name: RoutesName.task_master_screen , page: () => TaskMasterScreen()),
     GetPage(name: RoutesName.my_teamLead_screen, page: () => ProjectListScreen()),
-    GetPage(name: RoutesName.my_teamLead_screen, page: () =>ProductsListScreen())
+    GetPage(name: RoutesName.my_teamLead_screen, page: () =>ProductsListScreen()),
+
+    GetPage(name: RoutesName.sale_analytics, page: () =>SaleAnalyticsScreen()),
+
+    GetPage(name: RoutesName.lead_analytics, page: () =>LeadAnalyticsScreen()),
+
+    GetPage(name: RoutesName.customer_analytics, page: () =>CustomerAnalyticsScreen()),
+
+    GetPage(name: RoutesName.ph_analytics, page: () =>PHAnalyticsScreen())
+
+
 
 
 
