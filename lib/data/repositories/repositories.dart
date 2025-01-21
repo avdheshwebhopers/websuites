@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:websuites/data/models/requestModels/sales/SalesListRequestModel.dart';
 import 'package:websuites/data/models/responseModels/customers/list/customers_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/customers/payment_reminder/customer_payment_reminder_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/leadMasters/status/lead_masters_status_response_model.dart';
@@ -10,10 +9,14 @@ import 'package:websuites/data/models/responseModels/leads/trashLeads/leadTypes/
 import 'package:websuites/data/models/responseModels/order/activities/OrderActivitiesResponseModel.dart';
 
 import '../../resources/appUrls/app_urls.dart';
+import '../models/requestModels/master/dashboard/save_changes/SettingDashSaveChangesRequestModel.dart';
+import '../models/requestModels/project_reminder_setting/ProjectReminderSettingRequestModel.dart';
 import '../models/requestModels/report/project_overview/task/ProjectOverViewTaskListRequestModel.dart';
 import '../models/responseModels/HRM/attendance/hrm_attendance_response_model.dart';
+import '../models/responseModels/analytics/sale_analytics/DailyAnalyticsResponseModel.dart';
 import '../models/responseModels/campaign/list/campaign_list_response_model.dart';
 import '../models/responseModels/campaign/mailLogs/mail_logs_response_model.dart';
+import 'package:http/http.dart' as http;
 
 import '../models/responseModels/createLeadResponseModel/createLeadResponseModel.dart';
 import '../models/responseModels/customers/activationList/customer_activation_list_response_model.dart';
@@ -87,7 +90,10 @@ import '../models/responseModels/dashboard/db_lead_source_response_model.dart';
 import '../models/responseModels/dashboard/db_response_model.dart';
 import '../models/responseModels/dashboard/db_transactions_response_model.dart';
 import '../models/responseModels/forgotPassword/forgot_password_response_model.dart';
-import '../models/responseModels/hrm/leave/hrm_leave_response_model.dart';
+import '../models/responseModels/hrm/leave/plans/HrmLeavePlanResponseModel.dart';
+import '../models/responseModels/hrm/leave/type/add/AddLeaveTypeResponseModel.dart';
+import '../models/responseModels/hrm/leave/type/hrm_leave_type_response_model.dart';
+import '../models/responseModels/hrm/leave/type/update/UpdateLeaveTypeRsponseModel.dart';
 import '../models/responseModels/inventory/refillStocks/inventory_refill_stocks_response_model.dart';
 import '../models/responseModels/inventory/request/inventory_request_response_model.dart';
 import '../models/responseModels/inventory/stock/inventory_stock_response_model.dart';
@@ -139,24 +145,34 @@ import '../models/responseModels/leads/setting/roles/roles.dart';
 import '../models/responseModels/leads/setting/setting.dart';
 import '../models/responseModels/leads/setting/setting_userprofile/setting_user_profile.dart';
 import '../models/responseModels/login/login_response_model.dart';
-import '../models/responseModels/master/cityStateAndCountry/cities/master_cities_response_model.dart';
+import '../models/responseModels/master/cities/master_cities_response_model.dart';
 import '../models/responseModels/master/cityStateAndCountry/country/master_country_response_model.dart';
 import '../models/responseModels/master/customizeLabel/customize/customize_response_model.dart';
 import '../models/responseModels/master/customizeLabel/customize_lead_source/customize_lead_source.dart';
 import '../models/responseModels/master/customizeLabel/customize_type/customize_type.dart';
+import '../models/responseModels/master/dashboard/SettingDashboardResponseModel.dart';
+import '../models/responseModels/master/dashboard/save_changes/SettingDashSaveChangesResponseModel.dart';
 import '../models/responseModels/master/departments/master_departments_response_model.dart';
+import '../models/responseModels/master/departments/update/UserDepartmentUpdateResponseModel.dart';
 import '../models/responseModels/master/divisions/master_divisions_response_model.dart';
+import '../models/responseModels/master/divisions/update/UpdateDivisionListResponseModel.dart';
 import '../models/responseModels/master/proposals/master_proposals_resposne_model.dart';
 import '../models/responseModels/order/list/company_list/order_company_list_response_model.dart';
 import '../models/responseModels/order/list/order_list_response_model.dart';
 import '../models/responseModels/order/master/order_master_response_model.dart';
 import '../models/responseModels/order/payments/order_payments_response_model.dart';
 import '../models/responseModels/order/proformaList/order_proforma_list_response_model.dart';
+import '../models/responseModels/products/brand/add_brand/add_product_brand_response_model.dart';
 import '../models/responseModels/products/brand/product_brand_response_model.dart';
 import '../models/responseModels/products/category/product_category_response_model.dart';
-import '../models/responseModels/products/gstList/product_gstList_response_model.dart';
+import '../models/responseModels/products/gst_list/product_add_gst_response_model.dart';
+import '../models/responseModels/products/gst_list/product_gstList_response_model.dart';
+import '../models/responseModels/products/list/add_product/add_product_response_model.dart';
 import '../models/responseModels/products/list/products_list_response_model.dart';
+import '../models/responseModels/products/list/updat_product/update_product_response_model.dart';
+import '../models/responseModels/products/master/master_add_product_response_model.dart';
 import '../models/responseModels/products/master/product_master_response_model.dart';
+import '../models/responseModels/projects/list/details/ProjectDetailsResponseModels.dart';
 import '../models/responseModels/projects/list/projects_list_response_model.dart';
 import '../models/responseModels/projects/master/project_master_response_model.dart';
 import '../models/responseModels/reports/TaskReportsResponseModels.dart';
@@ -168,12 +184,33 @@ import '../models/responseModels/reports/taskdetails/project_overview/task/Proje
 import '../models/responseModels/reports/taskdetails/start_stop/StartStopResponseModels.dart';
 import '../models/responseModels/reports/taskdetails/task_tracker_event/task_tracker_event_response_model.dart';
 import '../models/responseModels/reports/taskdetails/task_update/task_update_response_model.dart';
+import '../models/responseModels/roles/edit_role/RoleListEditResponseModel.dart';
+import '../models/responseModels/roles/edit_role/check_box_permission/RoleCheckEditResponseModel.dart';
 import '../models/responseModels/roles/roles_response_model.dart';
+import '../models/responseModels/sales/add_target/sales_add_target_response_model.dart';
+import '../models/responseModels/sales/projection/SalesProjectionsListResponseModel.dart';
+import '../models/responseModels/sales/projection/update/SalesUpdateProjectionListResponseModel.dart';
+import '../models/responseModels/sales/projection/update/SalesUpdateProjectionResModel.dart';
+import '../models/responseModels/sales/sales_detail_target/add_product_incentive/add_product_incentive_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/delete/delete_breakdown_incentive_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/delete/delete_product_incentive_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/delete/delete_product_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/incentive_breakdown/incentive_breakdown_add_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/sale_add_product/sales_add_product_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/sales_detail_target_response_model.dart';
+import '../models/responseModels/sales/sales_detail_target/update/update_product_incentive_response_model.dart';
 import '../models/responseModels/sales/sales_response_model.dart';
+import '../models/responseModels/tasks/list/new_board/task_list_new_board_response_model.dart';
+import '../models/responseModels/tasks/list/project_search/task_list_project_search_response_model.dart';
 import '../models/responseModels/tasks/list/tasks_list_response_model.dart';
-import '../models/responseModels/tasks/master/task_master_response_model.dart';
-import '../models/responseModels/tasks/report/task_report_response_model.dart';
-import '../models/responseModels/userList/user_list_response_model.dart';
+import '../models/responseModels/tasks/master/task_master_list/task_master_response_model.dart';
+import '../models/responseModels/userList/activity/UserActivitiesResponseModel.dart';
+import '../models/responseModels/userList/add/UserDepartmentAddResponsetModel.dart';
+import '../models/responseModels/userList/list/UserListResponseModels.dart';
+import '../models/responseModels/userList/list/add_role/UserAddRoleResponseModel.dart';
+import '../models/responseModels/userList/list/update/RolesListUpdateResponseModel.dart';
+import '../models/responseModels/userList/status/UserStatusResponseModel.dart';
+import '../models/responseModels/userList/user_update/UserUpdateResponseModel.dart';
 import '../models/responseModels/users/users_response_model.dart';
 import '../network/network_api_services.dart';
 
@@ -181,6 +218,9 @@ import '../network/network_api_services.dart';
 class Repositories {
 
   final _apiService = NetworkApiServices();
+  static const String userDepartmentUpdate =
+      'https://dev.whsuites.com/api/departments'; // Define the constant here
+  static const String  baseurl= 'https://dev.whsuites.com/api';
 
   //============================================================================
   // LOGIN SCREEN API
@@ -231,11 +271,11 @@ class Repositories {
   }
 
 
-  Future<UserListResponseModel> userListApi() async {
+  Future<UsersListResponseModel> userListApi() async {
     try {
       dynamic response = await _apiService.postApiResponse(
           AppUrls.userListApi, null);
-      return response = UserListResponseModel.fromJson(response);
+      return response = UsersListResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
@@ -320,6 +360,69 @@ class Repositories {
   //     rethrow; // Propagate the error up the chain
   //   }
   // }
+
+
+
+
+  Future<List<DailyAnalyticsResponseModel>> dailyAnalyticsListApi(dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.dailyAnalyticsList, data);
+      print("daily AnalyticsList  $response");
+
+      // Assuming response is a List of JSON objects
+      if (response is List) {
+        // Convert each item in the list to DailyAnalyticsResponseModel
+        return response
+            .map((item) => DailyAnalyticsResponseModel.fromJson(item))
+            .toList();
+      } else {
+        throw Exception("Invalid response format");
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // dashboard
+
+
+  //Setting (Master Dashboard)
+
+
+  Future<List<SettingDashboardListResponseModel>> masterSettingListApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.masterDashboardList);
+      if (response is List) {
+        return response
+            .map((item) => SettingDashboardListResponseModel.fromJson(item))
+            .toList();
+      } else {
+        return [];
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<SettingDashSaveChangesMessageResponseModel> settingSaveChangesApi(
+      SettingDashSaveChangesRequestModel requestModel) async {
+    try {
+      dynamic response = await _apiService.patchApi(
+        AppUrls.masterDashboardSaveChanges,
+        requestModel.toJson(),
+      );
+
+      if (response is Map<String, dynamic>) {
+        return SettingDashSaveChangesMessageResponseModel.fromJson(response);
+      } else {
+        throw Exception('Invalid response format');
+      }
+    } catch (e) {
+      print("Error in settingSaveChangesApi: $e");
+      rethrow;
+    }
+  }
 
 
   Future<List<LeadProductCategoryList>> createLeadProductCategory() async {
@@ -2387,7 +2490,8 @@ class Repositories {
 // ATTENDANCE
   Future<HrmAttendanceResponseModel> attendanceApi() async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.hrmAttendance, null);
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.hrmAttendance, null);
       return response = HrmAttendanceResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
@@ -2395,14 +2499,72 @@ class Repositories {
   }
 
   //LEAVE
-  Future<HrmLeaveResponseModel> leaveApi() async {
+  Future<List<HrmLeaveTypeResponseModel>> leaveApi() async {
     try {
-      dynamic response = await _apiService.getApi(AppUrls.hrmLeave);
-      return response = HrmLeaveResponseModel.fromJson(response);
+      dynamic response = await _apiService.getApi(AppUrls.hrmLeaveType);
+      List<HrmLeaveTypeResponseModel> leaveDataList = HrmLeaveTypeResponseModel.fromJsonList(response); // Parse the response as a list
+      return leaveDataList;
     } catch (e) {
       rethrow;
     }
   }
+
+  // LEAVE TYPE
+
+  Future<List<HrmLeavePlanResponseModel>> leavePlanApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.hrmLeavePlan);
+      List<HrmLeavePlanResponseModel> leaveDataList = HrmLeavePlanResponseModel.fromJsonList(response); // Parse the response as a list
+      return leaveDataList;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // Add LEAVE TYPE
+
+
+  Future<AddLeaveTypeResponseModel> addLeaveTypeApi(
+      Map<String, dynamic> data) async {
+    try {
+      final response = await _apiService.postApiResponse(
+        AppUrls.addLeaveType,
+        data,
+      );
+      return AddLeaveTypeResponseModel.fromJson(
+          response as Map<String, dynamic>);
+    } catch (e) {
+      print("Error fetching : $e");
+      rethrow;
+    }
+  }
+
+
+  // Update LEAVE TYPE
+
+  Future<UpdateLeaveTypeResponseModel> updateLeaveTypeApi(
+      String id, Map<String, dynamic> data) async {
+    try {
+      final response = await _apiService.patchApi(
+        AppUrls.updateLeaveType(id), // Construct the URL with the ID
+        data,
+      );
+
+      // Check if the response is valid
+      if (response is Map<String, dynamic>) {
+        return UpdateLeaveTypeResponseModel.fromJson(response);
+      } else {
+        throw Exception('Invalid response format');
+      }
+    } catch (e) {
+      print("Error updating leave type: $e");
+
+      rethrow;
+    }
+  }
+
+
+
 
   //CAMPAIGN
   // LIST
@@ -2465,6 +2627,192 @@ class Repositories {
     }
   }
 
+
+
+  //Sales---------
+  //Add Target
+  Future<SaleAddTargetResponseModel> saleAddTarget(dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.saleAddTarget, data);
+      print("Sale Add Target Response value $response ");
+      return response = SaleAddTargetResponseModel.fromJson(response);
+    } catch (e) {
+      print("Sale Add Target Error$e");
+      rethrow;
+    }
+  }
+
+  Future<List<SalesUpdateProjectionListResponseModel>> salesProjectionUpdateApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.projectionUpdateList);
+      print("Response Master Department$response");
+      if (response is List) {
+        return SalesUpdateProjectionListResponseModel.fromJsonList(response);
+      } else {
+        throw Exception("Expected a list from the API but got something else.");
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+  Future<SalesUpdateProjectionResModel> salesUpdateProjection(
+      String userId, Map<String, dynamic> data) async {
+    try {
+      String url = AppUrls.salesUptProjection(userId);
+
+      // Ensure 'amount' is an integer and 'projection_date' is in the correct format.
+      final processedData = {
+        'projection_date': data['projection_date'], // Keep as is
+        'amount': data['amount'],  // Ensure amount is an integer
+      };
+
+      dynamic response = await _apiService.patchApi(url, processedData);
+
+      if (response == null) {
+        throw Exception('Failed to update projection: Response was null');
+      }
+
+      return SalesUpdateProjectionResModel.fromJson(response);
+    } catch (e) {
+      print("Error in updating sales projection: $e");
+      rethrow;
+    }
+  }
+
+
+
+  Future<List<SalesProjectionsListResponseModel>> salesProjectionApi(Map<String, dynamic> data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.salesProjection, data);
+      // Assuming response is a List<dynamic>
+      return (response as List).map((item) => SalesProjectionsListResponseModel.fromJson(item)).toList();
+    } catch (e) {
+      print("Sale Error: $e");
+      rethrow;
+    }
+  }
+
+
+  // Add Product incentive -----------
+  Future<AddProductIncentiveResponseModel> addProductIncentive(
+      dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.addProductIncentive, data);
+      print("Add Product Incentive Update Response $response");
+      return response = AddProductIncentiveResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+
+//delete product---------
+  Future<DeleteProductResponseModel> deleteProduct() async {
+    try {
+      dynamic response = await _apiService.deleteApi(AppUrls.deleteProduct);
+      print("Delete Product Response $response");
+      return response = DeleteProductResponseModel.fromJson(response);
+    } catch (e) {
+      print("Delete Product  Response Error $e");
+      rethrow;
+    }
+  }
+
+
+  //delete deleteBreakDownIncentive------------
+  Future<SalesDeleteBreakDownIncentiveResponseModel>
+  deleteBreakDownIncentive() async {
+    try {
+      dynamic response =
+      await _apiService.deleteApi(AppUrls.deleteBreakDownIncentive);
+      print("delete BreakDown Incentive  Response $response");
+      return response =
+          SalesDeleteBreakDownIncentiveResponseModel.fromJson(response);
+    } catch (e) {
+      print("Delete Incentive Breakdown Response Error $e");
+      rethrow;
+    }
+  }
+
+
+
+//delete productIncentive--------------
+  Future<DeleteProductIncentiveResponseModel> deleteProductIncentive() async {
+    try {
+      dynamic response =
+      await _apiService.deleteApi(AppUrls.deleteProductIncentive);
+      print("delete Product Incentive  Response $response");
+      return response = DeleteProductIncentiveResponseModel.fromJson(response);
+    } catch (e) {
+      print("Delete Incentive  Product Response Error $e");
+      rethrow;
+    }
+  }
+
+  //Incentive BreakDown-------------
+
+  Future<IncentiveBreakdownAddResponseModel> incentiveBreakdown(
+      dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(
+          AppUrls.incentiveBreakDownUpdate, data);
+      print("Incentive BreakDown Update ResponseModel $response");
+      return response = IncentiveBreakdownAddResponseModel.fromJson(response);
+    } catch (e) {
+      print("Incentive Breakdown Response Error $e");
+      rethrow;
+    }
+  }
+
+
+  //Sale Add Product
+
+  Future<SalesAddProductResponseModel> salesAddProduct(dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.saleAddProduct, data);
+      print("Sales Add Product  Response $response");
+      return response = SalesAddProductResponseModel.fromJson(response);
+    } catch (e) {
+      print("Sales Add Product  Response Error $e");
+      rethrow;
+    }
+  }
+
+  //Update Product Incentive ---------------
+  Future<UpdateProductIncentiveResponseModel> updateProductIncentive(
+      dynamic data) async {
+    try {
+      dynamic response =
+      await _apiService.patchApi(AppUrls.updateProductIncentive, data);
+      print("Update Product Incentive  Response $response");
+      return response = UpdateProductIncentiveResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update Product Incentive   Response Error $e");
+      rethrow;
+    }
+  }
+
+  //Target Detail--------
+  Future<TargetDetailResponseModel> targetDetail() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.targetDetail);
+      print("Target Detail Response$response ");
+      return response = TargetDetailResponseModel.fromJson(response);
+    } catch (e) {
+      print("Target Detail Response  Error$e");
+      rethrow;
+    }
+  }
+
+
   //============================================================================
   // ROLES
 
@@ -2490,6 +2838,167 @@ class Repositories {
     }
   }
 
+
+  Future<UserActivitiesResponseModel> usersActivitiesApi() async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.usersActivitiesApi, null);
+      return response = UserActivitiesResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+  Future<UserDepartmentUpdateResponseModel> updateUserDepartmentApi(
+      Map<String, dynamic> data, String? departmentId) async {
+    try {
+      final String url = '$userDepartmentUpdate/$departmentId';
+      final response = await _apiService.patchApi(url, data);
+      print("Update Department Response: $response");
+      return UserDepartmentUpdateResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update Department Response Error: $e");
+      rethrow;
+    }
+  }
+
+  Future<UserDepartmentAddResponseModel> usersAddDepartmentApi(
+      Map<String, dynamic> data) async {
+    try {
+      final response = await _apiService.postApiResponse(
+        AppUrls.usersAddDepartment,
+        data,
+      );
+      return UserDepartmentAddResponseModel.fromJson(
+          response as Map<String, dynamic>);
+    } catch (e) {
+      print("Error fetching departments: $e");
+      rethrow;
+    }
+  }
+
+
+
+  Future<UserAddRoleResponseModel> usersAddRoleApi(
+      Map<String, dynamic> data) async {
+    try {
+      final response = await _apiService.postApiResponse(
+        AppUrls.rolesApi,
+        data,
+      );
+
+      return UserAddRoleResponseModel.fromJson(
+          response as Map<String, dynamic>);
+    } catch (e) {
+      print("Error fetching departments: $e");
+      rethrow;
+    }
+  }
+
+  Future<RoleListEditResponseModel> roleListEditApi(
+      String roleId, Map<String, dynamic> data) async {
+    try {
+      String url = AppUrls.roleEdit(roleId);
+      dynamic response = await _apiService.patchApi(url, data);
+
+      if (response != null) {
+        return RoleListEditResponseModel.fromJson(response);
+      } else {
+        throw Exception("Received null response from the API");
+      }
+    } catch (e) {
+      print("Update Role Response Error: $e");
+      rethrow;
+    }
+  }
+
+
+
+  Future<List<RolesListUpdateResponseModel>> roleUpdateListApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.roleUpdateList);
+      if (response is List) {
+        return response.map((item) {
+          return RolesListUpdateResponseModel.fromJson(item);
+        }).toList();
+      } else {
+        throw Exception('Expected a list but got ${response.runtimeType}');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+  Future<UserStatusResponseModel> userStatusUpdate(
+      String userId, Map<String, dynamic> data) async {
+    try {
+      String url = AppUrls.usersStatusApi(userId);
+      dynamic response = await _apiService.patchApi(url, data);
+      return UserStatusResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update User Status Response Error: $e");
+      rethrow;
+    }
+  }
+
+
+
+// user update
+
+  Future<UserUpdateResponseModel> userUpdateApi(
+      String userId, Map<String, dynamic> data) async {
+    try {
+      String url = AppUrls.userUpdateApi(userId);
+      dynamic response = await _apiService.patchApi(url, data);
+      return UserUpdateResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update User Status Response Error: $e");
+      rethrow;
+    }
+  }
+
+
+
+
+
+  Future<bool> saveRolePermissions(String roleId, List<Map<String, dynamic>> updatedPermissions) async {
+    final url = Uri.parse('$baseurl/roles/$roleId/permissions'); // Update URL based on your API endpoint
+
+    try {
+      // Send the updated permissions in the body of the request
+      final response = await http.patch(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: json.encode({
+          'permissions': updatedPermissions,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return true;  // Successfully updated permissions
+      } else {
+        return false; // Failed to update permissions
+      }
+    } catch (error) {
+      print('Error saving permissions: $error');
+      return false; // Handle network or other errors
+    }
+  }
+
+  Future<RoleCheckEditResponseModel> roleCheckEditApi() async {
+    try {
+      dynamic response =
+      await _apiService.postApiResponse(AppUrls.taskListApi, null);
+      return response = RoleCheckEditResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   //============================================================================
   // TASKS
   // LIST
@@ -2502,16 +3011,16 @@ class Repositories {
       rethrow;
     }
   }
-
-  // REPORT
-  Future<TasksReportResponseModel> tasksReportApi() async {
-    try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.taskListApi, null);
-      return response = TasksReportResponseModel.fromJson(response);
-    } catch (e) {
-      rethrow;
-    }
-  }
+  //
+  // // REPORT
+  // Future<TasksReportResponseModel> tasksReportApi() async {
+  //   try {
+  //     dynamic response = await _apiService.postApiResponse(AppUrls.taskListApi, null);
+  //     return response = TasksReportResponseModel.fromJson(response);
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
 
 
@@ -2612,6 +3121,7 @@ class Repositories {
 
 
   //Report List----
+
   Future<List<TaskReportListResponseModel>>taskProjectReportList(dynamic data) async {
     try {
       dynamic response = await _apiService.postApiResponse(AppUrls.taskProjectReportList,data);
@@ -2648,10 +3158,79 @@ class Repositories {
   }
 
 
+//Task-----------------
+  //Task List
+
+  Future<TasksListResponseModel>taskListApi(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskList,data);
+      print("Task List Response   $response");
+      return response =TasksListResponseModel.fromJson(response);
+    } catch (e) {
+      print("Task List Error $e");
+      rethrow;
+    }
+  }
+
+
+//new Board
+
+  Future<NewBoardResponseModel>taskListNewBoard(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.newBoard,data);
+      print("New Board Response   $response");
+      return response =NewBoardResponseModel.fromJson(response);
+    } catch (e) {
+      print("New Board Error $e");
+      rethrow;
+    }
+  }
+
+
+  //Search Project------
+  Future<List<TaskListProjectSearchResponseModel>>projectSearch(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.searchProject,data);
+      print("Search project Response   $response");
+      return response =TaskListProjectSearchResponseModel.fromJsonList(response);
+    } catch (e) {
+      print("Search Project Error $e");
+      rethrow;
+    }
+  }
+
+
+//Master--------------------
+//AddTASk----------
+
+  Future<NewBoardResponseModel>addTaskType(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.taskMasterAddTaskType,data);
+      print("Task Master Add task Type  $response");
+      return response =NewBoardResponseModel.fromJson(response);
+    } catch (e) {
+      print("Task Master Add TAsk Error $e");
+      rethrow;
+    }
+  }
+
+
+  //Task Master Update--------
+
+  Future<dynamic>taskMasterUpdate(dynamic data) async {
+    try {
+      dynamic response = await _apiService.patchApi(AppUrls.taskMasterUpdate,data);
+      print("Task Master Update Response $response");
+      return response =NewBoardResponseModel.fromJson(response);
+    } catch (e) {
+      print("Task Master Update Error $e");
+      rethrow;
+    }
+  }
 
 
 
-  // MASTER
+  // MASTER MAIN
   Future<TaskMasterResponseModel> tasksMasterApi() async {
     try {
       dynamic response = await _apiService.postApiResponse(AppUrls.taskListApi, null);
@@ -2664,14 +3243,17 @@ class Repositories {
   //============================================================================
   // PROJECT
   // LIST
-  Future<ProjectsListResponseModel> projectListApi() async {
+
+  Future<ProjectListResponseModel>projectList(dynamic data)async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.projectList, null);
-      return response = ProjectsListResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.projectList,data);
+      print("Project List  Response $response");
+      return response =ProjectListResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
+
   Future<ProjectsMasterResponseModel> projectMasterApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.projectMaster);
@@ -2680,57 +3262,169 @@ class Repositories {
       rethrow;
     }
   }
-
-  // PRODUCT
-  // LIST
-  Future<ProductsListResponseModel> productListApi() async {
+  Future<ProjectDetailResponseModel> projectDetailView(String projectId) async {
     try {
-      dynamic response = await _apiService.getApi(AppUrls.productList);
-      return response = ProductsListResponseModel.fromJson(response);
+      // Construct the URL by appending the projectId
+      final String url = "${AppUrls.projectDetailView}$projectId";
+
+      // Make the API call
+      dynamic response = await _apiService.getApi(url);
+      print("Project Detail view Response: $response");
+
+      // Parse the response into ProjectDetailResponseModel
+      return ProjectDetailResponseModel.fromJson(response);
+    } catch (e) {
+      print("Project Detail view Response Error: $e");
+      rethrow; // Rethrow the error to be handled by the caller
+    }
+  }
+
+
+
+  Future<ProjectReminderSetting> projecReminderApi() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.projectReminder);
+      return response = ProjectReminderSetting.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
 
-  // CATEGORY
-  Future<ProductCategoryResponseModel> productCategoryApi() async {
+
+
+  //product List-------------
+
+  Future<ProductsListResponseModel>productList(dynamic data)async {
     try {
-      dynamic response = await _apiService.getApi(AppUrls.productCategory);
-      return response = ProductCategoryResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.productList,data);
+      print("Product List Response $response");
+      return response =ProductsListResponseModel.fromJson(response);
     } catch (e) {
+      print("Product List  Response Error$e");
       rethrow;
     }
   }
+
 
   // BRAND
-  Future<ProductBrandResponseModel> productBrandApi() async {
+  Future<List<ProductBrandResponseModel>>productBrand() async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.productBrand);
+      print("Product Brand Api Response $response");
+      return response = ProductBrandResponseModel.fromJsonList(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+  //Add Product---
+  Future<AddProductResponseModel>addProduct(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.addProduct,data);
+      print("Response add  Product Response  $response");
+      return response = AddProductResponseModel.fromJson(response);
+    } catch (e) {
+      print("Add product Response Error$e");
+      rethrow;
+    }
+  }
+
+
+
+  // CATEGORY
+  Future<List<ProductCategoryResponseModel>> productCategoryApi() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.productCategory);
-      return response = ProductBrandResponseModel.fromJson(response);
+      List<ProductCategoryResponseModel> categories = (response as List)
+          .map((category) => ProductCategoryResponseModel.fromJson(category))
+          .toList();
+      return categories;
     } catch (e) {
       rethrow;
     }
   }
 
-  // GST LIST
-  Future<ProductGstListResponseModel> productGstApi() async {
+
+
+  //update Product--------------
+
+  Future<UpdateProductResponseModel>updateProduct(dynamic data) async {
+    try {
+      dynamic response = await _apiService.patchApi(AppUrls.updateProduct,data);
+      print("Update Product Response  $response");
+      return response = UpdateProductResponseModel.fromJson(response);
+    } catch (e) {
+      print("Update product Response Error$e");
+      rethrow;
+    }
+  }
+
+
+
+//Add product brand----------
+  Future<AddProductBrandResponseModel>addProductBrand(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.addProductBrand,data);
+      print("Add Product Brand Response  $response");
+      return response = AddProductBrandResponseModel.fromJson(response);
+    } catch (e) {
+      print("Add Product Brand Response Error$e");
+      rethrow;
+    }
+  }
+
+
+
+// gst List--------------
+  Future<List<ProductGstListResponseModel>> productGstList() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.productGstList);
-      return response = ProductGstListResponseModel.fromJson(response);
+      print("Product Gst List Response  $response");
+      return response = ProductGstListResponseModel.fromJsonList(response);
     } catch (e) {
       rethrow;
     }
   }
 
-  // MASTER
-  Future<ProductMasterResponseModel> productMasterApi() async {
+
+//add gst-------
+
+  Future<AddGstResponseModel>addGstApi(dynamic data) async {
     try {
-      dynamic response = await _apiService.postApiResponse(AppUrls.productMaster, null);
-      return response = ProductMasterResponseModel.fromJson(response);
+      dynamic response = await _apiService.postApiResponse(AppUrls.productGstList,data);
+      print("Product add Gst  Response  $response");
+      return response = AddGstResponseModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
   }
+
+
+  //master-----
+  //add product----------
+  Future<MasterAddProductResponseModel>masterAddProduct(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.masterAddProduct,data);
+      print("Master Add Product  Response  $response");
+      return response =MasterAddProductResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  //Product Master List-----
+  Future<ProjectsMasterResponseModel>masterProductList(dynamic data) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(AppUrls.masterProductList,data);
+      print("Master Product List Response  $response");
+      return response =ProjectsMasterResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+  // VivekHopers@123456
+
 
   //============================================================================
   // INVENTORY
@@ -2787,8 +3481,7 @@ class Repositories {
   //============================================================================
 
 
-//Master
-  //division
+
   Future<List<MasterDivisionsResponseModel>> masterDivision() async {
     try {
       dynamic response = await _apiService.getApi(AppUrls.masterDivisions);
@@ -2820,6 +3513,30 @@ class Repositories {
     }
   }
 
+
+
+  Future<List<UpdateDivisionListResponseModel>> updateDivisionList(String id) async {
+    try {
+      dynamic response = await _apiService.getApi(AppUrls.updateDivisionList(id));
+      // print("Response master Proposals: $response");
+      // Handle single object response
+      if (response is Map<String, dynamic>) {
+        // Create a single model and return it in a list
+        return [UpdateDivisionListResponseModel.fromJson(response)];
+      }
+      // Handle list response (in case API changes in future)
+      else if (response is List) {
+        return UpdateDivisionListResponseModel.fromJsonList(response);
+      }
+      // Handle invalid response
+      else {
+        throw Exception("Invalid response format from the API");
+      }
+    } catch (e) {
+      // print("Error in updateDivisionList: $e");
+      rethrow;
+    }
+  }
 
 
 

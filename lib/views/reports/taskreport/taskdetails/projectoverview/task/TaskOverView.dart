@@ -4,7 +4,8 @@ import 'package:websuites/utils/appColors/app_colors.dart';
 import 'package:websuites/utils/fontfamily/FontFamily.dart';
 import '../../../../../../resources/imageStrings/image_strings.dart';
 import '../../../../../../utils/datetrim/DateTrim.dart';
-import '../../../../../../viewModels/reports/project_overview/task/ProjectOverviewTaskListViewModel.dart';
+import '../../../../../../viewModels/reports/task_report/project_overview/create_project_reminder/task/ProjectOverviewTaskListViewModel.dart';
+
 
 class ProjectOverViewTaskScreen extends StatelessWidget {
   final ProjectOverviewTaskListViewModel _viewModel = Get.find();
