@@ -9,9 +9,10 @@ import '../../../../../utils/appColors/app_colors.dart';
 import '../../../../../utils/button/CustomButton.dart';
 import '../../../../../utils/datetrim/DateTrim.dart';
 import '../../../../../utils/fontfamily/FontFamily.dart';
-import '../../../../../viewModels/reports/project_overview/project_overview_list/task_report_project_overview_view_model.dart';
-import '../../../../../viewModels/reports/project_overview/report_list/report_task_report_list.dart';
-import '../../../../../viewModels/reports/project_overview/task/ProjectOverviewTaskListViewModel.dart';
+
+import '../../../../../viewModels/reports/task_report/project_overview/create_project_reminder/task/ProjectOverviewTaskListViewModel.dart';
+import '../../../../../viewModels/reports/task_report/project_overview/project_overview_list/task_report_project_overview_view_model.dart';
+import '../../../../../viewModels/reports/task_report/project_overview/report_list/report_task_report_list.dart';
 import '../../../../leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 
 class ProjectOverview extends StatefulWidget {
@@ -67,27 +68,32 @@ class _ProjectOverviewState extends State<ProjectOverview> {
           ),
         ),
       ),
-      body: Obx(() {
+      body:
+      Obx(() {
         if (viewModel.isLoading) {
           return const Center(child: CircularProgressIndicator());
         }
 
         final projectData = viewModel.projectOverViewResponse;
         return projectData != null
-            ? SingleChildScrollView(
+            ?
+        SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
+                child:
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: GestureDetector(
+                      child:
+                      GestureDetector(
                         onTap: () => selectedTab.value = 'Overview',
-                        child: Container(
+                        child:
+                        Container(
                           height: Get.height / 30,
                           decoration: BoxDecoration(
                             color: selectedTab.value == 'Overview'
@@ -1418,3 +1424,4 @@ class _ProjectOverviewState extends State<ProjectOverview> {
 
 
 }
+

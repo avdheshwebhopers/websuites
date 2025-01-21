@@ -1,44 +1,64 @@
 class CreateReportListRequestModel {
   final String? title;
+  final String? startDate;  // Changed to String to match API format
+  final String? endDate;    // Changed to String to match API format
   final String? description;
-  final DateTime? startDate;
-  final DateTime? endDate;
+  final Map<String, dynamic>? attachment;  // Changed to Map to match empty object in API
+  final List<String> ccTo;
   final String? project;
-  final List<String>? ccTo;
 
   CreateReportListRequestModel({
     this.title,
-    this.description,
     this.startDate,
     this.endDate,
+    this.description,
+    this.attachment,
+    required this.ccTo,
     this.project,
-    this.ccTo,
   });
 
-  // Convert a RequestModel instance to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'title': title,
+      'start_date': startDate,
+      'end_date': endDate,
       'description': description,
-      'start_date': startDate?.toIso8601String(),
-      'end_date': endDate?.toIso8601String(),
-      'project': project,
+      'attachment': attachment ?? {},  // Send empty object if null
       'cc_to': ccTo,
+      'project': project,
     };
   }
 
-  // Create a RequestModel instance from a JSON map
   factory CreateReportListRequestModel.fromJson(Map<String, dynamic> json) {
     return CreateReportListRequestModel(
-      title: json['title'],
-      description: json['description'],
-      startDate: json['start_date'] != null
-          ? DateTime.parse(json['start_date'])
-          : null,
-      endDate:
-      json['end_date'] != null ? DateTime.parse(json['end_date']) : null,
-      project: json['project'],
-      ccTo: (json['cc_to'] as List<dynamic>?)?.map((e) => e.toString()).toList(),
+      title: json["title"],
+      startDate: json["start_date"],
+      endDate: json["end_date"],
+      description: json["description"],
+      attachment: json["attachment"] as Map<String, dynamic>? ?? {},
+      ccTo: (json["cc_to"] as List<dynamic>?)?.map((x) => x.toString()).toList() ?? [],
+      project: json["project"],
+    );
+  }
+
+  // Helper method to create model from DateTime objects
+  static CreateReportListRequestModel fromDateTime({
+    required String title,
+    required DateTime startDate,
+    required DateTime endDate,
+    String? description,
+    Map<String, dynamic>? attachment,
+    required List<String> ccTo,
+    String? project,
+  }) {
+    return CreateReportListRequestModel(
+      title: title,
+      startDate: startDate.toIso8601String().split('T')[0],  // Format as YYYY-MM-DD
+      endDate: endDate.toIso8601String().split('T')[0],      // Format as YYYY-MM-DD
+      description: description,
+      attachment: attachment ?? {},
+      ccTo: ccTo,
+      project: project,
     );
   }
 }

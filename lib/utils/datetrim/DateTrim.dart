@@ -143,6 +143,18 @@ String formatDateToLongMonth(String? date) {
   }
 }
 
+
+/// Formats a date to "dd/MM/yyyy" (e.g., "24/07/2024").
+String formatDateToDDMMYYYY(String? date) {
+  if (date == null || date.isEmpty) return 'N/A';
+
+  try {
+    DateTime parsedDate = DateTime.parse(date);
+    return DateFormat('dd/MM/yyyy').format(parsedDate);
+  } catch (e) {
+    return 'N/A';
+  }
+}
 //Oct 25, 2024
 
 String formatDateToLongMonth2(DateTime? date) {
@@ -257,4 +269,12 @@ String formatHoursMinutes(double hours, double minutes) {
 
   // Return in "HH : MM : SS" format.
   return "$formattedHours : $formattedMinutes : $formattedSeconds";
+}
+
+
+String formatNumberWithK(double value) {
+  if (value >= 1000) {
+    return "${(value / 1000).toStringAsFixed(2)}K";  // Formats numbers in K (thousands)
+  }
+  return value.toStringAsFixed(0);  // For numbers less than 1000, show as integer
 }
