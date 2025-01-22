@@ -13,6 +13,7 @@ class CreateNewLeadScreenCard extends StatefulWidget {
   final bool isDateField; // New parameter to distinguish date fields
   final bool allowCustomInput;
   final bool isForDivisions;
+  final Function(String)? onChanged;
   final bool isPincode;
   final Function(String)? onSearch;
   final bool isLoading;
@@ -21,17 +22,32 @@ class CreateNewLeadScreenCard extends StatefulWidget {
   final Icon? suffixIcon;
   final VoidCallback? onSuffixPressed;
   final BorderRadius? allowCustomBorderInput; // Change type to BorderRadius?
+  final double? textFieldHeight;
+  final EdgeInsetsGeometry? textFieldPadding;
+  final double? containerHeight;
+  final EdgeInsetsGeometry? containerPadding;
+  final int? maxLines;
+  final TextInputType? keyboardType;
+  final bool isEditable;
+  final String? Function(String?)? validator;
+  final String? errorMessage;
+  final Color? borderColor; // Add this line
+  final bool hasError; // Add this line
+  final String? value; // Add this line to accept a value
+  final bool readOnly;
 
-
-
-
+  final VoidCallback? onTap;
   const CreateNewLeadScreenCard({
 
     Key? key,
     required this.hintText,
+    this.value, // Make this parameter optional
+    this.onTap,
+    this.readOnly = false,
     this.categories,
     this.onCategoriesChanged,
     this.onCategoryChanged,
+    this.onChanged,
     this.isDateField = false,
     this.controller,
     this.isMultiSelect = false,
@@ -45,7 +61,17 @@ class CreateNewLeadScreenCard extends StatefulWidget {
     this.suffixIcon,
     this.onSuffixPressed,
     this.allowCustomBorderInput, // Now accepts BorderRadius
-
+    this.hasError = false, // Default to false
+    this.textFieldHeight,
+    this.textFieldPadding,
+    this.containerHeight,
+    this.containerPadding,
+    this.maxLines,
+    this.keyboardType,
+    this.isEditable = true,
+    this.validator,
+    this.errorMessage,
+    this.borderColor, // Add this line
 
 
   }) : super(key: key);
@@ -57,6 +83,8 @@ class CreateNewLeadScreenCard extends StatefulWidget {
 
 class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
   final FocusNode _focusNode = FocusNode();
+  String? _errorMessage;
+
   bool _isFocused = false;
   List<String> _selectedCategories = [];
   bool _isDropdownVisible = false;
@@ -67,6 +95,9 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
   void initState() {
     super.initState();
     _textController = widget.controller ?? TextEditingController();
+    if (widget.value != null) {
+      _textController.text = widget.value!; // Set initial value if provided
+    }
     _focusNode.addListener(() {
       setState(() {
         _isFocused = _focusNode.hasFocus;
@@ -178,7 +209,7 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
           width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(
-              color: _isFocused ? AllColors.mediumPurple : AllColors.lightGrey,
+              color: widget.hasError ? Colors.red : (_isFocused ? (widget.borderColor ?? AllColors.mediumPurple) : (AllColors.lightGrey)),
               width: _isFocused ? 1.0 : 0.3,
             ),
             color: AllColors.whiteColor,
@@ -246,19 +277,47 @@ class _CreateNewLeadScreenCardState extends State<CreateNewLeadScreenCard> {
                         ),
                       ),
                       readOnly: widget.isDateField,
+
                       onTap: widget.isDateField ? () => _selectDate(context) : null,
                       style: const TextStyle(fontSize: 14.0),
-                      onChanged: (text) {
-                        _filterCategories(text);
+                      // onChanged: (text) {
+                      //   _filterCategories(text);
+                      //   if (widget.allowCustomInput) {
+                      //     if (!widget.isMultiSelect) {
+                      //       widget.onCategoryChanged?.call(text);
+                      //     }
+                      //     if (widget.isPincode) {
+                      //       widget.onSearch?.call(text);
+                      //     }
+                      //   }
+                      // },
+
+                      // onChanged: (value) {
+                      //   if (widget.allowCustomInput) {
+                      //     _filterCategories(value);
+                      //   }
+                      //   widget.onChanged?.call(value);
+                      //
+                      //   if (widget.validator != null) {
+                      //     setState(() {
+                      //       _errorMessage = widget.validator!(value);
+                      //     });
+                      //   }
+                      // },
+
+                      onChanged: (value) {
                         if (widget.allowCustomInput) {
-                          if (!widget.isMultiSelect) {
-                            widget.onCategoryChanged?.call(text);
-                          }
-                          if (widget.isPincode) {
-                            widget.onSearch?.call(text);
-                          }
+                          _filterCategories(value);
+                        }
+                        widget.onChanged?.call(value);
+
+                        if (widget.validator != null) {
+                          setState(() {
+                            _errorMessage = widget.validator!(value);
+                          });
                         }
                       },
+
                     ),
                   ),
                   if (_selectedCategories.isNotEmpty && widget.isMultiSelect)

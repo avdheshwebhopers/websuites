@@ -278,14 +278,22 @@ class _DailySalesAnalyticsState extends State<DailySalesAnalytics> {
                 SizedBox(height: 2,),
                 Row(
                   children: [
-                    CircleAvatar(
-                      radius: 6,
-                      backgroundColor: AllColors.greenJungle,
-                    ),
-                    SizedBox(width:5,),
-                    Text("Approved Amount: ",style: TextStyle(fontFamily: FontFamily.sfPro,fontSize: 12),),
-                    Text("1.3k",style: TextStyle(fontWeight: FontWeight.w700,fontFamily: FontFamily.sfPro,fontSize: 12),),
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 6,
+                              backgroundColor: AllColors.greenJungle,
+                            ),
+                            SizedBox(width:5,),
+                            Text("Approved Amount: ",style: TextStyle(fontFamily: FontFamily.sfPro,fontSize: 12),),
+                            Text("1.3k",style: TextStyle(fontWeight: FontWeight.w700,fontFamily: FontFamily.sfPro,fontSize: 12),),
 
+                          ],
+                        ),
+                      ],
+                    ),
                   ],
                 ),
 
@@ -330,7 +338,9 @@ class _DailySalesAnalyticsState extends State<DailySalesAnalytics> {
                     Text("1.3k",style: TextStyle(fontWeight: FontWeight.w700,fontFamily: FontFamily.sfPro,fontSize: 12),),
 
                   ],
-                )
+                ),
+
+
               ],
             )),
         SizedBox(height: 60,)
@@ -346,6 +356,8 @@ class _DailySalesAnalyticsState extends State<DailySalesAnalytics> {
   }
 }
 
+
+
 class LeadData {
   final String name;
   final double value;
@@ -353,3 +365,12 @@ class LeadData {
 
   const LeadData(this.name, this.value, this.color);
 }
+
+
+
+
+
+
+
+
+

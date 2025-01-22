@@ -143,6 +143,18 @@ String formatDateToLongMonth(String? date) {
   }
 }
 
+
+/// Formats a date to "dd/MM/yyyy" (e.g., "24/07/2024").
+String formatDateToDDMMYYYY(String? date) {
+  if (date == null || date.isEmpty) return 'N/A';
+
+  try {
+    DateTime parsedDate = DateTime.parse(date);
+    return DateFormat('dd/MM/yyyy').format(parsedDate);
+  } catch (e) {
+    return 'N/A';
+  }
+}
 //Oct 25, 2024
 
 String formatDateToLongMonth2(DateTime? date) {

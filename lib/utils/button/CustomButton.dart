@@ -7,7 +7,7 @@ class CustomButton extends StatefulWidget {
   final VoidCallback onPressed; // Callback function for button press
   final double height; // Custom button height
   final double width; // Custom button width
-  // final Color backgroundColor; // Optional parameter for button color
+  final Color? backgroundColor; // Optional parameter for background color
   final Color foregroundColor; // Optional parameter for content color
   final EdgeInsets padding; // Optional padding inside the button
 
@@ -18,7 +18,7 @@ class CustomButton extends StatefulWidget {
     required this.onPressed, // Button callback
     this.height = 50.0, // Default height
     this.width = 150.0, // Default width
-    // this.backgroundColor = AllColors.mediumPurple, // Default background color
+    this.backgroundColor, // Background color is optional
     this.foregroundColor = Colors.white, // Default content color
     this.padding = EdgeInsets.zero, // Default padding
   }) : super(key: key);
@@ -31,13 +31,13 @@ class _CustomButtonState extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height, // Set button height
-      width: widget.width, // Set button width
+      height: widget.height,
+      width: widget.width,
       child: ElevatedButton(
-        onPressed: widget.onPressed, // Callback for button press
+        onPressed: widget.onPressed,
         style: ElevatedButton.styleFrom(
-         backgroundColor: AllColors.mediumPurple,
-          foregroundColor: widget.foregroundColor, // Button content color
+          backgroundColor: widget.backgroundColor ?? AllColors.mediumPurple, // Optional background color
+          foregroundColor: widget.foregroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(widget.borderRadius), // Custom border radius
           ),

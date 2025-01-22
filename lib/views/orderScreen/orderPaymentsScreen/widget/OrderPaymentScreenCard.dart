@@ -100,7 +100,8 @@ class _OrderPaymentScreenCardState extends State<OrderPaymentScreenCard> {
   Widget build(BuildContext context) {
     List<Widget> divisionLogos = _getDivisionLogos(widget.division);
 
-    return Container(
+    return
+      Container(
       width: Get.width / 1,
       decoration: BoxDecoration(
           color: AllColors.whiteColor,
