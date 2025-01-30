@@ -47,13 +47,18 @@ class CustomerCompaniesViewModel extends GetxController {
       // Handle the response
       if (response.items != null && response.items!.isNotEmpty) {
         companies.value = response.items!;
-        Utils.snackbarSuccess('Customer companies fetched successfully');
+
+        // Utils.snackbarSuccess('Customer companies fetched successfully');
+        print("Customer companies fetched successfully");
+
       } else {
-        Utils.snackbarFailed('No companies found');
+        // Utils.snackbarFailed('No companies found');
+        print('No companies found');
         companies.clear();
       }
     } catch (error) {
-      Utils.snackbarFailed('Error fetching companies: ${error.toString()}');
+      // Utils.snackbarFailed('Error fetching companies: ${error.toString()}');
+      print('Error fetching companies: ${error.toString()}');
       if (kDebugMode) {
         print('Company List Error: $error');
       }

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:websuites/resources/textStyles/text_styles.dart';
 
 import '../../../utils/appColors/app_colors.dart';
 
@@ -60,7 +59,7 @@ class _UsersScreenCardState extends State<UsersScreenCard> {
 
                   Container(
                     height: Get.height/45,
-                    padding: TextStyles.defaultPadding(context),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       color: AllColors.lighterOrange,
                       borderRadius: BorderRadius.circular(20),

@@ -6,7 +6,8 @@ import '../../../../utils/appColors/app_colors.dart';
 
 class LatestTaskCard extends StatelessWidget {
   final String title;
-  final String subtitle;
+  final String
+  subtitle;
   final String date;
   final IconData ContainerIcon;
   final Color IconColor;

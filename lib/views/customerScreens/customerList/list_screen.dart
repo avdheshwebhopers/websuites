@@ -31,7 +31,7 @@ class _CustomersListScreenState extends State<CustomersListScreen> {
     try {
       final LoginResponseModel response = await userPreference.getUser();
       setState(() {
-        userName = response.user?.first_name;
+        userName = response.user?.firstName;
         userEmail = response.user?.email;
       });
     } catch (e) {

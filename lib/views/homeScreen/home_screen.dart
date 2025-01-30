@@ -6,14 +6,27 @@ import 'package:websuites/views/customerScreens/orderProducts/order_products_scr
 import 'package:websuites/views/homeScreen/widgets/apppbarFilterIcon/FilterActionButton.dart';
 import 'package:websuites/views/leadScreens/trashLead/widgets/filter/TrashFilter.dart';
 import 'package:websuites/views/orderScreen/orderActivityScreen/order_activity_screen.dart';
+import 'package:websuites/views/orderScreen/orderPaymentsScreen/order_payments_screen.dart';
 import 'package:websuites/views/orderScreen/orderProformaScreen/proforma_list_screen.dart';
 import 'package:websuites/views/orderScreen/ordermaster/OrderMasterListScreen.dart';
+import 'package:websuites/views/reports/emoloyeesReports/EmployeeReportsScreen.dart';
+import 'package:websuites/views/reports/taskreport/TaskReport.dart';
+import 'package:websuites/views/rolesScreen/roles_screen.dart';
 
 import '../../Responsive/Custom_Drawer.dart';
 import '../../resources/strings/strings.dart';
 import '../../utils/components/widgets/navBar/custom_navBar.dart';
 import '../../utils/responsive/bodies/responsive scaffold.dart';
 import '../Dashboard/DashboardScreen.dart';
+import '../HRM/hrm/HrmAttendanceSceen.dart';
+import '../HRM/leave/HrmLeaveScreen.dart';
+import '../Master/Division.dart';
+import '../Master/ProposalScreen.dart';
+import '../Master/cities/SettingCitiesScreen.dart';
+import '../analytics/customer/CustomerAnalyticsScreen.dart';
+import '../analytics/lead/LeadAnalyticsScreen.dart';
+import '../analytics/ph/PHAnalyticsScreen.dart';
+import '../analytics/sale/SaleAnalyticsScreen.dart';
 import '../customerScreens/companiesScreen/all_companies_screen.dart';
 import '../customerScreens/customerList/list_screen.dart';
 import '../customerScreens/customerServices/services_screen.dart';
@@ -25,7 +38,22 @@ import '../leadScreens/leadMaster/lead_master_screen.dart';
 import '../leadScreens/searchGoogleLeads/search_google_leads.dart';
 import '../leadScreens/trashLead/trash_lead_screen.dart';
 import '../orderScreen/orderListScreen/orderList_screen.dart';
+import '../orderScreen/orderProjection/OrdeProjectionsScreen.dart';
+import '../products/brands/ProductBrandScreen.dart';
+import '../products/category/CategoryListScreen.dart';
+import '../products/gst/ProductGstListScreen.dart';
+import '../products/master/ProductMasterListScreen.dart';
+import '../products/productlist/ProductsScreen.dart';
+import '../project/ProjectListScreen.dart';
+import '../project/master/ProjectMastetScreen.dart';
+import '../reports/analytics/AnalyticsTaskReportScreen.dart';
+import '../salesTargetScreen/projection/SaleProjectionScreen.dart';
 import '../salesTargetScreen/sales_target_screen.dart';
+import '../task/master/MasterScreen.dart';
+import '../task/tasklist/TaskList.dart';
+import '../usersScreen/activity/UserActivityScreen.dart';
+import '../usersScreen/departments/usersDepartmentsScreen.dart';
+import '../usersScreen/users_screen.dart';
 
 class HomeScreenController extends GetxController {
   RxInt selectedIndex = 0.obs;
@@ -50,8 +78,42 @@ class HomeScreenController extends GetxController {
     OrderListScreen(),
     OrderActivityScreen(),
     OrderProformaList(),
+    OrderPaymentsScreen(),
+    OrderProjectionScreen(),
     OrderMasterListScreen(),
-    SalesTargetScreen()
+    SalesTargetScreen(),
+    SaleProjectionScreen(),
+    RolesScreen(),
+    AnalyticsTaskReportScreen(),
+    TaskReportScreen(),
+    EmployeeReportsScreen(),
+    TaskListScreen(),
+
+    TaskMasterScreen(),
+    ProjectListScreen(),
+    ProjectMasterScreen(),
+    ProductsListScreen(),
+    CategoryListScreen(),
+    ProductBrandListScreen(),
+    ProductGstListScreen(),
+    ProductMasterListScreen(),
+    UsersScreen(),
+    RolesScreen(),
+    UsersDepartmentsScreen(),
+    UserActivityScreen(),
+    MasterDivisionScreen(),
+    MasterProposalScreen(),
+    SettingCitiesScreen(),
+    SaleAnalyticsScreen(),
+    LeadAnalyticsScreen(),
+    CustomerAnalyticsScreen(),
+    PHAnalyticsScreen(),
+    HrmAttendanceScreen(),
+    HrmLeaveScreen()
+
+
+
+
 
 
   ];
@@ -99,16 +161,32 @@ class HomeScreenController extends GetxController {
         return 'Order List';
       case 15:
         return 'Activity';
-      case 13:
+      case 16:
         return 'Proforma List';
-      case 14:
+      case 17:
+        return 'Payments';
+      case 18:
+        return 'Projection';
+      case 19:
         return 'Order Master';
-      case 15:
+      case 20:
         return 'Sales';
+      case 21:
+        return 'Roles';
+      case 21:
+        return 'Task Report';
+      case 25:
+        return 'Task List';
+      case 26:
+        return 'Task Master';
+      case 26:
+        return 'Project List';
+      case 27:
+        return 'Products';
 
 
       default:
-        return 'Hello, Avdhesh!';
+        return 'Webhopers';
     }
   }
 

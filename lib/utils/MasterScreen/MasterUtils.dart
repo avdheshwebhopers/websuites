@@ -26,7 +26,7 @@ class MasterScreenUtils {
   static Future<Map<String, String>> fetchUserData() async {
     try {
       LoginResponseModel response = await userPreference.getUser();
-      String? firstName = response.user?.first_name;
+      String? firstName = response.user?.firstName;
       String? email = response.user?.email;
       return {'userName': firstName ?? '', 'userEmail': email ?? ''};
     } catch (e) {

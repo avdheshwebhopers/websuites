@@ -1,60 +1,123 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:websuites/data/models/requestModels/sales/sales_list_request_model.dart';
+import 'package:websuites/data/models/responseModels/sales/sales_response_model.dart';
 import '../../../../data/repositories/repositories.dart';
 import '../../../../utils/utils.dart';
-import '../../data/models/requestModels/sales/SalesListRequestModel.dart';
-import '../../data/models/responseModels/sales/sales_response_model.dart'; // Ensure this path is correct
 
 class SalesViewModel extends GetxController {
   final _api = Repositories();
   RxBool loading = false.obs;
-  Rx<String?> errorMessage = Rx<String?>(null);
-  RxList<Items> salesItems = <Items>[].obs; // Ensure Items is defined
 
-  Future<void> fetchSales({String? notificationTo, int? limit, int? page}) async {
+  // Observable for the sales response model with proper initialization
+  final Rx<SalesResponseModel> salesResponseModel = SalesResponseModel(
+    items: [],
+    meta: null,
+  ).obs;
+
+  // Observable for error state
+  RxString error = ''.obs;
+
+  // Pagination variables
+  RxInt currentPage = 1.obs;
+  final int itemsPerPage = 15;
+  RxBool hasMoreData = true.obs;
+
+  // Refresh control
+  Future<void> refreshSales(BuildContext context) async {
+    currentPage.value = 1;
+    hasMoreData.value = true;
+    await salesApi(context);
+  }
+
+  // Load more data
+  Future<void> loadMoreSales(BuildContext context) async {
+    if (!loading.value && hasMoreData.value) {
+      currentPage.value++;
+      await salesApi(context);
+    }
+  }
+
+  Future<void> salesApi(BuildContext context) async {
     try {
-      loading.value = true;
-      errorMessage.value = null;
+      if (currentPage.value == 1) {
+        loading.value = true;
+      }
 
-      // Prepare request model
-      SalesListRequestModel requestModel = SalesListRequestModel(
-        notificationTo: notificationTo,
-        limit: limit,
-        page: page,
+      error.value = '';
+
+      final requestModel = SalesListRequestModel(
+        limit: itemsPerPage,
+        page: currentPage.value,
       );
 
-      // Fetch sales data from API
-      SalesResponseModel response = await _api.salesApi(); // Call without arguments
-      // Log response details
-      print('🔍 VIVEK SALES RESPONSE DETAILS 🔍');
-      if (response.items != null) {
-        print('Total Items: ${response.items!.length}');
-        response.items!.asMap().forEach((index, item) {
-          print('\n📊 Sales Item [$index] Details:');
-          print('ID: ${item.id}');
-          print('Name: ${item.name}');
-          print('Start Date: ${item.start_date}');
-          // Continue logging...
-        });
-        salesItems.clear();
-        salesItems.addAll(response.items!);
-        Utils.snackbarSuccess('Sales fetched successfully');
+      final response = await _api.salesApi(requestModel.toJson());
+
+      if (currentPage.value == 1) {
+        salesResponseModel.value = response;
       } else {
-        errorMessage.value = 'No sales data found';
-        Utils.snackbarFailed('No sales data found');
+        // Append new items to existing list for pagination
+        final updatedItems = [...salesResponseModel.value.items, ...response.items];
+        salesResponseModel.value = SalesResponseModel(
+          items: updatedItems,
+          meta: response.meta,
+        );
       }
-    } catch (error) {
-      errorMessage.value = error.toString();
-      Utils.snackbarFailed('Failed to fetch sales: $error');
+
+      // Update pagination status
+      hasMoreData.value = (response.meta?.currentPage ?? 0) < (response.meta?.totalPages ?? 0);
+      // Show success message only on initial load
+      if (currentPage.value == 1) {
+        Utils.snackbarSuccess('Sales data fetched successfully');
+      }
+
+      // Log data in debug mode
+      if (kDebugMode) {
+        _logSalesData(response);
+      }
+    } catch (e, stackTrace) {
+      error.value = e.toString();
+      if (kDebugMode) {
+        print('Sales API Error: $e');
+        print('Stack trace: $stackTrace');
+      }
+      Utils.snackbarFailed('Failed to fetch sales data: ${e.toString()}');
     } finally {
       loading.value = false;
     }
   }
 
+  // Helper method to log sales data in debug mode
+  void _logSalesData(SalesResponseModel response) {
+    print('--- Sales Data Log ---');
+    print('Total Items: ${response.meta?.totalItems}');
+    print('Current Page: ${response.meta?.currentPage}');
+    print('Items per Page: ${response.meta?.itemsPerPage}');
+
+    for (var data in response.items) {
+      print('Sale Name: ${data.name}');
+      print('Team Email: ${data.team?.email}');
+      print('CRM Category: ${data.team?.crmCategory}');
+      if (data.members.isNotEmpty) {
+        print('First Member Sale Target: ${data.members[0].saleTarget}');
+      }
+      print('-------------------');
+    }
+  }
+
+  // Method to check if we should load more data
+  bool shouldLoadMore(ScrollController scrollController) {
+    return scrollController.position.pixels >=
+        scrollController.position.maxScrollExtent - 200 && // 200px before end
+        !loading.value &&
+        hasMoreData.value;
+  }
+
+  // Clean up method
   @override
-  void onInit() {
-    super.onInit();
-    fetchSales(); // Fetch sales data on initialization
+  void onClose() {
+    // Clean up any controllers or streams if needed
+    super.onClose();
   }
 }

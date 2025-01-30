@@ -59,121 +59,443 @@ class _CustomDrawerState extends State<CustomDrawer> {
     return ListView(
       padding: const EdgeInsets.only(top: 16),
       children: [
-        CustomListTile(
-          leadIconImage: IconStrings.dashboard,
-          title: 'Dashboard',
-          onTap: () => widget.onItemSelected(0),
-          selectedIndex: widget.selectedIndex,
-        ),
+      CustomListTile(
+      leadIconImage: IconStrings.dashboard,
+      title: 'Dashboard',
+      onTap: () => widget.onItemSelected(0),
+      selectedIndex: widget.selectedIndex,
+    ),
+    CustomExpandedListTile(
+    leadingIconImage: IconStrings.lead,
+    title: 'Lead',
+    initiallyExpanded: expandedSection == 'lead',
+    children: List.generate(
+    7,
+    (index) => ListTile(
+    onTap: () => widget.onItemSelected(index + 1),
+    title: Text(
+    '• ${["Create", "Google Leads", "List", "Trash", "Activities", "Setting", "(Lead) Master"][index]}',
+    style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ),
+    ),
+    CustomExpandedListTile(
+    title: 'Customer',
+    leadingIconImage: IconStrings.customer,
+    initiallyExpanded: expandedSection == 'customer',
+    children: [
+    ListTile(
+    onTap: () => widget.onItemSelected(8),
+    title: Text(
+    '• List',
+    style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(9),
+    title: Text(
+    '• Activities',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+
+    ),
+    ),
+
+
+    ListTile(
+    onTap: () => widget.onItemSelected(10),
+    title: Text(
+    '• Payment Reminder',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14,),
+    maxLines: 2, // Allow up to 2 lines
+    overflow: TextOverflow.visible, // Allow text to overflow and wrap
+    textAlign: TextAlign.start, // Align text to the sta
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(11),
+    title: Text(
+    '• Companies',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(12),
+    title: Text(
+    '• Services',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(13),
+    title: Text(
+    '• Order Products',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ],
+    ),
+
+
+    CustomExpandedListTile(
+    title: 'Orders',
+    leadingIconImage: IconStrings.orders,
+    initiallyExpanded: expandedSection == 'orders',
+    children: [
+    ListTile(
+    onTap: () => widget.onItemSelected(14),
+    title: Text(
+    '• List',
+    style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(15),
+    title: Text(
+    '• Activities',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(16),
+    title: Text(
+    '• Proforma List',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+    ListTile(
+    onTap: () => widget.onItemSelected(17),
+    title: Text(
+    '• Payments',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(18),
+    title: Text(
+    '• Projection',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+    ListTile(
+    onTap: () => widget.onItemSelected(19),
+    title: Text(
+    '• Order(Master)',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+    ],
+    ),
+
         CustomExpandedListTile(
-          leadingIconImage: IconStrings.lead,
-          title: 'Lead',
-          initiallyExpanded: expandedSection == 'lead',
-          children: List.generate(
-            7,
-                (index) => ListTile(
-              onTap: () => widget.onItemSelected(index + 1),
-              title: Text(
-                '• ${["Create", "Google Leads", "List", "Trash", "Activities", "Setting", "(Lead) Master"][index]}',
-                style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w300, fontSize: 14),
+            title: 'Sales',
+            leadingIconImage: IconStrings.tasks,
+            children: [
+              ListTile(
+                onTap: () => widget.onItemSelected(20),
+                title: Text(
+                  '• Targets',
+                  style: TextStyle(
+                    color: AllColors.welcomeColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
+              ListTile(
+                onTap: () => widget.onItemSelected(21),
+                title: Text(
+                  '• Projections',
+                  style: TextStyle(
+                      color: AllColors.welcomeColor,
+
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300),
+                ),
+              ),
+
+
+
+            ]),
+
+    CustomListTile(
+    leadIconImage: IconStrings.roles,
+    title: 'Roles',
+    onTap: () => widget.onItemSelected(22),
+    selectedIndex: widget.selectedIndex,
+    ),
+
+
+    CustomExpandedListTile(
+    title: 'Reports',
+    leadingIconImage: IconStrings.orders,
+    initiallyExpanded: expandedSection == 'Reports',
+    children: [
+    ListTile(
+    onTap: () => widget.onItemSelected(23),
+    title: Text(
+    '• Analytics',
+    style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(5),
+    title: Text(
+    '• Lead Activities',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(24),
+    title: Text(
+    '• Task Report',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+    ListTile(
+    onTap: () => widget.onItemSelected(25),
+    title: Text(
+    '• Employees Report',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+
+    ],
+    ),
+
+    CustomExpandedListTile(
+    title: 'Task',
+    leadingIconImage: IconStrings.tasks,
+    initiallyExpanded: expandedSection == 'Task',
+    children: [
+    ListTile(
+    onTap: () => widget.onItemSelected(26),
+    title: Text(
+    '• List',
+    style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(27),
+    title: Text(
+    '• Master',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+
+    ],
+    ),
+    CustomExpandedListTile(
+    title: 'Project',
+    leadingIconImage: IconStrings.tasks,
+    initiallyExpanded: expandedSection == 'Project',
+    children: [
+    ListTile(
+    onTap: () => widget.onItemSelected(28),
+    title: Text(
+    '• List',
+    style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(29),
+    title: Text(
+    '• Master',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+
+    ],
+    ),
+    CustomExpandedListTile(
+    title: 'Products',
+    leadingIconImage: IconStrings.tasks,
+    initiallyExpanded: expandedSection == 'Products',
+    children: [
+    ListTile(
+    onTap: () => widget.onItemSelected(30),
+    title: Text(
+    '• List',
+    style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(31),
+    title: Text(
+    '• Category',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(32),
+    title: Text(
+    '• Brand',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(33),
+    title: Text(
+    '• GST List',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+    ListTile(
+    onTap: () => widget.onItemSelected(34),
+    title: Text(
+    '• Master',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+
+    ],
+    ),
+
+    CustomExpandedListTile(
+    title: 'User',
+    leadingIconImage: IconStrings.tasks,
+    initiallyExpanded: expandedSection == 'User',
+    children: [
+    ListTile(
+    onTap: () => widget.onItemSelected(35),
+    title: Text(
+    '• List',
+    style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(36),
+    title: Text(
+    '• Roles',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(37),
+    title: Text(
+    '• Departments',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(38),
+    title: Text(
+    '• Activities',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+
+    ],
+    ),
+
+    CustomExpandedListTile(
+    title: 'Setting',
+    leadingIconImage: IconStrings.tasks,
+    initiallyExpanded: expandedSection == 'Setting',
+    children: [
+    ListTile(
+    onTap: () => widget.onItemSelected(39),
+    title: Text(
+    '• Divisions',
+    style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(40),
+    title: Text(
+    '• Proposals',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+    ListTile(
+    onTap: () => widget.onItemSelected(41),
+    title: Text(
+    '• Cities',
+    style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
+    ),
+    ),
+
+
+
+    ],
+    ),
+
+
         CustomExpandedListTile(
-          title: 'Customer',
-          leadingIconImage: IconStrings.customer,
-          initiallyExpanded: expandedSection == 'customer',
+          title: 'Analytics',
+          leadingIconImage: IconStrings.tasks,
+          initiallyExpanded: expandedSection == 'Setting',
           children: [
             ListTile(
-              onTap: () => widget.onItemSelected(8),
+              onTap: () => widget.onItemSelected(42),
               title: Text(
-                '• List',
+                '• Sale Analytics',
                 style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
               ),
             ),
+
             ListTile(
-              onTap: () => widget.onItemSelected(9),
+              onTap: () => widget.onItemSelected(43),
               title: Text(
-                '• Activities',
+                '• Lead Analytics',
                 style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
               ),
             ),
             ListTile(
-              onTap: () => widget.onItemSelected(10),
+              onTap: () => widget.onItemSelected(44),
               title: Text(
-                '• Payment Reminder',
+                '• Customer Analytics',
                 style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
               ),
             ),
             ListTile(
-              onTap: () => widget.onItemSelected(11),
+              onTap: () => widget.onItemSelected(45),
               title: Text(
-                '• Companies',
+                '• PH Performance',
                 style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
               ),
             ),
-            ListTile(
-              onTap: () => widget.onItemSelected(12),
-              title: Text(
-                '• Services',
-                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
-              ),
-            ),
-            ListTile(
-              onTap: () => widget.onItemSelected(13),
-              title: Text(
-                '• Order Products',
-                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
-              ),
-            ),
+
+
           ],
         ),
-
-
         CustomExpandedListTile(
-          title: 'Orders',
-          leadingIconImage: IconStrings.orders,
-          initiallyExpanded: expandedSection == 'orders',
+          title: 'Hrm',
+          leadingIconImage: IconStrings.tasks,
+          initiallyExpanded: expandedSection == 'Setting',
           children: [
             ListTile(
-              onTap: () => widget.onItemSelected(14),
+              onTap: () => widget.onItemSelected(46),
               title: Text(
-                '• List',
+                '• Attendance',
                 style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
               ),
             ),
+
             ListTile(
-              onTap: () => widget.onItemSelected(15),
+              onTap: () => widget.onItemSelected(47),
               title: Text(
-                '• Activities',
-                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
-              ),
-            ),
-            ListTile(
-              onTap: () => widget.onItemSelected(16),
-              title: Text(
-                '• Proforma List',
-                style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
-              ),
-            ),
-            ListTile(
-              onTap: () => widget.onItemSelected(17),
-              title: Text(
-                '• Order(Master)',
+                '• Leave',
                 style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
               ),
             ),
 
+
+
           ],
         ),
-        CustomListTile(
-          leadIconImage: IconStrings.sales,
-          title: 'Sales',
-          onTap: () => widget.onItemSelected(18),
-          selectedIndex: widget.selectedIndex,
-        ),
-      ],
+      ]
+
     );
   }
 
@@ -273,7 +595,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
               if (widget.isTabletOrDesktop)
                 IconButton(
                   icon: Icon(
-                    isLocalCollapsed ? Icons.arrow_forward_ios : Icons.arrow_back_ios,
+                    isLocalCollapsed ? Icons.arrow_forward_ios : Icons
+                        .arrow_back_ios,
                     color: Colors.green,
                   ),
                   onPressed: () {

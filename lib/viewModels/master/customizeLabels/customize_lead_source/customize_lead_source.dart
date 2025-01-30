@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import '../../../../../Utils/utils.dart';
-import '../../../../../data/models/requestModels/master/master_customize/customize_lead_source/customize_lead_source.dart';
-import '../../../../../data/repositories/repositories.dart';
-
-class MasterCustomizeLeadSource extends GetxController{
+import '../../../../Utils/utils.dart';
+import '../../../../data/models/requestModels/master/master_customize/customize_lead_source/customize_lead_source.dart';
+import '../../../../data/repositories/repositories.dart';
+class MasterCustomizeLeadSourceViewModel extends GetxController{
   final _api = Repositories();
   RxBool loading = false.obs;
-  Future<void> masterCustomizeOrder (BuildContext context) async {
+  Future<void> masterCustomizeLeadSource (BuildContext context) async {
     loading.value = true;
-    CustomizeLeadSourceRequestModel requestModel = CustomizeLeadSourceRequestModel(modules: [""]);
+    CustomizeLeadSourceRequestModel requestModel = CustomizeLeadSourceRequestModel(modules: ["lead_source"]);
     // Convert the RequestModel to JSON
     Map<String, dynamic> requestData = requestModel.toJson();
     _api.masterCustomizeLeadSource(requestData).then((value) {

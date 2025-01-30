@@ -12,7 +12,8 @@ class CustomerOrderProductScreenCard extends StatelessWidget {
   final String productCategory;
   final String info;
   final String servicesDate;
-  final List<Services>? services;  // Add services parameter
+  final List<Services>? services;  //
+  // Add services parameter
   final String orderDate;
   final String orderby;
 

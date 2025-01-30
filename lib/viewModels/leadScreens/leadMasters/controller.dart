@@ -19,7 +19,7 @@ class LeadMasterController extends GetxController {
   Future<void> fetchUserData() async {
     try {
       LoginResponseModel response = await userPreference.getUser();
-      userName.value = response.user?.first_name ?? '';
+      userName.value = response.user?.firstName ?? '';
       userEmail.value = response.user?.email ?? '';
     } catch (e) {
       print('Error fetching userData: $e');

@@ -31,12 +31,12 @@ class OrderPaymentsResponseModel {
 
 class Items {
   String? id;
-  double? amount;
-  int? gst_and_fees;
+  num? amount;
+  num? gst_and_fees;
   String? payment_mode;
   String? payment_type;
   String? txn_id;
-  int? cheque_number;
+  num? cheque_number;
   String? cheque_date;
   String? upload_document;
   String? invoice;
@@ -50,7 +50,7 @@ class Items {
   CreatedBy? created_by;
   Order? order;
   Product? product;
-  String? status_action_by;
+  dynamic status_action_by;
 
   Items(
       {this.id,
@@ -135,6 +135,8 @@ class Items {
   }
 }
 
+
+
 class CreatedBy {
   String? id;
   String? first_name;
@@ -159,25 +161,25 @@ class CreatedBy {
 
   CreatedBy(
       {this.id,
-        this.first_name,
-        this.last_name,
-        this.email,
-        this.mobile,
-        this.address,
-        this.bio,
-        this.profile_pic,
-        this.password,
-        this.status,
-        this.remember_token,
-        this.remember_token_time,
-        this.isdefault,
-        this.created_at,
-        this.updated_at,
-        this.device_id,
-        this.tracking,
-        this.crm_category,
-        this.mobile_app,
-        this.super_settings});
+      this.first_name,
+      this.last_name,
+      this.email,
+      this.mobile,
+      this.address,
+      this.bio,
+      this.profile_pic,
+      this.password,
+      this.status,
+      this.remember_token,
+      this.remember_token_time,
+      this.isdefault,
+      this.created_at,
+      this.updated_at,
+      this.device_id,
+      this.tracking,
+      this.crm_category,
+      this.mobile_app,
+      this.super_settings});
 
   CreatedBy.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -230,85 +232,90 @@ class CreatedBy {
 
 class Order {
   String? id;
-  int? order_number;
-  int? gst_fees;
-  int? tds_percentage;
-  int? amount;
-  int? tds_amount;
-  int? total_amount;
-  int? payabale_amount;
-  String? performa_invoice;
+  num? orderNumber; // Changed from double? to num?
+  num? gstFees; // Changed from double? to num?
+  num? tdsPercentage; // Changed from double? to num?
+  num? amount; // Changed from double? to num?
+  num? tdsAmount; // Changed from double? to num?
+  num? totalAmount; // Changed from double? to num?
+  num? payableAmount; // Changed from double? to num?
+  String? performaInvoice;
   String? status;
   String? remark;
-  String? created_at;
-  String? updated_at;
-  String? deleted_at;
-  String? delete_remark;
-  String? zoho_sales_order_id;
+  String? createdAt;
+  String? updatedAt;
+  String? deletedAt;
+  String? deleteRemark;
+  String? zohoSalesOrderId;
   Customer? customer;
   Company? company;
 
-  Order(
-      {this.id,
-        this.order_number,
-        this.gst_fees,
-        this.tds_percentage,
-        this.amount,
-        this.tds_amount,
-        this.total_amount,
-        this.payabale_amount,
-        this.performa_invoice,
-        this.status,
-        this.remark,
-        this.created_at,
-        this.updated_at,
-        this.deleted_at,
-        this.delete_remark,
-        this.zoho_sales_order_id,
-        this.customer,
-        this.company});
+  Order({
+    this.id,
+    this.orderNumber,
+    this.gstFees,
+    this.tdsPercentage,
+    this.amount,
+    this.tdsAmount,
+    this.totalAmount,
+    this.payableAmount,
+    this.performaInvoice,
+    this.status,
+    this.remark,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.deleteRemark,
+    this.zohoSalesOrderId,
+    this.customer,
+    this.company,
+  });
 
-  Order.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    order_number = json['order_number'];
-    gst_fees = json['gst_fees'];
-    tds_percentage = json['tds_percentage'];
-    amount = json['amount'];
-    tds_amount = json['tds_amount'];
-    total_amount = json['total_amount'];
-    payabale_amount = json['payabale_amount'];
-    performa_invoice = json['performa_invoice'];
-    status = json['status'];
-    remark = json['remark'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    deleted_at = json['deleted_at'];
-    delete_remark = json['delete_remark'];
-    zoho_sales_order_id = json['zoho_salesorder_id'];
-    customer =
-    json['customer'] != null ? Customer.fromJson(json['customer']) : null;
-    company =
-    json['company'] != null ? Company.fromJson(json['company']) : null;
+  factory Order.fromJson(Map<String, dynamic> json) {
+    return Order(
+      id: json['id'] as String?,
+      orderNumber: json['order_number'] as num?,
+      gstFees: json['gst_fees'] as num?,
+      tdsPercentage: json['tds_percentage'] as num?,
+      amount: json['amount'] as num?,
+      tdsAmount: json['tds_amount'] as num?,
+      totalAmount: json['total_amount'] as num?,
+      payableAmount: json['payabale_amount'] as num?,
+      performaInvoice: json['performa_invoice'] as String?,
+      status: json['status'] as String?,
+      remark: json['remark'] as String?,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      deletedAt: json['deleted_at'] as String?,
+      deleteRemark: json['delete_remark'] as String?,
+      zohoSalesOrderId: json['zoho_salesorder_id'] as String?,
+      customer: json['customer'] != null
+          ? Customer.fromJson(json['customer'])
+          : null,
+      company: json['company'] != null
+          ? Company.fromJson(json['company'])
+          : null,
+    );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['order_number'] = order_number;
-    data['gst_fees'] = gst_fees;
-    data['tds_percentage'] = tds_percentage;
+    data['order_number'] = orderNumber;
+    data['gst_fees'] = gstFees;
+    data['tds_percentage'] = tdsPercentage;
     data['amount'] = amount;
-    data['tds_amount'] = tds_amount;
-    data['total_amount'] = total_amount;
-    data['payabale_amount'] = payabale_amount;
-    data['performa_invoice'] = performa_invoice;
+    data['tds_amount'] = tdsAmount;
+    data['total_amount'] = totalAmount;
+    data['payabale_amount'] = payableAmount;
+    data['performa_invoice'] = performaInvoice;
     data['status'] = status;
     data['remark'] = remark;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['deleted_at'] = deleted_at;
-    data['delete_remark'] = delete_remark;
-    data['zoho_salesorder_id'] = zoho_sales_order_id;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['deleted_at'] = deletedAt;
+    data['delete_remark'] = deleteRemark;
+    data['zoho_salesorder_id'] = zohoSalesOrderId;
     if (customer != null) {
       data['customer'] = customer!.toJson();
     }
@@ -319,111 +326,112 @@ class Order {
   }
 }
 
+
 class Customer {
   String? id;
-  String? company_name;
-  String? first_name;
-  String? last_name;
-  String? primary_email;
-  int? country_code;
-  String? primary_contact;
+  String? companyName;
+  String? firstName;
+  String? lastName;
+  String? primaryEmail;
+  num? countryCode; // Changed from double? to num?
+  String? primaryContact;
   String? organization;
-  String? primary_address;
-  String? profile_image;
+  String? primaryAddress;
+  String? profileImage;
   String? dob;
-  String? about_client;
-  String? other_information;
-  double? lat;
-  double? lng;
-  String? created_at;
-  String? updated_at;
-  String? deleted_at;
-  String? delete_remark;
-  String? zoho_contact_id;
+  String? aboutClient;
+  String? otherInformation;
+  num? lat; // Changed from double? to num?
+  num? lng; // Changed from double? to num?
+  String? createdAt;
+  String? updatedAt;
+  String? deletedAt;
+  String? deleteRemark;
+  String? zohoContactId;
   String? status;
-  String? sub_status;
-  List<Divisions>? divisions;
+  String? subStatus;
+  List<Division>? divisions;
 
-  Customer(
-      {this.id,
-        this.company_name,
-        this.first_name,
-        this.last_name,
-        this.primary_email,
-        this.country_code,
-        this.primary_contact,
-        this.organization,
-        this.primary_address,
-        this.profile_image,
-        this.dob,
-        this.about_client,
-        this.other_information,
-        this.lat,
-        this.lng,
-        this.created_at,
-        this.updated_at,
-        this.deleted_at,
-        this.delete_remark,
-        this.zoho_contact_id,
-        this.status,
-        this.sub_status,
-        this.divisions});
+  Customer({
+    this.id,
+    this.companyName,
+    this.firstName,
+    this.lastName,
+    this.primaryEmail,
+    this.countryCode,
+    this.primaryContact,
+    this.organization,
+    this.primaryAddress,
+    this.profileImage,
+    this.dob,
+    this.aboutClient,
+    this.otherInformation,
+    this.lat,
+    this.lng,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.deleteRemark,
+    this.zohoContactId,
+    this.status,
+    this.subStatus,
+    this.divisions,
+  });
 
-  Customer.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    company_name = json['company_name'];
-    first_name = json['first_name'];
-    last_name = json['last_name'];
-    primary_email = json['primary_email'];
-    country_code = json['country_code'];
-    primary_contact = json['primary_contact'];
-    organization = json['organization'];
-    primary_address = json['primary_address'];
-    profile_image = json['profile_image'];
-    dob = json['dob'];
-    about_client = json['about_client'];
-    other_information = json['other_information'];
-    lat = json['lat'];
-    lng = json['lng'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    deleted_at = json['deleted_at'];
-    delete_remark = json['delete_remark'];
-    zoho_contact_id = json['zoho_contact_id'];
-    status = json['status'];
-    sub_status = json['subStatus'];
-    if (json['divisions'] != null) {
-      divisions = <Divisions>[];
-      json['divisions'].forEach((v) {
-        divisions!.add(Divisions.fromJson(v));
-      });
-    }
+  factory Customer.fromJson(Map<String, dynamic> json) {
+    return Customer(
+      id: json['id'] as String?,
+      companyName: json['company_name'] as String?,
+      firstName: json['first_name'] as String?,
+      lastName: json['last_name'] as String?,
+      primaryEmail: json['primary_email'] as String?,
+      countryCode: json['country_code'] as num?, // Accepts both int and double
+      primaryContact: json['primary_contact'] as String?,
+      organization: json['organization'] as String?,
+      primaryAddress: json['primary_address'] as String?,
+      profileImage: json['profile_image'] as String?,
+      dob: json['dob'] as String?,
+      aboutClient: json['about_client'] as String?,
+      otherInformation: json['other_information'] as String?,
+      lat: json['lat'] as num?, // Accepts both int and double
+      lng: json['lng'] as num?, // Accepts both int and double
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      deletedAt: json['deleted_at'] as String?,
+      deleteRemark: json['delete_remark'] as String?,
+      zohoContactId: json['zoho_contact_id'] as String?,
+      status: json['status'] as String?,
+      subStatus: json['subStatus'] as String?,
+      divisions: (json['divisions'] as List<dynamic>?)
+          ?.map((v) => Division.fromJson(v as Map<String, dynamic>))
+          .toList(),
+    );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['company_name'] = company_name;
-    data['first_name'] = first_name;
-    data['last_name'] = last_name;
-    data['primary_email'] = primary_email;
-    data['country_code'] = country_code;
-    data['primary_contact'] = primary_contact;
+    data['company_name'] = companyName;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['primary_email'] = primaryEmail;
+    data['country_code'] = countryCode;
+    data['primary_contact'] = primaryContact;
     data['organization'] = organization;
-    data['primary_address'] = primary_address;
-    data['profile_image'] = profile_image;
+    data['primary_address'] = primaryAddress;
+    data['profile_image'] = profileImage;
     data['dob'] = dob;
-    data['about_client'] = about_client;
-    data['other_information'] = other_information;
+    data['about_client'] = aboutClient;
+    data['other_information'] = otherInformation;
     data['lat'] = lat;
     data['lng'] = lng;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['deleted_at'] = deleted_at;
-    data['delete_remark'] = delete_remark;
-    data['zoho_contact_id'] = zoho_contact_id;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['deleted_at'] = deletedAt;
+    data['delete_remark'] = deleteRemark;
+    data['zoho_contact_id'] = zohoContactId;
     data['status'] = status;
-    data['subStatus'] = sub_status;
+    data['subStatus'] = subStatus;
     if (divisions != null) {
       data['divisions'] = divisions!.map((v) => v.toJson()).toList();
     }
@@ -431,258 +439,266 @@ class Customer {
   }
 }
 
-class Divisions {
+
+class Division {
   String? id;
   String? name;
   String? status;
-  String? mobile_no;
-  String? contact_person;
+  String? mobileNo;
+  String? contactPerson;
   String? email;
   String? address;
   String? logo;
-  String? created_at;
+  String? createdAt;
   String? updatedAt;
   String? zohoOrganizationId;
   String? zohoTaxExemptionId;
 
-  Divisions(
-      {this.id,
-        this.name,
-        this.status,
-        this.mobile_no,
-        this.contact_person,
-        this.email,
-        this.address,
-        this.logo,
-        this.created_at,
-        this.updatedAt,
-        this.zohoOrganizationId,
-        this.zohoTaxExemptionId});
+  Division({
+    this.id,
+    this.name,
+    this.status,
+    this.mobileNo,
+    this.contactPerson,
+    this.email,
+    this.address,
+    this.logo,
+    this.createdAt,
+    this.updatedAt,
+    this.zohoOrganizationId,
+    this.zohoTaxExemptionId,
+  });
 
-  Divisions.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    status = json['status'];
-    mobile_no = json['mobile_no'];
-    contact_person = json['contact_person'];
-    email = json['email'];
-    address = json['address'];
-    logo = json['logo'];
-    created_at = json['created_at'];
-    updatedAt = json['updated_at'];
-    zohoOrganizationId = json['zoho_organization_id'];
-    zohoTaxExemptionId = json['zoho_tax_exemption_id'];
-  }
+  factory Division.fromJson(Map<String, dynamic> json) => Division(
+    id: json['id'],
+    name: json['name'],
+    status: json['status'],
+    mobileNo: json['mobile_no'],
+    contactPerson: json['contact_person'],
+    email: json['email'],
+    address: json['address'],
+    logo: json['logo'],
+    createdAt: json['created_at'],
+    updatedAt: json['updated_at'],
+    zohoOrganizationId: json['zoho_organization_id'],
+    zohoTaxExemptionId: json['zoho_tax_exemption_id'],
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['status'] = status;
-    data['mobile_no'] = mobile_no;
-    data['contact_person'] = contact_person;
-    data['email'] = email;
-    data['address'] = address;
-    data['logo'] = logo;
-    data['created_at'] = created_at;
-    data['updated_at'] = updatedAt;
-    data['zoho_organization_id'] = zohoOrganizationId;
-    data['zoho_tax_exemption_id'] = zohoTaxExemptionId;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'status': status,
+    'mobile_no': mobileNo,
+    'contact_person': contactPerson,
+    'email': email,
+    'address': address,
+    'logo': logo,
+    'created_at': createdAt,
+    'updated_at': updatedAt,
+    'zoho_organization_id': zohoOrganizationId,
+    'zoho_tax_exemption_id': zohoTaxExemptionId,
+  };
 }
 
 class Company {
   String? id;
-  String? company_name;
-  String? company_email;
-  String? company_phone;
-  int? country_code;
-  String? contact_person_name;
-  String? contact_person_number;
-  int? c_country_code;
+  String? companyName;
+  String? companyEmail;
+  String? companyPhone;
+  num? countryCode;
+  String? contactPersonName;
+  String? contactPersonNumber;
+  num? contactCountryCode;
   String? address;
   String? website;
   String? gst;
   String? logo;
-  int? lat;
-  int? lng;
+  num? latitude;
+  num? longitude;
 
-  Company(
-      {this.id,
-        this.company_name,
-        this.company_email,
-        this.company_phone,
-        this.country_code,
-        this.contact_person_name,
-        this.contact_person_number,
-        this.c_country_code,
-        this.address,
-        this.website,
-        this.gst,
-        this.logo,
-        this.lat,
-        this.lng});
+  Company({
+    this.id,
+    this.companyName,
+    this.companyEmail,
+    this.companyPhone,
+    this.countryCode,
+    this.contactPersonName,
+    this.contactPersonNumber,
+    this.contactCountryCode,
+    this.address,
+    this.website,
+    this.gst,
+    this.logo,
+    this.latitude,
+    this.longitude,
+  });
 
-  Company.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    company_name = json['company_name'];
-    company_email = json['company_email'];
-    company_phone = json['company_phone'];
-    country_code = json['country_code'];
-    contact_person_name = json['contact_person_name'];
-    contact_person_number = json['contact_person_number'];
-    c_country_code = json['c_country_code'];
-    address = json['address'];
-    website = json['website'];
-    gst = json['gst'];
-    logo = json['logo'];
-    lat = json['lat'];
-    lng = json['lng'];
-  }
+  factory Company.fromJson(Map<String, dynamic> json) => Company(
+    id: json['id'],
+    companyName: json['company_name'],
+    companyEmail: json['company_email'],
+    companyPhone: json['company_phone'],
+    countryCode: json['country_code'],
+    contactPersonName: json['contact_person_name'],
+    contactPersonNumber: json['contact_person_number'],
+    contactCountryCode: json['c_country_code'],
+    address: json['address'],
+    website: json['website'],
+    gst: json['gst'],
+    logo: json['logo'],
+    latitude: json['lat'],
+    longitude: json['lng'],
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['company_name'] = company_name;
-    data['company_email'] = company_email;
-    data['company_phone'] = company_phone;
-    data['country_code'] = country_code;
-    data['contact_person_name'] = contact_person_name;
-    data['contact_person_number'] = contact_person_number;
-    data['c_country_code'] = c_country_code;
-    data['address'] = address;
-    data['website'] = website;
-    data['gst'] = gst;
-    data['logo'] = logo;
-    data['lat'] = lat;
-    data['lng'] = lng;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'company_name': companyName,
+    'company_email': companyEmail,
+    'company_phone': companyPhone,
+    'country_code': countryCode,
+    'contact_person_name': contactPersonName,
+    'contact_person_number': contactPersonNumber,
+    'c_country_code': contactCountryCode,
+    'address': address,
+    'website': website,
+    'gst': gst,
+    'logo': logo,
+    'lat': latitude,
+    'lng': longitude,
+  };
 }
 
 class Product {
   String? id;
-  String? product_type;
+  String? productType;
   String? name;
   String? description;
-  int? mrp;
-  int? sale_price;
-  int? quantity;
-  int? duration;
-  String? download_link;
+  num? mrp;
+  num? salePrice;
+  num? quantity;
+  num? duration;
+  String? downloadLink;
   String? packing;
   bool? status;
-  bool? is_taxable;
-  String? created_at;
-  String? updated_at;
-  String? deleted_at;
-  String? zoho_item_id;
-  bool? project_activation_disabled;
+  bool? isTaxable;
+  String? createdAt;
+  String? updatedAt;
+  String? deletedAt;
+  String? zohoItemId;
+  bool? projectActivationDisabled;
 
-  Product(
-      {this.id,
-        this.product_type,
-        this.name,
-        this.description,
-        this.mrp,
-        this.sale_price,
-        this.quantity,
-        this.duration,
-        this.download_link,
-        this.packing,
-        this.status,
-        this.is_taxable,
-        this.created_at,
-        this.updated_at,
-        this.deleted_at,
-        this.zoho_item_id,
-        this.project_activation_disabled});
+  Product({
+    this.id,
+    this.productType,
+    this.name,
+    this.description,
+    this.mrp,
+    this.salePrice,
+    this.quantity,
+    this.duration,
+    this.downloadLink,
+    this.packing,
+    this.status,
+    this.isTaxable,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.zohoItemId,
+    this.projectActivationDisabled,
+  });
 
-  Product.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    product_type = json['product_type'];
-    name = json['name'];
-    description = json['description'];
-    mrp = json['mrp'];
-    sale_price = json['sale_price'];
-    quantity = json['quantity'];
-    duration = json['duration'];
-    download_link = json['download_link'];
-    packing = json['packing'];
-    status = json['status'];
-    is_taxable = json['is_taxable'];
-    created_at = json['created_at'];
-    updated_at = json['updated_at'];
-    deleted_at = json['deleted_at'];
-    zoho_item_id = json['zoho_item_id'];
-    project_activation_disabled = json['project_activation_disabled'];
-  }
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json['id'],
+    productType: json['product_type'],
+    name: json['name'],
+    description: json['description'],
+    mrp: json['mrp'],
+    salePrice: json['sale_price'],
+    quantity: json['quantity'],
+    duration: json['duration'],
+    downloadLink: json['download_link'],
+    packing: json['packing'],
+    status: json['status'],
+    isTaxable: json['is_taxable'],
+    createdAt: json['created_at'],
+    updatedAt: json['updated_at'],
+    deletedAt: json['deleted_at'],
+    zohoItemId: json['zoho_item_id'],
+    projectActivationDisabled: json['project_activation_disabled'],
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['product_type'] = product_type;
-    data['name'] = name;
-    data['description'] = description;
-    data['mrp'] = mrp;
-    data['sale_price'] = sale_price;
-    data['quantity'] = quantity;
-    data['duration'] = duration;
-    data['download_link'] = download_link;
-    data['packing'] = packing;
-    data['status'] = status;
-    data['is_taxable'] = is_taxable;
-    data['created_at'] = created_at;
-    data['updated_at'] = updated_at;
-    data['deleted_at'] = deleted_at;
-    data['zoho_item_id'] = zoho_item_id;
-    data['project_activation_disabled'] = project_activation_disabled;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'product_type': productType,
+    'name': name,
+    'description': description,
+    'mrp': mrp,
+    'sale_price': salePrice,
+    'quantity': quantity,
+    'duration': duration,
+    'download_link': downloadLink,
+    'packing': packing,
+    'status': status,
+    'is_taxable': isTaxable,
+    'created_at': createdAt,
+    'updated_at': updatedAt,
+    'deleted_at': deletedAt,
+    'zoho_item_id': zohoItemId,
+    'project_activation_disabled': projectActivationDisabled,
+  };
 }
 
+
+
 class Meta {
-  int? currentPage;
-  int? itemsPerPage;
+  num? currentPage;
+  num? itemsPerPage;
   int? totalPages;
   int? totalItems;
   int? itemCount;
-  double? totalAmount;
-  String? approvedAmount;
-  String? cancelledAmount;
+  num? totalAmount;
+  num? approvedAmount;
+  int? cancelledAmount;
 
-  Meta(
-      {this.currentPage,
-        this.itemsPerPage,
-        this.totalPages,
-        this.totalItems,
-        this.itemCount,
-        this.totalAmount,
-        this.approvedAmount,
-        this.cancelledAmount});
+  Meta({
+    this.currentPage,
+    this.itemsPerPage,
+    this.totalPages,
+    this.totalItems,
+    this.itemCount,
+    this.totalAmount,
+    this.approvedAmount,
+    this.cancelledAmount,
+  });
 
-  Meta.fromJson(Map<String, dynamic> json) {
-    currentPage = json['currentPage'];
-    itemsPerPage = json['itemsPerPage'];
-    totalPages = json['totalPages'];
-    totalItems = json['totalItems'];
-    itemCount = json['itemCount'];
-    totalAmount = json['totalAmount'];
-    approvedAmount = json['approvedAmount'];
-    cancelledAmount = json['cancelledAmount'];
-  }
+  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
+    currentPage: json['currentPage'],
+    itemsPerPage: json['itemsPerPage'],
+    totalPages: json['totalPages'],
+    totalItems: json['totalItems'],
+    itemCount: json['itemCount'],
+    totalAmount: json['totalAmount'],
+    approvedAmount: json['approvedAmount'],
+    cancelledAmount: json['cancelledAmount'],
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['currentPage'] = currentPage;
-    data['itemsPerPage'] = itemsPerPage;
-    data['totalPages'] = totalPages;
-    data['totalItems'] = totalItems;
-    data['itemCount'] = itemCount;
-    data['totalAmount'] = totalAmount;
-    data['approvedAmount'] = approvedAmount;
-    data['cancelledAmount'] = cancelledAmount;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    'currentPage': currentPage,
+    'itemsPerPage': itemsPerPage,
+    'totalPages': totalPages,
+    'totalItems': totalItems,
+    'itemCount': itemCount,
+    'totalAmount': totalAmount,
+    'approvedAmount': approvedAmount,
+    'cancelledAmount': cancelledAmount,
+  };
 }
+
+
+
+
+
+
+
+
+

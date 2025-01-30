@@ -21,6 +21,7 @@ class Strings {
   static const String validemailpassword="Please enter a valid email";
   static const String adventure = 'adventure';
 
+
   //============================================================================
 
   // FORGOT PASSWORD SCREEN
@@ -307,6 +308,24 @@ class Strings {
   static const String masterUpdated_Date = 'UPDATED DATE';
   static const String masterLangauge = 'LANGUAGE VALUE ';
   // static const String sno = 'SNO';
+
+
+
+
+  // Analytics
+  static const String daily = 'Daily';
+  static const String monthly = 'Monthly';
+  static const String division = 'Division';
+  static const String category = 'Category';
+  static const String product = 'Product';
+  static const String executive = 'Executive';
+  static const String team = 'Team';
+  static const String district = 'District';
+  static const String city = 'City';
+
+
+
+
 
 }
 

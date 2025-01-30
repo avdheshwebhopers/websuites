@@ -3,7 +3,7 @@ class CustomizeLeadSourceRequestModel {
 
   CustomizeLeadSourceRequestModel({required this.modules});
 
-  // Factory method to create a RequestModel from a JSON map
+  // Factory method to update a RequestModel from a JSON map
   factory CustomizeLeadSourceRequestModel.fromJson(Map<String, dynamic> json) {
     return CustomizeLeadSourceRequestModel(
       modules: List<String>.from(json['modules']),

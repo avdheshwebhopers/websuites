@@ -46,9 +46,11 @@ class CustomerOrderProductsListViewModel extends GetxController {
       final response = await _api.customerOrderProduct(customerOrderProductRequestModel.toJson());
       if (response.items != null && response.items!.isNotEmpty) {
         _items.assignAll(response.items!); // Store the items in the reactive list
-        Utils.snackbarSuccess('Customer list fetched successfully');
+        // Utils.snackbarSuccess('Customer list fetched successfully');
+        print('Customer list fetched successfully');
       } else {
-        Utils.snackbarFailed('Customer order Products not fetched');
+        // Utils.snackbarFailed('Customer order Products not fetched');
+        print('Customer order Products not fetched');
       }
     } catch (error) {
       Utils.snackbarFailed('Error: $error');

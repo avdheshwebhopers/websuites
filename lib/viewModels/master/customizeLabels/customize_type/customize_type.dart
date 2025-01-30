@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import '../../../../../Utils/utils.dart';
-import '../../../../../data/repositories/repositories.dart';
+import '../../../../Utils/utils.dart';
+import '../../../../data/repositories/repositories.dart';
 
 class MasterCustomizeTypeController extends GetxController{
   final _api = Repositories();
