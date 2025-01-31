@@ -2,15 +2,14 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:websuites/utils/appColors/app_colors.dart';
-
 import 'package:websuites/utils/fontfamily/FontFamily.dart';
-
 import '../../../utils/components/buttons/common_button.dart';
 import '../../../utils/container/container_Utils/ContainerUtils.dart';
 import '../../../viewModels/master/dashboard/SettingDashboardListViewModel.dart';
 import '../../../../utils/utils.dart';
 
 
+import 'dart:math' as math;
 
 class PieChartController extends GetxController {
   var touchedIndex = (-1).obs;
@@ -33,6 +32,7 @@ class SettingDashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final List<SourceData> data = [
       SourceData(source: "Google", count: 11490, color: AllColors.thinPurple),
       SourceData(source: "Bot", count: 4000, color: Colors.orange.shade200),
@@ -58,6 +58,23 @@ class SettingDashboardScreen extends StatelessWidget {
     final Rx<bool> isListSelected = true.obs;
     final Rx<Color> borderColor = Colors.grey.shade300.obs;
     final List<double> completedProjects = [10, 15, 12, 18, 20, 22, 25, 23, 20, 18, 15, 10];
+
+
+
+    final List<Color> barColors = [
+      Colors.blue,
+      Colors.red,
+      Colors.green,
+      Colors.orange,
+      Colors.purple,
+      Colors.cyan,
+      Colors.pink,
+      Colors.indigo,
+      Colors.teal,
+      Colors.yellow,
+      Colors.amber,
+      Colors.lime,
+    ];
 
     final viewModel = Get.put(SettingDashboardListViewModel());
     RxDouble rotation = 0.0.obs;
@@ -95,7 +112,7 @@ class SettingDashboardScreen extends StatelessWidget {
             //     Navigator.push(
             //       context,
             //       MaterialPageRoute(
-            //         builder: (context) => CompletedProjectsGraph(),
+            //         builder: (context) => DashboardMetrics(),
             //       ),
             //     );
             //   },
@@ -1073,9 +1090,11 @@ class SettingDashboardScreen extends StatelessWidget {
                                                     ),
                                                     SizedBox(width: 6),
                                                     Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
                                                       mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .center,
+
                                                       children: [
                                                         Text(
                                                           'Missing',
@@ -3337,8 +3356,7 @@ class SettingDashboardScreen extends StatelessWidget {
                                           ],
                                         ),
                                         Divider(
-                                          thickness: 0.5,
-                                          height: 20,
+                                          thickness: 0.5, height: 20,
                                         ),
                                       ],
                                     ),
@@ -3562,178 +3580,1199 @@ class SettingDashboardScreen extends StatelessWidget {
                                     ),
                                   if (index ==7)
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            StatusCard(
-                                              number: "3",
-                                              label: "Not Started",
-                                              color: AllColors.mediumGrey,
-                                              showBorder: true,
-                                            ),
-                                            SizedBox(width: 10,),
-                                            StatusCard(
-                                              number: "1",
-                                              label: "In Progress",
-                                              color: Colors.green,
-                                              showBorder: true,
-                                            ),
-
-
-                                          ],
-                                        ),
-                                        SizedBox(height: 10,),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            StatusCard(
-                                              number: "3",
-                                              label: "Not Started",
-                                              color: AllColors.mediumGrey,
-                                              showBorder: true,
-                                            ),
-                                            SizedBox(width: 10,),
-                                            StatusCard(
-                                              number: "1",
-                                              label: "In Progress",
-                                              color: Colors.green,
-                                              showBorder: true,
-                                            ),
-
-
-                                          ],
-                                        ),
-                                        SizedBox(height: 10,),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            // Graph Title
+                                            Icon(Icons.date_range_sharp,color: AllColors.mediumPurple,size: 14,),
+                                            SizedBox(width: 5,),
                                             Text(
-                                              'Last 12 Months',
+                                              'Last 12 Months Completed Projects Graphical View',
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 color: Colors.black,
                                               ),
                                             ),
-                                            SizedBox(height: 20),
-
-                                            // Bar Chart
-                                            Container(
-                                              height: 300,
-                                              child: BarChart(
-                                                BarChartData(
-                                                  alignment: BarChartAlignment.spaceAround,
-                                                  maxY: 25, // Maximum value on the Y-axis
-                                                  barTouchData: BarTouchData(enabled: false),
-                                                  titlesData: FlTitlesData(
-                                                    show: true,
-                                                    bottomTitles: AxisTitles(
-                                                      sideTitles: SideTitles(
-                                                        showTitles: true,
-                                                        getTitlesWidget: (value, meta) {
-                                                          // X-axis labels (months)
-                                                          final months = [
-                                                            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                                                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-                                                          ];
-                                                          return Padding(
-                                                            padding: const EdgeInsets.only(top: 8.0),
-                                                            child: Text(
-                                                              months[value.toInt()],
-                                                              style: TextStyle(
-                                                                fontSize: 12,
-                                                                color: Colors.grey[700],
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                    leftTitles: AxisTitles(
-                                                      sideTitles: SideTitles(
-                                                        showTitles: true,
-                                                        getTitlesWidget: (value, meta) {
-                                                          // Y-axis labels
-                                                          return Text(
-                                                            value.toInt().toString(),
-                                                            style: TextStyle(
-                                                              fontSize: 12,
-                                                              color: Colors.grey[700],
-                                                            ),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                    rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                                    topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                                  ),
-                                                  gridData: FlGridData(
-                                                    show: true,
-                                                    drawHorizontalLine: true,
-                                                    drawVerticalLine: false, // Disable vertical lines
-                                                    horizontalInterval: 5,
-                                                    getDrawingHorizontalLine: (value) {
-                                                      return FlLine(
-                                                        color: Colors.grey[300]!,
-                                                        strokeWidth: 1,
-                                                      );
-                                                    },
-                                                  ),
-                                                  borderData: FlBorderData(show: false),
-                                                  barGroups: completedProjects
-                                                      .asMap()
-                                                      .entries
-                                                      .map(
-                                                        (entry) => BarChartGroupData(
-                                                      x: entry.key,
-                                                      barRods: [
-                                                        BarChartRodData(
-                                                          toY: entry.value,
-                                                          color: Colors.green,
-                                                          width: 23,
-                                                          borderRadius: BorderRadius.circular(4),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )
-                                                      .toList(),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(height: 20),
-
-                                            // X-axis and Y-axis labels
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  'Months',
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    color: Colors.grey[700],
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Number of Projects',
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    color: Colors.grey[700],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
                                           ],
                                         ),
 
 
 
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 30),
+                                          child: Container(
+                                            height: 300,
+                                            child: BarChart(
+                                              BarChartData(
+                                                alignment: BarChartAlignment.spaceAround,
+                                                maxY: 25,
+                                                barTouchData: BarTouchData(
+                                                  enabled: false,
+                                                  touchTooltipData: BarTouchTooltipData(
+                                                    getTooltipColor: (group) => Colors.transparent,
+                                                    tooltipPadding: EdgeInsets.zero,
+                                                    tooltipMargin: 0,
+                                                    getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                                                      return BarTooltipItem(
+                                                        rod.toY.toStringAsFixed(0),
+                                                        TextStyle(
+                                                          color: Colors.black,
+                                                          fontWeight: FontWeight.w500,
+                                                          fontSize: 11,
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                titlesData: FlTitlesData(
+                                                  show: true,
+                                                  bottomTitles: AxisTitles(
+                                                    sideTitles: SideTitles(
+                                                      showTitles: true,
+                                                      getTitlesWidget: (value, meta) {
+                                                        final months = [
+                                                          'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                                                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                                                        ];
+                                                        return Padding(
+                                                          padding: const EdgeInsets.only(top: 8.0),
+                                                          child: Text(
+                                                            months[value.toInt()],
+                                                            style: TextStyle(
+                                                              fontSize: 12,
+                                                              color: Colors.grey[700],
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                  leftTitles: AxisTitles(
+                                                    sideTitles: SideTitles(
+                                                      showTitles: true,
+                                                      getTitlesWidget: (value, meta) {
+                                                        return Text(
+                                                          value.toInt().toString(),
+                                                          style: TextStyle(
+                                                            fontSize: 12,
+                                                            color: Colors.grey[700],
+                                                          ),
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                  rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                  topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                                ),
+                                                gridData: FlGridData(
+                                                  show: false,  // Disable all grid lines (horizontal and vertical)
+                                                ),
+                                                borderData: FlBorderData(show: false),
+                                                barGroups: completedProjects
+                                                    .asMap()
+                                                    .entries
+                                                    .map(
+                                                      (entry) => BarChartGroupData(
+                                                    x: entry.key,
+                                                    barRods: [
+                                                      BarChartRodData(
+                                                        toY: entry.value,
+                                                        color: barColors[entry.key],
+                                                        width: 21,
+                                                        borderRadius: BorderRadius.circular(4),
+                                                      ),
+                                                    ],
+                                                    showingTooltipIndicators: [0],
+                                                  ),
+                                                )
+                                                    .toList(),
+                                              ),
+                                              swapAnimationDuration: Duration(milliseconds: 150),
+                                              swapAnimationCurve: Curves.linear,
+                                            ),
+                                          ),
+                                        ),
 
+                                      ],
+                                    ),
+                                  if(index==8)
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Wrap(
+                                          spacing: 15,
+                                          // Space between the children
+                                          runSpacing: 10,
+                                          // Space between the lines
+                                          children: [
+                                            Expanded(
+                                              child: ContainerUtils(
+                                                child: Row(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 16,
+                                                      backgroundColor:
+                                                      AllColors
+                                                          .lightYellow,
+                                                      child: Icon(
+                                                          Icons
+                                                              .date_range,
+                                                          color: AllColors
+                                                              .vividYellow,
+                                                          size: 16),
+                                                    ),
+                                                    SizedBox(width: 6),
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .start,
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .center,
+                                                      children: [
+                                                        Text(
+                                                          'Today',
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                              15.9,
+                                                              fontFamily:
+                                                              FontFamily
+                                                                  .sfPro,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w400),
+                                                        ),
+                                                        Text(
+                                                          '2',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w700,
+                                                              fontSize:
+                                                              19,
+                                                              fontFamily:
+                                                              FontFamily
+                                                                  .sfPro),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: ContainerUtils(
+                                                child: Row(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 16,
+                                                      backgroundColor:
+                                                      AllColors
+                                                          .lightRed,
+                                                      child: Text(
+                                                        '!',
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                            FontFamily
+                                                                .sfPro,
+                                                            fontSize: 14,
+                                                            color: AllColors
+                                                                .darkRed,
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .w700),
+                                                      ),
+                                                    ),
+                                                    SizedBox(width: 6),
+                                                    Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .center,
+
+                                                      children: [
+                                                        Text(
+                                                          'Missing',
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                              15.9,
+                                                              fontFamily:
+                                                              FontFamily
+                                                                  .sfPro,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w400),
+                                                        ),
+                                                        Text(
+                                                          '414',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w700,
+                                                              fontSize:
+                                                              19,
+                                                              fontFamily:
+                                                              FontFamily
+                                                                  .sfPro),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: ContainerUtils(
+                                                child: Row(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 16,
+                                                      backgroundColor:
+                                                      AllColors
+                                                          .background_green,
+                                                      child: Icon(
+                                                          Icons.upcoming,
+                                                          color: AllColors
+                                                              .text__green,
+                                                          size: 16),
+                                                    ),
+                                                    SizedBox(width: 6),
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .start,
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .center,
+                                                      children: [
+                                                        Text(
+                                                          'UpComing',
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                              15.9,
+                                                              fontFamily:
+                                                              FontFamily
+                                                                  .sfPro,
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w400),
+                                                        ),
+                                                        Text(
+                                                          '29',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w700,
+                                                              fontSize:
+                                                              19,
+                                                              fontFamily:
+                                                              FontFamily
+                                                                  .sfPro),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          'Today Reminders List',
+                                          style: TextStyle(
+                                              fontFamily:
+                                              FontFamily.sfPro,
+                                              fontSize: 15),
+                                        ),
+
+                                        Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment
+                                                  .start,
+                                              children: [
+                                                Text(
+                                                  '16 October 2024 at 12:13 pm',
+                                                  style: TextStyle(
+                                                      color: AllColors
+                                                          .greyBlack,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight
+                                                          .w400),
+                                                )
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            Container(
+                                              padding:
+                                              EdgeInsets.symmetric(
+                                                  horizontal: 10,
+                                                  vertical: 4),
+                                              decoration: BoxDecoration(
+                                                color: AllColors.lightRed,
+                                                borderRadius:
+                                                BorderRadius.circular(
+                                                    8),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons
+                                                        .notifications_outlined,
+                                                    size: 14,
+                                                    color:
+                                                    AllColors.darkRed,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    'Missed',
+                                                    style: TextStyle(
+                                                      color: AllColors
+                                                          .darkRed,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                      fontSize: 13,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            CircleAvatar(
+                                                radius: 16,
+                                                backgroundColor:
+                                                AllColors.mediumPurple,
+                                                child: Text(
+                                                  'A',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.w600,
+                                                      fontSize: 13,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      color: AllColors
+                                                          .whiteColor),
+                                                )),
+                                          ],
+                                        ),
+                                        Divider(
+                                          thickness: 0.5,
+                                          height: 20,
+                                        ),
+                                        SizedBox(
+                                          height: 0,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment
+                                                  .start,
+                                              children: [
+
+                                                Text(
+                                                  '16 October 2024 at 11:36 pm',
+                                                  style: TextStyle(
+                                                      color: AllColors
+                                                          .greyBlack,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight
+                                                          .w400),
+                                                )
+                                              ],
+                                            ),
+                                            Spacer(),
+                                            Container(
+                                              padding:
+                                              EdgeInsets.symmetric(
+                                                  horizontal: 10,
+                                                  vertical: 4),
+                                              decoration: BoxDecoration(
+                                                color: AllColors.lightRed,
+                                                borderRadius:
+                                                BorderRadius.circular(
+                                                    8),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons
+                                                        .notifications_outlined,
+                                                    size: 14,
+                                                    color:
+                                                    AllColors.darkRed,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    'Missed',
+                                                    style: TextStyle(
+                                                      color: AllColors
+                                                          .darkRed,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                      fontSize: 13,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            CircleAvatar(
+                                                radius: 16,
+                                                backgroundColor:
+                                                AllColors.mediumPurple,
+                                                child: Text(
+                                                  'A',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.w600,
+                                                      fontSize: 13,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      color: AllColors
+                                                          .whiteColor),
+                                                )),
+                                          ],
+                                        ),
+
+                                        Divider(
+                                          thickness: 0.5, height: 20,
+                                        ),
+                                      ],
+                                    ),
+
+                                  if(index==9)
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Current Month Projects',style: TextStyle(color: AllColors.darkGrey,fontSize: 15,fontWeight: FontWeight.w500,fontFamily: FontFamily.sfPro),)
+                                        ,Row(
+                                          children: [
+                                            Text('Special',style: TextStyle(fontSize: 13,fontWeight: FontWeight.w500,fontFamily: FontFamily.sfPro),),
+                                            Spacer(),
+                                            CircleAvatar(
+                                                radius: 16,
+                                                backgroundColor:
+                                                AllColors.greyBlack,
+                                                child: Text(
+                                                  'R',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.w600,
+                                                      fontSize: 13,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      color: AllColors
+                                                          .whiteColor),
+                                                )),
+                                            CircleAvatar(
+                                                radius: 16,
+                                                backgroundColor:
+                                                AllColors.mediumPurple,
+                                                child: Text(
+                                                  'D',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.w600,
+                                                      fontSize: 13,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      color: AllColors
+                                                          .whiteColor),
+                                                )),
+                                          ],
+                                        ),
+                                        Divider(thickness: 0.3,)
+
+                                      ],
+                                    ),
+
+                                  if(index==10)
+                                    Column(
+                                      children: [
+                                        IntrinsicHeight(
+                                          child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                                            children: [
+                                              Expanded(
+                                                child: Container(
+                                                  padding: const EdgeInsets.all(16.0),
+                                                  color: Colors.white,
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    children: [
+                                                      Container(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        decoration: BoxDecoration(
+                                                          color: AllColors.lighterPurple,
+                                                          borderRadius: BorderRadius.circular(8.0),
+                                                        ),
+                                                        child: Icon(
+                                                          Icons.shopping_bag_outlined,
+                                                          color: AllColors.mediumPurple,
+                                                          size: 24,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 12),
+                                                      const Text(
+                                                        "110",
+                                                        style: TextStyle(
+                                                          fontSize: 24,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: Colors.black87,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 4),
+                                                      const Text(
+                                                        "Orders",
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Color(0xFF6B7280),
+                                                          fontWeight: FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                width: 1,
+                                                color: Colors.black12,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  padding: const EdgeInsets.all(16.0),
+                                                  color: Colors.white,
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    children: [
+                                                      Container(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        decoration: BoxDecoration(
+                                                          color: AllColors.lighterPurple,
+                                                          borderRadius: BorderRadius.circular(8.0),
+                                                        ),
+                                                        child: Icon(
+                                                          Icons.medical_services_outlined,
+                                                          color: AllColors.mediumPurple,
+                                                          size: 24,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 12),
+                                                      const Text(
+                                                        "20000",
+                                                        style: TextStyle(
+                                                          fontSize: 24,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: Colors.black87,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 4),
+                                                      const Text(
+                                                        "Incentive",
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Color(0xFF6B7280),
+                                                          fontWeight: FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 1,
+                                          color: Colors.black12,
+                                        ),
+                                        IntrinsicHeight(
+                                          child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                                            children: [
+                                              Expanded(
+                                                child: Container(
+                                                  padding: const EdgeInsets.all(16.0),
+                                                  color: Colors.white,
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    children: [
+                                                      Container(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        decoration: BoxDecoration(
+                                                          color: AllColors.lighterPurple,
+                                                          borderRadius: BorderRadius.circular(8.0),
+                                                        ),
+                                                        child: Icon(
+                                                          Icons.hexagon_outlined,
+                                                          color: AllColors.mediumPurple,
+                                                          size: 24,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 12),
+                                                      const Text(
+                                                        "20.06 Cr",
+                                                        style: TextStyle(
+                                                          fontSize: 24,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: Colors.black87,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 4),
+                                                      const Text(
+                                                        "Sales",
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Color(0xFF6B7280),
+                                                          fontWeight: FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                width: 1,
+                                                color: Colors.black12,
+                                              ),
+                                              Expanded(
+                                                child: Container(
+                                                  padding: const EdgeInsets.all(16.0),
+                                                  color: Colors.white,
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    children: [
+                                                      Container(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        decoration: BoxDecoration(
+                                                          color: AllColors.lighterPurple,
+                                                          borderRadius: BorderRadius.circular(8.0),
+                                                        ),
+                                                        child: Icon(
+                                                          Icons.bar_chart,
+                                                          color: AllColors.mediumPurple,
+                                                          size: 24,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 12),
+                                                      const Text(
+                                                        "3.67 L",
+                                                        style: TextStyle(
+                                                          fontSize: 24,
+                                                          fontWeight: FontWeight.w600,
+                                                          color: Colors.black87,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 4),
+                                                      const Text(
+                                                        "Revenue",
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Color(0xFF6B7280),
+                                                          fontWeight: FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+
+                                  if(index==11)
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text('.......',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+                                            Spacer(),
+                                            Text('₹10 By',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AllColors.greenJungle),),
+                                            SizedBox(width: 5,),
+                                            Container(
+                                              padding:
+                                              EdgeInsets.symmetric(
+                                                  horizontal: 10,
+                                                  vertical: 2),
+                                              decoration: BoxDecoration(
+                                                color: AllColors.background_green,
+                                                borderRadius:
+                                                BorderRadius.circular(
+                                                    8),
+                                              ),
+                                              child: Row(
+                                                children: [
+
+                                                  Text(
+                                                    'Online',
+                                                    style: TextStyle(
+                                                      color: AllColors
+                                                          .text__green,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight.w400,
+                                                      fontSize: 13,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 0,),
+
+                                        Text(
+                                          '16 October 2024 at 9:23 pm',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+
+                                        Text(
+                                          'paid by: Webhopers Infotech Private Limited',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+                                        Divider(thickness: 0.3,),
+                                        SizedBox(height: 0,),
+                                        Row(
+                                          children: [
+                                            Text('.......',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+                                            Spacer(),
+                                            Text('₹10 By',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AllColors.greenJungle),),
+                                            SizedBox(width: 5,),
+                                            Container(
+                                              padding:
+                                              EdgeInsets.symmetric(
+                                                  horizontal: 10,
+                                                  vertical: 2),
+                                              decoration: BoxDecoration(
+                                                color: AllColors.background_green,
+                                                borderRadius:
+                                                BorderRadius.circular(
+                                                    8),
+                                              ),
+                                              child: Row(
+                                                children: [
+
+                                                  Text(
+                                                    'Online',
+                                                    style: TextStyle(
+                                                      color: AllColors
+                                                          .text__green,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight.w400,
+                                                      fontSize: 13,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 0,),
+
+                                        Text(
+                                          '16 October 2024 at 9:23 pm',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+
+                                        Text(
+                                          'paid by: Webhopers Infotech Private Limited',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+                                        Divider(thickness: 0.3,),
+                                        SizedBox(height: 5,),
+
+                                        Row(
+                                          children: [
+                                            Text('.......',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+                                            Spacer(),
+                                            Text('₹10 By',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AllColors.greenJungle),),
+                                            SizedBox(width: 5,),
+                                            Container(
+                                              padding:
+                                              EdgeInsets.symmetric(
+                                                  horizontal: 10,
+                                                  vertical: 2),
+                                              decoration: BoxDecoration(
+                                                color: AllColors.background_green,
+                                                borderRadius:
+                                                BorderRadius.circular(
+                                                    8),
+                                              ),
+                                              child: Row(
+                                                children: [
+
+                                                  Text(
+                                                    'Online',
+                                                    style: TextStyle(
+                                                      color: AllColors
+                                                          .text__green,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight.w400,
+                                                      fontSize: 13,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 0,),
+
+                                        Text(
+                                          '16 October 2024 at 9:23 pm',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+
+                                        Text(
+                                          'paid by: Webhopers Infotech Private Limited',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+                                        Divider(thickness: 0.3,),
+                                        SizedBox(height: 0,),
+
+                                        Row(
+                                          children: [
+                                            Text('.......',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+                                            Spacer(),
+                                            Text('₹10 By',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AllColors.greenJungle),),
+                                            SizedBox(width: 5,),
+                                            Container(
+                                              padding:
+                                              EdgeInsets.symmetric(
+                                                  horizontal: 10,
+                                                  vertical: 2),
+                                              decoration: BoxDecoration(
+                                                color: AllColors.lightYellow,
+                                                borderRadius:
+                                                BorderRadius.circular(
+                                                    8),
+                                              ),
+                                              child: Row(
+                                                children: [
+
+                                                  Text(
+                                                    'Cash',
+                                                    style: TextStyle(
+                                                      color: AllColors
+                                                          .darkYellow,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight.w400,
+                                                      fontSize: 13,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 0,),
+
+                                        Text(
+                                          '16 October 2024 at 9:23 pm',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+
+                                        Text(
+                                          'paid by: Webhopers Infotech Private Limited',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+                                        Divider(thickness: 0.3,),
+                                        SizedBox(height: 0,),
+
+                                        Row(
+                                          children: [
+                                            Text('.......',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),),
+                                            Spacer(),
+                                            Text('₹10 By',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AllColors.greenJungle),),
+                                            SizedBox(width: 5,),
+                                            Container(
+                                              padding:
+                                              EdgeInsets.symmetric(
+                                                  horizontal: 10,
+                                                  vertical: 2),
+                                              decoration: BoxDecoration(
+                                                color: AllColors.lightYellow,
+                                                borderRadius:
+                                                BorderRadius.circular(
+                                                    8),
+                                              ),
+                                              child: Row(
+                                                children: [
+
+                                                  Text(
+                                                    'Cash',
+                                                    style: TextStyle(
+                                                      color: AllColors
+                                                          .darkYellow,
+                                                      fontFamily:
+                                                      FontFamily
+                                                          .sfPro,
+                                                      fontWeight:
+                                                      FontWeight.w400,
+                                                      fontSize: 13,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 0,),
+
+                                        Text(
+                                          '16 October 2024 at 9:23 pm',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+
+                                        Text(
+                                          'paid by: Webhopers Infotech Private Limited',
+                                          style: TextStyle(
+                                              color: AllColors
+                                                  .greyBlack,
+                                              fontFamily:
+                                              FontFamily
+                                                  .sfPro,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w400),
+                                        ),
+                                        Divider(thickness: 0.3,),
+                                        SizedBox(height: 10,),
 
 
                                       ],
-                                    )
+                                    ),
+
+                                  if(index==12)
+
+                                    Column(
+                                      children: [
+                                        // Row(
+                                        //   children: [
+                                        //     Expanded(child: CreateNewLeadScreenCard2(hintText: '2025-01-30',isDateField: true,)),
+                                        //     Spacer()
+                                        //   ],
+                                        // ),
+                                        // SizedBox(height: 10,),
+                                        Center(
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  Container(
+                                                    width: 200,
+                                                    height: 200,
+                                                    child: CustomPaint(
+                                                      painter: _CircleProgressPainter(
+                                                        progress: 0.07,
+                                                        progressColor: Colors.orange.shade200,
+                                                        backgroundColor: Colors.grey.shade200,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Column(
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    children: [
+                                                      Text(
+                                                        'PROGRESS',
+                                                        style: TextStyle(
+                                                          color: Colors.grey[600],
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 4),
+                                                      Text(
+                                                        '7.00%',
+                                                        style: TextStyle(
+                                                          color: Colors.grey[800],
+                                                          fontSize: 24,
+                                                          fontWeight: FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 16),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    '00',
+                                                    style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    ' : ',
+                                                    style: TextStyle(
+                                                      color: Colors.grey[600],
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '00',
+                                                    style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    ' : ',
+                                                    style: TextStyle(
+                                                      color: Colors.grey[600],
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '56',
+                                                    style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    ' / 8 Hrs',
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 16,
+                                                        fontWeight: FontWeight.w700
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
 
                                 ],
 
@@ -3897,5 +4936,54 @@ class StatusCard extends StatelessWidget {
         ),
       );
 
+  }
+}
+
+
+class _CircleProgressPainter extends CustomPainter {
+  final double progress;
+  final Color progressColor;
+  final Color backgroundColor;
+
+  _CircleProgressPainter({
+    required this.progress,
+    required this.progressColor,
+    required this.backgroundColor,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = math.min(size.width / 2, size.height / 2) - 15;
+    final strokeWidth = 30.0;
+
+    // Draw background circle
+    final backgroundPaint = Paint()
+      ..color = backgroundColor
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round;
+
+    canvas.drawCircle(center, radius, backgroundPaint);
+
+    // Draw progress arc
+    final progressPaint = Paint()
+      ..color = progressColor
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round;
+
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      -math.pi / 2,
+      2 * math.pi * progress,
+      false,
+      progressPaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_CircleProgressPainter oldDelegate) {
+    return progress != oldDelegate.progress;
   }
 }
