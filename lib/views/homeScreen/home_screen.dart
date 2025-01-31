@@ -23,6 +23,7 @@ import '../HRM/leave/HrmLeaveScreen.dart';
 import '../Master/Division.dart';
 import '../Master/ProposalScreen.dart';
 import '../Master/cities/SettingCitiesScreen.dart';
+import '../Master/dashboard/SettingDashboardScreen.dart';
 import '../analytics/customer/CustomerAnalyticsScreen.dart';
 import '../analytics/lead/LeadAnalyticsScreen.dart';
 import '../analytics/ph/PHAnalyticsScreen.dart';
@@ -101,6 +102,7 @@ class HomeScreenController extends GetxController {
     RolesScreen(),
     UsersDepartmentsScreen(),
     UserActivityScreen(),
+    SettingDashboardScreen(),
     MasterDivisionScreen(),
     MasterProposalScreen(),
     SettingCitiesScreen(),

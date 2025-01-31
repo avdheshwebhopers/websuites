@@ -11,17 +11,17 @@ class SettingDashboardListViewModel extends GetxController {
   final _api = Repositories();
 
   var selectedDashboardName = Rx<String?>(null);
-  var selectedDashboardCharts = Rx<List<String>?>(null);
-  RxBool hasDeletedFirstItem = false.obs;
-  bool isDivisionChart(String chartName) {
-    return chartName.toLowerCase().contains('division');
-  }
   var selectedDashboardId = Rx<String?>(null);
   RxBool loading = false.obs;
   RxList<SettingDashboardListResponseModel> masterDashboardItems = <SettingDashboardListResponseModel>[].obs;
 
-  // Use RxList<String> for original charts
-  RxList<String> originalDashboardCharts = <String>[].obs;
+  // Map to store charts for each division
+  final Map<String, List<String>> divisionChartsMap = {};
+  final Map<String, List<String>> originalChartsMap = {}; // Store original charts
+  var selectedDashboardCharts = Rx<List<String>?>(null);
+
+  // Map to store deletion states for each division
+  final Map<String, List<bool>> divisionDeletionStates = {};
 
   // Define the allowed chart values
   static const List<String> allowedCharts = [
@@ -50,14 +50,27 @@ class SettingDashboardListViewModel extends GetxController {
         // Assign data to observable variables
         masterDashboardItems.value = response;
         selectedDashboardName.value = response.first.name ?? '';
-        selectedDashboardCharts.value = List<String>.from(response.first.charts ?? []);  // Create a new list
         selectedDashboardId.value = response.first.id ?? '';
 
-        // Store the original charts for later use
-        originalDashboardCharts.value = List<String>.from(response.first.charts ?? []); // Create a new list
+        // Initialize the divisionChartsMap, originalChartsMap, and deletion states for each dashboard
+        for (var dashboard in masterDashboardItems) {
+          divisionChartsMap[dashboard.name ?? ''] = List<String>.from(dashboard.charts ?? []);
+          originalChartsMap[dashboard.name ?? ''] = List<String>.from(dashboard.charts ?? []);
 
+          // Initialize deletion states for this division
+          divisionDeletionStates[dashboard.name ?? ''] = List.filled(dashboard.charts?.length ?? 0, false);
+        }
+
+        // Set the selected charts for the current division
+        selectedDashboardCharts.value = List<String>.from(divisionChartsMap[selectedDashboardName.value ?? ''] ?? []);
         Utils.snackbarSuccess('Dashboard list fetched');
       } else {
+        // If no data is coming from the API, initialize with all allowed charts
+        selectedDashboardCharts.value = List<String>.from(allowedCharts);
+        divisionChartsMap[selectedDashboardName.value ?? ''] = List<String>.from(allowedCharts);
+        originalChartsMap[selectedDashboardName.value ?? ''] = List<String>.from(allowedCharts);
+        divisionDeletionStates[selectedDashboardName.value ?? ''] = List.filled(allowedCharts.length, false);
+
         Utils.snackbarFailed('No dashboards available');
       }
     } catch (error) {
@@ -70,93 +83,87 @@ class SettingDashboardListViewModel extends GetxController {
     }
   }
 
-  // 2nd correct
+  // Method to update selected dashboard
+  void updateSelectedDashboard(String name) {
+    selectedDashboardName.value = name;
+    selectedDashboardId.value = masterDashboardItems.firstWhere((dashboard) => dashboard.name == name).id;
+
+    // Set the selected charts for the current division
+    selectedDashboardCharts.value = List<String>.from(divisionChartsMap[name] ?? []);
+
+    // Ensure deletion states are initialized for this division
+    if (!divisionDeletionStates.containsKey(name)) {
+      divisionDeletionStates[name] = List.filled(selectedDashboardCharts.value?.length ?? 0, false);
+    }
+  }
 
   // Remove a chart by its index
-  // void removeChart(int index) {
-  //   if (selectedDashboardCharts.value != null &&
-  //       index >= 0 &&
-  //       index < selectedDashboardCharts.value!.length) {
-  //     // Create a new list with the item removed
-  //     List<String> updatedCharts = List<String>.from(selectedDashboardCharts.value!);
-  //     updatedCharts.removeAt(index);
-  //
-  //     // Update the selectedDashboardCharts with the new list
-  //     selectedDashboardCharts.value = updatedCharts;
-  //
-  //     // Force a refresh of the UI
-  //     selectedDashboardCharts.refresh();
-  //   }
-  // }
-
   void removeChart(int index) {
     if (selectedDashboardCharts.value != null &&
         index >= 0 &&
         index < selectedDashboardCharts.value!.length) {
-      String chartToRemove = selectedDashboardCharts.value![index];
+      // Mark the item as deleted in the deletion states map
+      if (divisionDeletionStates[selectedDashboardName.value ?? ''] != null) {
+        divisionDeletionStates[selectedDashboardName.value ?? '']![index] = true;
+      }
 
-      // Create a new list without the removed chart
-      List<String> updatedCharts = List<String>.from(selectedDashboardCharts.value!);
-      updatedCharts.removeAt(index);
-
-      // Update the charts
-      selectedDashboardCharts.value = updatedCharts;
+      // Refresh the selectedDashboardCharts list to trigger a UI update
       selectedDashboardCharts.refresh();
     }
   }
 
-
-  // 1st  correct
-  // // Method to reset the selected charts to the original state
-  // void resetCharts() {
-  //   selectedDashboardCharts.value = List<String>.from(originalDashboardCharts);
-  //   selectedDashboardCharts.refresh();
-  //   Utils.snackbarSuccess('Charts have been reset to original state.');
-  // }
-
-
-  // Method to reset the selected charts to include all allowed charts
+  // Method to reset the selected charts to include all original charts
   void resetCharts() {
-    selectedDashboardCharts.value = List<String>.from(allowedCharts); // Reset to all allowed charts
-    selectedDashboardCharts.refresh();
-    Utils.snackbarSuccess('Charts have been reset to include all allowed charts.');
-  }
+    String currentDivision = selectedDashboardName.value ?? '';
 
-  // Method to update selected dashboard
-  void updateSelectedDashboard(String name) {
-    var selectedDashboard = masterDashboardItems.firstWhere(
-          (dashboard) => dashboard.name == name,
-      orElse: () => SettingDashboardListResponseModel(),
-    );
+    // If no data is coming from the API, reset to all allowed charts
+    if (originalChartsMap[currentDivision] == null || originalChartsMap[currentDivision]!.isEmpty) {
+      selectedDashboardCharts.value = List<String>.from(allowedCharts);
+      divisionChartsMap[currentDivision] = List<String>.from(allowedCharts);
+      originalChartsMap[currentDivision] = List<String>.from(allowedCharts);
+      divisionDeletionStates[currentDivision] = List.filled(allowedCharts.length, false);
+    } else {
+      // Reset the charts to the original list for the current division
+      selectedDashboardCharts.value = List<String>.from(originalChartsMap[currentDivision] ?? []);
 
-    selectedDashboardName.value = name;
-    selectedDashboardId.value = selectedDashboard.id;
+      // Reset the deletion states for this division
+      if (divisionDeletionStates.containsKey(currentDivision)) {
+        divisionDeletionStates[currentDivision] = List.filled(selectedDashboardCharts.value?.length ?? 0, false);
+      }
+    }
 
-    // Create a new list when updating selected charts
-    selectedDashboardCharts.value = List<String>.from(selectedDashboard.charts ?? []);
-    originalDashboardCharts.value = List<String>.from(selectedDashboard.charts ?? []);
-
-    // Force refresh
-    selectedDashboardCharts.refresh();
-    originalDashboardCharts.refresh();
+    Utils.snackbarSuccess('Charts have been reset to the original state.');
   }
 
   Future<SettingDashSaveChangesMessageResponseModel?> saveCharts() async {
     try {
       loading.value = true;
+      String currentDivision = selectedDashboardName.value ?? '';
 
-      if (selectedDashboardCharts.value == null || selectedDashboardCharts.value!.isEmpty) {
+      if (selectedDashboardCharts.value == null ||
+          selectedDashboardCharts.value!.isEmpty ||
+          selectedDashboardId.value == null ||
+          selectedDashboardId.value!.isEmpty) {
         Utils.snackbarFailed('Please select at least one chart to save.');
         return null;
       }
 
-      if (selectedDashboardId.value == null || selectedDashboardId.value!.isEmpty) {
-        Utils.snackbarFailed('Invalid dashboard ID.');
-        return null;
+      // Filter out deleted charts
+      List<String> nonDeletedCharts = [];
+      List<bool>? deletionStates = divisionDeletionStates[currentDivision];
+
+      if (deletionStates != null) {
+        for (int i = 0; i < selectedDashboardCharts.value!.length; i++) {
+          if (!deletionStates[i]) {
+            nonDeletedCharts.add(selectedDashboardCharts.value![i]);
+          }
+        }
+      } else {
+        nonDeletedCharts = List.from(selectedDashboardCharts.value!);
       }
 
-      // Filter out any invalid chart types
-      List<String> validCharts = selectedDashboardCharts.value!
+      // Filter valid charts
+      List<String> validCharts = nonDeletedCharts
           .where((chart) => allowedCharts.contains(chart))
           .toList();
 
@@ -170,13 +177,31 @@ class SettingDashboardListViewModel extends GetxController {
         charts: validCharts,
       );
 
-      if (kDebugMode) {
-        print('Save Charts Request: ${requestModel.toJson()}');
-      }
-
       final response = await _api.settingSaveChangesApi(requestModel);
 
       if (response.message != null) {
+        // Update the saved state for this specific division
+        divisionChartsMap[currentDivision] = validCharts;
+
+        // Optionally, you can update the masterDashboardItems if needed
+        var updatedDashboard = masterDashboardItems.firstWhere(
+              (dashboard) => dashboard.name == currentDivision,
+          orElse: () => SettingDashboardListResponseModel(),
+        );
+
+        // Create a new instance with updated charts
+        var newDashboard = SettingDashboardListResponseModel(
+          id: updatedDashboard.id,
+          name: updatedDashboard.name,
+          charts: validCharts, // Set the updated charts
+        );
+
+        // Replace the old dashboard with the new one
+        int index = masterDashboardItems.indexOf(updatedDashboard);
+        if (index != -1) {
+          masterDashboardItems[index] = newDashboard;
+        }
+
         Utils.snackbarSuccess(response.message!);
       }
 

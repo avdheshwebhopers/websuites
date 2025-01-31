@@ -22,6 +22,10 @@ class AppUrls {
 
   static const String dailyAnalyticsList = '${baseurl}api/analytics/sales/daily';
   static const String getDashboardCountApi = '${baseurl}v1/api/dashboard/dashboard-count';
+  static const String dashboardLeadReminder = '${baseurl}V1/api/dashboard/lead-reminders-chart';
+  static const String dashboardCustomerStatus = '${baseurl}V1/api/dashboard/customer-status-chart';
+  static const String dashboardLeadCard = '${baseurl}V1/api/dashboard/lead-cards';
+  static const String dashboardCustomerReminder = '${baseurl}V1//api/dashboard/customer-reminders-chart';
 
   static const String dashboard = '${baseurl}v1/api/dashboard';
 
@@ -688,6 +692,6 @@ class AppUrls {
       'https://webhopers.whsuites.com/api/module-dictionaries';
 
 
-  static const String masterDashboardList = 'https://dev.whsuites.com/api/roles/with-charts';
-  static const String masterDashboardSaveChanges = 'https://dev.whsuites.com/api/dashboard/configure';
+  static const String masterDashboardList = '${baseurl}v1/api/roles/with-charts';
+  static const String masterDashboardSaveChanges = '${baseurl}v1/api/dashboard/configure';
 }

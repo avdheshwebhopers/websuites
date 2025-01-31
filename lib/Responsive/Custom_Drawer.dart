@@ -403,22 +403,29 @@ class _CustomDrawerState extends State<CustomDrawer> {
     leadingIconImage: IconStrings.tasks,
     initiallyExpanded: expandedSection == 'Setting',
     children: [
+      ListTile(
+        onTap: () => widget.onItemSelected(39),
+        title: Text(
+          '• Divisions',
+          style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
+        ),
+      ),
     ListTile(
-    onTap: () => widget.onItemSelected(39),
+    onTap: () => widget.onItemSelected(40),
     title: Text(
     '• Divisions',
     style: TextStyle(color: AllColors.welcomeColor, fontSize: 14, fontWeight: FontWeight.w300),
     ),
     ),
     ListTile(
-    onTap: () => widget.onItemSelected(40),
+    onTap: () => widget.onItemSelected(41),
     title: Text(
     '• Proposals',
     style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),
     ),
     ),
     ListTile(
-    onTap: () => widget.onItemSelected(41),
+    onTap: () => widget.onItemSelected(42),
     title: Text(
     '• Cities',
     style: TextStyle(color: AllColors.welcomeColor, fontWeight: FontWeight.w300, fontSize: 14),

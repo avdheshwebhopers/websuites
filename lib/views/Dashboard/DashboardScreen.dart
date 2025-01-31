@@ -1,941 +1,417 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:percent_indicator/percent_indicator.dart';
-import 'package:websuites/utils/responsive/bodies/responsive%20scaffold.dart';
-import '../../../data/models/responseModels/login/login_response_model.dart';
-import '../../../resources/iconStrings/icon_strings.dart';
-import '../../../resources/imageStrings/image_strings.dart';
-import '../../../resources/strings/strings.dart';
-import '../../../resources/textStyles/text_styles.dart';
+import 'package:websuites/utils/appColors/app_colors.dart';
+import 'package:websuites/utils/button/CustomButton.dart';
+import 'package:websuites/utils/components/widgets/drawer/custom_drawer.dart';
+import 'package:websuites/utils/components/widgets/navBar/custom_navBar.dart';
+import 'package:websuites/utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
+import '../../Responsive/Custom_Drawer.dart';
+import '../../data/models/responseModels/dashboard/main_dashboard/charts/lead-cards/MainDashLeadCardListRespoModel.dart';
+import '../../data/models/responseModels/login/login_response_model.dart';
 
-import '../../../views/homeScreen/widgets/cards/latest_customers_card.dart';
-import '../../../views/homeScreen/widgets/cards/latest_task_card.dart';
-import '../../../views/homeScreen/widgets/cards/lead_type_count_card.dart';
-import '../../../views/homeScreen/widgets/cards/revenue_card.dart';
-import '../../../views/homeScreen/widgets/cards/transaction_list_card.dart';
-import '../../viewModels/homeScreen/lead_source.dart';
-import '../../viewModels/homeScreen/leads_by_type_count.dart';
-import '../../viewModels/homeScreen/transactions.dart';
+import '../../utils/container/container_Utils/ContainerUtils.dart';
+import '../../viewModels/main/dashboard/main_dashboard/MainDashboardListViewModel.dart';
+import '../../viewModels/userlistViewModel/userlist_viewModel.dart';
+import '../../viewModels/master/divisions/master_divisions_viewModel.dart';
 import '../../viewModels/saveToken/save_token.dart';
-import '../../data/models/controller.dart';
-import '../../utils/appColors/app_colors.dart';
-import '../../utils/components/widgets/drawer/custom_drawer.dart';
-import '../../utils/components/widgets/navBar/custom_navBar.dart';
-import '../../utils/components/widgets/navBar/floatingActionButton/floating_action_button.dart';
-import '../../utils/responsive/bodies/Responsive.dart';
 
-class Dashboardscreen extends StatefulWidget {
-  // final dynamic name;
+import '../../utils/fontfamily/FontFamily.dart';
+import '../../resources/iconStrings/icon_strings.dart';
+import '../leadScreens/createNewLead/widgets/createNewLeadCard/create_new_lead_card.dart';
 
-  Dashboardscreen (
-      {
-        // required this.name,
-
-        super.key});
+class MainDashBoardScreen extends StatefulWidget {
+  const MainDashBoardScreen({Key? key}) : super(key: key);
 
   @override
-  State<Dashboardscreen > createState() => _HomeScreenState();
+  State<MainDashBoardScreen> createState() => _MainDashBoardScreenState();
 }
 
-class _HomeScreenState extends State<Dashboardscreen> {
+class _MainDashBoardScreenState extends State<MainDashBoardScreen> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  final ScreenController _screenController = Get.put(ScreenController());
-  final HomeScreenLeadsByTypeCountViewModel _dBLeadTypeCountController =
-  Get.put(HomeScreenLeadsByTypeCountViewModel());
-
-  // final DashboardCountViewModel _DbCountController = Get.put(DashboardCountViewModel());
-  // final UserlistViewModel _userlistController = Get.put(UserlistViewModel());
-  // // final DbLeadListViewModel _DBLeadListController = Get.put(DbLeadListViewModel());
-  // final DashboardViewModel _dashboardController = Get.put(DashboardViewModel());
-  // final DB_LatestCustomers_ViewModel _latestCustomersController = Get.put(DB_LatestCustomers_ViewModel());
-  final HomeScreenLeadSourceViewModel _leadSourceController =Get.put(HomeScreenLeadSourceViewModel());final HomeScreenTransactionsViewmodel _transactionsController =
-  Get.put(HomeScreenTransactionsViewmodel());
-
-  // final HomeScreenLatestTaskViewModel _latestTaskController = Get.put(HomeScreenLatestTaskViewModel());
-
+  late final MainDashboardListViewModel _dashboardListController;
+  late final UserListViewModel userListViewModel;
+  late final MasterDivisionsViewModel divisionViewModel;
   String userName = '';
   String? userEmail = "";
-  SaveUserData userPreference = SaveUserData();
-  DateTime dateTime = DateTime.now();
+  final SaveUserData userPreference = SaveUserData();
 
   @override
   void initState() {
     super.initState();
-    fetchUserData();
-
-    // _userlistController.UserList(BuildContext, context);
-    // _dashboardController.dashboard(context);
-    // _DbCountController.DBCount(context);
-    _dBLeadTypeCountController.DBLeadsByTypeCount(context);
-    // // _DBLeadListController.DB_LeadList(context);
-    _leadSourceController.LeadSource(BuildContext, context);
-    // _latestCustomersController.DB_LatestCustomers(context);
-    _transactionsController.Db_transactions(BuildContext, context);
-    // _latestTaskController.Db_LatestTask(BuildContext, context);
-
-    print('MobileBodyInitState');
+    _dashboardListController = Get.put(MainDashboardListViewModel(), permanent: true);
+    userListViewModel = Get.put(UserListViewModel(), permanent: true);
+    divisionViewModel = Get.put(MasterDivisionsViewModel(), permanent: true);
+    fetchUserData().then((_) {
+      Future.wait([
+        userListViewModel.userListApi(),
+        divisionViewModel.masterDivisions(context),
+      ]);
+    });
   }
 
   Future<void> fetchUserData() async {
     try {
       LoginResponseModel response = await userPreference.getUser();
-      String? first_name = response.user!.firstName;
-      String? email = response.user!.email;
-
       setState(() {
-        userName = first_name!;
-        userEmail = email!;
+        userName = response.user?.firstName ?? '';
+        userEmail = response.user?.email ??'';
       });
     } catch (e) {
-      print('Error fetching userData: $e');
+      // Handle error if needed
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // scaffoldKey: _globalKey,
       key: _globalKey,
       backgroundColor: AllColors.whiteColor,
-      // bottomNavigationBar: CustomBottomNavBar(),
+      bottomNavigationBar: CustomBottomNavBar(),
       floatingActionButton: CustomFloatingButton(
-          onPressed: () {},
-          imageIcon: IconStrings.navSearch3,
-          backgroundColor: AllColors.mediumPurple),
+        onPressed: () {},
+        imageIcon: IconStrings.navSearch3,
+        backgroundColor: AllColors.mediumPurple,
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
       // drawer: CustomDrawer(
-      //   userName: '$userName',
-      //   phoneNumber: '$userEmail',
-      //   version: 'version 1.0.12',
-      //
-      //   onTap: (index) {
-      //     _screenController.updateIndex(index);
-      //     if (ResponsiveUtils.isMobile(context)) {
-      //       _globalKey.currentState?.closeDrawer();
-      //     }
-      //   },
-      //
-      //
-      //
+      //   userName: userName,
+      //   phoneNumber: userEmail ?? '',
+      //   version: 'VERSION 1.0.12',
       // ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        title: Row(
+          children: [
+            const Text("Dashboard"),
+            const Spacer(),
+            IconButton(
+              onPressed: () => _showFilterBottomSheet(context),
+              icon: const Icon(Icons.filter_list_sharp),
+            ),
+          ],
+        ),
+      ),
+      body: Obx(() {
+        if (_dashboardListController.loading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return RefreshIndicator(
+          onRefresh: () => _dashboardListController.fetchDashboardData(),
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      Container(
-                        height: Get.height / 4.1,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              AllColors.appBarColorTop,
-                              AllColors.appBarColorBottom,
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                          ),
-                        ),
-                      ),
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              // color: Colors.blue,
-                              margin: EdgeInsets.only(
-                                  left: 8,
-                                  right: 15,
-                                  bottom: Get.height / 40,
-                                  top: Get.height / 15),
-                              child: Row(
-                                children: [
-                                  // if (Get.width < 500)
-                                  //   IconButton(
-                                  //     onPressed: () {
-                                  //       _globalKey.currentState?.openDrawer();
-                                  //     },
-                                  //     icon: const Icon(Icons.menu),
-                                  //     iconSize: 35,
-                                  //     color: AllColors.whiteColor,
-                                  //   ),
-                                  const SizedBox(width: 6),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '$userName',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 17,
-                                          color: AllColors.whiteColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        '${dateTime.day}/${dateTime.month}/${dateTime.year}, '
-                                            '${dateTime.hour}:${dateTime.minute}pm',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 11,
-                                          color: AllColors.whiteColor,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const Spacer(),
-                                  Container(
-                                    //CONTAINER CONTAINS RUPEE ICON
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AllColors.whiteColor,
-                                    ),
-                                    height: Get.height / 11,
-                                    width: Get.width / 11,
-                                    child: Center(
-                                        child: InkWell(
-                                            onTap: () {},
-                                            child: Image.asset(
-                                              ImageStrings.welcomeCompanyLogo,
-                                              scale: 5.5,
-                                            ))),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              padding: TextStyles.defaultPadding(context),
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: [
-                                    RevenueCard(
-                                      backgroundColor: AllColors.whiteColor,
-                                      icon: Icons.currency_rupee,
-                                      size: 15,
-                                      color: AllColors.mediumPurple,
-                                      amount: '₹20000',
-                                      title: 'Total revenue',
-                                      subtitle: '4% (30 days)',
-                                    ),
-                                    RevenueCard(
-                                        backgroundColor: AllColors.whiteColor,
-                                        icon: Icons.currency_rupee,
-                                        size: 15,
-                                        color: AllColors.mediumPurple,
-                                        amount: '₹20000',
-                                        title: 'Total revenue',
-                                        subtitle: '4% (30 days)'),
-                                    RevenueCard(
-                                        backgroundColor: AllColors.whiteColor,
-                                        icon: Icons.currency_rupee,
-                                        size: 15,
-                                        color: AllColors.mediumPurple,
-                                        amount: '₹20000',
-                                        title: 'Total revenue',
-                                        subtitle: '4% (30 days)'),
-                                    RevenueCard(
-                                        backgroundColor: AllColors.whiteColor,
-                                        icon: Icons.currency_rupee,
-                                        size: 15,
-                                        color: AllColors.mediumPurple,
-                                        amount: '₹20000',
-                                        title: 'Total revenue',
-                                        subtitle: '4% (30 days)'),
-                                    RevenueCard(
-                                        backgroundColor: AllColors.whiteColor,
-                                        icon: Icons.currency_rupee,
-                                        size: 15,
-                                        color: AllColors.mediumPurple,
-                                        amount: '₹20000',
-                                        title: 'Total revenue',
-                                        subtitle: '4% (30 days)'),
-                                    RevenueCard(
-                                        backgroundColor: AllColors.whiteColor,
-                                        icon: Icons.currency_rupee,
-                                        size: 15,
-                                        color: AllColors.mediumPurple,
-                                        amount: '₹20000',
-                                        title: 'Total revenue',
-                                        subtitle: '4% (30 days)'),
-                                    RevenueCard(
-                                        backgroundColor: AllColors.whiteColor,
-                                        icon: Icons.currency_rupee,
-                                        size: 15,
-                                        color: AllColors.mediumPurple,
-                                        amount: '₹20000',
-                                        title: 'Total revenue',
-                                        subtitle: '4% (30 days)'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ]),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-
-                  Container(
-                    // color: Colors.grey,
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 8,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.list_alt_outlined,
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        TextStyles.w500_14(
-                            color: AllColors.blackColor,
-                            context,
-                            Strings.taskPerformance),
-                        const Spacer(),
-                        TextStyles.w300_12(
-                            color: AllColors.blackColor,
-                            context,
-                            Strings.taskPerformanceDate),
-                        const Icon(
-                          Icons.arrow_drop_down,
-                          size: 30,
-                        )
-                      ],
+                  const Text(
+                    'DASHBOARD',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // ROW BAR
+                  const SizedBox(height: 16),
+                  Obx(() {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: _dashboardListController.selectedDashboardCharts.value?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final chart = _dashboardListController.selectedDashboardCharts.value![index];
+                        String cleanChart = chart
+                            .replaceAll('_', ' ')
+                            .replaceAll('*', '')
+                            .replaceAll('chart', '')
+                            .replaceAll('cards', '')
+                            .trim()
+                            .toUpperCase();
 
-                  const SizedBox(
-                    height: 8,
-                  ),
-
-                  Container(
-                    padding: EdgeInsets.only(top: 20, bottom: 20),
-                    margin: const EdgeInsets.only(right: 6, left: 6),
-                    decoration: BoxDecoration(
-                      color: AllColors.whiteColor,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black45.withOpacity(0.06),
-                          spreadRadius: 0.5,
-                          blurRadius: 4,
-                          offset: const Offset(0, 0),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AllColors.whiteColor,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: AllColors.vividPurple.withOpacity(0.10),
-                                spreadRadius: 10,
-                                blurRadius: 10,
-                              ),
-                            ],
-                          ),
-                          child: CircularPercentIndicator(
-                            progressColor: AllColors.mediumPurple,
-                            backgroundColor: AllColors.lighterPurple,
-                            lineWidth: 10,
-                            radius: 65,
-                            percent: 0.4,
-                            startAngle: 0,
-                            animation: true,
-                            animationDuration: 2000,
-                            // backgroundWidth: 30,
-                            curve: Curves.decelerate,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            center: Container(
-                              height: Get.height / 7,
-                              width: Get.width / 4.7,
-                              decoration: BoxDecoration(
-                                color: AllColors.whiteColor,
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color:
-                                    AllColors.vividPurple.withOpacity(0.04),
-                                    spreadRadius: 10,
-                                    blurRadius: 3,
-                                    offset: const Offset(0, 0),
-                                  ),
-                                ],
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  TextStyles.w600_universal(
-                                      fontSize: 10, context, Strings.completed),
-
-                                  // SizedBox(height: 5,),
-
-                                  const Text(
-                                    '40%',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            TextStyles.w600_15(context, Strings.taskProgress),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Row(
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: ContainerUtils(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  '06:06:15 /',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  '4hrs',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
-                                    color: AllColors.vividPurple,
-                                  ),
-                                ),
+                                Text(cleanChart, style: const TextStyle(fontSize: 18)),
+
+                                if (index == 0 && _dashboardListController.leadCards.isNotEmpty)
+                                  Obx(() {
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: _dashboardListController.leadCards.length, // Use leadSources length
+                                      itemBuilder: (context, index) {
+                                        final leadCards = _dashboardListController.leadCards[index]; // Get the lead source at the current index
+                                        return
+                                          Row(
+
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                                child: ContainerUtils(
+                                                    child:
+
+                                                    Column(
+                                                      children: [
+                                                        Text("${leadCards.inProgress ?? 'N/A'}"),
+                                                        Text("${leadCards.deadLead ?? 'N/A'}"),
+                                                        Text("${leadCards.repeat ?? 'N/A'}"),
+                                                        Text("${leadCards.toDoLead ?? 'N/A'}"),
+                                                        Text("${leadCards.unassigned ?? 'N/A'}"),
+                                                        Text("${leadCards.unhandled ?? 'N/A'}"),
+
+                                                      ],
+                                                    )
+
+
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                      },
+                                    );
+                                  }),
+                                if (index == 2 && _dashboardListController.leadReminder.isNotEmpty)
+                                  Obx(() {
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: _dashboardListController.leadReminder.length, // Use leadSources length
+                                      itemBuilder: (context, index) {
+                                        final leadReminder = _dashboardListController.leadReminder[index]; // Get the lead source at the current index
+                                        return
+                                          Row(
+
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                                child: ContainerUtils(
+                                                    child:
+
+                                                    Column(
+                                                      children: [
+                                                        Text("${leadReminder.today ?? 'N/A'}"),
+                                                        Text("${leadReminder.missing ?? 'N/A'}"),
+                                                        Text("${leadReminder.upcomming ?? 'N/A'}"),
+                                                        Text(leadReminder.data.isEmpty ? 'N/A' : leadReminder.data.toString(),)
+
+
+                                                      ],
+                                                    )
+
+
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                      },
+                                    );
+                                  }),
+
+
+                                if (index == 3 && _dashboardListController.leadCustomer.isNotEmpty)
+                                  Obx(() {
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: _dashboardListController.leadCustomer.length,
+                                      itemBuilder: (context, index) {
+                                        final leadCustomer = _dashboardListController.leadCustomer[index];
+                                        return Row(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                              child: ContainerUtils(
+                                                child: Column(
+                                                  children: [
+                                                    Text("Services Running: ${leadCustomer.servicesRunning ?? 'N/A'}"),
+                                                    Text("Project Not Started: ${leadCustomer.projectNotStarted ?? 'N/A'}"),
+                                                    Text("Project In Progress: ${leadCustomer.projectInProgress ?? 'N/A'}"),
+                                                    Text("Project On Hold: ${leadCustomer.projectOnHold ?? 'N/A'}"),
+                                                    Text("No Services: ${leadCustomer.noServices ?? 'N/A'}"),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  }),
+
+
+                                if (index == 4 && _dashboardListController.leadSources.isNotEmpty)
+                                  Obx(() {
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: _dashboardListController.leadSources.length, // Use leadSources length
+                                      itemBuilder: (context, index) {
+                                        final leadSource = _dashboardListController.leadSources[index]; // Get the lead source at the current index
+                                        return
+                                          Row(
+
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                                child: ContainerUtils(
+                                                  child:
+
+                                                  Text("${leadSource.name ?? 'N/A'}"),
+
+
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                      },
+                                    );
+                                  }),
+
+                                if (index == 5 && _dashboardListController.leadCustomerReminder.isNotEmpty)
+                                  Obx(() {
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      itemCount: _dashboardListController.leadCustomerReminder.length, // Use leadSources length
+                                      itemBuilder: (context, index) {
+                                        final leadCustomerReminder = _dashboardListController.leadCustomerReminder[index]; // Get the lead source at the current index
+                                        return
+                                          Row(
+
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                                child: ContainerUtils(
+                                                  child:
+
+                                                  Column(
+                                                    children: [
+                                                      Text("${leadCustomerReminder.missing ?? 'N/A'}"),
+                                                      Text("${leadCustomerReminder.today ?? 'N/A'}"),
+                                                      Text("${leadCustomerReminder.data.isEmpty ? 'N/A':  leadCustomerReminder.data.toString()}"),
+
+                                                      Text("${leadCustomerReminder.upcomming ?? 'N/A'}"),
+
+                                                    ],
+                                                  ),
+
+
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                      },
+                                    );
+                                  }),
+
+
+
                               ],
                             ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(
-                    height: 30,
-                  ),
-
-                  Container(
-                    // color: Colors.grey,
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 12,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.list_alt_outlined,
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        TextStyles.w500_14(
-                            color: AllColors.blackColor,
-                            context,
-                            Strings.latestTask),
-                        const Spacer(),
-                        InkWell(
-                          onTap: () {},
-                          child: TextStyles.w300_12(
-                              color: AllColors.vividPurple,
-                              context,
-                              Strings.latestTaskSeeAll),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 10,
-                          color: AllColors.vividPurple,
-                        )
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-
-                  // Obx((){
-                  // return
-                  //   AppCardOne(
-                  //       title: _latestTaskController.LatestTaskModel.value.items![0].subject.toString(),
-                  //       subtitle: 'Somacare inner Images',
-                  //       date: '15 May, 2024 at 12:30 pm',
-                  //       ContainerIcon: Icons.access_time,
-                  //       IconColor: AppColors.vividPink,
-                  //       statusBackgroundColor: AppColors.lightPink,
-                  //       statusText: 'In Progress');}
-                  // ),
-
-                  //
-                  LatestTaskCard(
-                      title: 'Designing Task',
-                      subtitle: 'Somacare inner Images',
-                      date: '15 May, 2024 at 12:30 pm',
-                      ContainerIcon: Icons.access_time,
-                      IconColor: AllColors.darkGreen,
-                      statusBackgroundColor: AllColors.lightGreen,
-                      statusText: 'In Progress'),
-
-                  LatestTaskCard(
-                      title: 'Designing Task',
-                      subtitle: 'Somacare inner Images',
-                      date: '15 May, 2024 at 12:30 pm',
-                      ContainerIcon: Icons.access_time,
-                      IconColor: AllColors.darkBlue,
-                      statusBackgroundColor: AllColors.lightBlue,
-                      statusText: 'In Progress'),
-
-                  LatestTaskCard(
-                      title: 'Designing Task',
-                      subtitle: 'Somacare inner Images',
-                      date: '15 May, 2024 at 12:30 pm',
-                      ContainerIcon: Icons.access_time,
-                      IconColor: AllColors.darkRed,
-                      statusBackgroundColor: AllColors.lightRed,
-                      statusText: 'In Progress'),
-
-                  LatestTaskCard(
-                      title: 'Designing Task',
-                      subtitle: 'Somacare inner Images',
-                      date: '15 May, 2024 at 12:30 pm',
-                      ContainerIcon: Icons.access_time,
-                      IconColor: AllColors.darkYellow,
-                      statusBackgroundColor: AllColors.lightYellow,
-                      statusText: 'In Progress'),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-
-                  Container(
-                    // color: Colors.grey,
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 8,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.list_alt_outlined,
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        TextStyles.w500_14(
-                            color: AllColors.blackColor,
-                            context,
-                            Strings.leadTypeCount),
-                        const Spacer(),
-                        TextStyles.w300_12(
-                            color: AllColors.blackColor,
-                            context,
-                            Strings.leadTypeDate),
-                        const Icon(
-                          Icons.arrow_drop_down,
-                          size: 30,
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-
-                  Container(
-                    padding: const EdgeInsets.only(
-                        left: 8, right: 8, top: 4, bottom: 4),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        //SCROLLER ROW WITH CONTAINERS
-                        children: [
-                          // Obx(() {
-                          //   switch (_dBLeadTypeCountController.rxStatus.value) {
-                          //     case Status.LOADING :
-                          //       return CircularProgressIndicator();
-                          //     case Status.ERROR :
-                          //       return Text(_dBLeadTypeCountController.error.toString());
-                          //     case Status.COMPLETED :
-                          //       return
-                          //         AppRowContainerTwo(
-                          //             count: '_dBLeadTypeCountController.Db_LeadTypeCountModel.value.name.toString()',
-                          //             statusText: '_dBLeadTypeCountController.Db_LeadTypeCountModel.value.status.toString()',
-                          //             countColor: AppColors.grey,
-                          //             statusColor: AppColors.blackColor,
-                          //             icon: Icons.access_time,
-                          //             iconColor: AppColors.vividPink,
-                          //             containerColor: AppColors
-                          //                 .lightPink);
-                          //   };
-                          //   return SizedBox();
-                          // }),
-
-                          LeadTypeCountCard(
-                              count: '15 Leads',
-                              statusText: 'Pending',
-                              countColor: AllColors.grey,
-                              statusColor: AllColors.blackColor,
-                              icon: Icons.task,
-                              iconColor: AllColors.vividBlue,
-                              containerColor: AllColors.lightBlue),
-                          //
-                          LeadTypeCountCard(
-                              count: '15 Leads',
-                              statusText: 'Pending',
-                              countColor: AllColors.grey,
-                              statusColor: AllColors.blackColor,
-                              icon: Icons.account_balance_rounded,
-                              iconColor: AllColors.vividGreen,
-                              containerColor: AllColors.lightGreen),
-                          //
-                          LeadTypeCountCard(
-                              count: '15 Leads',
-                              statusText: 'Pending',
-                              countColor: AllColors.grey,
-                              statusColor: AllColors.blackColor,
-                              icon: Icons.timelapse,
-                              iconColor: AllColors.mediumPurple,
-                              containerColor: AllColors.lighterPurple),
-
-                          LeadTypeCountCard(
-                              count: '15 Leads',
-                              statusText: 'Pending',
-                              countColor: AllColors.grey,
-                              statusColor: AllColors.blackColor,
-                              icon: Icons.place,
-                              iconColor: AllColors.darkRed,
-                              containerColor: AllColors.lightRed),
-
-                          LeadTypeCountCard(
-                              count: '15 Leads',
-                              statusText: 'Pending',
-                              countColor: AllColors.grey,
-                              statusColor: AllColors.blackColor,
-                              icon: Icons.policy,
-                              iconColor: AllColors.darkYellow,
-                              containerColor: AllColors.lightYellow),
-
-                          LeadTypeCountCard(
-                              count: '15 Leads',
-                              statusText: 'Pending',
-                              countColor: AllColors.grey,
-                              statusColor: AllColors.blackColor,
-                              icon: Icons.title,
-                              iconColor: AllColors.darkGreen,
-                              containerColor: AllColors.lightGreen),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-
-                  Container(
-                    // color: Colors.grey,
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 12,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.list_alt_outlined,
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        TextStyles.w500_14(
-                            color: AllColors.blackColor,
-                            context,
-                            Strings.latestCustomer),
-                        const Spacer(),
-                        InkWell(
-                          onTap: () {},
-                          child: TextStyles.w300_12(
-                              color: AllColors.vividPurple,
-                              context,
-                              Strings.latestCustomerSeeAll),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 11,
-                          color: AllColors.vividPurple,
-                        )
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  LatestCustomersCard(
-                    title: 'Dermi Derm',
-                    subtitle: 'AYUSH GOYAL',
-                    date: '26 May, 2024 at 12:30 pm',
-                    circleColorOne: AllColors.lightPink,
-                    circleColorTwo: AllColors.lighterPurple,
-                    circleTextColorTwo: AllColors.mediumPurple,
-                    circleTextColorOne: AllColors.darkPink,
-                  ),
-
-                  LatestCustomersCard(
-                    title: 'Dermi Derm',
-                    subtitle: 'AYUSH GOYAL',
-                    date: '26 May, 2024 at 12:30 pm',
-                    circleColorOne: AllColors.lightPink,
-                    circleColorTwo: AllColors.lighterPurple,
-                    circleTextColorTwo: AllColors.mediumPurple,
-                    circleTextColorOne: AllColors.darkPink,
-                  ),
-
-                  LatestCustomersCard(
-                    title: 'Dermi Derm',
-                    subtitle: 'AYUSH GOYAL',
-                    date: '26 May, 2024 at 12:30 pm',
-                    circleColorOne: AllColors.lightPink,
-                    circleColorTwo: AllColors.lighterPurple,
-                    circleTextColorTwo: AllColors.mediumPurple,
-                    circleTextColorOne: AllColors.darkPink,
-                  ),
-
-                  LatestCustomersCard(
-                    title: 'Dermi Derm',
-                    subtitle: 'AYUSH GOYAL',
-                    date: '26 May, 2024 at 12:30 pm',
-                    circleColorOne: AllColors.lightPink,
-                    circleColorTwo: AllColors.lighterPurple,
-                    circleTextColorTwo: AllColors.mediumPurple,
-                    circleTextColorOne: AllColors.darkPink,
-                  ),
-
-                  LatestCustomersCard(
-                    title: 'Dermi Derm',
-                    subtitle: 'AYUSH GOYAL',
-                    date: '26 May, 2024 at 12:30 pm',
-                    circleColorOne: AllColors.lightPink,
-                    circleColorTwo: AllColors.lighterPurple,
-                    circleTextColorTwo: AllColors.mediumPurple,
-                    circleTextColorOne: AllColors.darkPink,
-                  ),
-
-                  const SizedBox(
-                    height: 15,
-                  ),
-
-                  Container(
-                    // color: Colors.grey,
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 12,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.list_alt_outlined,
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        TextStyles.w500_14(
-                            color: AllColors.blackColor,
-                            context,
-                            Strings.leadSource),
-                        const Spacer(),
-                        Icon(
-                          Icons.list,
-                          color: AllColors.lightGrey,
-                          size: 17,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        TextStyles.w300_12(
-                            color: AllColors.grey,
-                            context,
-                            Strings.leadSourceList),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Icon(
-                          Icons.pie_chart,
-                          color: AllColors.vividBlue,
-                          size: 12,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: TextStyles.w400_12(
-                              color: AllColors.vividBlue,
-                              context,
-                              Strings.leadSourceChart),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-
-                  //graph screen *****************************
-
-                  Container(
-                    height: Get.height / 5,
-                    width: Get.width / 1.05,
-                    decoration: BoxDecoration(
-                      color: AllColors.whiteColor,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black45.withOpacity(0.06),
-                          spreadRadius: 0.5,
-                          blurRadius: 4,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                        child: Text(
-                          'Graph',
-                          style:
-                          TextStyle(fontSize: 12, color: AllColors.lightGrey),
-                        )),
-                  ),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-
-                  Container(
-                    // color: Colors.grey,
-                    margin: const EdgeInsets.only(
-                      left: 10,
-                      right: 12,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.money,
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        TextStyles.w500_14_Black(context, Strings.transactions),
-                        const Spacer(),
-                        InkWell(
-                          onTap: () {},
-                          child: TextStyles.w300_12(
-                              color: AllColors.vividPurple,
-                              context,
-                              Strings.transactionsSeeAll),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 10,
-                          color: AllColors.vividPurple,
-                        )
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(
-                    height: 20,
-                  ),
-
-                  // Obx((){
-                  //   switch (_transactionsController.rxStatus.value){
-                  //     case Status.loading :
-                  //       return CircularProgressIndicator();
-                  //     case Status.error :
-                  //       return Text(_transactionsController.error.toString());
-                  //     case Status.completed :
-                  //       return
-                  //         TransactionListCard(
-                  //   title: _transactionsController.transactionList.value.meta!.itemCount.toString(),
-                  //   name: _transactionsController.transactionList.value.meta!.itemsPerPage.toString(),
-                  //   amount: _transactionsController.transactionList.value.meta!.totalAmount.toString(),
-                  //   subtitle: _transactionsController.transactionList.value.meta!.totalPages.toString()
-                  //       );
-                  //   }
-                  // }
-                  // ),
-
-                  const TransactionListCard(
-                      title: 'Premium 60 Packages Self Done...',
-                      name: 'Prakash shah',
-                      amount: '₹4000',
-                      subtitle: '25 May, 2024 at 12:30 pm'),
-
-                  const TransactionListCard(
-                      title: 'Premium 60 Packages Self Done...',
-                      name: 'Prakash shah',
-                      amount: '₹4000',
-                      subtitle: '25 May, 2024 at 12:30 pm'),
-
-                  const TransactionListCard(
-                      title: 'Premium 60 Packages Self Done...',
-                      name: 'Prakash shah',
-                      amount: '₹4000',
-                      subtitle: '25 May, 2024 at 12:30 pm'),
-
-                  const TransactionListCard(
-                      title: 'Premium 60 Packages Self Done...',
-                      name: 'Prakash shah',
-                      amount: '₹4000',
-                      subtitle: '25 May, 2024 at 12:30 pm'),
+                          ),
+                        );
+                      },
+                    );
+                  })
                 ],
               ),
             ),
           ),
-        ],
+        );
+      }),
+    );
+  }
+
+  void _showFilterBottomSheet(BuildContext context) {
+    String? selectedTeamValue = _dashboardListController.isTeamFilter.value ? "With Team" : "Individual";
+    String? selectedUser;
+    String? selectedDivision;
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+      ),
+      builder: (context) => Container(
+        height: 300,
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Obx(() {
+            final bool isLoading = userListViewModel.userList.isEmpty || divisionViewModel.divisions.isEmpty;
+            if (isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  CreateNewLeadScreenCard(
+                    hintText: '',
+                    categories: const ["Individual", "With Team"],
+                    value:selectedTeamValue ,
+                    // initialValue: selectedTeamValue,  it will optional you can pass parameter when need !
+                    onCategoryChanged: (value) => selectedTeamValue = value,
+                  ),
+                  const SizedBox(height: 10),
+                  CreateNewLeadScreenCard(
+                    hintText: 'Select User',
+                    categories: userListViewModel.userList
+                        .map((user) => '${user.firstName ?? ''} ${user.lastName ?? ''}'.trim())
+                        .toList(),
+                    onCategoryChanged: (value) => selectedUser = value,
+                  ),
+                  const SizedBox(height: 10),
+                  CreateNewLeadScreenCard(
+                    hintText: 'Select Division',
+                    categories: divisionViewModel.divisions.map((division) => division.name ?? '').toList(),
+                    onCategoryChanged: (value) => selectedDivision = value,
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomButton(
+                        backgroundColor: Colors.grey,
+                        width: 80,
+                        height: 30,
+                        borderRadius: 25,
+                        onPressed: () => Navigator.pop(context),
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, fontFamily: FontFamily.sfPro),
+                        ),
+                      ),
+                      CustomButton(
+                        width: 80,
+                        height: 30,
+                        borderRadius: 25,
+                        onPressed: () {
+                          _dashboardListController.applyFilters(
+                            userId: selectedUser,
+                            division: selectedDivision,
+                            isTeam: selectedTeamValue == "With Team",
+                            dateRange: null,
+                          );
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          'Update',
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, fontFamily: FontFamily.sfPro),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          }),
+        ),
       ),
     );
   }
 }
-
-

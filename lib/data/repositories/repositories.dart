@@ -3,12 +3,16 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:websuites/data/models/responseModels/customers/list/customers_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/customers/payment_reminder/customer_payment_reminder_response_model.dart';
+import 'package:websuites/data/models/responseModels/dashboard/main_dashboard/charts/customer-status-chart/MainDashCustomerStatusResModel.dart';
 import 'package:websuites/data/models/responseModels/leads/leadMasters/status/lead_masters_status_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/trashLeads/deleteList/delete_list_response_model.dart';
 import 'package:websuites/data/models/responseModels/leads/trashLeads/leadTypes/lead_types_response_model.dart';
 import 'package:websuites/data/models/responseModels/order/activities/OrderActivitiesResponseModel.dart';
 
 import '../../resources/appUrls/app_urls.dart';
+import '../models/requestModels/dashboardScreen/main_dashboard_screen/customer-reminders-chart/DashCusRemReqModel.dart';
+import '../models/requestModels/dashboardScreen/main_dashboard_screen/lead-reminders-chart/MainDashLeadRemindReqModel.dart';
+import '../models/requestModels/dashboardScreen/main_dashboard_screen/leads-by-source-count/MainDashLeadSourceReqModel.dart';
 import '../models/requestModels/master/dashboard/save_changes/SettingDashSaveChangesRequestModel.dart';
 import '../models/requestModels/project_reminder_setting/ProjectReminderSettingRequestModel.dart';
 import '../models/requestModels/report/project_overview/task/ProjectOverViewTaskListRequestModel.dart';
@@ -89,6 +93,7 @@ import '../models/responseModels/dashboard/db_lead_by_type_count_response_model.
 import '../models/responseModels/dashboard/db_lead_source_response_model.dart';
 import '../models/responseModels/dashboard/db_response_model.dart';
 import '../models/responseModels/dashboard/db_transactions_response_model.dart';
+import '../models/responseModels/dashboard/main_dashboard/List/MainDashboardChartsList.dart';
 import '../models/responseModels/forgotPassword/forgot_password_response_model.dart';
 import '../models/responseModels/hrm/leave/plans/HrmLeavePlanResponseModel.dart';
 import '../models/responseModels/hrm/leave/type/add/AddLeaveTypeResponseModel.dart';
@@ -292,15 +297,15 @@ class Repositories {
     }
   }
 
-  Future<DashboardLeadSourceResponseModel> dbLeadsSourceApi() async {
-    try {
-      dynamic response = await _apiService.postApiResponse(
-          AppUrls.dashLeadSource, null);
-      return response = DashboardLeadSourceResponseModel.fromJson(response);
-    } catch (e) {
-      rethrow;
-    }
-  }
+  // Future<DashboardLeadSourceResponseModel> dbLeadsSourceApi() async {
+  //   try {
+  //     dynamic response = await _apiService.postApiResponse(
+  //         AppUrls.dashLeadSource, null);
+  //     return response = DashboardLeadSourceResponseModel.fromJson(response);
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
   Future<DBLatestCustomersResponseModel> dbLatestCustomersApi() async {
     try {
@@ -330,6 +335,116 @@ class Repositories {
       rethrow;
     }
   }
+
+
+  Future<MainDashboardChartsListResponseModel> MainDashBoardListApi() async {
+    try {
+      dynamic response =
+      await _apiService.getApi(AppUrls.dashboard);
+      return response = MainDashboardChartsListResponseModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+  Future<dynamic> dbLeadCardApi(MainDashLeadSourceReqModel requestModel) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(
+        AppUrls.dashboardLeadCard,
+        requestModel.toJson(),
+      );
+      return response; // Expecting a List<dynamic> in the response body
+    } catch (e) {
+      rethrow;
+    }
+  }
+  // dashboard  lead reminder
+
+  Future<dynamic> dbLeadReminderApi(MainDashLeadRemindReqModel requestModel) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(
+        AppUrls.dashboardLeadReminder,
+        requestModel.toJson(),
+      );
+      return response; // Expecting a List<dynamic> in the response body
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+// Dashboard Customer Status
+  Future<dynamic> dbCustomerApi(MainDashCustomerStatusReqModel requestModel) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(
+        AppUrls.dashboardCustomerStatus,
+        requestModel.toJson(),
+      );
+      return response; // Expecting a List<dynamic> in the response body
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+
+
+// Dashboard Customer Reminder
+
+  Future<dynamic> dbCustomerReminderApi(DashCusRemReqModel requestModel) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(
+        AppUrls.dashboardCustomerReminder,
+        requestModel.toJson(), // This will now work
+      );
+      return response; // Expecting a List<dynamic> in the response body
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+// Lead Sources
+
+
+  Future<dynamic> dbLeadsSourceApi(MainDashLeadSourceReqModel requestModel) async {
+    try {
+      dynamic response = await _apiService.postApiResponse(
+        AppUrls.dashLeadSource,
+        requestModel.toJson(),
+      );
+      return response; // Expecting a List<dynamic> in the response body
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
+
+  //
+  // Future<List<MainDashLeadSourceResModel>> dashboardLeadSourceApi(MainDashLeadSourceReqModel requestModel) async {
+  //   try {
+  //     dynamic response = await _apiService.postApiResponse(
+  //       AppUrls.dashboardLeadSource,
+  //       requestModel.toJson(),
+  //     );
+  //
+  //     if (response is List) {
+  //       return response
+  //           .map((item) => MainDashLeadSourceResModel.fromJson(item))
+  //           .toList();
+  //     }
+  //     return [];
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
+
+
+
 
   //============================================================================
   // LEAD SCREEN API
